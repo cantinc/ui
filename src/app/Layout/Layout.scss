@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  background: var(--color-80);
+  box-sizing: border-box;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.content {
+  flex: 1;
+  border-radius: 6px;
+  padding: 6px;
+  background: var(--color-100);
+}

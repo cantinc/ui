@@ -12,9 +12,9 @@
   "types": "index.d.ts",
   "private": true,
   "scripts": {
-    "start": "innetjs start -i app",
+    "start": "innetjs start -i docs",
     "build": "npm run build:ui && npm run build:docs",
-    "build:docs": "innetjs build -i app",
+    "build:docs": "innetjs build -i docs",
     "build:ui": "innetjs release",
     "test": "jest",
     "lint": "eslint src --ext .ts,.tsx",
@@ -39,6 +39,8 @@
   "dependencies": {
     "@innet/dom": "^0.8.2",
     "@innet/jsx": "^1.1.0",
+    "@textlint/ast-node-types": "^12.2.2",
+    "@textlint/markdown-to-ast": "^12.2.3",
     "html-classes": "^2.0.2",
     "innet": "^1.0.1",
     "watch-state": "^3.4.5"
@@ -47,8 +49,8 @@
     "rollup-plugin-styles": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.8.1",
     "@types/jest": "^29.1.1",
+    "@types/node": "^18.8.1",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "core-js": "^3.25.3",
@@ -61,7 +63,7 @@
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "innet-jest": "^1.3.5",
-    "typescript": "^4.8.4",
-    "innetjs": "^2.2.18"
+    "innetjs": "^2.2.23",
+    "typescript": "^4.8.4"
   }
 }

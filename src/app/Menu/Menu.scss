@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.link {
+  & ~ & {
+    display: none;
+  }
+}
+
+.linkActive {
+  & ~ .link {
+    display: block;
+  }
+}
