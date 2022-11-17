@@ -1,21 +1,17 @@
 import { meta } from 'src/app/Component'
 
+import examples from './examples'
 import { Markdown } from './Markdown'
+import description from './README.md'
 
 export default meta<typeof Markdown>({
   component: Markdown,
+  description,
   props: {
     text: {
       type: 'text',
       description: 'Markdown text',
     },
   },
-  examples: [
-    {
-      id: 'default',
-      example: (
-        <Markdown text='# Markdown' />
-      ),
-    },
-  ],
+  examples,
 })

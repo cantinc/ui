@@ -7,7 +7,7 @@ export interface MarkdownProps {
   text: WatchProp<string>
 }
 
-const astMap: Partial<Record<ASTNodeTypes, (node: TxtNode) => JSXElement>> = {
+const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElement>> = {
   Document: ({ children }) => children.map(ast2jsx),
   Paragraph: ({ children }) => ({
     type: 'p',
@@ -63,6 +63,22 @@ const astMap: Partial<Record<ASTNodeTypes, (node: TxtNode) => JSXElement>> = {
       src: url,
     },
   }),
+  Table: ({ children }) => ({
+    type: 'table',
+    children: children?.map(ast2jsx),
+  }),
+  TableHeader: ({ children }) => ({
+    type: 'th',
+    children: children?.map(ast2jsx),
+  }),
+  TableRow: ({ children, ...rest }) => console.log(rest) as any || ({
+    type: 'tr',
+    children: children?.map(ast2jsx),
+  }),
+  TableCell: ({ children }) => ({
+    type: 'td',
+    children: children?.map(ast2jsx),
+  }),
 }
 
 function ast2jsx (ast: TxtNode) {
@@ -76,3 +92,5 @@ export function Markdown ({ text }: MarkdownProps) {
 
   return (update: boolean) => ast2jsx(parse(text(update)))
 }
+
+Markdown.componentName = 'Markdown'

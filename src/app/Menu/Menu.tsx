@@ -13,16 +13,17 @@ export function Menu () {
       <a href='/'>Home</a>
       <section>
         <a class={linkClass} href='/typography'>Typography</a>
-        <a class={linkClass} href='/typography/Markdown'>Markdown</a>
-      </section>
-      <section>
-        <a class={linkClass} href='/buttons'>Buttons</a>
-        <a class={linkClass} href='/buttons/Button'>Button</a>
+        <a class={linkClass} href='/typography/markdown'>Markdown</a>
+        <a class={linkClass} href='/typography/typography'>Typography</a>
       </section>
       <section>
         <a class={linkClass} href='/position'>Position</a>
         <a class={linkClass} href='/position/flex'>Flex</a>
         <a class={linkClass} href='/position/space'>Space</a>
+      </section>
+      <section>
+        <a class={linkClass} href='/buttons'>Buttons</a>
+        <a class={linkClass} href='/buttons/button'>Button</a>
       </section>
       <Space />
       <span>

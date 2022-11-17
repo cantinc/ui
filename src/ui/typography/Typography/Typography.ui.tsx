@@ -1,16 +1,11 @@
 import { meta } from 'src/app/Component'
 
-import { Flex } from '.'
+import { Typography } from '.'
 import examples from './examples'
 import description from './README.md'
 
-export default meta<typeof Flex>({
-  component: Flex,
+export default meta<typeof Typography>({
+  component: Typography,
   description,
-  props: {
-    vertical: {
-      type: 'switch',
-    },
-  },
   examples,
 })

@@ -82,3 +82,5 @@ export function Button ({
     </button>
   )
 }
+
+Button.componentName = 'Button'

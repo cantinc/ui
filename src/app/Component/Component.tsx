@@ -1,6 +1,6 @@
-import { Markdown } from '../../ui'
+import { Markdown, Typography } from '../../ui'
 
-export type UITypes = 'select' | 'text'
+export type UITypes = 'select' | 'text' | 'switch'
 
 export interface UIComponentProp {
   type: UITypes
@@ -44,8 +44,13 @@ function jsxStringifyProps (props?: Record<string, any>): string {
   for (const prop in props) {
     const propValue = props[prop]
 
+    if (typeof propValue === 'function') {
+      result += ` ${prop}={${propValue}}`
+      continue
+    }
+
     if (typeof propValue === 'string') {
-      result += ` ${prop}='${props[prop]}'`
+      result += ` ${prop}='${propValue}'`
       continue
     }
 
@@ -75,7 +80,11 @@ export function jsxStringify (content: any): string {
     const strProps = jsxStringifyProps(props)
 
     if (typeof type === 'function') {
-      type = type.name
+      if (!type.componentName) {
+        throw Error(`Add componentName of ${type.name}`)
+      }
+
+      type = type.componentName
     }
 
     if (typeof type === 'string') {
@@ -104,13 +113,13 @@ export async function Component <C extends UIComponent> ({ is }: ComponentProps<
 
   return (
     <>
-      {description && <Markdown text={description} />}
+      {description && <Typography><Markdown text={description} /></Typography>}
       {examples && (
         <>
           <h2>Examples:</h2>
           {examples.map(({ id, example, title, description }) => (
-            <div>
-              {title && <h3>{title}</h3>}
+            <div id={id}>
+              {title && <h3>{title}:</h3>}
               {description && <Markdown text={description} />}
               {example}
               <details>
