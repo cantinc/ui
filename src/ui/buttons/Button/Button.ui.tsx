@@ -16,15 +16,21 @@ export default meta<typeof Button>({
       description: 'Html type of the button',
     },
   },
-  examples: {
-    default: (
-      <Button>Click Me</Button>
-    ),
-    onclick: (
-      <Button
-        onclick={() => alert('clicked')}>
-        Click Me
-      </Button>
-    ),
-  },
+  examples: [
+    {
+      id: 'default',
+      example: (
+        <Button>Click Me</Button>
+      ),
+    },
+    {
+      id: 'on-click',
+      example: (
+        <Button
+          onclick={() => alert('clicked')}>
+          Click Me
+        </Button>
+      ),
+    },
+  ],
 })

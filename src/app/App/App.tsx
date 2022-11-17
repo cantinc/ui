@@ -1,11 +1,11 @@
 import { Component } from 'src/app/Component'
 import { Layout } from 'src/app/Layout'
-import { Markdown } from 'src/components'
+import { Markdown } from 'src/ui'
 
-import buttonsReadme from '../../components/buttons/README.md'
-import positionReadme from '../../components/position/README.md'
-import typographyReadme from '../../components/typography/README.md'
 import mainReadme from '../../README.md'
+import buttonsReadme from '../../ui/buttons/README.md'
+import positionReadme from '../../ui/position/README.md'
+import typographyReadme from '../../ui/typography/README.md'
 
 export function App () {
   return (
@@ -20,7 +20,7 @@ export function App () {
               <Markdown text={typographyReadme} />
             </slot>
             <slot name='markdown'>
-              <Component is={() => import('src/components/typography/Markdown/Markdown.ui')} />
+              <Component is={() => import('src/ui/typography/Markdown/Markdown.ui')} />
             </slot>
           </router>
         </slot>
@@ -30,7 +30,7 @@ export function App () {
               <Markdown text={buttonsReadme} />
             </slot>
             <slot name='button'>
-              <Component is={() => import('src/components/buttons/Button/Button.ui')} />
+              <Component is={() => import('src/ui/buttons/Button/Button.ui')} />
             </slot>
           </router>
         </slot>
@@ -39,8 +39,11 @@ export function App () {
             <slot name='/'>
               <Markdown text={positionReadme} />
             </slot>
+            <slot name='flex'>
+              <Component is={() => import('src/ui/position/Flex/Flex.ui')} />
+            </slot>
             <slot name='space'>
-              <Component is={() => import('src/components/position/Space/Space.ui')} />
+              <Component is={() => import('src/ui/position/Space/Space.ui')} />
             </slot>
           </router>
         </slot>

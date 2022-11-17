@@ -1,3 +1,4 @@
 # CANT inc. UI
 
-Hello World
+**CANT inc. UI** based on [innet](https://www.npmjs.com/package/innet)
+

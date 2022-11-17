@@ -1,4 +1,4 @@
-import { Space } from 'src/components'
+import { Space } from 'src/ui'
 
 import styles from './Menu.scss'
 
@@ -18,6 +18,11 @@ export function Menu () {
       <section>
         <a class={linkClass} href='/buttons'>Buttons</a>
         <a class={linkClass} href='/buttons/Button'>Button</a>
+      </section>
+      <section>
+        <a class={linkClass} href='/position'>Position</a>
+        <a class={linkClass} href='/position/flex'>Flex</a>
+        <a class={linkClass} href='/position/space'>Space</a>
       </section>
       <Space />
       <span>

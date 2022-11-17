@@ -10,9 +10,12 @@ export default meta<typeof Markdown>({
       description: 'Markdown text',
     },
   },
-  examples: {
-    default: (
-      <Markdown text='# Markdown' />
-    ),
-  },
+  examples: [
+    {
+      id: 'default',
+      example: (
+        <Markdown text='# Markdown' />
+      ),
+    },
+  ],
 })

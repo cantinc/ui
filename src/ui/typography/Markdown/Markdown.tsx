@@ -48,13 +48,13 @@ const astMap: Partial<Record<ASTNodeTypes, (node: TxtNode) => JSXElement>> = {
     type: 'blockquote',
     children: children?.map(ast2jsx),
   }),
-  Code: ({ children }) => ({
+  Code: ({ value }) => ({
     type: 'code',
-    children: children?.map(ast2jsx),
+    children: value,
   }),
-  CodeBlock: ({ children }) => ({
+  CodeBlock: ({ value }) => ({
     type: 'pre',
-    children: children?.map(ast2jsx),
+    children: value,
   }),
   Image: ({ alt, url }) => ({
     type: 'img',
