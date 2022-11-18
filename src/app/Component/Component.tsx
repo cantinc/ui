@@ -1,5 +1,4 @@
-import { Markdown, Typography } from '../../ui'
-import { jsxStringify } from '../../utils'
+import { JSXStringify, Markdown, Typography } from '../../ui'
 
 export type UITypes = 'select' | 'text' | 'switch'
 
@@ -60,9 +59,9 @@ export async function Component <C extends UIComponent> ({ is }: ComponentProps<
               {example}
               <details>
                 <summary>Code</summary>
-                <pre>
-                  {jsxStringify(example)}
-                </pre>
+                <JSXStringify>
+                  {example}
+                </JSXStringify>
               </details>
             </div>
           ))}

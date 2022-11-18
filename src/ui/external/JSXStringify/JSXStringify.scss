@@ -1,0 +1,51 @@
+.root {
+  padding: 16px;
+  border: 1px solid var(--color-60);
+  border-radius: 8px;
+  font-family: monospace;
+}
+
+.nullContent {
+
+}
+
+.content {
+
+}
+
+.component {
+
+}
+
+.children {
+  padding-left: 1.2em;
+}
+
+.empty,
+.start,
+.end {
+  color: #0d50b3;
+}
+
+.start {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.prop {
+  padding-left: .6em;
+}
+
+.propValue,
+.propKey {
+  color: #e1460b;
+}
+
+.propBraces {
+  color: #9d3407;
+}
+
+.propString {
+  color: green;
+  white-space: nowrap;
+}
