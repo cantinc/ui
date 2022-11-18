@@ -4,14 +4,14 @@ import { Flex, Space } from 'src/ui'
 import description from './README.md'
 
 export default example({
-  id: 'default',
-  title: 'Inside Flex',
+  id: 'center',
+  title: 'Center',
   description,
   example: (
     <Flex style='background:red'>
-      <div style='background:blue;padding:10px'>Left</div>
       <Space />
-      <div style='background:green;padding:10px'>Right</div>
+      <div style='background:green;padding:10px'>Element</div>
+      <Space />
     </Flex>
   ),
 })

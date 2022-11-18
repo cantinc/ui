@@ -9,6 +9,8 @@ export function JSXStringify (props: Style) {
   const children = useChildren()
   const styles = useStyle()
 
+  let content: any
+
   function propsStringify (props?: Record<string, any>) {
     if (!props) return null
 
@@ -18,53 +20,39 @@ export function JSXStringify (props: Style) {
       const propValue = props[prop]
 
       if (propValue === null || typeof propValue === 'function') {
-        result.push(
-          <span class={styles.prop}>
-            <span class={styles.propKey}>{prop}</span>
-            <span class={styles.propValue}>=
-              <span class={styles.propBraces}>
-                {'{'}{String(propValue)}{'}'}
-              </span>
-            </span>
-          </span>,
-        )
-        continue
+        content = String(propValue)
       }
 
       if (typeof propValue === 'string') {
-        result.push(
-          <span class={styles.prop}>
-            <span class={styles.propKey}>{prop}</span>
-            <span class={styles.propValue}>=
-              <span class={styles.propString}>
-                '{propValue}'
-              </span>
-            </span>
-          </span>,
-        )
-        continue
+        content = propValue
       }
 
-      if (typeof propValue === 'boolean') {
-        if (propValue) {
-          result.push(
-            <span class={styles.prop}>
-              <span class={styles.propKey}>{prop}</span>
-            </span>,
-          )
-        } else {
-          result.push(
-            <span class={styles.prop}>
-              <span class={styles.propKey}>{prop}</span>
-              <span class={styles.propValue}>=
-                <span class={styles.propBraces}>
-                  {'{'}false{'}'}
-                </span>
-              </span>
-            </span>,
-          )
-        }
+      if (propValue === false) {
+        content = 'false'
       }
+
+      if (typeof propValue === 'number') {
+        content = <span class={styles.propNum}>{propValue}</span>
+      }
+
+      if (typeof propValue === 'string') {
+        content = <span class={styles.propString}>'{content}'</span>
+      } else if (propValue !== true) {
+        content = <span class={styles.propBraces}>{'{'}{content}{'}'}</span>
+      }
+
+      if (propValue !== true) {
+        content = (
+          <span class={styles.propValue}>={content}</span>
+        )
+      }
+
+      result.push(
+        <span class={styles.prop}>
+          <span class={styles.propKey}>{prop}</span>
+          {content}
+        </span>,
+      )
     }
 
     return result
