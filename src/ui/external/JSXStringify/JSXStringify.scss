@@ -42,6 +42,7 @@
   color: #e1460b;
 }
 
+.propNull,
 .propBraces {
   color: #9d3407;
 }
@@ -49,4 +50,9 @@
 .propString {
   color: green;
   white-space: nowrap;
+}
+
+.propFunc,
+.propArray {
+  color: #333;
 }

@@ -19,20 +19,18 @@ export function JSXStringify (props: Style) {
     for (const prop in props) {
       const propValue = props[prop]
 
-      if (propValue === null || typeof propValue === 'function') {
-        content = String(propValue)
-      }
-
-      if (typeof propValue === 'string') {
+      if (propValue === null) {
+        content = <span class={styles.propNull}>{String(propValue)}</span>
+      } else if (typeof propValue === 'function') {
+        content = <span class={styles.propFunc}>{String(propValue)}</span>
+      } else if (typeof propValue === 'string') {
         content = propValue
-      }
-
-      if (propValue === false) {
+      } else if (propValue === false) {
         content = 'false'
-      }
-
-      if (typeof propValue === 'number') {
+      } else if (typeof propValue === 'number') {
         content = <span class={styles.propNum}>{propValue}</span>
+      } else if (Array.isArray(propValue)) {
+        content = <span class={styles.propArray}>[{propValue.join(', ')}]</span>
       }
 
       if (typeof propValue === 'string') {
