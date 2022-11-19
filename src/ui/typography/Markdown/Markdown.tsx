@@ -1,5 +1,5 @@
 import { JSXElement } from '@innet/jsx'
-import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types/src'
+import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 import { WatchProp } from 'src/types'
 
@@ -71,7 +71,7 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElemen
     type: 'th',
     children: children?.map(ast2jsx),
   }),
-  TableRow: ({ children, ...rest }) => console.log(rest) as any || ({
+  TableRow: ({ children }) => ({
     type: 'tr',
     children: children?.map(ast2jsx),
   }),

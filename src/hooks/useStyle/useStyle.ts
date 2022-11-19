@@ -6,7 +6,7 @@ export interface Style<S = any> {
 }
 
 export function getStyles<S> (styles: S, props: any): S {
-  if (!props || !props.class) {
+  if (!props?.class) {
     return styles
   }
 

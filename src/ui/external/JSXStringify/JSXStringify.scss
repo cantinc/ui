@@ -1,8 +1,28 @@
 .root {
-  padding: 16px;
+  padding: 0 16px;
   border: 1px solid var(--color-60);
   border-radius: 8px;
   font-family: monospace;
+  overflow: auto;
+  max-height: 50vh;
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    position: sticky;
+    box-shadow: 0 0 13px 13px white;
+  }
+
+  &:before {
+    top: 0;
+    margin-bottom: 16px;
+  }
+
+  &:after {
+    bottom: 0;
+    margin-top: 16px;
+  }
 }
 
 .nullContent {
