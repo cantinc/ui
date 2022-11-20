@@ -8,13 +8,11 @@ const useStyle = style(styles)
 export function JSXStringify (props: Style) {
   const children = useChildren()
   const styles = useStyle()
-
-  let content: any
-
   function propsStringify (props?: Record<string, any>) {
     if (!props) return null
 
     const result = []
+    let content: any
 
     for (const prop in props) {
       const propValue = props[prop]

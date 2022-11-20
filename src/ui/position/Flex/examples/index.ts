@@ -1,6 +1,8 @@
 import align from './align'
 import def from './default'
 import differentGap from './differentGap'
+import element from './element'
+import flex from './flex'
 import gap from './gap'
 import inline from './inline'
 import justify from './justify'
@@ -22,4 +24,6 @@ export default [
   align,
   verticalAlign,
   justify,
+  element,
+  flex,
 ]

@@ -29,6 +29,7 @@ export interface FlexProps extends Style, HTMLProps<HTMLDivElement> {
   reverse?: boolean
   element?: string
   ref?: Ref<HTMLDivElement>
+  [key: string]: any
 }
 
 export function Flex ({
