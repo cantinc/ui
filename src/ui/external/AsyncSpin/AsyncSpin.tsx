@@ -1,0 +1,40 @@
+import { Ref, Style, style, useShow } from '@innet/dom'
+import { useChildren } from '@innet/jsx'
+import { State } from 'watch-state'
+
+import { Spin, SpinProps } from '../../content'
+import styles from './AsyncSpin.scss'
+
+const useStyle = style(styles)
+
+export interface AsyncSpinProps extends Style, SpinProps {
+  delay?: number
+  showDelay?: number
+}
+
+export function AsyncSpin ({
+  delay = 300,
+  showDelay = 0,
+  style = '',
+  ...props
+}: AsyncSpinProps = {}) {
+  const children = useChildren()
+  const styles = useStyle()
+  const hide = new Ref<State<boolean>>()
+  const show = useShow(delay + showDelay)
+
+  return (
+    <delay ref={hide} show={showDelay} hide={delay}>
+      <Spin
+        {...props}
+        style={`--ui-spin-delay:${delay}ms;${style}`}
+        class={() => [
+          styles.root,
+          show.value && styles.show,
+          hide.value?.value && styles.hide,
+        ]}>
+        {children}
+      </Spin>
+    </delay>
+  )
+}

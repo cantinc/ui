@@ -1,9 +1,8 @@
-import { HTMLProps, LinkProps } from '@innet/dom'
+import { HTMLProps, LinkProps, Style, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
 // import { AsyncSpin } from '/ui/app/AsyncSpin'
-import { Style, style } from '../../../hooks/useStyle'
 import styles from './Button.scss'
 
 const useStyle = style(styles)

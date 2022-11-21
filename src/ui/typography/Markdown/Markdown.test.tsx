@@ -1,4 +1,4 @@
-import { getHTML, render } from '@innet/dom/test'
+import { getHTML, render } from '@innet/dom'
 
 import { Markdown } from '.'
 

@@ -1,6 +1,6 @@
+import { Style, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { Style, style } from '../../../hooks'
 import styles from './JSXStringify.scss'
 
 const useStyle = style(styles)

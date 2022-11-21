@@ -1,11 +1,11 @@
 import { Component } from 'src/app/Component'
 import { Layout } from 'src/app/Layout'
+import { TypographyPage } from 'src/pages/TypographyPage'
 import { Markdown, Typography } from 'src/ui'
 
 import mainReadme from '../../README.md'
 import buttonsReadme from '../../ui/buttons/README.md'
 import positionReadme from '../../ui/position/README.md'
-import typographyReadme from '../../ui/typography/README.md'
 
 export function App () {
   return (
@@ -17,19 +17,7 @@ export function App () {
           </Typography>
         </slot>
         <slot name='typography'>
-          <router>
-            <slot name='/'>
-              <Typography>
-                <Markdown text={typographyReadme} />
-              </Typography>
-            </slot>
-            <slot name='markdown'>
-              <Component is={() => import('src/ui/typography/Markdown/Markdown.ui')} />
-            </slot>
-            <slot name='typography'>
-              <Component is={() => import('src/ui/typography/Typography/Typography.ui')} />
-            </slot>
-          </router>
+          <TypographyPage />
         </slot>
         <slot name='position'>
           <router>

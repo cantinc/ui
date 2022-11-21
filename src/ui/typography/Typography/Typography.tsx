@@ -1,7 +1,6 @@
-import { HTMLProps } from '@innet/dom'
+import { HTMLProps, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { style } from '../../../hooks'
 import styles from './Typography.scss'
 
 export interface TypographyProps extends HTMLProps<HTMLDivElement> {
