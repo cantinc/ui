@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  transition: all .3s;
+  opacity: 1;
+  margin: auto;
+  min-height: 20px;
+  min-width: 76px;
+}
+
+.loading {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.spin {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+}

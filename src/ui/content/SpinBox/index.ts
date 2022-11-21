@@ -1,2 +1,1 @@
 export * from './SpinBox'
-export * from './Spin'

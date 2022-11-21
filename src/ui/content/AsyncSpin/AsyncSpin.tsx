@@ -2,7 +2,7 @@ import { Ref, Style, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
-import { Spin, SpinProps } from '../../content'
+import { Spin, SpinProps } from '../Spin'
 import styles from './AsyncSpin.scss'
 
 const useStyle = style(styles)
@@ -17,7 +17,7 @@ export function AsyncSpin ({
   showDelay = 0,
   style = '',
   ...props
-}: AsyncSpinProps = {}) {
+}: AsyncSpinProps) {
   const children = useChildren()
   const styles = useStyle()
   const hide = new Ref<State<boolean>>()

@@ -25,6 +25,11 @@ export function Menu () {
         <a class={linkClass} href='/buttons'>Buttons</a>
         <a class={linkClass} href='/buttons/button'>Button</a>
       </section>
+      <section>
+        <a class={linkClass} href='/content'>Content</a>
+        <a class={linkClass} href='/content/spin'>Spin</a>
+        <a class={linkClass} href='/content/spin-box'>SpinBox</a>
+      </section>
       <Space />
       <span>
         {process.env.CANTINC_UI_PACKAGE_VERSION}

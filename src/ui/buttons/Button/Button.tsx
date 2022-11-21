@@ -2,7 +2,7 @@ import { HTMLProps, LinkProps, Style, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
-// import { AsyncSpin } from '/ui/app/AsyncSpin'
+import { AsyncSpin } from '../../content/AsyncSpin'
 import styles from './Button.scss'
 
 const useStyle = style(styles)
@@ -59,7 +59,7 @@ export function Button ({
   if (link) {
     return (
       <a {...link} style={style} class={className}>
-        {() => loading?.() && <span showDelay={300} class={styles.spin} />}
+        {() => loading?.() && <AsyncSpin showDelay={300} class={styles.spin} />}
         <span class={styles.content}>
           {children}
         </span>

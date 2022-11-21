@@ -1,39 +1,33 @@
-import { HTMLProps, Style, style } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
-import classes from 'html-classes'
+import { style, useHidden, useShow } from '@innet/dom'
 
+import { Flex, FlexProps } from '../../position'
 import styles from './Spin.scss'
 
 const useStyle = style(styles)
 
-export interface SpinProps extends Style, HTMLProps<HTMLDivElement> {
-  loading?: () => boolean
+export interface SpinProps extends FlexProps {
+
 }
 
-export function Spin ({
-  loading,
-  ...props
-}: SpinProps = {}) {
-  const children = useChildren()
+export function Spin (props: SpinProps) {
   const styles = useStyle()
-  const pointClass = classes(['spin__point', styles.point])
-
-  const spinner = (
-    <div class={classes(['spin', styles.spin])}>
-      <div class={pointClass} />
-      <div class={pointClass} />
-      <div class={pointClass} />
-    </div>
-  )
+  const show = useShow()
+  const hide = useHidden()
 
   return (
-    <div {...props} class={() => styles.root}>
-      {loading ? () => loading() && spinner : spinner}
-      {children && (
-        <div class={styles.children}>
-          {children}
-        </div>
-      )}
-    </div>
+    <Flex
+      gap={8}
+      {...props}
+      class={() => [
+        styles.root,
+        show.value && styles.show,
+        hide?.value && styles.hide,
+      ]}>
+      <div class={styles.point} />
+      <div class={styles.point} />
+      <div class={styles.point} />
+    </Flex>
   )
 }
+
+Spin.componentName = 'Spin'
