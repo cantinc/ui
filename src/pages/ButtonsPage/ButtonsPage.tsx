@@ -14,9 +14,7 @@ export function ButtonsPage () {
         </DelayPage>
       </slot>
       <slot name='button'>
-        <DelayPage>
-          <Component is={() => import('src/ui/buttons/Button/Button.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/buttons/Button/Button.ui')} />
       </slot>
     </router>
   )

@@ -1,4 +1,5 @@
-import { JSXStringify, Markdown, Typography } from '../../ui'
+import { DelayPage, JSXStringify, Markdown, Typography } from '../../ui'
+import { AsyncSpin } from '../../ui/content/AsyncSpin'
 
 export type UITypes = 'select' | 'text' | 'switch'
 
@@ -36,7 +37,9 @@ export function example (example: UIExample): UIExample {
   return example
 }
 
-export async function Component <C extends UIComponent> ({ is }: ComponentProps<C>) {
+export async function * Component <C extends UIComponent> ({ is }: ComponentProps<C>) {
+  yield <AsyncSpin flex justify='center' align='center' show={300} />
+
   const {
     component: Component,
     examples,
@@ -46,15 +49,15 @@ export async function Component <C extends UIComponent> ({ is }: ComponentProps<
 
   console.log(Component, props)
 
-  return (
-    <>
+  yield (
+    <DelayPage>
       {description && <Typography><Markdown text={description} /></Typography>}
       {examples && (
         <>
           <h2>Examples:</h2>
           {examples.map(({ id, example, title, description }) => (
             <div id={id}>
-              {title && <h3>{title}:</h3>}
+              {title && <h3><a href={`#${id}`}>{title}</a>:</h3>}
               {description && <Markdown text={description} />}
               {example}
               <details>
@@ -67,6 +70,6 @@ export async function Component <C extends UIComponent> ({ is }: ComponentProps<
           ))}
         </>
       )}
-    </>
+    </DelayPage>
   )
 }

@@ -1,5 +1,5 @@
 import { useHidden, useShow } from '@innet/dom'
-import { useChildren, useSlots } from '@innet/jsx'
+import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
 import { Flex, FlexProps } from '../../position'
@@ -30,22 +30,21 @@ export function DelayPage ({
 }
 
 export function Page (props: PageProps) {
-  const { '': children, title } = useSlots()
+  const children = useChildren()
   const show = useShow()
   const hidden = useHidden()
 
   return (
     <Flex
       vertical
+      align='stretch'
+      flex
       {...props}
       class={() => classes([
         styles.root,
         show.value && styles.show,
         hidden?.value && styles.hide,
       ])}>
-      {title && (
-        <h1 class={styles.title}>{title}</h1>
-      )}
       {children}
     </Flex>
   )

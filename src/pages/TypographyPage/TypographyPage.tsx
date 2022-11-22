@@ -14,14 +14,10 @@ export function TypographyPage () {
         </DelayPage>
       </slot>
       <slot name='markdown'>
-        <DelayPage>
-          <Component is={() => import('src/ui/typography/Markdown/Markdown.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/typography/Markdown/Markdown.ui')} />
       </slot>
       <slot name='typography'>
-        <DelayPage>
-          <Component is={() => import('src/ui/typography/Typography/Typography.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/typography/Typography/Typography.ui')} />
       </slot>
     </router>
   )

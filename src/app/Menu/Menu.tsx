@@ -32,7 +32,7 @@ export function Menu () {
       </section>
       <Space />
       <span>
-        {process.env.CANTINC_UI_PACKAGE_VERSION}
+        {process.env.CANTINC_UI_VERSION}
       </span>
     </nav>
   )

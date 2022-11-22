@@ -14,14 +14,10 @@ export function ContentPage () {
         </DelayPage>
       </slot>
       <slot name='spin'>
-        <DelayPage>
-          <Component is={() => import('src/ui/content/Spin/Spin.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/content/Spin/Spin.ui')} />
       </slot>
       <slot name='spin-box'>
-        <DelayPage>
-          <Component is={() => import('src/ui/content/SpinBox/SpinBox.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/content/SpinBox/SpinBox.ui')} />
       </slot>
     </router>
   )

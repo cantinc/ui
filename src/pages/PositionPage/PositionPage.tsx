@@ -14,14 +14,10 @@ export function PositionPage () {
         </DelayPage>
       </slot>
       <slot name='flex'>
-        <DelayPage>
-          <Component is={() => import('src/ui/position/Flex/Flex.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/position/Flex/Flex.ui')} />
       </slot>
       <slot name='space'>
-        <DelayPage>
-          <Component is={() => import('src/ui/position/Space/Space.ui')} />
-        </DelayPage>
+        <Component is={() => import('src/ui/position/Space/Space.ui')} />
       </slot>
     </router>
   )
