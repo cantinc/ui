@@ -59,7 +59,7 @@ export function Button ({
   if (link) {
     return (
       <a {...link} style={style} class={className}>
-        {() => loading?.() && <AsyncSpin showDelay={300} class={styles.spin} />}
+        {() => loading?.() && <AsyncSpin class={styles.spin} />}
         <span class={styles.content}>
           {children}
         </span>
@@ -74,7 +74,7 @@ export function Button ({
       type={type}
       disabled={disabledValue}
       class={className}>
-      {() => loading?.() && <span showDelay={300} class={styles.spin} />}
+      {() => loading?.() && <AsyncSpin class={styles.spin} />}
       <span class={styles.content}>
         {children}
       </span>

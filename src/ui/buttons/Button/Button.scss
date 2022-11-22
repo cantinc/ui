@@ -56,6 +56,10 @@
 .loading {
   opacity: .5;
   pointer-events: none;
+
+  .content {
+    color: transparent;
+  }
 }
 
 .content {
@@ -67,13 +71,9 @@
 
 .spin {
   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  top: -3px;
-
-  & + .content {
-    color: transparent;
-  }
+  transform: translate(-50%, -50%);
 }
 
 .danger {
