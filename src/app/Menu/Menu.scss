@@ -2,19 +2,31 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 4px;
   max-height: calc(100vh - 40px);
   position: sticky;
   top: 20px;
+  font-size: 32px;
+}
+
+.submenu {
+  display: flex;
+  transition: all .3s;
+  max-height: 0;
+  gap: 8px;
+  font-size: 63%;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .link {
-  & ~ & {
-    display: none;
-  }
+  text-decoration: none;
 }
 
 .linkActive {
-  & ~ .link {
-    display: block;
+  color: var(--color-link-dark);
+  & + .submenu {
+    transition: all 1s;
+    max-height: 100vh;
   }
 }
