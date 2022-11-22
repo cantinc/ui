@@ -10,6 +10,8 @@
 }
 
 .submenu {
+  --ui-sub-menu-height: fit-content;
+
   display: flex;
   transition: all .3s;
   max-height: 0;
@@ -25,8 +27,8 @@
 
 .linkActive {
   color: var(--color-link-dark);
+
   & + .submenu {
-    transition: all 1s;
-    max-height: 100vh;
+    max-height: var(--ui-sub-menu-height);
   }
 }

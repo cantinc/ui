@@ -1,5 +1,5 @@
 import { useChildren } from '@innet/jsx'
-import { Menu } from 'src/app/Menu'
+import { LayoutMenu } from 'src/app/LayoutMenu'
 
 import styles from './Layout.scss'
 
@@ -9,7 +9,7 @@ export function Layout () {
   return (
     <main class={styles.root}>
       <aside class={styles.aside}>
-        <Menu />
+        <LayoutMenu />
       </aside>
       <article class={styles.content}>
         {children}
