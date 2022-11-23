@@ -29,5 +29,3 @@ export function Spin (props: SpinProps) {
     </Flex>
   )
 }
-
-Spin.componentName = 'Spin'

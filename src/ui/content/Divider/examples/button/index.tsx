@@ -7,6 +7,9 @@ export default example({
   id: 'button',
   title: 'Button',
   description,
+  components: {
+    [Button.name]: 'Button',
+  },
   example: (
     <Divider>
       <Button>

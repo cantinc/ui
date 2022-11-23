@@ -42,11 +42,7 @@ export function jsxStringify (content: any): string {
     const strProps = jsxStringifyProps(props)
 
     if (typeof type === 'function') {
-      if (!type.componentName) {
-        throw Error(`Add componentName of ${type.name}`)
-      }
-
-      type = type.componentName
+      type = type.name
     }
 
     if (typeof type === 'string') {

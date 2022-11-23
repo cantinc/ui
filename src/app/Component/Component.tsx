@@ -16,11 +16,14 @@ export interface UIExample {
   example: any
   title?: string
   description?: string
+  components?: Record<string, string>
 }
 
 export interface UIMeta<C extends UIComponent> {
   component: C
+  name: string
   description?: string
+  components?: Record<string, string>
   props?: Record<keyof Parameters<C>[0], UITypes | UIComponentProp>
   examples?: UIExample[]
 }
@@ -42,6 +45,8 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
 
   const {
     component: Component,
+    components: mainComponents,
+    name,
     examples,
     props,
     description,
@@ -55,14 +60,14 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
       {examples && (
         <>
           <h2>Examples:</h2>
-          {examples.map(({ id, example, title, description }) => (
+          {examples.map(({ id, example, title, description, components }) => (
             <div id={id}>
               {title && <h3><a href={`#${id}`}>{title}</a>:</h3>}
               {description && <Markdown text={description} />}
               {example}
               <details>
                 <summary>Code</summary>
-                <JSXStringify>
+                <JSXStringify components={{ [Component.name]: name, ...mainComponents, ...components }}>
                   {example}
                 </JSXStringify>
               </details>

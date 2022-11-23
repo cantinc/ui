@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof Flex>({
   component: Flex,
+  name: 'Flex',
   description,
   props: {
     vertical: {

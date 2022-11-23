@@ -92,5 +92,3 @@ export function Flex ({
     </Element>
   )
 }
-
-Flex.componentName = 'Flex'

@@ -41,5 +41,3 @@ export function SpinBox ({
     </Flex>
   )
 }
-
-SpinBox.componentName = 'SpinBox'

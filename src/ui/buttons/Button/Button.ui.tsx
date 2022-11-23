@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof Button>({
   component: Button,
+  name: 'Button',
   description,
   props: {
     view: {

@@ -92,5 +92,3 @@ export function Markdown ({ text }: MarkdownProps) {
 
   return (update: boolean) => ast2jsx(parse(text(update)))
 }
-
-Markdown.componentName = 'Markdown'

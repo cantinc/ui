@@ -7,6 +7,9 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
+  components: {
+    [Markdown.name]: 'Markdown',
+  },
   example: (
     <Typography>
       <Markdown text='### Markdown header' />

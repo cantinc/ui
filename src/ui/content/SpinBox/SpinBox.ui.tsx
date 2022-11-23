@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof SpinBox>({
   component: SpinBox,
+  name: 'SpinBox',
   description,
   examples,
 })

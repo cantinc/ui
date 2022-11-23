@@ -29,5 +29,3 @@ export function SearchToggleBar ({
     />
   )
 }
-
-SearchToggleBar.componentName = 'SearchToggleBar'

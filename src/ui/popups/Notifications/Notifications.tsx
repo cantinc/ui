@@ -48,5 +48,3 @@ export function Notifications ({
     )
   }
 }
-
-Notifications.componentName = 'Notifications'

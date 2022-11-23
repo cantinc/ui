@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof Typography>({
   component: Typography,
+  name: 'Typography',
   description,
   examples,
 })

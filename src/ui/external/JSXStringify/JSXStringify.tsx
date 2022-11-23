@@ -5,7 +5,11 @@ import styles from './JSXStringify.scss'
 
 const useStyle = style(styles)
 
-export function JSXStringify (props: Style) {
+export interface JSXStringifyProps extends Style {
+  components?: Record<string, string>
+}
+
+export function JSXStringify ({ components }: JSXStringifyProps = {}) {
   const children = useChildren()
   const styles = useStyle()
   function propsStringify (props?: Record<string, any>) {
@@ -79,11 +83,11 @@ export function JSXStringify (props: Style) {
       let { type, children, props } = content
 
       if (typeof type === 'function') {
-        if (!type.componentName) {
-          throw Error(`Add componentName of ${type.name}`)
+        if (!components?.[type.name]) {
+          throw Error(`Add component of ${type.name}`)
         }
 
-        type = type.componentName
+        type = components[type.name]
       }
 
       const propsResult = propsStringify(props)

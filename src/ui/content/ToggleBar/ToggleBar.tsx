@@ -82,5 +82,3 @@ export function ToggleBar ({
     </Flex>
   )
 }
-
-ToggleBar.componentName = 'ToggleBar'

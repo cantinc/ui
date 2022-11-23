@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof Divider>({
   component: Divider,
+  name: 'Divider',
   description,
   examples,
 })

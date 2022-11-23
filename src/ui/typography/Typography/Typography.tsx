@@ -17,5 +17,3 @@ export function Typography (props: TypographyProps) {
     <div {...props} class={styles.root}>{children}</div>
   )
 }
-
-Typography.componentName = 'Typography'

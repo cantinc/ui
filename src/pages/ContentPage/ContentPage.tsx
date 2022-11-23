@@ -5,7 +5,7 @@ import description from './README.md'
 
 export function ContentPage () {
   return (
-    <router>
+    <router ish>
       <slot name='/'>
         <DelayPage>
           <Typography>
@@ -27,6 +27,9 @@ export function ContentPage () {
       </slot>
       <slot name='search-toggle-bar'>
         <Component is={() => import('src/ui/content/SearchToggleBar/SearchToggleBar.ui')} />
+      </slot>
+      <slot name='menu'>
+        <Component is={() => import('src/ui/content/Menu/Menu.ui')} />
       </slot>
     </router>
   )

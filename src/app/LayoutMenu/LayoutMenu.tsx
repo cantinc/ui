@@ -29,6 +29,7 @@ export function LayoutMenu () {
         <Menu.Item href='/content/spin-box'>{'<'}SpinBox {'/>'}</Menu.Item>
         <Menu.Item href='/content/toggle-bar'>{'<'}ToggleBar {'/>'}</Menu.Item>
         <Menu.Item href='/content/search-toggle-bar'>{'<'}SearchToggleBar {'/>'}</Menu.Item>
+        <Menu.Item href='/content/menu'>{'<'}Menu {'/>'}</Menu.Item>
       </Menu.SubMenu>
       <Space />
       <Flex justify='center'>

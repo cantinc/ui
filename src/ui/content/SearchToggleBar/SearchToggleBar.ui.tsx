@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof SearchToggleBar>({
   component: SearchToggleBar,
+  name: 'SearchToggleBar',
   description,
   examples,
 })

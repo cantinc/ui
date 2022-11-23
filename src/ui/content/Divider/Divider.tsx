@@ -19,5 +19,3 @@ export function Divider (props: HTMLProps & Style) {
     </fieldset>
   )
 }
-
-Divider.componentName = 'Divider'

@@ -13,5 +13,3 @@ export function Space (props: SpaceProps) {
 
   return <span {...props} class={styles.root} />
 }
-
-Space.componentName = 'Space'

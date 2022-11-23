@@ -10,6 +10,9 @@ export default example({
   id: 'loading',
   title: 'Loading',
   description,
+  components: {
+    [Flex.name]: 'Flex',
+  },
   example: (
     <Flex wrap gap={8}>
       <Button onclick={() => { loading.value = !loading.value }}>

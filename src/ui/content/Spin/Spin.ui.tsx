@@ -6,6 +6,7 @@ import description from './README.md'
 
 export default meta<typeof Spin>({
   component: Spin,
+  name: 'Spin',
   description,
   examples,
 })
