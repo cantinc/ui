@@ -1,0 +1,57 @@
+.root {
+  --ui-toggle-bar-index: -1;
+
+  position: relative;
+  overflow: auto hidden;
+  max-width: 100%;
+  height: 36px;
+  border: 2px solid var(--color-0);
+  border-radius: 18px;
+  padding: 0 8px;
+}
+
+.link {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: var(--color-0);
+  transition: color .3s;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-0);
+  }
+}
+
+.active {
+  color: var(--color-100);
+
+  &:hover {
+    color: var(--color-100);
+  }
+}
+
+.back {
+  .selected {
+    transition: right .3s .1s, left .3s;
+  }
+}
+
+.forward {
+  .selected {
+    transition: right .3s, left .3s .1s;
+  }
+}
+
+.selected {
+  position: absolute;
+  inset: 0;
+  background: var(--color-0);
+  border-radius: 15px;
+  left: calc(100% / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-index));
+  right: calc((100% / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-index) - 1));
+}

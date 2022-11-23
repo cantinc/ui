@@ -1,4 +1,4 @@
-import { HTMLProps, Ref, Style, style } from '@innet/dom'
+import { HTMLProps, Style, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './Flex.scss'
@@ -18,7 +18,7 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export interface FlexProps extends Style, HTMLProps<HTMLDivElement> {
+export interface FlexProps extends Style, HTMLProps {
   vertical?: boolean
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
@@ -28,8 +28,6 @@ export interface FlexProps extends Style, HTMLProps<HTMLDivElement> {
   inline?: boolean
   reverse?: boolean
   element?: string
-  ref?: Ref<HTMLDivElement>
-  [key: string]: any
 }
 
 export function Flex ({
@@ -48,8 +46,11 @@ export function Flex ({
   const children = useChildren()
   const styles = useStyle()
 
+  const originStyle = style
+  style = ''
+
   if (inline) {
-    style = `--ui-flex:inline-flex;${style}`
+    style = '--ui-flex:inline-flex;'
   }
 
   if (gap) {
@@ -85,7 +86,7 @@ export function Flex ({
   return (
     <Element
       {...props}
-      style={style}
+      style={() => `${style}${use(originStyle)}`}
       class={() => styles.root}>
       {children}
     </Element>

@@ -23,6 +23,8 @@ export function LayoutMenu () {
         <Menu.Item href='/content/divider'>Divider</Menu.Item>
         <Menu.Item exact href='/content/spin'>Spin</Menu.Item>
         <Menu.Item href='/content/spin-box'>SpinBox</Menu.Item>
+        <Menu.Item href='/content/toggle-bar'>ToggleBar</Menu.Item>
+        <Menu.Item href='/content/search-toggle-bar'>SearchToggleBar</Menu.Item>
       </Menu.SubMenu>
       <Space />
       <Flex justify='center'>
