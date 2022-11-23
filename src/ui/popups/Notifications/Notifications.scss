@@ -1,0 +1,26 @@
+@import "src/styles/breakpoints";
+
+.root {
+  font-size: 16px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 30%;
+  width: 40%;
+  top: 0;
+  z-index: 999;
+  perspective: 250px;
+  transform-origin: top center;
+  pointer-events: none;
+
+  @media (max-width: $laptop) {
+    top: 4px;
+    right: 14px;
+    width: calc(100% - 28px);
+  }
+
+  &:hover .progress {
+    animation-play-state: paused;
+  }
+}

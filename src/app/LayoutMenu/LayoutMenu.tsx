@@ -14,6 +14,10 @@ export function LayoutMenu () {
         <Menu.Item href='/position/flex'>Flex</Menu.Item>
         <Menu.Item href='/position/space'>Space</Menu.Item>
       </Menu.SubMenu>
+      <Menu.Item href='/popups'>Popups</Menu.Item>
+      <Menu.SubMenu>
+        <Menu.Item href='/popups/notifications'>Notifications</Menu.Item>
+      </Menu.SubMenu>
       <Menu.Item href='/buttons'>Buttons</Menu.Item>
       <Menu.SubMenu>
         <Menu.Item href='/buttons/button'>Button</Menu.Item>

@@ -36,6 +36,12 @@ export function App () {
             name='ButtonsPage'
           />
         </slot>
+        <slot name='popups'>
+          <Async
+            import={() => import('src/pages/PopupsPage')}
+            name='PopupsPage'
+          />
+        </slot>
       </router>
     </Layout>
   )
