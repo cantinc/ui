@@ -1,0 +1,1 @@
+Divider can have children

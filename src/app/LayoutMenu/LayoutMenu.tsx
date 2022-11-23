@@ -20,6 +20,7 @@ export function LayoutMenu () {
       </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>
+        <Menu.Item href='/content/divider'>Divider</Menu.Item>
         <Menu.Item exact href='/content/spin'>Spin</Menu.Item>
         <Menu.Item href='/content/spin-box'>SpinBox</Menu.Item>
       </Menu.SubMenu>

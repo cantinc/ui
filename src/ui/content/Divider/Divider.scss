@@ -1,0 +1,13 @@
+.root {
+  transition: all 0.3s;
+  border: none;
+  border-top: solid 1px var(--color-80);
+  margin: 18px 0;
+  padding: 0;
+  text-align: center;
+}
+
+.legend {
+  padding: 0 16px;
+  color: var(--color-60);
+}
