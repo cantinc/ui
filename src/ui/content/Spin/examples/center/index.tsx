@@ -11,7 +11,7 @@ export default example({
     [Flex.name]: 'Flex',
   },
   example: (
-    <Flex vertical align='stretch' style='width:200px;height:200px;background:red'>
+    <Flex vertical align='stretch' style='width:200px;height:200px;background:var(--color-60)'>
       <Spin flex align='center' justify='center' />
     </Flex>
   ),

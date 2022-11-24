@@ -9,8 +9,8 @@ export default example({
   description,
   example: (
     <Flex>
-      <Flex flex={2} style='background:blue;padding:10px'>Left</Flex>
-      <Flex flex style='background:green;padding:10px'>Right</Flex>
+      <Flex flex={2} style='background:var(--color-80);padding:10px'>66%</Flex>
+      <Flex flex style='background:var(--color-60);padding:10px'>33%</Flex>
     </Flex>
   ),
 })

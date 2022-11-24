@@ -8,9 +8,9 @@ export default example({
   title: 'Center',
   description,
   example: (
-    <Flex style='background:red'>
+    <Flex style='background:var(--color-80)'>
       <Space />
-      <div style='background:green;padding:10px'>Element</div>
+      <div style='background:var(--color-60);padding:10px'>Element</div>
       <Space />
     </Flex>
   ),

@@ -8,9 +8,9 @@ export default example({
   title: 'Vertical',
   description,
   example: (
-    <Flex vertical style='background:red'>
-      <div style='background:blue;padding:10px'>Top</div>
-      <div style='background:green;padding:10px'>Down</div>
+    <Flex vertical style='background:var(--color-80)'>
+      <div style='background:var(--color-40);padding:10px'>Top</div>
+      <div style='background:var(--color-60);padding:10px'>Down</div>
     </Flex>
   ),
 })

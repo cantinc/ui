@@ -8,12 +8,12 @@ export default example({
   title: 'Couple spaces',
   description,
   example: (
-    <Flex style='background:red'>
-      <div style='background:blue;padding:10px'>Left</div>
+    <Flex style='background:var(--color-80)'>
+      <div style='background:var(--color-20);padding:10px'>Left</div>
       <Space />
-      <div style='background:lime;padding:10px'>Mid</div>
+      <div style='background:var(--color-40);padding:10px'>Mid</div>
       <Space />
-      <div style='background:green;padding:10px'>Right</div>
+      <div style='background:var(--color-60);padding:10px'>Right</div>
     </Flex>
   ),
 })

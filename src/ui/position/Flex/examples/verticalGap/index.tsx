@@ -8,10 +8,10 @@ export default example({
   title: 'Vertical gap',
   description,
   example: (
-    <Flex vertical gap={16} style='background:red'>
-      <div style='background:blue;padding:10px'>First</div>
-      <div style='background:green;padding:10px'>Second</div>
-      <div style='background:yellow;padding:10px'>Third</div>
+    <Flex vertical gap={16} style='background:var(--color-80)'>
+      <div style='background:var(--color-20);padding:10px'>First</div>
+      <div style='background:var(--color-40);padding:10px'>Second</div>
+      <div style='background:var(--color-60);padding:10px'>Third</div>
     </Flex>
   ),
 })

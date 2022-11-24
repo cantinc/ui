@@ -20,8 +20,9 @@ export default example({
       </Button>
       <Button
         view='secondary'
-        onclick={() => alert('clicked')}
-        loading={() => loading.value}>
+        size='small'
+        loading={() => loading.value}
+        onclick={() => alert('clicked')}>
         Some button
       </Button>
     </Flex>
