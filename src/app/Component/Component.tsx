@@ -1,5 +1,8 @@
-import { DelayPage, JSXStringify, Markdown, Typography } from '../../ui'
+import { history } from '@innet/dom'
+
+import { Card, Cards, DelayPage, JSXStringify, Markdown, Typography } from '../../ui'
 import { AsyncSpin } from '../../ui/content/AsyncSpin'
+import styles from './Component.scss'
 
 export type UITypes = 'select' | 'text' | 'switch'
 
@@ -55,24 +58,34 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
   console.log(Component, props)
 
   yield (
-    <DelayPage>
+    <DelayPage gap={16}>
       {description && <Typography><Markdown text={description} /></Typography>}
       {examples && (
         <>
           <h2>Examples:</h2>
-          {examples.map(({ id, example, title, description, components }) => (
-            <div id={id}>
-              {title && <h3><a href={`#${id}`}>{title}</a>:</h3>}
-              {description && <Markdown text={description} />}
-              {example}
-              <details>
-                <summary>Code</summary>
-                <JSXStringify components={{ [Component.name]: name, ...mainComponents, ...components }}>
+          <Cards>
+            {examples.map(({ id, example, title, description, components }) => (
+              <Card preventAnimation class={() => [styles.example, history.hash === id && styles.active]} vertical id={id} align='stretch'>
+                {title || description
+                  ? (
+                    <Typography>
+                      {title && <h3><a href={`#${id}`}>{title}</a>:</h3>}
+                      {description && <Markdown text={description} />}
+                    </Typography>
+                    )
+                  : null}
+                <div>
                   {example}
-                </JSXStringify>
-              </details>
-            </div>
-          ))}
+                </div>
+                <details>
+                  <summary>Code</summary>
+                  <JSXStringify components={{ [Component.name]: name, ...mainComponents, ...components }}>
+                    {example}
+                  </JSXStringify>
+                </details>
+              </Card>
+            ))}
+          </Cards>
         </>
       )}
     </DelayPage>

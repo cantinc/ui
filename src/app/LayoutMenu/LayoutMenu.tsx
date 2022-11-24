@@ -22,6 +22,11 @@ export function LayoutMenu () {
       <Menu.SubMenu>
         <Menu.Item href='/buttons/button'>{'<'}Button {'/>'}</Menu.Item>
       </Menu.SubMenu>
+      <Menu.Item href='/cards'>Cards</Menu.Item>
+      <Menu.SubMenu>
+        <Menu.Item exact href='/cards/card'>{'<'}Card {'/>'}</Menu.Item>
+        <Menu.Item href='/cards/cards'>{'<'}Cards {'/>'}</Menu.Item>
+      </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>
         <Menu.Item href='/content/divider'>{'<'}Divider {'/>'}</Menu.Item>
