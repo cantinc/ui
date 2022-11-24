@@ -12,13 +12,14 @@ export interface JSXStringifyProps extends Style {
 export function JSXStringify ({ components }: JSXStringifyProps = {}) {
   const children = useChildren()
   const styles = useStyle()
+
   function propsStringify (props?: Record<string, any>) {
     if (!props) return null
 
     const result = []
-    let content: any
 
     for (const prop in props) {
+      let content: any
       const propValue = props[prop]
 
       if (propValue === null) {
@@ -32,7 +33,9 @@ export function JSXStringify ({ components }: JSXStringifyProps = {}) {
       } else if (typeof propValue === 'number') {
         content = <span class={styles.propNum}>{propValue}</span>
       } else if (Array.isArray(propValue)) {
-        content = <span class={styles.propArray}>[{propValue.join(', ')}]</span>
+        content = <span class={styles.propArray}>{JSON.stringify(propValue)}</span>
+      } else if (typeof propValue === 'object') {
+        content = <span class={styles.propObject}>{JSON.stringify(propValue)}</span>
       }
 
       if (typeof propValue === 'string') {
