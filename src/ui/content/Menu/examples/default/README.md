@@ -1,1 +1,1 @@
-By default, shows a usual divider
+This example shows you a usual menu of a site.

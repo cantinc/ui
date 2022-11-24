@@ -19,6 +19,7 @@ export default example({
         Click Me
       </Button>
       <Button
+        view='secondary'
         onclick={() => alert('clicked')}
         loading={() => loading.value}>
         Some button
