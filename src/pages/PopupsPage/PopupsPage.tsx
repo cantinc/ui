@@ -16,6 +16,9 @@ export function PopupsPage () {
       <slot name='notifications'>
         <Component is={() => import('src/ui/popups/Notifications/Notifications.ui')} />
       </slot>
+      <slot name='modals'>
+        <Component is={() => import('src/ui/popups/Modals/Modals.ui')} />
+      </slot>
     </router>
   )
 }

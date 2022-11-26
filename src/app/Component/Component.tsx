@@ -74,7 +74,7 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
                     </Typography>
                     )
                   : null}
-                <div>
+                <div class={styles.exampleWrapper}>
                   {example}
                 </div>
                 <details>

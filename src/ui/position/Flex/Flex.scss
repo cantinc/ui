@@ -6,6 +6,7 @@
   --ui-flex-direction: row;
   --ui-flex-align: flex-start;
   --ui-flex-justify: flex-start;
+  --ui-flex-padding: 0;
 
   display: var(--ui-flex);
   flex: var(--ui-flex-flex);
@@ -14,4 +15,5 @@
   flex-direction: var(--ui-flex-direction);
   align-items: var(--ui-flex-align);
   justify-content: var(--ui-flex-justify);
+  padding: var(--ui-flex-padding);
 }

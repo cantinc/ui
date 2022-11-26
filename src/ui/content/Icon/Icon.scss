@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'icons';
+  src: url("icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ui-icon-size: inherit;
+}
+
+.root {
+  font-size: var(--ui-icon-size);
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.root:not(.end):before,
+.end:after {
+  font-family: icons, sans-serif;
+  content: var(--ui-icon);
+}
+
+.root:not(.end, :empty):before {
+  margin-right: 8px;
+}
+
+.end:not(:empty):after {
+  margin-left: 8px;
+}

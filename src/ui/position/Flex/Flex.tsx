@@ -28,6 +28,7 @@ export interface FlexProps extends Style, HTMLProps {
   inline?: boolean
   reverse?: boolean
   element?: string
+  padding?: number | [number, number] | [number, number, number] | [number, number, number, number]
 }
 
 export function Flex ({
@@ -40,6 +41,7 @@ export function Flex ({
   inline,
   reverse,
   style = '',
+  padding,
   element: Element = 'div',
   ...props
 }: FlexProps = {}) {
@@ -58,6 +60,14 @@ export function Flex ({
       style = `--ui-flex-gap:${gap[0]}px ${gap[1]}px;${style}`
     } else {
       style = `--ui-flex-gap:${gap}px;${style}`
+    }
+  }
+
+  if (padding) {
+    if (Array.isArray(padding)) {
+      style = `--ui-flex-padding:${padding.join('px ')}px;${style}`
+    } else {
+      style = `--ui-flex-padding:${padding}px;${style}`
     }
   }
 

@@ -31,6 +31,9 @@ export function ContentPage () {
       <slot name='menu'>
         <Component is={() => import('src/ui/content/Menu/Menu.ui')} />
       </slot>
+      <slot name='icon'>
+        <Component is={() => import('src/ui/content/Icon/Icon.ui')} />
+      </slot>
     </router>
   )
 }

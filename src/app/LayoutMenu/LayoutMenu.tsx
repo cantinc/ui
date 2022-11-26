@@ -1,40 +1,87 @@
+import { useChildren } from '@innet/jsx'
 import { Flex, Menu, Space } from 'src/ui'
+
+function Title () {
+  const children = useChildren()
+
+  return ['<', children, ' />']
+}
 
 export function LayoutMenu () {
   return (
     <Menu>
-      <Menu.Item exact href='/'>Home</Menu.Item>
-      <Menu.Item href='/typography'>Typography</Menu.Item>
+      <Menu.Item exact href='/'>
+        Home
+      </Menu.Item>
+      <Menu.Item href='/typography'>
+        Typography
+      </Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/typography/markdown'>{'<'}Markdown {'/>'}</Menu.Item>
-        <Menu.Item href='/typography/typography'>{'<'}Typography {'/>'}</Menu.Item>
+        <Menu.Item href='/typography/markdown'>
+          <Title>Markdown</Title>
+        </Menu.Item>
+        <Menu.Item href='/typography/typography'>
+          <Title>Typography</Title>
+        </Menu.Item>
       </Menu.SubMenu>
-      <Menu.Item href='/position'>Position</Menu.Item>
+      <Menu.Item href='/position'>
+        Position
+      </Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/position/flex'>{'<'}Flex {'/>'}</Menu.Item>
-        <Menu.Item href='/position/space'>{'<'}Space {'/>'}</Menu.Item>
+        <Menu.Item href='/position/flex'>
+          <Title>Flex</Title>
+        </Menu.Item>
+        <Menu.Item href='/position/space'>
+          <Title>Space</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/popups'>Popups</Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/popups/notifications'>{'<'}Notifications {'/>'}</Menu.Item>
+        <Menu.Item href='/popups/notifications'>
+          <Title>Notifications</Title>
+        </Menu.Item>
+        <Menu.Item href='/popups/modals'>
+          <Title>Modals</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/buttons'>Buttons</Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/buttons/button'>{'<'}Button {'/>'}</Menu.Item>
+        <Menu.Item href='/buttons/button'>
+          <Title>Button</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/cards'>Cards</Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item exact href='/cards/card'>{'<'}Card {'/>'}</Menu.Item>
-        <Menu.Item href='/cards/cards'>{'<'}Cards {'/>'}</Menu.Item>
+        <Menu.Item exact href='/cards/card'>
+          <Title>Card</Title>
+        </Menu.Item>
+        <Menu.Item href='/cards/cards'>
+          <Title>Cards</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/content/divider'>{'<'}Divider {'/>'}</Menu.Item>
-        <Menu.Item exact href='/content/spin'>{'<'}Spin {'/>'}</Menu.Item>
-        <Menu.Item href='/content/spin-box'>{'<'}SpinBox {'/>'}</Menu.Item>
-        <Menu.Item href='/content/toggle-bar'>{'<'}ToggleBar {'/>'}</Menu.Item>
-        <Menu.Item href='/content/search-toggle-bar'>{'<'}SearchToggleBar {'/>'}</Menu.Item>
-        <Menu.Item href='/content/menu'>{'<'}Menu {'/>'}</Menu.Item>
+        <Menu.Item href='/content/icon'>
+          <Title>Icon</Title>
+        </Menu.Item>
+        <Menu.Item href='/content/divider'>
+          <Title>Divider</Title>
+        </Menu.Item>
+        <Menu.Item exact href='/content/spin'>
+          <Title>Spin</Title>
+        </Menu.Item>
+        <Menu.Item href='/content/spin-box'>
+          <Title>SpinBox</Title>
+        </Menu.Item>
+        <Menu.Item href='/content/toggle-bar'>
+          <Title>ToggleBar</Title>
+        </Menu.Item>
+        <Menu.Item href='/content/search-toggle-bar'>
+          <Title>SearchToggleBar</Title>
+        </Menu.Item>
+        <Menu.Item href='/content/menu'>
+          <Title>Menu</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Space />
       <Flex justify='center'>
