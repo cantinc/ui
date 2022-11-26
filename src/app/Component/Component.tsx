@@ -62,14 +62,14 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
       {description && <Typography><Markdown text={description} /></Typography>}
       {examples && (
         <>
-          <h2>Examples:</h2>
+          <h2>Examples</h2>
           <Cards>
             {examples.map(({ id, example, title, description, components }) => (
               <Card preventAnimation class={() => [styles.example, history.hash === id && styles.active]} vertical id={id} align='stretch'>
                 {title || description
                   ? (
                     <Typography>
-                      {title && <h3><a href={`#${id}`}>{title}</a>:</h3>}
+                      {title && <h3><a href={`#${id}`}>{title}</a></h3>}
                       {description && <Markdown text={description} />}
                     </Typography>
                     )

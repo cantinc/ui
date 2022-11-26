@@ -44,13 +44,13 @@ export function Card ({
           styles.shown,
           clickable && styles.clickable,
         ])
-        : () => classes([
-            styles.root,
-            clickable && styles.clickable,
-            show.value && styles.show,
-            shown.value && styles.shown,
-            hidden?.value && styles.hide,
-          ])}>
+        : classes([
+          styles.root,
+          clickable && styles.clickable,
+          show.value && styles.show,
+          shown.value && styles.shown,
+          hidden?.value && styles.hide,
+        ])}>
       {children}
     </Flex>
   )
