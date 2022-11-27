@@ -8,7 +8,7 @@ export default example({
   title: 'Inline',
   description,
   example: (
-    <Flex inline style='background:var(--color-80);padding:16px'>
+    <Flex inline padding={16} style='background:var(--color-80)'>
       <div style='background:var(--color-40);padding:10px'>Left</div>
       <div style='background:var(--color-60);padding:10px'>Right</div>
     </Flex>

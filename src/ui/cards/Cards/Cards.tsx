@@ -14,6 +14,7 @@ export function * Cards (props: CardsProps) {
   const styles = useStyle()
   const children = useChildren()
   const element = new Ref<HTMLDivElement>()
+  const getTop = () => element.value?.getBoundingClientRect().top
 
   yield (
     <Flex
@@ -26,5 +27,5 @@ export function * Cards (props: CardsProps) {
     </Flex>
   )
 
-  element.value?.style.setProperty('--ui-cards-top', `${element.value?.offsetTop}px`)
+  element.value?.style.setProperty('--ui-cards-top', `${getTop()}px`)
 }
