@@ -15,6 +15,7 @@
   display: flex;
   transition: all .3s;
   max-height: 0;
+  min-height: 0;
   gap: 8px;
   font-size: 63%;
   flex-direction: column;
@@ -30,5 +31,6 @@
 
   & + .submenu {
     max-height: var(--ui-sub-menu-height);
+    min-height: var(--ui-sub-menu-height);
   }
 }
