@@ -8,7 +8,7 @@ export default example({
   title: 'Default',
   description,
   example: (
-    <Form vertical>
+    <Form notification='Success' vertical>
       <FormToggle name='test' />
       <Button>
         Test

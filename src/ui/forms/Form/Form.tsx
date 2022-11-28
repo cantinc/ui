@@ -3,18 +3,21 @@ import { useChildren } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
 import { FormContext, formContext } from '../../../hooks'
+import { notify } from '../../popups'
 import { Flex, FlexProps } from '../../position'
 
 export interface FormProps extends FlexProps<HTMLFormElement> {
   action?: WatchProp<string>
   loading?: State<boolean>
   notification?: string
+  onsuccess?: () => void
 }
 
 export function Form ({
   loading = new State(false),
   action,
   notification,
+  onsuccess,
   ...props
 }: FormProps = {}) {
   const children = useChildren()
@@ -28,9 +31,16 @@ export function Form ({
     form.destroyed = true
   })
 
+  const handleSuccess = () => {
+    if (notification) {
+      notify(notification, 'success')
+    }
+    onsuccess?.()
+  }
+
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
-    console.log(form)
+    handleSuccess()
   }
 
   return (

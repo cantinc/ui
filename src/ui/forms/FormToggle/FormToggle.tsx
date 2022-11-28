@@ -10,7 +10,7 @@ export interface FormToggleProps extends Style {
 
 export function FormToggle ({
   name,
-  defaultValue,
+  defaultValue = 'false',
 }: FormToggleProps) {
   const { state, element } = useField(name, defaultValue)
 
