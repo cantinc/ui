@@ -1,8 +1,8 @@
 import { WatchProp } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
-import { State } from 'watch-state'
+import { onDestroy, State } from 'watch-state'
 
-import { formContext } from '../../../hooks'
+import { FormContext, formContext } from '../../../hooks'
 import { Flex, FlexProps } from '../../position'
 
 export interface FormProps extends FlexProps<HTMLFormElement> {
@@ -19,15 +19,22 @@ export function Form ({
 }: FormProps = {}) {
   const children = useChildren()
 
-  const data = new FormData()
+  const form: FormContext = {
+    fields: new Set(),
+    destroyed: false,
+  }
+
+  onDestroy(() => {
+    form.destroyed = true
+  })
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
-    console.log(data)
+    console.log(form)
   }
 
   return (
-    <context for={formContext} set={{ data }}>
+    <context for={formContext} set={form}>
       <Flex<HTMLFormElement>
         element='form'
         onsubmit={handleSubmit}

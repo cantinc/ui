@@ -16,6 +16,9 @@ export function FormsPage () {
       <slot name='form'>
         <Component is={() => import('src/ui/forms/Form/Form.ui')} />
       </slot>
+      <slot name='toggle'>
+        <Component is={() => import('src/ui/forms/FormToggle/FormToggle.ui')} />
+      </slot>
     </router>
   )
 }
