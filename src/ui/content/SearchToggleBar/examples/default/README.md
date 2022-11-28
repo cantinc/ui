@@ -1,1 +1,1 @@
-By default, shows a usual divider
+Extends [ToggleBar](/interaction/toggle-bar)

@@ -18,7 +18,7 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export interface FlexProps extends Style, HTMLProps {
+export type FlexProps <E extends HTMLElement = HTMLElement> = Style & HTMLProps<E> & {
   vertical?: boolean
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
@@ -31,7 +31,7 @@ export interface FlexProps extends Style, HTMLProps {
   padding?: number | [number, number] | [number, number, number] | [number, number, number, number]
 }
 
-export function Flex ({
+export function Flex <E extends HTMLElement = HTMLElement> ({
   vertical,
   align,
   justify,
@@ -44,7 +44,7 @@ export function Flex ({
   padding,
   element: Element = 'div',
   ...props
-}: FlexProps = {}) {
+}: FlexProps<E> = {}) {
   const children = useChildren()
   const styles = useStyle()
 

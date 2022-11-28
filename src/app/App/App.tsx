@@ -49,6 +49,18 @@ export function App () {
             name='CardsPage'
           />
         </slot>
+        <slot name='forms'>
+          <Async
+            import={() => import('src/pages/FormsPage')}
+            name='FormsPage'
+          />
+        </slot>
+        <slot name='interaction'>
+          <Async
+            import={() => import('src/pages/InteractionPage')}
+            name='InteractionPage'
+          />
+        </slot>
       </router>
       <portal parent={document.body}>
         <Notifications />

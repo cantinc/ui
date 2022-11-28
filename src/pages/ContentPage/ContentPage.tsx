@@ -22,9 +22,6 @@ export function ContentPage () {
       <slot name='divider'>
         <Component is={() => import('src/ui/content/Divider/Divider.ui')} />
       </slot>
-      <slot name='toggle-bar'>
-        <Component is={() => import('src/ui/content/ToggleBar/ToggleBar.ui')} />
-      </slot>
       <slot name='search-toggle-bar'>
         <Component is={() => import('src/ui/content/SearchToggleBar/SearchToggleBar.ui')} />
       </slot>

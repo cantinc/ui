@@ -1,9 +1,10 @@
 import { history, WatchProp } from '@innet/dom'
 
-import { ToggleBar, ToggleBarProps, ToggleBarValue } from '../ToggleBar'
+import { ToggleBar, ToggleBarProps, ToggleBarValue } from '../../interaction'
 
-export interface SearchToggleBarProps extends Omit<ToggleBarProps, 'renderValue' | 'value' | 'onchange' | 'element'> {
+export interface SearchToggleBarProps extends Pick<ToggleBarProps, 'values'> {
   key: string
+  [key: string]: any
 }
 
 export function SearchToggleBar ({

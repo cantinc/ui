@@ -1,0 +1,57 @@
+.root {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 14px;
+  user-select: none;
+  margin: 8px 0 16px;
+  width: fit-content;
+  flex: auto;
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  border-radius: 20px;
+  border: 2px solid var(--color-0);
+  position: relative;
+  transition: all .3s;
+
+  .checked & {
+    background: var(--color-0);
+    border: 2px solid var(--color-0);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    right: 20px;
+    border-radius: 9px;
+    background: var(--color-0);
+    transition: right .3s .1s, left .3s, background .3s;
+
+    .input:active ~ & {
+      transition: right .3s, left .3s .1s, background .3s;
+      right: 10px;
+    }
+    .input:checked ~ & {
+      transition: right .3s, left .3s .1s, background .3s;
+      background: var(--color-100);
+      right: 2px;
+      left: 20px;
+    }
+    .input:checked:active ~ & {
+      transition: right .3s .1s, left .3s, background .3s;
+      left: 10px;
+    }
+  }
+}

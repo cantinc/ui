@@ -59,6 +59,21 @@ export function LayoutMenu () {
           <Title>Cards</Title>
         </Menu.Item>
       </Menu.SubMenu>
+      <Menu.Item href='/interaction'>Interaction</Menu.Item>
+      <Menu.SubMenu>
+        <Menu.Item exact href='/interaction/toggle'>
+          <Title>Toggle</Title>
+        </Menu.Item>
+        <Menu.Item href='/interaction/toggle-bar'>
+          <Title>ToggleBar</Title>
+        </Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item href='/forms'>Forms</Menu.Item>
+      <Menu.SubMenu>
+        <Menu.Item exact href='/forms/form'>
+          <Title>Form</Title>
+        </Menu.Item>
+      </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>
         <Menu.Item href='/content/icon'>
@@ -72,9 +87,6 @@ export function LayoutMenu () {
         </Menu.Item>
         <Menu.Item href='/content/spin-box'>
           <Title>SpinBox</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/toggle-bar'>
-          <Title>ToggleBar</Title>
         </Menu.Item>
         <Menu.Item href='/content/search-toggle-bar'>
           <Title>SearchToggleBar</Title>

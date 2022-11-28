@@ -16,9 +16,7 @@ export type ToggleBarOnChange = (value: string) => void
 export type ToggleBarChangeHandler = () => void
 export type ToggleBarRenderValue = (item: ToggleBarValue, className: WatchProp<string>, onchange: ToggleBarChangeHandler) => any
 
-type PickFlexProps = 'gap' | 'style' | 'inline' | 'element' | 'flex'
-
-export interface ToggleBarProps extends Pick<FlexProps, PickFlexProps> {
+export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E> & {
   values: ToggleBarValue[]
   value: () => string
   renderValue?: ToggleBarRenderValue
