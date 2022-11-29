@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style } from '@innet/dom'
+import { HTMLStyleProps, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
 import styles from './Toggle.scss'
@@ -15,6 +15,7 @@ export function Toggle ({
   label,
   value,
   onchange,
+  disabled,
   ...props
 }: ToggleProps) {
   const styles = useStyle()
@@ -24,11 +25,12 @@ export function Toggle ({
   }
 
   return (
-    <label class={() => classes([styles.root, value() && styles.checked])}>
+    <label class={() => classes([styles.root, value() && styles.checked, use(disabled) && styles.disabled])}>
       <input
         {...props}
         class={styles.input}
         checked={() => value() ? true : undefined}
+        _disabled={disabled}
         onchange={handleChange}
         type='checkbox'
       />

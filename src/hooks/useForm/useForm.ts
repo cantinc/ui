@@ -7,6 +7,7 @@ export interface FormField<V, E extends HTMLElement> {
   state: State<V>
   error: State<string>
   element: Ref<E>
+  required: boolean
   defaultValue?: V
 }
 

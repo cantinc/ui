@@ -39,9 +39,23 @@ export function Form ({
     onsuccess?.()
   }
 
+  const validation = () => {
+    for (const field of form.fields) {
+      if (field.required && !field.state.value) {
+        field.element.value.focus()
+        return true
+      }
+    }
+  }
+
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
-    handleSuccess()
+
+    const error = validation()
+
+    if (!error) {
+      handleSuccess()
+    }
   }
 
   return (

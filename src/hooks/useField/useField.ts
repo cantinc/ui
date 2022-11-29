@@ -3,12 +3,23 @@ import { onDestroy, State } from 'watch-state'
 
 import { FormField, useForm } from '../useForm'
 
-export function useField <V = string, E extends HTMLElement = HTMLInputElement> (name: string, defaultValue?: V): FormField<V, E> {
+export interface UseFieldOptions<V = string> {
+  name: string
+  defaultValue?: V
+  required?: boolean
+}
+
+export function useField <V = string, E extends HTMLElement = HTMLInputElement> ({
+  name,
+  defaultValue,
+  required = false,
+}: UseFieldOptions<V>): FormField<V, E> {
   const form = useForm()
 
   const element = new Ref<E>()
 
   const field: FormField<V, E> = {
+    required,
     name,
     defaultValue,
     state: new State<V>(defaultValue),
