@@ -13,6 +13,7 @@ export interface FormField<V, E extends HTMLElement> {
 export interface FormContext {
   fields: Set<FormField<any, any>>
   destroyed: boolean
+  loading: State<boolean>
 }
 
 export const formContext = new Context<FormContext>()

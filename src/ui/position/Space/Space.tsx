@@ -1,10 +1,10 @@
-import { HTMLProps, Style, style } from '@innet/dom'
+import { HTMLStyleProps, style } from '@innet/dom'
 
 import styles from './Space.scss'
 
 const useStyles = style(styles)
 
-export interface SpaceProps extends Style, HTMLProps<HTMLSpanElement> {
+export interface SpaceProps extends HTMLStyleProps<HTMLSpanElement> {
 
 }
 

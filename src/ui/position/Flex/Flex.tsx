@@ -1,4 +1,4 @@
-import { HTMLProps, Style, style, use } from '@innet/dom'
+import { HTMLStyleProps, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './Flex.scss'
@@ -18,7 +18,7 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export type FlexProps <E extends HTMLElement = HTMLElement> = Style & HTMLProps<E> & {
+export type FlexProps <E extends HTMLElement = HTMLElement, R = {}> = Omit<HTMLStyleProps<E>, keyof R> & {
   vertical?: boolean
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
@@ -29,7 +29,7 @@ export type FlexProps <E extends HTMLElement = HTMLElement> = Style & HTMLProps<
   reverse?: boolean
   element?: string
   padding?: number | [number, number] | [number, number, number] | [number, number, number, number]
-}
+} & R
 
 export function Flex <E extends HTMLElement = HTMLElement> ({
   vertical,
@@ -40,63 +40,61 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
   wrap,
   inline,
   reverse,
-  style = '',
+  style,
   padding,
   element: Element = 'div',
   ...props
-}: FlexProps<E> = {}) {
+}: FlexProps<E> = {} as any) {
   const children = useChildren()
   const styles = useStyle()
-
-  const originStyle = style
-  style = ''
+  let customStyle = ''
 
   if (inline) {
-    style = '--ui-flex:inline-flex;'
+    customStyle = '--ui-flex:inline-flex;'
   }
 
   if (gap) {
     if (Array.isArray(gap)) {
-      style = `--ui-flex-gap:${gap[0]}px ${gap[1]}px;${style}`
+      customStyle = `--ui-flex-gap:${gap[0]}px ${gap[1]}px;${customStyle}`
     } else {
-      style = `--ui-flex-gap:${gap}px;${style}`
+      customStyle = `--ui-flex-gap:${gap}px;${customStyle}`
     }
   }
 
   if (padding) {
     if (Array.isArray(padding)) {
-      style = `--ui-flex-padding:${padding.join('px ')}px;${style}`
+      customStyle = `--ui-flex-padding:${padding.join('px ')}px;${customStyle}`
     } else {
-      style = `--ui-flex-padding:${padding}px;${style}`
+      customStyle = `--ui-flex-padding:${padding}px;${customStyle}`
     }
   }
 
   if (flex) {
-    style = `--ui-flex-flex:${flex === true ? 1 : flex};${style}`
+    customStyle = `--ui-flex-flex:${flex === true ? 1 : flex};${customStyle}`
   }
 
   if (wrap) {
-    style = `--ui-flex-wrap:wrap;${style}`
+    customStyle = `--ui-flex-wrap:wrap;${customStyle}`
   }
 
   if (vertical) {
-    style = `--ui-flex-direction:${reverse ? 'column-reverse' : 'column'};${style}`
+    customStyle = `--ui-flex-direction:${reverse ? 'column-reverse' : 'column'};${customStyle}`
   } else if (reverse) {
-    style = `--ui-flex-direction:row-reverse;${style}`
+    customStyle = `--ui-flex-direction:row-reverse;${customStyle}`
   }
 
   if (align && align !== 'start') {
-    style = `--ui-flex-align:${alignMap[align]};${style}`
+    customStyle = `--ui-flex-align:${alignMap[align]};${customStyle}`
   }
 
   if (justify && justify !== 'start') {
-    style = `--ui-flex-justify:${justifyMap[justify]};${style}`
+    customStyle = `--ui-flex-justify:${justifyMap[justify]};${customStyle}`
   }
 
   return (
     <Element
       {...props}
-      style={() => `${style}${use(originStyle)}`}
+      style={() => `${customStyle}${use(style || '')}`}
       class={() => styles.root}>
       {children}
     </Element>

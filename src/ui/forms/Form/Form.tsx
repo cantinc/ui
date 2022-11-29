@@ -25,6 +25,7 @@ export function Form ({
   const form: FormContext = {
     fields: new Set(),
     destroyed: false,
+    loading: new State(false),
   }
 
   onDestroy(() => {

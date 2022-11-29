@@ -9,7 +9,7 @@ export default example({
   description,
   example: (
     <Form notification='Success' vertical>
-      <FormToggle name='test' />
+      <FormToggle name='test' label='TEst' />
       <Button>
         Test
       </Button>

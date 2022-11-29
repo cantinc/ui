@@ -1,4 +1,4 @@
-import { HTMLProps, Style, style } from '@innet/dom'
+import { HTMLStyleProps, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -27,7 +27,7 @@ export const icons = {
 
 export type Icons = keyof typeof icons
 
-export interface IconProps extends Style, HTMLProps<HTMLSpanElement> {
+export interface IconProps extends HTMLStyleProps<HTMLSpanElement> {
   icon: Icons
   size?: number
   end?: boolean

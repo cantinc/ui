@@ -1,6 +1,6 @@
-import { HTMLProps, Style } from '@innet/dom'
+import { HTMLStyleProps } from '@innet/dom'
 
-export interface NotificationsProps extends Style, HTMLProps<HTMLDivElement> {
+export interface NotificationsProps extends HTMLStyleProps<HTMLDivElement> {
 
 }
 

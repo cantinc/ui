@@ -19,7 +19,7 @@ export async function * Async <T extends object> ({
   children,
   showDelay,
 }: AsyncProps<T>) {
-  yield <AsyncSpin flex align='center' justify='center' showDelay={showDelay} />
+  yield <AsyncSpin flex align='center' justify='center' show={showDelay} />
 
   const result = await request()
   const Component: any = name ? result[name] : result

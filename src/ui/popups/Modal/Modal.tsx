@@ -1,4 +1,4 @@
-import { HTMLProps, Ref, Style, style } from '@innet/dom'
+import { HTMLStyleProps, Ref, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
@@ -11,7 +11,7 @@ import styles from './Modal.scss'
 
 const useStyles = style(styles)
 
-export interface ModalProps extends Style, Omit<HTMLProps<HTMLDivElement>, 'onclose'> {
+export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclose'> {
   width?: number
   buttons?: string[]
   headButtons?: string[]

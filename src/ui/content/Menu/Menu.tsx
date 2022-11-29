@@ -1,4 +1,4 @@
-import { HTMLProps, LinkProps, Ref, Style, style, use } from '@innet/dom'
+import { HTMLStyleProps, LinkProps, Ref, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -19,7 +19,7 @@ export interface MenuItemProps extends LinkProps {
 
 }
 
-export interface SubMenuProps extends HTMLProps, Style {
+export interface SubMenuProps extends HTMLStyleProps {
 
 }
 

@@ -8,7 +8,7 @@ export default example({
   title: 'Element',
   description,
   example: (
-    <Flex element='a' href='/'>
+    <Flex<HTMLAnchorElement> element='a' href='/'>
       Home Page
     </Flex>
   ),

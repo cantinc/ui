@@ -1,4 +1,4 @@
-import { HTMLProps, LoopItem, Ref, Style, style } from '@innet/dom'
+import { HTMLStyleProps, LoopItem, Ref, style } from '@innet/dom'
 import classes from 'html-classes'
 import { onDestroy, State, Watch } from 'watch-state'
 
@@ -9,7 +9,7 @@ import styles from './Notification.scss'
 
 const useStyle = style(styles)
 
-export interface NotificationProps extends Style, HTMLProps<HTMLDivElement> {
+export interface NotificationProps extends HTMLStyleProps<HTMLDivElement> {
   notification: LoopItem<NotificationOptions>
   onclose: () => void
 }

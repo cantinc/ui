@@ -1,4 +1,4 @@
-import { HTMLProps, LinkProps, Style, style } from '@innet/dom'
+import { HTMLStyleProps, LinkProps, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -10,7 +10,7 @@ const useStyle = style(styles)
 export type ButtonViews = 'primary' | 'secondary'
 export type ButtonSizes = 'small' | 'default'
 
-export interface ButtonProps extends Style<typeof styles>, HTMLProps<HTMLButtonElement> {
+export interface ButtonProps extends HTMLStyleProps<HTMLButtonElement, typeof styles> {
   view?: ButtonViews
   loading?: () => boolean
   size?: ButtonSizes
