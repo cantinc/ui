@@ -42,6 +42,7 @@ export function Input ({
       {...(props?.input as HTMLProps<HTMLInputElement>)}
       onchange={handleChange}
       data-value={value}
+      _value={value}
       class={elementClass}
       placeholder={placeholder}
     />
