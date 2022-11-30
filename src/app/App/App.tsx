@@ -25,10 +25,10 @@ export function App () {
             name='ContentPage'
           />
         </slot>
-        <slot name='position'>
+        <slot name='layout'>
           <Async
-            import={() => import('src/pages/PositionPage')}
-            name='PositionPage'
+            import={() => import('src/pages/LayoutPage')}
+            name='LayoutPage'
           />
         </slot>
         <slot name='buttons'>

@@ -4,7 +4,7 @@ import { scrollTo } from '@watch-state/history-api'
 import classes from 'html-classes'
 import { onDestroy } from 'watch-state'
 
-import { Flex, FlexProps } from '../../position'
+import { Flex, FlexProps } from '../../layout/Flex'
 import styles from './Page.scss'
 
 export interface PageProps extends FlexProps {

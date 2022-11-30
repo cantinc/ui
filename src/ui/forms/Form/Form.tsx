@@ -3,8 +3,8 @@ import { useChildren } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
 import { FormContext, formContext } from '../../../hooks'
+import { Flex, FlexProps } from '../../layout'
 import { notify } from '../../popups'
-import { Flex, FlexProps } from '../../position'
 
 export interface FormProps extends FlexProps<HTMLFormElement> {
   action?: WatchProp<string>

@@ -2,7 +2,7 @@ import { style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache } from 'watch-state'
 
-import { Flex, FlexProps } from '../../position'
+import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
 
 const useStyle = style(styles)

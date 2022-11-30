@@ -2,7 +2,7 @@ import { Ref, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { useEscapeListener } from '../../../hooks'
-import { Flex } from '../../position'
+import { Flex } from '../../layout'
 import styles from './Modals.scss'
 import { HTMLModalElement, ModalsProps } from './types'
 

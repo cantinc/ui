@@ -24,14 +24,14 @@ export function LayoutMenu () {
           <Title>Typography</Title>
         </Menu.Item>
       </Menu.SubMenu>
-      <Menu.Item href='/position'>
-        Position
+      <Menu.Item href='/layout'>
+        Layout
       </Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item href='/position/flex'>
+        <Menu.Item href='/layout/flex'>
           <Title>Flex</Title>
         </Menu.Item>
-        <Menu.Item href='/position/space'>
+        <Menu.Item href='/layout/space'>
           <Title>Space</Title>
         </Menu.Item>
       </Menu.SubMenu>

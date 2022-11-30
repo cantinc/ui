@@ -1,6 +1,5 @@
 export * from './buttons'
 export * from './typography'
-export * from './position'
 export * from './external'
 export * from './content'
 export * from './layout'

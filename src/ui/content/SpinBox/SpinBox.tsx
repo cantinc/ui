@@ -2,7 +2,7 @@ import { style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { Cache } from 'watch-state'
 
-import { Flex, FlexProps } from '../../position/Flex'
+import { Flex, FlexProps } from '../../layout'
 import { Spin } from '../Spin'
 import styles from './SpinBox.scss'
 

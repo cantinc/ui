@@ -3,7 +3,7 @@ import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
-import { Flex, FlexProps } from '../../position'
+import { Flex, FlexProps } from '../../layout'
 import styles from './Card.scss'
 
 const useStyle = style(styles)

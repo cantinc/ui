@@ -3,7 +3,7 @@ import { DelayPage, Markdown, Typography } from 'src/ui'
 
 import description from './README.md'
 
-export function PositionPage () {
+export function LayoutPage () {
   return (
     <router>
       <slot name='/'>
@@ -14,10 +14,10 @@ export function PositionPage () {
         </DelayPage>
       </slot>
       <slot name='flex'>
-        <Component is={() => import('src/ui/position/Flex/Flex.ui')} />
+        <Component is={() => import('src/ui/layout/Flex/Flex.ui')} />
       </slot>
       <slot name='space'>
-        <Component is={() => import('src/ui/position/Space/Space.ui')} />
+        <Component is={() => import('src/ui/layout/Space/Space.ui')} />
       </slot>
     </router>
   )

@@ -1,6 +1,6 @@
 import { Style } from '@innet/dom'
 
-import { FlexProps } from '../../position'
+import { FlexProps } from '../../layout'
 
 export type HTMLModalElement = HTMLDivElement & { close: (result: string) => void }
 

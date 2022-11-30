@@ -8,7 +8,7 @@ export default example({
   title: 'Default',
   description,
   example: (
-    <Form notification='Success' vertical>
+    <Form align='stretch' notification='Success' vertical>
       <FormInput required name='test' />
       <Button>
         Test

@@ -1,7 +1,7 @@
 import { HTMLProps, style, WatchProp } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
-import { Flex, FlexProps } from '../../position/Flex'
+import { Flex, FlexProps } from '../../layout'
 import styles from './Input.scss'
 
 const useStyle = style(styles)

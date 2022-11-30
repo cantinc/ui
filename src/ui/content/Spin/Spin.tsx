@@ -1,6 +1,6 @@
 import { style, useHidden, useShow } from '@innet/dom'
 
-import { Flex, FlexProps } from '../../position'
+import { Flex, FlexProps } from '../../layout'
 import styles from './Spin.scss'
 
 const useStyle = style(styles)
