@@ -97,6 +97,9 @@ export function LayoutMenu () {
         <Menu.Item href='/content/menu'>
           <Title>Menu</Title>
         </Menu.Item>
+        <Menu.Item href='/content/input'>
+          <Title>Input</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Space />
       <Flex justify='center'>

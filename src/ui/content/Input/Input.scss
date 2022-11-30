@@ -1,0 +1,55 @@
+.root {
+  position: relative;
+  box-sizing: border-box;
+  height: 64px;
+  margin-bottom: 24px;
+  cursor: text;
+}
+
+.before {
+  order: -1;
+}
+
+.before,
+.after {
+  cursor: default;
+}
+
+.border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-80);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  border-radius: inherit;
+  flex: 1;
+  font-family: inherit;
+  font-size: 16px;
+
+  .withLabel > & {
+    margin-top: 12px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.label {
+  top: 24px;
+  transition: all .3s;
+  font-size: 16px;
+  color: var(--color-60);
+  position: absolute;
+
+  .input:focus ~ &,
+  .before ~ & {
+    top: 16px;
+    font-size: 12px;
+  }
+}
