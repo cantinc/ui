@@ -8,8 +8,9 @@ const useStyle = style(styles)
 
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'onchange'> {
   label?: string
-  value?: WatchProp<string>
-  onchange?: (value: string) => void
+  value: WatchProp<string>
+  onchange: (value: string) => void
+  placeholder?: string
   props?: {
     input?: HTMLProps<HTMLInputElement>
     before?: HTMLProps<HTMLSpanElement>
@@ -24,14 +25,27 @@ export function Input ({
   value,
   onchange,
   props,
+  placeholder,
   ...rest
-}: InputProps = {}) {
+}: InputProps) {
   const styles = useStyle()
   const { before, after } = useSlots()
 
+  const handleChange = (e: any) => {
+    onchange?.(e.target.value)
+  }
+
   const elementClass = () => styles.input
 
-  const element = <input {...(props?.input as HTMLProps<HTMLInputElement>)} class={elementClass} />
+  const element = (
+    <input
+      {...(props?.input as HTMLProps<HTMLInputElement>)}
+      onchange={handleChange}
+      data-value={value}
+      class={elementClass}
+      placeholder={placeholder}
+    />
+  )
 
   const labelContent = label
     ? <span {...props?.label} class={styles.label}>{label}</span>
@@ -46,7 +60,17 @@ export function Input ({
     : null
 
   return (
-    <Flex align='center' padding={16} element='label' {...rest} class={() => [styles.root, label && styles.withLabel]}>
+    <Flex
+      align='center'
+      padding={16}
+      gap={8}
+      element='label'
+      {...rest}
+      class={() => [
+        styles.root,
+        label && styles.withLabel,
+        label && styles.withLabel,
+      ]}>
       {element}
       {beforeContent}
       {labelContent}

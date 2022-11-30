@@ -7,10 +7,10 @@ import description from './README.md'
 const state = new State('')
 
 export default example({
-  id: 'default',
-  title: 'Default',
+  id: 'inline',
+  title: 'inline',
   description,
   example: (
-    <Input value={() => state.value} onchange={value => { state.value = value }} />
+    <Input value={() => state.value} onchange={value => { state.value = value }} inline />
   ),
 })

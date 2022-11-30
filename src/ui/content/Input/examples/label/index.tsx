@@ -1,13 +1,21 @@
 import { example } from 'src/app/Component'
 import { Input } from 'src/ui'
+import { State } from 'watch-state'
 
 import description from './README.md'
+
+const state = new State('')
 
 export default example({
   id: 'label',
   title: 'label',
   description,
   example: (
-    <Input label='Test field' />
+    <Input
+      value={() => state.value}
+      onchange={value => { state.value = value }}
+      label='Test field'
+      inline
+    />
   ),
 })

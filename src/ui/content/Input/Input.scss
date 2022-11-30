@@ -1,7 +1,7 @@
 .root {
   position: relative;
   box-sizing: border-box;
-  height: 64px;
+  min-height: 64px;
   margin-bottom: 24px;
   cursor: text;
 }
@@ -24,19 +24,29 @@
 }
 
 .input {
+  transition: opacity .3s;
+  display: flex;
+  width: 208px;
   background: transparent;
   border: none;
   border-radius: inherit;
   flex: 1;
   font-family: inherit;
   font-size: 16px;
-
-  .withLabel > & {
-    margin-top: 12px;
-  }
+  padding: 0;
 
   &:focus {
     outline: none;
+  }
+
+  .withLabel > & {
+    margin-top: 12px;
+    opacity: 0;
+
+    &:not([data-value='']),
+    &:focus {
+      opacity: 1;
+    }
   }
 }
 
@@ -47,6 +57,7 @@
   color: var(--color-60);
   position: absolute;
 
+  .input:not([data-value='']) ~ &,
   .input:focus ~ &,
   .before ~ & {
     top: 16px;
