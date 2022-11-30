@@ -67,6 +67,9 @@ export function LayoutMenu () {
         <Menu.Item href='/interaction/toggle-bar'>
           <Title>ToggleBar</Title>
         </Menu.Item>
+        <Menu.Item href='/interaction/input'>
+          <Title>Input</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/forms'>Forms</Menu.Item>
       <Menu.SubMenu>
@@ -96,9 +99,6 @@ export function LayoutMenu () {
         </Menu.Item>
         <Menu.Item href='/content/menu'>
           <Title>Menu</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/input'>
-          <Title>Input</Title>
         </Menu.Item>
       </Menu.SubMenu>
       <Space />

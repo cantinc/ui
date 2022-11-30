@@ -19,6 +19,9 @@ export function InteractionPage () {
       <slot name='toggle-bar'>
         <Component is={() => import('src/ui/interaction/ToggleBar/ToggleBar.ui')} />
       </slot>
+      <slot name='input'>
+        <Component is={() => import('src/ui/interaction/Input/Input.ui')} />
+      </slot>
     </router>
   )
 }
