@@ -79,6 +79,9 @@ export function LayoutMenu () {
         <Menu.Item exact href='/forms/toggle'>
           <Title>FormToggle</Title>
         </Menu.Item>
+        <Menu.Item exact href='/forms/input'>
+          <Title>FormInput</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>

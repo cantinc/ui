@@ -3,20 +3,20 @@ import { onDestroy, State } from 'watch-state'
 
 import { FormField, useForm } from '../useForm'
 
-export interface UseFieldOptions<V = string> {
+export interface UseFieldOptions<V = string, E extends HTMLElement = HTMLInputElement> {
   name: string
   defaultValue?: V
   required?: boolean
+  ref?: Ref<E>
 }
 
 export function useField <V = string, E extends HTMLElement = HTMLInputElement> ({
   name,
   defaultValue,
   required = false,
-}: UseFieldOptions<V>): FormField<V, E> {
+  ref = new Ref<E>(),
+}: UseFieldOptions<V, E>): FormField<V, E> {
   const form = useForm()
-
-  const element = new Ref<E>()
 
   const field: FormField<V, E> = {
     required,
@@ -24,7 +24,7 @@ export function useField <V = string, E extends HTMLElement = HTMLInputElement> 
     defaultValue,
     state: new State<V>(defaultValue),
     error: new State(),
-    element,
+    element: ref,
   }
 
   if (form) {

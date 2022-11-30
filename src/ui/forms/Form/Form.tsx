@@ -53,6 +53,8 @@ export function Form ({
 
     const error = validation()
 
+    console.log(error, form)
+
     if (!error) {
       handleSuccess()
     }
