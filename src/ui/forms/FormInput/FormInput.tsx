@@ -36,7 +36,8 @@ export function FormInput ({
     props: {
       ...props,
       value: () => state.value,
-      onchange: (value: any) => {
+      oninput: (value: any) => {
+        console.log(value)
         state.value = value
         onchange?.(value)
       },

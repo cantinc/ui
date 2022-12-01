@@ -7,10 +7,10 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
-export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'onchange'> {
+export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
   label?: string
   value?: WatchProp<string>
-  onchange?: (value: string) => void
+  oninput?: (value: string) => void
   placeholder?: string
   error?: WatchProp<boolean>
   props?: {
@@ -26,7 +26,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'onchange'
 export function Input ({
   label,
   value,
-  onchange,
+  oninput,
   props,
   placeholder,
   error,
@@ -37,16 +37,16 @@ export function Input ({
 
   if (!value) {
     const state = new State('')
-    const oldOnChange = onchange
+    const oldOnChange = oninput
     value = () => state.value
-    onchange = (value: string) => {
+    oninput = (value: string) => {
       state.value = value
       oldOnChange?.(value)
     }
   }
 
-  const handleChange = (e: any) => {
-    onchange?.(e.target.value)
+  const handleInput = (e: any) => {
+    oninput?.(e.target.value)
   }
 
   const elementClass = () => styles.input
@@ -54,7 +54,7 @@ export function Input ({
   const element = (
     <input
       {...(props?.input as HTMLProps<HTMLInputElement>)}
-      onchange={handleChange}
+      oninput={handleInput}
       data-value={value}
       _value={value}
       class={elementClass}
