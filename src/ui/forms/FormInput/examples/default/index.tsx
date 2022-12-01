@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormInput } from 'src/ui'
+import { Button, Flex, Form, FormInput } from 'src/ui'
 
 import description from './README.md'
 
@@ -9,9 +9,12 @@ export default example({
   description,
   example: (
     <Form align='stretch' notification='Success' vertical>
-      <FormInput required name='test' />
+      <Flex wrap flex gap={16}>
+        <FormInput label='Name' flex required name='name' />
+        <FormInput label='Surname' flex required name='surname' />
+      </Flex>
       <Button>
-        Test
+        Send
       </Button>
     </Form>
   ),

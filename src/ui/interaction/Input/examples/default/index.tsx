@@ -1,16 +1,13 @@
 import { example } from 'src/app/Component'
 import { Input } from 'src/ui'
-import { State } from 'watch-state'
 
 import description from './README.md'
-
-const state = new State('')
 
 export default example({
   id: 'default',
   title: 'Default',
   description,
   example: (
-    <Input value={() => state.value} onchange={value => { state.value = value }} />
+    <Input />
   ),
 })

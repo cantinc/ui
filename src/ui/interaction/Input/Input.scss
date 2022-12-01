@@ -1,7 +1,6 @@
 .root {
   position: relative;
   box-sizing: border-box;
-  min-height: 64px;
   margin-bottom: 24px;
   cursor: text;
 }
@@ -21,6 +20,15 @@
   border: 1px solid var(--color-80);
   border-radius: 4px;
   pointer-events: none;
+  transition: border-color .3s;
+
+  .input:focus ~ & {
+    border-color: var(--color-accent);
+  }
+
+  .error > & {
+    border-color: var(--color-red);
+  }
 }
 
 .input {
@@ -34,13 +42,15 @@
   font-family: inherit;
   font-size: 16px;
   padding: 0;
+  height: 20px;
+  margin: 6px 0;
 
   &:focus {
     outline: none;
   }
 
   .withLabel > & {
-    margin-top: 12px;
+    margin: 12px 0 0;
     opacity: 0;
 
     &:not([data-value='']),
@@ -51,7 +61,8 @@
 }
 
 .label {
-  top: 24px;
+  top: calc(50% - 10px);
+  height: 20px;
   transition: all .3s;
   font-size: 16px;
   color: var(--color-60);
@@ -60,7 +71,32 @@
   .input:not([data-value='']) ~ &,
   .input:focus ~ &,
   .before ~ & {
-    top: 16px;
+    top: calc(50% - 18px);
     font-size: 12px;
+  }
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  font-size: 12px;
+  color: var(--color-60);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px;
+  max-width: 100%;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity .3s, padding-left .3s;
+
+  &:empty {
+    padding-left: 13px;
+    opacity: 0;
+  }
+
+  .error > & {
+    color: var(--color-red);
   }
 }

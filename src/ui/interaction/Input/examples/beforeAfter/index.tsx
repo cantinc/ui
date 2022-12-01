@@ -1,10 +1,7 @@
 import { example } from 'src/app/Component'
 import { Icon, Input } from 'src/ui'
-import { State } from 'watch-state'
 
 import description from './README.md'
-
-const state = new State('')
 
 export default example({
   id: 'beforeAfter',
@@ -16,8 +13,6 @@ export default example({
   example: (
     <Input
       placeholder='Enter count'
-      value={() => state.value}
-      onchange={value => { state.value = value }}
       gap={8}
       inline>
       <slot name='before'>
