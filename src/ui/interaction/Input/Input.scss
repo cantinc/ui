@@ -25,14 +25,14 @@
   .input:focus ~ & {
     border-color: var(--color-accent);
   }
-
+  .error > .input:focus ~ &,
   .error > & {
     border-color: var(--color-red);
   }
 }
 
 .input {
-  transition: opacity .3s;
+  transition: all .3s;
   display: flex;
   width: 208px;
   background: transparent;
@@ -45,10 +45,21 @@
   height: 20px;
   margin: 6px 0;
 
+  &::placeholder {
+    color: var(--color-60);
+  }
+
   &:focus {
     outline: none;
   }
 
+  .error > & {
+    color: var(--color-red);
+  }
+
+  .error > &::placeholder {
+    color: var(--color-red);
+  }
   .withLabel > & {
     margin: 12px 0 0;
     opacity: 0;
@@ -68,10 +79,15 @@
   color: var(--color-60);
   position: absolute;
 
+  .error > & {
+    color: var(--color-red);
+  }
+
   .input:not([data-value='']) ~ &,
   .input:focus ~ &,
   .before ~ & {
     top: calc(50% - 18px);
+    color: var(--color-60);
     font-size: 12px;
   }
 }

@@ -1,1 +1,1 @@
-Use `placeholder` to add a helper text inside an input.
+Use `padding` to change input padding.

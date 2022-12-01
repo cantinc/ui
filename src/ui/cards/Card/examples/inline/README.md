@@ -1,1 +1,1 @@
-`Card` extends `inline` prop from [Flex](/position/flex#inline)
+`Card` extends `inline` prop from [Flex](/layout/flex#inline)

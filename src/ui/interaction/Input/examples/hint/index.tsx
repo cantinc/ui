@@ -17,6 +17,11 @@ export default example({
     <Flex vertical>
       <Input>
         <slot name='hint'>
+          Static hint
+        </slot>
+      </Input>
+      <Input>
+        <slot name='hint'>
           {() => hint.value}
         </slot>
       </Input>

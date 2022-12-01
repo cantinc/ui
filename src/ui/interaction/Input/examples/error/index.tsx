@@ -16,6 +16,14 @@ export default example({
   },
   example: (
     <Flex vertical>
+      <Input error />
+      <Input placeholder='Placeholder' error />
+      <Input label='Label' error />
+      <Input error>
+        <slot name='hint'>
+          Static error
+        </slot>
+      </Input>
       <Input error={() => Boolean(error.value)}>
         <slot name='hint'>
           {() => error.value}
