@@ -1,4 +1,4 @@
-import { HTMLProps, style, use, WatchProp } from '@innet/dom'
+import { HTMLProps, Ref, style, use, WatchProp } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -7,12 +7,16 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
-export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
+export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'ref'> {
   label?: string
   value?: WatchProp<string>
   oninput?: (value: string) => void
   placeholder?: string
   error?: WatchProp<boolean>
+  disabled?: WatchProp<boolean>
+  required?: WatchProp<boolean>
+  ref?: Ref<HTMLInputElement>
+  renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
     input?: HTMLProps<HTMLInputElement>
     before?: HTMLProps<HTMLSpanElement>
@@ -23,13 +27,19 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
   }
 }
 
+export const defaultRenderInput = (props: HTMLProps<HTMLInputElement>) => <input {...props} />
+
 export function Input ({
   label,
   value,
   oninput,
   props,
   placeholder,
+  renderInput = defaultRenderInput,
   error,
+  disabled,
+  required,
+  ref,
   ...rest
 }: InputProps = {}) {
   const styles = useStyle()
@@ -51,16 +61,17 @@ export function Input ({
 
   const elementClass = () => styles.input
 
-  const element = (
-    <input
-      {...(props?.input as HTMLProps<HTMLInputElement>)}
-      oninput={handleInput}
-      data-value={value}
-      _value={value}
-      class={elementClass}
-      placeholder={placeholder}
-    />
-  )
+  const element = renderInput({
+    ...(props?.input as HTMLProps<HTMLInputElement>),
+    disabled: () => use(disabled) || undefined,
+    oninput: handleInput,
+    'data-value': value,
+    _value: value,
+    required,
+    class: elementClass,
+    placeholder,
+    ref,
+  })
 
   const labelContent = label
     ? <span {...props?.label} class={styles.label}>{label}</span>

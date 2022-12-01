@@ -1,5 +1,5 @@
-import { Ref } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Ref, use } from '@innet/dom'
+import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
 import { Input, InputProps } from '../../interaction'
@@ -22,29 +22,31 @@ export function FormInput ({
   disabled,
   ...props
 }: FormInputProps) {
-  const children = useChildren()
+  const { before, after, hint } = useSlots()
   const { loading } = useForm()
-  const { state, element } = useField({
+  const { state, element, error } = useField({
     name,
     defaultValue: value || '',
     required,
     ref,
   })
 
-  return {
-    type: Input,
-    props: {
-      ...props,
-      value: () => state.value,
-      oninput: (value: any) => {
-        console.log(value)
+  return (
+    <Input
+      {...props}
+      ref={element}
+      oninput={(value: any) => {
         state.value = value
+        error.value = ''
         onchange?.(value)
-      },
-      required,
-      disabled: disabled ?? (() => loading.value),
-      ref: element,
-    },
-    children,
-  }
+      }}
+      error={() => Boolean(error.value)}
+      value={() => state.value}
+      disabled={(() => use(disabled) ?? loading.value)}
+      required={required}>
+      {before && <slot name='before'>{before}</slot>}
+      {after && <slot name='after'>{after}</slot>}
+      <slot name='hint'>{() => error.value || hint}</slot>
+    </Input>
+  )
 }
