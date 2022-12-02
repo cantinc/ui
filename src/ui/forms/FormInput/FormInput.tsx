@@ -44,6 +44,7 @@ export function FormInput ({
         error.value = ''
         onchange?.(value)
       }}
+      name={name}
       error={() => Boolean(error.value)}
       value={() => state.value}
       disabled={(() => use(disabled) ?? loading.value)}

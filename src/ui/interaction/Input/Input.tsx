@@ -15,6 +15,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   error?: WatchProp<boolean>
   disabled?: WatchProp<boolean>
   required?: WatchProp<boolean>
+  name?: WatchProp<string>
   ref?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
@@ -40,6 +41,7 @@ export function Input ({
   disabled,
   required,
   ref,
+  name,
   ...rest
 }: InputProps = {}) {
   const styles = useStyle()
@@ -71,6 +73,7 @@ export function Input ({
     class: elementClass,
     placeholder,
     ref,
+    name,
   })
 
   const labelContent = label
