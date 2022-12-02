@@ -52,7 +52,6 @@ export function Form ({
 
   const setValidationError = async (error: ValidationError<any>, field: FormField<any, any>) => {
     field.error.value = await errorHandler(error, form)
-    console.log(field.error.value)
   }
 
   const validation = () => {
