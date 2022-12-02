@@ -2,6 +2,7 @@ import { Ref } from '@innet/dom'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
+import { useChildrenProvider } from '../../../hooks'
 import { Input, InputProps } from '../Input'
 import styles from './TextArea.scss'
 
@@ -18,6 +19,7 @@ export function TextArea ({
   inputRef = new Ref<HTMLTextAreaElement>(),
   ...props
 }: TextAreaProps = {}) {
+  const withChildren = useChildrenProvider()
   let style: any
   const size = new State(0)
   const updateSize = () => {
@@ -36,12 +38,13 @@ export function TextArea ({
     }
   }
 
-  return (
+  return withChildren(
     <Input
       inputRef={inputRef as any}
       {...props}
       renderInput={({ oninput, ...props }) => (
         <textarea
+          rows={rows}
           style={style}
           required={props.required}
           placeholder={props.placeholder}
@@ -57,6 +60,6 @@ export function TextArea ({
           {props.value}
         </textarea>
       )}
-    />
+    />,
   )
 }

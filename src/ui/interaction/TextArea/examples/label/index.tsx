@@ -4,10 +4,10 @@ import { TextArea } from 'src/ui'
 import description from './README.md'
 
 export default example({
-  id: 'default',
-  title: 'Default',
+  id: 'label',
+  title: 'label',
   description,
   example: (
-    <TextArea />
+    <TextArea label='Label' />
   ),
 })
