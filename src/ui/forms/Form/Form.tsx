@@ -1,5 +1,5 @@
-import { ValidationError, ValidationErrors } from '@cantinc/utils'
-import { WatchProp } from '@innet/dom'
+import { ValidationError } from '@cantinc/utils'
+import { use, WatchProp } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
@@ -11,22 +11,27 @@ export interface FormProps extends FlexProps<HTMLFormElement> {
   action?: WatchProp<string>
   loading?: State<boolean>
   notification?: string
-  onsuccess?: () => void
+  onerror?: (form: FormContext, error?: any) => void
+  onsuccess?: (form: FormContext) => void
 }
 
 export type FormErrorHandle = (error: ValidationError<any>, form: FormContext) => string | Promise<string>
+export type FormActionHandle = (action: string, form: FormContext) => Promise<any> | void
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
+export const formActionHandler = new Context<FormActionHandle>(() => {})
 
 export function Form ({
   loading = new State(false),
   action,
   notification,
   onsuccess,
+  onerror,
   ...props
 }: FormProps = {}) {
   const children = useChildren()
   const errorHandler = useContext(formErrorHandler)
+  const actionHandler = useContext(formActionHandler)
 
   const form: FormContext = {
     fields: new Set(),
@@ -42,7 +47,7 @@ export function Form ({
     if (notification) {
       notify(notification, 'success')
     }
-    onsuccess?.()
+    onsuccess?.(form)
   }
 
   const setValidationError = async (error: ValidationError<any>, field: FormField<any, any>) => {
@@ -70,14 +75,6 @@ export function Form ({
       const { value } = field.state
       const key = field.name
 
-      if (field.required && !value) {
-        setError({
-          error: ValidationErrors.required,
-          data: { key: field.name },
-        }, field)
-        continue
-      }
-
       if (field.validation) {
         for (const validator of field.validation) {
           const error = validator(value, key, form)
@@ -98,7 +95,17 @@ export function Form ({
 
     const error = validation()
 
-    if (!error) {
+    if (error) return
+
+    if (action) {
+      const result = actionHandler(use(action), form)
+
+      if (result) {
+        result.then(handleSuccess, e => onerror?.(form, e))
+      } else {
+        handleSuccess()
+      }
+    } else {
       handleSuccess()
     }
   }
