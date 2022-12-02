@@ -7,9 +7,10 @@ const useStyle = style(styles)
 
 export interface JSXStringifyProps extends Style {
   components?: Record<string, string>
+  functions?: Map<Function, string>
 }
 
-export function JSXStringify ({ components }: JSXStringifyProps = {}) {
+export function JSXStringify ({ components, functions }: JSXStringifyProps = {}) {
   const children = useChildren()
   const styles = useStyle()
 
@@ -25,7 +26,7 @@ export function JSXStringify ({ components }: JSXStringifyProps = {}) {
       if (propValue === null) {
         content = <span class={styles.propNull}>{String(propValue)}</span>
       } else if (typeof propValue === 'function') {
-        content = <span class={styles.propFunc}>{String(propValue)}</span>
+        content = <span class={styles.propFunc}>{functions?.has(propValue) ? functions.get(propValue) : String(propValue)}</span>
       } else if (typeof propValue === 'string') {
         content = propValue
       } else if (propValue === false) {

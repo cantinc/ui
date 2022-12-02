@@ -27,7 +27,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   }
 }
 
-export const defaultRenderInput = (props: HTMLProps<HTMLInputElement>) => <input {...props} />
+export const defaultRenderInput = (props: HTMLProps<HTMLInputElement>) => (<input {...props} />)
 
 export function Input ({
   label,

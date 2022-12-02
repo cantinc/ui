@@ -1,3 +1,4 @@
+import { Validator } from '@cantinc/utils'
 import { Ref, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
@@ -10,6 +11,7 @@ export interface FormInputProps extends Omit<InputProps, 'value' | 'onchange'> {
   required?: boolean
   ref?: Ref<any>
   disabled?: boolean
+  validation?: Validator<any, any>[]
   onchange?: (value: string) => void
 }
 
@@ -20,6 +22,7 @@ export function FormInput ({
   ref,
   onchange,
   disabled,
+  validation,
   ...props
 }: FormInputProps) {
   const { before, after, hint } = useSlots()
@@ -29,6 +32,7 @@ export function FormInput ({
     defaultValue: value || '',
     required,
     ref,
+    validation,
   })
 
   return (

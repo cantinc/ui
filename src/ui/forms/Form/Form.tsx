@@ -45,33 +45,48 @@ export function Form ({
     onsuccess?.()
   }
 
-  const setError = async (error: ValidationError<any>, field: FormField<any, any>) => {
+  const setValidationError = async (error: ValidationError<any>, field: FormField<any, any>) => {
     field.error.value = await errorHandler(error, form)
     console.log(field.error.value)
   }
 
   const validation = () => {
     let result = false
-    let focused = false
+
+    const setError = (error: ValidationError<any>, field: FormField<any, any>) => {
+      if (!result) {
+        field.element.value.scrollIntoView({
+          block: 'center',
+          behavior: 'smooth',
+          inline: 'center',
+        })
+        field.element.value.focus()
+        result = true
+      }
+      setValidationError(error, field)
+    }
 
     for (const field of form.fields) {
-      if (field.required && !field.state.value) {
-        if (!focused) {
-          field.element.value.scrollIntoView({
-            block: 'center',
-            behavior: 'smooth',
-            inline: 'center',
-          })
-          field.element.value.focus()
-          focused = true
-        }
+      const { value } = field.state
+      const key = field.name
+
+      if (field.required && !value) {
         setError({
           error: ValidationErrors.required,
-          data: {
-            key: field.name,
-          },
+          data: { key: field.name },
         }, field)
-        result = true
+        continue
+      }
+
+      if (field.validation) {
+        for (const validator of field.validation) {
+          const error = validator(value, key, form)
+
+          if (error) {
+            setError(error, field)
+            continue
+          }
+        }
       }
     }
 

@@ -1,3 +1,4 @@
+import { Validator } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { Context, useContext } from '@innet/jsx'
 import { State } from 'watch-state'
@@ -9,6 +10,7 @@ export interface FormField<V, E extends HTMLElement> {
   element: Ref<E>
   required: boolean
   defaultValue?: V
+  validation?: Validator<any, any>[]
 }
 
 export interface FormContext {
