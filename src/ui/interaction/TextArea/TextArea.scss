@@ -1,0 +1,9 @@
+.input {
+  --ui-textarea-resize: none;
+  --ui-textarea-autosize: 20px;
+  --ui-textarea-min: 20px;
+
+  min-height: var(--ui-textarea-min);
+  height: var(--ui-textarea-autosize);
+  resize: var(--ui-textarea-resize);
+}

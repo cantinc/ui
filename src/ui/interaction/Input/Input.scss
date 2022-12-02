@@ -32,7 +32,7 @@
 }
 
 .input {
-  transition: all .3s;
+  transition: color .3s, opacity .3s;
   display: flex;
   width: 208px;
   background: transparent;
@@ -72,7 +72,7 @@
 }
 
 .label {
-  top: calc(50% - 10px);
+  top: min(calc(50% - 10px), 22px);
   height: 20px;
   transition: all .3s;
   font-size: 16px;
@@ -86,7 +86,7 @@
   .input:not([data-value='']) ~ &,
   .input:focus ~ &,
   .before ~ & {
-    top: calc(50% - 18px);
+    top: min(calc(50% - 18px), 14px);
     color: var(--color-60);
     font-size: 12px;
   }

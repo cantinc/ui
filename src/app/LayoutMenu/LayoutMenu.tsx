@@ -70,6 +70,9 @@ export function LayoutMenu () {
         <Menu.Item href='/interaction/input'>
           <Title>Input</Title>
         </Menu.Item>
+        <Menu.Item href='/interaction/textarea'>
+          <Title>TextArea</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/forms'>Forms</Menu.Item>
       <Menu.SubMenu>

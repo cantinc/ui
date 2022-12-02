@@ -37,7 +37,7 @@
     "url": "https://github.com/cantinc/ui/issues"
   },
   "dependencies": {
-    "@innet/dom": "^0.10.3",
+    "@innet/dom": "^0.10.4",
     "@cantinc/utils": "^1.4.0",
     "@innet/jsx": "^1.1.0",
     "@textlint/ast-node-types": "^12.2.2",

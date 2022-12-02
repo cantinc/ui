@@ -7,7 +7,7 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
-export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'ref'> {
+export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
   label?: string
   value?: WatchProp<string>
   oninput?: (value: string) => void
@@ -16,7 +16,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   disabled?: WatchProp<boolean>
   required?: WatchProp<boolean>
   name?: WatchProp<string>
-  ref?: Ref<HTMLInputElement>
+  inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
     input?: HTMLProps<HTMLInputElement>
@@ -40,7 +40,7 @@ export function Input ({
   error,
   disabled,
   required,
-  ref,
+  inputRef,
   name,
   ...rest
 }: InputProps = {}) {
@@ -72,7 +72,7 @@ export function Input ({
     required,
     class: elementClass,
     placeholder,
-    ref,
+    ref: inputRef,
     name,
   })
 

@@ -19,7 +19,7 @@ export function FormInput ({
   value,
   required,
   name,
-  ref,
+  inputRef,
   onchange,
   disabled,
   validation,
@@ -27,18 +27,19 @@ export function FormInput ({
 }: FormInputProps) {
   const { before, after, hint } = useSlots()
   const { loading } = useForm()
-  const { state, element, error } = useField({
+  const inputElement = inputRef || new Ref<HTMLInputElement>()
+  const { state, error } = useField({
     name,
     defaultValue: value || '',
     required,
-    ref,
+    ref: inputElement,
     validation,
   })
 
   return (
     <Input
       {...props}
-      ref={element}
+      inputRef={inputElement}
       oninput={(value: any) => {
         state.value = value
         error.value = ''
