@@ -116,3 +116,18 @@
     color: var(--color-red);
   }
 }
+
+.clear {
+  cursor: pointer;
+  transition: all .3s;
+  margin: 6px 0;
+
+  .root:not(:hover) .input:not(:focus) ~ &,
+  .input[data-value=''] ~ &,
+  .input:disabled ~ & {
+    opacity: 0;
+    margin-left: -32px;
+    transform: scale(0);
+    visibility: hidden;
+  }
+}

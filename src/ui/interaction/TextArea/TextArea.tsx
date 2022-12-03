@@ -1,10 +1,11 @@
-import { Ref } from '@innet/dom'
-import classes from 'html-classes'
+import { Ref, style, use } from '@innet/dom'
 import { onDestroy, State } from 'watch-state'
 
 import { useChildrenProvider } from '../../../hooks'
 import { Input, InputProps } from '../Input'
 import styles from './TextArea.scss'
+
+const useStyles = style(styles)
 
 export interface TextAreaProps extends Omit<InputProps, 'renderInput' | 'inputRef'> {
   resize?: boolean | 'auto' | 'none' | 'both' | 'horizontal' | 'vertical' | 'inherit'
@@ -19,6 +20,7 @@ export function TextArea ({
   inputRef = new Ref<HTMLTextAreaElement>(),
   ...props
 }: TextAreaProps = {}) {
+  const styles = useStyles()
   const withChildren = useChildrenProvider()
   let style: any
   const size = new State(0)
@@ -42,6 +44,7 @@ export function TextArea ({
     <Input
       inputRef={inputRef as any}
       {...props}
+      class={styles}
       renderInput={({ oninput, ...props }) => (
         <textarea
           rows={rows}
@@ -55,9 +58,10 @@ export function TextArea ({
             ;(oninput as any)(e)
             updateSize()
           }}
+          _value={props._value}
           data-value={props['data-value']}
-          class={() => classes([props.class, styles.input])}>
-          {props.value}
+          class={props.class}>
+          {props.defaultValue}
         </textarea>
       )}
     />,

@@ -2,6 +2,7 @@ import { HTMLProps, Ref, style, use, WatchProp } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
+import { Icon, IconProps } from '../../content'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Input.scss'
 
@@ -25,6 +26,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
     border?: HTMLProps<HTMLSpanElement>
     label?: HTMLProps<HTMLSpanElement>
     hint?: HTMLProps<HTMLSpanElement>
+    clear?: Partial<IconProps>
   }
 }
 
@@ -59,6 +61,11 @@ export function Input ({
 
   const handleInput = (e: any) => {
     oninput?.(e.target.value)
+  }
+
+  const handleClear = (e: Event) => {
+    e.preventDefault()
+    oninput?.('')
   }
 
   const elementClass = () => styles.input
@@ -106,11 +113,17 @@ export function Input ({
         use(error) && styles.error,
       ]}>
       {element}
+      <Icon
+        icon='cross'
+        {...props?.clear}
+        onmousedown={handleClear}
+        class={() => styles.clear}
+      />
       {beforeContent}
       {labelContent}
       {afterContent}
       {hintContent}
-      <span {...props?.border} class={styles.border} />
+      <span {...props?.border} class={() => styles.border} />
     </Flex>
   )
 }

@@ -7,3 +7,8 @@
   height: var(--ui-textarea-autosize);
   resize: var(--ui-textarea-resize);
 }
+
+.clear {
+  align-self: flex-start;
+  //margin-left: -32px;
+}
