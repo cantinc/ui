@@ -17,6 +17,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
   disabled?: WatchProp<boolean>
   required?: WatchProp<boolean>
   name?: WatchProp<string>
+  clearable?: boolean
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
@@ -44,6 +45,7 @@ export function Input ({
   required,
   inputRef,
   name,
+  clearable,
   ...rest
 }: InputProps = {}) {
   const styles = useStyle()
@@ -61,11 +63,6 @@ export function Input ({
 
   const handleInput = (e: any) => {
     oninput?.(e.target.value)
-  }
-
-  const handleClear = (e: Event) => {
-    e.preventDefault()
-    oninput?.('')
   }
 
   const elementClass = () => styles.input
@@ -99,6 +96,20 @@ export function Input ({
     ? <span {...props?.hint} class={styles.hint}>{hint}</span>
     : null
 
+  const clearContent = clearable
+    ? (
+      <Icon
+        icon='cross'
+        {...props?.clear}
+        onmousedown={(e: Event) => {
+          e.preventDefault()
+          oninput?.('')
+        }}
+        class={() => styles.clear}
+      />
+      )
+    : null
+
   return (
     <Flex
       align='center'
@@ -113,12 +124,7 @@ export function Input ({
         use(error) && styles.error,
       ]}>
       {element}
-      <Icon
-        icon='cross'
-        {...props?.clear}
-        onmousedown={handleClear}
-        class={() => styles.clear}
-      />
+      {clearContent}
       {beforeContent}
       {labelContent}
       {afterContent}

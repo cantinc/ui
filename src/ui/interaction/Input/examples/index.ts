@@ -1,4 +1,5 @@
 import beforeAfter from './beforeAfter'
+import clearable from './clearable'
 import def from './default'
 import error from './error'
 import hint from './hint'
@@ -12,6 +13,7 @@ import placeholder from './placeholder'
 export default [
   def,
   inline,
+  clearable,
   padding,
   placeholder,
   label,
