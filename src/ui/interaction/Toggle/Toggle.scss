@@ -10,7 +10,8 @@
 }
 
 .input {
-  display: none;
+  position: absolute;
+  opacity: 0;
 }
 
 .disabled {
