@@ -23,7 +23,7 @@
   transition: border-color .3s;
 
   .input:focus ~ & {
-    border-color: var(--color-accent);
+    border-color: var(--color-primary-50);
   }
   .error > .input:focus ~ &,
   .error > & {

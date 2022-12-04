@@ -1,4 +1,4 @@
-import { Ref, style, use } from '@innet/dom'
+import { Ref, style } from '@innet/dom'
 import { onDestroy, State } from 'watch-state'
 
 import { useChildrenProvider } from '../../../hooks'
@@ -15,7 +15,6 @@ export interface TextAreaProps extends Omit<InputProps, 'renderInput' | 'inputRe
 
 export function TextArea ({
   resize = 'auto',
-  oninput,
   rows = 4,
   inputRef = new Ref<HTMLTextAreaElement>(),
   ...props
@@ -61,7 +60,7 @@ export function TextArea ({
           _value={props._value}
           data-value={props['data-value']}
           class={props.class}>
-          {props.defaultValue}
+          {props.value}
         </textarea>
       )}
     />,

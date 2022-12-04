@@ -29,7 +29,7 @@
   pointer-events: none;
 
   .input:focus + & {
-    border-color: var(--color-accent);
+    border-color: var(--color-primary-50);
   }
 
   .checked & {

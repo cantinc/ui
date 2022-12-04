@@ -1,3 +1,4 @@
 export * from './Form'
 export * from './FormToggle'
 export * from './FormInput'
+export * from './FormTextArea'

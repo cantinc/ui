@@ -1,4 +1,6 @@
 :root {
+  // Main colors
+
   --color-0: #333;
   --color-10: #474747;
   --color-20: #5c5c5c;
@@ -59,21 +61,11 @@
   --color-positive-90: #abe0c2;
   --color-positive-100: #d5f0e0;
 
+  // Theme colors
+
   --color-link-dark: #1565fb;
-  --color-link-accent: #7572FE;
-  --color-accent: #945EF8;
-  --color-accent-dark: #7648c9;
-  --color-accent-light: #9d6dfa;
   --color-red-light: #f74879;
-  --color-red: #ff2264;
-  --color-red-dark: #ee074b;
+  --color-red: var(--color-negative-20);
   --color-orange: #ec9b1f;
-  --color-green: #3b5;
-
-  --color-input: #F8FAFF;
-  --color-input-border: #EDF2FE;
-
-  --color-overlay: #0000003c;
-  --color-light-shadow: #6D6D6D26;
-  --color-dark-shadow: #000f1c;
+  --color-green: var(--color-positive-50);
 }
