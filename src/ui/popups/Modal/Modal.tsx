@@ -129,6 +129,7 @@ export function * Modal ({
             <Flex reverse justify='center' wrap padding={16} gap={16}>
               {buttons.map((id, index) => (
                 <Button
+                  flex
                   view={index ? 'secondary' : 'primary'}
                   {...buttonProps[id]}
                   data-button={id}
