@@ -1,5 +1,4 @@
 import vertical from './click'
-import danger from './danger'
 import def from './default'
 import flex from './flex'
 import link from './link'
@@ -11,7 +10,6 @@ export default [
   def,
   vertical,
   view,
-  danger,
   size,
   flex,
   loading,

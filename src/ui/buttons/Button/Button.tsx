@@ -7,7 +7,7 @@ import styles from './Button.scss'
 
 const useStyle = style(styles)
 
-export type ButtonViews = 'primary' | 'secondary'
+export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
 export type ButtonSizes = 'small' | 'default'
 
 export interface ButtonProps extends HTMLStyleProps<HTMLButtonElement, typeof styles> {
@@ -16,7 +16,6 @@ export interface ButtonProps extends HTMLStyleProps<HTMLButtonElement, typeof st
   size?: ButtonSizes
   link?: LinkProps
   flex?: boolean | number
-  danger?: boolean
 }
 
 export function Button ({
@@ -25,7 +24,6 @@ export function Button ({
   loading,
   size,
   disabled,
-  danger,
   link,
   flex,
   style = '',
@@ -37,9 +35,10 @@ export function Button ({
   const customClasses = {
     [styles.primary]: view === 'primary',
     [styles.secondary]: view === 'secondary',
+    [styles.negative]: view === 'negative',
+    [styles.positive]: view === 'positive',
     [styles.loading]: loading,
     [styles.small]: size === 'small',
-    [styles.danger]: danger,
   }
 
   const className = () => classes([
