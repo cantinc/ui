@@ -6,6 +6,7 @@ import { onDestroy, State } from 'watch-state'
 import { setOverflow } from '../../../utils'
 import { Button, ButtonProps } from '../../buttons'
 import { Icon } from '../../content'
+import { Flex } from '../../layout'
 import { HTMLModalElement } from '../Modals/types'
 import styles from './Modal.scss'
 
@@ -125,17 +126,17 @@ export function * Modal ({
         {children}
         {buttonsLength
           ? (
-            <div class={styles.buttons}>
-              {buttons.map(id => (
+            <Flex reverse justify='center' wrap padding={16} gap={16}>
+              {buttons.map((id, index) => (
                 <Button
+                  view={index ? 'secondary' : 'primary'}
                   {...buttonProps[id]}
                   data-button={id}
-                  onclick={() => handleClose(id)}
-                  class={styles.button}>
+                  onclick={() => handleClose(id)}>
                   {slots[`button-${id}`] || id}
                 </Button>
               ))}
-            </div>
+            </Flex>
             )
           : null}
       </div>

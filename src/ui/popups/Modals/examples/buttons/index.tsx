@@ -17,7 +17,7 @@ export default example({
       <portal parent={document.body}>
         <Modals>
           {() => show.value && (
-            <Modal buttons={['Cancel', 'Ok']} onclose={() => { show.value = false }}>
+            <Modal buttons={['Ok', 'Cancel']} onclose={() => { show.value = false }}>
               <slot name='content'>
                 Content
               </slot>
