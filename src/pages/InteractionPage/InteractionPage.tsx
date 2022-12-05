@@ -25,6 +25,9 @@ export function InteractionPage () {
       <slot name='textarea'>
         <Component is={() => import('src/ui/interaction/TextArea/TextArea.ui')} />
       </slot>
+      <slot name='selector'>
+        <Component is={() => import('src/ui/interaction/Selector/Selector.ui')} />
+      </slot>
     </router>
   )
 }
