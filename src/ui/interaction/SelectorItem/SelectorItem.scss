@@ -10,3 +10,13 @@
   color: var(--color-100);
   background-color: var(--color-primary-50);
 }
+
+.value {
+  display: block;
+  font-size: 14px;
+  color: var(--color-60);
+
+  .selected > & {
+    color: var(--color-80);
+  }
+}

@@ -14,6 +14,7 @@ export interface SelectorProps extends InputProps {
   values?: SelectorItemProps[]
   placement?: PopupPlacement
   searchValue?: WatchProp<string>
+  showValues?: boolean
   onsearch?: (search: string) => void
 }
 
@@ -21,6 +22,7 @@ export interface SelectorContext {
   value: WatchProp<string>
   setValue: (value: string) => void
   hide: () => void
+  showValues?: boolean
 }
 
 export function Selector ({
@@ -30,6 +32,7 @@ export function Selector ({
   values,
   oninput,
   searchValue,
+  showValues,
   onsearch,
   ...props
 }: SelectorProps) {
@@ -59,6 +62,7 @@ export function Selector ({
     value,
     setValue: oninput as any,
     hide () { show.value = false },
+    showValues,
   }
 
   const valuesFilter = () => values?.filter(({ value: val, label }: SelectorItemProps) => {

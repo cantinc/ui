@@ -19,7 +19,7 @@ export function SelectorItem ({
   ...props
 }: SelectorItemProps) {
   const styles = useStyle()
-  const { hide, value: selectorValue, setValue } = useContext(selectorContext)
+  const { hide, value: selectorValue, setValue, showValues } = useContext(selectorContext)
 
   const handleClick = (e: MouseEvent) => {
     hide()
@@ -36,6 +36,11 @@ export function SelectorItem ({
         use(selectorValue) === value && styles.selected,
       ])}>
       {label || value}
+      {showValues && (
+        <span class={styles.value}>
+          {value}
+        </span>
+      )}
     </div>
   )
 }
