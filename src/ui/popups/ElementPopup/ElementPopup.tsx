@@ -3,7 +3,6 @@ import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { State } from 'watch-state'
 
-import { useClickListener, useResizeListener } from '../../../hooks'
 import styles from './ElementPopup.scss'
 
 const useStyle = style(styles)
@@ -13,26 +12,22 @@ export type PopupPlacement = 'bottom' | 'top'
 export interface ElementPopupProps extends HTMLStyleProps<HTMLDivElement> {
   element: Ref<HTMLElement>
   show: WatchProp<boolean>
-  onhide: () => void
   placement?: PopupPlacement
 }
 
 export function ElementPopupContent ({
   element,
-  onhide,
   onclick,
   style = '',
   placement = 'bottom',
   ...props
-}: Omit<ElementPopupProps, 'show'>) {
+}: Omit<ElementPopupProps, 'show' | 'onhide'>) {
   const children = useChildren()
   const hide = useHidden()
   const show = useShow()
   const styles = useStyle()
 
   const rect: any = element.value?.getBoundingClientRect()
-
-  useClickListener(onhide)
 
   const { documentElement } = document
   const horizontal = `left:${rect.left}px;right:calc(100% - ${rect.right}px);`
@@ -66,8 +61,6 @@ export function ElementPopup ({
 }: ElementPopupProps) {
   const children = useChildren()
   const hide = new Ref<State<boolean>>()
-
-  useResizeListener(props.onhide)
 
   return (
     <portal parent={document.body}>

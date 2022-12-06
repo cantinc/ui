@@ -1,22 +1,26 @@
-import { Ref, style, use } from '@innet/dom'
+import { LoopItem, Ref, style, use, WatchProp } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
-import classes from 'html-classes'
 import { State } from 'watch-state'
 
 import { ElementPopup, PopupPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
+import { SelectorItem, SelectorItemProps } from '../SelectorItem'
+import { selectorContext } from './constants'
 import styles from './Selector.scss'
 
 const useStyle = style(styles)
 
-export interface SelectorValue {
-  value: string
-  label?: string
+export interface SelectorProps extends InputProps {
+  values?: SelectorItemProps[]
+  placement?: PopupPlacement
+  searchValue?: WatchProp<string>
+  onsearch?: (search: string) => void
 }
 
-export interface SelectorProps extends InputProps {
-  values?: SelectorValue[]
-  placement?: PopupPlacement
+export interface SelectorContext {
+  value: WatchProp<string>
+  setValue: (value: string) => void
+  hide: () => void
 }
 
 export function Selector ({
@@ -25,6 +29,8 @@ export function Selector ({
   value,
   values,
   oninput,
+  searchValue,
+  onsearch,
   ...props
 }: SelectorProps) {
   const children = useChildren()
@@ -41,40 +47,61 @@ export function Selector ({
     }
   }
 
+  if (!searchValue) {
+    searchValue = value
+  }
+
+  if (!onsearch) {
+    onsearch = oninput
+  }
+
+  const selector: SelectorContext = {
+    value,
+    setValue: oninput as any,
+    hide () { show.value = false },
+  }
+
+  const valuesFilter = () => values?.filter(({ value: val, label }: SelectorItemProps) => {
+    const currentValue = (use(searchValue) || '').toLowerCase()
+
+    return label?.toLowerCase().includes(currentValue) || val.toLowerCase().startsWith(currentValue)
+  }) || []
+
   return (
     <>
       <Input
         {...props}
         value={value}
         oninput={oninput}
-        onclick={(e: MouseEvent) => {
-          e.stopPropagation()
-          show.value = true
+        props={{
+          ...props?.props,
+          input: {
+            ...props?.props?.input,
+            onfocus (e: any) {
+              show.value = true
+              ;(props?.props?.input?.onfocus as any)?.(e)
+            },
+            onblur (e: any) {
+              show.value = false
+              ;(props?.props?.input?.onblur as any)?.(e)
+            },
+          },
         }}
         ref={ref}
         class={styles}
       />
       <ElementPopup
         placement={placement}
-        onhide={() => { show.value = false }}
         show={() => show.value}
         class={styles.popup}
         element={ref}>
-        {values?.map(({ value: val, label = value }) => (
-          <div
-            class={() => classes([
-              styles.popupMenu,
-              use(value) === val && styles.selected,
-            ])}
-            onclick={() => {
-              oninput?.(val)
-              setTimeout(() => {
-                show.value = false
-              }, 300)
-            }}>
-            {label}
-          </div>
-        ))}
+        <context for={selectorContext} set={selector}>
+          <for of={valuesFilter} key='value'>
+            {(item: LoopItem<SelectorItemProps>) => (
+              <SelectorItem {...item.value} />
+            )}
+          </for>
+        </context>
         {children}
       </ElementPopup>
     </>
