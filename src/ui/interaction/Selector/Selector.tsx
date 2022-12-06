@@ -10,11 +10,14 @@ import styles from './Selector.scss'
 
 const useStyle = style(styles)
 
+export type SelectorDisplay = 'auto' | 'value' | 'label'
+
 export interface SelectorProps extends InputProps {
   values?: SelectorItemProps[]
   placement?: PopupPlacement
   searchValue?: WatchProp<string>
   showValues?: boolean
+  display?: SelectorDisplay
   onsearch?: (search: string) => void
 }
 
@@ -33,9 +36,10 @@ export function Selector ({
   oninput,
   searchValue,
   showValues,
+  display = 'auto',
   onsearch,
   ...props
-}: SelectorProps) {
+}: SelectorProps = {}) {
   const children = useChildren()
   const styles = useStyle()
   const show = new State(false)
@@ -68,7 +72,15 @@ export function Selector ({
   const valuesFilter = () => values?.filter(({ value: val, label }: SelectorItemProps) => {
     const currentValue = (use(searchValue) || '').toLowerCase()
 
-    return label?.toLowerCase().includes(currentValue) || val.toLowerCase().startsWith(currentValue)
+    if (label?.toLowerCase().includes(currentValue)) {
+      return true
+    }
+
+    if ((!label || showValues) && val.toLowerCase().startsWith(currentValue)) {
+      return true
+    }
+
+    return false
   }) || []
 
   return (
@@ -77,20 +89,19 @@ export function Selector ({
         {...props}
         value={value}
         oninput={oninput}
-        props={{
-          ...props?.props,
-          input: {
-            ...props?.props?.input,
-            onfocus (e: any) {
+        renderInput={props => (
+          <input
+            {...props}
+            onfocus={(e: any) => {
               show.value = true
-              ;(props?.props?.input?.onfocus as any)?.(e)
-            },
-            onblur (e: any) {
+              ;(props?.onfocus as any)?.(e)
+            }}
+            onblur={(e: any) => {
               show.value = false
-              ;(props?.props?.input?.onblur as any)?.(e)
-            },
-          },
-        }}
+              ;(props?.onblur as any)?.(e)
+            }}
+          />
+        )}
         ref={ref}
         class={styles}
       />
