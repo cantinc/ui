@@ -18,6 +18,8 @@ export interface SelectorProps extends InputProps {
   searchValue?: WatchProp<string>
   showValues?: boolean
   display?: SelectorDisplay
+  search?: boolean
+  exact?: boolean
   onsearch?: (search: string) => void
 }
 
@@ -37,6 +39,8 @@ export function Selector ({
   searchValue,
   showValues,
   display = 'auto',
+  search,
+  exact,
   onsearch,
   ...props
 }: SelectorProps = {}) {
@@ -69,19 +73,21 @@ export function Selector ({
     showValues,
   }
 
-  const valuesFilter = () => values?.filter(({ value: val, label }: SelectorItemProps) => {
-    const currentValue = (use(searchValue) || '').toLowerCase()
+  const valuesFilter = search
+    ? () => values?.filter(({ value: val, label }: SelectorItemProps) => {
+        const currentValue = (use(searchValue) || '').toLowerCase()
 
-    if (label?.toLowerCase().includes(currentValue)) {
-      return true
-    }
+        if (label?.toLowerCase().includes(currentValue)) {
+          return true
+        }
 
-    if ((!label || showValues) && val.toLowerCase().startsWith(currentValue)) {
-      return true
-    }
+        if ((!label || showValues) && val.toLowerCase().startsWith(currentValue)) {
+          return true
+        }
 
-    return false
-  }) || []
+        return false
+      }) || []
+    : values
 
   return (
     <>
@@ -92,6 +98,7 @@ export function Selector ({
         renderInput={props => (
           <input
             {...props}
+            readOnly={!search && exact ? true : undefined}
             onfocus={(e: any) => {
               show.value = true
               ;(props?.onfocus as any)?.(e)
@@ -111,7 +118,7 @@ export function Selector ({
         class={styles.popup}
         element={ref}>
         <context for={selectorContext} set={selector}>
-          <for of={valuesFilter} key='value'>
+          <for of={valuesFilter || []} key='value'>
             {(item: LoopItem<SelectorItemProps>) => (
               <SelectorItem {...item.value} />
             )}

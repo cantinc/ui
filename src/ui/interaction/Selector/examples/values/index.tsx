@@ -14,6 +14,6 @@ export default example({
   title: 'values',
   description,
   example: (
-    <Selector label='ИНН' values={data} />
+    <Selector values={data} />
   ),
 })

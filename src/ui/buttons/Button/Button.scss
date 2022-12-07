@@ -1,11 +1,12 @@
 .root {
   --ui-button-flex: none;
 
+  outline: 1px solid transparent;
   display: inline-block;
-  transition: background-color 0.3s, border-color .3s, opacity 0.3s;
-  border: 2px solid var(--color-primary-50);
+  transition: background-color 0.3s, border-color .3s, opacity 0.3s, outline 0.3s;
+  border: 1px solid var(--color-primary-50);
   background-color: var(--color-primary-50);
-  border-radius: 4px;
+  border-radius: var(--round-50);
   padding: 0;
   font-size: 16px;
   white-space: nowrap;
@@ -20,8 +21,8 @@
 
 .primary {
   &:hover {
-    background-color: var(--color-primary-70);
-    border-color: var(--color-primary-70);
+    background-color: var(--color-primary-60);
+    border-color: var(--color-primary-60);
   }
 
   &:active {
@@ -69,8 +70,8 @@
   border-color: var(--color-positive-50);
 
   &:hover {
-    background-color: var(--color-positive-70);
-    border-color: var(--color-positive-70);
+    background-color: var(--color-positive-60);
+    border-color: var(--color-positive-60);
   }
 
   &:active {
@@ -80,8 +81,8 @@
 }
 
 .root:focus {
-  outline: none;
-  border-color: var(--color-secondary-50);
+  outline: 1px solid var(--color-warning-50);
+  border-color: var(--color-warning-50);
 }
 
 .small > .content {

@@ -24,7 +24,7 @@
   width: 42px;
   height: 24px;
   border-radius: 20px;
-  border: 2px solid var(--color-0);
+  border: 2px solid var(--color-10);
   position: relative;
   transition: all .3s;
   pointer-events: none;
@@ -34,8 +34,8 @@
   }
 
   .checked & {
-    background: var(--color-0);
-    border: 2px solid var(--color-0);
+    background: var(--color-10);
+    border: 2px solid var(--color-10);
   }
 
   &:before {
@@ -47,7 +47,7 @@
     bottom: 2px;
     right: 20px;
     border-radius: 9px;
-    background: var(--color-0);
+    background: var(--color-10);
     transition: right .3s .1s, left .3s, background .3s;
 
     .input:active ~ & {

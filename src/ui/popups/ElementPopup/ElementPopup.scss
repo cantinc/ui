@@ -4,7 +4,7 @@
   transition: opacity .3s, transform .3s;
   background: var(--color-100);
   border: 1px solid var(--color-90);
-  border-radius: 4px;
+  border-radius: var(--round-50);
   z-index: 1;
   transform: translateY(-8px);
 }
