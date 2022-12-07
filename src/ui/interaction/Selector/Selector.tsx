@@ -1,5 +1,6 @@
 import { LoopItem, Ref, style, use, WatchProp } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
+import classes from 'html-classes'
 import { State } from 'watch-state'
 
 import { ElementPopup, PopupPlacement } from '../../popups'
@@ -20,6 +21,7 @@ export interface SelectorProps extends InputProps {
   display?: SelectorDisplay
   search?: boolean
   exact?: boolean
+  arrow?: boolean
   onsearch?: (search: string) => void
 }
 
@@ -41,12 +43,15 @@ export function Selector ({
   display = 'auto',
   search,
   exact,
+  arrow,
   onsearch,
   ...props
 }: SelectorProps = {}) {
   const children = useChildren()
   const styles = useStyle()
   const show = new State(false)
+
+  const hide = () => { show.value = false }
 
   if (!value) {
     const state = new State('')
@@ -71,7 +76,7 @@ export function Selector ({
   const selector: SelectorContext = {
     value,
     setValue: oninput as any,
-    hide () { show.value = false },
+    hide,
     showValues,
   }
 
@@ -100,6 +105,10 @@ export function Selector ({
         renderInput={(props: any) => (
           <input
             {...props}
+            class={() => classes([
+              props.class,
+              styles.input,
+            ])}
             placeholder={() => show.value && search ? use(props._value) : use(props.placeholder)}
             _value={() => show.value && search ? use(searchValue) || '' : use(props._value)}
             oninput={(e: any) => {
@@ -128,8 +137,28 @@ export function Selector ({
           />
         )}
         ref={ref}
-        class={styles}
-      />
+        class={() => [
+          styles.root,
+          exact && styles.exact,
+        ]}>
+        {arrow && (
+          <slot name='after'>
+            <span
+              onmousedown={(e: MouseEvent) => {
+                if (show.value) {
+                  e.stopPropagation()
+                  e.preventDefault()
+                  hide()
+                }
+              }}
+              class={() => classes([
+                styles.arrow,
+                show.value && styles.arrowSelected,
+              ])}
+            />
+          </slot>
+        )}
+      </Input>
       <ElementPopup
         placement={placement}
         show={() => show.value}

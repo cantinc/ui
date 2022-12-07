@@ -2,6 +2,19 @@
 
 }
 
+.exact {
+  cursor: pointer;
+
+  .input {
+    cursor: pointer;
+    user-select: none;
+
+    &::selection {
+      background: transparent;
+    }
+  }
+}
+
 .popup {
   display: flex;
   flex-direction: column;
@@ -9,5 +22,47 @@
 
   &:empty {
     display: none;
+  }
+}
+
+.arrow {
+  display: block;
+  position: relative;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 9px;
+    top: 50%;
+    background: var(--color-10);
+    transition: transform .3s;
+  }
+
+  &:before {
+    border-radius: 1px 0 0 1px;
+    right: calc(50% - 1px);
+    transform: rotateZ(35deg);
+  }
+
+  &:after {
+    border-radius: 0 1px 1px 0;
+    left: calc(50% - 1px);
+    transform: rotateZ(-35deg);
+  }
+}
+
+.arrowSelected {
+  &:before {
+    transform: rotateZ(-35deg);
+  }
+
+  &:after {
+    transform: rotateZ(35deg);
   }
 }

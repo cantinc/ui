@@ -11,7 +11,7 @@ export default example({
     [SelectorItem.name]: 'SelectorItem',
   },
   example: (
-    <Selector search exact>
+    <Selector label='Label' arrow exact>
       <SelectorItem value='' label='None' />
       <SelectorItem value='test1' label='Test 1' />
       <SelectorItem value='test2' label='Test 2' />
