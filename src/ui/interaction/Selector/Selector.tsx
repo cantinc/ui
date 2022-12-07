@@ -11,7 +11,7 @@ import styles from './Selector.scss'
 
 const useStyle = style(styles)
 
-export type SelectorDisplay = 'auto' | 'value' | 'label'
+export type SelectorDisplay = 'auto' | 'value'
 
 export interface SelectorProps extends InputProps {
   values?: SelectorItemProps[]
@@ -27,7 +27,7 @@ export interface SelectorProps extends InputProps {
 
 export interface SelectorContext {
   value: WatchProp<string>
-  setValue: (value: string) => void
+  setValue: (value: string, label?: string) => void
   hide: () => void
   showValues?: boolean
 }
@@ -71,9 +71,20 @@ export function Selector ({
     }
   }
 
+  const displayState = new State('')
+  const displayValue = display === 'value' ? value : () => displayState.value
+  const setValue = display === 'value'
+    ? (val: string) => {
+        displayState.value = val
+        oninput?.(val)
+      }
+    : (val: string, lab?: string) => {
+        displayState.value = val ? lab || val : ''
+        oninput?.(val)
+      }
   const selector: SelectorContext = {
     value,
-    setValue: oninput as any,
+    setValue,
     hide: () => { show.value = false },
     showValues,
   }
@@ -86,11 +97,7 @@ export function Selector ({
           return true
         }
 
-        if ((!label || showValues) && val.toLowerCase().startsWith(currentValue)) {
-          return true
-        }
-
-        return false
+        return (!label || showValues) && val.toLowerCase().startsWith(currentValue)
       }) || []
     : values
 
@@ -98,8 +105,8 @@ export function Selector ({
     <>
       <Input
         {...props}
-        value={value}
-        oninput={oninput}
+        value={displayValue}
+        oninput={setValue}
         renderInput={(props: any) => (
           <input
             {...props}

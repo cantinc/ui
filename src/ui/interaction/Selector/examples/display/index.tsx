@@ -10,10 +10,10 @@ const data: SelectorItemProps[] = [
 ]
 
 export default example({
-  id: 'labels',
-  title: 'labels',
+  id: 'display',
+  title: 'display',
   description,
   example: (
-    <Selector exact label='ИНН' values={data} />
+    <Selector exact display='value' label='Label' values={data} />
   ),
 })
