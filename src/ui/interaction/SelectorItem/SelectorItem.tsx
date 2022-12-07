@@ -22,8 +22,8 @@ export function SelectorItem ({
   const { hide, value: selectorValue, setValue, showValues } = useContext(selectorContext)
 
   const handleClick = (e: MouseEvent) => {
+    setValue(value)
     hide()
-    setTimeout(() => setValue(value), 300)
     ;(onmousedown as any)?.(e)
   }
 

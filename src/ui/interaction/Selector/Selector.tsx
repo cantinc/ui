@@ -58,12 +58,14 @@ export function Selector ({
     }
   }
 
-  if (!searchValue) {
-    searchValue = value
-  }
-
-  if (!onsearch) {
-    onsearch = oninput
+  if (!searchValue && search) {
+    const state = new State('')
+    const oldOnSearch = onsearch
+    searchValue = () => state.value
+    onsearch = (value: string) => {
+      state.value = value
+      oldOnSearch?.(value)
+    }
   }
 
   const selector: SelectorContext = {
@@ -95,17 +97,33 @@ export function Selector ({
         {...props}
         value={value}
         oninput={oninput}
-        renderInput={props => (
+        renderInput={(props: any) => (
           <input
             {...props}
+            placeholder={() => show.value && search ? use(props._value) : use(props.placeholder)}
+            _value={() => show.value && search ? use(searchValue) || '' : use(props._value)}
+            oninput={(e: any) => {
+              if (show.value && search) {
+                onsearch?.(e.target.value)
+
+                if (!exact) {
+                  props.oninput?.(e)
+                }
+              } else {
+                props.oninput?.(e)
+              }
+            }}
             readOnly={!search && exact ? true : undefined}
             onfocus={(e: any) => {
+              if (search) {
+                onsearch?.('')
+              }
               show.value = true
-              ;(props?.onfocus as any)?.(e)
+              props?.onfocus?.(e)
             }}
             onblur={(e: any) => {
               show.value = false
-              ;(props?.onblur as any)?.(e)
+              props?.onblur?.(e)
             }}
           />
         )}
@@ -123,8 +141,8 @@ export function Selector ({
               <SelectorItem {...item.value} />
             )}
           </for>
+          {children}
         </context>
-        {children}
       </ElementPopup>
     </>
   )

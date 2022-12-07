@@ -1,1 +1,1 @@
-By default, shows an input
+By default, it looks and works like [Input](/interaction/input)

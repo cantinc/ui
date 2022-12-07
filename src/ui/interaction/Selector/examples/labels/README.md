@@ -1,1 +1,1 @@
-By default, shows an input
+You can add labels into values to show them instead of values.
