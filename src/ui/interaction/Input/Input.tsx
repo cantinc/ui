@@ -43,7 +43,7 @@ export function Input ({
   error,
   disabled,
   required,
-  inputRef,
+  inputRef = new Ref<HTMLInputElement>(),
   name,
   clearable,
   ...rest
@@ -117,6 +117,12 @@ export function Input ({
       gap={8}
       element='label'
       {...rest}
+      onmousedown={(e: any) => {
+        if (e.target !== inputRef?.value) {
+          e.preventDefault()
+        }
+        ;(rest as any)?.onmousedown?.(e)
+      }}
       class={() => [
         styles.root,
         label && styles.withLabel,

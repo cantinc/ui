@@ -43,15 +43,13 @@ export function Selector ({
   display = 'auto',
   search,
   exact,
-  arrow,
+  arrow = exact,
   onsearch,
   ...props
 }: SelectorProps = {}) {
   const children = useChildren()
   const styles = useStyle()
   const show = new State(false)
-
-  const hide = () => { show.value = false }
 
   if (!value) {
     const state = new State('')
@@ -76,7 +74,7 @@ export function Selector ({
   const selector: SelectorContext = {
     value,
     setValue: oninput as any,
-    hide,
+    hide: () => { show.value = false },
     showValues,
   }
 
@@ -144,12 +142,8 @@ export function Selector ({
         {arrow && (
           <slot name='after'>
             <span
-              onmousedown={(e: MouseEvent) => {
-                if (show.value) {
-                  e.stopPropagation()
-                  e.preventDefault()
-                  hide()
-                }
+              onmousedown={() => {
+                show.value = !show.value
               }}
               class={() => classes([
                 styles.arrow,

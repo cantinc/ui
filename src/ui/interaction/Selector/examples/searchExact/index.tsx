@@ -10,10 +10,10 @@ const data: SelectorItemProps[] = [
 ]
 
 export default example({
-  id: 'exact',
-  title: 'exact',
+  id: 'searchExact',
+  title: 'search & exact',
   description,
   example: (
-    <Selector exact values={data} />
+    <Selector exact search values={data} />
   ),
 })
