@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Divider, Selector, SelectorItem } from 'src/ui'
+import { Button, Divider, Flex, Input, Selector, SelectorItem } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,9 +10,12 @@ export default example({
   components: {
     [SelectorItem.name]: 'SelectorItem',
     [Divider.name]: 'Divider',
+    [Flex.name]: 'Flex',
+    [Input.name]: 'Input',
+    [Button.name]: 'Button',
   },
   example: (
-    <Selector label='Label' exact>
+    <Selector placement='top' label='Label' exact>
       <SelectorItem value='' label='None' />
       <Divider>Group 1</Divider>
       <SelectorItem value='test1' label='Test 1' />
@@ -20,6 +23,10 @@ export default example({
       <Divider>Group 2</Divider>
       <SelectorItem value='test21' label='Test 1' />
       <SelectorItem value='test22' label='Test 2' />
+      <Flex gap={16} padding={16}>
+        <Input placeholder='Add item' flex padding={10} />
+        <Button size='small'>Add</Button>
+      </Flex>
     </Selector>
   ),
 })

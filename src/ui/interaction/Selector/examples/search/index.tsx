@@ -14,6 +14,6 @@ export default example({
   title: 'search',
   description,
   example: (
-    <Selector search values={data} />
+    <Selector arrow search values={data} />
   ),
 })

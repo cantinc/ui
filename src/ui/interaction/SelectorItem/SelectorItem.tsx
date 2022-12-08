@@ -22,6 +22,7 @@ export function SelectorItem ({
   const { hide, value: selectorValue, setValue, showValues } = useContext(selectorContext)
 
   const handleClick = (e: MouseEvent) => {
+    e.preventDefault()
     setValue(value, label)
     hide()
     ;(onmousedown as any)?.(e)

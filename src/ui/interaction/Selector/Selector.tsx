@@ -107,6 +107,12 @@ export function Selector ({
         {...props}
         value={displayValue}
         oninput={setValue}
+        onmousedown={(e: MouseEvent) => {
+          if (!show.value) {
+            show.value = true
+          }
+          ;(props as any)?.onclick?.(e)
+        }}
         renderInput={(props: any) => (
           <input
             {...props}
@@ -127,7 +133,7 @@ export function Selector ({
                 props.oninput?.(e)
               }
             }}
-            readOnly={!search && exact ? true : undefined}
+            readOnly={!exact ? undefined : !search ? true : () => show.value ? undefined : true}
             onfocus={(e: any) => {
               if (search) {
                 onsearch?.('')
@@ -149,7 +155,9 @@ export function Selector ({
         {arrow && (
           <slot name='after'>
             <span
-              onmousedown={() => {
+              onmousedown={(e: MouseEvent) => {
+                e.preventDefault()
+                e.stopPropagation()
                 show.value = !show.value
               }}
               class={() => classes([
