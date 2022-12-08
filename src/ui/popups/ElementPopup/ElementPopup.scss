@@ -17,4 +17,5 @@
 .hide {
   opacity: 0;
   transform: translateY(8px);
+  pointer-events: none;
 }

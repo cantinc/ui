@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style, use } from '@innet/dom'
+import { HTMLStyleProps, Ref, style, use } from '@innet/dom'
 import { useContext } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -12,14 +12,16 @@ export interface SelectorItemProps extends HTMLStyleProps<HTMLDivElement> {
   label?: string
 }
 
-export function SelectorItem ({
+export function * SelectorItem ({
   value,
   label,
   onmousedown,
+  onmouseenter,
+  ref = new Ref<HTMLDivElement>(),
   ...props
 }: SelectorItemProps) {
   const styles = useStyle()
-  const { hide, value: selectorValue, setValue, showValues } = useContext(selectorContext)
+  const { hide, value: selectorValue, setValue, showValues, preselect, setPreselect } = useContext(selectorContext)
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault()
@@ -28,13 +30,27 @@ export function SelectorItem ({
     ;(onmousedown as any)?.(e)
   }
 
-  return (
+  const updatePreselect = () => {
+    if (use(selectorValue) === value) {
+      setPreselect(undefined)
+    } else {
+      setPreselect({ value, label })
+    }
+  }
+
+  yield (
     <div
       {...props}
+      ref={ref}
+      onmouseenter={(e: MouseEvent) => {
+        updatePreselect()
+        ;(onmouseenter as any)?.(e)
+      }}
       onmousedown={handleClick}
       class={() => classes([
         styles.root,
         use(selectorValue) === value && styles.selected,
+        preselect()?.value === value && styles.preselect,
       ])}>
       {label || value}
       {showValues && (
@@ -44,4 +60,6 @@ export function SelectorItem ({
       )}
     </div>
   )
+
+  ;(ref?.value as any).preselect = updatePreselect
 }

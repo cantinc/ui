@@ -6,6 +6,11 @@
   user-select: none;
 }
 
+.preselect {
+  color: var(--color-100);
+  background-color: var(--color-secondary-50);
+}
+
 .selected {
   color: var(--color-100);
   background-color: var(--color-primary-50);
