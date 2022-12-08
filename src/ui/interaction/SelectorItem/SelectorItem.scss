@@ -7,8 +7,12 @@
 }
 
 .preselect {
-  color: var(--color-100);
-  background-color: var(--color-secondary-50);
+  color: var(--color-primary-0);
+  background-color: var(--color-primary-100);
+
+  & > .value {
+    color: var(--color-primary-20);
+  }
 }
 
 .selected {
@@ -17,11 +21,12 @@
 }
 
 .value {
+  transition: color .3s;
   display: block;
   font-size: 14px;
   color: var(--color-50);
 
   .selected > & {
-    color: var(--color-primary-80);
+    color: var(--color-primary-100);
   }
 }
