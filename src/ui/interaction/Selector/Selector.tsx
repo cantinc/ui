@@ -188,6 +188,8 @@ export function Selector ({
         onmousedown={(e: MouseEvent) => {
           if (!show.value) {
             show.value = true
+          } else if (exact || search) {
+            hide()
           }
           ;(props as any)?.onclick?.(e)
         }}
