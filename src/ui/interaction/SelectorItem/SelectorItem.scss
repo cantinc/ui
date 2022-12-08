@@ -7,11 +7,11 @@
 }
 
 .preselect {
-  color: var(--color-primary-0);
+  color: var(--color-primary-20);
   background-color: var(--color-primary-100);
 
   & > .value {
-    color: var(--color-primary-20);
+    color: var(--color-primary-40);
   }
 }
 
