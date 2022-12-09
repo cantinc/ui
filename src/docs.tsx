@@ -1,4 +1,5 @@
 import './styles/base.scss'
+import './styles/external.global.scss'
 
 import dom from '@innet/dom'
 import innet from 'innet'

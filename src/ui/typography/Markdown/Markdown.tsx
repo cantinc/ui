@@ -3,6 +3,8 @@ import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 import { WatchProp } from 'src/types'
 
+import { Highlight } from '../../external'
+
 export interface MarkdownProps {
   text: WatchProp<string>
 }
@@ -52,9 +54,12 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElemen
     type: 'code',
     children: value,
   }),
-  CodeBlock: ({ value }) => ({
-    type: 'pre',
-    children: value,
+  CodeBlock: ({ value, lang }) => ({
+    type: Highlight,
+    props: {
+      code: value,
+      language: lang,
+    },
   }),
   Image: ({ alt, url }) => ({
     type: 'img',
