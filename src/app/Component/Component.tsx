@@ -1,6 +1,6 @@
 import { history } from '@innet/dom'
 
-import { Card, Cards, DelayPage, JSXStringify, Markdown, Typography } from '../../ui'
+import { Card, Cards, DelayPage, Highlight, Markdown, Typography } from '../../ui'
 import { AsyncSpin } from '../../ui/content/AsyncSpin'
 import { Details } from '../../ui/content/Details'
 import styles from './Component.scss'
@@ -20,8 +20,7 @@ export interface UIExample {
   example: any
   title?: string
   description?: string
-  components?: Record<string, string>
-  functions?: Map<Function, string>
+  code?: string
 }
 
 export interface UIMeta<C extends UIComponent> {
@@ -50,8 +49,6 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
 
   const {
     component: Component,
-    components: mainComponents,
-    name,
     examples,
     props,
     description,
@@ -66,7 +63,7 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
         <>
           <h2>Examples</h2>
           <Cards>
-            {examples.map(({ id, example, title, description, components, functions }) => (
+            {examples.map(({ id, example, title, description, code }) => (
               <Card preventAnimation class={() => [styles.example, history.hash === id && styles.active]} vertical id={id} align='stretch'>
                 {title || description
                   ? (
@@ -79,14 +76,14 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
                 <div class={styles.exampleWrapper}>
                   {example}
                 </div>
-                <Details>
-                  <slot name='summary'>
-                    Code
-                  </slot>
-                  <JSXStringify functions={functions} components={{ [Component.name]: name, ...mainComponents, ...components }}>
-                    {example}
-                  </JSXStringify>
-                </Details>
+                {code && (
+                  <Details>
+                    <slot name='summary'>
+                      Code
+                    </slot>
+                    <Highlight code={code} language='tsx' />
+                  </Details>
+                )}
               </Card>
             ))}
           </Cards>

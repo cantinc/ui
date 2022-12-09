@@ -10,9 +10,18 @@ export default example({
   id: 'loading',
   title: 'Loading',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-  },
+  code: `<Flex wrap gap={8}>
+  <Button onclick={() => { loading.value = !loading.value }}>
+    Click Me
+  </Button>
+  <Button
+    view='secondary'
+    size='small'
+    loading={() => loading.value}
+    onclick={() => alert('clicked')}>
+    Some button
+  </Button>
+</Flex>`,
   example: (
     <Flex wrap gap={8}>
       <Button onclick={() => { loading.value = !loading.value }}>

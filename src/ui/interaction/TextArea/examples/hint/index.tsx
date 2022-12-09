@@ -9,10 +9,23 @@ export default example({
   id: 'hint',
   title: 'hint',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-    [Button.name]: 'Button',
-  },
+  code: `<Flex vertical>
+  <TextArea>
+    <slot name='hint'>
+      Static hint
+    </slot>
+  </TextArea>
+  <TextArea>
+    <slot name='hint'>
+      {() => hint.value}
+    </slot>
+  </TextArea>
+  <Button onclick={() => {
+    hint.value = hint.value ? '' : 'Hint message...'
+  }}>
+    Click Me
+  </Button>
+</Flex>`,
   example: (
     <Flex vertical>
       <TextArea>

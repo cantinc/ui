@@ -7,9 +7,20 @@ export default example({
   id: 'view',
   title: 'View',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-  },
+  code: `<Flex gap={16} wrap>
+  <Button view='primary'>
+    Primary
+  </Button>
+  <Button view='secondary'>
+    Secondary
+  </Button>
+  <Button view='negative'>
+    Negative
+  </Button>
+  <Button view='positive'>
+    Positive
+  </Button>
+</Flex>`,
   example: (
     <Flex gap={16} wrap>
       <Button view='primary'>

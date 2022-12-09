@@ -7,6 +7,14 @@ export default example({
   id: 'placeholder',
   title: 'placeholder',
   description,
+  code: `import { Input } from '@cantinc/ui'
+
+return (
+  <Input
+    inline
+    placeholder='Placeholder'
+  />
+)`,
   example: (
     <Input
       inline

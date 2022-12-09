@@ -7,9 +7,17 @@ export default example({
   id: 'beforeAfter',
   title: 'before & after',
   description,
-  components: {
-    [Icon.name]: 'Icon',
-  },
+  code: `<TextArea
+  placeholder='Enter count'
+  gap={8}
+  inline>
+  <slot name='before'>
+    <Icon icon='minus' />
+  </slot>
+  <slot name='after'>
+    <Icon icon='plus' />
+  </slot>
+</TextArea>`,
   example: (
     <TextArea
       placeholder='Enter count'

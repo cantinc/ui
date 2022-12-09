@@ -10,10 +10,22 @@ export default example({
   id: 'content',
   title: 'With content',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-    [Button.name]: 'Button',
-  },
+  code: `<Flex vertical>
+  <SpinBox align='center' loading={() => loading.value}>
+    <span>
+      Top
+    </span>
+    <span>
+      Content
+    </span>
+    <span>
+      Bottom
+    </span>
+  </SpinBox>
+  <Button onclick={() => { loading.value = !loading.value }}>
+    Switch
+  </Button>
+</Flex>`,
   example: (
     <Flex vertical>
       <SpinBox align='center' loading={() => loading.value}>

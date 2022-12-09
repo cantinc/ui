@@ -7,6 +7,11 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
+  code: `import { Input } from '@cantinc/ui'
+
+return (
+  <Input />
+)`,
   example: (
     <Input />
   ),

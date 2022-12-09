@@ -7,6 +7,11 @@ export default example({
   id: 'clearable',
   title: 'clearable',
   description,
+  code: `import { Input } from '@cantinc/ui'
+
+return (
+  <Input clearable />
+)`,
   example: (
     <Input clearable />
   ),

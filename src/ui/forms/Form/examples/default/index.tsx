@@ -7,9 +7,12 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  components: {
-    [Button.name]: 'Button',
-  },
+  code: `<Form vertical>
+  Content
+  <Button>
+    Submit
+  </Button>
+</Form>`,
   example: (
     <Form vertical>
       Content

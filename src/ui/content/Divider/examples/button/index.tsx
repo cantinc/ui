@@ -7,9 +7,11 @@ export default example({
   id: 'button',
   title: 'Button',
   description,
-  components: {
-    [Button.name]: 'Button',
-  },
+  code: `<Divider>
+  <Button>
+    Content
+  </Button>
+</Divider>`,
   example: (
     <Divider>
       <Button>

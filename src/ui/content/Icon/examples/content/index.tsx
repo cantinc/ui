@@ -7,9 +7,13 @@ export default example({
   id: 'content',
   title: 'Content',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-  },
+  code: `<Flex gap={16} wrap>
+  {Object.keys(icons).map(key => (
+    <Icon icon={key as any}>
+      {key}
+    </Icon>
+  ))}
+</Flex>`,
   example: (
     <Flex gap={16} wrap>
       {Object.keys(icons).map(key => (

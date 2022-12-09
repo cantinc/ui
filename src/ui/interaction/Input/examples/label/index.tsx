@@ -7,6 +7,14 @@ export default example({
   id: 'label',
   title: 'label',
   description,
+  code: `import { Input } from '@cantinc/ui'
+
+return (
+  <Input
+    label='Test field'
+    inline
+  />
+)`,
   example: (
     <Input
       label='Test field'

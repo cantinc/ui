@@ -7,9 +7,9 @@ export default example({
   id: 'center',
   title: 'Center',
   description,
-  components: {
-    [Flex.name]: 'Flex',
-  },
+  code: `<Flex vertical align='stretch' style='width:200px;height:200px;background:var(--color-60)'>
+  <Spin flex align='center' justify='center' />
+</Flex>`,
   example: (
     <Flex vertical align='stretch' style='width:200px;height:200px;background:var(--color-60)'>
       <Spin flex align='center' justify='center' />
