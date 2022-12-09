@@ -14,19 +14,16 @@ return (
     <Input
       flex
       padding={[0, 8]}
-      inline
       placeholder='Placeholder...'
     />
     <Input
       flex
       padding={8}
-      inline
       label='Label...'
     />
     <Input
       flex
       padding={[16, 8, 8, 16]}
-      inline
       label='Label...'
     />
   </Flex>
@@ -36,19 +33,16 @@ return (
       <Input
         flex
         padding={[0, 8]}
-        inline
         placeholder='Placeholder...'
       />
       <Input
         flex
         padding={8}
-        inline
         label='Label...'
       />
       <Input
         flex
         padding={[16, 8, 8, 16]}
-        inline
         label='Label...'
       />
     </Flex>
