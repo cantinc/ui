@@ -1,0 +1,9 @@
+.root {
+  transition: height .3s;
+  overflow: hidden;
+}
+
+.summary {
+  cursor: pointer;
+  user-select: none;
+}

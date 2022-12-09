@@ -8,10 +8,10 @@ export default example({
   title: 'Default',
   description,
   example: (
-    <Form notification='Success' vertical>
-      <FormTextArea name='name' label='Name' required />
+    <Form vertical>
+      <FormTextArea name='email' label='Email' />
       <Button>
-        Send
+        Subscribe
       </Button>
     </Form>
   ),

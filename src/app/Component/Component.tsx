@@ -2,6 +2,7 @@ import { history } from '@innet/dom'
 
 import { Card, Cards, DelayPage, JSXStringify, Markdown, Typography } from '../../ui'
 import { AsyncSpin } from '../../ui/content/AsyncSpin'
+import { Details } from '../../ui/content/Details'
 import styles from './Component.scss'
 
 export type UITypes = 'select' | 'text' | 'switch'
@@ -78,12 +79,14 @@ export async function * Component <C extends UIComponent> ({ is }: ComponentProp
                 <div class={styles.exampleWrapper}>
                   {example}
                 </div>
-                <details>
-                  <summary>Code</summary>
+                <Details>
+                  <slot name='summary'>
+                    Code
+                  </slot>
                   <JSXStringify functions={functions} components={{ [Component.name]: name, ...mainComponents, ...components }}>
                     {example}
                   </JSXStringify>
-                </details>
+                </Details>
               </Card>
             ))}
           </Cards>

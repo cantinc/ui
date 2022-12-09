@@ -1,1 +1,3 @@
-By default, do nothing on click
+You can use `formActionHandler` to handle any form in one place.
+
+
