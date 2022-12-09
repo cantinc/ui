@@ -1,12 +1,12 @@
 import { HTMLProps, Ref } from '@innet/dom'
-import hljs from 'highlight.js'
 import classes from 'html-classes'
+import Prism from 'prismjs'
 
 import styles from './Highlight.scss'
 
 export interface HighlightProps extends HTMLProps<HTMLPreElement> {
   code: string
-  language?: string
+  language: string
 }
 
 export function * Highlight ({
@@ -19,7 +19,7 @@ export function * Highlight ({
     <pre
       {...props}
       class={() => classes([
-        'hljs',
+        `language-${language}`,
         styles.root,
         props.class,
       ])}
@@ -27,9 +27,7 @@ export function * Highlight ({
     />
   )
 
-  if (ref?.value) {
-    ref.value.innerHTML = language
-      ? hljs.highlight(code, { language }).value
-      : hljs.highlightAuto(code).value
+  if (ref?.value && language in Prism.languages) {
+    ref.value.innerHTML = Prism.highlight(code, Prism.languages[language], language)
   }
 }

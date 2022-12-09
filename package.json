@@ -42,9 +42,9 @@
     "@innet/jsx": "^1.1.0",
     "@textlint/ast-node-types": "^12.2.2",
     "@textlint/markdown-to-ast": "^12.2.3",
-    "highlight.js": "^11.7.0",
     "html-classes": "^2.0.2",
     "innet": "^1.0.1",
+    "prismjs": "^1.29.0",
     "watch-state": "^3.4.5"
   },
   "peerDependencies": {
@@ -53,6 +53,7 @@
   "devDependencies": {
     "@types/jest": "^29.1.1",
     "@types/node": "^18.8.1",
+    "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "core-js": "^3.25.3",
