@@ -7,6 +7,15 @@ export default example({
   id: 'placeholder',
   title: 'placeholder',
   description,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { TextArea } from '@cantinc/ui'
+
+innet(
+  <TextArea placeholder='Placeholder' />,
+  dom,
+)`,
   example: (
     <TextArea placeholder='Placeholder' />
   ),
