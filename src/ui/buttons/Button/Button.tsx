@@ -1,4 +1,4 @@
-import { HTMLStyleProps, LinkProps, style } from '@innet/dom'
+import { HTMLStyleProps, LinkProps, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -32,18 +32,16 @@ export function Button ({
   const children = useChildren()
   const styles = useStyle()
 
-  const customClasses = {
-    [styles.primary]: view === 'primary',
-    [styles.secondary]: view === 'secondary',
-    [styles.negative]: view === 'negative',
-    [styles.positive]: view === 'positive',
-    [styles.loading]: loading,
-    [styles.small]: size === 'small',
-  }
-
   const className = () => classes([
     styles.root,
-    customClasses,
+    {
+      [styles.primary]: view === 'primary',
+      [styles.secondary]: view === 'secondary',
+      [styles.negative]: view === 'negative',
+      [styles.positive]: view === 'positive',
+      [styles.loading]: loading,
+      [styles.small]: size === 'small',
+    },
   ])
   const disabledValue = (() => (disabled ?? loading?.()) || undefined) as unknown as boolean
 
@@ -52,14 +50,15 @@ export function Button ({
       flex = 1
     }
 
-    style = `--ui-button-flex:${flex};${style}`
+    const oldStyle = style
+    style = () => `--ui-button-flex:${flex};${use(oldStyle)}`
   }
 
   if (link) {
     return (
       <a {...link} style={style} class={className}>
-        {() => loading?.() && <AsyncSpin class={styles.spin} />}
-        <span class={styles.content}>
+        {() => loading?.() && <AsyncSpin class={() => styles.spin} />}
+        <span class={() => styles.content}>
           {children}
         </span>
       </a>
@@ -73,8 +72,8 @@ export function Button ({
       type={type}
       disabled={disabledValue}
       class={className}>
-      {() => loading?.() && <AsyncSpin class={styles.spin} />}
-      <span class={styles.content}>
+      {() => loading?.() && <AsyncSpin class={() => styles.spin} />}
+      <span class={() => styles.content}>
         {children}
       </span>
     </button>
