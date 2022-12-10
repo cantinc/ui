@@ -7,12 +7,16 @@ export default example({
   id: 'element',
   title: 'element',
   description,
-  code: `import { Flex } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex } from '@cantinc/ui'
+
+innet(
   <Flex<HTMLAnchorElement> element='a' href='/'>
     Home Page
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex<HTMLAnchorElement> element='a' href='/'>

@@ -7,10 +7,14 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  code: `import { Markdown } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
-  <Markdown text='### Markdown \`header\`' />
+import { Markdown } from '@cantinc/ui'
+
+innet(
+  <Markdown text='### Markdown \`header\`' />,
+  dom,
 )`,
   example: (
     <Markdown text='### Markdown `header`' />

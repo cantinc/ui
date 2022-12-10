@@ -7,12 +7,16 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  code: `import { Markdown, Typography } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Markdown, Typography } from '@cantinc/ui'
+
+innet(
   <Typography>
     <Markdown text='### Markdown header' />
-  </Typography>
+  </Typography>,
+  dom,
 )`,
   example: (
     <Typography>

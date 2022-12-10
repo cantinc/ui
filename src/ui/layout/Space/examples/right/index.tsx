@@ -7,13 +7,17 @@ export default example({
   id: 'right',
   title: 'Move right',
   description,
-  code: `import { Flex, Space } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex, Space } from '@cantinc/ui'
+
+innet(
   <Flex style='background:var(--color-80)'>
     <Space />
     <div style='background:var(--color-60);padding:10px'>Element</div>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex style='background:var(--color-80)'>

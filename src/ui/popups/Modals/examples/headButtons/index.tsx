@@ -12,31 +12,33 @@ export default example({
   id: 'head-buttons',
   title: 'headButtons',
   description,
-  code: `import { Modals, Modal, Button } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 import { State } from 'watch-state'
+
+import { Modals, Modal, Button } from '@cantinc/ui'
 
 const show = new State(false)
 
-return (
+innet(
   <>
-    <portal parent={document.body}>
-      <Modals>
-        {() => show.value && (
-          <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
-            <slot name='title'>
-              Sign-in
-            </slot>
-            <slot name='content'>
-              Sign-in form should be here...
-            </slot>
-          </Modal>
-        )}
-      </Modals>
-    </portal>
     <Button onclick={() => { show.value = true }}>
       show
     </Button>
-  </>
+    <Modals>
+      {() => show.value && (
+        <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
+          <slot name='title'>
+            Sign-in
+          </slot>
+          <slot name='content'>
+            Sign-in form should be here...
+          </slot>
+        </Modal>
+      )}
+    </Modals>
+  </>,
+  dom,
 )`,
   example: (
     <>

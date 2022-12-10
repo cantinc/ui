@@ -7,12 +7,16 @@ export default example({
   id: 'success',
   title: 'success',
   description,
-  code: `import { Button, notify } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Button, notify } from '@cantinc/ui'
+
+innet(
   <Button onclick={() => notify('Success message!', 'success')}>
     Click Me
-  </Button>
+  </Button>,
+  dom,
 )`,
   example: (
     <Button onclick={() => notify('Success message!', 'success')}>

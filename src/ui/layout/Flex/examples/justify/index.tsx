@@ -7,9 +7,12 @@ export default example({
   id: 'justify',
   title: 'justify',
   description,
-  code: `import { Flex } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex } from '@cantinc/ui'
+
+innet(
   <Flex wrap gap={16}>
     <Flex flex justify='start' style='background:var(--color-80);min-width:200px'>
       <div style='background:var(--color-40);padding:12px'>justify</div>
@@ -31,7 +34,8 @@ return (
       <div style='background:var(--color-40);padding:12px'>justify</div>
       <div style='background:var(--color-60);padding:12px'>around</div>
     </Flex>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex wrap gap={16}>

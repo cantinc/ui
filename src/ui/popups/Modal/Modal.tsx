@@ -5,7 +5,7 @@ import { onDestroy, State } from 'watch-state'
 
 import { setOverflow } from '../../../utils'
 import { Button, ButtonProps } from '../../buttons'
-import { Icon } from '../../content'
+import { Icon } from '../../content/Icon'
 import { Flex } from '../../layout'
 import { HTMLModalElement } from '../Modals/types'
 import styles from './Modal.scss'

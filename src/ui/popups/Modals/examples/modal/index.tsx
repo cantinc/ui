@@ -12,28 +12,30 @@ export default example({
   id: 'modal',
   title: 'modal',
   description,
-  code: `import { Modals, Modal, Button } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 import { State } from 'watch-state'
+
+import { Modals, Modal, Button } from '@cantinc/ui'
 
 const show = new State(false)
 
-return (
+innet(
   <>
-    <portal parent={document.body}>
-      <Modals>
-        {() => show.value && (
-          <Modal onclose={() => { show.value = false }}>
-            <slot name='content'>
-              Content
-            </slot>
-          </Modal>
-        )}
-      </Modals>
-    </portal>
     <Button onclick={() => { show.value = true }}>
       show
     </Button>
-  </>
+    <Modals>
+      {() => show.value && (
+        <Modal onclose={() => { show.value = false }}>
+          <slot name='content'>
+            Content
+          </slot>
+        </Modal>
+      )}
+    </Modals>
+  </>,
+  dom,
 )`,
   example: (
     <>

@@ -7,9 +7,12 @@ export default example({
   id: 'verticalAlign',
   title: 'vertical & align',
   description,
-  code: `import { Flex } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex } from '@cantinc/ui'
+
+innet(
   <Flex wrap gap={16} style='background:var(--color-80)'>
     <Flex vertical align='center'>
       <div style='background:var(--color-40);padding:24px'>align</div>
@@ -27,7 +30,8 @@ return (
       <div style='background:var(--color-40);padding:24px'>align</div>
       <div style='background:var(--color-60);padding:6px'>stretch</div>
     </Flex>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex wrap gap={16} style='background:var(--color-80)'>

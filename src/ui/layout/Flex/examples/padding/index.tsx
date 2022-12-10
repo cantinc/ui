@@ -7,9 +7,12 @@ export default example({
   id: 'padding',
   title: 'padding',
   description,
-  code: `import { Flex } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex } from '@cantinc/ui'
+
+innet(
   <Flex vertical style='color:var(--color-100)'>
     <Flex padding={16} style='background:var(--color-90)'>
       <div style='background:var(--color-20);padding:10px'>16</div>
@@ -23,7 +26,8 @@ return (
     <Flex padding={[0, 8, 16, 32]} style='background:var(--color-60)'>
       <div style='background:var(--color-20);padding:10px'>[0, 8, 16, 32]</div>
     </Flex>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex vertical style='color:var(--color-100)'>

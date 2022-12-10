@@ -7,13 +7,17 @@ export default example({
   id: 'vertical',
   title: 'vertical',
   description,
-  code: `import { Flex } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex } from '@cantinc/ui'
+
+innet(
   <Flex vertical style='background:var(--color-80)'>
     <div style='background:var(--color-40);padding:10px'>Top</div>
     <div style='background:var(--color-60);padding:10px'>Down</div>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex vertical style='background:var(--color-80)'>
