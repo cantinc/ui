@@ -5,8 +5,15 @@ import description from './README.md'
 
 export default example({
   id: 'element',
-  title: 'Element',
+  title: 'element',
   description,
+  code: `import { Flex } from '@cantinc/ui'
+
+return (
+  <Flex<HTMLAnchorElement> element='a' href='/'>
+    Home Page
+  </Flex>
+)`,
   example: (
     <Flex<HTMLAnchorElement> element='a' href='/'>
       Home Page

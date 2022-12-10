@@ -7,7 +7,12 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
+  code: `import { Markdown } from '@cantinc/ui'
+
+return (
+  <Markdown text='### Markdown \`header\`' />
+)`,
   example: (
-    <Markdown text='### Markdown header' />
+    <Markdown text='### Markdown `header`' />
   ),
 })

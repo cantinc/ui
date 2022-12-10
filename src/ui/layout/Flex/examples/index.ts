@@ -6,6 +6,7 @@ import flex from './flex'
 import gap from './gap'
 import inline from './inline'
 import justify from './justify'
+import padding from './padding'
 import reverse from './reverse'
 import vertical from './vertical'
 import verticalAlign from './verticalAlign'
@@ -20,6 +21,7 @@ export default [
   verticalGap,
   differentGap,
   reverse,
+  padding,
   inline,
   align,
   verticalAlign,
