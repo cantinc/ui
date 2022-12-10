@@ -1,3 +1,5 @@
 export * from './Notification'
 export * from './Notifications'
 export * from './ElementPopup'
+export * from './Modals'
+export * from './Modal'

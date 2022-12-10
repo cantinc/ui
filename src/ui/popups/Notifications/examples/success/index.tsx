@@ -7,6 +7,13 @@ export default example({
   id: 'success',
   title: 'success',
   description,
+  code: `import { Button, notify } from '@cantinc/ui'
+
+return (
+  <Button onclick={() => notify('Success message!', 'success')}>
+    Click Me
+  </Button>
+)`,
   example: (
     <Button onclick={() => notify('Success message!', 'success')}>
       Click Me

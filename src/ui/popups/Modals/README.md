@@ -10,7 +10,7 @@ import { Modals, Modal } from '@cantinc/ui'
 
 Add `Modals` into a place you want to put modal HTML elements.
 
-```typescript jsx
+```tsx
 function App () {
   return (
     <>
@@ -27,7 +27,7 @@ function App () {
 
 You can use `portal` to add modals anywhere.
 
-```typescript jsx
+```tsx
 function Global () {
   return (
     <portal parent={document.body}>
@@ -35,7 +35,7 @@ function Global () {
       <Modals>
         ...
       </Modals>
-    </>
+    </portal>
   )
 }
 ```

@@ -10,7 +10,7 @@ import { Notifications, notify } from '@cantinc/ui'
 
 Add `Notifications` into a place you want to put notification HTML elements.
 
-```typescript jsx
+```tsx
 function App () {
   return (
     <>
@@ -25,13 +25,13 @@ function App () {
 
 You can use `portal` to add notifications anywhere.
 
-```typescript jsx
+```tsx
 function Global () {
   return (
     <portal parent={document.body}>
       <!-- Other stuff -->
       <Notifications />
-    </>
+    </portal>
   )
 }
 ```
