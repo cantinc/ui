@@ -116,6 +116,8 @@ export function Form ({
         element='form'
         onsubmit={handleSubmit}
         action={action}
+        vertical
+        align='stretch'
         {...props}>
         {children}
       </Flex>
