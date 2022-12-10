@@ -7,6 +7,15 @@ export default example({
   id: 'label',
   title: 'label',
   description,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Selector } from '@cantinc/ui'
+
+innet(
+  <Selector label='Label' />,
+  dom,
+)`,
   example: (
     <Selector label='Label' />
   ),

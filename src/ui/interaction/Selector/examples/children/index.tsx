@@ -7,9 +7,12 @@ export default example({
   id: 'children',
   title: 'children',
   description,
-  code: `import { Selector, SelectorItem } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Selector, SelectorItem } from '@cantinc/ui'
+
+innet(
   <Selector search placement='top' label='Label' exact>
     <SelectorItem value='' label='None' />
     <Divider>Group 1</Divider>
@@ -18,7 +21,8 @@ return (
     <Divider>Group 2</Divider>
     <SelectorItem value='test21' label='Test 1' />
     <SelectorItem value='test22' label='Test 2' />
-  </Selector>
+  </Selector>,
+  dom,
 )`,
   example: (
     <Selector search placement='top' label='Label' exact>
