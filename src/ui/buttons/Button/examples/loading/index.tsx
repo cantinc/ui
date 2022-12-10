@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Flex } from 'src/ui'
+import { Button, Flex, notify } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
@@ -14,7 +14,7 @@ export default example({
 import dom from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Flex, Button } from '@cantinc/ui'
+import { Flex, Button, notify } from '@cantinc/ui'
 
 const loading = new State(false)
 
@@ -27,7 +27,7 @@ innet(
       view='secondary'
       size='small'
       loading={() => loading.value}
-      onclick={() => alert('clicked')}>
+      onclick={() => notify('clicked')}>
       Some button
     </Button>
   </Flex>,
@@ -42,7 +42,7 @@ innet(
         view='secondary'
         size='small'
         loading={() => loading.value}
-        onclick={() => alert('clicked')}>
+        onclick={() => notify('clicked')}>
         Some button
       </Button>
     </Flex>
