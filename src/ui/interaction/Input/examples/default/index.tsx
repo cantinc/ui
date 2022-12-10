@@ -7,10 +7,14 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  code: `import { Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
-  <Input />
+import { Input } from '@cantinc/ui'
+
+innet(
+  <Input />,
+  dom,
 )`,
   example: (
     <Input />

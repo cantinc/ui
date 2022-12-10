@@ -7,9 +7,12 @@ export default example({
   id: 'beforeAfter',
   title: 'before & after',
   description,
-  code: `import { Input, Icon } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Input, Icon } from '@cantinc/ui'
+
+innet(
   <Input
     placeholder='Enter count'
     gap={8}
@@ -20,7 +23,8 @@ return (
     <slot name='after'>
       <Icon icon='plus' />
     </slot>
-  </Input>
+  </Input>,
+  dom,
 )`,
   example: (
     <Input

@@ -7,9 +7,12 @@ export default example({
   id: 'padding',
   title: 'padding',
   description,
-  code: `import { Flex, Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Flex, Input } from '@cantinc/ui'
+
+innet(
   <Flex gap={[0, 8]} wrap>
     <Input
       flex
@@ -26,7 +29,8 @@ return (
       padding={[16, 8, 8, 16]}
       label='Label...'
     />
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex gap={[0, 8]} wrap>

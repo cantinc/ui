@@ -7,13 +7,17 @@ export default example({
   id: 'label',
   title: 'label',
   description,
-  code: `import { Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Input } from '@cantinc/ui'
+
+innet(
   <Input
     label='Test field'
     inline
-  />
+  />,
+  dom,
 )`,
   example: (
     <Input

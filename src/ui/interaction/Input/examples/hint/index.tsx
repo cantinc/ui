@@ -9,12 +9,15 @@ export default example({
   id: 'hint',
   title: 'hint',
   description,
-  code: `import { State } from 'watch-state'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+import { State } from 'watch-state'
+
 import { Flex, Button, Input } from '@cantinc/ui'
 
 const hint = new State('')
 
-return (
+innet(
   <Flex vertical>
     <Input>
       <slot name='hint'>
@@ -31,7 +34,8 @@ return (
     }}>
       Click Me
     </Button>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex vertical>

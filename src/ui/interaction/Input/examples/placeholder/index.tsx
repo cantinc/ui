@@ -7,13 +7,17 @@ export default example({
   id: 'placeholder',
   title: 'placeholder',
   description,
-  code: `import { Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Input } from '@cantinc/ui'
 
 return (
   <Input
     inline
     placeholder='Placeholder'
-  />
+  />,
+  dom,
 )`,
   example: (
     <Input

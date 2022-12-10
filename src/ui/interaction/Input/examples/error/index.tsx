@@ -10,12 +10,15 @@ export default example({
   id: 'error',
   title: 'error',
   description,
-  code: `import { State } from 'watch-state'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+import { State } from 'watch-state'
+
 import { Button, Flex, Input } from '@cantinc/ui'
 
 const error = new State('')
 
-return (
+innet(
   <Flex vertical>
     <Input error />
     <Input placeholder='Placeholder' error />
@@ -35,7 +38,8 @@ return (
     }}>
       Click Me
     </Button>
-  </Flex>
+  </Flex>,
+  dom,
 )`,
   example: (
     <Flex vertical>

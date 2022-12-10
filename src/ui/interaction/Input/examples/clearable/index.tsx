@@ -7,10 +7,14 @@ export default example({
   id: 'clearable',
   title: 'clearable',
   description,
-  code: `import { Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
-  <Input clearable />
+import { Input } from '@cantinc/ui'
+
+innet(
+  <Input clearable />,
+  dom,
 )`,
   example: (
     <Input clearable />

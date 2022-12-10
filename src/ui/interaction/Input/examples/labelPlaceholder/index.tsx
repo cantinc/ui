@@ -7,14 +7,18 @@ export default example({
   id: 'labelPlaceholder',
   title: 'label & placeholder',
   description,
-  code: `import { Input } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Input } from '@cantinc/ui'
+
+innet(
   <Input
     label='Test field'
     placeholder='Test...'
     inline
-  />
+  />,
+  dom,
 )`,
   example: (
     <Input
