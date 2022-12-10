@@ -10,18 +10,29 @@ export default example({
   id: 'loading',
   title: 'Loading',
   description,
-  code: `<Flex wrap gap={8}>
-  <Button onclick={() => { loading.value = !loading.value }}>
-    Click Me
-  </Button>
-  <Button
-    view='secondary'
-    size='small'
-    loading={() => loading.value}
-    onclick={() => alert('clicked')}>
-    Some button
-  </Button>
-</Flex>`,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+import { State } from 'watch-state'
+
+import { Flex, Button } from '@cantinc/ui'
+
+const loading = new State(false)
+
+innet(
+  <Flex wrap gap={8}>
+    <Button onclick={() => { loading.value = !loading.value }}>
+      Click Me
+    </Button>
+    <Button
+      view='secondary'
+      size='small'
+      loading={() => loading.value}
+      onclick={() => alert('clicked')}>
+      Some button
+    </Button>
+  </Flex>,
+  dom,
+)`,
   example: (
     <Flex wrap gap={8}>
       <Button onclick={() => { loading.value = !loading.value }}>

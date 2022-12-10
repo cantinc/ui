@@ -7,10 +7,14 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  code: `import { Button } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-export default (
-  <Button>Click Me</Button>
+import { Button } from '@cantinc/ui'
+
+innet(
+  <Button>Click Me</Button>,
+  dom,
 )`,
   example: (
     <Button>Click Me</Button>

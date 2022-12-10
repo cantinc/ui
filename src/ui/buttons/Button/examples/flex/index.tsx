@@ -7,10 +7,18 @@ export default example({
   id: 'flex',
   title: 'Flex',
   description,
-  code: `<Flex wrap gap={16}>
-  <Button flex>Flex</Button>
-  <Button view='secondary'>Usual</Button>
-</Flex>`,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Flex, Button } from '@cantinc/ui'
+
+innet(
+  <Flex wrap gap={16}>
+    <Button flex>Flex</Button>
+    <Button view='secondary'>Usual</Button>
+  </Flex>,
+  dom,
+)`,
   example: (
     <Flex wrap gap={16}>
       <Button flex>Flex</Button>
