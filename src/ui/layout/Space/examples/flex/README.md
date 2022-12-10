@@ -1,1 +1,1 @@
-Here you can see a `Flex` element contains two `div`s and `Space` between them. 
+Use `flex` to increase the space.

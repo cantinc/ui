@@ -1,3 +1,5 @@
 .root {
-  flex: 1;
+  --ui-space-flex: 1;
+
+  flex: var(--ui-space-flex);
 }

@@ -1,11 +1,13 @@
+import between from './between'
 import center from './center'
 import double from './double'
 import flex from './flex'
-import space from './space'
+import right from './right'
 
 export default [
-  space,
-  flex,
+  right,
+  between,
   double,
   center,
+  flex,
 ]
