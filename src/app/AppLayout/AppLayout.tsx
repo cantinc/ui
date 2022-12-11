@@ -8,7 +8,7 @@ export function AppLayout () {
   const children = useChildren()
 
   return (
-    <Layout padding={20} class={styles.root}>
+    <Layout padding={20}>
       <aside class={styles.aside}>
         <LayoutMenu />
       </aside>
