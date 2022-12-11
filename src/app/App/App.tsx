@@ -1,11 +1,11 @@
-import { Layout } from 'src/app/Layout'
+import { AppLayout } from 'src/app/AppLayout'
 
 import { Notifications } from '../../ui'
 import { Async } from '../../ui/external/Async'
 
 export function App () {
   return (
-    <Layout>
+    <AppLayout>
       <router ish>
         <slot name='/'>
           <Async
@@ -65,6 +65,6 @@ export function App () {
       <portal parent={document.body}>
         <Notifications />
       </portal>
-    </Layout>
+    </AppLayout>
   )
 }
