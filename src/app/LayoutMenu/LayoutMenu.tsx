@@ -28,6 +28,9 @@ export function LayoutMenu () {
         Layout
       </Menu.Item>
       <Menu.SubMenu>
+        <Menu.Item href='/layout/layout'>
+          <Title>Layout</Title>
+        </Menu.Item>
         <Menu.Item href='/layout/flex'>
           <Title>Flex</Title>
         </Menu.Item>

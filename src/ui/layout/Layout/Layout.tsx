@@ -11,13 +11,11 @@ export function Layout ({
   width,
   style = '',
   ...props
-}: LayoutProps) {
+}: LayoutProps = {}) {
   const children = useChildren()
 
   return (
     <Flex
-      element='main'
-      padding={20}
       flex
       align='stretch'
       {...props}

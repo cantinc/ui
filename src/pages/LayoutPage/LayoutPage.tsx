@@ -13,6 +13,9 @@ export function LayoutPage () {
           </Typography>
         </DelayPage>
       </slot>
+      <slot name='layout'>
+        <Component is={() => import('src/ui/layout/Layout/Layout.ui')} />
+      </slot>
       <slot name='flex'>
         <Component is={() => import('src/ui/layout/Flex/Flex.ui')} />
       </slot>
