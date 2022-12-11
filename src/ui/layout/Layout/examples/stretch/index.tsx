@@ -29,13 +29,13 @@ innet(
   example: (
     <Browser height={320}>
       <Layout vertical>
-        <Header padding={16} style='background:var(--color-80)'>
+        <Header padding={16} style='background:var(--color-70)'>
           Header
         </Header>
-        <Main padding={16} style='background:var(--color-90)'>
+        <Main padding={16}>
           Main
         </Main>
-        <Footer padding={16} style='background:var(--color-70)'>
+        <Footer padding={16} style='background:var(--color-90)'>
           Footer
         </Footer>
       </Layout>

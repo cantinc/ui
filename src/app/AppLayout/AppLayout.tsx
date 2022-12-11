@@ -1,6 +1,6 @@
 import { useChildren } from '@innet/jsx'
 import { LayoutMenu } from 'src/app/LayoutMenu'
-import { Layout } from 'src/ui'
+import { Aside, Layout, Main } from 'src/ui'
 
 import styles from './AppLayout.scss'
 
@@ -9,12 +9,12 @@ export function AppLayout () {
 
   return (
     <Layout padding={20}>
-      <aside class={styles.aside}>
+      <Aside vertical class={styles.aside}>
         <LayoutMenu />
-      </aside>
-      <article class={styles.content}>
+      </Aside>
+      <Main padding={32} class={styles.content}>
         {children}
-      </article>
+      </Main>
     </Layout>
   )
 }

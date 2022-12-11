@@ -1,15 +1,8 @@
 .aside {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
   padding-right: 20px;
 }
 
 .content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
   border-radius: 6px;
-  padding: 32px;
   background: var(--color-100);
 }
