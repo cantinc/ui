@@ -13,7 +13,7 @@ import dom from '@innet/dom'
 import { Layout, Header, Main, Footer, Content } from '@cantinc/ui'
 
 innet(
-  <Layout width={640} vertical>
+  <Layout vertical>
     <Header style='background:var(--color-70)'>
       <Content padding={16} style='background:var(--color-60)'>
         Header
@@ -34,7 +34,7 @@ innet(
 )`,
   example: (
     <Browser height={320}>
-      <Layout width={640} vertical>
+      <Layout vertical>
         <Header style='background:var(--color-70)'>
           <Content padding={16} style='background:var(--color-60)'>
             Header

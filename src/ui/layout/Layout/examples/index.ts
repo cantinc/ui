@@ -6,6 +6,6 @@ import stretch from './stretch'
 export default [
   padding,
   stretch,
-  aside,
   content,
+  aside,
 ]
