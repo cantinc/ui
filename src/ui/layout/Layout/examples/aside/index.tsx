@@ -13,7 +13,7 @@ import dom from '@innet/dom'
 import { Layout, Main } from '@cantinc/ui'
 
 innet(
-  <Layout padding={20} style='background:var(--color-90)'>
+  <Layout gap={20} padding={20} style='background:var(--color-90)'>
     <Aside>
       Aside
     </Aside>
@@ -25,7 +25,7 @@ innet(
 )`,
   example: (
     <Browser height={320}>
-      <Layout padding={20} style='background:var(--color-90)'>
+      <Layout gap={20} padding={20} style='background:var(--color-90)'>
         <Aside>
           Aside
         </Aside>

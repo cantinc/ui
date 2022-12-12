@@ -1,5 +1,9 @@
-@media (max-width: 1080px) {
-  .root {
+@import "src/styles/breakpoints";
+
+.root {
+  --ui-layout-width: 1024px;
+
+  @media (max-width: $laptop) {
     --ui-flex-direction: column;
   }
 }

@@ -1,11 +1,9 @@
+@import "src/styles/breakpoints";
+
 .root {
-  --ui-aside-width: 320px;
+  @media (min-width: $laptop) {
+    --ui-aside-width: 320px;
 
-  width: var(--ui-aside-width);
-}
-
-@media (max-width: 1080px) {
-  .root {
-    width: auto;
+    width: var(--ui-aside-width);
   }
 }
