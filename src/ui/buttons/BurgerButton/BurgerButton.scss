@@ -1,0 +1,66 @@
+.root {
+  --ui-burger-button-size: 16px;
+
+  position: relative;
+  padding: 0;
+  border: none;
+  width: calc(var(--ui-burger-button-size) * 1.5);
+  height: var(--ui-burger-button-size);
+  cursor: pointer;
+  background: none;
+
+  &:focus > .dash,
+  &:hover > .dash {
+    background: var(--color-secondary-50);
+
+    &:nth-child(odd) {
+      right: 0;
+    }
+    &:nth-child(2) {
+      left: 0;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active > .dash {
+    background: var(--color-secondary-30);
+    transition: all .3s;
+
+    &:nth-child(2) {
+      left: -10%;
+    }
+    &:nth-child(odd) {
+      right: -10%;
+    }
+  }
+}
+
+.dash {
+  transition: all .3s cubic-bezier(0, 0.4, 0.4, 1.4);
+  position: absolute;
+  height: calc(var(--ui-burger-button-size) / 6);
+  border-radius: calc(var(--ui-burger-button-size) / 12);
+  background: var(--color-10);
+  left: 0;
+  right: 0;
+
+  &:nth-child(1) {
+    top: 0;
+  }
+
+  &:nth-child(2) {
+    top: calc(50% - (var(--ui-burger-button-size) / 12));
+    left: 30%;
+  }
+
+  &:nth-child(3) {
+    bottom: 0;
+  }
+
+  &:nth-child(odd) {
+    right: 30%;
+  }
+}

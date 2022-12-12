@@ -52,6 +52,9 @@ export function LayoutMenu () {
         <Menu.Item href='/buttons/button'>
           <Title>Button</Title>
         </Menu.Item>
+        <Menu.Item href='/buttons/burger'>
+          <Title>BurgerButton</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/cards'>Cards</Menu.Item>
       <Menu.SubMenu>

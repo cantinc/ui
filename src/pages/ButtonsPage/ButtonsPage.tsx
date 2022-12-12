@@ -16,6 +16,9 @@ export function ButtonsPage () {
       <slot name='button'>
         <Component is={() => import('src/ui/buttons/Button/Button.ui')} />
       </slot>
+      <slot name='burger'>
+        <Component is={() => import('src/ui/buttons/BurgerButton/BurgerButton.ui')} />
+      </slot>
     </router>
   )
 }
