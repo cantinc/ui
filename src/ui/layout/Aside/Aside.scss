@@ -3,3 +3,9 @@
 
   width: var(--ui-aside-width);
 }
+
+@media (max-width: 1080px) {
+  .root {
+    width: auto;
+  }
+}

@@ -21,6 +21,7 @@ export function Aside ({
   return (
     <Flex
       element='aside'
+      align='stretch'
       {...props}
       style={() => `--ui-aside-width:${width}px;${use(style)}`}
       class={() => styles.root}>

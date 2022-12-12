@@ -8,8 +8,8 @@ export function AppLayout () {
   const children = useChildren()
 
   return (
-    <Layout padding={20}>
-      <Aside vertical class={styles.aside}>
+    <Layout gap={20} padding={20}>
+      <Aside vertical>
         <LayoutMenu />
       </Aside>
       <Main padding={32} class={styles.content}>
