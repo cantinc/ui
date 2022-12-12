@@ -1,4 +1,4 @@
-import { Button, closeRouterModal, Modal, Modals, withModal } from 'src'
+import { Button, closeRouterModal, Flex, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 
 import description from './README.md'
@@ -10,7 +10,7 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Modals, Modal, Button, closeRouterModal } from '@cantinc/ui'
+import { Modals, Modal, Button, Flex, closeRouterModal } from '@cantinc/ui'
 
 innet(
   <>
@@ -31,9 +31,14 @@ innet(
               Test 2
             </slot>
             <slot name='content'>
-              <a href={() => \`?\${withModal('test1')}\`}>
-                Test 1
-              </a>
+              <Flex gap={16}>
+                <a href='?modal=test2&modal=test1'>
+                  Keep current modal
+                </a>
+                <a href='?modal=test1'>
+                  Hide current modal
+                </a>
+              </Flex>
             </slot>
           </Modal>
         </slot>
@@ -60,9 +65,14 @@ innet(
                   Test 2
                 </slot>
                 <slot name='content'>
-                  <a href={() => `?${withModal('test1')}`}>
-                    Test 1
-                  </a>
+                  <Flex gap={16}>
+                    <a href='?modal=test2&modal=test1'>
+                      Keep current modal
+                    </a>
+                    <a href='?modal=test1'>
+                      Hide current modal
+                    </a>
+                  </Flex>
                 </slot>
               </Modal>
             </slot>
