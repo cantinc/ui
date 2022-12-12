@@ -17,7 +17,7 @@ export async function * Async <T extends object> ({
   name,
   props,
   children,
-  showDelay,
+  showDelay = 300,
 }: AsyncProps<T>) {
   yield <AsyncSpin flex align='center' justify='center' show={showDelay} />
 
