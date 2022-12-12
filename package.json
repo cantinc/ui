@@ -54,6 +54,7 @@
     "@types/jest": "^29.1.1",
     "@types/node": "^18.8.1",
     "@types/prismjs": "^1.26.0",
+    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "core-js": "^3.25.3",
