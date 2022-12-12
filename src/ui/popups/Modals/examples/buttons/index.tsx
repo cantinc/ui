@@ -14,7 +14,7 @@ export default example({
 import dom from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Modals, Modal, Button, notify } from '@cantinc/ui'
+import { Modals, Modal, Notifications, Button, notify } from '@cantinc/ui'
 
 const show = new State(false)
 
@@ -37,6 +37,7 @@ innet(
         </Modal>
       )}
     </Modals>
+    <Notifications />
   </>,
   dom,
 )`,

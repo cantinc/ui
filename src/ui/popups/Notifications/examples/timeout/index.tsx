@@ -10,12 +10,15 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Button, notify } from '@cantinc/ui'
+import { Notifications, Button, notify } from '@cantinc/ui'
 
 innet(
-  <Button onclick={() => notify('Custom timeout!', 'success', 13)}>
-    Click Me
-  </Button>,
+  <>
+    <Notifications/>
+    <Button onclick={() => notify('Custom timeout!', 'success', 13)}>
+      Click Me
+    </Button>
+  </>,
   dom,
 )`,
   example: (
