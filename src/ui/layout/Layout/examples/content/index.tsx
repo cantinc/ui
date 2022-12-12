@@ -10,7 +10,7 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Layout, Header, Main, Footer } from '@cantinc/ui'
+import { Layout, Header, Main, Footer, Content } from '@cantinc/ui'
 
 innet(
   <Layout width={640} vertical>
