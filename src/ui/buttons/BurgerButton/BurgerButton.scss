@@ -13,11 +13,9 @@
   &:hover > .dash {
     background: var(--color-secondary-50);
 
+    &:nth-child(2),
     &:nth-child(odd) {
       right: 0;
-    }
-    &:nth-child(2) {
-      left: 0;
     }
   }
 
@@ -29,11 +27,9 @@
     background: var(--color-secondary-30);
     transition: all .3s;
 
-    &:nth-child(2) {
-      left: -10%;
-    }
     &:nth-child(odd) {
       right: -10%;
+      left: -10%;
     }
   }
 }
@@ -45,19 +41,18 @@
   border-radius: calc(var(--ui-burger-button-size) / 12);
   background: var(--color-10);
   left: 0;
-  right: 0;
 
   &:nth-child(1) {
     top: 0;
   }
 
-  &:nth-child(2) {
-    top: calc(50% - (var(--ui-burger-button-size) / 12));
-    left: 30%;
-  }
-
   &:nth-child(3) {
     bottom: 0;
+  }
+
+  &:nth-child(2) {
+    top: calc(50% - (var(--ui-burger-button-size) / 12));
+    right: 0;
   }
 
   &:nth-child(odd) {

@@ -1,4 +1,4 @@
-import { Button, Drawer, Drawers, Flex, Show } from 'src'
+import { Button, Drawer, Drawers, Flex } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -17,7 +17,7 @@ export default example({
 import dom from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Drawers, Drawer, Button, Show, Flex } from '@cantinc/ui'
+import { Drawers, Drawer, Button, Flex } from '@cantinc/ui'
 
 const left = new State(false)
 const top = new State(false)
@@ -41,38 +41,38 @@ innet(
       </Button>
     </Flex>
     <Drawers>
-      <Show state={left}>
+      <show state={left}>
         <Drawer
           padding={24}
           placement='left'
           onclose={() => { left.value = false }}>
           Left
         </Drawer>
-      </Show>
-      <Show state={top}>
+      </show>
+      <show state={top}>
         <Drawer
           padding={24}
           placement='top'
           onclose={() => { top.value = false }}>
           Top
         </Drawer>
-      </Show>
-      <Show state={right}>
+      </show>
+      <show state={right}>
         <Drawer
           padding={24}
           placement='right'
           onclose={() => { right.value = false }}>
           Right
         </Drawer>
-      </Show>
-      <Show state={bottom}>
+      </show>
+      <show state={bottom}>
         <Drawer
           padding={24}
           placement='bottom'
           onclose={() => { bottom.value = false }}>
           Bottom
         </Drawer>
-      </Show>
+      </show>
     </Drawers>
   </>,
   dom,
@@ -81,38 +81,38 @@ innet(
     <Flex gap={16}>
       <portal parent={document.body}>
         <Drawers>
-          <Show state={left}>
+          <show state={left}>
             <Drawer
               padding={24}
               placement='left'
               onclose={() => { left.value = false }}>
               Left
             </Drawer>
-          </Show>
-          <Show state={top}>
+          </show>
+          <show state={top}>
             <Drawer
               padding={24}
               placement='top'
               onclose={() => { top.value = false }}>
               Top
             </Drawer>
-          </Show>
-          <Show state={right}>
+          </show>
+          <show state={right}>
             <Drawer
               padding={24}
               placement='right'
               onclose={() => { right.value = false }}>
               Right
             </Drawer>
-          </Show>
-          <Show state={bottom}>
+          </show>
+          <show state={bottom}>
             <Drawer
               padding={24}
               placement='bottom'
               onclose={() => { bottom.value = false }}>
               Bottom
             </Drawer>
-          </Show>
+          </show>
         </Drawers>
       </portal>
       <Button onclick={() => { left.value = true }}>

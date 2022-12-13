@@ -37,9 +37,9 @@ Then start again.
 In the docs, you can find examples of components, you can copy any example and put into `src/index.tsx` file of your project (*clear `src` folder before*).
 
 
-### Style
+### Styles
 
-Any component has `class` prop.
+A big part of the library components has `class` prop.
 
 Provide a `class` to add one.
 
