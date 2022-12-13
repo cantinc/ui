@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Browser, BurgerButton, Content, Drawer, Drawers, Footer, Header, Layout, Main, Space } from 'src/ui'
+import { Browser, BurgerButton, Content, Drawer, Drawers, Footer, Header, Layout, Main, Show, Space } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
@@ -30,6 +30,7 @@ import {
   Space,
   Drawers,
   Drawer,
+  Show,
 } from '@cantinc/ui'
 
 const menuState = new State(false)
@@ -63,16 +64,13 @@ innet(
       </Footer>
     </Layout>
     <Drawers>
-      {() => menuState.value
-        ? (
-          <Drawer
-            style='background:var(--color-20);color:var(--color-80)'
-            padding={24}
-            onclose={hideMenu}>
-            Aside
-          </Drawer>
-          )
-        : null}
+      <Show state={menuState}>
+        <Drawer
+          padding={24}
+          onclose={hideMenu}>
+          Aside
+        </Drawer>
+      </Show>
     </Drawers>
   </>,
   dom,
@@ -100,16 +98,13 @@ innet(
         </Footer>
       </Layout>
       <Drawers>
-        {() => menuState.value
-          ? (
-            <Drawer
-              style='background:var(--color-20);color:var(--color-80)'
-              padding={24}
-              onclose={hideMenu}>
-              Aside
-            </Drawer>
-            )
-          : null}
+        <Show state={menuState}>
+          <Drawer
+            padding={24}
+            onclose={hideMenu}>
+            Aside
+          </Drawer>
+        </Show>
       </Drawers>
     </Browser>
   ),

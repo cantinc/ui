@@ -10,11 +10,13 @@
   opacity: 0;
   width: var(--ui-drawer-width);
   height: var(--ui-drawer-height);
-  background: var(--color-100);
+  color: var(--color-100);
+  background: var(--color-20);
   transform: var(--ui-drawer-transform);
   right: var(--ui-drawer-right);
   bottom: var(--ui-drawer-bottom);
   cursor: default;
+  box-sizing: border-box;
 }
 
 .show {
