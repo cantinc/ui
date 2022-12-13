@@ -46,6 +46,9 @@ export function LayoutMenu () {
         <Menu.Item href='/popups/modals'>
           <Title>Modals</Title>
         </Menu.Item>
+        <Menu.Item href='/popups/drawers'>
+          <Title>Drawers</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/buttons'>Buttons</Menu.Item>
       <Menu.SubMenu>

@@ -1,0 +1,28 @@
+.root {
+  --ui-drawer-width: 100%;
+  --ui-drawer-height: 100%;
+  --ui-drawer-right: auto;
+  --ui-drawer-bottom: auto;
+  --ui-drawer-transform: translate(0);
+
+  transition: opacity .3s, transform .3s;
+  position: absolute;
+  opacity: 0;
+  width: var(--ui-drawer-width);
+  height: var(--ui-drawer-height);
+  background: var(--color-100);
+  transform: var(--ui-drawer-transform);
+  right: var(--ui-drawer-right);
+  bottom: var(--ui-drawer-bottom);
+  cursor: default;
+}
+
+.show {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.hide {
+  opacity: 0;
+  transform: var(--ui-drawer-transform);
+}

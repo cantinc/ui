@@ -7,7 +7,7 @@ import { setOverflow } from '../../../utils'
 import { Button, ButtonProps } from '../../buttons'
 import { Icon } from '../../content/Icon'
 import { Flex } from '../../layout'
-import { HTMLModalElement } from '../Modals/types'
+import { HTMLOverlayElement } from '../Overlay'
 import styles from './Modal.scss'
 
 const useStyles = style(styles)
@@ -24,7 +24,7 @@ export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclos
 
 let modalsCount = 0
 
-export function * Modal ({
+export function Modal ({
   buttons,
   width,
   style = '',
@@ -41,7 +41,7 @@ export function * Modal ({
 
   const hidden = new Ref<State<boolean>>()
   const show = new State<boolean>(false)
-  const element = new Ref<HTMLModalElement>()
+  const element = new Ref<HTMLOverlayElement>()
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
 
@@ -80,12 +80,14 @@ export function * Modal ({
     }
   })
 
-  yield (
+  return (
     <delay ref={hidden} hide={300}>
       <div
         {...props}
         style={style}
         ref={element}
+        // @ts-expect-error
+        _close={() => handleClose}
         class={() => classes([
           styles.root,
           show.value && styles.show,
@@ -141,11 +143,6 @@ export function * Modal ({
             )
           : null}
       </div>
-      {() => {
-        if (element.value) {
-          element.value.close = handleClose
-        }
-      }}
     </delay>
   )
 }

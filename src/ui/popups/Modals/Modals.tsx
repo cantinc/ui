@@ -1,51 +1,26 @@
-import { Ref, style } from '@innet/dom'
+import { style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { useEscapeListener } from '../../../hooks'
-import { Flex } from '../../layout'
+import { Overlay, OverlayProps } from '../Overlay'
 import styles from './Modals.scss'
-import { HTMLModalElement, ModalsProps } from './types'
 
 const useStyle = style(styles)
+
+export interface ModalsProps extends OverlayProps {
+
+}
 
 export function Modals (props: ModalsProps) {
   const children = useChildren()
   const styles = useStyle()
-  const ref = new Ref<HTMLDivElement>()
-  let mouseDown = false
-
-  useEscapeListener(() => handleClose('escape'))
-
-  const handleMouseDown = (e: MouseEvent) => {
-    if (e.target === ref.value) {
-      mouseDown = true
-    }
-  }
-
-  const handleClose = (result: string) => {
-    const element = ref.value?.lastElementChild as HTMLModalElement
-
-    element?.close?.(result)
-  }
-
-  const handleMouseUp = (e: MouseEvent) => {
-    if (mouseDown && e.target === ref.value) {
-      handleClose('background')
-    }
-
-    mouseDown = false
-  }
 
   return (
-    <Flex
+    <Overlay
       justify='center'
       align='center'
       {...props}
-      ref={ref}
-      onmousedown={handleMouseDown}
-      onmouseup={handleMouseUp}
-      class={styles.root}>
+      class={() => styles.root}>
       {children}
-    </Flex>
+    </Overlay>
   )
 }

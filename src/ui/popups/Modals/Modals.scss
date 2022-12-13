@@ -1,25 +1,9 @@
 @import "src/styles/breakpoints";
 
 .root {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
-  opacity: 1;
-  transition: all 0.5s;
-  cursor: pointer;
-  perspective: 900px;
-  transform-style: flat;
-  z-index: 999;
 
   @media (max-width: $tablet) {
     background: var(--color-100);
-  }
-
-  &:empty {
-    opacity: 0;
-    pointer-events: none;
   }
 }

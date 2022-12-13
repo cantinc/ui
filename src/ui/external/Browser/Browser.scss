@@ -27,6 +27,7 @@
 .content {
   --ui-iframe-height: auto;
 
+  transform: translate(0);
   height: var(--ui-iframe-height);
   display: flex;
   flex-direction: column;
