@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { BurgerButton } from 'src/ui'
+import { BurgerButton, Flex } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,13 +10,31 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { BurgerButton } from '@cantinc/ui'
+import { BurgerButton, Flex } from '@cantinc/ui'
 
 innet(
-  <BurgerButton />,
+  <Flex gap={16}>
+    <BurgerButton size={27} />
+    <BurgerButton size={24} />
+    <BurgerButton size={21} />
+    <BurgerButton />
+    <BurgerButton size={15} />
+    <BurgerButton size={12} />
+    <BurgerButton size={9} />
+    <BurgerButton size={6} />
+  </Flex>,
   dom,
 )`,
   example: (
-    <BurgerButton />
+    <Flex gap={16}>
+      <BurgerButton size={27} />
+      <BurgerButton size={24} />
+      <BurgerButton size={21} />
+      <BurgerButton />
+      <BurgerButton size={15} />
+      <BurgerButton size={12} />
+      <BurgerButton size={9} />
+      <BurgerButton size={6} />
+    </Flex>
   ),
 })

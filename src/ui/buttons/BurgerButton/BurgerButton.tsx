@@ -4,8 +4,18 @@ import styles from './BurgerButton.scss'
 
 const useStyle = style(styles)
 
+export type BurgerButtonSizeGenerator <
+  X extends number,
+  Y extends unknown[] = [3, 3, 3],
+  Z extends number = never,
+> = Y['length'] extends X
+  ? Z
+  : BurgerButtonSizeGenerator<X, [3, 3, 3, ...Y], Z | Y['length']>
+
+export type BurgerButtonSize = Exclude<BurgerButtonSizeGenerator<999>, 3>
+
 export interface BurgerButtonProps extends HTMLStyleProps<HTMLButtonElement> {
-  size?: number
+  size?: BurgerButtonSize
 }
 
 export function BurgerButton ({
