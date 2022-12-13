@@ -22,11 +22,11 @@ innet(
   <>
     <BurgerButton onclick={() => { show.value = true }} />
     <Drawers>
-      {() => show.value && (
+      <show state={show}>
         <Drawer onclose={() => { show.value = false }}>
           Content
         </Drawer>
-      )}
+      </show>
     </Drawers>
   </>,
   dom,
@@ -35,11 +35,11 @@ innet(
     <>
       <portal parent={document.body}>
         <Drawers>
-          {() => show.value && (
+          <show state={show}>
             <Drawer onclose={() => { show.value = false }}>
               Content
             </Drawer>
-          )}
+          </show>
         </Drawers>
       </portal>
       <BurgerButton onclick={() => { show.value = true }} />

@@ -26,7 +26,7 @@ innet(
       show
     </Button>
     <Modals>
-      {() => show.value && (
+      <show state={show}>
         <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
           <slot name='title'>
             Sign-in
@@ -35,7 +35,7 @@ innet(
             Sign-in form should be here...
           </slot>
         </Modal>
-      )}
+      </show>
     </Modals>
   </>,
   dom,
@@ -44,7 +44,7 @@ innet(
     <>
       <portal parent={document.body}>
         <Modals>
-          {() => show.value && (
+          <show state={show}>
             <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
               <slot name='title'>
                 Sign-in
@@ -53,7 +53,7 @@ innet(
                 Sign-in form should be here...
               </slot>
             </Modal>
-          )}
+          </show>
         </Modals>
       </portal>
       <Button onclick={() => { show.value = true }}>
