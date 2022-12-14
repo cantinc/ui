@@ -55,6 +55,12 @@ export function App () {
             name='FormsPage'
           />
         </slot>
+        <slot name='search'>
+          <Async
+            import={() => import('src/pages/SearchPage')}
+            name='SearchPage'
+          />
+        </slot>
         <slot name='interaction'>
           <Async
             import={() => import('src/pages/InteractionPage')}

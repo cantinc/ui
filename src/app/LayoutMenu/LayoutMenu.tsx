@@ -101,6 +101,12 @@ export function LayoutMenu () {
           <Title>FormTextArea</Title>
         </Menu.Item>
       </Menu.SubMenu>
+      <Menu.Item href='/search'>Search</Menu.Item>
+      <Menu.SubMenu>
+        <Menu.Item exact href='/search/toggle-bar'>
+          <Title>SearchToggleBar</Title>
+        </Menu.Item>
+      </Menu.SubMenu>
       <Menu.Item href='/content'>Content</Menu.Item>
       <Menu.SubMenu>
         <Menu.Item href='/content/icon'>
@@ -114,9 +120,6 @@ export function LayoutMenu () {
         </Menu.Item>
         <Menu.Item href='/content/spin-box'>
           <Title>SpinBox</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/search-toggle-bar'>
-          <Title>SearchToggleBar</Title>
         </Menu.Item>
         <Menu.Item href='/content/menu'>
           <Title>Menu</Title>
