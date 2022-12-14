@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Buttons, Form, FormInput } from 'src/ui'
+import { Button, Form, FormInput } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,17 +10,15 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Form, Button } from '@cantinc/ui'
+import { Form, FormInput, Button } from '@cantinc/ui'
 
 innet(
   <Form>
     <FormInput name='name' required label='Name' />
     <FormInput name='password' required label='Password' />
-    <Buttons>
-      <Button flex>
-        Log-in
-      </Button>
-    </Buttons>
+    <Button>
+      Log-in
+    </Button>
   </Form>,
   dom,
 )`,
@@ -28,11 +26,9 @@ innet(
     <Form>
       <FormInput name='name' required label='Name' />
       <FormInput name='password' required label='Password' />
-      <Buttons>
-        <Button flex>
-          Log-in
-        </Button>
-      </Buttons>
+      <Button>
+        Log-in
+      </Button>
     </Form>
   ),
 })
