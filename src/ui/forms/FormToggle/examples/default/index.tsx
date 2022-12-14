@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormToggle } from 'src/ui'
+import { Button, Form, FormToggle, notify } from 'src/ui'
 
 import description from './README.md'
 
@@ -7,8 +7,33 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Form, FormToggle, Button, Notifications } from '@cantinc/ui'
+
+innet(
+  <>
+    <Form
+      onsuccess={form => notify(
+        Array.from(form.fields)[0].state.value,
+      )}
+      vertical>
+      <FormToggle name='test' />
+      <Button>
+        Test
+      </Button>
+    </Form>
+    <Notifications />
+  </>,
+  dom,
+)`,
   example: (
-    <Form notification='Success' vertical>
+    <Form
+      onsuccess={form => notify(
+        Array.from(form.fields)[0].state.value,
+      )}
+      vertical>
       <FormToggle name='test' />
       <Button>
         Test

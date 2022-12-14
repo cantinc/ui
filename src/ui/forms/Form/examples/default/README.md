@@ -1,1 +1,1 @@
-By default, the form component validates form components only on submit.
+By default, the form validates self components only on submit.
