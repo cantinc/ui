@@ -1,6 +1,6 @@
 # Typography
 
-This component normalize styles of typography inside
+This component is a container for article, news or another typography text.
 
 
 ```typescript

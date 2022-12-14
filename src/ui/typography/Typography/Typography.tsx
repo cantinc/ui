@@ -14,6 +14,6 @@ export function Typography (props: TypographyProps) {
   const styles = useStyle()
 
   return (
-    <div {...props} class={styles.root}>{children}</div>
+    <article {...props} class={styles.root}>{children}</article>
   )
 }

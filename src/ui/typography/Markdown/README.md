@@ -1,6 +1,6 @@
 # Markdown
 
-This component converts markdown to HTML DOM elements
+The component renders [markdown](https://en.wikipedia.org/wiki/Markdown) string.
 
 ```typescript
 import { Markdown } from '@cantinc/ui'

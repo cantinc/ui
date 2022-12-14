@@ -112,4 +112,14 @@ Right aligned columns
 
 ## Fonts
 
-Main font is ...
+CANT inc. UI uses `Commissioner` as the main font.
+
+Add next block into css.
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap');
+
+body, button {
+  font-family: 'Commissioner', sans-serif;
+}
+```
