@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Toggle } from 'src/ui'
+import { SearchToggle } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,13 +10,13 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Toggle } from '@cantinc/ui'
+import { SearchToggle } from '@cantinc/ui'
 
 innet(
-  <Toggle />,
+  <SearchToggle key='test' />,
   dom,
 )`,
   example: (
-    <Toggle />
+    <SearchToggle key='test' />
   ),
 })

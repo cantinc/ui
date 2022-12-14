@@ -13,6 +13,9 @@ export function SearchPage () {
           </Typography>
         </DelayPage>
       </slot>
+      <slot name='toggle'>
+        <Component is={() => import('src/ui/search/SearchToggle/SearchToggle.ui')} />
+      </slot>
       <slot name='toggle-bar'>
         <Component is={() => import('src/ui/search/SearchToggleBar/SearchToggleBar.ui')} />
       </slot>

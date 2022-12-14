@@ -103,7 +103,10 @@ export function LayoutMenu () {
       </Menu.SubMenu>
       <Menu.Item href='/search'>Search</Menu.Item>
       <Menu.SubMenu>
-        <Menu.Item exact href='/search/toggle-bar'>
+        <Menu.Item exact href='/search/toggle'>
+          <Title>SearchToggle</Title>
+        </Menu.Item>
+        <Menu.Item href='/search/toggle-bar'>
           <Title>SearchToggleBar</Title>
         </Menu.Item>
       </Menu.SubMenu>
