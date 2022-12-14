@@ -3,6 +3,7 @@ import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 import { WatchProp } from 'src/types'
 
+import { Divider } from '../../content/Divider'
 import { Highlight } from '../../external'
 
 export interface MarkdownProps {
@@ -36,7 +37,7 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElemen
     children: children?.map(ast2jsx),
   }),
   HorizontalRule: () => ({
-    type: 'hr',
+    type: Divider,
   }),
   Strong: ({ children }) => ({
     type: 'strong',
@@ -44,6 +45,10 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElemen
   }),
   Emphasis: ({ children }) => ({
     type: 'em',
+    children: children?.map(ast2jsx),
+  }),
+  Delete: ({ children }) => ({
+    type: 's',
     children: children?.map(ast2jsx),
   }),
   BlockQuote: ({ children }) => ({
@@ -54,13 +59,21 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElemen
     type: 'code',
     children: value,
   }),
-  CodeBlock: ({ value, lang }) => ({
-    type: Highlight,
-    props: {
-      code: value,
-      language: lang,
-    },
-  }),
+  CodeBlock: ({ value, lang }) => lang
+    ? ({
+        type: Highlight,
+        props: {
+          code: value,
+          language: lang,
+        },
+      })
+    : ({
+        type: 'pre',
+        props: {
+          class: 'language-',
+        },
+        children: [value],
+      }),
   Image: ({ alt, url }) => ({
     type: 'img',
     props: {
