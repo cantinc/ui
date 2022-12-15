@@ -1,6 +1,6 @@
-import { style, use, WatchProp } from '@innet/dom'
+import { StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
-import { Cache } from 'watch-state'
+import { Cache, State } from 'watch-state'
 
 import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
@@ -17,8 +17,8 @@ export type ToggleBarChangeHandler = () => void
 export type ToggleBarRenderValue = (item: ToggleBarValue, className: WatchProp<string>, onchange: ToggleBarChangeHandler) => any
 
 export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, {
-  values: ToggleBarValue[]
-  value: () => string
+  values?: ToggleBarValue[]
+  value?: StateProp<string>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
 }>
@@ -34,8 +34,8 @@ export function defaultToggleBarRender ({ value, label }: ToggleBarValue, classN
 }
 
 export function ToggleBar ({
-  values,
-  value,
+  values = [],
+  value = new State(values?.[0]?.value || ''),
   onchange,
   renderValue = defaultToggleBarRender,
   style = '',
@@ -43,8 +43,16 @@ export function ToggleBar ({
 }: ToggleBarProps) {
   const styles = useStyle()
 
+  if (value instanceof State) {
+    const oldOnChange = onchange
+    onchange = val => {
+      value.value = val
+      oldOnChange?.(val)
+    }
+  }
+
   const index = new Cache(() => {
-    const val = value() || ''
+    const val = use(value) || ''
     return values.findIndex(({ value }) => val === value)
   })
 
@@ -65,6 +73,8 @@ export function ToggleBar ({
 
   return (
     <Flex
+      element='nav'
+      gap={16}
       align='stretch'
       {...props}
       style={() => `${selectStyle.value}--ui-toggle-bar-count:${values.length};${use(style)}`}
@@ -75,7 +85,7 @@ export function ToggleBar ({
       <div class={styles.selected} />
       {values.map(item => renderValue(item, () => classes([
         styles.link,
-        value() === item.value && styles.active,
+        use(value) === item.value && styles.active,
       ]), () => onchange?.(item.value)))}
     </Flex>
   )

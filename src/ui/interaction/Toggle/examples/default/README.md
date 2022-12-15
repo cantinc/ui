@@ -1,1 +1,1 @@
-By default, do nothing on click
+You can switch state of toggle by click.
