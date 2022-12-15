@@ -1,5 +1,5 @@
 import { LoopItem, Ref, style, use, WatchProp } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { State } from 'watch-state'
 
@@ -55,7 +55,7 @@ export function Selector ({
   onsearch,
   ...props
 }: SelectorProps = {}) {
-  const children = useChildren()
+  const { '': children, hint } = useSlots()
   const styles = useStyle()
   const show = new State(false)
   const preselect = new State<Preselect | undefined>()
@@ -268,6 +268,9 @@ export function Selector ({
               ])}
             />
           </slot>
+        )}
+        {hint && (
+          <slot name='hint'>{hint}</slot>
         )}
       </Input>
       <ElementPopup

@@ -2,26 +2,26 @@ import { use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
-import { Input, InputProps } from '../../interaction'
+import { Selector, SelectorProps } from '../../interaction'
 import { FormFieldProps } from '../Form/types'
 
-export interface FormInputProps extends Omit<InputProps, keyof FormFieldProps>, FormFieldProps {
+export interface FormSelectorProps extends Omit<SelectorProps, keyof FormFieldProps>, FormFieldProps {
 
 }
 
-export function FormInput ({
+export function FormSelector ({
+  validation,
+  disabled,
   inputRef,
   onchange,
-  disabled,
-  validation,
   ...props
-}: FormInputProps) {
+}: FormSelectorProps) {
   const { before, after, hint } = useSlots()
   const { loading } = useForm()
   const { state, error, element } = useField('', inputRef)
 
   return (
-    <Input
+    <Selector
       {...props}
       inputRef={element}
       oninput={(value: any) => {
@@ -35,6 +35,6 @@ export function FormInput ({
       {before && <slot name='before'>{before}</slot>}
       {after && <slot name='after'>{after}</slot>}
       <slot name='hint'>{() => error.value || hint}</slot>
-    </Input>
+    </Selector>
   )
 }

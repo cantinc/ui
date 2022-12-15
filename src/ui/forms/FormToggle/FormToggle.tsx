@@ -1,25 +1,19 @@
 import { useField, useForm } from '../../../hooks'
 import { Toggle, ToggleProps } from '../../interaction'
+import { FormFieldProps } from '../Form'
 
-export interface FormToggleProps extends Omit<ToggleProps, 'value' | 'onchange' | 'required'> {
-  name: string
-  defaultValue?: 'true' | 'false'
-  required?: boolean
+export interface FormToggleProps extends Omit<ToggleProps, keyof FormFieldProps>, FormFieldProps {
+
 }
 
 export function FormToggle ({
-  name,
-  defaultValue = 'false',
+  ref,
   disabled,
-  required,
+  onchange,
   ...props
 }: FormToggleProps) {
   const { loading } = useForm()
-  const { state, element } = useField({
-    name,
-    defaultValue,
-    required,
-  })
+  const { state, element } = useField('false', ref)
 
   return (
     <Toggle
@@ -29,6 +23,7 @@ export function FormToggle ({
       disabled={disabled || (() => loading.value)}
       onchange={value => {
         state.value = value ? 'true' : 'false'
+        onchange?.(state.value)
       }}
     />
   )

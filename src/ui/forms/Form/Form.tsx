@@ -1,22 +1,12 @@
 import { ValidationError } from '@cantinc/utils'
-import { use, WatchProp } from '@innet/dom'
+import { use } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
 import { FormContext, formContext, FormField } from '../../../hooks'
-import { Flex, FlexProps } from '../../layout'
+import { Flex } from '../../layout'
 import { notify } from '../../popups'
-
-export interface FormProps extends FlexProps<HTMLFormElement> {
-  action?: WatchProp<string>
-  loading?: State<boolean>
-  notification?: string
-  onerror?: (form: FormContext, error?: any) => void
-  onsuccess?: (form: FormContext) => void
-}
-
-export type FormErrorHandle = (error: ValidationError<any>, form: FormContext) => string | Promise<string>
-export type FormActionHandle = (action: string, form: FormContext) => Promise<any> | void
+import { FormActionHandle, FormErrorHandle, FormProps } from './types'
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
 export const formActionHandler = new Context<FormActionHandle>(() => {})

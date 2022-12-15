@@ -1,25 +1,22 @@
-import { required, Validator } from '@cantinc/utils'
+import { required } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
+import { useProps } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
+import { FormFieldProps } from '../../../ui/forms/Form/types'
 import { FormField, useForm } from '../useForm'
 
-export interface UseFieldOptions<V = string, E extends HTMLElement = HTMLInputElement> {
-  name: string
-  validation?: Validator<any, any>[]
-  defaultValue?: V
-  required?: boolean
-  ref?: Ref<E>
-}
-
-export function useField <V = string, E extends HTMLElement = HTMLInputElement> ({
-  name,
-  defaultValue,
-  required: req = false,
-  validation,
-  ref = new Ref<E>(),
-}: UseFieldOptions<V, E>): FormField<V, E> {
+export function useField <
+  V = string,
+  E extends HTMLElement = HTMLInputElement
+> (defValue: V, ref = new Ref<E>()): FormField<V, E> {
   const form = useForm()
+  const {
+    name,
+    defaultValue = defValue,
+    required: req = false,
+    validation,
+  } = useProps<FormFieldProps<V>>()
 
   const field: FormField<V, E> = {
     name,
