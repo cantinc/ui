@@ -25,6 +25,9 @@ export function FormsPage () {
       <slot name='textarea'>
         <Component is={() => import('src/ui/forms/FormTextArea/FormTextArea.ui')} />
       </slot>
+      <slot name='selector'>
+        <Component is={() => import('src/ui/forms/FormSelector/FormSelector.ui')} />
+      </slot>
     </router>
   )
 }

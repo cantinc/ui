@@ -1,4 +1,4 @@
-import { HTMLProps, Ref } from '@innet/dom'
+import { HTMLProps, Ref, statePropToWatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import Prism from 'prismjs'
 
@@ -21,7 +21,7 @@ export function * Highlight ({
       class={() => classes([
         `language-${language}`,
         styles.root,
-        props.class,
+        statePropToWatchProp(props.class),
       ])}
       ref={ref}
     />

@@ -69,6 +69,16 @@
       opacity: 1;
     }
   }
+
+  &:-webkit-autofill{
+    -webkit-text-fill-color: var(--color-10) !important;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--color-100) inset !important;
+  }
 }
 
 .label {

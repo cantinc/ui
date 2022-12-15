@@ -1,4 +1,4 @@
-import { LoopItem, Ref, style, use, WatchProp } from '@innet/dom'
+import { LoopItem, Ref, StateProp, style, use, WatchProp } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { State } from 'watch-state'
@@ -15,7 +15,7 @@ const useStyle = style(styles)
 export type SelectorDisplay = 'auto' | 'value'
 
 export interface SelectorProps extends InputProps {
-  values?: SelectorItemProps[]
+  values?: StateProp<SelectorItemProps[]>
   placement?: PopupPlacement
   searchValue?: WatchProp<string>
   showValues?: boolean
@@ -23,6 +23,7 @@ export interface SelectorProps extends InputProps {
   search?: boolean
   exact?: boolean
   arrow?: boolean
+  displayState?: State<string>
   onsearch?: (search: string) => void
 }
 
@@ -32,7 +33,7 @@ export interface Preselect {
 }
 
 export interface SelectorContext {
-  value: WatchProp<string>
+  value: StateProp<string>
   setValue: (value: string, label?: string) => void
   setPreselect: (preselect: Preselect | undefined) => void
   preselect: () => Preselect | undefined
@@ -48,6 +49,7 @@ export function Selector ({
   oninput,
   searchValue,
   showValues,
+  displayState = new State(''),
   display = 'auto',
   search,
   exact,
@@ -55,7 +57,7 @@ export function Selector ({
   onsearch,
   ...props
 }: SelectorProps = {}) {
-  const { '': children, hint } = useSlots()
+  const { hint } = useSlots()
   const styles = useStyle()
   const show = new State(false)
   const preselect = new State<Preselect | undefined>()
@@ -81,7 +83,6 @@ export function Selector ({
     }
   }
 
-  const displayState = new State('')
   const displayValue = display === 'value' ? value : () => displayState.value
   const setValue = display === 'value'
     ? (val: string) => {
@@ -167,17 +168,19 @@ export function Selector ({
     next?.preselect()
   }
 
-  const valuesFilter = search
-    ? () => values?.filter(({ value: val, label }: SelectorItemProps) => {
-        const currentValue = (use(searchValue) || '').toLowerCase()
+  const valuesFilter = !values
+    ? []
+    : search
+      ? () => use(values).filter(({ value: val, label }: SelectorItemProps) => {
+          const currentValue = (use(searchValue) || '').toLowerCase()
 
-        if (label?.toLowerCase().includes(currentValue)) {
-          return true
-        }
+          if (label?.toLowerCase().includes(currentValue)) {
+            return true
+          }
 
-        return (!label || showValues) && val.toLowerCase().startsWith(currentValue)
-      }) || []
-    : values
+          return (!label || showValues) && val.toLowerCase().startsWith(currentValue)
+        }) || []
+      : () => use(values)
 
   return (
     <>
@@ -280,12 +283,11 @@ export function Selector ({
         class={styles.popup}
         element={ref}>
         <context for={selectorContext} set={selector}>
-          <for of={valuesFilter || []} key='value'>
+          <for of={valuesFilter} key='value'>
             {(item: LoopItem<SelectorItemProps>) => (
               <SelectorItem {...item.value} />
             )}
           </for>
-          {children}
         </context>
       </ElementPopup>
     </>

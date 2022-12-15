@@ -100,6 +100,9 @@ export function LayoutMenu () {
         <Menu.Item exact href='/forms/textarea'>
           <Title>FormTextArea</Title>
         </Menu.Item>
+        <Menu.Item exact href='/forms/selector'>
+          <Title>FormSelector</Title>
+        </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/search'>Search</Menu.Item>
       <Menu.SubMenu>

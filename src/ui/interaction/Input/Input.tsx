@@ -1,4 +1,4 @@
-import { HTMLProps, Ref, style, use, WatchProp } from '@innet/dom'
+import { HTMLProps, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -9,15 +9,15 @@ import styles from './Input.scss'
 const useStyle = style(styles)
 
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
-  label?: string
-  value?: WatchProp<string>
+  label?: StateProp<string>
+  value?: StateProp<string>
   oninput?: (value: string) => void
-  placeholder?: string
-  error?: WatchProp<boolean>
-  disabled?: WatchProp<boolean>
-  required?: WatchProp<boolean>
-  name?: WatchProp<string>
-  clearable?: boolean
+  placeholder?: StateProp<string>
+  error?: StateProp<boolean>
+  disabled?: StateProp<boolean>
+  required?: StateProp<boolean>
+  name?: StateProp<string>
+  clearable?: StateProp<boolean>
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
@@ -71,8 +71,8 @@ export function Input ({
     ...(props?.input as HTMLProps<HTMLInputElement>),
     disabled: () => use(disabled) || undefined,
     oninput: handleInput,
-    'data-value': value,
-    _value: value,
+    'data-value': () => use(value) || '',
+    _value: () => use(value),
     required,
     class: elementClass,
     placeholder,

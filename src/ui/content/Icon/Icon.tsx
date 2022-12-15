@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style } from '@innet/dom'
+import { HTMLStyleProps, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -43,7 +43,7 @@ export function Icon ({
   const children = useChildren()
   const styles = useStyle()
 
-  style = `--ui-icon:'${icons[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${style}`
+  style = () => `--ui-icon:'${icons[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
 
   return (
     <span

@@ -1,12 +1,12 @@
 import { meta } from 'src/app/Component'
 
-import { FormInput } from '.'
+import { FormSelector } from '.'
 import examples from './examples'
 import description from './README.md'
 
-export default meta<typeof FormInput>({
-  component: FormInput,
-  name: 'FormInput',
+export default meta<typeof FormSelector>({
+  component: FormSelector,
+  name: 'FormSelector',
   description,
   examples,
 })
