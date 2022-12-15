@@ -1,4 +1,4 @@
-import { HTMLStyleProps, Ref, style } from '@innet/dom'
+import { HTMLStyleProps, Ref, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
@@ -45,7 +45,7 @@ export function Modal ({
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
 
-  style = width ? `--ui-modal-width:${width}px;${style}` : style
+  style = width ? () => `--ui-modal-width:${width}px;${use(style)}` : style
 
   if (!('button-close' in slots)) {
     slots['button-close'] = <Icon icon='cross' />
