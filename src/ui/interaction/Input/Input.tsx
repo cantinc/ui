@@ -17,7 +17,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
   disabled?: StateProp<boolean>
   required?: StateProp<boolean>
   name?: StateProp<string>
-  clearable?: StateProp<boolean>
+  clearable?: boolean
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
@@ -69,10 +69,10 @@ export function Input ({
 
   const element = renderInput({
     ...(props?.input as HTMLProps<HTMLInputElement>),
-    disabled: () => use(disabled) || undefined,
+    disabled,
     oninput: handleInput,
-    'data-value': () => use(value) || '',
-    _value: () => use(value),
+    'data-value': value,
+    _value: value,
     required,
     class: elementClass,
     placeholder,
@@ -118,7 +118,7 @@ export function Input ({
       element='label'
       {...rest}
       onmousedown={(e: any) => {
-        if (e.target !== inputRef?.value) {
+        if (e.target !== inputRef.value) {
           e.preventDefault()
         }
         ;(rest as any)?.onmousedown?.(e)

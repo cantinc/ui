@@ -43,7 +43,7 @@ export function Icon ({
   const children = useChildren()
   const styles = useStyle()
 
-  style = () => `--ui-icon:'${icons[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
+  const styleProp = () => `--ui-icon:'${icons[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
 
   return (
     <span
@@ -52,7 +52,7 @@ export function Icon ({
         styles.root,
         end && styles.end,
       ])}
-      style={style}>
+      style={styleProp}>
       {children}
     </span>
   )
