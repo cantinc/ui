@@ -35,7 +35,7 @@ export const defaultRenderInput = (props: HTMLProps<HTMLInputElement>) => (<inpu
 
 export function Input ({
   label,
-  value,
+  value = new State(''),
   oninput,
   props,
   placeholder,
@@ -51,13 +51,11 @@ export function Input ({
   const styles = useStyle()
   const { before, after, hint } = useSlots()
 
-  if (!value) {
-    const state = new State('')
+  if (value instanceof State) {
     const oldOnChange = oninput
-    value = () => state.value
-    oninput = (value: string) => {
-      state.value = value
-      oldOnChange?.(value)
+    oninput = (val: string) => {
+      value.value = val
+      oldOnChange?.(val)
     }
   }
 
@@ -125,8 +123,7 @@ export function Input ({
       }}
       class={() => [
         styles.root,
-        label && styles.withLabel,
-        label && styles.withLabel,
+        use(label) && styles.withLabel,
         use(error) && styles.error,
       ]}>
       {element}

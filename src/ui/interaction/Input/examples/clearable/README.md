@@ -1,1 +1,1 @@
-You can make the input clearable by `clearable` prop.
+You can make the input clearable with `clearable` prop.

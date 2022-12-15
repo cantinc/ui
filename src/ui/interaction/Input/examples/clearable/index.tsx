@@ -1,7 +1,10 @@
 import { example } from 'src/app/Component'
-import { Input } from 'src/ui'
+import { Flex, Input } from 'src/ui'
+import { State } from 'watch-state'
 
 import description from './README.md'
+
+const label = new State('test')
 
 export default example({
   id: 'clearable',
@@ -9,14 +12,23 @@ export default example({
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
+import { State } from 'watch-state'
 
-import { Input } from '@cantinc/ui'
+import { Input, Flex } from '@cantinc/ui'
+
+const label = new State('test')
 
 innet(
-  <Input clearable />,
+  <Flex wrap gap={16}>
+    <Input flex clearable value={label} />
+    <Input flex label={label} clearable />
+  </Flex>,
   dom,
 )`,
   example: (
-    <Input clearable />
+    <Flex wrap gap={16}>
+      <Input flex clearable value={label} />
+      <Input flex label={label} clearable />
+    </Flex>
   ),
 })

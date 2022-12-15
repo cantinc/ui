@@ -3,6 +3,8 @@
   box-sizing: border-box;
   margin-bottom: 24px;
   cursor: text;
+  background: var(--color-100);
+  border-radius: var(--round-50);
 }
 
 .before {
@@ -37,7 +39,6 @@
   width: 208px;
   background: transparent;
   border: none;
-  border-radius: inherit;
   flex: 1;
   font-family: inherit;
   font-size: 16px;

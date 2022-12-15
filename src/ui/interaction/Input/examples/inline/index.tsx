@@ -13,10 +13,20 @@ import dom from '@innet/dom'
 import { Input } from '@cantinc/ui'
 
 innet(
-  <Input inline />,
+  <>
+    <Input />
+    <Input label='Inline 1' inline />
+    <span style='width:20px;display:inline-block' />
+    <Input label='Inline 2' inline />
+  </>,
   dom,
 )`,
   example: (
-    <Input inline />
+    <>
+      <Input />
+      <Input label='Inline 1' inline />
+      <span style='width:20px;display:inline-block' />
+      <Input label='Inline 2' inline />
+    </>
   ),
 })

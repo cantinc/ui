@@ -1,1 +1,3 @@
-You can combine `label` with `placeholder` to add both of them.
+Use `label` or `placeholder` to describe an input.
+
+You can use them together.
