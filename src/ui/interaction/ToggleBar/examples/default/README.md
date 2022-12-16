@@ -1,1 +1,1 @@
-By default, shows a usual divider
+By default, selected value is an empty string.

@@ -1,6 +1,6 @@
-import { StateProp, style, use, WatchProp } from '@innet/dom'
+import { LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
-import { Cache, State } from 'watch-state'
+import { Cache, State, unwatch, Watch } from 'watch-state'
 
 import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
@@ -13,20 +13,39 @@ export interface ToggleBarValue {
 }
 
 export type ToggleBarOnChange = (value: string) => void
-export type ToggleBarChangeHandler = () => void
-export type ToggleBarRenderValue = (item: ToggleBarValue, className: WatchProp<string>, onchange: ToggleBarChangeHandler) => any
+export type ToggleBarItemAction = () => void
+export interface ToggleBarItemOptions {
+  className: WatchProp<string>
+  onchange: ToggleBarItemAction
+  onfocus: ToggleBarItemAction
+  onblur: ToggleBarItemAction
+}
+export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItemOptions) => any
 
 export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, {
-  values?: ToggleBarValue[]
+  values: StateProp<ToggleBarValue[]>
   value?: StateProp<string>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
 }>
 
-export function defaultToggleBarRender ({ value, label }: ToggleBarValue, className: WatchProp<string>, onchange: ToggleBarChangeHandler) {
+export function defaultToggleBarRender ({ value, label }: ToggleBarValue, {
+  className,
+  onchange,
+  onfocus,
+  onblur,
+}: ToggleBarItemOptions) {
   return (
     <span
-      onclick={onchange}
+      onfocus={onfocus}
+      onblur={onblur}
+      tabIndex={0}
+      onkeydown={(e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onchange()
+        }
+      }}
+      onmousedown={onchange}
       class={className}>
       {label ?? value}
     </span>
@@ -34,8 +53,8 @@ export function defaultToggleBarRender ({ value, label }: ToggleBarValue, classN
 }
 
 export function ToggleBar ({
-  values = [],
-  value = new State(values?.[0]?.value || ''),
+  values,
+  value = new State(''),
   onchange,
   renderValue = defaultToggleBarRender,
   style = '',
@@ -53,40 +72,71 @@ export function ToggleBar ({
 
   const index = new Cache(() => {
     const val = use(value) || ''
-    return values.findIndex(({ value }) => val === value)
+    return use(values).findIndex(({ value }) => val === value)
+  })
+  const focusIndex = new State()
+
+  new Watch(() => {
+    focusIndex.value = index.value
   })
 
-  let lasIndex = -1
+  let lastSideIndex = -1
   const side = new Cache(() => {
-    const result = lasIndex > index.value
-    lasIndex = index.value
+    const result = lastSideIndex > index.value
+    lastSideIndex = index.value
+    return result ? 'back' : 'forward'
+  })
+
+  let lastFocusIndex = -1
+  const focusSide = new Cache(() => {
+    const result = lastFocusIndex > focusIndex.value
+    lastFocusIndex = focusIndex.value
     return result ? 'back' : 'forward'
   })
 
   const selectStyle = new Cache(() => {
-    if (index.value === -1) {
-      return ''
-    }
-
     return `--ui-toggle-bar-index:${index.value};`
   })
+
+  const focusStyle = new Cache(() => {
+    return `--ui-toggle-bar-focus:${focusIndex.value};`
+  })
+
+  let blurTimeout: any
 
   return (
     <Flex
       element='nav'
       gap={16}
       align='stretch'
+      padding={[0, 8]}
       {...props}
-      style={() => `${selectStyle.value}--ui-toggle-bar-count:${values.length};${use(style)}`}
+      style={() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${use(values).length};${use(style)}`}
       class={() => classes([
         styles.root,
         styles[side.value],
+        styles[`${focusSide.value}Focus`],
       ])}>
+      <div class={styles.focus} />
       <div class={styles.selected} />
-      {values.map(item => renderValue(item, () => classes([
-        styles.link,
-        use(value) === item.value && styles.active,
-      ]), () => onchange?.(item.value)))}
+      <for of={values} key='value'>
+        {(item: LoopItem<ToggleBarValue>) => renderValue(item.value, {
+          onchange: () => onchange?.(item.value.value),
+          className: () => classes([
+            styles.link,
+            index.value === item.index && styles.active,
+          ]),
+          onblur: () => {
+            blurTimeout = setTimeout(() => {
+              focusIndex.value = index.value
+            })
+          },
+          onfocus: () => {
+            clearTimeout(blurTimeout)
+            focusIndex.value = item.index
+          },
+        })}
+      </for>
     </Flex>
   )
 }

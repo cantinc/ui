@@ -5,9 +5,8 @@
   overflow: auto hidden;
   max-width: 100%;
   height: 36px;
-  border: 2px solid var(--color-10);
+  border: 2px solid var(--color-80);
   border-radius: 18px;
-  padding: 0 8px;
 }
 
 .link {
@@ -21,10 +20,24 @@
   transition: color .3s;
   cursor: pointer;
   text-decoration: none;
+  border-radius: var(--round-80);
+  margin: 2px 0;
 
   &:hover {
     color: var(--color-10);
   }
+  &:focus {
+    outline: none;
+  }
+}
+
+.focus {
+  position: absolute;
+  inset: 2px;
+  background: var(--color-primary-100);
+  border-radius: 15px;
+  left: calc((100% - 4px) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-focus) + 2px);
+  right: calc(((100% - 4px) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-focus) - 1) + 2px);
 }
 
 .active {
@@ -35,23 +48,35 @@
   }
 }
 
+.backFocus {
+  .focus {
+    transition: right .3s .1s, left .3s, opacity .3s;
+  }
+}
+
 .back {
   .selected {
-    transition: right .3s .1s, left .3s;
+    transition: right .3s .1s, left .3s, opacity .3s;
+  }
+}
+
+.forwardFocus {
+  .focus{
+    transition: right .3s, left .3s .1s, opacity .3s;
   }
 }
 
 .forward {
   .selected {
-    transition: right .3s, left .3s .1s;
+    transition: right .3s, left .3s .1s, opacity .3s;
   }
 }
 
 .selected {
   position: absolute;
-  inset: 0;
-  background: var(--color-10);
+  inset: 2px;
+  background: var(--color-primary-50);
   border-radius: 15px;
-  left: calc(100% / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-index));
-  right: calc((100% / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-index) - 1));
+  left: calc((100% - 4px) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-index) + 2px);
+  right: calc(((100% - 4px) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-index) - 1) + 2px);
 }
