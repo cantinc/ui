@@ -1,6 +1,6 @@
 import { LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
-import { Cache, State, unwatch, Watch } from 'watch-state'
+import { Cache, State, Watch } from 'watch-state'
 
 import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
@@ -47,7 +47,7 @@ export function defaultToggleBarRender ({ value, label }: ToggleBarValue, {
       }}
       onmousedown={onchange}
       class={className}>
-      {label ?? value}
+      {label || value}
     </span>
   )
 }
