@@ -12,54 +12,88 @@
 .input {
   position: absolute;
   opacity: 0;
+  cursor: inherit;
 }
 
 .disabled {
   pointer-events: none;
-  opacity: .5;
+  color: var(--color-70);
 }
 
 .icon {
   display: inline-block;
-  width: 42px;
-  height: 24px;
-  border-radius: 20px;
-  border: 2px solid var(--color-10);
+  width: 34px;
+  height: 20px;
+  border-radius: 12px;
+  border: 2px solid var(--color-80);
+  background: var(--color-80);
   position: relative;
   transition: all .3s;
   pointer-events: none;
 
+  .root:hover & {
+    border-color: var(--color-70);
+    background: var(--color-70);
+  }
+
   .input:focus + & {
-    border-color: var(--color-primary-50);
+    border-color: var(--color-warning-50);
   }
 
   .checked & {
-    background: var(--color-10);
-    border: 2px solid var(--color-10);
+    background: var(--color-primary-50);
+    border-color: var(--color-primary-50);
   }
+
+  .checked:hover & {
+    background: var(--color-primary-40);
+  }
+  .checked:hover .input:not(:focus) + & {
+    border-color: var(--color-primary-40);
+  }
+
+  .disabled & {
+    background: var(--color-90);
+    border-color: var(--color-90);
+  }
+
+  .disabled.checked & {
+    background: var(--color-primary-100);
+    border-color: var(--color-primary-100);
+  }
+
 
   &:before {
     content: '';
     display: block;
     position: absolute;
-    left: 2px;
-    top: 2px;
-    bottom: 2px;
-    right: 20px;
-    border-radius: 9px;
-    background: var(--color-10);
+    left: 3px;
+    top: 3px;
+    bottom: 3px;
+    right: 17px;
+    border-radius: 7px;
+    background: var(--color-100);
     transition: right .3s .1s, left .3s, background .3s;
 
+    .disabled & {
+      background: var(--color-80);
+    }
+
+    .disabled.checked & {
+      background: var(--color-primary-90);
+    }
+
+    .root:active &,
     .input:active ~ & {
       transition: right .3s, left .3s .1s, background .3s;
       right: 10px;
     }
     .input:checked ~ & {
       transition: right .3s, left .3s .1s, background .3s;
-      background: var(--color-100);
-      right: 2px;
-      left: 20px;
+      right: 3px;
+      left: 17px;
     }
+    .root:active .input:checked ~ &,
     .input:checked:active ~ & {
       transition: right .3s .1s, left .3s, background .3s;
       left: 10px;

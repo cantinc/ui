@@ -4,7 +4,7 @@ import { State } from 'watch-state'
 
 import description from './README.md'
 
-const state = new State(false)
+const state = new State(true)
 
 export default example({
   id: 'label',
@@ -16,7 +16,7 @@ import { State } from 'watch-state'
 
 import { Toggle } from '@cantinc/ui'
 
-const state = new State(false)
+const state = new State(true)
 
 innet(
   <Toggle
