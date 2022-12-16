@@ -1,6 +1,6 @@
-import { history, WatchProp } from '@innet/dom'
+import { history } from '@innet/dom'
 
-import { ToggleBar, ToggleBarProps, ToggleBarValue } from '../../interaction'
+import { ToggleBar, ToggleBarItemOptions, ToggleBarProps, ToggleBarValue } from '../../interaction'
 
 export interface SearchToggleBarProps extends Pick<ToggleBarProps, 'values'> {
   key: string
@@ -11,9 +11,14 @@ export function SearchToggleBar ({
   key,
   ...props
 }: SearchToggleBarProps) {
-  function defaultSearchToggleBarRender ({ value, label }: ToggleBarValue, className: WatchProp<string>) {
+  function defaultSearchToggleBarRender ({ value, label }: ToggleBarValue, { className, onfocus, onblur }: ToggleBarItemOptions) {
     return (
       <a
+        onfocus={onfocus}
+        onblur={onblur}
+        onmousedown={(e: MouseEvent) => {
+          e.preventDefault()
+        }}
         class={className as any}
         href={value ? `?${key}=${value}` : '?'}>
         {label ?? value}
