@@ -2,7 +2,7 @@ import { HTMLStyleProps, StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
-export type OmitCheckProps = 'value' | 'onchange' | '_checked' | '$checked' | '_disabled' | '$disabled' | 'type'
+export type OmitCheckProps = 'onchange' | '_checked' | '$checked' | '_disabled' | '$disabled'
 
 const styles = {
   root: '',
@@ -49,7 +49,6 @@ export function Check ({
         _checked={checked}
         _disabled={disabled}
         onchange={handleChange}
-        type='checkbox'
       />
       <span class={() => styles.icon} />
       <show state={hasLabel}>

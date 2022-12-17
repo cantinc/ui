@@ -73,6 +73,9 @@ export function LayoutMenu () {
         <Menu.Item exact href='/interaction/checkbox'>
           <Title>Checkbox</Title>
         </Menu.Item>
+        <Menu.Item exact href='/interaction/radiobox'>
+          <Title>Radiobox</Title>
+        </Menu.Item>
         <Menu.Item exact href='/interaction/toggle'>
           <Title>Toggle</Title>
         </Menu.Item>

@@ -11,5 +11,5 @@ export interface CheckboxProps extends CheckProps {
 
 export function Checkbox (props: CheckboxProps) {
   const styles = useStyle()
-  return <Check {...props} class={styles} />
+  return <Check type='checkbox' {...props} class={styles} />
 }

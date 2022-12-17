@@ -12,5 +12,5 @@ export interface ToggleProps extends CheckProps {
 export function Toggle (props: ToggleProps) {
   const styles = useStyle()
 
-  return <Check {...props} class={styles} />
+  return <Check type='checkbox' {...props} class={styles} />
 }

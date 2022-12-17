@@ -1,0 +1,77 @@
+.root {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 12px;
+  user-select: none;
+  margin: 8px 0 16px;
+  width: fit-content;
+  flex: auto;
+  position: relative;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: inherit;
+  left: 0;
+  top: 0;
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--color-70);
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-70);
+  background: var(--color-100);
+  position: relative;
+  transition: all .3s;
+  pointer-events: none;
+
+  .root:not(.checked):hover & {
+    border-color: var(--color-primary-100);
+  }
+
+  .input:focus + & {
+    border-color: var(--color-warning-50);
+  }
+
+  .checked & {
+    border-color: var(--color-primary-50);
+  }
+
+  .disabled & {
+    background: var(--color-100);
+    border-color: var(--color-90);
+  }
+
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    background: var(--color-primary-50);
+    transition: all .3s;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+
+    .checked & {
+      transform: scale(1);
+      transition: all .3s cubic-bezier(0, 0.4, 0.4, 1.4);
+    }
+
+    .disabled & {
+      background: var(--color-90);
+    }
+  }
+}
