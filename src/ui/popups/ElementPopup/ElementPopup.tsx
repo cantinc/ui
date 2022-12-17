@@ -1,17 +1,18 @@
-import { HTMLStyleProps, Ref, style, use, useHidden, useShow, WatchProp } from '@innet/dom'
+import { Ref, StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { State } from 'watch-state'
 
+import { Flex, FlexProps } from '../../layout'
 import styles from './ElementPopup.scss'
 
 const useStyle = style(styles)
 
 export type PopupPlacement = 'bottom' | 'top'
 
-export interface ElementPopupProps extends HTMLStyleProps<HTMLDivElement> {
+export interface ElementPopupProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
-  show: WatchProp<boolean>
+  show: StateProp<boolean>
   placement?: PopupPlacement
 }
 
@@ -38,7 +39,7 @@ export function ElementPopupContent ({
   const customStyle = () => `${vertical}${horizontal}${use(style) || ''}`
 
   return (
-    <div
+    <Flex
       {...props}
       onclick={(e: any) => {
         e.stopPropagation()
@@ -51,7 +52,7 @@ export function ElementPopupContent ({
         show?.value && styles.show,
       ])}>
       {children}
-    </div>
+    </Flex>
   )
 }
 
