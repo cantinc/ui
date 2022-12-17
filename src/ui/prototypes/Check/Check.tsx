@@ -2,10 +2,12 @@ import { HTMLStyleProps, StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
+import checkStyles from './Check.scss'
+
 export type OmitCheckProps = 'onchange' | '_checked' | '$checked' | '_disabled' | '$disabled'
 
 const styles = {
-  root: '',
+  root: checkStyles.root,
   checked: '',
   disabled: '',
   input: '',

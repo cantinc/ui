@@ -1,13 +1,9 @@
 .root {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  gap: 12px;
-  user-select: none;
-  margin: 8px 0 16px;
-  width: fit-content;
-  flex: auto;
-  position: relative;
+
+}
+
+.radio {
+
 }
 
 .input {
@@ -34,7 +30,7 @@
   transition: all .3s;
   pointer-events: none;
 
-  .root:not(.checked):hover & {
+  .radio:not(.checked):hover & {
     border-color: var(--color-primary-100);
   }
 

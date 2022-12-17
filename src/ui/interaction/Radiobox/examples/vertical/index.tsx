@@ -26,7 +26,8 @@ const values: RadioItem[] = [
 
 innet(
   <Radiobox
-    name='label'
+    vertical
+    name='vertical'
     inline
     wrap
     values={values}
@@ -35,7 +36,8 @@ innet(
 )`,
   example: (
     <Radiobox
-      name='label'
+      vertical
+      name='vertical'
       inline
       wrap
       values={values}

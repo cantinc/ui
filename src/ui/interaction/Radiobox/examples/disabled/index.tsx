@@ -1,7 +1,12 @@
 import { example } from 'src/app/Component'
-import { Flex, Radiobox } from 'src/ui'
+import { Radiobox, RadioItem } from 'src/ui'
 
 import description from './README.md'
+
+const values: RadioItem[] = [
+  { value: 'test1', label: 'Test1', disabled: true },
+  { value: 'test2', label: 'Test2', disabled: true },
+]
 
 export default example({
   id: 'disabled',
@@ -10,19 +15,18 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Radiobox, Flex } from '@cantinc/ui'
+import { Radiobox, RadioItem } from '@cantinc/ui'
+
+const values: RadioItem[] = [
+  { value: 'test1', label: 'Test1', disabled: true },
+  { value: 'test2', label: 'Test2', disabled: true },
+]
 
 innet(
-  <Flex inline wrap gap={16}>
-    <Radiobox disabled label='Label' />
-    <Radiobox disabled checked label='Label' />
-  </Flex>,
+  <Radiobox inline wrap values={values} value='test2' />,
   dom,
 )`,
   example: (
-    <Flex inline wrap gap={16}>
-      <Radiobox disabled label='Label' />
-      <Radiobox disabled checked label='Label' />
-    </Flex>
+    <Radiobox inline wrap values={values} value='test2' />
   ),
 })

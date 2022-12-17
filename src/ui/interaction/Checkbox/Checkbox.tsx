@@ -3,7 +3,7 @@ import { style } from '@innet/dom'
 import { Check, CheckProps } from '../../prototypes'
 import styles from './Checkbox.scss'
 
-const useStyle = style(styles)
+const useStyle = style({ root: '', ...styles })
 
 export interface CheckboxProps extends CheckProps {
 

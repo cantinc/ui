@@ -1,57 +1,62 @@
-import { Ref, style, use } from '@innet/dom'
-import { onDestroy, State } from 'watch-state'
+import { LoopItem, StateProp, style, use } from '@innet/dom'
+import { State } from 'watch-state'
 
+import { Flex, FlexProps } from '../../layout'
 import { Check, CheckProps } from '../../prototypes'
 import styles from './Radiobox.scss'
 
-const useStyle = style(styles)
+const useStyle = style({ root: '', radio: '', ...styles })
 
-export interface RadioboxProps extends CheckProps {
-
+export interface RadioItem extends CheckProps {
+  value: StateProp<string>
 }
 
-const radioboxChangeHandlers = new Set<Function>()
+export interface RadioboxProps extends Omit<FlexProps, 'onchange'> {
+  value?: StateProp<string>
+  values?: StateProp<RadioItem[]>
+  name?: StateProp<string>
+  onchange?: (value: string) => void
+}
 
 export function Radiobox ({
-  ref = new Ref(),
-  checked = new State(false),
+  values,
+  value = new State(''),
   onchange,
+  name,
   ...props
 }: RadioboxProps = {}) {
   const styles = useStyle()
+  const checkStyles = Object.create(styles)
+  Object.defineProperty(checkStyles, 'root', {
+    get () {
+      return styles.radio
+    },
+  })
 
-  if (checked instanceof State) {
+  if (value instanceof State) {
     const oldOnChange = onchange
-    onchange = (val: boolean) => {
-      checked.value = val
+    onchange = (val: string) => {
+      value.value = val
       oldOnChange?.(val)
     }
   }
 
-  const handleChange = () => {
-    const newValue = ref?.value?.checked || false
-
-    if (newValue !== use(checked)) {
-      onchange?.(newValue)
-    }
-  }
-
-  radioboxChangeHandlers.add(handleChange)
-
-  onDestroy(() => {
-    radioboxChangeHandlers.delete(handleChange)
-  })
-
   return (
-    <Check
-      {...props}
-      checked={() => use(checked)}
-      ref={ref}
-      type='radio'
-      onchange={() => {
-        radioboxChangeHandlers.forEach(fn => fn())
-      }}
-      class={styles}
-    />
+    <Flex gap={[0, 16]} {...props} class={() => styles.root}>
+      <for of={values || []} key='value'>
+        {(item: LoopItem<RadioItem>) => (
+          <Check
+            {...item.value}
+            name={name}
+            checked={() => use(value) === use(item.value.value)}
+            type='radio'
+            onchange={() => {
+              onchange?.(use(item.value.value))
+            }}
+            class={checkStyles}
+          />
+        )}
+      </for>
+    </Flex>
   )
 }

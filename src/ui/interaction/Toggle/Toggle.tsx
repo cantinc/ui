@@ -3,7 +3,7 @@ import { style } from '@innet/dom'
 import { Check, CheckProps } from '../../prototypes'
 import styles from './Toggle.scss'
 
-const useStyle = style(styles)
+const useStyle = style({ root: '', ...styles })
 
 export interface ToggleProps extends CheckProps {
 
