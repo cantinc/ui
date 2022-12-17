@@ -1,16 +1,15 @@
 import { style } from '@innet/dom'
 
 import { Check, CheckProps } from '../../prototypes'
-import styles from './Toggle.scss'
+import styles from './Checkbox.scss'
 
 const useStyle = style(styles)
 
-export interface ToggleProps extends CheckProps {
+export interface CheckboxProps extends CheckProps {
 
 }
 
-export function Toggle (props: ToggleProps) {
+export function Checkbox (props: CheckboxProps) {
   const styles = useStyle()
-
   return <Check {...props} class={styles} />
 }

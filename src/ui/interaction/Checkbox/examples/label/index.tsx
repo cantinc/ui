@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Toggle } from 'src/ui'
+import { Checkbox } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
@@ -14,19 +14,19 @@ export default example({
 import dom from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Toggle } from '@cantinc/ui'
+import { Checkbox } from '@cantinc/ui'
 
 const state = new State(true)
 
 innet(
-  <Toggle
+  <Checkbox
     label={() => String(state.value)}
-    checked={state}
+    value={state}
   />,
   dom,
 )`,
   example: (
-    <Toggle
+    <Checkbox
       label={() => String(state.value)}
       checked={state}
     />

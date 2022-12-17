@@ -1,11 +1,11 @@
-import { history, parsedSearch, stringifySearch, use, WatchProp } from '@innet/dom'
+import { history, parsedSearch, StateProp, stringifySearch, use } from '@innet/dom'
 import { Cache } from 'watch-state'
 
 import { Toggle, ToggleProps } from '../../interaction'
 
-export interface SearchToggleProps extends Omit<ToggleProps, 'value'> {
+export interface SearchToggleProps extends Omit<ToggleProps, 'checked'> {
   key: string
-  value?: WatchProp<string>
+  value?: StateProp<string>
 }
 
 export function SearchToggle ({
@@ -30,7 +30,7 @@ export function SearchToggle ({
     <Toggle
       {...props}
       onchange={handleChange}
-      value={() => state.value}
+      checked={state}
     />
   )
 }

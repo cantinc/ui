@@ -16,6 +16,9 @@ export function InteractionPage () {
       <slot name='toggle'>
         <Component is={() => import('src/ui/interaction/Toggle/Toggle.ui')} />
       </slot>
+      <slot name='checkbox'>
+        <Component is={() => import('src/ui/interaction/Checkbox/Checkbox.ui')} />
+      </slot>
       <slot name='toggle-bar'>
         <Component is={() => import('src/ui/interaction/ToggleBar/ToggleBar.ui')} />
       </slot>

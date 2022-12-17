@@ -70,6 +70,9 @@ export function LayoutMenu () {
       </Menu.SubMenu>
       <Menu.Item href='/interaction'>Interaction</Menu.Item>
       <Menu.SubMenu>
+        <Menu.Item exact href='/interaction/checkbox'>
+          <Title>Checkbox</Title>
+        </Menu.Item>
         <Menu.Item exact href='/interaction/toggle'>
           <Title>Toggle</Title>
         </Menu.Item>

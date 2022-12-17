@@ -19,7 +19,7 @@ export function FormToggle ({
     <Toggle
       {...props}
       ref={element}
-      value={() => state.value === 'true'}
+      checked={() => state.value === 'true'}
       disabled={disabled || (() => loading.value)}
       onchange={value => {
         state.value = value ? 'true' : 'false'
