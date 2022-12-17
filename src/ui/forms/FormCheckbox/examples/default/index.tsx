@@ -19,7 +19,10 @@ innet(
         Array.from(form.fields)[0].state.value,
       )}
       vertical>
-      <FormCheckbox name='test' />
+      <FormCheckbox
+        label='Subscribe for news'
+        name='subscribe'
+      />
       <Button>
         Test
       </Button>

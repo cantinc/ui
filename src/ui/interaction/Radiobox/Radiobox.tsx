@@ -14,6 +14,7 @@ export interface RadioItem extends CheckProps {
 export interface RadioboxProps extends Omit<FlexProps, 'onchange'> {
   value?: StateProp<string>
   values?: StateProp<RadioItem[]>
+  disabled?: StateProp<boolean>
   name?: StateProp<string>
   onchange?: (value: string) => void
 }
@@ -23,6 +24,7 @@ export function Radiobox ({
   value = new State(''),
   onchange,
   name,
+  disabled,
   ...props
 }: RadioboxProps = {}) {
   const styles = useStyle()
@@ -46,6 +48,7 @@ export function Radiobox ({
       <for of={values || []} key='value'>
         {(item: LoopItem<RadioItem>) => (
           <Check
+            disabled={disabled}
             {...item.value}
             name={name}
             checked={() => use(value) === use(item.value.value)}
