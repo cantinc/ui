@@ -31,7 +31,7 @@ export function FormInput ({
       }}
       error={() => Boolean(error.value)}
       value={() => state.value}
-      disabled={(() => use(disabled) ?? loading.value)}>
+      disabled={() => use(disabled) ?? loading.value}>
       {before && <slot name='before'>{before}</slot>}
       {after && <slot name='after'>{after}</slot>}
       <slot name='hint'>{() => error.value || hint}</slot>
