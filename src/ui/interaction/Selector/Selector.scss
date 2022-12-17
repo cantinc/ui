@@ -16,8 +16,6 @@
 }
 
 .popup {
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 
   &:empty {

@@ -277,6 +277,8 @@ export function Selector ({
         )}
       </Input>
       <ElementPopup
+        vertical
+        align='stretch'
         ref={popupRef}
         placement={placement}
         show={() => show.value}
