@@ -1,7 +1,7 @@
 import action from './action'
-import def from './default'
+import onsuccess from './onsuccess'
 
 export default [
-  def,
+  onsuccess,
   action,
 ]

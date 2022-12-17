@@ -8,6 +8,8 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
+export type InputType = 'text' | 'password'
+
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
   label?: StateProp<string>
   value?: StateProp<string>
@@ -16,6 +18,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
   error?: StateProp<boolean>
   disabled?: StateProp<boolean>
   required?: StateProp<boolean>
+  type?: StateProp<InputType>
   name?: StateProp<string>
   clearable?: boolean
   inputRef?: Ref<HTMLInputElement>
@@ -45,6 +48,7 @@ export function Input ({
   required,
   inputRef = new Ref<HTMLInputElement>(),
   name,
+  type,
   clearable,
   ...rest
 }: InputProps = {}) {
@@ -66,14 +70,15 @@ export function Input ({
   const elementClass = () => styles.input
 
   const element = renderInput({
-    ...(props?.input as HTMLProps<HTMLInputElement>),
+    type,
     disabled,
+    required,
+    placeholder,
+    ...(props?.input as HTMLProps<HTMLInputElement>),
     oninput: handleInput,
     'data-value': value,
     _value: value,
-    required,
     class: elementClass,
-    placeholder,
     ref: inputRef,
     name,
   })
