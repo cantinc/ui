@@ -7,9 +7,12 @@ export default example({
   id: 'default',
   title: 'Default',
   description,
-  code: `import { Navigation } from '@cantinc/ui'
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
 
-return (
+import { Navigation } from '@cantinc/ui'
+
+innet(
   <Navigation>
     <Navigation.Item exact href='/'>
       Home
@@ -45,7 +48,8 @@ return (
         Account
       </Navigation.Item>
     </Navigation.Items>
-  </Navigation>
+  </Navigation>,
+  dom,
 )`,
   example: (
     <Navigation>
