@@ -1,5 +1,4 @@
 import arrow from './arrow'
-import children from './children'
 import def from './default'
 import display from './display'
 import exact from './exact'
@@ -22,6 +21,5 @@ export default [
   labels,
   display,
   showValues,
-  children,
   placement,
 ]

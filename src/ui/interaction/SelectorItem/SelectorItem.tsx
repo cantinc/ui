@@ -25,7 +25,7 @@ export function * SelectorItem ({
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault()
-    setValue(value, label)
+    setValue?.(value)
     hide()
     ;(onmousedown as any)?.(e)
   }

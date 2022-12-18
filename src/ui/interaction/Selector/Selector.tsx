@@ -1,7 +1,7 @@
-import { LoopItem, Ref, StateProp, style, use, WatchProp } from '@innet/dom'
+import { LoopItem, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
-import { State } from 'watch-state'
+import { Cache, State } from 'watch-state'
 
 import { ElementPopup, PopupPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
@@ -17,7 +17,7 @@ export type SelectorDisplay = 'auto' | 'value'
 export interface SelectorProps extends InputProps {
   values?: StateProp<SelectorItemProps[]>
   placement?: PopupPlacement
-  searchValue?: WatchProp<string>
+  searchValue?: StateProp<string>
   showValues?: boolean
   display?: SelectorDisplay
   search?: boolean
@@ -34,7 +34,7 @@ export interface Preselect {
 
 export interface SelectorContext {
   value: StateProp<string>
-  setValue: (value: string, label?: string) => void
+  setValue?: (value: string) => void
   setPreselect: (preselect: Preselect | undefined) => void
   preselect: () => Preselect | undefined
   hide: () => void
@@ -44,12 +44,11 @@ export interface SelectorContext {
 export function Selector ({
   ref = new Ref<HTMLLabelElement>(),
   placement,
-  value,
+  value = new State(''),
   values,
   oninput,
   searchValue,
   showValues,
-  displayState = new State(''),
   display = 'auto',
   search,
   exact,
@@ -63,13 +62,9 @@ export function Selector ({
   const preselect = new State<Preselect | undefined>()
   const popupRef = new Ref<HTMLDivElement>()
 
-  if (!value) {
-    const state = new State('')
-    const oldOnChange = oninput
-    value = () => state.value
-    oninput = (value: string) => {
-      state.value = value
-      oldOnChange?.(value)
+  if (value instanceof State) {
+    oninput = (val: string) => {
+      value.value = val
     }
   }
 
@@ -83,16 +78,19 @@ export function Selector ({
     }
   }
 
-  const displayValue = display === 'value' ? value : () => displayState.value
-  const setValue = display === 'value'
-    ? (val: string) => {
-        displayState.value = val
-        oninput?.(val)
-      }
-    : (val: string, lab?: string) => {
-        displayState.value = val ? lab || val : ''
-        oninput?.(val)
-      }
+  const displayValue = display === 'value'
+    ? value
+    : new Cache(() => {
+      const currentValue = use(value) || ''
+      const currentValues = use(values)
+
+      if (!currentValues) return currentValue
+
+      const currentItem = currentValues.find(({ value }) => value === currentValue)
+
+      return currentItem ? currentItem.label || currentValue : currentValue
+    })
+
   const hide = () => {
     show.value = false
     preselect.value = undefined
@@ -100,7 +98,7 @@ export function Selector ({
   }
   const selector: SelectorContext = {
     value,
-    setValue,
+    setValue: oninput,
     hide,
     setPreselect (value) {
       preselect.value = value
@@ -187,7 +185,7 @@ export function Selector ({
       <Input
         {...props}
         value={displayValue}
-        oninput={setValue}
+        oninput={oninput}
         onmousedown={(e: MouseEvent) => {
           if (!show.value) {
             show.value = true
@@ -198,9 +196,9 @@ export function Selector ({
         }}
         onkeydown={(e: KeyboardEvent) => {
           if (e.key === 'Enter' && preselect.value) {
-            const { value, label } = preselect.value
+            const { value } = preselect.value
             e.preventDefault()
-            setValue(value, label)
+            oninput?.(value)
             hide()
           }
           ;(props.onkeydown as any)?.(e)
