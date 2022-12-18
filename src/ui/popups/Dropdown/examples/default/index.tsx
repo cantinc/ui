@@ -24,7 +24,8 @@ const button = new Ref<HTMLButtonElement>()
 innet(
   <>
     <Button
-      gap={16}
+      padding={8}
+      gap={8}
       onclick={() => {
         show.value = !show.value
       }}
@@ -47,7 +48,8 @@ innet(
   example: (
     <>
       <Button
-        gap={16}
+        padding={8}
+        gap={8}
         onclick={() => {
           show.value = !show.value
         }}

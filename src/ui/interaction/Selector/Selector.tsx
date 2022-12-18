@@ -278,7 +278,6 @@ export function Selector ({
         ref={popupRef}
         placement={placement}
         show={show}
-        class={styles.popup}
         element={ref}>
         <context for={selectorContext} set={selector}>
           <for of={valuesFilter} key='value'>

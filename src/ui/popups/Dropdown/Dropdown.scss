@@ -7,6 +7,11 @@
   border-radius: var(--round-50);
   z-index: 1;
   transform: translateY(-8px);
+  overflow: hidden auto;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .show {

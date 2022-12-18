@@ -14,11 +14,3 @@
     }
   }
 }
-
-.popup {
-  overflow: hidden;
-
-  &:empty {
-    display: none;
-  }
-}
