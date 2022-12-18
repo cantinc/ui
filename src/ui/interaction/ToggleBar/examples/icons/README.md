@@ -1,0 +1,1 @@
+`ToggleBar` items has icons.
