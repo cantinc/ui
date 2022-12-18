@@ -16,7 +16,7 @@ export default example({
 import dom, { Ref } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Button, ElementPopup } from '@cantinc/ui'
+import { Arrow, Button, ElementPopup } from '@cantinc/ui'
 
 const show = new State(false)
 const button = new Ref<HTMLButtonElement>()
@@ -24,11 +24,16 @@ const button = new Ref<HTMLButtonElement>()
 innet(
   <>
     <Button
+      gap={16}
       onclick={() => {
         show.value = !show.value
       }}
       ref={button}>
       Click Me
+      <Arrow
+        color='var(--color-100)'
+        top={show}
+      />
     </Button>
     <ElementPopup
       padding={16}
@@ -47,8 +52,11 @@ innet(
           show.value = !show.value
         }}
         ref={button}>
-        <span>Click Me</span>
-        <Arrow color='var(--color-100)' top={show} />
+        Click Me
+        <Arrow
+          color='var(--color-100)'
+          top={show}
+        />
       </Button>
       <ElementPopup
         padding={16}
