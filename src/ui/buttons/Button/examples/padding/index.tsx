@@ -4,8 +4,8 @@ import { Button } from 'src/ui'
 import description from './README.md'
 
 export default example({
-  id: 'size',
-  title: 'Size',
+  id: 'padding',
+  title: 'padding',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -13,10 +13,12 @@ import dom from '@innet/dom'
 import { Button } from '@cantinc/ui'
 
 innet(
-  <Button size='small'>Click Me</Button>,
+  <Button padding={[16, 24]}>
+    Click Me
+  </Button>,
   dom,
 )`,
   example: (
-    <Button size='small'>Click Me</Button>
+    <Button padding={[16, 24]}>Click Me</Button>
   ),
 })

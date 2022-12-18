@@ -26,7 +26,7 @@ innet(
     <Button
       view='secondary'
       size='small'
-      loading={() => loading.value}
+      loading={loading}
       onclick={() => notify('clicked')}>
       Some button
     </Button>
@@ -40,8 +40,8 @@ innet(
       </Button>
       <Button
         view='secondary'
-        size='small'
-        loading={() => loading.value}
+        padding={[16, 24]}
+        loading={loading}
         onclick={() => notify('clicked')}>
         Some button
       </Button>

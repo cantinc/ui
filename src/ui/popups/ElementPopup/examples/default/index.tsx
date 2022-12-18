@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom'
-import { Button, ElementPopup } from 'src'
+import { Arrow, Button, ElementPopup } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -42,11 +42,13 @@ innet(
   example: (
     <>
       <Button
+        gap={16}
         onclick={() => {
           show.value = !show.value
         }}
         ref={button}>
-        Click Me
+        <span>Click Me</span>
+        <Arrow color='var(--color-100)' top={show} />
       </Button>
       <ElementPopup
         padding={16}

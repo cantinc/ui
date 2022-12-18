@@ -3,14 +3,14 @@ import def from './default'
 import flex from './flex'
 import link from './link'
 import loading from './loading'
-import size from './size'
+import padding from './padding'
 import view from './view'
 
 export default [
   def,
   vertical,
   view,
-  size,
+  padding,
   flex,
   loading,
   link,

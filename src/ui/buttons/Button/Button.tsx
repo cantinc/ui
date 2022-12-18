@@ -1,32 +1,27 @@
-import { HTMLStyleProps, LinkProps, style, use } from '@innet/dom'
+import { LinkProps, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
 import { AsyncSpin } from '../../content/AsyncSpin'
+import { Flex, FlexProps } from '../../layout'
 import styles from './Button.scss'
 
 const useStyle = style(styles)
 
 export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
-export type ButtonSizes = 'small' | 'default'
 
-export interface ButtonProps extends HTMLStyleProps<HTMLButtonElement, typeof styles> {
+export interface ButtonProps extends FlexProps<HTMLButtonElement>, Omit<LinkProps, 'ref' | 'class'> {
   view?: ButtonViews
-  loading?: () => boolean
-  size?: ButtonSizes
-  link?: LinkProps
-  flex?: boolean | number
+  loading?: StateProp<boolean>
+  link?: boolean
 }
 
 export function Button ({
   view = 'primary',
   type,
   loading,
-  size,
   disabled,
   link,
-  flex,
-  style = '',
   ...props
 }: ButtonProps = {}) {
   const children = useChildren()
@@ -39,43 +34,25 @@ export function Button ({
       [styles.secondary]: view === 'secondary',
       [styles.negative]: view === 'negative',
       [styles.positive]: view === 'positive',
-      [styles.loading]: loading,
-      [styles.small]: size === 'small',
+      [styles.loading]: use(loading),
     },
   ])
-  const disabledValue = (() => (disabled ?? loading?.()) || undefined) as unknown as boolean
-
-  if (flex) {
-    if (typeof flex === 'boolean') {
-      flex = 1
-    }
-
-    const oldStyle = style
-    style = () => `--ui-button-flex:${flex};${use(oldStyle)}`
-  }
-
-  if (link) {
-    return (
-      <a {...link} style={style} class={className}>
-        {() => loading?.() && <AsyncSpin class={() => styles.spin} />}
-        <span class={() => styles.content}>
-          {children}
-        </span>
-      </a>
-    )
-  }
+  const disabledValue = (() => (disabled ?? use(loading)) || undefined) as unknown as boolean
 
   return (
-    <button
+    <Flex
+      justify='center'
+      element={link ? 'a' : 'button'}
+      inline
+      padding={24}
       {...props}
-      style={style}
       type={type}
       disabled={disabledValue}
       class={className}>
-      {() => loading?.() && <AsyncSpin class={() => styles.spin} />}
-      <span class={() => styles.content}>
-        {children}
-      </span>
-    </button>
+      <show state={loading}>
+        <AsyncSpin class={() => styles.spin} />
+      </show>
+      {children}
+    </Flex>
   )
 }

@@ -3,6 +3,7 @@ import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
+import { Arrow } from '../../content'
 import { ElementPopup, PopupPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
 import { SelectorItem, SelectorItemProps } from '../SelectorItem'
@@ -257,16 +258,13 @@ export function Selector ({
         ]}>
         {arrow && (
           <slot name='after'>
-            <span
+            <Arrow
+              top={show}
               onmousedown={(e: MouseEvent) => {
                 e.preventDefault()
                 e.stopPropagation()
                 show.value = !show.value
               }}
-              class={() => classes([
-                styles.arrow,
-                show.value && styles.arrowSelected,
-              ])}
             />
           </slot>
         )}
