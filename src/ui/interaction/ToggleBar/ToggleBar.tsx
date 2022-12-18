@@ -39,9 +39,11 @@ export function defaultToggleBarRender ({ value, label }: ToggleBarValue, {
     <span
       onfocus={onfocus}
       onblur={onblur}
+      onmouseenter={onfocus}
       tabIndex={0}
       onkeydown={(e: KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
           onchange()
         }
       }}
@@ -104,6 +106,12 @@ export function ToggleBar ({
 
   let blurTimeout: any
 
+  const handleBlur = () => {
+    blurTimeout = setTimeout(() => {
+      focusIndex.value = index.value
+    })
+  }
+
   return (
     <Flex
       element='nav'
@@ -111,6 +119,7 @@ export function ToggleBar ({
       align='stretch'
       padding={[0, 8]}
       {...props}
+      onmouseleave={handleBlur}
       style={() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${use(values).length};${use(style)}`}
       class={() => classes([
         styles.root,
@@ -126,11 +135,7 @@ export function ToggleBar ({
             styles.link,
             index.value === item.index && styles.active,
           ]),
-          onblur: () => {
-            blurTimeout = setTimeout(() => {
-              focusIndex.value = index.value
-            })
-          },
+          onblur: handleBlur,
           onfocus: () => {
             clearTimeout(blurTimeout)
             focusIndex.value = item.index
