@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom'
-import { Arrow, Button, ElementPopup } from 'src'
+import { Arrow, Button, Dropdown } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -16,7 +16,7 @@ export default example({
 import dom, { Ref } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Arrow, Button, ElementPopup } from '@cantinc/ui'
+import { Arrow, Button, Dropdown } from '@cantinc/ui'
 
 const show = new State(false)
 const button = new Ref<HTMLButtonElement>()
@@ -35,12 +35,12 @@ innet(
         top={show}
       />
     </Button>
-    <ElementPopup
+    <Dropdown
       padding={16}
       show={show}
       element={button}>
       Test
-    </ElementPopup>
+    </Dropdown>
   </>,
   dom,
 )`,
@@ -58,12 +58,12 @@ innet(
           top={show}
         />
       </Button>
-      <ElementPopup
+      <Dropdown
         padding={16}
         show={show}
         element={button}>
         Test
-      </ElementPopup>
+      </Dropdown>
     </>
   ),
 })

@@ -4,25 +4,25 @@ import classes from 'html-classes'
 import { State } from 'watch-state'
 
 import { Flex, FlexProps } from '../../layout'
-import styles from './ElementPopup.scss'
+import styles from './Dropdown.scss'
 
 const useStyle = style(styles)
 
-export type PopupPlacement = 'bottom' | 'top'
+export type DropdownPlacement = 'bottom' | 'top'
 
-export interface ElementPopupProps extends Omit<FlexProps, 'element'> {
+export interface DropdownProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
   show: StateProp<boolean>
-  placement?: PopupPlacement
+  placement?: DropdownPlacement
 }
 
-export function ElementPopupContent ({
+export function DropdownContent ({
   element,
   onclick,
   style = '',
   placement = 'bottom',
   ...props
-}: Omit<ElementPopupProps, 'show' | 'onhide'>) {
+}: Omit<DropdownProps, 'show' | 'onhide'>) {
   const children = useChildren()
   const hide = useHidden()
   const show = useShow()
@@ -56,10 +56,10 @@ export function ElementPopupContent ({
   )
 }
 
-export function ElementPopup ({
+export function Dropdown ({
   show,
   ...props
-}: ElementPopupProps) {
+}: DropdownProps) {
   const children = useChildren()
   const hide = new Ref<State<boolean>>()
 
@@ -67,9 +67,9 @@ export function ElementPopup ({
     <show state={show}>
       <portal parent={document.body}>
         <delay ref={hide} hide={300}>
-          <ElementPopupContent {...props}>
+          <DropdownContent {...props}>
             {children}
-          </ElementPopupContent>
+          </DropdownContent>
         </delay>
       </portal>
     </show>

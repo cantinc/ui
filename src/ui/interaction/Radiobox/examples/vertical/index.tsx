@@ -10,8 +10,8 @@ const values: RadioItem[] = [
 ]
 
 export default example({
-  id: 'label',
-  title: 'label',
+  id: 'vertical',
+  title: 'vertical',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

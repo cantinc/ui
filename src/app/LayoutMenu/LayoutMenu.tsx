@@ -49,8 +49,8 @@ export function LayoutMenu () {
         <Menu.Item href='/popups/drawers'>
           <Title>Drawers</Title>
         </Menu.Item>
-        <Menu.Item href='/popups/element-popup'>
-          <Title>ElementPopup</Title>
+        <Menu.Item href='/popups/dropdown'>
+          <Title>Dropdown</Title>
         </Menu.Item>
       </Menu.SubMenu>
       <Menu.Item href='/buttons'>Buttons</Menu.Item>

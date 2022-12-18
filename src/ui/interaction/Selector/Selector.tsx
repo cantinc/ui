@@ -4,7 +4,7 @@ import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
 import { Arrow } from '../../content'
-import { ElementPopup, PopupPlacement } from '../../popups'
+import { Dropdown, DropdownPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
 import { SelectorItem, SelectorItemProps } from '../SelectorItem'
 import itemStyles from '../SelectorItem/SelectorItem.scss'
@@ -17,7 +17,7 @@ export type SelectorDisplay = 'auto' | 'value'
 
 export interface SelectorProps extends InputProps {
   values?: StateProp<SelectorItemProps[]>
-  placement?: PopupPlacement
+  placement?: DropdownPlacement
   searchValue?: StateProp<string>
   showValues?: boolean
   display?: SelectorDisplay
@@ -272,12 +272,12 @@ export function Selector ({
           <slot name='hint'>{hint}</slot>
         )}
       </Input>
-      <ElementPopup
+      <Dropdown
         vertical
         align='stretch'
         ref={popupRef}
         placement={placement}
-        show={() => show.value}
+        show={show}
         class={styles.popup}
         element={ref}>
         <context for={selectorContext} set={selector}>
@@ -287,7 +287,7 @@ export function Selector ({
             )}
           </for>
         </context>
-      </ElementPopup>
+      </Dropdown>
     </>
   )
 }
