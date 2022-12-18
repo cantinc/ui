@@ -16,6 +16,7 @@ export function SearchToggleBar ({
       <a
         onfocus={onfocus}
         onblur={onblur}
+        onmouseenter={onfocus}
         onmousedown={(e: MouseEvent) => {
           e.preventDefault()
         }}
