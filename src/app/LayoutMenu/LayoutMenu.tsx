@@ -1,5 +1,5 @@
 import { useChildren } from '@innet/jsx'
-import { Flex, Menu, Space } from 'src/ui'
+import { Flex, Navigation, Space } from 'src/ui'
 
 function Title () {
   const children = useChildren()
@@ -9,147 +9,147 @@ function Title () {
 
 export function LayoutMenu () {
   return (
-    <Menu>
-      <Menu.Item exact href='/'>
+    <Navigation>
+      <Navigation.Item exact href='/'>
         Home
-      </Menu.Item>
-      <Menu.Item href='/typography'>
+      </Navigation.Item>
+      <Navigation.Item href='/typography'>
         Typography
-      </Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item href='/typography/markdown'>
+      </Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item href='/typography/markdown'>
           <Title>Markdown</Title>
-        </Menu.Item>
-        <Menu.Item href='/typography/typography'>
+        </Navigation.Item>
+        <Navigation.Item href='/typography/typography'>
           <Title>Typography</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/layout'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/layout'>
         Layout
-      </Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item href='/layout/layout'>
+      </Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item href='/layout/layout'>
           <Title>Layout</Title>
-        </Menu.Item>
-        <Menu.Item href='/layout/flex'>
+        </Navigation.Item>
+        <Navigation.Item href='/layout/flex'>
           <Title>Flex</Title>
-        </Menu.Item>
-        <Menu.Item href='/layout/space'>
+        </Navigation.Item>
+        <Navigation.Item href='/layout/space'>
           <Title>Space</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/popups'>Popups</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item href='/popups/notifications'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/popups'>Popups</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item href='/popups/notifications'>
           <Title>Notifications</Title>
-        </Menu.Item>
-        <Menu.Item href='/popups/modals'>
+        </Navigation.Item>
+        <Navigation.Item href='/popups/modals'>
           <Title>Modals</Title>
-        </Menu.Item>
-        <Menu.Item href='/popups/drawers'>
+        </Navigation.Item>
+        <Navigation.Item href='/popups/drawers'>
           <Title>Drawers</Title>
-        </Menu.Item>
-        <Menu.Item href='/popups/dropdown'>
+        </Navigation.Item>
+        <Navigation.Item href='/popups/dropdown'>
           <Title>Dropdown</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/buttons'>Buttons</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item href='/buttons/button'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/buttons'>Buttons</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item href='/buttons/button'>
           <Title>Button</Title>
-        </Menu.Item>
-        <Menu.Item href='/buttons/burger'>
+        </Navigation.Item>
+        <Navigation.Item href='/buttons/burger'>
           <Title>BurgerButton</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/cards'>Cards</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item exact href='/cards/card'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/cards'>Cards</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item exact href='/cards/card'>
           <Title>Card</Title>
-        </Menu.Item>
-        <Menu.Item href='/cards/cards'>
+        </Navigation.Item>
+        <Navigation.Item href='/cards/cards'>
           <Title>Cards</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/interaction'>Interaction</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item exact href='/interaction/checkbox'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/interaction'>Interaction</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item exact href='/interaction/checkbox'>
           <Title>Checkbox</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/interaction/radiobox'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/interaction/radiobox'>
           <Title>Radiobox</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/interaction/toggle'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/interaction/toggle'>
           <Title>Toggle</Title>
-        </Menu.Item>
-        <Menu.Item href='/interaction/toggle-bar'>
+        </Navigation.Item>
+        <Navigation.Item href='/interaction/toggle-bar'>
           <Title>ToggleBar</Title>
-        </Menu.Item>
-        <Menu.Item href='/interaction/input'>
+        </Navigation.Item>
+        <Navigation.Item href='/interaction/input'>
           <Title>Input</Title>
-        </Menu.Item>
-        <Menu.Item href='/interaction/textarea'>
+        </Navigation.Item>
+        <Navigation.Item href='/interaction/textarea'>
           <Title>TextArea</Title>
-        </Menu.Item>
-        <Menu.Item href='/interaction/selector'>
+        </Navigation.Item>
+        <Navigation.Item href='/interaction/selector'>
           <Title>Selector</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/forms'>Forms</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item exact href='/forms/form'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/forms'>Forms</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item exact href='/forms/form'>
           <Title>Form</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/toggle'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/toggle'>
           <Title>FormToggle</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/checkbox'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/checkbox'>
           <Title>FormCheckbox</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/radiobox'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/radiobox'>
           <Title>FormRadiobox</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/input'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/input'>
           <Title>FormInput</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/textarea'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/textarea'>
           <Title>FormTextArea</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/forms/selector'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/forms/selector'>
           <Title>FormSelector</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/search'>Search</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item exact href='/search/toggle'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/search'>Search</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item exact href='/search/toggle'>
           <Title>SearchToggle</Title>
-        </Menu.Item>
-        <Menu.Item href='/search/toggle-bar'>
+        </Navigation.Item>
+        <Navigation.Item href='/search/toggle-bar'>
           <Title>SearchToggleBar</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item href='/content'>Content</Menu.Item>
-      <Menu.SubMenu>
-        <Menu.Item href='/content/icon'>
+        </Navigation.Item>
+      </Navigation.Items>
+      <Navigation.Item href='/content'>Content</Navigation.Item>
+      <Navigation.Items>
+        <Navigation.Item href='/content/icon'>
           <Title>Icon</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/divider'>
+        </Navigation.Item>
+        <Navigation.Item href='/content/divider'>
           <Title>Divider</Title>
-        </Menu.Item>
-        <Menu.Item exact href='/content/spin'>
+        </Navigation.Item>
+        <Navigation.Item exact href='/content/spin'>
           <Title>Spin</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/spin-box'>
+        </Navigation.Item>
+        <Navigation.Item href='/content/spin-box'>
           <Title>SpinBox</Title>
-        </Menu.Item>
-        <Menu.Item href='/content/menu'>
-          <Title>Menu</Title>
-        </Menu.Item>
-      </Menu.SubMenu>
+        </Navigation.Item>
+        <Navigation.Item href='/content/navigation'>
+          <Title>Navigation</Title>
+        </Navigation.Item>
+      </Navigation.Items>
       <Space />
       <Flex justify='center'>
         v{process.env.CANTINC_UI_VERSION}
       </Flex>
-    </Menu>
+    </Navigation>
   )
 }

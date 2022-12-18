@@ -2,7 +2,7 @@ import { HTMLStyleProps, LinkProps, Ref, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
-import styles from './Menu.scss'
+import styles from './Navigation.scss'
 
 const useStyles = style({
   root: styles.root,
@@ -23,14 +23,14 @@ export interface SubMenuProps extends HTMLStyleProps {
 
 }
 
-function Item (props: MenuItemProps) {
+function NavigationItem (props: MenuItemProps) {
   const children = useChildren()
   const styles = useItemStyles()
 
   return <a {...props} class={styles}>{children}</a>
 }
 
-function * SubMenu (props: SubMenuProps) {
+function * NavigationItems (props: SubMenuProps) {
   const children = useChildren()
   const styles = useSubMenuStyles()
   const el = props?.ref || new Ref<any>()
@@ -49,7 +49,7 @@ function * SubMenu (props: SubMenuProps) {
   height.value = el.value.scrollHeight
 }
 
-export function Menu () {
+export function Navigation () {
   const children = useChildren()
   const styles = useStyles()
 
@@ -60,5 +60,5 @@ export function Menu () {
   )
 }
 
-Menu.Item = Item
-Menu.SubMenu = SubMenu
+Navigation.Item = NavigationItem
+Navigation.Items = NavigationItems
