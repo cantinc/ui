@@ -64,14 +64,14 @@ export function ElementPopup ({
   const hide = new Ref<State<boolean>>()
 
   return (
-    <portal parent={document.body}>
-      {() => use(show) && (
+    <show state={show}>
+      <portal parent={document.body}>
         <delay ref={hide} hide={300}>
           <ElementPopupContent {...props}>
             {children}
           </ElementPopupContent>
         </delay>
-      )}
-    </portal>
+      </portal>
+    </show>
   )
 }
