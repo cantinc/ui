@@ -1,7 +1,6 @@
 @import "colors";
 @import "typography";
 @import "round";
-@import "fonts";
 
 html,body {
   display: flex;
@@ -12,10 +11,6 @@ html,body {
   background: var(--color-90);
   color: var(--color-10);
   scroll-behavior: smooth;
-}
-
-html, body, button {
-  font-family: 'Commissioner', sans-serif;
 }
 
 :root {

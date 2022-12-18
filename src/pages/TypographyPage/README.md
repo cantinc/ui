@@ -114,12 +114,19 @@ Right aligned columns
 
 CANT inc. UI uses `Commissioner` as the main font.
 
-Add next block into css.
+Add next block into `head`.
+```html
+<link rel="preload" href="/fonts/Commissioner.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: 'Commissioner';
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Commissioner.woff2") format('woff2');
+  }
 
-```css
-@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap');
-
-body, button {
-  font-family: 'Commissioner', sans-serif;
-}
+  html, body, button {
+    font-family: 'Commissioner', sans-serif;
+  }
+</style>
 ```
