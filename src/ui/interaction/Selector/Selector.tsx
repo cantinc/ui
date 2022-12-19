@@ -6,8 +6,8 @@ import { Cache, State } from 'watch-state'
 import { Arrow } from '../../content'
 import { Dropdown, DropdownPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
-import { SelectorItem, SelectorItemProps } from '../SelectorItem'
-import itemStyles from '../SelectorItem/SelectorItem.scss'
+import { Option, OptionProps } from '../Option'
+import itemStyles from '../Option/Option.scss'
 import { selectorContext } from './constants'
 import styles from './Selector.scss'
 
@@ -16,7 +16,7 @@ const useStyle = style(styles)
 export type SelectorDisplay = 'auto' | 'value'
 
 export interface SelectorProps extends InputProps {
-  values?: StateProp<SelectorItemProps[]>
+  values?: StateProp<OptionProps[]>
   placement?: DropdownPlacement
   searchValue?: StateProp<string>
   showValues?: boolean
@@ -170,7 +170,7 @@ export function Selector ({
   const valuesFilter = !values
     ? []
     : search
-      ? () => use(values).filter(({ value: val, label }: SelectorItemProps) => {
+      ? () => use(values).filter(({ value: val, label }: OptionProps) => {
           const currentValue = (use(searchValue) || '').toLowerCase()
 
           if (label?.toLowerCase().includes(currentValue)) {
@@ -281,8 +281,8 @@ export function Selector ({
         element={ref}>
         <context for={selectorContext} set={selector}>
           <for of={valuesFilter} key='value'>
-            {(item: LoopItem<SelectorItemProps>) => (
-              <SelectorItem {...item.value} />
+            {(item: LoopItem<OptionProps>) => (
+              <Option {...item.value} />
             )}
           </for>
         </context>

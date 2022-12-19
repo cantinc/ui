@@ -3,23 +3,23 @@ import { useContext } from '@innet/jsx'
 import classes from 'html-classes'
 
 import { selectorContext } from '../Selector/constants'
-import styles from './SelectorItem.scss'
+import styles from './Option.scss'
 
 const useStyle = style(styles)
 
-export interface SelectorItemProps extends HTMLStyleProps<HTMLDivElement> {
+export interface OptionProps extends HTMLStyleProps<HTMLDivElement> {
   value: string
   label?: string
 }
 
-export function * SelectorItem ({
+export function * Option ({
   value,
   label,
   onmousedown,
   onmouseenter,
   ref = new Ref<HTMLDivElement>(),
   ...props
-}: SelectorItemProps) {
+}: OptionProps) {
   const styles = useStyle()
   const { hide, value: selectorValue, setValue, showValues, preselect, setPreselect } = useContext(selectorContext)
 
