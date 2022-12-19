@@ -15,7 +15,7 @@ export interface OptionProps extends HTMLStyleProps<HTMLDivElement> {
   onSelect?: () => void
 }
 
-export function * Option ({
+export function Option ({
   value,
   label,
   showValues,
@@ -36,7 +36,7 @@ export function * Option ({
     ;(onmousedown as any)?.(e)
   }
 
-  yield (
+  return (
     <div
       {...props}
       ref={ref}
