@@ -1,8 +1,6 @@
-import { HTMLStyleProps, Ref, style, use } from '@innet/dom'
-import { useContext } from '@innet/jsx'
+import { HTMLStyleProps, Ref, StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
-import { selectorContext } from '../Selector/constants'
 import styles from './Option.scss'
 
 const useStyle = style(styles)
@@ -10,32 +8,32 @@ const useStyle = style(styles)
 export interface OptionProps extends HTMLStyleProps<HTMLDivElement> {
   value: string
   label?: string
+  showValues?: boolean
+  preselected?: StateProp<boolean>
+  selected?: StateProp<boolean>
+  onPreselect?: () => void
+  onSelect?: () => void
 }
 
 export function * Option ({
   value,
   label,
+  showValues,
+  preselected,
+  selected,
+  onPreselect,
+  onSelect,
   onmousedown,
   onmouseenter,
   ref = new Ref<HTMLDivElement>(),
   ...props
 }: OptionProps) {
   const styles = useStyle()
-  const { hide, value: selectorValue, setValue, showValues, preselect, setPreselect } = useContext(selectorContext)
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault()
-    setValue?.(value)
-    hide()
+    onSelect?.()
     ;(onmousedown as any)?.(e)
-  }
-
-  const updatePreselect = () => {
-    if (use(selectorValue) === value) {
-      setPreselect(undefined)
-    } else {
-      setPreselect({ value, label })
-    }
   }
 
   yield (
@@ -43,14 +41,14 @@ export function * Option ({
       {...props}
       ref={ref}
       onmouseenter={(e: MouseEvent) => {
-        updatePreselect()
+        onPreselect?.()
         ;(onmouseenter as any)?.(e)
       }}
       onmousedown={handleClick}
       class={() => classes([
         styles.root,
-        use(selectorValue) === value && styles.selected,
-        preselect()?.value === value && styles.preselect,
+        use(selected) && styles.selected,
+        use(preselected) && styles.preselected,
       ])}>
       {label || value}
       {showValues && (
@@ -60,6 +58,4 @@ export function * Option ({
       )}
     </div>
   )
-
-  ;(ref?.value as any).preselect = updatePreselect
 }

@@ -7,8 +7,6 @@ import { Arrow } from '../../content'
 import { Dropdown, DropdownPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
 import { Option, OptionProps } from '../Option'
-import itemStyles from '../Option/Option.scss'
-import { selectorContext } from './constants'
 import styles from './Selector.scss'
 
 const useStyle = style(styles)
@@ -26,20 +24,6 @@ export interface SelectorProps extends InputProps {
   arrow?: boolean
   displayState?: State<string>
   onsearch?: (search: string) => void
-}
-
-export interface Preselect {
-  value: string
-  label?: string
-}
-
-export interface SelectorContext {
-  value: StateProp<string>
-  setValue?: (value: string) => void
-  setPreselect: (preselect: Preselect | undefined) => void
-  preselect: () => Preselect | undefined
-  hide: () => void
-  showValues?: boolean
 }
 
 export function Selector ({
@@ -60,7 +44,7 @@ export function Selector ({
   const { hint } = useSlots()
   const styles = useStyle()
   const show = new State(false)
-  const preselect = new State<Preselect | undefined>()
+  const preselect = new State<string | undefined>()
   const popupRef = new Ref<HTMLDivElement>()
 
   if (value instanceof State) {
@@ -94,77 +78,55 @@ export function Selector ({
 
   const hide = () => {
     show.value = false
-    preselect.value = undefined
+    preselect.value = ''
     onsearch?.('')
-  }
-  const selector: SelectorContext = {
-    value,
-    setValue: oninput,
-    hide,
-    setPreselect (value) {
-      preselect.value = value
-    },
-    preselect: () => preselect.value,
-    showValues,
-  }
-
-  const getActivePreselect = () => {
-    const popup = popupRef.value
-
-    if (!popup) return
-
-    return popup.querySelector(`.${itemStyles.preselect}`) ||
-      popup.querySelector(`.${itemStyles.selected}`)
-  }
-  const getAllItems = () => {
-    const popup = popupRef.value
-
-    if (!popup) return
-
-    return popup.querySelectorAll(`.${itemStyles.root}`)
   }
 
   const nextPreselect = () => {
-    const all = getAllItems()
-    const active = getActivePreselect()
+    const curValues = use(values)
 
-    if (!all) return
+    if (!curValues?.length) return
 
-    const next: any = !active
-      ? all[0]
-      : (() => {
-          for (let i = 0; i < all.length; i++) {
-            if (all[i] === active) {
-              if (i + 1 === all.length) {
-                return all[0]
-              }
-              return all[i + 1]
-            }
-          }
-        })()
+    const curPreselect = preselect.value
+    const index = curValues.findIndex(({ value }) => value === curPreselect)
 
-    next?.preselect()
+    if (index === -1) {
+      const curValue = use(value)
+      const valueIndex = curValues.findIndex(({ value }) => value === curValue)
+      const nextIndex = valueIndex >= curValues.length - 1 ? 0 : valueIndex + 1
+      preselect.value = valueIndex === -1 ? curValues[0].value : curValues[nextIndex].value
+      return
+    }
+
+    if (index === curValues.length - 1) {
+      preselect.value = curValues[0].value
+      return
+    }
+
+    preselect.value = curValues[index + 1].value
   }
   const prevPreselect = () => {
-    const all = getAllItems()
-    const active = getActivePreselect()
+    const curValues = use(values)
 
-    if (!all) return
+    if (!curValues?.length) return
 
-    const next: any = !active
-      ? all[0]
-      : (() => {
-          for (let i = 0; i < all.length; i++) {
-            if (all[i] === active) {
-              if (i === 0) {
-                return all[all.length - 1]
-              }
-              return all[i - 1]
-            }
-          }
-        })()
+    const curPreselect = preselect.value
+    const index = curValues.findIndex(({ value }) => value === curPreselect)
 
-    next?.preselect()
+    if (index === -1) {
+      const curValue = use(value)
+      const valueIndex = curValues.findIndex(({ value }) => value === curValue)
+      const nextIndex = valueIndex < 1 ? curValues.length - 1 : valueIndex - 1
+      preselect.value = curValues[nextIndex].value
+      return
+    }
+
+    if (index === 0) {
+      preselect.value = curValues[curValues.length - 1].value
+      return
+    }
+
+    preselect.value = curValues[index - 1].value
   }
 
   const valuesFilter = !values
@@ -197,7 +159,7 @@ export function Selector ({
         }}
         onkeydown={(e: KeyboardEvent) => {
           if (e.key === 'Enter' && preselect.value) {
-            const { value } = preselect.value
+            const { value } = preselect
             e.preventDefault()
             oninput?.(value)
             hide()
@@ -279,13 +241,23 @@ export function Selector ({
         placement={placement}
         show={show}
         element={ref}>
-        <context for={selectorContext} set={selector}>
-          <for of={valuesFilter} key='value'>
-            {(item: LoopItem<OptionProps>) => (
-              <Option {...item.value} />
-            )}
-          </for>
-        </context>
+        <for of={valuesFilter} key='value'>
+          {(item: LoopItem<OptionProps>) => (
+            <Option
+              showValues={showValues}
+              preselected={() => preselect.value === item.value.value}
+              onPreselect={() => {
+                preselect.value = item.value.value
+              }}
+              selected={() => use(value) === item.value.value}
+              onSelect={() => {
+                oninput?.(item.value.value)
+                hide()
+              }}
+              {...item.value}
+            />
+          )}
+        </for>
       </Dropdown>
     </>
   )
