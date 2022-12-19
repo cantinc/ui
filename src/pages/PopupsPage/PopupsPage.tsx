@@ -25,6 +25,9 @@ export function PopupsPage () {
       <slot name='dropdown'>
         <Component is={() => import('src/ui/popups/Dropdown/Dropdown.ui')} />
       </slot>
+      <slot name='dropdown-menu'>
+        <Component is={() => import('src/ui/popups/DropdownMenu/DropdownMenu.ui')} />
+      </slot>
     </router>
   )
 }

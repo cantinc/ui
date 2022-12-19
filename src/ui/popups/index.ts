@@ -1,6 +1,7 @@
 export * from './Notification'
 export * from './Notifications'
 export * from './Dropdown'
+export * from './DropdownMenu'
 export * from './Modals'
 export * from './Modal'
 export * from './Drawers'

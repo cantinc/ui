@@ -55,8 +55,13 @@ export const navigation: NavigationMenu = [
         children: '<Drawers />',
       },
       {
+        exact: true,
         href: '/popups/dropdown',
         children: '<Dropdown />',
+      },
+      {
+        href: '/popups/dropdown-menu',
+        children: '<DropdownMenu />',
       },
     ],
   },

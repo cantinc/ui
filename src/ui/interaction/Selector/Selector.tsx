@@ -1,12 +1,12 @@
-import { LoopItem, Ref, StateProp, style, use } from '@innet/dom'
+import { Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
 import { Arrow } from '../../content'
-import { Dropdown, DropdownPlacement } from '../../popups'
+import { DropdownMenu, DropdownPlacement } from '../../popups'
 import { Input, InputProps } from '../Input'
-import { Option, OptionProps } from '../Option'
+import { OptionProps } from '../Option'
 import styles from './Selector.scss'
 
 const useStyle = style(styles)
@@ -44,7 +44,7 @@ export function Selector ({
   const { hint } = useSlots()
   const styles = useStyle()
   const show = new State(false)
-  const preselect = new State<string | undefined>()
+  const preselect = new State<string>('')
   const popupRef = new Ref<HTMLDivElement>()
 
   if (value instanceof State) {
@@ -234,31 +234,20 @@ export function Selector ({
           <slot name='hint'>{hint}</slot>
         )}
       </Input>
-      <Dropdown
-        vertical
-        align='stretch'
+      <DropdownMenu
         ref={popupRef}
         placement={placement}
         show={show}
-        element={ref}>
-        <for of={valuesFilter} key='value'>
-          {(item: LoopItem<OptionProps>) => (
-            <Option
-              showValues={showValues}
-              preselected={() => preselect.value === item.value.value}
-              onPreselect={() => {
-                preselect.value = item.value.value
-              }}
-              selected={() => use(value) === item.value.value}
-              onSelect={() => {
-                oninput?.(item.value.value)
-                hide()
-              }}
-              {...item.value}
-            />
-          )}
-        </for>
-      </Dropdown>
+        element={ref}
+        values={valuesFilter}
+        preselect={preselect}
+        select={value}
+        showValues={showValues}
+        onSelect={(val) => {
+          oninput?.(val)
+          hide()
+        }}
+      />
     </>
   )
 }
