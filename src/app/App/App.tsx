@@ -19,10 +19,10 @@ export function App () {
             name='TypographyPage'
           />
         </slot>
-        <slot name='content'>
+        <slot name='icons'>
           <Async
-            import={() => import('src/pages/ContentPage')}
-            name='ContentPage'
+            import={() => import('src/pages/IconsPage')}
+            name='IconsPage'
           />
         </slot>
         <slot name='layout'>

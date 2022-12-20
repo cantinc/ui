@@ -25,6 +25,16 @@ export const navigation: NavigationMenu = [
     ],
   },
   {
+    href: '/icons',
+    children: 'Icons',
+    menu: [
+      {
+        href: '/icons/icon',
+        children: '<Icon />',
+      },
+    ],
+  },
+  {
     href: '/layout',
     children: 'Layout',
     menu: [
@@ -193,16 +203,6 @@ export const navigation: NavigationMenu = [
       {
         href: '/search/toggle-bar',
         children: '<SearchToggleBar />',
-      },
-    ],
-  },
-  {
-    href: '/content',
-    children: 'Content',
-    menu: [
-      {
-        href: '/content/icon',
-        children: '<Icon />',
       },
     ],
   },

@@ -88,9 +88,8 @@ innet(
         onSelect={hide}
         values={values}
         show={state}
-        element={button}>
-        Test
-      </DropdownMenu>
+        element={button}
+      />
     </>
   ),
 })

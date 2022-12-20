@@ -3,7 +3,7 @@ import { DelayPage, Markdown, Typography } from 'src/ui'
 
 import description from './README.md'
 
-export function ContentPage () {
+export function IconsPage () {
   return (
     <router ish>
       <slot name='/'>
