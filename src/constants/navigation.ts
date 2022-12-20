@@ -18,6 +18,10 @@ export const navigation: NavigationMenu = [
         href: '/typography/typography',
         children: '<Typography />',
       },
+      {
+        href: '/typography/divider',
+        children: '<Divider />',
+      },
     ],
   },
   {
@@ -186,10 +190,6 @@ export const navigation: NavigationMenu = [
       {
         href: '/content/icon',
         children: '<Icon />',
-      },
-      {
-        href: '/content/divider',
-        children: '<Divider />',
       },
       {
         exact: true,

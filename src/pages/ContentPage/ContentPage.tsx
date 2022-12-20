@@ -19,9 +19,6 @@ export function ContentPage () {
       <slot name='spin-box'>
         <Component is={() => import('src/ui/content/SpinBox/SpinBox.ui')} />
       </slot>
-      <slot name='divider'>
-        <Component is={() => import('src/ui/content/Divider/Divider.ui')} />
-      </slot>
       <slot name='navigation'>
         <Component is={() => import('src/ui/content/Navigation/Navigation.ui')} />
       </slot>

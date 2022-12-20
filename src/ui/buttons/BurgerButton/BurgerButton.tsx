@@ -1,6 +1,5 @@
 import { HTMLStyleProps, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
-import classes from 'html-classes'
 
 import styles from './BurgerButton.scss'
 

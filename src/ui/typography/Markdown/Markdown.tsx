@@ -3,8 +3,8 @@ import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 import { WatchProp } from 'src/types'
 
-import { Divider } from '../../content/Divider'
 import { Highlight } from '../../external'
+import { Divider } from '../../typography/Divider'
 
 export interface MarkdownProps {
   text: WatchProp<string>

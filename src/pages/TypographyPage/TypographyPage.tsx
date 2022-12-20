@@ -47,6 +47,9 @@ export function TypographyPage () {
       <slot name='typography'>
         <Component is={() => import('src/ui/typography/Typography/Typography.ui')} />
       </slot>
+      <slot name='divider'>
+        <Component is={() => import('src/ui/typography/Divider/Divider.ui')} />
+      </slot>
     </router>
   )
 }

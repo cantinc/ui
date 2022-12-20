@@ -7,11 +7,19 @@ export default example({
   id: 'button',
   title: 'Button',
   description,
-  code: `<Divider>
-  <Button>
-    Content
-  </Button>
-</Divider>`,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Divider, Button } from '@cantinc/ui'
+
+innet(
+  <Divider>
+    <Button>
+      Content
+    </Button>
+  </Divider>,
+  dom,
+)`,
   example: (
     <Divider>
       <Button>
