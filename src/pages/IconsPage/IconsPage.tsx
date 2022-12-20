@@ -14,7 +14,10 @@ export function IconsPage () {
         </DelayPage>
       </slot>
       <slot name='icon'>
-        <Component is={() => import('src/ui/content/Icon/Icon.ui')} />
+        <Component is={() => import('src/ui/icons/Icon/Icon.ui')} />
+      </slot>
+      <slot name='arrow'>
+        <Component is={() => import('src/ui/icons/Arrow/Arrow.ui')} />
       </slot>
     </router>
   )

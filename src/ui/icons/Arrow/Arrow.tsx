@@ -16,7 +16,7 @@ export function Arrow ({
   style = '',
   color = 'var(--color-10)',
   ...props
-}: ArrowProps) {
+}: ArrowProps = {}) {
   const styles = useStyle()
 
   return (

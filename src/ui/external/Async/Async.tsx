@@ -1,4 +1,4 @@
-import { AsyncSpin } from '../../content/AsyncSpin'
+import { AsyncSpin } from '../AsyncSpin'
 
 export interface AsyncProps<T extends object> {
   import: () => Promise<T>

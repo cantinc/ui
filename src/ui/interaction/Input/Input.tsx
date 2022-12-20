@@ -2,7 +2,7 @@ import { HTMLProps, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
-import { Icon, IconProps } from '../../content/Icon'
+import { Icon, IconProps } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Input.scss'
 

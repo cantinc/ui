@@ -32,6 +32,10 @@ export const navigation: NavigationMenu = [
         href: '/icons/icon',
         children: '<Icon />',
       },
+      {
+        href: '/icons/arrow',
+        children: '<Arrow />',
+      },
     ],
   },
   {

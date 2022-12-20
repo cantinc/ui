@@ -2,7 +2,7 @@ import { LinkProps, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
-import { AsyncSpin } from '../../content/AsyncSpin'
+import { AsyncSpin } from '../../external/AsyncSpin'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Button.scss'
 

@@ -1,8 +1,6 @@
 import { history } from '@innet/dom'
+import { AsyncSpin, Card, Cards, DelayPage, Details, Highlight, Markdown, Typography } from 'src/ui'
 
-import { Card, Cards, DelayPage, Highlight, Markdown, Typography } from '../../ui'
-import { AsyncSpin } from '../../ui/content/AsyncSpin'
-import { Details } from '../../ui/content/Details'
 import styles from './Component.scss'
 
 export type UITypes = 'select' | 'text' | 'switch'

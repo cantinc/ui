@@ -2,7 +2,7 @@ import { LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State, Watch } from 'watch-state'
 
-import { Icon, Icons } from '../../content'
+import { Icon, Icons } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
 

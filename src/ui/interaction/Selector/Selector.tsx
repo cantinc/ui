@@ -3,7 +3,7 @@ import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
-import { Arrow } from '../../content'
+import { Arrow } from '../../icons'
 import { DropdownMenu, DropdownPlacement, MenuOption } from '../../popups'
 import { Input, InputProps } from '../Input'
 import styles from './Selector.scss'
