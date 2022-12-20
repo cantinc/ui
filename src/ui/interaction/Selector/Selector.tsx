@@ -82,53 +82,6 @@ export function Selector ({
     onsearch?.('')
   }
 
-  const nextPreselect = () => {
-    const curValues = use(values)
-
-    if (!curValues?.length) return
-
-    const curPreselect = preselect.value
-    const index = curValues.findIndex(({ value }) => value === curPreselect)
-
-    if (index === -1) {
-      const curValue = use(value)
-      const valueIndex = curValues.findIndex(({ value }) => value === curValue)
-      const nextIndex = valueIndex >= curValues.length - 1 ? 0 : valueIndex + 1
-      preselect.value = valueIndex === -1 ? curValues[0].value : curValues[nextIndex].value
-      return
-    }
-
-    if (index === curValues.length - 1) {
-      preselect.value = curValues[0].value
-      return
-    }
-
-    preselect.value = curValues[index + 1].value
-  }
-  const prevPreselect = () => {
-    const curValues = use(values)
-
-    if (!curValues?.length) return
-
-    const curPreselect = preselect.value
-    const index = curValues.findIndex(({ value }) => value === curPreselect)
-
-    if (index === -1) {
-      const curValue = use(value)
-      const valueIndex = curValues.findIndex(({ value }) => value === curValue)
-      const nextIndex = valueIndex < 1 ? curValues.length - 1 : valueIndex - 1
-      preselect.value = curValues[nextIndex].value
-      return
-    }
-
-    if (index === 0) {
-      preselect.value = curValues[curValues.length - 1].value
-      return
-    }
-
-    preselect.value = curValues[index - 1].value
-  }
-
   const valuesFilter = !values
     ? []
     : search
@@ -157,15 +110,6 @@ export function Selector ({
           }
           ;(props as any)?.onclick?.(e)
         }}
-        onkeydown={(e: KeyboardEvent) => {
-          if (e.key === 'Enter' && preselect.value) {
-            const { value } = preselect
-            e.preventDefault()
-            oninput?.(value)
-            hide()
-          }
-          ;(props.onkeydown as any)?.(e)
-        }}
         renderInput={(props: any) => (
           <input
             {...props}
@@ -175,15 +119,9 @@ export function Selector ({
             ])}
             onkeydown={(e: KeyboardEvent) => {
               if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                e.preventDefault()
-
-                if (show.value) {
-                  if (e.key === 'ArrowDown') {
-                    nextPreselect()
-                  } else if (e.key === 'ArrowUp') {
-                    prevPreselect()
-                  }
-                } else {
+                if (!show.value) {
+                  e.preventDefault()
+                  e.stopPropagation()
                   show.value = true
                 }
               }

@@ -1,6 +1,5 @@
-import { onDestroy } from 'watch-state'
+import { useListener } from '../useListener'
 
 export function useResizeListener (listener: () => void) {
-  window.addEventListener('resize', listener)
-  onDestroy(() => window.removeEventListener('resize', listener))
+  useListener('resize', listener)
 }

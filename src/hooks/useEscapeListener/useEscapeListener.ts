@@ -1,12 +1,9 @@
-import { onDestroy } from 'watch-state'
+import { useListener } from '../useListener'
 
 export function useEscapeListener (listener: () => void) {
-  const mainListener = (e: KeyboardEvent) => {
+  useListener('keyup', e => {
     if (e.key === 'Escape') {
       listener()
     }
-  }
-
-  document.body.addEventListener('keyup', mainListener)
-  onDestroy(() => document.body.removeEventListener('keyup', mainListener))
+  }, document.body)
 }
