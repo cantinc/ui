@@ -1,4 +1,6 @@
 import { HTMLStyleProps, style, use } from '@innet/dom'
+import { useChildren } from '@innet/jsx'
+import classes from 'html-classes'
 
 import styles from './BurgerButton.scss'
 
@@ -24,6 +26,7 @@ export function BurgerButton ({
   ...props
 }: BurgerButtonProps = {}) {
   const styles = useStyle()
+  const children = useChildren()
 
   return (
     <button
@@ -33,6 +36,9 @@ export function BurgerButton ({
       <span class={() => styles.dash} />
       <span class={() => styles.dash} />
       <span class={() => styles.dash} />
+      <span class={() => styles.children}>
+        {children}
+      </span>
     </button>
   )
 }

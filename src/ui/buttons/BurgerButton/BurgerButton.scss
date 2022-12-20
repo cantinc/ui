@@ -1,21 +1,28 @@
 .root {
   --ui-burger-button-size: 16px;
+  --ui-burger-button-width: calc(var(--ui-burger-button-size) * 1.5);
 
   position: relative;
-  padding: 0;
   border: none;
-  width: calc(var(--ui-burger-button-size) * 1.5);
   height: var(--ui-burger-button-size);
   cursor: pointer;
   background: none;
+  padding: 0 0 0 var(--ui-burger-button-width);
+  font-size: var(--ui-burger-button-size);
+  display: inline-flex;
+  align-items: center;
 
-  &:focus > .dash,
-  &:hover > .dash {
-    background: var(--color-secondary-50);
+  &:focus,
+  &:hover {
+    color: var(--color-secondary-50);
 
-    &:nth-child(2),
-    &:nth-child(odd) {
-      right: 0;
+    & > .dash {
+      background: var(--color-secondary-50);
+
+      &:nth-child(2),
+      &:nth-child(odd) {
+        width: var(--ui-burger-button-width);
+      }
     }
   }
 
@@ -28,8 +35,8 @@
     transition: all .3s;
 
     &:nth-child(odd) {
-      right: -10%;
-      left: -10%;
+      width: calc(var(--ui-burger-button-width) * 1.1);
+      left: calc(var(--ui-burger-button-width) * 0.05 * -1);
     }
   }
 }
@@ -41,6 +48,7 @@
   border-radius: calc(var(--ui-burger-button-size) / 12);
   background: var(--color-10);
   left: 0;
+  width: var(--ui-burger-button-width);
 
   &:nth-child(1) {
     top: 0;
@@ -52,10 +60,17 @@
 
   &:nth-child(2) {
     top: calc(50% - (var(--ui-burger-button-size) / 12));
-    right: 0;
   }
 
   &:nth-child(odd) {
-    right: 30%;
+    width: calc(var(--ui-burger-button-width) * .7);
+  }
+}
+
+.children {
+  padding-left: calc(var(--ui-burger-button-size) * .5);
+
+  &:empty {
+    display: none;
   }
 }
