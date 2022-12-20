@@ -40,6 +40,19 @@ export const navigation: NavigationMenu = [
         href: '/layout/space',
         children: '<Space />',
       },
+      {
+        exact: true,
+        href: '/layout/spin',
+        children: '<Spin />',
+      },
+      {
+        href: '/layout/spin-box',
+        children: '<SpinBox />',
+      },
+      {
+        href: '/layout/navigation',
+        children: '<Navigation />',
+      },
     ],
   },
   {
@@ -190,19 +203,6 @@ export const navigation: NavigationMenu = [
       {
         href: '/content/icon',
         children: '<Icon />',
-      },
-      {
-        exact: true,
-        href: '/content/spin',
-        children: '<Spin />',
-      },
-      {
-        href: '/content/spin-box',
-        children: '<SpinBox />',
-      },
-      {
-        href: '/content/navigation',
-        children: '<Navigation />',
       },
     ],
   },

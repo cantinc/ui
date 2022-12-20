@@ -5,7 +5,7 @@ import description from './README.md'
 
 export function LayoutPage () {
   return (
-    <router>
+    <router ish>
       <slot name='/'>
         <DelayPage>
           <Typography>
@@ -21,6 +21,15 @@ export function LayoutPage () {
       </slot>
       <slot name='space'>
         <Component is={() => import('src/ui/layout/Space/Space.ui')} />
+      </slot>
+      <slot name='spin'>
+        <Component is={() => import('src/ui/layout/Spin/Spin.ui')} />
+      </slot>
+      <slot name='spin-box'>
+        <Component is={() => import('src/ui/layout/SpinBox/SpinBox.ui')} />
+      </slot>
+      <slot name='navigation'>
+        <Component is={() => import('src/ui/layout/Navigation/Navigation.ui')} />
       </slot>
     </router>
   )

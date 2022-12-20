@@ -13,15 +13,6 @@ export function ContentPage () {
           </Typography>
         </DelayPage>
       </slot>
-      <slot name='spin'>
-        <Component is={() => import('src/ui/content/Spin/Spin.ui')} />
-      </slot>
-      <slot name='spin-box'>
-        <Component is={() => import('src/ui/content/SpinBox/SpinBox.ui')} />
-      </slot>
-      <slot name='navigation'>
-        <Component is={() => import('src/ui/content/Navigation/Navigation.ui')} />
-      </slot>
       <slot name='icon'>
         <Component is={() => import('src/ui/content/Icon/Icon.ui')} />
       </slot>

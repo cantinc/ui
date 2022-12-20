@@ -53,37 +53,37 @@ innet(
 )`,
   example: (
     <Navigation>
-      <Navigation.Item exact href='/content/navigation'>
+      <Navigation.Item exact href='/layout/navigation'>
         Home
       </Navigation.Item>
-      <Navigation.Item href='/content/navigation/single'>
+      <Navigation.Item href='/layout/navigation/single'>
         Single Link
       </Navigation.Item>
-      <Navigation.Item href='/content/navigation/content'>
+      <Navigation.Item href='/layout/navigation/content'>
         Content
       </Navigation.Item>
       <Navigation.Items>
-        <Navigation.Item href='/content/navigation/content/item1'>
+        <Navigation.Item href='/layout/navigation/content/item1'>
           Item 1
         </Navigation.Item>
-        <Navigation.Item href='/content/navigation/content/item2'>
+        <Navigation.Item href='/layout/navigation/content/item2'>
           Item 2
         </Navigation.Item>
-        <Navigation.Item href='/content/navigation/content/item3'>
+        <Navigation.Item href='/layout/navigation/content/item3'>
           Item 3
         </Navigation.Item>
       </Navigation.Items>
-      <Navigation.Item href='/content/navigation/settings'>
+      <Navigation.Item href='/layout/navigation/settings'>
         Settings
       </Navigation.Item>
       <Navigation.Items>
-        <Navigation.Item href='/content/navigation/settings/password'>
+        <Navigation.Item href='/layout/navigation/settings/password'>
           Change Password
         </Navigation.Item>
-        <Navigation.Item href='/content/navigation/settings/notifications'>
+        <Navigation.Item href='/layout/navigation/settings/notifications'>
           Notifications
         </Navigation.Item>
-        <Navigation.Item href='/content/navigation/settings/account'>
+        <Navigation.Item href='/layout/navigation/settings/account'>
           Account
         </Navigation.Item>
       </Navigation.Items>

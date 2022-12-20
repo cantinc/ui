@@ -1,4 +1,4 @@
-import { Spin, SpinProps } from '../Spin'
+import { Spin, SpinProps } from '../../layout/Spin'
 
 export interface AsyncSpinProps extends SpinProps {
   hide?: number

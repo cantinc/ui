@@ -6,45 +6,45 @@ import description from './README.md'
 const menu: NavigationMenu = [
   {
     exact: true,
-    href: '/content/navigation',
+    href: '/layout/navigation',
     children: 'Home',
   },
   {
-    href: '/content/navigation/single',
+    href: '/layout/navigation/single',
     children: 'Single Link',
   },
   {
-    href: '/content/navigation/content',
+    href: '/layout/navigation/content',
     children: 'Content',
     menu: [
       {
-        href: '/content/navigation/content/item1',
+        href: '/layout/navigation/content/item1',
         children: 'Item 1',
       },
       {
-        href: '/content/navigation/content/item2',
+        href: '/layout/navigation/content/item2',
         children: 'Item 2',
       },
       {
-        href: '/content/navigation/content/item3',
+        href: '/layout/navigation/content/item3',
         children: 'Item 3',
       },
     ],
   },
   {
-    href: '/content/navigation/settings',
+    href: '/layout/navigation/settings',
     children: 'Settings',
     menu: [
       {
-        href: '/content/navigation/settings/password',
+        href: '/layout/navigation/settings/password',
         children: 'Change Password',
       },
       {
-        href: '/content/navigation/settings/notifications',
+        href: '/layout/navigation/settings/notifications',
         children: 'Notifications',
       },
       {
-        href: '/content/navigation/settings/account',
+        href: '/layout/navigation/settings/account',
         children: 'Account',
       },
     ],
