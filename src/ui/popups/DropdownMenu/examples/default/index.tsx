@@ -1,4 +1,4 @@
-import { Ref } from '@innet/dom'
+import { Ref, use } from '@innet/dom'
 import { Arrow, Button, DropdownMenu, MenuOption } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
@@ -26,7 +26,7 @@ export default example({
   title: 'Default',
   description,
   code: `import innet from 'innet'
-import dom, { Ref } from '@innet/dom'
+import dom, { Ref, use } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Arrow, Button, DropdownMenu, MenuOption } from '@cantinc/ui'
@@ -57,7 +57,7 @@ innet(
       Click Me
       <Arrow
         color='var(--color-100)'
-        top={state}
+        direction={() => use(state) ? 'top' : 'down'}
       />
     </Button>
     <DropdownMenu
@@ -81,7 +81,7 @@ innet(
         Click Me
         <Arrow
           color='var(--color-100)'
-          top={state}
+          direction={() => use(state) ? 'top' : 'down'}
         />
       </Button>
       <DropdownMenu

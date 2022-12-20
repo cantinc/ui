@@ -1,18 +1,19 @@
 import { HTMLStyleProps, StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
-import { State } from 'watch-state'
 
 import styles from './Arrow.scss'
 
 const useStyle = style(styles)
 
+export type ArrowDirection = 'down' | 'top' | 'left' | 'right'
+
 export interface ArrowProps extends HTMLStyleProps<HTMLDivElement> {
-  top?: StateProp<any>
+  direction?: StateProp<ArrowDirection>
   color?: StateProp<string>
 }
 
 export function Arrow ({
-  top = new State(false),
+  direction = 'down',
   style = '',
   color = 'var(--color-10)',
   ...props
@@ -25,7 +26,7 @@ export function Arrow ({
       style={() => `--ui-arrow-color:${use(color)};${use(style)}`}
       class={() => classes([
         styles.root,
-        use(top) && styles.down,
+        styles[use(direction)],
       ])}
     />
   )

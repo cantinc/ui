@@ -159,7 +159,7 @@ export function Selector ({
           ? (
             <slot name='after'>
               <Arrow
-                top={show}
+                direction={() => use(show) ? 'top' : 'down'}
                 onmousedown={(e: MouseEvent) => {
                   e.preventDefault()
                   e.stopPropagation()

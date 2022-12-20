@@ -1,0 +1,28 @@
+import { example } from 'src/app/Component'
+import { Arrow, ArrowDirection, Flex, Radiobox, RadioItem } from 'src/ui'
+import { State } from 'watch-state'
+
+import description from './README.md'
+
+const values: RadioItem[] = [
+  { value: 'top', label: 'top' },
+  { value: 'down', label: 'down' },
+  { value: 'left', label: 'left' },
+  { value: 'right', label: 'right' },
+]
+const direction = new State<ArrowDirection>('top')
+
+export default example({
+  id: 'direction',
+  title: 'direction',
+  description,
+  example: (
+    <Flex wrap gap={16}>
+      <Arrow direction={direction} />
+      <Radiobox
+        value={direction}
+        values={values}
+      />
+    </Flex>
+  ),
+})
