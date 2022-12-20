@@ -54,9 +54,7 @@ export function Check ({
       />
       <span class={() => styles.icon} />
       <show state={hasLabel}>
-        <span>
-          {label}
-        </span>
+        {label}
       </show>
     </label>
   )

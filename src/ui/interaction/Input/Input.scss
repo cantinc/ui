@@ -29,7 +29,7 @@
   }
   .error > .input:focus ~ &,
   .error > & {
-    border-color: var(--color-red);
+    border-color: var(--color-negative-50);
   }
 }
 
@@ -55,11 +55,11 @@
   }
 
   .error > & {
-    color: var(--color-red);
+    color: var(--color-negative-50);
   }
 
   .error > &::placeholder {
-    color: var(--color-red);
+    color: var(--color-negative-50);
   }
   .withLabel > & {
     margin: 12px 0 0;
@@ -91,7 +91,7 @@
   position: absolute;
 
   .error > & {
-    color: var(--color-red);
+    color: var(--color-negative-50);
   }
 
   .input:not([data-value='']) ~ &,
@@ -124,7 +124,7 @@
   }
 
   .error > & {
-    color: var(--color-red);
+    color: var(--color-negative-50);
   }
 }
 
@@ -137,7 +137,7 @@
   .input[data-value=''] ~ &,
   .input:disabled ~ & {
     opacity: 0;
-    margin-left: -32px;
+    //margin-left: -32px;
     transform: scale(0);
     visibility: hidden;
   }

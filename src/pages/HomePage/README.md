@@ -39,9 +39,9 @@ In the docs, you can find examples of components, you can copy any example and p
 
 ### Styles
 
-A big part of the library components has `class` prop.
+A big part of the library components has a `class` prop.
 
-Provide a `class` to add one.
+Provide the `class` as a string to add one.
 
 ```tsx
 import innet from 'innet'
@@ -65,22 +65,23 @@ Keys are elements of a component or different states.
 import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Button } from '@cantinc/ui'
+import { Checkbox } from '@cantinc/ui'
 
 innet(
-  <Button
+  <Checkbox
     class={{
       root: 'test-root',
-      content: 'test-content',
-      primary: 'test-primary',
-    }}>
-    Click me
-  </Button>,
+      disabled: 'test-disabled',
+      icon: 'test-icon',
+    }}
+  />,
   dom,
 )
 ```
 
-Values can be an array, string, or a function returns them.
+Values can be an array, string, or a function which returns them.
+
+More information here [html-classes](https://www.npmjs.com/package/html-classes).
 
 ```tsx
 import innet from 'innet'

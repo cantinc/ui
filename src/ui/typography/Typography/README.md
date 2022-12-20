@@ -1,6 +1,6 @@
 # Typography
 
-This component is a container for article, news or another typography text.
+This component is a container for articles, news or another typography text.
 
 
 ```typescript

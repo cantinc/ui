@@ -1,4 +1,4 @@
-Use `vertical` prop to change orientation
+Use the `vertical` prop to change orientation
 
 Available: `true` | `false`
 

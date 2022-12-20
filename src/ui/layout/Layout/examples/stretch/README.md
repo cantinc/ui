@@ -1,1 +1,1 @@
-This example of simple stretch layout.
+This is example of simple stretch layout.

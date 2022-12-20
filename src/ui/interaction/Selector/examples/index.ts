@@ -1,4 +1,5 @@
 import arrow from './arrow'
+import clearable from './clearable'
 import def from './default'
 import display from './display'
 import exact from './exact'
@@ -15,6 +16,7 @@ export default [
   label,
   values,
   arrow,
+  clearable,
   exact,
   search,
   searchExact,

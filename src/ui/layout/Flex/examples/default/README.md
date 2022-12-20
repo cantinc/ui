@@ -1,1 +1,1 @@
-Elements that inside `Flex` are placed horizontal by default.
+Elements which inside `Flex` are placed horizontal by default.
