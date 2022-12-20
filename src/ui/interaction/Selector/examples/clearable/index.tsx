@@ -1,18 +1,18 @@
 import { example } from 'src/app/Component'
-import { Flex, OptionProps, Selector } from 'src/ui'
+import { Flex, MenuOption, Selector } from 'src/ui'
 
 import description from './README.md'
 
-const data: OptionProps[] = [
+const data: MenuOption[] = [
   { value: 'Eminem' },
   { value: 'Linkin Park' },
   { value: 'Louis Armstrong' },
 ]
-const genders: OptionProps[] = [
+const genders: MenuOption[] = [
   { value: 'male', label: 'Male' },
   { value: 'female', label: 'Female' },
 ]
-const genres: OptionProps[] = [
+const genres: MenuOption[] = [
   { value: 'Rap' },
   { value: 'Dance' },
   { value: 'Hip-Hop' },
@@ -26,18 +26,18 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Flex, Selector, OptionProps } from '@cantinc/ui'
+import { Flex, Selector, MenuOption } from '@cantinc/ui'
 
-const data: OptionProps[] = [
+const data: MenuOption[] = [
   { value: 'Eminem' },
   { value: 'Linkin Park' },
   { value: 'Louis Armstrong' },
 ]
-const genders: OptionProps[] = [
+const genders: MenuOption[] = [
   { value: 'male', label: 'Male' },
   { value: 'female', label: 'Female' },
 ]
-const genres: OptionProps[] = [
+const genres: MenuOption[] = [
   { value: 'Rap' },
   { value: 'Dance' },
   { value: 'Hip-Hop' },

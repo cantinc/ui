@@ -1,9 +1,9 @@
 import { example } from 'src/app/Component'
-import { OptionProps, Selector } from 'src/ui'
+import { MenuOption, Selector } from 'src/ui'
 
 import description from './README.md'
 
-const data: OptionProps[] = [
+const data: MenuOption[] = [
   { value: '7701889831' },
   { value: '4028004764' },
   { value: '6732213992' },
@@ -16,9 +16,9 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Selector, SelectorItemProps } from '@cantinc/ui'
+import { Selector, MenuOption } from '@cantinc/ui'
 
-const data: SelectorItemProps[] = [
+const data: MenuOption[] = [
   { value: '7701889831' },
   { value: '4028004764' },
   { value: '6732213992' },

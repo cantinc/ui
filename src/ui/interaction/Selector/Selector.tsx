@@ -4,9 +4,8 @@ import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
 import { Arrow } from '../../content'
-import { DropdownMenu, DropdownPlacement } from '../../popups'
+import { DropdownMenu, DropdownPlacement, MenuOption } from '../../popups'
 import { Input, InputProps } from '../Input'
-import { OptionProps } from '../Option'
 import styles from './Selector.scss'
 
 const useStyle = style(styles)
@@ -14,7 +13,7 @@ const useStyle = style(styles)
 export type SelectorDisplay = 'auto' | 'value'
 
 export interface SelectorProps extends InputProps {
-  values?: StateProp<OptionProps[]>
+  values?: StateProp<MenuOption[]>
   placement?: DropdownPlacement
   searchValue?: StateProp<string>
   showValues?: boolean
@@ -85,7 +84,7 @@ export function Selector ({
   const valuesFilter = !values
     ? []
     : search
-      ? () => use(values).filter(({ value: val, label }: OptionProps) => {
+      ? () => use(values).filter(({ value: val, label }) => {
           const currentValue = (use(searchValue) || '').toLowerCase()
 
           if (label?.toLowerCase().includes(currentValue)) {
