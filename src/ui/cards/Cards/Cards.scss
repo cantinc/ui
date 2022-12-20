@@ -1,7 +1,6 @@
 .root {
   --ui-carts-top: 0;
 
-  padding: 32px 0;
   perspective: 900px;
   perspective-origin: center calc(var(--scroll) - var(--ui-cards-top) + 50vh);
 

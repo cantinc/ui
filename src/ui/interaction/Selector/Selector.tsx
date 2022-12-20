@@ -41,7 +41,7 @@ export function Selector ({
   onsearch,
   ...props
 }: SelectorProps = {}) {
-  const { hint } = useSlots()
+  const { hint, after } = useSlots()
   const styles = useStyle()
   const show = new State(false)
   const preselect = new State<string>('')
@@ -156,18 +156,20 @@ export function Selector ({
           styles.root,
           exact && styles.exact,
         ]}>
-        {arrow && (
-          <slot name='after'>
-            <Arrow
-              top={show}
-              onmousedown={(e: MouseEvent) => {
-                e.preventDefault()
-                e.stopPropagation()
-                show.value = !show.value
-              }}
-            />
-          </slot>
-        )}
+        {arrow
+          ? (
+            <slot name='after'>
+              <Arrow
+                top={show}
+                onmousedown={(e: MouseEvent) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  show.value = !show.value
+                }}
+              />
+            </slot>
+            )
+          : after && (<slot name='after'>{after}</slot>)}
         {hint && (
           <slot name='hint'>{hint}</slot>
         )}
