@@ -31,6 +31,9 @@ export function LayoutPage () {
       <slot name='navigation'>
         <Component is={() => import('src/ui/layout/Navigation/Navigation.ui')} />
       </slot>
+      <slot name='details'>
+        <Component is={() => import('src/ui/layout/Details/Details.ui')} />
+      </slot>
     </router>
   )
 }
