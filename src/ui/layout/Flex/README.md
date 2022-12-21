@@ -7,3 +7,7 @@ and as a method that could offer space distribution between items in an interfac
 ```typescript
 import { Flex } from '@cantinc/ui'
 ```
+
+## Extend
+
+- [Input](/interaction/input)
