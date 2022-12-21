@@ -1,26 +1,31 @@
 .root {
+  --ui--arrow-weight: calc(var(--ui-arrow-size) / 9);
+  --ui--arrow-weight-half: calc(var(--ui--arrow-weight) / 2);
+  --ui--arrow-weight-negative: calc(var(--ui--arrow-weight) * -1);
+
   display: inline-block;
   position: relative;
-  height: 18px;
-  width: 18px;
-  background: radial-gradient(ellipse at center, var(--ui-arrow-color) 0, var(--ui-arrow-color) 1px, transparent 1px);
-  top: 4px;
-  left: 2px;
+  height: var(--ui-arrow-size);
+  padding-left: var(--ui-arrow-size);
+  background: radial-gradient(ellipse at center, var(--ui-arrow-color) 0, var(--ui-arrow-color) var(--ui--arrow-weight-half), transparent var(--ui--arrow-weight-half));
+  top: var(--ui--arrow-weight);
+  left: 0;
   transition: top .3s, left .3s;
+  vertical-align: middle;
 
   &:before,
   &:after {
     content: '';
     display: block;
     position: absolute;
-    height: 2px;
-    width: 9px;
-    top: calc(50% - 1px);
+    height: var(--ui--arrow-weight);
+    width: calc(var(--ui-arrow-size) / 2);
+    top: calc(50% - var(--ui--arrow-weight-half));
     background: var(--ui-arrow-color);
     transition: transform .3s;
     transform-origin: right center;
     right: 50%;
-    border-radius: 1px 0 0 1px;
+    border-radius: var(--ui--arrow-weight-half) 0 0 var(--ui--arrow-weight-half);
   }
 
   &:before {
@@ -33,8 +38,7 @@
 }
 
 .top {
-  top: 0;
-  left: 2px;
+  top: var(--ui--arrow-weight-negative);
 
   &:before {
     transform: rotateZ(-35deg);
@@ -46,8 +50,8 @@
 }
 
 .right {
-  top: 2px;
-  left: 4px;
+  top: 0;
+  left: var(--ui--arrow-weight);
 
   &:before {
     transform: rotateZ(-45deg);
@@ -59,8 +63,8 @@
 }
 
 .left {
-  top: 2px;
-  left: 0;
+  top: 0;
+  left: var(--ui--arrow-weight-negative);
 
   &:before {
     transform: rotateZ(-125deg);
