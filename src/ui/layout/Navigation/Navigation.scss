@@ -20,6 +20,7 @@
   font-size: 63%;
   flex-direction: column;
   overflow: hidden;
+  visibility: hidden;
 }
 
 .link {
@@ -30,6 +31,7 @@
   color: var(--color-link-dark);
 
   & + .submenu {
+    visibility: visible;
     max-height: var(--ui-sub-menu-height);
     min-height: var(--ui-sub-menu-height);
   }
