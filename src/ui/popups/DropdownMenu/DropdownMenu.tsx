@@ -1,4 +1,5 @@
 import { LoopItem, StateProp, style, use } from '@innet/dom'
+import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
@@ -32,6 +33,7 @@ export function DropdownMenu ({
   onPreselect,
   ...props
 }: DropdownMenuProps) {
+  const children = useChildren()
   const styles = useStyle()
 
   onSelect = actionProp(select, onSelect)
@@ -128,6 +130,7 @@ export function DropdownMenu ({
           />
         )}
       </for>
+      {children}
     </Dropdown>
   )
 }
