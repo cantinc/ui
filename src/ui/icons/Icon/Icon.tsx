@@ -5,7 +5,7 @@ import classes from 'html-classes'
 import styles from './Icon.scss'
 const useStyle = style(styles)
 
-export const icons = {
+export const iconsValues = {
   cant: '\\e806',
   cross: '\\e808',
   edit: '\\e801',
@@ -25,7 +25,9 @@ export const icons = {
   whatsapp: '\\e802',
 } as const
 
-export type Icons = keyof typeof icons
+export type Icons = keyof typeof iconsValues
+
+export const icons: Icons[] = Object.keys(iconsValues) as any
 
 export interface IconProps extends HTMLStyleProps<HTMLSpanElement> {
   icon: Icons
@@ -43,7 +45,7 @@ export function Icon ({
   const children = useChildren()
   const styles = useStyle()
 
-  const styleProp = () => `--ui-icon:'${icons[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
+  const styleProp = () => `--ui-icon:'${iconsValues[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
 
   return (
     <span
