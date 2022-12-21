@@ -6,4 +6,8 @@
 .summary {
   cursor: pointer;
   user-select: none;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
