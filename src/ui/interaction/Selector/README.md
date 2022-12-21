@@ -9,5 +9,5 @@ import { Selector } from '@cantinc/ui'
 ## Extends
 
 - [Input](/interaction/input)
-- [Dropdown](/popups/dropdown)
-- `Arrow`
+- [DropdownMenu](/popups/dropdown-menu)
+- [Arrow](/icons/arrow)
