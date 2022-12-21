@@ -10,7 +10,7 @@
   background: radial-gradient(ellipse at center, var(--ui-arrow-color) 0, var(--ui-arrow-color) var(--ui--arrow-weight-half), transparent var(--ui--arrow-weight-half));
   top: var(--ui--arrow-weight);
   left: 0;
-  transition: top .3s, left .3s;
+  transition: top .3s, left .3s, background .3s;
   vertical-align: middle;
 
   &:before,
@@ -22,7 +22,7 @@
     width: calc(var(--ui-arrow-size) / 2);
     top: calc(50% - var(--ui--arrow-weight-half));
     background: var(--ui-arrow-color);
-    transition: transform .3s;
+    transition: transform .3s, background .3s;
     transform-origin: right center;
     right: 50%;
     border-radius: var(--ui--arrow-weight-half) 0 0 var(--ui--arrow-weight-half);

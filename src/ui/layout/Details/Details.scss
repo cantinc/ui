@@ -10,4 +10,14 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  transition: color .3s;
+
+  &:focus {
+    outline: none;
+    color: var(--color-secondary-50);
+
+    .arrow {
+      --ui-arrow-color: var(--color-secondary-50);
+    }
+  }
 }

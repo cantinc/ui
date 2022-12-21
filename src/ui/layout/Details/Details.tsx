@@ -54,6 +54,7 @@ export function * Details ({
           }}
           class={() => styles.summary}>
           <Arrow
+            class={() => styles.arrow}
             size={16}
             direction={() => height.value === defaultHeight ? 'right' : 'down'}
           />

@@ -7,8 +7,8 @@ import description from './README.md'
 const values: RadioItem[] = [
   { value: 'top', label: 'top' },
   { value: 'down', label: 'down' },
-  { value: 'left', label: 'left' },
   { value: 'right', label: 'right' },
+  { value: 'left', label: 'left' },
 ]
 const direction = new State<ArrowDirection>('top')
 
