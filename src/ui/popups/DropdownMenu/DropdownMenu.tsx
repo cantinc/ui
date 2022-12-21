@@ -91,7 +91,7 @@ export function DropdownMenu ({
 
       if (e.key === 'ArrowDown') {
         nextPreselect()
-      } else if (e.key === 'ArrowUp') {
+      } else {
         prevPreselect()
       }
     }
