@@ -159,6 +159,7 @@ export function Selector ({
           ? (
             <slot name='after'>
               <Arrow
+                class={() => styles.arrow}
                 direction={() => use(show) ? 'top' : 'down'}
                 onmousedown={(e: MouseEvent) => {
                   e.preventDefault()
