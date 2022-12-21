@@ -98,6 +98,10 @@ export const navigation: NavigationMenu = [
         href: '/popups/dropdown-menu',
         children: '<DropdownMenu />',
       },
+      {
+        href: '/popups/cantent',
+        children: '<Cantent />',
+      },
     ],
   },
   {

@@ -1,0 +1,57 @@
+.root {
+  position: fixed;
+  top: var(--ui-cantent-top);
+  left: var(--ui-cantent-left);
+  width: var(--ui-cantent-width);
+  height: var(--ui-cantent-height);
+  border: var(--ui-cantent-border);
+  border-radius: var(--ui-cantent-radius);
+  background: var(--ui-cantent-background);
+  box-sizing: border-box;
+  transition: all .3s, border-radius .3s ease-in;
+  overflow: hidden;
+}
+
+.show {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: solid 0 transparent;
+  border-radius: 0;
+
+  .content {
+    left: 0;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.hide {
+  transition: all .3s, border-radius .3s ease-out;
+  top: var(--ui-cantent-top);
+  left: var(--ui-cantent-left);
+  width: var(--ui-cantent-width);
+  height: var(--ui-cantent-height);
+  border: var(--ui-cantent-border);
+  border-radius: var(--ui-cantent-radius);
+
+  .content {
+    top: calc(var(--ui-cantent-top) * -1);
+    left: calc(var(--ui-cantent-left) * -1);
+    opacity: 0;
+  }
+}
+
+.content {
+  position: absolute;
+  top: calc(var(--ui-cantent-top) * -1);
+  left: calc(var(--ui-cantent-left) * -1);
+  width: 100vw;
+  height: 100vh;
+  transition: all .3s;
+  background: var(--color-100);
+  opacity: 0;
+  overflow: auto;
+  box-sizing: border-box;
+}

@@ -1,9 +1,11 @@
 @import "src/styles/breakpoints";
 
 .root {
+  --ui-content-width: var(--ui-layout-width);
+
   width: 100%;
   box-sizing: border-box;
   flex: 1;
-  max-width: var(--ui-layout-width);
+  max-width: var(--ui-content-width);
   margin: auto;
 }

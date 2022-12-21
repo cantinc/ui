@@ -28,6 +28,9 @@ export function PopupsPage () {
       <slot name='dropdown-menu'>
         <Component is={() => import('src/ui/popups/DropdownMenu/DropdownMenu.ui')} />
       </slot>
+      <slot name='cantent'>
+        <Component is={() => import('src/ui/popups/Cantent/Cantent.ui')} />
+      </slot>
     </router>
   )
 }
