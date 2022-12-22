@@ -28,7 +28,8 @@ function PopoutElement ({
 
   const children = useChildren()
   const hide = useHidden()
-  const show = useShow()
+  const preshow = useShow()
+  const show = useShow(200)
   const styles = useStyle()
 
   const rect = element.value.getBoundingClientRect()
@@ -53,6 +54,7 @@ function PopoutElement ({
       style={newStyle}
       class={() => classes([
         styles.root,
+        preshow.value && styles.preshow,
         show.value && styles.show,
         hide?.value && styles.hide,
       ])}>
@@ -75,7 +77,7 @@ export function Popout ({
   return (
     <show state={show}>
       <portal parent={document.body}>
-        <delay ref={hide} hide={300}>
+        <delay ref={hide} hide={600}>
           <PopoutElement {...props}>
             {children}
           </PopoutElement>
