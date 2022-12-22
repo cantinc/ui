@@ -1,3 +1,12 @@
+@keyframes show {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: var(--ui-sub-menu-height);
+  }
+}
+
 .root {
   display: flex;
   flex-direction: column;
@@ -16,8 +25,8 @@
   transition: all .3s;
   max-height: 0;
   min-height: 0;
-  gap: 8px;
-  font-size: 63%;
+  gap: 4px;
+  font-size: 75%;
   flex-direction: column;
   overflow: hidden;
   visibility: hidden;
@@ -32,7 +41,8 @@
 
   & + .submenu {
     visibility: visible;
-    max-height: var(--ui-sub-menu-height);
+    animation: show .3s;
+    max-height: fit-content;
     min-height: var(--ui-sub-menu-height);
   }
 }

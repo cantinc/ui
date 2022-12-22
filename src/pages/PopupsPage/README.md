@@ -1,4 +1,4 @@
 # PopupsPage
 
-Here you can find popup components.
+Popups are windows that suddenly pop up in the foreground of a visual interface.
 
