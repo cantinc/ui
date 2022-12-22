@@ -5,25 +5,25 @@ import { onDestroy, State } from 'watch-state'
 
 import { setOverflow } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
-import styles from './Cantent.scss'
+import styles from './Popout.scss'
 
 const useStyle = style(styles)
 
-interface CantentElementProps extends Omit<FlexProps, 'element'> {
+interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
 }
 
-export interface CantentProps extends CantentElementProps {
+export interface PopoutProps extends PopoutElementProps {
   show?: StateProp<boolean>
 }
 
-let cantentCount = 0
+let popoutCount = 0
 
-function CantentElement ({
+function PopoutElement ({
   element,
   style = '',
   ...props
-}: CantentElementProps) {
+}: PopoutElementProps) {
   if (!element.value) return null
 
   const children = useChildren()
@@ -34,19 +34,19 @@ function CantentElement ({
   const rect = element.value.getBoundingClientRect()
   const elementStyles = window.getComputedStyle(element.value)
 
-  if (!cantentCount) {
+  if (!popoutCount) {
     setOverflow('hidden')
   }
-  cantentCount++
+  popoutCount++
   onDestroy(() => {
-    cantentCount--
+    popoutCount--
 
-    if (!cantentCount) {
+    if (!popoutCount) {
       setOverflow('')
     }
   })
 
-  const newStyle = () => `--ui-cantent-top:${rect.top}px;--ui-cantent-left:${rect.left}px;--ui-cantent-width:${rect.width}px;--ui-cantent-height:${rect.height}px;--ui-cantent-radius:${elementStyles.borderRadius};--ui-cantent-border:${elementStyles.border};--ui-cantent-background:${elementStyles.background};${use(style)}`
+  const newStyle = () => `--ui-popout-top:${rect.top}px;--ui-popout-left:${rect.left}px;--ui-popout-width:${rect.width}px;--ui-popout-height:${rect.height}px;--ui-popout-radius:${elementStyles.borderRadius};--ui-popout-border:${elementStyles.border};--ui-popout-background:${elementStyles.background};${use(style)}`
 
   return (
     <div
@@ -65,10 +65,10 @@ function CantentElement ({
   )
 }
 
-export function Cantent ({
-  show,
+export function Popout ({
+  show = true,
   ...props
-}: CantentProps) {
+}: PopoutProps) {
   const children = useChildren()
   const hide = new Ref<State<boolean>>()
 
@@ -76,9 +76,9 @@ export function Cantent ({
     <show state={show}>
       <portal parent={document.body}>
         <delay ref={hide} hide={300}>
-          <CantentElement {...props}>
+          <PopoutElement {...props}>
             {children}
-          </CantentElement>
+          </PopoutElement>
         </delay>
       </portal>
     </show>

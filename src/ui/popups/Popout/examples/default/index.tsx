@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom'
-import { Button, Buttons, Cantent, Content, Typography } from 'src'
+import { Button, Buttons, Content, Popout, Typography } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -23,7 +23,7 @@ export default example({
 import dom, { Ref } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Content, Button, Cantent, Typography, Buttons } from '@cantinc/ui'
+import { Content, Button, Popout, Typography, Buttons } from '@cantinc/ui'
 
 const state = new State(false)
 const button = new Ref<HTMLButtonElement>()
@@ -42,7 +42,7 @@ innet(
       ref={button}>
       Click Me
     </Button>
-    <Cantent
+    <Popout
       padding={16}
       show={state}
       element={button}>
@@ -60,7 +60,7 @@ innet(
           </Button>
         </Buttons>
       </Content>
-    </Cantent>
+    </Popout>
   </>,
   dom,
 )`,
@@ -71,7 +71,7 @@ innet(
         ref={button}>
         Click Me
       </Button>
-      <Cantent
+      <Popout
         padding={16}
         show={state}
         element={button}>
@@ -89,7 +89,7 @@ innet(
             </Button>
           </Buttons>
         </Content>
-      </Cantent>
+      </Popout>
     </>
   ),
 })

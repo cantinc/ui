@@ -99,8 +99,8 @@ export const navigation: NavigationMenu = [
         children: '<DropdownMenu />',
       },
       {
-        href: '/popups/cantent',
-        children: '<Cantent />',
+        href: '/popups/popout',
+        children: '<Popout />',
       },
     ],
   },
