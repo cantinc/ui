@@ -12,6 +12,10 @@
   align-items: center;
   transition: color .3s;
 
+  &::-webkit-details-marker {
+    display:none;
+  }
+
   &:focus {
     outline: none;
     color: var(--color-secondary-50);
