@@ -11,6 +11,7 @@ const useStyle = style(styles)
 
 interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
+  contentStyle?: StateProp<string>
 }
 
 export interface PopoutProps extends PopoutElementProps {
@@ -22,6 +23,7 @@ let popoutCount = 0
 function PopoutElement ({
   element,
   style = '',
+  contentStyle,
   ...props
 }: PopoutElementProps) {
   if (!element.value) return null
@@ -60,6 +62,7 @@ function PopoutElement ({
       ])}>
       <Flex
         {...props}
+        style={contentStyle}
         class={() => styles.content}>
         {children}
       </Flex>

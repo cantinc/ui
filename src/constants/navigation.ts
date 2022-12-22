@@ -71,6 +71,10 @@ export const navigation: NavigationMenu = [
         href: '/layout/details',
         children: '<Details />',
       },
+      {
+        href: '/layout/image',
+        children: '<Image />',
+      },
     ],
   },
   {

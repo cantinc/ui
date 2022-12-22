@@ -1,0 +1,8 @@
+.root {
+  width: var(--ui-image-size);
+  aspect-ratio: var(--ui-image-ratio);
+  background-position: center;
+  border-radius: var(--ui-image-radius);
+  background-size: cover;
+  overflow: hidden;
+}

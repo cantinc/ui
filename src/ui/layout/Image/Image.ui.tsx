@@ -1,12 +1,12 @@
 import { meta } from 'src/app/Component'
 
-import { Flex } from '.'
+import { Image } from '.'
 import examples from './examples'
 import description from './README.md'
 
-export default meta<typeof Flex>({
-  component: Flex,
-  name: 'Flex',
+export default meta<typeof Image>({
+  component: Image,
+  name: 'Image',
   description,
   examples,
 })

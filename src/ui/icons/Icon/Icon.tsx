@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style, use } from '@innet/dom'
+import { HTMLStyleProps, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -31,7 +31,8 @@ export const icons: Icons[] = Object.keys(iconsValues) as any
 
 export interface IconProps extends HTMLStyleProps<HTMLSpanElement> {
   icon: Icons
-  size?: number
+  size?: StateProp<number>
+  color?: StateProp<string>
   end?: boolean
 }
 
@@ -39,13 +40,20 @@ export function Icon ({
   icon,
   style = '',
   size,
+  color = 'inherit',
   end,
   ...props
 }: IconProps) {
   const children = useChildren()
   const styles = useStyle()
 
-  const styleProp = () => `--ui-icon:'${iconsValues[icon]}';${size ? `--ui-icon-size:${size}px;` : ''}${use(style)}`
+  const styleProp = () => {
+    const currentSize = use(size)
+    const currentColor = use(color)
+    const sizeStyle = currentSize ? `--ui-icon-size:${currentSize}px;` : ''
+    const colorStyle = `--ui-icon-color:${currentColor};`
+    return `--ui-icon:'${iconsValues[icon]}';${sizeStyle}${colorStyle}${use(style)}`
+  }
 
   return (
     <span

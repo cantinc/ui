@@ -14,7 +14,7 @@ export function Content ({
   width,
   style = '',
   ...props
-}: ContentProps) {
+}: ContentProps = {}) {
   const children = useChildren()
   const styles = useStyles()
 
