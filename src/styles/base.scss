@@ -22,6 +22,7 @@ a {
   color: var(--color-10);
   text-decoration-thickness: 1px;
   text-underline-position: under;
+  cursor: pointer;
 
   &:hover {
     color: var(--color-link-dark);
