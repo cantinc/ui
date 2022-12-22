@@ -7,15 +7,9 @@ import description from './README.md'
 
 const state = new State(false)
 const button = new Ref<HTMLButtonElement>()
-const button1 = new Ref<HTMLButtonElement>()
-const button2 = new Ref<HTMLButtonElement>()
 
-const show1 = () => {
-  button.value = button1.value
-  state.value = true
-}
-const show2 = () => {
-  button.value = button2.value
+const show = (e: MouseEvent) => {
+  button.value = e.target as HTMLButtonElement
   state.value = true
 }
 const hide = () => {
@@ -30,19 +24,13 @@ export default example({
 import dom, { Ref } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Content, Button, Popout, Typography, Buttons } from '@cantinc/ui'
+import { Content, Button, Popout, Typography, Buttons, Flex } from '@cantinc/ui'
 
 const state = new State(false)
 const button = new Ref<HTMLButtonElement>()
-const button1 = new Ref<HTMLButtonElement>()
-const button2 = new Ref<HTMLButtonElement>()
 
-const show1 = () => {
-  button.value = button1.value
-  state.value = true
-}
-const show2 = () => {
-  button.value = button2.value
+const show = (e: MouseEvent) => {
+  button.value = e.target as HTMLButtonElement
   state.value = true
 }
 const hide = () => {
@@ -52,13 +40,13 @@ const hide = () => {
 innet(
   <Flex wrap gap={16}>
     <Button
-      onclick={show1}
-      ref={button1}>
+      view='negative'
+      onclick={show}>
       Click Me
     </Button>
     <Button
-      onclick={show2}
-      ref={button2}>
+      view='positive'
+      onclick={show}>
       Click Me
     </Button>
     <Popout
@@ -87,14 +75,12 @@ innet(
     <Flex wrap gap={16}>
       <Button
         view='negative'
-        onclick={show1}
-        ref={button1}>
+        onclick={show}>
         Click Me
       </Button>
       <Button
         view='positive'
-        onclick={show2}
-        ref={button2}>
+        onclick={show}>
         Click Me
       </Button>
       <Popout
