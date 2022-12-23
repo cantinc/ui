@@ -63,12 +63,14 @@ function * NavigationItems (props: NavigationItemsProps) {
       {...props}
       ref={el}
       style={() => `--ui-sub-menu-height:${height.value}px;${use(props?.style) || ''}`}
-      class={styles.root}>
+      class={() => styles.root}>
       {children}
     </section>
   )
 
-  height.value = el.value.scrollHeight
+  setTimeout(() => {
+    height.value = el.value.scrollHeight
+  })
 }
 
 export function Navigation ({

@@ -16,6 +16,9 @@ export function LayoutPage () {
       <slot name='layout'>
         <Component is={() => import('src/ui/layout/Layout/Layout.ui')} />
       </slot>
+      <slot name='pages'>
+        <Component is={() => import('src/ui/layout/Pages/Pages.ui')} />
+      </slot>
       <slot name='flex'>
         <Component is={() => import('src/ui/layout/Flex/Flex.ui')} />
       </slot>

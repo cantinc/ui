@@ -64,6 +64,7 @@ export const navigation: NavigationMenu = [
         children: '<SpinBox />',
       },
       {
+        exact: true,
         href: '/layout/navigation',
         children: '<Navigation />',
       },
@@ -74,6 +75,10 @@ export const navigation: NavigationMenu = [
       {
         href: '/layout/image',
         children: '<Image />',
+      },
+      {
+        href: '/layout/pages',
+        children: '<Pages />',
       },
     ],
   },
