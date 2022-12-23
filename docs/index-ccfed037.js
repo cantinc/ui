@@ -1,0 +1,1 @@
+import{M as o}from"./docs-7a62fae0.js";import{T as t}from"./Typography-b332e720.js";function e(){return{type:t,children:[{type:o,props:{text:"# Layout\n\nHere you can find components to control elements position.\n\n"}}]}}export{e as default};
