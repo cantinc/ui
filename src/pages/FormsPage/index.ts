@@ -1,1 +1,1 @@
-export * from './FormsPage'
+export { default } from './FormsPage'

@@ -1,13 +1,11 @@
-import { DelayPage, Markdown, Typography } from 'src/ui'
+import { Markdown, Typography } from 'src/ui'
 
 import description from './README.md'
 
-export function HomePage () {
+export default function HomePage () {
   return (
-    <DelayPage>
-      <Typography>
-        <Markdown text={description} />
-      </Typography>
-    </DelayPage>
+    <Typography>
+      <Markdown text={description} />
+    </Typography>
   )
 }

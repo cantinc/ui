@@ -29,7 +29,7 @@ export function splitPagesItem (navigation: PagesMenu, hrefContext: string, pare
 
   for (let i = 0; i < navigation.length; i++) {
     const { menu: oldMenu, slot, page, ...rest } = navigation[i]
-    const href = hrefContext && slot === '/' ? hrefContext : `${hrefContext}/${slot}`
+    const href = hrefContext && slot === '/' ? hrefContext : `${hrefContext}/${slot === '/' ? '' : slot}`
     const item: NavigationItemProps = {
       ...rest,
       href,

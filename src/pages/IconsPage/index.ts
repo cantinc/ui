@@ -1,1 +1,1 @@
-export * from './IconsPage'
+export { default } from './IconsPage'

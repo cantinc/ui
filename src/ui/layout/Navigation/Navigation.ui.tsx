@@ -1,12 +1,14 @@
-import { meta } from 'src/app/Component'
+import { Component } from 'src/app/Component'
 
 import { Navigation } from '.'
 import examples from './examples'
 import description from './README.md'
 
-export default meta<typeof Navigation>({
-  name: 'Menu',
-  component: Navigation,
-  description,
-  examples,
-})
+export default () => (
+  <Component
+    component={Navigation}
+    name='Navigation'
+    description={description}
+    examples={examples}
+  />
+)

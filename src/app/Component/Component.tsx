@@ -1,5 +1,5 @@
 import { history } from '@innet/dom'
-import { AsyncSpin, Card, Cards, DelayPage, Details, Highlight, Markdown, Typography } from 'src/ui'
+import { Card, Cards, DelayPage, Details, Highlight, Markdown, Typography } from 'src/ui'
 
 import styles from './Component.scss'
 
@@ -21,7 +21,7 @@ export interface UIExample {
   code?: string
 }
 
-export interface UIMeta<C extends UIComponent> {
+export interface ComponentProps <C extends UIComponent> {
   component: C
   name: string
   description?: string
@@ -30,31 +30,19 @@ export interface UIMeta<C extends UIComponent> {
   examples?: UIExample[]
 }
 
-export interface ComponentProps <C extends UIComponent> {
-  is: () => Promise<{ default: UIMeta<C> }>
-}
-
-export function meta <C extends UIComponent> (meta: UIMeta<C>) {
-  return meta
-}
-
 export function example (example: UIExample): UIExample {
   return example
 }
 
-export async function * Component <C extends UIComponent> ({ is }: ComponentProps<C>) {
-  yield <AsyncSpin flex justify='center' align='center' show={300} />
-
-  const {
-    component: Component,
-    examples,
-    props,
-    description,
-  } = (await is()).default
-
+export function Component <C extends UIComponent> ({
+  component: Component,
+  examples,
+  props,
+  description,
+}: ComponentProps<C>) {
   console.log(Component, props)
 
-  yield (
+  return (
     <DelayPage gap={16}>
       {description && <Typography><Markdown text={description} /></Typography>}
       {examples && (

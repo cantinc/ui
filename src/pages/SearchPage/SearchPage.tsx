@@ -1,24 +1,11 @@
-import { Component } from 'src/app/Component'
-import { DelayPage, Markdown, Typography } from 'src/ui'
+import { Markdown, Typography } from 'src/ui'
 
 import description from './README.md'
 
-export function SearchPage () {
+export default function SearchPage () {
   return (
-    <router ish>
-      <slot name='/'>
-        <DelayPage>
-          <Typography>
-            <Markdown text={description} />
-          </Typography>
-        </DelayPage>
-      </slot>
-      <slot name='toggle'>
-        <Component is={() => import('src/ui/search/SearchToggle/SearchToggle.ui')} />
-      </slot>
-      <slot name='toggle-bar'>
-        <Component is={() => import('src/ui/search/SearchToggleBar/SearchToggleBar.ui')} />
-      </slot>
-    </router>
+    <Typography>
+      <Markdown text={description} />
+    </Typography>
   )
 }

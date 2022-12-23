@@ -1,1 +1,1 @@
-export * from './InteractionPage'
+export { default } from './InteractionPage'

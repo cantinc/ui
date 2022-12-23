@@ -1,0 +1,11 @@
+.content {
+  border-radius: 8px 8px 0 0;
+  background: var(--color-100);
+}
+
+.aside {
+  overflow: auto;
+  max-height: calc(100vh - 40px);
+  position: sticky;
+  top: 20px;
+}

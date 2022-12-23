@@ -1,12 +1,14 @@
-import { meta } from 'src/app/Component'
+import { Component } from 'src/app/Component'
 
 import { Drawers } from '.'
 import examples from './examples'
 import description from './README.md'
 
-export default meta<typeof Drawers>({
-  component: Drawers,
-  name: 'Drawers',
-  description,
-  examples,
-})
+export default () => (
+  <Component
+    component={Drawers}
+    name='Drawers'
+    description={description}
+    examples={examples}
+  />
+)
