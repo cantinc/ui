@@ -120,9 +120,7 @@ export function ToggleBar ({
   return (
     <Flex
       element='nav'
-      gap={16}
       align='stretch'
-      padding={[0, 8]}
       {...props}
       onmouseleave={handleBlur}
       style={() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${use(values).length};${use(style)}`}

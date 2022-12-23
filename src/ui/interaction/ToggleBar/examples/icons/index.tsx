@@ -25,10 +25,10 @@ const values: ToggleBarValue[] = [
 ]
 
 innet(
-  <ToggleBar padding={[24, 8]} values={values} />,
+  <ToggleBar padding={[24, 0]} values={values} />,
   dom,
 )`,
   example: (
-    <ToggleBar padding={[24, 8]} values={values} />
+    <ToggleBar padding={[24, 0]} values={values} />
   ),
 })

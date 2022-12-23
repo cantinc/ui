@@ -44,7 +44,7 @@ export function Radiobox ({
   }
 
   return (
-    <Flex gap={[0, 16]} {...props} class={() => styles.root}>
+    <Flex gap={16} {...props} class={() => styles.root}>
       <for of={values || []} key='value'>
         {(item: LoopItem<RadioItem>) => (
           <Check

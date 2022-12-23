@@ -44,6 +44,8 @@ innet(
     <Flex wrap gap={16}>
       <Arrow direction={direction} />
       <Radiobox
+        flex
+        wrap
         value={direction}
         values={values}
       />
