@@ -3,48 +3,50 @@ import { Navigation, NavigationMenu } from 'src/ui'
 
 import description from './README.md'
 
+const getURL = (url: string) => `${process.env.CANTINC_UI_BASE_URL}/layout/navigation${url}`
+
 const menu: NavigationMenu = [
   {
     exact: true,
-    href: '/layout/navigation',
+    href: getURL(''),
     children: 'Home',
   },
   {
-    href: '/layout/navigation/single',
+    href: getURL('/single'),
     children: 'Single Link',
   },
   {
-    href: '/layout/navigation/content',
+    href: getURL('/content'),
     children: 'Content',
     menu: [
       {
-        href: '/layout/navigation/content/item1',
+        href: getURL('/content/item1'),
         children: 'Item 1',
       },
       {
-        href: '/layout/navigation/content/item2',
+        href: getURL('/content/item2'),
         children: 'Item 2',
       },
       {
-        href: '/layout/navigation/content/item3',
+        href: getURL('/content/item3'),
         children: 'Item 3',
       },
     ],
   },
   {
-    href: '/layout/navigation/settings',
+    href: getURL('/settings'),
     children: 'Settings',
     menu: [
       {
-        href: '/layout/navigation/settings/password',
+        href: getURL('/settings/password'),
         children: 'Change Password',
       },
       {
-        href: '/layout/navigation/settings/notifications',
+        href: getURL('/settings/notifications'),
         children: 'Notifications',
       },
       {
-        href: '/layout/navigation/settings/account',
+        href: getURL('/settings/account'),
         children: 'Account',
       },
     ],

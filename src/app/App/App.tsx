@@ -5,7 +5,7 @@ import styles from './App.scss'
 
 export function App () {
   return (
-    <Pages navigation={navigation}>
+    <Pages prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
       <Layout gap={20} padding={[20, 20, 0]}>
         <Aside class={styles.aside} vertical>
           <slot name='menu' />

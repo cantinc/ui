@@ -1,0 +1,1 @@
+import{_ as s,F as t,s as o,x as r,u as a,a as n}from"./docs-4dbfcb03.js";const c=o(r);function e(o={}){var{width:r,style:e=""}=o,i=s(o,["width","style"]);const d=a(),l=c();return{type:t,props:{align:"stretch",...i,style:()=>{const s=n(r);return`${s?`--ui-content-width:${s}px;`:""}${n(e)}`},class:()=>l.root},children:[d]}}export{e as C};

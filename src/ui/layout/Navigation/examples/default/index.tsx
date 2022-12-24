@@ -3,6 +3,8 @@ import { Navigation } from 'src/ui'
 
 import description from './README.md'
 
+const getURL = (url: string) => `${process.env.CANTINC_UI_BASE_URL}/layout/navigation${url}`
+
 export default example({
   id: 'default',
   title: 'Default',
@@ -53,37 +55,37 @@ innet(
 )`,
   example: (
     <Navigation>
-      <Navigation.Item exact href='/layout/navigation'>
+      <Navigation.Item exact href={getURL('')}>
         Home
       </Navigation.Item>
-      <Navigation.Item href='/layout/navigation/single'>
+      <Navigation.Item href={getURL('/single')}>
         Single Link
       </Navigation.Item>
-      <Navigation.Item href='/layout/navigation/content'>
+      <Navigation.Item href={getURL('/content')}>
         Content
       </Navigation.Item>
       <Navigation.Items>
-        <Navigation.Item href='/layout/navigation/content/item1'>
+        <Navigation.Item href={getURL('/content/item1')}>
           Item 1
         </Navigation.Item>
-        <Navigation.Item href='/layout/navigation/content/item2'>
+        <Navigation.Item href={getURL('/content/item2')}>
           Item 2
         </Navigation.Item>
-        <Navigation.Item href='/layout/navigation/content/item3'>
+        <Navigation.Item href={getURL('/content/item3')}>
           Item 3
         </Navigation.Item>
       </Navigation.Items>
-      <Navigation.Item href='/layout/navigation/settings'>
+      <Navigation.Item href={getURL('/settings')}>
         Settings
       </Navigation.Item>
       <Navigation.Items>
-        <Navigation.Item href='/layout/navigation/settings/password'>
+        <Navigation.Item href={getURL('/settings/password')}>
           Change Password
         </Navigation.Item>
-        <Navigation.Item href='/layout/navigation/settings/notifications'>
+        <Navigation.Item href={getURL('/settings/notifications')}>
           Notifications
         </Navigation.Item>
-        <Navigation.Item href='/layout/navigation/settings/account'>
+        <Navigation.Item href={getURL('/settings/account')}>
           Account
         </Navigation.Item>
       </Navigation.Items>

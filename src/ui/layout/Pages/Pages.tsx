@@ -1,3 +1,4 @@
+import { routerContext } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { AsyncSpin } from '../../external/AsyncSpin'
@@ -17,7 +18,7 @@ export interface PagesProps {
   prefix?: string
 }
 
-export function splitPagesItem (navigation: PagesMenu, hrefContext: string, parent?: any): [NavigationItemProps[], any] {
+export function splitPagesItem (navigation: PagesMenu, prefix: string, parent?: any): [NavigationItemProps[], any] {
   const menu: NavigationItemProps[] = []
   const pages: any = {
     type: 'router',
@@ -29,7 +30,7 @@ export function splitPagesItem (navigation: PagesMenu, hrefContext: string, pare
 
   for (let i = 0; i < navigation.length; i++) {
     const { menu: oldMenu, slot, page, ...rest } = navigation[i]
-    const href = hrefContext && slot === '/' ? hrefContext : `${hrefContext}/${slot === '/' ? '' : slot}`
+    const href = prefix && slot === '/' ? prefix : `${prefix}/${slot === '/' ? '' : slot}`
     const item: NavigationItemProps = {
       ...rest,
       href,
@@ -90,9 +91,19 @@ export function Pages ({
     </>
   )
 
+  if (!prefix) {
+    return (
+      <slots from={slots}>
+        {children}
+      </slots>
+    )
+  }
+
   return (
     <slots from={slots}>
-      {children}
+      <context for={routerContext} set={(prefix.match(/\//g) || []).length + 1}>
+        {children}
+      </context>
     </slots>
   )
 }
