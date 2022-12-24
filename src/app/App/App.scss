@@ -1,18 +1,27 @@
 @import "src/styles/breakpoints";
 
+.root {
+  @media (min-width: $laptop) {
+    padding: 20px 20px 0;
+  }
+}
+
 .content {
   border-radius: 8px 8px 0 0;
   background: var(--color-100);
-  position: relative;
 }
 
 .aside {
-  @media (min-width: $laptop) {
-    .aside {
-      overflow: auto;
-      max-height: calc(100vh - 40px);
-      position: sticky;
-      top: 20px;
-    }
-  }
+  overflow: auto;
+  max-height: calc(100vh - 40px);
+  position: sticky;
+  top: 20px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  background: var(--color-90);
+  z-index: 1;
 }

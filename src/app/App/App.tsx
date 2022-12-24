@@ -1,24 +1,54 @@
+import {
+  Aside,
+  BurgerButton,
+  Drawer,
+  Drawers,
+  Flex,
+  Header,
+  Layout,
+  Main,
+  Notifications,
+  Pages,
+  Space,
+} from 'src'
 import { navigation } from 'src/constants'
-import { Aside, Flex, Layout, Main, Notifications, Pages, Space } from 'src/ui'
+import { hideLayoutMenu, isDesktop, isMobile, showLayoutMenu, shownLayoutMenu } from 'src/core'
 
 import styles from './App.scss'
 
 export function App () {
   return (
     <Pages prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
-      <Layout gap={20} padding={[20, 20, 0]}>
-        <Aside class={styles.aside} vertical>
-          <slot name='menu' />
-          <Space />
-          <Flex justify='center'>
-            v{process.env.CANTINC_UI_VERSION}
-          </Flex>
-        </Aside>
+      <Layout class={styles.root} gap={20}>
+        <show state={isDesktop}>
+          <Aside class={styles.aside} vertical>
+            <slot name='menu' />
+            <Space />
+            <Flex justify='center'>
+              v{process.env.CANTINC_UI_VERSION}
+            </Flex>
+          </Aside>
+        </show>
+        <show state={isMobile}>
+          <Header class={styles.header}>
+            <BurgerButton size={24} onclick={showLayoutMenu} />
+            <Space />
+            <a href='/'>CANT inc. UI</a>
+            <Space />
+          </Header>
+        </show>
         <Main padding={32} class={styles.content}>
           <slot name='pages' />
         </Main>
       </Layout>
       <Notifications />
+      <Drawers>
+        <show state={shownLayoutMenu}>
+          <Drawer padding={16} onclose={hideLayoutMenu}>
+            <slot name='menu' />
+          </Drawer>
+        </show>
+      </Drawers>
     </Pages>
   )
 }
