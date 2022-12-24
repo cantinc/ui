@@ -1,1 +1,0 @@
-import{M as r}from"./docs-4dbfcb03.js";import{T as n}from"./Typography-fb81b959.js";function o(){return{type:n,children:[{type:r,props:{text:"# Search\n\nHere you can find components work with query string.\n\n"}}]}}export{o as default};
