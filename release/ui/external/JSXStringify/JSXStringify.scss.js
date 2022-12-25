@@ -1,0 +1,16 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var injector_8363bc92 = require('rollup-plugin-styles/dist/runtime/inject-css.js');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var injector_8363bc92__default = /*#__PURE__*/_interopDefaultLegacy(injector_8363bc92);
+
+var css = ".JSXStringify_root__cad2e839{border:1px solid var(--color-50);border-radius:var(--round-50);font-family:monospace;max-height:50vh;overflow:auto;padding:0 16px}.JSXStringify_root__cad2e839:after,.JSXStringify_root__cad2e839:before{box-shadow:0 0 13px 13px #fff;content:\"\";display:block;position:sticky}.JSXStringify_root__cad2e839:before{margin-bottom:16px;top:0}.JSXStringify_root__cad2e839:after{bottom:0;margin-top:16px}.JSXStringify_children__cad2e839{padding-left:1.2em}.JSXStringify_empty__cad2e839,.JSXStringify_end__cad2e839,.JSXStringify_propNum__cad2e839,.JSXStringify_start__cad2e839{color:#0d50b3}.JSXStringify_start__cad2e839{display:flex;flex-wrap:wrap}.JSXStringify_prop__cad2e839{padding-left:.6em}.JSXStringify_propKey__cad2e839,.JSXStringify_propValue__cad2e839{color:#e1460b}.JSXStringify_propBraces__cad2e839,.JSXStringify_propNull__cad2e839{color:#9d3407}.JSXStringify_propString__cad2e839{color:green;white-space:nowrap}.JSXStringify_propArray__cad2e839,.JSXStringify_propFunc__cad2e839,.JSXStringify_propObject__cad2e839{color:var(--color-10)}";
+var modules_6d812109 = {"root":"JSXStringify_root__cad2e839","children":"JSXStringify_children__cad2e839","propNum":"JSXStringify_propNum__cad2e839","empty":"JSXStringify_empty__cad2e839","start":"JSXStringify_start__cad2e839","end":"JSXStringify_end__cad2e839","prop":"JSXStringify_prop__cad2e839","propValue":"JSXStringify_propValue__cad2e839","propKey":"JSXStringify_propKey__cad2e839","propNull":"JSXStringify_propNull__cad2e839","propBraces":"JSXStringify_propBraces__cad2e839","propString":"JSXStringify_propString__cad2e839","propObject":"JSXStringify_propObject__cad2e839","propFunc":"JSXStringify_propFunc__cad2e839","propArray":"JSXStringify_propArray__cad2e839"};
+injector_8363bc92__default["default"](css,{});
+
+exports.css = css;
+exports["default"] = modules_6d812109;

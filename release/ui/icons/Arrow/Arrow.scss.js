@@ -1,0 +1,16 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var injector_8363bc92 = require('rollup-plugin-styles/dist/runtime/inject-css.js');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var injector_8363bc92__default = /*#__PURE__*/_interopDefaultLegacy(injector_8363bc92);
+
+var css = ".Arrow_root__01d22827{--ui--arrow-weight:calc(var(--ui-arrow-size)/9);--ui--arrow-weight-half:calc(var(--ui--arrow-weight)/2);--ui--arrow-weight-negative:calc(var(--ui--arrow-weight)*-1);background:radial-gradient(ellipse at center,var(--ui-arrow-color) 0,var(--ui-arrow-color) var(--ui--arrow-weight-half),transparent var(--ui--arrow-weight-half));display:inline-block;height:var(--ui-arrow-size);left:0;padding-left:var(--ui-arrow-size);position:relative;top:var(--ui--arrow-weight);transition:top .3s,left .3s,background .3s;vertical-align:middle}.Arrow_root__01d22827:after,.Arrow_root__01d22827:before{background:var(--ui-arrow-color);border-radius:var(--ui--arrow-weight-half) 0 0 var(--ui--arrow-weight-half);content:\"\";display:block;height:var(--ui--arrow-weight);position:absolute;right:50%;top:calc(50% - var(--ui--arrow-weight-half));transform-origin:right center;transition:transform .3s,background .3s;width:calc(var(--ui-arrow-size)/2)}.Arrow_root__01d22827:before{transform:rotate(35deg)}.Arrow_root__01d22827:after{transform:rotate(145deg)}.Arrow_top__01d22827{top:var(--ui--arrow-weight-negative)}.Arrow_top__01d22827:before{transform:rotate(-35deg)}.Arrow_top__01d22827:after{transform:rotate(215deg)}.Arrow_right__01d22827{left:var(--ui--arrow-weight);top:0}.Arrow_right__01d22827:before{transform:rotate(-45deg)}.Arrow_right__01d22827:after{transform:rotate(45deg)}.Arrow_left__01d22827{left:var(--ui--arrow-weight-negative);top:0}.Arrow_left__01d22827:before{transform:rotate(-125deg)}.Arrow_left__01d22827:after{transform:rotate(125deg)}";
+var modules_42f85621 = {"root":"Arrow_root__01d22827","top":"Arrow_top__01d22827","right":"Arrow_right__01d22827","left":"Arrow_left__01d22827"};
+injector_8363bc92__default["default"](css,{});
+
+exports.css = css;
+exports["default"] = modules_42f85621;

@@ -1,0 +1,8 @@
+import './Toggle/index.es6.js';
+import './ToggleBar/index.es6.js';
+import './Input/index.es6.js';
+import './TextArea/index.es6.js';
+import './Selector/index.es6.js';
+import './Option/index.es6.js';
+import './Checkbox/index.es6.js';
+import './Radiobox/index.es6.js';

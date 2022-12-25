@@ -1,1 +1,0 @@
-import{_ as s,F as t,s as e,C as o,u as r,a}from"./docs-b4e7cdfe.js";const n=e(o);function c(e={}){var{width:o,style:c=""}=e,i=s(e,["width","style"]);const d=r(),l=n();return{type:t,props:{align:"stretch",...i,style:()=>{const s=a(o);return`${s?`--ui-content-width:${s}px;`:""}${a(c)}`},class:()=>l.root},children:[d]}}export{c as C};
