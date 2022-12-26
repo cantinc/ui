@@ -1,0 +1,1 @@
+import{M as o}from"./docs-25aea466.js";import{T as e}from"./Typography-e6d5a0fd.js";function n(){return{type:e,children:[{type:o,props:{text:"# Icons\n\nHere you can find components relates to icons.\n\n"}}]}}export{n as default};
