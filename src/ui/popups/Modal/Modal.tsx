@@ -45,7 +45,7 @@ export function Modal ({
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
 
-  style = width ? () => `--ui-modal-width:${width}px;${use(style)}` : style
+  const newStyle = width ? () => `--ui-modal-width:${width}px;${use(style)}` : style
 
   if (!('button-close' in slots)) {
     slots['button-close'] = <Icon icon='cross' />
@@ -84,7 +84,7 @@ export function Modal ({
     <delay ref={hidden} hide={300}>
       <div
         {...props}
-        style={style}
+        style={newStyle}
         ref={element}
         // @ts-expect-error
         _close={() => handleClose}

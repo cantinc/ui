@@ -32,7 +32,7 @@ function Modal(_a = {}) {
     const element = new dom.Ref();
     const headButtonsLength = headButtons === null || headButtons === void 0 ? void 0 : headButtons.length;
     const buttonsLength = buttons === null || buttons === void 0 ? void 0 : buttons.length;
-    style = width ? () => `--ui-modal-width:${width}px;${dom.use(style)}` : style;
+    const newStyle = width ? () => `--ui-modal-width:${width}px;${dom.use(style)}` : style;
     if (!('button-close' in slots)) {
         slots['button-close'] = {type:Icon.Icon,props:{icon:'cross'}};
     }
@@ -60,7 +60,7 @@ function Modal(_a = {}) {
             setOverflow.setOverflow('');
         }
     });
-    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:style,ref:element,_close:() => handleClose,class:() => {
+    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:newStyle,ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes__default["default"]([
                 styles.root,
