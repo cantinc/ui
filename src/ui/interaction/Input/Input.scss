@@ -7,6 +7,7 @@
   background: var(--color-100);
   border-radius: var(--round-50);
   min-height: 32px;
+  box-sizing: content-box;
 
   &:after {
     content: '';

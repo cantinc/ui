@@ -2,6 +2,10 @@
 
 ## v0.0
 
+### v0.0.6 [![27.12.2022](https://img.shields.io/date/1672093173)](https://github.com/d8corp/innetjs/tree/v0.0.6)
+
+- fix `loading` for `Input`
+
 ### v0.0.5 [![27.12.2022](https://img.shields.io/date/1672092462)](https://github.com/d8corp/innetjs/tree/v0.0.5)
 
 - add `loading` with skeleton for `Input`
