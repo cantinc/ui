@@ -36,9 +36,10 @@ export default example({
 import dom, { Ref, use } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Arrow, Button, DropdownMenu, MenuOption } from '@cantinc/ui'
+import { Arrow, Button, DropdownMenu, MenuOption, Modals, Modal } from '@cantinc/ui'
 
 const state = new State(false)
+const modalState = new State(false)
 const button = new Ref<HTMLButtonElement>()
 
 const toggle = () => {
@@ -47,6 +48,13 @@ const toggle = () => {
 const hide = () => {
   state.value = false
 }
+const showModal = () => {
+  modalState.value = true
+}
+const hideModal = () => {
+  modalState.value = false
+}
+
 const values: MenuOption[] = [
   { value: '1', label: 'Test 1' },
   { value: '2', label: 'Test 2' },
@@ -55,25 +63,35 @@ const values: MenuOption[] = [
 
 innet(
   <>
-    <Button
-      padding={8}
-      gap={8}
-      onclick={toggle}
-      onblur={hide}
-      ref={button}>
+    <Button onclick={showModal}>
       Click Me
-      <Arrow
-        color='var(--color-100)'
-        direction={() => use(state) ? 'top' : 'down'}
-      />
     </Button>
-    <DropdownMenu
-      onSelect={hide}
-      values={values}
-      show={state}
-      element={button}>
-      Test
-    </DropdownMenu>
+    <portal parent={document.body}>
+      <Modals>
+        <show state={modalState}>
+          <Modal headButtons={[]} onclose={hideModal}>
+            <Button
+              padding={8}
+              gap={8}
+              onclick={toggle}
+              onblur={hide}
+              ref={button}>
+              Click Me
+              <Arrow
+                color='var(--color-100)'
+                direction={() => use(state) ? 'top' : 'down'}
+              />
+            </Button>
+            <DropdownMenu
+              onSelect={hide}
+              values={values}
+              show={state}
+              element={button}
+            />
+          </Modal>
+        </show>
+      </Modals>
+    </portal>
   </>,
   dom,
 )`,
