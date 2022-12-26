@@ -1,1 +1,0 @@
-import{ac as n}from"./docs-25aea466.js";function r(n){return[(r,t,e)=>{if(null!=r&&""!==r)for(let o=0;o<n.length;o++){const i=n[o](r,t,e);if(i)return i}}]}function t(r){return function(t,e){if(t.length<r)return{error:n.minLength,data:{key:e,min:r}}}}export{t as m,r as o};
