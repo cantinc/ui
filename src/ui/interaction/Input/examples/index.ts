@@ -6,10 +6,12 @@ import hint from './hint'
 import hintError from './hintError'
 import inline from './inline'
 import labelPlaceholder from './labelPlaceholder'
+import loading from './loading'
 import padding from './padding'
 
 export default [
   autofocus,
+  loading,
   inline,
   clearable,
   padding,

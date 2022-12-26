@@ -1,4 +1,4 @@
-import { HTMLProps, Ref, StateProp, style, use } from '@innet/dom'
+import { HTMLProps, inject, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
@@ -17,6 +17,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   placeholder?: StateProp<string>
   error?: StateProp<boolean>
   disabled?: StateProp<boolean>
+  loading?: StateProp<boolean>
   required?: StateProp<boolean>
   type?: StateProp<InputType>
   name?: StateProp<string>
@@ -51,6 +52,7 @@ export function Input ({
   inputRef = new Ref<HTMLInputElement>(),
   name,
   type,
+  loading,
   clearable,
   ...rest
 }: InputProps = {}) {
@@ -122,6 +124,8 @@ export function Input ({
     onDestroy(() => clearTimeout(timer))
   }
 
+  const loaded = inject(loading, loading => !loading)
+
   return (
     <Flex
       align='center'
@@ -139,14 +143,17 @@ export function Input ({
         styles.root,
         use(label) && styles.withLabel,
         use(error) && styles.error,
+        use(loading) && styles.loading,
       ]}>
-      {element}
-      {clearContent}
-      {beforeContent}
-      {labelContent}
-      {afterContent}
-      {hintContent}
-      <span {...props?.border} class={() => styles.border} />
+      <show state={loaded}>
+        {element}
+        {clearContent}
+        {beforeContent}
+        {labelContent}
+        {afterContent}
+        {hintContent}
+        <span {...props?.border} class={() => styles.border} />
+      </show>
     </Flex>
   )
 }

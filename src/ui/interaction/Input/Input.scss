@@ -1,10 +1,30 @@
+@import "src/styles/skeleton";
+
 .root {
   position: relative;
-  box-sizing: border-box;
   margin-bottom: 24px;
   cursor: text;
   background: var(--color-100);
   border-radius: var(--round-50);
+  min-height: 32px;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    transition: all .3s;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    @include skeleton;
+  }
+}
+
+.loading {
+  &:after {
+    opacity: 1;
+  }
 }
 
 .before {

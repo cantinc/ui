@@ -15,7 +15,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 const useStyle = dom.style(Input$1["default"]);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
 function Input(_a = {}) {
-    var { label, value = new watchState.State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, clearable } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable"]);
+    var { label, value = new watchState.State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, loading, clearable } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "loading", "clearable"]);
     const styles = useStyle();
     const { before, after, hint } = jsx.useSlots();
     if (value instanceof watchState.State) {
@@ -58,6 +58,7 @@ function Input(_a = {}) {
         }, typeof autofocus === 'number' ? autofocus : 0);
         watchState.onDestroy(() => clearTimeout(timer));
     }
+    const loaded = dom.inject(loading, loading => !loading);
     return ({type:Flex.Flex,props:{align:'center',padding:16,gap:8,element:'label',...rest,onmousedown:(e) => {
             var _a;
             if (e.target !== inputRef.value) {
@@ -69,7 +70,8 @@ function Input(_a = {}) {
             styles.root,
             dom.use(label) && styles.withLabel,
             dom.use(error) && styles.error,
-        ]},children:[element,' ',clearContent,' ',beforeContent,' ',labelContent,' ',afterContent,' ',hintContent,{type:'span',props:{...props === null || props === void 0 ? void 0 : props.border,class:() => styles.border}}]});
+            dom.use(loading) && styles.loading,
+        ]},children:[{type:'show',props:{state:loaded},children:[element,' ',clearContent,' ',beforeContent,' ',labelContent,' ',afterContent,' ',hintContent,{type:'span',props:{...props === null || props === void 0 ? void 0 : props.border,class:() => styles.border}}]}]});
 }
 
 exports.Input = Input;
