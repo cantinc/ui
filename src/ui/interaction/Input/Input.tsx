@@ -1,6 +1,6 @@
 import { HTMLProps, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
-import { State } from 'watch-state'
+import { onDestroy, State } from 'watch-state'
 
 import { Icon, IconProps } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
@@ -10,7 +10,7 @@ const useStyle = style(styles)
 
 export type InputType = 'text' | 'password'
 
-export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'> {
+export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
   label?: StateProp<string>
   value?: StateProp<string>
   oninput?: (value: string) => void
@@ -20,6 +20,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput'>
   required?: StateProp<boolean>
   type?: StateProp<InputType>
   name?: StateProp<string>
+  autofocus?: boolean | number
   clearable?: boolean
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
@@ -42,6 +43,7 @@ export function Input ({
   oninput,
   props,
   placeholder,
+  autofocus,
   renderInput = defaultRenderInput,
   error,
   disabled,
@@ -112,6 +114,13 @@ export function Input ({
       />
       )
     : null
+
+  if (autofocus) {
+    const timer = setTimeout(() => {
+      inputRef.value?.focus()
+    }, typeof autofocus === 'number' ? autofocus : 0)
+    onDestroy(() => clearTimeout(timer))
+  }
 
   return (
     <Flex

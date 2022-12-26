@@ -1,3 +1,4 @@
+import autofocus from './autofocus'
 import beforeAfter from './beforeAfter'
 import clearable from './clearable'
 import error from './error'
@@ -8,6 +9,7 @@ import labelPlaceholder from './labelPlaceholder'
 import padding from './padding'
 
 export default [
+  autofocus,
   inline,
   clearable,
   padding,

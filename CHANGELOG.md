@@ -2,6 +2,10 @@
 
 ## v0.0
 
+### v0.0.3 [![26.12.2022](https://img.shields.io/date/1672064224)](https://github.com/d8corp/innetjs/tree/v0.0.3)
+
+- add `autofocus` for `Input` like components
+
 ### v0.0.2 [![26.12.2022](https://img.shields.io/date/1672058931)](https://github.com/d8corp/innetjs/tree/v0.0.2)
 
 - fix modal styles bug

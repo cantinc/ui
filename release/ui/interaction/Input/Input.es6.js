@@ -1,7 +1,7 @@
 import { __rest } from 'tslib';
 import { style, Ref, use } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
-import { State } from 'watch-state';
+import { State, onDestroy } from 'watch-state';
 import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_4318a3aa from './Input.scss.es6.js';
@@ -11,7 +11,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 const useStyle = style(modules_4318a3aa);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
 function Input(_a = {}) {
-    var { label, value = new State(''), oninput, props, placeholder, renderInput = defaultRenderInput, error, disabled, required, inputRef = new Ref(), name, type, clearable } = _a, rest = __rest(_a, ["label", "value", "oninput", "props", "placeholder", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable"]);
+    var { label, value = new State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new Ref(), name, type, clearable } = _a, rest = __rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable"]);
     const styles = useStyle();
     const { before, after, hint } = useSlots();
     if (value instanceof State) {
@@ -47,6 +47,13 @@ function Input(_a = {}) {
                 oninput === null || oninput === void 0 ? void 0 : oninput('');
             },class:() => styles.clear}})
         : null;
+    if (autofocus) {
+        const timer = setTimeout(() => {
+            var _a;
+            (_a = inputRef.value) === null || _a === void 0 ? void 0 : _a.focus();
+        }, typeof autofocus === 'number' ? autofocus : 0);
+        onDestroy(() => clearTimeout(timer));
+    }
     return ({type:Flex,props:{align:'center',padding:16,gap:8,element:'label',...rest,onmousedown:(e) => {
             var _a;
             if (e.target !== inputRef.value) {

@@ -15,7 +15,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 const useStyle = dom.style(Input$1["default"]);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
 function Input(_a = {}) {
-    var { label, value = new watchState.State(''), oninput, props, placeholder, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, clearable } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable"]);
+    var { label, value = new watchState.State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, clearable } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable"]);
     const styles = useStyle();
     const { before, after, hint } = jsx.useSlots();
     if (value instanceof watchState.State) {
@@ -51,6 +51,13 @@ function Input(_a = {}) {
                 oninput === null || oninput === void 0 ? void 0 : oninput('');
             },class:() => styles.clear}})
         : null;
+    if (autofocus) {
+        const timer = setTimeout(() => {
+            var _a;
+            (_a = inputRef.value) === null || _a === void 0 ? void 0 : _a.focus();
+        }, typeof autofocus === 'number' ? autofocus : 0);
+        watchState.onDestroy(() => clearTimeout(timer));
+    }
     return ({type:Flex.Flex,props:{align:'center',padding:16,gap:8,element:'label',...rest,onmousedown:(e) => {
             var _a;
             if (e.target !== inputRef.value) {
