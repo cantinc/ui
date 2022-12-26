@@ -6,7 +6,7 @@
   cursor: pointer;
   perspective: 900px;
   transform-style: flat;
-  z-index: 999;
+  z-index: var(--ui-over-z-index);
 
   &:empty {
     opacity: 0;
