@@ -27,7 +27,7 @@ export function Form ({
   const form: FormContext = {
     fields: new Set(),
     destroyed: false,
-    loading: new State(false),
+    loading,
   }
 
   onDestroy(() => {
@@ -91,7 +91,12 @@ export function Form ({
       const result = actionHandler(use(action), form, method)
 
       if (result) {
-        result.then(handleSuccess, e => onerror?.(form, e))
+        loading.value = true
+        result
+          .then(handleSuccess, e => onerror?.(form, e))
+          .finally(() => {
+            loading.value = false
+          })
       } else {
         handleSuccess()
       }
