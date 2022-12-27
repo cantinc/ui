@@ -72,7 +72,7 @@ function Selector(_a = {}) {
         },renderInput:(props) => ({type:'input',props:{...props,class:() => classes([
                 props.class,
                 styles.input,
-            ]),onkeydown:(e) => {
+            ]),autocomplete:'off',onkeydown:(e) => {
                 var _a;
                 if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
                     if (!show.value) {
