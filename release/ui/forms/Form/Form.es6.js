@@ -12,7 +12,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 const formErrorHandler = new Context(({ error }) => error);
 const formActionHandler = new Context(() => { });
 function Form(_a = {}) {
-    var { loading = new State(false), action, notification, onsuccess, onerror } = _a, props = __rest(_a, ["loading", "action", "notification", "onsuccess", "onerror"]);
+    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror"]);
     const children = useChildren();
     const errorHandler = useContext(formErrorHandler);
     const actionHandler = useContext(formActionHandler);
@@ -68,7 +68,7 @@ function Form(_a = {}) {
         if (error)
             return;
         if (action) {
-            const result = actionHandler(use(action), form);
+            const result = actionHandler(use(action), form, method);
             if (result) {
                 result.then(handleSuccess, e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e));
             }

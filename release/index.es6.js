@@ -70,6 +70,7 @@ export { setOverflow } from './utils/setOverflow/setOverflow.es6.js';
 export { closeRouterModal, getCloseRouterModal } from './utils/closeRouterModal/closeRouterModal.es6.js';
 export { withModal } from './utils/withModal/withModal.es6.js';
 export { actionProp } from './utils/actionProp/actionProp.es6.js';
+export { createFormDate } from './utils/createFormDate/createFormDate.es6.js';
 export { useEscapeListener } from './hooks/useEscapeListener/useEscapeListener.es6.js';
 export { formContext, useForm } from './hooks/forms/useForm/useForm.es6.js';
 export { useField } from './hooks/forms/useField/useField.es6.js';

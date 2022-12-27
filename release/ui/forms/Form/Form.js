@@ -16,7 +16,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 const formErrorHandler = new jsx.Context(({ error }) => error);
 const formActionHandler = new jsx.Context(() => { });
 function Form(_a = {}) {
-    var { loading = new watchState.State(false), action, notification, onsuccess, onerror } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "onsuccess", "onerror"]);
+    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror"]);
     const children = jsx.useChildren();
     const errorHandler = jsx.useContext(formErrorHandler);
     const actionHandler = jsx.useContext(formActionHandler);
@@ -72,7 +72,7 @@ function Form(_a = {}) {
         if (error)
             return;
         if (action) {
-            const result = actionHandler(dom.use(action), form);
+            const result = actionHandler(dom.use(action), form, method);
             if (result) {
                 result.then(handleSuccess, e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e));
             }

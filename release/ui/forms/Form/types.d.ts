@@ -3,15 +3,17 @@ import { WatchProp } from '@innet/dom';
 import { State } from 'watch-state';
 import { FormContext } from '../../../hooks';
 import { FlexProps } from '../../layout';
+export declare type FormMethod = 'GET' | 'HEAD' | 'POST' | 'DELETE' | 'PUT' | 'CONNECT' | 'OPTIONS' | 'TRACE' | 'PATCH';
 export interface FormProps extends FlexProps<HTMLFormElement> {
     action?: WatchProp<string>;
     loading?: State<boolean>;
     notification?: string;
+    method?: FormMethod;
     onerror?: (form: FormContext, error?: any) => void;
     onsuccess?: (form: FormContext) => void;
 }
 export declare type FormErrorHandle = (error: ValidationError<any>, form: FormContext) => string | Promise<string>;
-export declare type FormActionHandle = (action: string, form: FormContext) => Promise<any> | void;
+export declare type FormActionHandle = (action: string, form: FormContext, method: FormMethod) => Promise<any> | void;
 export interface FormFieldProps<V = string> {
     name: string;
     defaultValue?: V;

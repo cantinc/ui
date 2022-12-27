@@ -5,3 +5,4 @@ import './setOverflow/index.es6.js';
 import './closeRouterModal/index.es6.js';
 import './withModal/index.es6.js';
 import './actionProp/index.es6.js';
+import './createFormDate/index.es6.js';

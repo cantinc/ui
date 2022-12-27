@@ -2,6 +2,12 @@
 
 ## v0.0
 
+### v0.0.9 [![27.12.2022](https://img.shields.io/date/1672151372)](https://github.com/d8corp/innetjs/tree/v0.0.9)
+
+- improve `Form` `method` types
+- method `POST` by default for `Form`
+- add `createFormDate`
+
 ### v0.0.8 [![27.12.2022](https://img.shields.io/date/1672138034)](https://github.com/d8corp/innetjs/tree/v0.0.8)
 
 - fix input width

@@ -15,6 +15,7 @@ export function Form ({
   loading = new State(false),
   action,
   notification,
+  method = 'POST',
   onsuccess,
   onerror,
   ...props
@@ -87,7 +88,7 @@ export function Form ({
     if (error) return
 
     if (action) {
-      const result = actionHandler(use(action), form)
+      const result = actionHandler(use(action), form, method)
 
       if (result) {
         result.then(handleSuccess, e => onerror?.(form, e))
