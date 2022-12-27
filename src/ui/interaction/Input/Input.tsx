@@ -8,7 +8,7 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
-export type InputType = 'text' | 'password'
+export type InputType = 'text' | 'password' | 'date'
 
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
   label?: StateProp<string>

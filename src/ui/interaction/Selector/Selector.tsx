@@ -116,6 +116,7 @@ export function Selector ({
               props.class,
               styles.input,
             ])}
+            autocomplete='off'
             onkeydown={(e: KeyboardEvent) => {
               if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
                 if (!show.value) {
