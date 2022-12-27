@@ -1,6 +1,7 @@
 import clickable from './clickable'
 import def from './default'
 import inline from './inline'
+import loading from './loading'
 import onclick from './onclick'
 
 export default [
@@ -8,4 +9,5 @@ export default [
   inline,
   clickable,
   onclick,
+  loading,
 ]

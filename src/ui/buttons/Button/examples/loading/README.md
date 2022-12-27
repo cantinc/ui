@@ -1,1 +1,1 @@
-By default, do nothing on click
+You can show skeleton UI with `loading`.

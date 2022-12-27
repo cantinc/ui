@@ -1,1 +1,1 @@
-`autofocus` focus on the element.
+Before default value loads, you can show skeleton UI with `loading`.
