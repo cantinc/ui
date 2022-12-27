@@ -9,23 +9,11 @@
   min-height: 32px;
   box-sizing: content-box;
 
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
-    transition: all .3s;
-    opacity: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    @include skeleton;
-  }
+  @include skeletonAfter;
 }
 
 .loading {
-  &:after {
-    opacity: 1;
-  }
+  @include skeletonAfterShow;
 }
 
 .before {

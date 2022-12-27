@@ -1,6 +1,8 @@
+@import "src/styles/skeleton";
+
 .root {
   outline: 1px solid transparent;
-  transition: background-color 0.3s, border-color .3s, opacity 0.3s, outline 0.3s;
+  transition: background-color .3s, border-color .3s, opacity .3s, outline .3s;
   border: 1px solid var(--color-primary-50);
   background-color: var(--color-primary-50);
   border-radius: var(--round-50);
@@ -10,8 +12,15 @@
   text-align: center;
   text-decoration: none;
   position: relative;
-  min-width: 120px;
+  min-width: 96px;
+  min-height: 22px;
+  box-sizing: content-box;
   color: var(--color-100);
+
+  @include skeletonAfter;
+  &:after {
+    inset: -1px;
+  }
 }
 
 .primary {
@@ -84,9 +93,7 @@
 }
 
 .loading {
-  opacity: .5;
-  pointer-events: none;
-  color: transparent;
+  @include skeletonAfterShow;
 }
 
 .spin {

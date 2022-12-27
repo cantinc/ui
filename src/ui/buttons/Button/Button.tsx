@@ -1,8 +1,7 @@
-import { LinkProps, StateProp, style, use } from '@innet/dom'
+import { inject, LinkProps, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
-import { AsyncSpin } from '../../external/AsyncSpin'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Button.scss'
 
@@ -49,10 +48,9 @@ export function Button ({
       type={type}
       disabled={disabledValue}
       class={className}>
-      <show state={loading}>
-        <AsyncSpin class={() => styles.spin} />
+      <show state={inject(loading, loading => !loading)}>
+        {children}
       </show>
-      {children}
     </Flex>
   )
 }

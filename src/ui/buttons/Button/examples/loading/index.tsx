@@ -4,7 +4,7 @@ import { State } from 'watch-state'
 
 import description from './README.md'
 
-const loading = new State(false)
+const loading = new State(true)
 
 export default example({
   id: 'loading',
