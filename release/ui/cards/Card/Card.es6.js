@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, useHidden, useShow } from '@innet/dom';
+import { style, useHidden, useShow, use, inject } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
 import { State, onDestroy } from 'watch-state';
@@ -9,32 +9,38 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_8c949659);
 function Card(_a = {}) {
-    var { onclick, clickable = !!onclick, preventAnimation } = _a, props = __rest(_a, ["onclick", "clickable", "preventAnimation"]);
+    var { onclick, clickable = !!onclick, loading, preventAnimation } = _a, props = __rest(_a, ["onclick", "clickable", "loading", "preventAnimation"]);
     const children = useChildren();
     const hidden = useHidden();
     const styles = useStyle();
     const show = useShow();
     const shown = new State(false);
-    if (!preventAnimation) {
+    let className;
+    const mainClasses = () => [
+        styles.root,
+        use(clickable) && styles.clickable,
+        use(loading) && styles.loading,
+    ];
+    if (preventAnimation) {
+        className = () => classes([
+            mainClasses,
+            styles.show,
+            styles.shown,
+        ]);
+    }
+    else {
         const timer = setTimeout(() => {
             shown.value = true;
         }, 600);
         onDestroy(() => clearTimeout(timer));
+        className = () => classes([
+            mainClasses,
+            show.value && styles.show,
+            shown.value && styles.shown,
+            (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
+        ]);
     }
-    return ({type:Flex,props:{onclick:onclick,...props,class:() => preventAnimation
-            ? classes([
-                styles.root,
-                styles.show,
-                styles.shown,
-                clickable && styles.clickable,
-            ])
-            : classes([
-                styles.root,
-                clickable && styles.clickable,
-                show.value && styles.show,
-                shown.value && styles.shown,
-                (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
-            ])},children:[children]});
+    return ({type:Flex,props:{onclick:onclick,...props,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Card };

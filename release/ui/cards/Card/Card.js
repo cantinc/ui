@@ -17,32 +17,38 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Card$1["default"]);
 function Card(_a = {}) {
-    var { onclick, clickable = !!onclick, preventAnimation } = _a, props = tslib.__rest(_a, ["onclick", "clickable", "preventAnimation"]);
+    var { onclick, clickable = !!onclick, loading, preventAnimation } = _a, props = tslib.__rest(_a, ["onclick", "clickable", "loading", "preventAnimation"]);
     const children = jsx.useChildren();
     const hidden = dom.useHidden();
     const styles = useStyle();
     const show = dom.useShow();
     const shown = new watchState.State(false);
-    if (!preventAnimation) {
+    let className;
+    const mainClasses = () => [
+        styles.root,
+        dom.use(clickable) && styles.clickable,
+        dom.use(loading) && styles.loading,
+    ];
+    if (preventAnimation) {
+        className = () => classes__default["default"]([
+            mainClasses,
+            styles.show,
+            styles.shown,
+        ]);
+    }
+    else {
         const timer = setTimeout(() => {
             shown.value = true;
         }, 600);
         watchState.onDestroy(() => clearTimeout(timer));
+        className = () => classes__default["default"]([
+            mainClasses,
+            show.value && styles.show,
+            shown.value && styles.shown,
+            (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
+        ]);
     }
-    return ({type:Flex.Flex,props:{onclick:onclick,...props,class:() => preventAnimation
-            ? classes__default["default"]([
-                styles.root,
-                styles.show,
-                styles.shown,
-                clickable && styles.clickable,
-            ])
-            : classes__default["default"]([
-                styles.root,
-                clickable && styles.clickable,
-                show.value && styles.show,
-                shown.value && styles.shown,
-                (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
-            ])},children:[children]});
+    return ({type:Flex.Flex,props:{onclick:onclick,...props,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Card = Card;

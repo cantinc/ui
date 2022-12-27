@@ -2,6 +2,11 @@
 
 ## v0.0
 
+### v0.0.7 [![27.12.2022](https://img.shields.io/date/1672133680)](https://github.com/d8corp/innetjs/tree/v0.0.7)
+
+- add `loading` for `Card`
+- improve `Button`s `loading`
+
 ### v0.0.6 [![27.12.2022](https://img.shields.io/date/1672093173)](https://github.com/d8corp/innetjs/tree/v0.0.6)
 
 - fix `loading` for `Input`

@@ -6,11 +6,9 @@ var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var classes = require('html-classes');
-require('../../external/AsyncSpin/index.js');
 require('../../layout/index.js');
 var Button$1 = require('./Button.scss.js');
 var Flex = require('../../layout/Flex/Flex.js');
-var AsyncSpin = require('../../external/AsyncSpin/AsyncSpin.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -32,7 +30,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : dom.use(loading)) || undefined);
-    return ({type:Flex.Flex,props:{justify:'center',element:link ? 'a' : 'button',inline:true,padding:24,...props,type:type,disabled:disabledValue,class:className},children:[{type:'show',props:{state:loading},children:[{type:AsyncSpin.AsyncSpin,props:{class:() => styles.spin}}]},children]});
+    return ({type:Flex.Flex,props:{justify:'center',element:link ? 'a' : 'button',inline:true,padding:24,...props,type:type,disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Button = Button;
