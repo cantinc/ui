@@ -262,6 +262,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/forms/Form/Form.ui'),
       },
       {
+        slot: 'hidden',
+        children: '<FormHidden />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/forms/FormHidden/FormHidden.ui'),
+      },
+      {
         slot: 'toggle',
         children: '<FormToggle />',
         onclick: hideLayoutMenu,
