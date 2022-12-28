@@ -52,6 +52,7 @@ export { FormTextArea } from './ui/forms/FormTextArea/FormTextArea.es6.js';
 export { FormSelector } from './ui/forms/FormSelector/FormSelector.es6.js';
 export { FormCheckbox } from './ui/forms/FormCheckbox/FormCheckbox.es6.js';
 export { FormRadiobox } from './ui/forms/FormRadiobox/FormRadiobox.es6.js';
+export { FormHidden } from './ui/forms/FormHidden/FormHidden.es6.js';
 export { Toggle } from './ui/interaction/Toggle/Toggle.es6.js';
 export { ToggleBar, defaultToggleBarRender } from './ui/interaction/ToggleBar/ToggleBar.es6.js';
 export { Input, defaultRenderInput } from './ui/interaction/Input/Input.es6.js';

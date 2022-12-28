@@ -23,7 +23,7 @@ function Form(_a = {}) {
     const form = {
         fields: new Set(),
         destroyed: false,
-        loading: new watchState.State(false),
+        loading,
     };
     watchState.onDestroy(() => {
         form.destroyed = true;
@@ -74,7 +74,12 @@ function Form(_a = {}) {
         if (action) {
             const result = actionHandler(dom.use(action), form, method);
             if (result) {
-                result.then(handleSuccess, e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e));
+                loading.value = true;
+                result
+                    .then(handleSuccess, e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
+                    .finally(() => {
+                    loading.value = false;
+                });
             }
             else {
                 handleSuccess();

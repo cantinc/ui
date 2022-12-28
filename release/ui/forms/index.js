@@ -7,4 +7,5 @@ require('./FormTextArea/index.js');
 require('./FormSelector/index.js');
 require('./FormCheckbox/index.js');
 require('./FormRadiobox/index.js');
+require('./FormHidden/index.js');
 
