@@ -15,6 +15,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
     name?: StateProp<string>;
     autofocus?: boolean | number;
     clearable?: boolean;
+    debounce?: boolean | number;
     inputRef?: Ref<HTMLInputElement>;
     renderInput?: (props: HTMLProps<HTMLInputElement>) => any;
     props?: {
@@ -28,4 +29,4 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
     };
 }
 export declare const defaultRenderInput: (props: HTMLProps<HTMLInputElement>) => any;
-export declare function Input({ label, value, oninput, props, placeholder, autofocus, renderInput, error, disabled, required, inputRef, name, type, loading, clearable, ...rest }?: InputProps): any;
+export declare function Input({ label, value, oninput, props, placeholder, autofocus, renderInput, error, disabled, required, inputRef, name, type, loading, clearable, debounce, ...rest }?: InputProps): any;

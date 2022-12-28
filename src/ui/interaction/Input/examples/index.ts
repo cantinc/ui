@@ -1,6 +1,7 @@
 import autofocus from './autofocus'
 import beforeAfter from './beforeAfter'
 import clearable from './clearable'
+import debounce from './debounce'
 import error from './error'
 import hint from './hint'
 import hintError from './hintError'
@@ -20,4 +21,5 @@ export default [
   error,
   hintError,
   beforeAfter,
+  debounce,
 ]

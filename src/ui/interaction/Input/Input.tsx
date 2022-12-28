@@ -23,6 +23,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   name?: StateProp<string>
   autofocus?: boolean | number
   clearable?: boolean
+  debounce?: boolean | number
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
   props?: {
@@ -54,6 +55,7 @@ export function Input ({
   type,
   loading,
   clearable,
+  debounce,
   ...rest
 }: InputProps = {}) {
   const styles = useStyle()
@@ -64,6 +66,18 @@ export function Input ({
     oninput = (val: string) => {
       value.value = val
       oldOnChange?.(val)
+    }
+  }
+
+  if (debounce && oninput) {
+    const oldOnChange = oninput
+    let timer: any
+    oninput = (val: string) => {
+      clearTimeout(timer)
+
+      timer = setTimeout(() => {
+        oldOnChange(val)
+      }, debounce === true ? 300 : debounce)
     }
   }
 

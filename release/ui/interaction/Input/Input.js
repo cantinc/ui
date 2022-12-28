@@ -15,7 +15,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 const useStyle = dom.style(Input$1["default"]);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
 function Input(_a = {}) {
-    var { label, value = new watchState.State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, loading, clearable } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "loading", "clearable"]);
+    var { label, value = new watchState.State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new dom.Ref(), name, type, loading, clearable, debounce } = _a, rest = tslib.__rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "loading", "clearable", "debounce"]);
     const styles = useStyle();
     const { before, after, hint } = jsx.useSlots();
     if (value instanceof watchState.State) {
@@ -23,6 +23,16 @@ function Input(_a = {}) {
         oninput = (val) => {
             value.value = val;
             oldOnChange === null || oldOnChange === void 0 ? void 0 : oldOnChange(val);
+        };
+    }
+    if (debounce && oninput) {
+        const oldOnChange = oninput;
+        let timer;
+        oninput = (val) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                oldOnChange(val);
+            }, debounce === true ? 300 : debounce);
         };
     }
     const handleInput = (e) => {
