@@ -2,6 +2,10 @@
 
 ## v0.0
 
+### v0.0.11 [![28.12.2022](https://img.shields.io/date/1672228847)](https://github.com/d8corp/innetjs/tree/v0.0.11)
+
+- add `SearchInput` and `SearchSelector`
+
 ### v0.0.10 [![28.12.2022](https://img.shields.io/date/1672223275)](https://github.com/d8corp/innetjs/tree/v0.0.10)
 
 - add `FormHidden`

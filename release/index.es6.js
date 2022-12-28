@@ -63,6 +63,8 @@ export { Checkbox } from './ui/interaction/Checkbox/Checkbox.es6.js';
 export { Radiobox } from './ui/interaction/Radiobox/Radiobox.es6.js';
 export { SearchToggleBar } from './ui/search/SearchToggleBar/SearchToggleBar.es6.js';
 export { SearchToggle } from './ui/search/SearchToggle/SearchToggle.es6.js';
+export { SearchInput } from './ui/search/SearchInput/SearchInput.es6.js';
+export { SearchSelector } from './ui/search/SearchSelector/SearchSelector.es6.js';
 export { Check } from './ui/prototypes/Check/Check.es6.js';
 export { bindDragOver } from './utils/bindDragOver/bindDragOver.es6.js';
 export { bindScrollPosition } from './utils/bindScrollPosition/bindScrollPosition.es6.js';
