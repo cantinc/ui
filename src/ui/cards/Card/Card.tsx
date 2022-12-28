@@ -8,19 +8,19 @@ import styles from './Card.scss'
 
 const useStyle = style(styles)
 
-export interface CardProps extends FlexProps {
+export type CardProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
   clickable?: StateProp<boolean>
   loading?: StateProp<boolean>
   preventAnimation?: boolean
-}
+}>
 
-export function Card ({
+export function Card<E extends HTMLElement = HTMLElement> ({
   onclick,
   clickable = !!onclick,
   loading,
   preventAnimation,
   ...props
-}: CardProps = {}) {
+}: CardProps<E> = {} as any) {
   const children = useChildren()
   const hidden = useHidden()
   const styles = useStyle()
@@ -55,7 +55,7 @@ export function Card ({
   }
 
   return (
-    <Flex
+    <Flex<any>
       onclick={onclick}
       {...props}
       class={className}>

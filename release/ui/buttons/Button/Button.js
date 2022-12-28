@@ -16,7 +16,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Button$1["default"]);
 function Button(_a = {}) {
-    var { view = 'primary', type, loading, disabled, link } = _a, props = tslib.__rest(_a, ["view", "type", "loading", "disabled", "link"]);
+    var { view = 'primary', loading, disabled } = _a, props = tslib.__rest(_a, ["view", "loading", "disabled"]);
     const children = jsx.useChildren();
     const styles = useStyle();
     const className = () => classes__default["default"]([
@@ -30,7 +30,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : dom.use(loading)) || undefined);
-    return ({type:Flex.Flex,props:{justify:'center',element:link ? 'a' : 'button',inline:true,padding:24,...props,type:type,disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Button = Button;

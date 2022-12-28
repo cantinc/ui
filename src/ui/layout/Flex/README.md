@@ -11,3 +11,5 @@ import { Flex } from '@cantinc/ui'
 ## Extend
 
 - [Input](/interaction/input)
+- [Card](/cards/card)
+- [Button](/buttons/button)

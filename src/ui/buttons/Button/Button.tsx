@@ -1,4 +1,4 @@
-import { inject, LinkProps, StateProp, style, use } from '@innet/dom'
+import { inject, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -9,20 +9,18 @@ const useStyle = style(styles)
 
 export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
 
-export interface ButtonProps extends FlexProps<HTMLButtonElement>, Omit<LinkProps, 'ref' | 'class'> {
+export type ButtonProps <E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
   view?: ButtonViews
   loading?: StateProp<boolean>
-  link?: boolean
-}
+  disabled?: StateProp<boolean>
+}>
 
-export function Button ({
+export function Button<E extends HTMLElement = HTMLButtonElement> ({
   view = 'primary',
-  type,
   loading,
   disabled,
-  link,
   ...props
-}: ButtonProps = {}) {
+}: ButtonProps<E> = {} as ButtonProps<E>) {
   const children = useChildren()
   const styles = useStyle()
 
@@ -39,13 +37,11 @@ export function Button ({
   const disabledValue = (() => (disabled ?? use(loading)) || undefined) as unknown as boolean
 
   return (
-    <Flex
+    <Flex<any>
       justify='center'
-      element={link ? 'a' : 'button'}
       inline
       padding={24}
       {...props}
-      type={type}
       disabled={disabledValue}
       class={className}>
       <show state={inject(loading, loading => !loading)}>

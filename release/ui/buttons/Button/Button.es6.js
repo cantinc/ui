@@ -8,7 +8,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_009aad45);
 function Button(_a = {}) {
-    var { view = 'primary', type, loading, disabled, link } = _a, props = __rest(_a, ["view", "type", "loading", "disabled", "link"]);
+    var { view = 'primary', loading, disabled } = _a, props = __rest(_a, ["view", "loading", "disabled"]);
     const children = useChildren();
     const styles = useStyle();
     const className = () => classes([
@@ -22,7 +22,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : use(loading)) || undefined);
-    return ({type:Flex,props:{justify:'center',element:link ? 'a' : 'button',inline:true,padding:24,...props,type:type,disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{justify:'center',inline:true,padding:24,...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Button };

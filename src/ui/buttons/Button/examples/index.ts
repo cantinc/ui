@@ -1,7 +1,7 @@
 import vertical from './click'
 import def from './default'
+import element from './element'
 import flex from './flex'
-import link from './link'
 import loading from './loading'
 import padding from './padding'
 import view from './view'
@@ -13,5 +13,5 @@ export default [
   padding,
   flex,
   loading,
-  link,
+  element,
 ]
