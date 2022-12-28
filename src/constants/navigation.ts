@@ -324,6 +324,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/search/SearchToggleBar/SearchToggleBar.ui'),
       },
+      {
+        slot: 'input',
+        children: '<SearchInput />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/search/SearchInput/SearchInput.ui'),
+      },
     ],
   },
 ]

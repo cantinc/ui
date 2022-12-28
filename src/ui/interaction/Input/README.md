@@ -14,3 +14,5 @@ import { Input } from '@cantinc/ui'
 
 - [Selector](/interaction/selector)
 - [Textarea](/interaction/textarea)
+- [FormInput](/forms/input)
+- [SearchInput](/search/input)
