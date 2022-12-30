@@ -1,0 +1,43 @@
+.root {
+  position: relative;
+}
+
+.dot,
+.dotProgress {
+  flex: 1;
+  border-radius: calc(var(--ui-dots-size) / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ui-dots-size);
+  min-width: var(--ui-dots-size);
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  &:not(:empty) {
+    padding: 4px 8px;
+  }
+}
+
+.dot {
+  background: var(--color-90);
+  cursor: pointer;
+  transition: background-color .6s;
+}
+
+.active {
+  background: var(--color-primary-100);
+}
+
+.dotProgress {
+  background: var(--color-primary-50);
+  color: var(--color-100);
+}
+
+.progress {
+  transition: clip-path var(--ui-dots-transition) linear;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 calc(100% * (1 - var(--ui-dots-progress))) 0 var(--ui-dots-left));
+}

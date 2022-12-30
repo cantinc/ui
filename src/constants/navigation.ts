@@ -248,6 +248,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Selector/Selector.ui'),
       },
+      {
+        slot: 'dots',
+        children: '<Dots />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Dots/Dots.ui'),
+      },
     ],
   },
   {
