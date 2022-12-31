@@ -41,6 +41,7 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
       justify='center'
       inline
       padding={24}
+      element='button'
       {...props}
       disabled={disabledValue}
       class={className}>
