@@ -2,6 +2,11 @@
 
 ## v0.0
 
+### v0.0.14 [![31.12.2022](https://img.shields.io/date/1672496003)](https://github.com/d8corp/innetjs/tree/v0.0.14)
+
+- fix buttons
+- add `Dots`
+
 ### v0.0.13 [![28.12.2022](https://img.shields.io/date/1672240622)](https://github.com/d8corp/innetjs/tree/v0.0.13)
 
 - add `Input` prop of `debounce`

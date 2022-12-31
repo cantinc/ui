@@ -6,3 +6,4 @@ export * from './Selector';
 export * from './Option';
 export * from './Checkbox';
 export * from './Radiobox';
+export * from './Dots';

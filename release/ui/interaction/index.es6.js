@@ -6,3 +6,4 @@ import './Selector/index.es6.js';
 import './Option/index.es6.js';
 import './Checkbox/index.es6.js';
 import './Radiobox/index.es6.js';
+import './Dots/index.es6.js';

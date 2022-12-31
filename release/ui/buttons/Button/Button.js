@@ -30,7 +30,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : dom.use(loading)) || undefined);
-    return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Button = Button;

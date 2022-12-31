@@ -61,6 +61,7 @@ export { Selector } from './ui/interaction/Selector/Selector.es6.js';
 export { Option } from './ui/interaction/Option/Option.es6.js';
 export { Checkbox } from './ui/interaction/Checkbox/Checkbox.es6.js';
 export { Radiobox } from './ui/interaction/Radiobox/Radiobox.es6.js';
+export { Dots } from './ui/interaction/Dots/Dots.es6.js';
 export { SearchToggleBar } from './ui/search/SearchToggleBar/SearchToggleBar.es6.js';
 export { SearchToggle } from './ui/search/SearchToggle/SearchToggle.es6.js';
 export { SearchInput } from './ui/search/SearchInput/SearchInput.es6.js';

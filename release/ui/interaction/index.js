@@ -8,4 +8,5 @@ require('./Selector/index.js');
 require('./Option/index.js');
 require('./Checkbox/index.js');
 require('./Radiobox/index.js');
+require('./Dots/index.js');
 

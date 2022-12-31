@@ -22,7 +22,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : use(loading)) || undefined);
-    return ({type:Flex,props:{justify:'center',inline:true,padding:24,...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Button };
