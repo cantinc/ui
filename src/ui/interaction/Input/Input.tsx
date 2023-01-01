@@ -2,6 +2,7 @@ import { HTMLProps, inject, Ref, StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
+import { debounceCall } from '../../../utils'
 import { Icon, IconProps } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Input.scss'
@@ -70,15 +71,7 @@ export function Input ({
   }
 
   if (debounce && oninput) {
-    const oldOnChange = oninput
-    let timer: any
-    oninput = (val: string) => {
-      clearTimeout(timer)
-
-      timer = setTimeout(() => {
-        oldOnChange(val)
-      }, debounce === true ? 300 : debounce)
-    }
+    oninput = debounceCall(oninput, debounce === true ? 300 : debounce)
   }
 
   const handleInput = (e: any) => {

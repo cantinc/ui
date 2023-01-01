@@ -14,3 +14,4 @@ import { Flex } from '@cantinc/ui'
 - [Card](/cards/card)
 - [Button](/buttons/button)
 - [Dots](/interaction/dots)
+- [Slides](/interaction/slides)

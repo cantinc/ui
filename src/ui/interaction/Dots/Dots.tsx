@@ -38,6 +38,7 @@ export function Dots ({
   let fix = false
   const transition = new State(0.3)
   const pseudoValue = new State()
+  const nextValue = new State(0)
 
   new Watch(() => {
     const currentValue = use(value)
@@ -50,7 +51,8 @@ export function Dots ({
       })
       return
     }
-    pseudoValue.value = use(value)
+
+    pseudoValue.value = currentValue
   })
 
   if (autoscroll) {
@@ -62,16 +64,17 @@ export function Dots ({
 
       if (autoscroll) {
         transition.value = 0.3
+        nextValue.value = currentValue + 1
 
         timer = setTimeout(() => {
           const newTransition = autoscroll === true ? 20000 : autoscroll
           transition.value = newTransition / 1000
-          const nextValue = currentValue + 1
-          pseudoValue.value = nextValue
+          const newValue = nextValue.value
+          pseudoValue.value = newValue
 
           timer = setTimeout(() => {
             fix = true
-            onchange?.(nextValue === count ? 0 : nextValue)
+            onchange?.(newValue === count ? 0 : newValue)
           }, newTransition)
         }, 1000)
       }
@@ -83,7 +86,7 @@ export function Dots ({
     const progressStyles = `--ui-dots-progress:${currentValue / count};`
     const sizeStyles = `--ui-dots-size:${use(size)}px;`
     const transitionStyles = `--ui-dots-transition:${transition.value}s;`
-    const leftStyles = progress ? '--ui-dots-left:0;' : `--ui-dots-left:calc(100% * (var(--ui-dots-progress) - ${1 / count}));`
+    const leftStyles = progress ? '--ui-dots-left:0;' : `--ui-dots-left:calc(100% * ${((autoscroll ? nextValue.value : currentValue) / count) - (1 / count)});`
 
     return `${progressStyles}${sizeStyles}${leftStyles}${transitionStyles}${use(style)}`
   }

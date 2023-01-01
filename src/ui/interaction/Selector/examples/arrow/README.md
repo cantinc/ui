@@ -1,1 +1,1 @@
-You can provide `values` to show them in a selector popup.
+You can use `arrow` to show it.

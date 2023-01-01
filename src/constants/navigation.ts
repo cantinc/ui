@@ -254,6 +254,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Dots/Dots.ui'),
       },
+      {
+        slot: 'slides',
+        children: '<Slides />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Slides/Slides.ui'),
+      },
     ],
   },
   {

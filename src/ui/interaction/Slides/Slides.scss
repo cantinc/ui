@@ -1,0 +1,29 @@
+.root {
+  overflow: auto;
+  min-height: 120px;
+  position: relative;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.vertical {
+  scroll-snap-type: y mandatory;
+}
+
+.slide {
+  scroll-snap-align: center;
+  box-sizing: border-box;
+}
+
+.dots {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}

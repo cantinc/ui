@@ -47,7 +47,7 @@ const genres: MenuOption[] = [
 innet(
   <Flex gap={[0, 16]} wrap>
     <Selector clearable label='Search' values={data} />
-    <Selector clearable label='Gender' arrow values={genders} />
+    <Selector clearable exact label='Gender' arrow values={genders} />
     <Selector clearable search label='Genres' arrow values={genres} />
   </Flex>,
   dom,
@@ -55,7 +55,7 @@ innet(
   example: (
     <Flex gap={[0, 16]} wrap>
       <Selector clearable label='Search' values={data} />
-      <Selector clearable label='Gender' arrow values={genders} />
+      <Selector clearable exact label='Gender' arrow values={genders} />
       <Selector clearable search label='Genres' arrow values={genres} />
     </Flex>
   ),

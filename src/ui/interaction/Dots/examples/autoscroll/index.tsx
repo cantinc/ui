@@ -16,6 +16,7 @@ innet(
   <Flex gap={16} align='stretch' vertical>
     <Dots count={5} progress autoscroll={3200} />
     <Dots count={5} progress autoscroll />
+    <Dots count={5} autoscroll />
   </Flex>,
   dom,
 )`,
@@ -23,6 +24,7 @@ innet(
     <Flex gap={16} align='stretch' vertical>
       <Dots count={5} progress autoscroll={3200} />
       <Dots count={5} progress autoscroll />
+      <Dots count={5} autoscroll />
     </Flex>
   ),
 })
