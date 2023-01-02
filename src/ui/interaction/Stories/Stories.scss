@@ -1,0 +1,34 @@
+.root {
+  overflow: auto;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.preview {
+  cursor: pointer;
+}
+
+.slides {
+
+}
+
+.slide {
+  width: 100%;
+  transition: background .5s;
+  background: transparent no-repeat center;
+  background-size: contain;
+  background-image: var(--ui-stories-story-image);
+}
+
+.dots {
+
+}
+
+.dot {
+  width: 40px;
+}

@@ -260,6 +260,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Slides/Slides.ui'),
       },
+      {
+        slot: 'stories',
+        children: '<Stories />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Stories/Stories.ui'),
+      },
     ],
   },
   {

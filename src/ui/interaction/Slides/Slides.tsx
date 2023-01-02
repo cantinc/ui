@@ -31,6 +31,7 @@ export function * Slides ({
   const styles = useStyle()
   let scrolled = false
   let changedByScroll = false
+  const ready = new State(false)
 
   onchange = actionProp(value, onchange)
 
@@ -52,6 +53,7 @@ export function * Slides ({
       class={() => [
         styles.root,
         vertical && styles.vertical,
+        ready.value && styles.ready,
       ]}>
       {slides.map(({ children, ...props }) => (
         <Flex {...slideProps} {...props} class={() => styles.slide}>
@@ -105,5 +107,9 @@ export function * Slides ({
         rootElement.scrollTo(slide.offsetLeft, slide.offsetTop)
       }
     }
+  })
+
+  setTimeout(() => {
+    ready.value = true
   })
 }

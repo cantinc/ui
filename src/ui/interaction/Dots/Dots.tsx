@@ -1,7 +1,7 @@
 import { StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { State, unwatch, Watch } from 'watch-state'
+import { onDestroy, State, unwatch, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
@@ -12,10 +12,12 @@ const useStyle = style(styles)
 export interface DotsProps extends Omit<FlexProps<HTMLDivElement>, 'onchange'> {
   count: number
   size?: StateProp<number>
-  autoscroll?: number | boolean
+  autoscroll?: StateProp<number | boolean>
   progress?: boolean
   value?: StateProp<number>
   onchange?: (value: number) => void
+  onend?: () => void
+  circular?: boolean
 }
 
 export function Dots ({
@@ -27,6 +29,8 @@ export function Dots ({
   progress,
   value = new State(0),
   onchange,
+  onend,
+  circular,
   ...props
 }: DotsProps) {
   const styles = useStyle()
@@ -44,7 +48,7 @@ export function Dots ({
     const currentValue = use(value)
 
     // because of browsers bug (dynamic changes of transition has not an effect)
-    if (autoscroll && !fix && unwatch(() => pseudoValue.value) === currentValue) {
+    if (use(autoscroll) && !fix && unwatch(() => pseudoValue.value) === currentValue) {
       pseudoValue.value = currentValue - 1
       setTimeout(() => {
         pseudoValue.value = currentValue
@@ -55,38 +59,51 @@ export function Dots ({
     pseudoValue.value = currentValue
   })
 
-  if (autoscroll) {
-    new Watch(() => {
-      fix = false
-      clearTimeout(timer)
+  new Watch(() => {
+    const currentAutoscroll = use(autoscroll)
 
-      const currentValue = use(value)
+    if (currentAutoscroll) {
+      new Watch(() => {
+        fix = false
+        clearTimeout(timer)
 
-      if (autoscroll) {
+        const currentValue = use(value)
+
         transition.value = 0.3
         nextValue.value = currentValue + 1
 
         timer = setTimeout(() => {
-          const newTransition = autoscroll === true ? 20000 : autoscroll
+          const newTransition: number = currentAutoscroll === true ? 20000 : currentAutoscroll
           transition.value = newTransition / 1000
           const newValue = nextValue.value
           pseudoValue.value = newValue
 
           timer = setTimeout(() => {
             fix = true
-            onchange?.(newValue === count ? 0 : newValue)
+            if (newValue === count) {
+              onend?.()
+              if (circular) {
+                onchange?.(0)
+              }
+            } else {
+              onchange?.(newValue)
+            }
           }, newTransition)
         }, 1000)
-      }
-    })
-  }
+      })
+    } else {
+      clearTimeout(timer)
+    }
+  })
+
+  onDestroy(() => clearTimeout(timer))
 
   const rootStyle = () => {
-    const currentValue = autoscroll ? pseudoValue.value : pseudoValue.value + 1
+    const currentValue = use(autoscroll) ? pseudoValue.value : pseudoValue.value + 1
     const progressStyles = `--ui-dots-progress:${currentValue / count};`
     const sizeStyles = `--ui-dots-size:${use(size)}px;`
     const transitionStyles = `--ui-dots-transition:${transition.value}s;`
-    const leftStyles = progress ? '--ui-dots-left:0;' : `--ui-dots-left:calc(100% * ${((autoscroll ? nextValue.value : currentValue) / count) - (1 / count)});`
+    const leftStyles = progress ? '--ui-dots-left:0;' : `--ui-dots-left:calc(100% * ${((use(autoscroll) ? nextValue.value : currentValue) / count) - (1 / count)});`
 
     return `${progressStyles}${sizeStyles}${leftStyles}${transitionStyles}${use(style)}`
   }

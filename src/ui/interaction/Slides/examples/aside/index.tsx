@@ -33,7 +33,7 @@ export default example({
   title: 'aside',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { use } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Slides, Slide, BurgerButton, Icon } from '@cantinc/ui'
@@ -56,7 +56,7 @@ const slides: Slide[] = [
   },
   {
     padding: 16,
-    style: () => \`background:var(--color-70);min-width:100%;transition: all .3s;opacity:${use(state) ? 1 : '.5'}\`,
+    style: () => \`background:var(--color-70);min-width:100%;transition: all .3s;opacity:\${use(state) ? 1 : '.5'}\`,
     children: <BurgerButton onclick={show} />,
   },
 ]
