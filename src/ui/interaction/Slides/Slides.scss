@@ -1,14 +1,12 @@
+@import "src/styles/utils";
+
 .root {
   overflow: auto;
   min-height: 120px;
   position: relative;
   scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  @include hide-scroll;
 }
 
 .ready {

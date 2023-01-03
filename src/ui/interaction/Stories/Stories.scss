@@ -1,5 +1,9 @@
+@import "src/styles/utils";
+
 .root {
   overflow: auto;
+
+  @include hide-scroll;
 }
 
 .close {

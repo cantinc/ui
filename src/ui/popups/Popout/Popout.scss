@@ -1,3 +1,5 @@
+@import "src/styles/utils";
+
 .root {
   position: fixed;
   top: var(--ui-popout-top);
@@ -9,10 +11,14 @@
   background: var(--ui-popout-background);
   box-sizing: border-box;
   transition: all .1s;
-  overflow: hidden;
+  overflow: hidden scroll;
   opacity: 0;
   pointer-events: none;
   z-index: var(--ui-over-z-index);
+
+  scroll-snap-type: y mandatory;
+
+  @include hide-scroll;
 }
 
 .preshow {
@@ -31,7 +37,7 @@
 
   .content {
     left: 0;
-    top: 0;
+    top: 120px;
     opacity: 1;
   }
 }
@@ -47,7 +53,7 @@
   opacity: 0;
 
   .content {
-    top: calc(var(--ui-popout-top) * -1);
+    top: calc((var(--ui-popout-top) * -1) + 120px);
     left: calc(var(--ui-popout-left) * -1);
     opacity: 0;
   }
@@ -55,7 +61,7 @@
 
 .content {
   position: absolute;
-  top: calc(var(--ui-popout-top) * -1);
+  top: calc(var(--ui-popout-top) * -1 + 120px);
   left: calc(var(--ui-popout-left) * -1);
   width: 100vw;
   height: 100vh;
@@ -64,4 +70,10 @@
   opacity: 0;
   overflow: auto;
   box-sizing: border-box;
+  scroll-snap-align: center;
+}
+
+.header {
+  height: 120px;
+  scroll-snap-align: start;
 }

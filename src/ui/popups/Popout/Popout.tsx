@@ -14,6 +14,7 @@ interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
   contentStyle?: StateProp<string>
   onhide: () => void
+  rootRef?: Ref<HTMLDivElement>
 }
 
 export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
@@ -23,11 +24,12 @@ export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
 
 let popoutCount = 0
 
-function PopoutElement ({
+function * PopoutElement ({
   element,
   style = '',
   contentStyle,
   onhide,
+  rootRef = new Ref(),
   ...props
 }: PopoutElementProps) {
   if (!element.value) return null
@@ -37,6 +39,8 @@ function PopoutElement ({
   const preshow = useShow()
   const show = useShow(200)
   const styles = useStyle()
+
+  const scroll = new State(120)
 
   useEscapeListener(onhide)
 
@@ -67,11 +71,22 @@ function PopoutElement ({
   const newStyle = () => {
     const { top, left, height, width } = rect.value
     const { borderRadius, border, background } = elementStyles.value
-    return `--ui-popout-top:${top}px;--ui-popout-left:${left}px;--ui-popout-width:${width}px;--ui-popout-height:${height}px;--ui-popout-radius:${borderRadius};--ui-popout-border:${border};--ui-popout-background:${background};${use(style)}`
+
+    return [
+      `--ui-popout-top:${top}px;`,
+      `--ui-popout-left:${left}px;`,
+      `--ui-popout-width:${width}px;`,
+      `--ui-popout-height:${height}px;`,
+      `--ui-popout-radius:${borderRadius};`,
+      `--ui-popout-border:${border};`,
+      `--ui-popout-background:${background};`,
+      use(style),
+    ].join('')
   }
 
-  return (
+  yield (
     <div
+      ref={rootRef}
       style={newStyle}
       class={() => classes([
         styles.root,
@@ -79,6 +94,7 @@ function PopoutElement ({
         show.value && styles.show,
         hide?.value && styles.hide,
       ])}>
+      <div class={() => styles.header} />
       <Flex
         {...props}
         style={contentStyle}
@@ -87,6 +103,28 @@ function PopoutElement ({
       </Flex>
     </div>
   )
+
+  if (rootRef.value) {
+    const element = rootRef.value
+    let chromeFix = true
+    element.scrollTo(0, 120)
+
+    setTimeout(() => {
+      chromeFix = false
+    }, 300)
+
+    const listener = () => {
+      if (!(scroll.value = element.scrollTop) && onhide && !hide?.value && !chromeFix) {
+        setTimeout(onhide)
+      }
+    }
+
+    element.addEventListener('scroll', listener)
+
+    onDestroy(() => {
+      element.removeEventListener('scroll', listener)
+    })
+  }
 }
 
 export function Popout ({

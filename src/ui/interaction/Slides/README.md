@@ -9,3 +9,7 @@ import { Slides } from '@cantinc/ui'
 ## Extends
 
 - [Flex](/layout/flex)
+
+## Extend
+
+- [Stories](/interaction/stories)
