@@ -2,6 +2,7 @@
 
 .root {
   overflow: auto;
+  user-select: none;
 
   @include hide-scroll;
 }
@@ -18,7 +19,7 @@
 }
 
 .slides {
-
+  user-select: none;
 }
 
 .slide {
@@ -27,14 +28,17 @@
   background: transparent no-repeat center;
   background-size: contain;
   background-image: var(--ui-stories-story-image);
+  user-select: none;
 }
 
 .dots {
+  user-select: none;
   margin-top: 32px;
   width: calc(100% - 120px);
   max-width: 480px;
 }
 
 .dot {
+  user-select: none;
   width: 40px;
 }

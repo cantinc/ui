@@ -2,15 +2,15 @@ import { example } from 'src/app/Component'
 import { Stories, Story } from 'src/ui'
 
 import description from './README.md'
-import story1 from './story1.jpg'
+import story1 from './story1.webp'
 import story1_1 from './story1-1.webp'
 import story1_2 from './story1-2.webp'
 import story1_3 from './story1-3.webp'
 import story2 from './story2.webp'
-import story2_1 from './story2-1.jpg'
-import story2_2 from './story2-2.jpg'
+import story2_1 from './story2-1.webp'
+import story2_2 from './story2-2.webp'
 import story3 from './story3.webp'
-import story3_1 from './story3_1.jpg'
+import story3_1 from './story3_1.webp'
 
 const stories: Story[] = [
   {
