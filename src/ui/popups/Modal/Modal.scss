@@ -35,12 +35,10 @@
   }
 
   @media (max-width: $tablet) {
-    height: 100vh;
+    height: var(--window-height);
     max-height: 100vh;
     min-width: 100vw;
     max-width: 100vw;
-    //noinspection CssInvalidPropertyValue
-    height: -webkit-fill-available;
   }
 }
 

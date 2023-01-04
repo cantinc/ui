@@ -24,7 +24,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: var(--window-height);
   border: solid 0 transparent;
   border-radius: 0;
   pointer-events: all;
@@ -58,7 +58,7 @@
   top: calc(var(--ui-popout-top) * -1);
   left: calc(var(--ui-popout-left) * -1);
   width: 100vw;
-  height: 100vh;
+  height: var(--window-height);
   transition: all .3s;
   background: var(--color-100);
   opacity: 0;
