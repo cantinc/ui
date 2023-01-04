@@ -44,8 +44,12 @@ export function App () {
       <Notifications />
       <Drawers>
         <show state={shownLayoutMenu}>
-          <Drawer padding={16} onclose={hideLayoutMenu}>
+          <Drawer vertical align='stretch' padding={16} onclose={hideLayoutMenu}>
             <slot name='menu' />
+            <Space />
+            <Flex justify='center'>
+              v{process.env.CANTINC_UI_VERSION}
+            </Flex>
           </Drawer>
         </show>
       </Drawers>
