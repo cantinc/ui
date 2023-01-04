@@ -73,7 +73,7 @@ export function Dots ({
         nextValue.value = currentValue + 1
 
         timer = setTimeout(() => {
-          const newTransition: number = currentAutoscroll === true ? 20000 : currentAutoscroll
+          const newTransition: number = currentAutoscroll === true ? 10000 : currentAutoscroll
           transition.value = newTransition / 1000
           const newValue = nextValue.value
           pseudoValue.value = newValue

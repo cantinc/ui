@@ -30,6 +30,14 @@ export function Stories ({
   const popoutRoot = new Ref<HTMLDivElement>()
   const state = new State<boolean>(false)
   const story = new State<number>()
+  const autoscroll = new State<boolean>(true)
+
+  const stopAutoscroll = () => {
+    autoscroll.value = false
+  }
+  const continueAutoscroll = () => {
+    autoscroll.value = true
+  }
 
   new Watch(() => {
     const currentValue = story.value
@@ -128,8 +136,7 @@ export function Stories ({
               dot: () => styles.dot,
             }}
             onend={next}
-            autoscroll={() => story.value === index}
-            padding={16}
+            autoscroll={() => story.value === index && autoscroll.value}
             count={subStories.length}
           />
           {children}
@@ -155,12 +162,15 @@ export function Stories ({
         ))}
       </Flex>
       <Popout
+        ontouchstart={stopAutoscroll}
+        ontouchend={continueAutoscroll}
         rootRef={popoutRoot}
         align='stretch'
         vertical
         show={state}
         element={popoutElement}>
         <Slides
+          gap={16}
           align='stretch'
           value={story}
           class={{
@@ -173,6 +183,7 @@ export function Stories ({
         <Icon
           class={() => styles.close}
           icon='cross'
+          size={24}
           onclick={hide}
         />
       </Popout>

@@ -8,8 +8,8 @@
 
 .close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   cursor: pointer;
 }
 
@@ -30,7 +30,9 @@
 }
 
 .dots {
-
+  margin-top: 32px;
+  width: calc(100% - 120px);
+  max-width: 480px;
 }
 
 .dot {
