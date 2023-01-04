@@ -39,6 +39,10 @@ function PopoutElement ({
   const preshow = useShow()
   const show = useShow(200)
   const styles = useStyle()
+  let touchStart: number
+  let touchStartX: number
+  const touched = new State(false)
+  const touchHide = new State(0)
 
   useEscapeListener(onhide)
 
@@ -69,18 +73,58 @@ function PopoutElement ({
   const newStyle = () => {
     const { top, left, height, width } = rect.value
     const { borderRadius, border, background } = elementStyles.value
-    return `--ui-popout-top:${top}px;--ui-popout-left:${left}px;--ui-popout-width:${width}px;--ui-popout-height:${height}px;--ui-popout-radius:${borderRadius};--ui-popout-border:${border};--ui-popout-background:${background};${use(style)}`
+
+    return [
+      `--ui-popout-top:${top}px;`,
+      `--ui-popout-left:${left}px;`,
+      `--ui-popout-width:${width}px;`,
+      `--ui-popout-height:${height}px;`,
+      `--ui-popout-radius:${borderRadius};`,
+      `--ui-popout-border:${border};`,
+      `--ui-popout-touch-hide:${touchHide.value}px;`,
+      `--ui-popout-background:${background};`,
+      use(style),
+    ].join('')
   }
 
   return (
     <div
       ref={rootRef}
       style={newStyle}
+      ontouchstart={(e: TouchEvent) => {
+        touchStart = e.touches[0].clientY
+        touchStartX = e.touches[0].clientX
+        touched.value = true
+      }}
+      ontouchmove={(e: TouchEvent) => {
+        if (!touched.value) return
+
+        const newTouchHide = e.touches[0].clientY - touchStart
+        const newTouchStartX = Math.abs(e.touches[0].clientX - touchStartX)
+
+        if (newTouchStartX > newTouchHide) {
+          touched.value = false
+          touchHide.value = 0
+          return
+        }
+
+        if (newTouchHide > 100) {
+          touched.value = false
+          onhide()
+        } else {
+          touchHide.value = e.touches[0].clientY - touchStart
+        }
+      }}
+      ontouchend={() => {
+        touched.value = false
+        touchHide.value = 0
+      }}
       class={() => classes([
         styles.root,
         preshow.value && styles.preshow,
         show.value && styles.show,
         hide?.value && styles.hide,
+        touched.value && styles.touch,
       ])}>
       <Flex
         {...props}

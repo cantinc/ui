@@ -36,6 +36,21 @@
   }
 }
 
+.touch {
+  transition: none;
+  border-radius: calc(var(--ui-popout-touch-hide) / 2);
+  left: calc(var(--ui-popout-touch-hide) / 2);
+  top: calc(var(--ui-popout-touch-hide) / 2);
+  width: calc(100% - var(--ui-popout-touch-hide));
+  height: calc(var(--window-height) - var(--ui-popout-touch-hide));
+
+  .content {
+    transition: none;
+    left: calc(var(--ui-popout-touch-hide) / -2);
+    top: calc(var(--ui-popout-touch-hide) / -2);
+  }
+}
+
 .hide {
   transition: all .3s, border-radius .3s ease-out, opacity .3s .3s;
   top: var(--ui-popout-top);
