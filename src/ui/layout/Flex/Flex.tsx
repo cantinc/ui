@@ -18,7 +18,7 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R> & {
+export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
   vertical?: boolean
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
