@@ -15,15 +15,15 @@ import story3_1 from './story3_1.jpg'
 const stories: Story[] = [
   {
     preview: story1,
-    stories: [story1_1, story1_2, story1_3],
+    slides: [story1_1, story1_2, story1_3],
   },
   {
     preview: story2,
-    stories: [story2_1, story2_2],
+    slides: [story2_1, story2_2],
   },
   {
     preview: story3,
-    stories: [story3_1],
+    slides: [story3_1],
   },
 ]
 
@@ -49,15 +49,15 @@ import story3_1 from './story3_1.jpg'
 const stories: Story[] = [
   {
     preview: story1,
-    stories: [story1_1, story1_2, story1_3],
+    slides: [story1_1, story1_2, story1_3],
   },
   {
     preview: story2,
-    stories: [story2_1, story2_2],
+    slides: [story2_1, story2_2],
   },
   {
     preview: story3,
-    stories: [story3_1],
+    slides: [story3_1],
   },
 ]
 

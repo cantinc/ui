@@ -12,7 +12,7 @@ const useStyle = style(styles)
 
 export interface Story extends Slide {
   preview: string
-  stories: string[]
+  slides: string[]
   previewRef?: Ref<HTMLElement>
 }
 
@@ -76,7 +76,7 @@ export function Stories ({
 
   const slides = stories.map(({
     preview,
-    stories: subStories,
+    slides,
     previewRef,
     children,
     style = '',
@@ -93,7 +93,7 @@ export function Stories ({
     })
 
     const next = () => {
-      if (currentProgress.value < subStories.length - 1) {
+      if (currentProgress.value < slides.length - 1) {
         currentProgress.value++
       } else if (story.value < stories.length - 1) {
         story.value++
@@ -124,7 +124,7 @@ export function Stories ({
 
         ;(onclick as any)?.(e)
       },
-      style: () => Math.abs(story.value - index) < 3 ? `--ui-stories-story-image:url("${subStories[currentProgress.value]}");${use(style)}` : use(style),
+      style: () => Math.abs(story.value - index) < 3 ? `--ui-stories-story-image:url("${slides[currentProgress.value]}");${use(style)}` : use(style),
       children: (
         <>
           <Dots
@@ -137,7 +137,7 @@ export function Stories ({
             }}
             onend={next}
             autoscroll={() => story.value === index && autoscroll.value}
-            count={subStories.length}
+            count={slides.length}
           />
           {children}
         </>
