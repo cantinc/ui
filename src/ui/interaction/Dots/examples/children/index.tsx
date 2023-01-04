@@ -13,13 +13,13 @@ import dom from '@innet/dom'
 import { Dots } from '@cantinc/ui'
 
 innet(
-  <Dots inline size={38} progress count={9}>
+  <Dots inline size={38} progress count={5}>
     {(i: number) => i}
   </Dots>,
   dom,
 )`,
   example: (
-    <Dots inline size={38} count={9}>
+    <Dots inline size={38} count={5}>
       {(i: number) => i}
     </Dots>
   ),

@@ -46,14 +46,21 @@ function PopoutElement ({
 
   useEscapeListener(onhide)
 
-  const rect = new State(element.value.getBoundingClientRect())
-  const elementStyles = new State(window.getComputedStyle(element.value))
+  const elementData = new State<{
+    rect: DOMRect
+    styles: CSSStyleDeclaration
+  }>({
+    rect: element.value.getBoundingClientRect(),
+    styles: window.getComputedStyle(element.value),
+  })
 
   if (hide) {
     new Watch(() => {
-      if (hide.value && element.value) {
-        rect.value = element.value.getBoundingClientRect()
-        elementStyles.value = window.getComputedStyle(element.value)
+      if (element.value && hide.value) {
+        elementData.value = {
+          rect: element.value.getBoundingClientRect(),
+          styles: window.getComputedStyle(element.value),
+        }
       }
     })
   }
@@ -71,8 +78,10 @@ function PopoutElement ({
   })
 
   const newStyle = () => {
-    const { top, left, height, width } = rect.value
-    const { borderRadius, border, background } = elementStyles.value
+    const {
+      rect: { top, left, height, width },
+      styles: { borderRadius, border, background },
+    } = elementData.value
 
     return [
       `--ui-popout-top:${top}px;`,
