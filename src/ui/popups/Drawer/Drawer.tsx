@@ -1,4 +1,4 @@
-import { Ref, style, use, useShow } from '@innet/dom'
+import { Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
@@ -29,7 +29,7 @@ export function Drawer ({
   onclose,
   size = 320,
   placement = 'left',
-  style = '',
+  style,
   ...props
 }: DrawerProps = {}) {
   const children = useChildren()
@@ -49,14 +49,6 @@ export function Drawer ({
     }
   })
 
-  const styleHandler = () => {
-    const right = placement === 'right' ? '--ui-drawer-right:0;' : ''
-    const bottom = placement === 'bottom' ? '--ui-drawer-bottom:0;' : ''
-    const sizeStyle = `--ui-drawer-${['left', 'right'].includes(placement) ? 'width' : 'height'}:${size}px;`
-    const transformStyle = `--ui-drawer-transform:translate(${transformPlacements[placement]});`
-    return `${right}${bottom}${transformStyle}${sizeStyle}${use(style)}`
-  }
-
   // @ts-expect-error
   props._close = () => onclose
 
@@ -64,7 +56,14 @@ export function Drawer ({
     <delay ref={hide} hide={300}>
       <Flex
         {...props}
-        style={styleHandler}
+        style={{
+          ...style,
+          '--ui-drawer-right': placement === 'right' ? '0' : '',
+          '--ui-drawer-bottom': placement === 'bottom' ? '0' : '',
+          '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '',
+          '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '',
+          '--ui-drawer-transform': `translate(${transformPlacements[placement]})`,
+        }}
         class={() => [
           styles.root,
           show.value && styles.show,

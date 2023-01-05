@@ -1,4 +1,4 @@
-import { HTMLStyleProps, Ref, StateProp, style, use } from '@innet/dom'
+import { HTMLStyleProps, inject, Ref, StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -15,7 +15,7 @@ export interface DetailsProps extends HTMLStyleProps<HTMLDetailsElement> {
 
 export function * Details ({
   ref = new Ref<HTMLDetailsElement>(),
-  style = '',
+  style,
   open = new State(false),
   onToggle,
   ...props
@@ -30,7 +30,10 @@ export function * Details ({
   yield (
     <details
       {...props}
-      style={() => `height:${height.value}px;${use(style)}`}
+      style={{
+        ...style,
+        height: inject(height, height => `${height}px`),
+      }}
       ontoggle={(e: Event) => {
         if (ref.value?.open) {
           height.value = ref.value?.scrollHeight || 0

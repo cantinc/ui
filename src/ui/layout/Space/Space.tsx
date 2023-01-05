@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style, use, WatchProp } from '@innet/dom'
+import { HTMLStyleProps, style, WatchProp } from '@innet/dom'
 
 import styles from './Space.scss'
 
@@ -10,7 +10,7 @@ export interface SpaceProps extends HTMLStyleProps<HTMLSpanElement> {
 
 export function Space ({
   flex = 1,
-  style = '',
+  style,
   ...props
 }: SpaceProps = {}) {
   const styles = useStyles()
@@ -18,7 +18,10 @@ export function Space ({
   return (
     <span
       {...props}
-      style={() => `--ui-space-flex:${use(flex)};${use(style)}`}
+      style={{
+        ...style,
+        '--ui-space-flex': flex as any,
+      }}
       class={() => styles.root}
     />
   )

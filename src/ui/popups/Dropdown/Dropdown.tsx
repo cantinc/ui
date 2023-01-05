@@ -1,4 +1,4 @@
-import { Ref, StateProp, style, use, useHidden, useShow } from '@innet/dom'
+import { Ref, StateProp, style, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { State } from 'watch-state'
@@ -19,7 +19,7 @@ export interface DropdownProps extends Omit<FlexProps, 'element'> {
 export function DropdownContent ({
   element,
   onclick,
-  style = '',
+  style,
   placement = 'bottom',
   ...props
 }: Omit<DropdownProps, 'show' | 'onhide'>) {
@@ -31,12 +31,11 @@ export function DropdownContent ({
   const rect: any = element.value?.getBoundingClientRect()
 
   const { documentElement } = document
-  const horizontal = `left:${rect.left}px;right:calc(100% - ${rect.right}px);`
-  const vertical = placement === 'bottom'
-    ? `top:${rect.top + rect.height + documentElement.scrollTop + 8}px;`
-    : `bottom:${documentElement.clientHeight - rect.top - documentElement.scrollTop + 8}px;`
 
-  const customStyle = () => `${vertical}${horizontal}${use(style) || ''}`
+  const verticalKey = placement === 'bottom' ? 'top' : 'bottom'
+  const verticalValue = placement === 'bottom'
+    ? `${rect.top + rect.height + documentElement.scrollTop + 8}px`
+    : `${documentElement.clientHeight - rect.top - documentElement.scrollTop + 8}px`
 
   return (
     <Flex
@@ -45,7 +44,12 @@ export function DropdownContent ({
         e.stopPropagation()
         ;(onclick as any)?.(e)
       }}
-      style={customStyle}
+      style={{
+        ...style,
+        left: `${rect.left}px`,
+        right: `calc(100% - ${rect.right}px)`,
+        [verticalKey]: verticalValue,
+      }}
       class={() => classes([
         styles.root,
         hide?.value && styles.hide,

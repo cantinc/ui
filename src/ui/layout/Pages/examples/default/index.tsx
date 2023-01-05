@@ -124,8 +124,8 @@ const navigation: PagesMenu = [
 innet(
   <Pages navigation={navigation}>
     <Layout vertical>
-      <Header style='background:var(--color-70)'>
-        <Content gap={16} padding={16} style='background:var(--color-60)'>
+      <Header style={{ background: 'var(--color-70)' }}>
+        <Content gap={16} padding={16} style={{ background: 'var(--color-60)' }}>
           <BurgerButton onclick={showMenu} />
           <Space />
           Header
@@ -133,12 +133,12 @@ innet(
         </Content>
       </Header>
       <Main vertical>
-        <Content padding={16} style='background:var(--color-80)'>
+        <Content padding={16} style={{ background: 'var(--color-80)' }}>
           <slot name='pages' />
         </Content>
       </Main>
-      <Footer style='background:var(--color-90)'>
-        <Content padding={16} style='background:var(--color-70)'>
+      <Footer style={{ background: 'var(--color-90)' }}>
+        <Content padding={16} style={{ background: 'var(--color-70)' }}>
           Footer
         </Content>
       </Footer>
@@ -159,8 +159,8 @@ innet(
     <Browser height={320}>
       <Pages prefix={`${process.env.CANTINC_UI_BASE_URL}/layout/pages`} navigation={navigation}>
         <Layout vertical>
-          <Header style='background:var(--color-70)'>
-            <Content gap={16} padding={16} style='background:var(--color-60)'>
+          <Header style={{ background: 'var(--color-70)' }}>
+            <Content gap={16} padding={16} style={{ background: 'var(--color-60)' }}>
               <BurgerButton onclick={showMenu} />
               <Space />
               Header
@@ -168,12 +168,12 @@ innet(
             </Content>
           </Header>
           <Main vertical>
-            <Content padding={16} style='background:var(--color-80)'>
+            <Content padding={16} style={{ background: 'var(--color-80)' }}>
               <slot name='pages' />
             </Content>
           </Main>
-          <Footer style='background:var(--color-90)'>
-            <Content padding={16} style='background:var(--color-70)'>
+          <Footer style={{ background: 'var(--color-90)' }}>
+            <Content padding={16} style={{ background: 'var(--color-70)' }}>
               Footer
             </Content>
           </Footer>

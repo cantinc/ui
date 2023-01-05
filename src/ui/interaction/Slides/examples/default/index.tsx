@@ -29,7 +29,7 @@ innet(
     slideProps={{
       align: 'center',
       justify: 'center',
-      style: 'background:var(--color-80);width:90%',
+      style: { background: 'var(--color-80)', width: '90%' },
     }}
     gap={8}
     slides={slides}
@@ -42,7 +42,7 @@ innet(
       slideProps={{
         align: 'center',
         justify: 'center',
-        style: 'background:var(--color-80);width:90%',
+        style: { background: 'var(--color-80)', width: '90%' },
       }}
       gap={8}
       slides={slides}

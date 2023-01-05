@@ -16,7 +16,7 @@ innet(
   <>
     <Input />
     <Input label='Inline 1' inline />
-    <span style='width:20px;display:inline-block' />
+    <span style={{ width: '20px', display: 'inline-block' }} />
     <Input label='Inline 2' inline />
   </>,
   dom,
@@ -25,7 +25,7 @@ innet(
     <>
       <Input />
       <Input label='Inline 1' inline />
-      <span style='width:20px;display:inline-block' />
+      <span style={{ width: '20px', display: 'inline-block' }} />
       <Input label='Inline 2' inline />
     </>
   ),

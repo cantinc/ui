@@ -51,7 +51,9 @@ export function Notification ({
         <Markdown text={notification.value.content} />
         <div
           class={styles.progress}
-          style={`animation-duration: ${`${notification.value.timeout}s`}`}
+          style={{
+            'animation-duration': `${notification.value.timeout}s`,
+          }}
         />
       </div>
     </delay>

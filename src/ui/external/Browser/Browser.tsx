@@ -25,7 +25,11 @@ export function Browser ({
         <span class={() => classes([styles.point, styles.pointHide])} />
         <span class={() => classes([styles.point, styles.pointFull])} />
       </Flex>
-      <div style={`--ui-iframe-height:${typeof height === 'string' ? height : `${height}px`}`} class={() => styles.content}>
+      <div
+        style={{
+          '--ui-iframe-height': typeof height === 'string' ? height : `${height}px`,
+        }}
+        class={() => styles.content}>
         {children}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Ref, style, use } from '@innet/dom'
+import { Ref, style } from '@innet/dom'
 import { State, Watch } from 'watch-state'
 
 import { Icon } from '../../icons'
@@ -124,7 +124,9 @@ export function Stories ({
 
         ;(onclick as any)?.(e)
       },
-      style: () => Math.abs(story.value - index) < 3 ? `--ui-stories-story-image:url("${slides[currentProgress.value]}");${use(style)}` : use(style),
+      style: {
+        '--ui-stories-story-image': () => Math.abs(story.value - index) < 3 ? `url("${slides[currentProgress.value]}")` : '',
+      },
       children: (
         <>
           <Dots

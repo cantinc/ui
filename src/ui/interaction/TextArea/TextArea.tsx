@@ -16,27 +16,21 @@ export interface TextAreaProps extends Omit<InputProps, 'renderInput' | 'inputRe
 export function TextArea ({
   resize = 'auto',
   rows = 4,
+  style,
   inputRef = new Ref<HTMLTextAreaElement>(),
   ...props
 }: TextAreaProps = {}) {
   const styles = useStyles()
   const withChildren = useChildrenProvider()
-  let style: any
   const size = new State(0)
   const updateSize = () => {
     size.value = 0
     size.value = Number(inputRef.value?.scrollHeight)
   }
 
-  if (resize) {
-    if (resize === 'auto') {
-      style = (() => `--ui-textarea-min:${rows * 20}px;--ui-textarea-autosize:${size.value}px;`) as unknown as string
-
-      const timer = setTimeout(updateSize)
-      onDestroy(() => clearTimeout(timer))
-    } else {
-      style = () => `--ui-textarea-resize:${resize === true ? 'both' : resize};`
-    }
+  if (resize === 'auto') {
+    const timer = setTimeout(updateSize)
+    onDestroy(() => clearTimeout(timer))
   }
 
   return withChildren(
@@ -47,7 +41,12 @@ export function TextArea ({
       renderInput={({ oninput, ...props }) => (
         <textarea
           rows={rows}
-          style={style}
+          style={{
+            ...style,
+            '--ui-textarea-resize': !resize || resize === 'auto' ? '' : resize === true ? 'both' : resize,
+            '--ui-textarea-min': !resize || resize !== 'auto' ? '' : `${rows * 20}px`,
+            '--ui-textarea-autosize': !resize || resize !== 'auto' ? '' : () => `${size.value}px`,
+          }}
           required={props.required}
           placeholder={props.placeholder}
           ref={props.ref as any}

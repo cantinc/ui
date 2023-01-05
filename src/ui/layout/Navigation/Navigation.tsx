@@ -1,4 +1,4 @@
-import { HTMLStyleProps, LinkProps, Ref, style, use } from '@innet/dom'
+import { HTMLStyleProps, LinkProps, Ref, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -62,7 +62,10 @@ function * NavigationItems (props: NavigationItemsProps) {
     <section
       {...props}
       ref={el}
-      style={() => `--ui-sub-menu-height:${height.value}px;${use(props?.style) || ''}`}
+      style={{
+        ...props?.style,
+        '--ui-sub-menu-height': () => `${height.value}px`,
+      }}
       class={() => styles.root}>
       {children}
     </section>

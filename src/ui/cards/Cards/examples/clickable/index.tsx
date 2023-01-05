@@ -15,7 +15,7 @@ import { Card, Cards } from '@cantinc/ui'
 innet(
   <Cards>
     {[...new Array(20)].map((_, index) => (
-      <Card justify='center' align='center' style='width:270px;height:100px' clickable>
+      <Card justify='center' align='center' style={{ width: '270px', height: '100px' }} clickable>
         Test #{index}
       </Card>
     ))}
@@ -25,7 +25,7 @@ innet(
   example: (
     <Cards>
       {[...new Array(20)].map((_, index) => (
-        <Card justify='center' align='center' style='width:270px;height:100px' clickable>
+        <Card justify='center' align='center' style={{ width: '270px', height: '100px' }} clickable>
           Test #{index}
         </Card>
       ))}

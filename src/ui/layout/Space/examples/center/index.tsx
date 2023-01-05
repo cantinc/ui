@@ -13,17 +13,21 @@ import dom from '@innet/dom'
 import { Flex, Space } from '@cantinc/ui'
 
 innet(
-  <Flex style='background:var(--color-80)'>
+  <Flex style={{ background: 'var(--color-80)' }}>
     <Space />
-    <div style='background:var(--color-60);padding:10px'>Element</div>
+    <div style={{ background: 'var(--color-60)', padding: '10px' }}>
+      Element
+    </div>
     <Space />
   </Flex>,
   dom,
 )`,
   example: (
-    <Flex style='background:var(--color-80)'>
+    <Flex style={{ background: 'var(--color-80)' }}>
       <Space />
-      <div style='background:var(--color-60);padding:10px'>Element</div>
+      <div style={{ background: 'var(--color-60)', padding: '10px' }}>
+        Element
+      </div>
       <Space />
     </Flex>
   ),

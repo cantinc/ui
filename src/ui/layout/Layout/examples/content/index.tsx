@@ -14,18 +14,18 @@ import { Layout, Header, Main, Footer, Content } from '@cantinc/ui'
 
 innet(
   <Layout vertical>
-    <Header style='background:var(--color-70)'>
-      <Content padding={16} style='background:var(--color-60)'>
+    <Header style={{ background: 'var(--color-70)' }}>
+      <Content padding={16} style={{ background: 'var(--color-60)' }}>
         Header
       </Content>
     </Header>
     <Main vertical>
-      <Content padding={16} style='background:var(--color-80)'>
+      <Content padding={16} style={{ background: 'var(--color-80)' }}>
         Main
       </Content>
     </Main>
-    <Footer style='background:var(--color-90)'>
-      <Content padding={16} style='background:var(--color-70)'>
+    <Footer style={{ background: 'var(--color-90)' }}>
+      <Content padding={16} style={{ background: 'var(--color-70)' }}>
         Footer
       </Content>
     </Footer>
@@ -35,18 +35,18 @@ innet(
   example: (
     <Browser height={320}>
       <Layout vertical>
-        <Header style='background:var(--color-70)'>
-          <Content padding={16} style='background:var(--color-60)'>
+        <Header style={{ background: 'var(--color-70)' }}>
+          <Content padding={16} style={{ background: 'var(--color-60)' }}>
             Header
           </Content>
         </Header>
         <Main vertical>
-          <Content padding={16} style='background:var(--color-80)'>
+          <Content padding={16} style={{ background: 'var(--color-80)' }}>
             Main
           </Content>
         </Main>
-        <Footer style='background:var(--color-90)'>
-          <Content padding={16} style='background:var(--color-70)'>
+        <Footer style={{ background: 'var(--color-90)' }}>
+          <Content padding={16} style={{ background: 'var(--color-70)' }}>
             Footer
           </Content>
         </Footer>

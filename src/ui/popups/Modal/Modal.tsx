@@ -1,4 +1,4 @@
-import { HTMLStyleProps, Ref, style, use } from '@innet/dom'
+import { HTMLStyleProps, Ref, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
@@ -27,7 +27,7 @@ let modalsCount = 0
 export function Modal ({
   buttons,
   width,
-  style = '',
+  style,
   headButtons = ['close'],
   buttonProps = {},
   onclosed,
@@ -44,8 +44,6 @@ export function Modal ({
   const element = new Ref<HTMLOverlayElement>()
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
-
-  const newStyle = width ? () => `--ui-modal-width:${width}px;${use(style)}` : style
 
   if (!('button-close' in slots)) {
     slots['button-close'] = <Icon icon='cross' />
@@ -84,7 +82,10 @@ export function Modal ({
     <delay ref={hidden} hide={300}>
       <div
         {...props}
-        style={newStyle}
+        style={{
+          ...style,
+          '--ui-modal-width': width ? `${width}px` : '',
+        }}
         ref={element}
         // @ts-expect-error
         _close={() => handleClose}

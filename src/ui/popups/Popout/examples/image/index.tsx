@@ -48,7 +48,7 @@ const hide = () => {
 innet(
   <>
     <Image
-      style='user-select:none;cursor:pointer;'
+      style={{ 'user-select': 'none', cursor: 'pointer' }}
       onclick={show}
       justify='center'
       align='center'
@@ -64,7 +64,7 @@ innet(
       </Icon>
     </Image>
     <Popout
-      contentStyle='background:transparent;'
+      contentStyle={{ background: 'transparent' }}
       show={state}
       element={ref}>
       <Content width={480} vertical>
@@ -86,7 +86,7 @@ innet(
   example: (
     <>
       <Image
-        style='user-select:none;cursor:pointer;'
+        style={{ 'user-select': 'none', cursor: 'pointer' }}
         onclick={show}
         justify='center'
         align='center'
@@ -102,7 +102,7 @@ innet(
         </Icon>
       </Image>
       <Popout
-        contentStyle='background:transparent;'
+        contentStyle={{ background: 'transparent' }}
         show={state}
         element={ref}>
         <Content width={480} vertical>

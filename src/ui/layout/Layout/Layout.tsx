@@ -1,4 +1,4 @@
-import { style, use } from '@innet/dom'
+import { style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { Flex, FlexProps } from '../Flex'
@@ -12,7 +12,7 @@ export interface LayoutProps extends FlexProps {
 
 export function Layout ({
   width,
-  style = '',
+  style,
   ...props
 }: LayoutProps = {}) {
   const children = useChildren()
@@ -24,7 +24,10 @@ export function Layout ({
       align='stretch'
       {...props}
       class={() => styles.root}
-      style={() => `${width ? `--ui-layout-width:${width}px;` : ''}${use(style)}`}>
+      style={{
+        ...style,
+        '--ui-layout-width': width ? `${width}px` : '',
+      }}>
       {children}
     </Flex>
   )

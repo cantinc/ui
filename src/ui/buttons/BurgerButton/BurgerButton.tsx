@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style, use } from '@innet/dom'
+import { HTMLStyleProps, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './BurgerButton.scss'
@@ -21,7 +21,7 @@ export interface BurgerButtonProps extends HTMLStyleProps<HTMLButtonElement> {
 
 export function BurgerButton ({
   size = 18,
-  style = '',
+  style,
   ...props
 }: BurgerButtonProps = {}) {
   const styles = useStyle()
@@ -30,7 +30,10 @@ export function BurgerButton ({
   return (
     <button
       {...props}
-      style={() => `--ui-burger-button-size:${size}px;${use(style)}`}
+      style={{
+        ...style,
+        '--ui-burger-button-size': () => `${size}px`,
+      }}
       class={() => styles.root}>
       <span class={() => styles.dash} />
       <span class={() => styles.dash} />

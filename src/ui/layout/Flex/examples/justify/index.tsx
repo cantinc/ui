@@ -14,50 +14,50 @@ import { Flex } from '@cantinc/ui'
 
 innet(
   <Flex wrap gap={16}>
-    <Flex flex justify='start' style='background:var(--color-80);min-width:200px'>
-      <div style='background:var(--color-40);padding:12px'>justify</div>
-      <div style='background:var(--color-60);padding:12px'>start</div>
+    <Flex flex justify='start' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+      <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+      <div style={{ background: 'var(--color-60)', padding: '12px' }}>start</div>
     </Flex>
-    <Flex flex justify='end' style='background:var(--color-80);min-width:200px'>
-      <div style='background:var(--color-40);padding:12px'>justify</div>
-      <div style='background:var(--color-60);padding:12px'>end</div>
+    <Flex flex justify='end' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+      <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+      <div style={{ background: 'var(--color-60)', padding: '12px' }}>end</div>
     </Flex>
-    <Flex flex justify='center' style='background:var(--color-80);min-width:200px'>
-      <div style='background:var(--color-40);padding:12px'>justify</div>
-      <div style='background:var(--color-60);padding:12px'>center</div>
+    <Flex flex justify='center' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+      <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+      <div style={{ background: 'var(--color-60)', padding: '12px' }}>center</div>
     </Flex>
-    <Flex flex justify='between' style='background:var(--color-80);min-width:200px'>
-      <div style='background:var(--color-40);padding:12px'>justify</div>
-      <div style='background:var(--color-60);padding:12px'>between</div>
+    <Flex flex justify='between' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+      <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+      <div style={{ background: 'var(--color-60)', padding: '12px' }}>between</div>
     </Flex>
-    <Flex flex justify='around' style='background:var(--color-80);min-width:200px'>
-      <div style='background:var(--color-40);padding:12px'>justify</div>
-      <div style='background:var(--color-60);padding:12px'>around</div>
+    <Flex flex justify='around' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+      <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+      <div style={{ background: 'var(--color-60)', padding: '12px' }}>around</div>
     </Flex>
   </Flex>,
   dom,
 )`,
   example: (
     <Flex wrap gap={16}>
-      <Flex flex justify='start' style='background:var(--color-80);min-width:200px'>
-        <div style='background:var(--color-40);padding:12px'>justify</div>
-        <div style='background:var(--color-60);padding:12px'>start</div>
+      <Flex flex justify='start' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+        <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+        <div style={{ background: 'var(--color-60)', padding: '12px' }}>start</div>
       </Flex>
-      <Flex flex justify='end' style='background:var(--color-80);min-width:200px'>
-        <div style='background:var(--color-40);padding:12px'>justify</div>
-        <div style='background:var(--color-60);padding:12px'>end</div>
+      <Flex flex justify='end' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+        <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+        <div style={{ background: 'var(--color-60)', padding: '12px' }}>end</div>
       </Flex>
-      <Flex flex justify='center' style='background:var(--color-80);min-width:200px'>
-        <div style='background:var(--color-40);padding:12px'>justify</div>
-        <div style='background:var(--color-60);padding:12px'>center</div>
+      <Flex flex justify='center' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+        <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+        <div style={{ background: 'var(--color-60)', padding: '12px' }}>center</div>
       </Flex>
-      <Flex flex justify='between' style='background:var(--color-80);min-width:200px'>
-        <div style='background:var(--color-40);padding:12px'>justify</div>
-        <div style='background:var(--color-60);padding:12px'>between</div>
+      <Flex flex justify='between' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+        <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+        <div style={{ background: 'var(--color-60)', padding: '12px' }}>between</div>
       </Flex>
-      <Flex flex justify='around' style='background:var(--color-80);min-width:200px'>
-        <div style='background:var(--color-40);padding:12px'>justify</div>
-        <div style='background:var(--color-60);padding:12px'>around</div>
+      <Flex flex justify='around' style={{ background: 'var(--color-80)', 'min-width': '200px' }}>
+        <div style={{ background: 'var(--color-40)', padding: '12px' }}>justify</div>
+        <div style={{ background: 'var(--color-60)', padding: '12px' }}>around</div>
       </Flex>
     </Flex>
   ),

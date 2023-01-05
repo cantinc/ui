@@ -1,4 +1,4 @@
-import { style, use } from '@innet/dom'
+import { inject, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { Flex, FlexProps } from '../Flex'
@@ -11,7 +11,7 @@ export interface AsideProps extends FlexProps {
 }
 
 export function Aside ({
-  style = '',
+  style,
   width = 320,
   ...props
 }: AsideProps = {}) {
@@ -23,7 +23,10 @@ export function Aside ({
       element='aside'
       align='stretch'
       {...props}
-      style={() => `--ui-aside-width:${width}px;${use(style)}`}
+      style={{
+        ...style,
+        '--ui-aside-width': inject(width, width => width ? `${width}px` : ''),
+      }}
       class={() => styles.root}>
       {children}
     </Flex>

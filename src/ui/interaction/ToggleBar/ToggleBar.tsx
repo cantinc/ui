@@ -1,4 +1,4 @@
-import { LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
+import { inject, LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State, Watch } from 'watch-state'
 
@@ -64,7 +64,7 @@ export function ToggleBar ({
   value = new State(''),
   onchange,
   renderValue = defaultToggleBarRender,
-  style = '',
+  style,
   ...props
 }: ToggleBarProps) {
   const styles = useStyle()
@@ -101,14 +101,6 @@ export function ToggleBar ({
     return result ? 'back' : 'forward'
   })
 
-  const selectStyle = new Cache(() => {
-    return `--ui-toggle-bar-index:${index.value};`
-  })
-
-  const focusStyle = new Cache(() => {
-    return `--ui-toggle-bar-focus:${focusIndex.value};`
-  })
-
   let blurTimeout: any
 
   const handleBlur = () => {
@@ -123,7 +115,12 @@ export function ToggleBar ({
       align='stretch'
       {...props}
       onmouseleave={handleBlur}
-      style={() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${use(values).length};${use(style)}`}
+      style={{
+        ...style,
+        '--ui-toggle-bar-count': inject(values, values => String(values.length)),
+        '--ui-toggle-bar-focus': inject(focusIndex, String),
+        '--ui-toggle-bar-index': inject(index, String),
+      }}
       class={() => classes([
         styles.root,
         styles[side.value],

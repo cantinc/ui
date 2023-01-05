@@ -13,43 +13,43 @@ import dom from '@innet/dom'
 import { Flex } from '@cantinc/ui'
 
 innet(
-  <Flex wrap gap={16} style='background:var(--color-80)'>
+  <Flex wrap gap={16} style={{ background: 'var(--color-80)' }}>
     <Flex vertical align='center'>
-      <div style='background:var(--color-40);padding:24px'>align</div>
-      <div style='background:var(--color-60);padding:6px'>center</div>
+      <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
     </Flex>
     <Flex vertical align='start'>
-      <div style='background:var(--color-40);padding:24px'>align</div>
-      <div style='background:var(--color-60);padding:6px'>start</div>
+      <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>start</div>
     </Flex>
     <Flex vertical align='end'>
-      <div style='background:var(--color-40);padding:24px'>align</div>
-      <div style='background:var(--color-60);padding:6px'>end</div>
+      <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>end</div>
     </Flex>
     <Flex vertical align='stretch'>
-      <div style='background:var(--color-40);padding:24px'>align</div>
-      <div style='background:var(--color-60);padding:6px'>stretch</div>
+      <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>stretch</div>
     </Flex>
   </Flex>,
   dom,
 )`,
   example: (
-    <Flex wrap gap={16} style='background:var(--color-80)'>
+    <Flex wrap gap={16} style={{ background: 'var(--color-80)' }}>
       <Flex vertical align='center'>
-        <div style='background:var(--color-40);padding:24px'>align</div>
-        <div style='background:var(--color-60);padding:6px'>center</div>
+        <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
       </Flex>
       <Flex vertical align='start'>
-        <div style='background:var(--color-40);padding:24px'>align</div>
-        <div style='background:var(--color-60);padding:6px'>start</div>
+        <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>start</div>
       </Flex>
       <Flex vertical align='end'>
-        <div style='background:var(--color-40);padding:24px'>align</div>
-        <div style='background:var(--color-60);padding:6px'>end</div>
+        <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>end</div>
       </Flex>
       <Flex vertical align='stretch'>
-        <div style='background:var(--color-40);padding:24px'>align</div>
-        <div style='background:var(--color-60);padding:6px'>stretch</div>
+        <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>stretch</div>
       </Flex>
     </Flex>
   ),

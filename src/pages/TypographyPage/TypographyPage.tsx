@@ -17,7 +17,11 @@ export default function TypographyPage () {
         <Flex
           flex
           padding={16}
-          style={`--color:var(--color-${size});background:var(--color);color:var(--color-${size > 50 ? 0 : 100})`}>
+          style={{
+            '--color': `var(--color-${size})`,
+            background: 'var(--color)',
+            color: `var(--color-${size > 50 ? 0 : 100})`,
+          }}>
           {`--color-${size}`}: {props.getPropertyValue(`--color-${size}`)}
         </Flex>
       ))}
@@ -28,7 +32,11 @@ export default function TypographyPage () {
             <Flex
               flex
               padding={16}
-              style={`--color:var(--color-${color}-${size});background:var(--color);color:var(--color-${size > 50 ? 0 : 100})`}>
+              style={{
+                '--color': `var(--color-${color}-${size})`,
+                background: 'var(--color)',
+                color: `var(--color-${size > 50 ? 0 : 100})`,
+              }}>
               {`--color-${color}-${size}`}: {props.getPropertyValue(`--color-${color}-${size}`)}
             </Flex>
           ))}

@@ -1,4 +1,4 @@
-import { StateProp, style, use } from '@innet/dom'
+import { inject, StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { Flex, FlexProps } from '../Flex'
@@ -14,7 +14,7 @@ export interface ImageProps extends FlexProps {
 }
 
 export function Image ({
-  style = '',
+  style,
   src,
   ratio = 1,
   size,
@@ -24,19 +24,16 @@ export function Image ({
   const children = useChildren()
   const styles = useStyle()
 
-  const newStyle = () => {
-    const currentRatio = use(ratio)
-    const currentRadius = use(radius)
-    const ratioStyle = `--ui-image-ratio:${Array.isArray(currentRatio) ? `${currentRatio[0]} / ${currentRatio[1]}` : currentRatio};`
-    const radiusStyle = `--ui-image-radius:${typeof currentRadius === 'number' ? `${currentRadius}px` : currentRadius};`
-
-    return `background-image:url("${use(src)}");${radiusStyle}${ratioStyle}--ui-image-size:${use(size)}px;${use(style)}`
-  }
-
   return (
     <Flex
       {...props}
-      style={newStyle}
+      style={{
+        ...style,
+        '--ui-image-ratio': inject(ratio, ratio => Array.isArray(ratio) ? `${ratio[0]} / ${ratio[1]}` : String(ratio)),
+        '--ui-image-radius': inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius),
+        '--ui-image-size': inject(size, size => `${size}px`),
+        'background-image': inject(src, src => `url("${src}")`),
+      }}
       class={() => styles.root}>
       {children}
     </Flex>

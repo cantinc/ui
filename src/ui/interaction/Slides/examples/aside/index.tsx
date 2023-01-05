@@ -1,4 +1,3 @@
-import { use } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { BurgerButton, Icon, Slide, Slides } from 'src/ui'
 import { State } from 'watch-state'
@@ -18,12 +17,17 @@ const slides: Slide[] = [
   {
     reverse: true,
     padding: 8,
-    style: 'background:var(--color-80);min-width:200px',
+    style: { background: 'var(--color-80)', 'min-width': '200px' },
     children: <Icon icon='cross' onclick={hide} />,
   },
   {
     padding: 16,
-    style: () => `background:var(--color-70);min-width:100%;transition: all .3s;opacity:${use(state) ? 1 : '.5'}`,
+    style: {
+      background: 'var(--color-70)',
+      'min-width': '100%',
+      transition: 'all .3s',
+      opacity: () => state.value ? '1' : '.5',
+    },
     children: <BurgerButton onclick={show} />,
   },
 ]
@@ -33,7 +37,7 @@ export default example({
   title: 'aside',
   description,
   code: `import innet from 'innet'
-import dom, { use } from '@innet/dom'
+import dom from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Slides, Slide, BurgerButton, Icon } from '@cantinc/ui'
@@ -51,12 +55,17 @@ const slides: Slide[] = [
   {
     reverse: true,
     padding: 8,
-    style: 'background:var(--color-80);min-width:200px',
+    style: { background: 'var(--color-80)', 'min-width': '200px' },
     children: <Icon icon='cross' onclick={hide} />,
   },
   {
     padding: 16,
-    style: () => \`background:var(--color-70);min-width:100%;transition: all .3s;opacity:\${use(state) ? 1 : '.5'}\`,
+    style: {
+      background: 'var(--color-70)',
+      'min-width': '100%',
+      transition: 'all .3s',
+      opacity: () => state.value ? '1' : '.5',
+    },
     children: <BurgerButton onclick={show} />,
   },
 ]

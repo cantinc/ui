@@ -1,7 +1,7 @@
-import { StateProp, style, use } from '@innet/dom'
+import { inject, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { onDestroy, State, unwatch, Watch } from 'watch-state'
+import { Cache, onDestroy, State, unwatch, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
@@ -24,7 +24,7 @@ export function Dots ({
   ref,
   count,
   autoscroll,
-  style = '',
+  style,
   size = 12,
   progress,
   value = new State(0),
@@ -98,15 +98,9 @@ export function Dots ({
 
   onDestroy(() => clearTimeout(timer))
 
-  const rootStyle = () => {
-    const currentValue = use(autoscroll) ? pseudoValue.value : pseudoValue.value + 1
-    const progressStyles = `--ui-dots-progress:${currentValue / count};`
-    const sizeStyles = `--ui-dots-size:${use(size)}px;`
-    const transitionStyles = `--ui-dots-transition:${transition.value}s;`
-    const leftStyles = progress ? '--ui-dots-left:0;' : `--ui-dots-left:calc(100% * ${((use(autoscroll) ? nextValue.value : currentValue) / count) - (1 / count)});`
-
-    return `${progressStyles}${sizeStyles}${leftStyles}${transitionStyles}${use(style)}`
-  }
+  const dotsProgress = new Cache(() => (
+    use(autoscroll) ? pseudoValue.value : pseudoValue.value + 1
+  ) / count)
 
   const array = [...new Array(count)].map((_, i) => i)
 
@@ -115,7 +109,13 @@ export function Dots ({
       gap={8}
       {...props}
       ref={ref}
-      style={rootStyle}
+      style={{
+        ...style,
+        '--ui-dots-progress': inject(dotsProgress, String),
+        '--ui-dots-size': inject(size, size => `${size}px`),
+        '--ui-dots-transition': () => `${transition.value}s`,
+        '--ui-dots-left': progress ? '0' : () => `calc(100% * ${((use(autoscroll) ? nextValue.value / count : dotsProgress.value)) - (1 / count)})`,
+      }}
       class={() => styles.root}>
       {array.map(i => (
         <div

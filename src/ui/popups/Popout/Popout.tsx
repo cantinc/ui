@@ -1,4 +1,4 @@
-import { Ref, StateProp, style, use, useHidden, useShow } from '@innet/dom'
+import { HTMLStyleProp, Ref, StateProp, style, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State, Watch } from 'watch-state'
@@ -12,7 +12,7 @@ const useStyle = style(styles)
 
 interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   element: Ref<HTMLElement>
-  contentStyle?: StateProp<string>
+  contentStyle?: HTMLStyleProp
   onhide: () => void
   rootRef?: Ref<HTMLDivElement>
 }
@@ -26,7 +26,7 @@ let popoutCount = 0
 
 function PopoutElement ({
   element,
-  style = '',
+  style,
   contentStyle,
   onhide,
   rootRef = new Ref(),
@@ -77,29 +77,20 @@ function PopoutElement ({
     }
   })
 
-  const newStyle = () => {
-    const {
-      rect: { top, left, height, width },
-      styles: { borderRadius, border, background },
-    } = elementData.value
-
-    return [
-      `--ui-popout-top:${top}px;`,
-      `--ui-popout-left:${left}px;`,
-      `--ui-popout-width:${width}px;`,
-      `--ui-popout-height:${height}px;`,
-      `--ui-popout-radius:${borderRadius};`,
-      `--ui-popout-border:${border};`,
-      `--ui-popout-touch-hide:${touchHide.value}px;`,
-      `--ui-popout-background:${background};`,
-      use(style),
-    ].join('')
-  }
-
   return (
     <div
       ref={rootRef}
-      style={newStyle}
+      style={{
+        ...style,
+        '--ui-popout-top': () => `${elementData.value.rect.top}px`,
+        '--ui-popout-left': () => `${elementData.value.rect.left}px`,
+        '--ui-popout-width': () => `${elementData.value.rect.width}px`,
+        '--ui-popout-height': () => `${elementData.value.rect.height}px`,
+        '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`,
+        '--ui-popout-border': () => `${elementData.value.styles.border}`,
+        '--ui-popout-touch-hide': () => `${touchHide.value}px`,
+        '--ui-popout-background': () => `${elementData.value.styles.background}`,
+      }}
       ontouchstart={(e: TouchEvent) => {
         touchStart = e.touches[0].clientY
         touchStartX = e.touches[0].clientX
