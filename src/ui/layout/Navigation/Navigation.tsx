@@ -21,7 +21,7 @@ export type NavigationMenu = NavigationItemProps[]
 export interface NavigationItemProps extends LinkProps {
   children?: any
   menu?: NavigationMenu
-  condition?: StateProp<boolean>
+  access?: StateProp<boolean>
 }
 
 export interface NavigationItemsProps extends HTMLStyleProps {
@@ -35,13 +35,13 @@ export interface NavigationProps extends FlexProps {
 function NavigationItem ({
   children = useChildren(),
   menu,
-  condition = true,
+  access = true,
   ...props
 }: NavigationItemProps = {}) {
   const styles = useItemStyles()
 
   return (
-    <show state={condition}>
+    <show state={access}>
       <a {...props} class={styles}>{children}</a>
       {menu && (
         <NavigationItems>

@@ -4,7 +4,7 @@ import { State } from 'watch-state'
 
 import description from './README.md'
 
-const condition = new State(false)
+const access = new State(false)
 
 const getURL = (url: string) => `${process.env.CANTINC_UI_BASE_URL}/layout/navigation${url}`
 
@@ -17,7 +17,7 @@ const menu: NavigationMenu = [
   {
     href: getURL('/single'),
     children: 'Single Link',
-    condition,
+    access,
   },
   {
     href: getURL('/content'),
@@ -30,19 +30,19 @@ const menu: NavigationMenu = [
       {
         href: getURL('/content/item2'),
         children: 'Item 2',
-        condition,
+        access,
       },
       {
         href: getURL('/content/item3'),
         children: 'Item 3',
-        condition,
+        access,
       },
     ],
   },
   {
     href: getURL('/settings'),
     children: 'Settings',
-    condition,
+    access,
     menu: [
       {
         href: getURL('/settings/password'),
@@ -61,8 +61,8 @@ const menu: NavigationMenu = [
 ]
 
 export default example({
-  id: 'condition',
-  title: 'condition',
+  id: 'access',
+  title: 'access',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -70,7 +70,7 @@ import { State } from 'watch-state'
 
 import { Navigation, NavigationMenu, Flex, Toggle } from '@cantinc/ui'
 
-const condition = new State(false)
+const access = new State(false)
 
 const menu: NavigationMenu = [
   {
@@ -81,7 +81,7 @@ const menu: NavigationMenu = [
   {
     href: getURL('/single'),
     children: 'Single Link',
-    condition,
+    access,
   },
   {
     href: getURL('/content'),
@@ -94,19 +94,19 @@ const menu: NavigationMenu = [
       {
         href: getURL('/content/item2'),
         children: 'Item 2',
-        condition,
+        access,
       },
       {
         href: getURL('/content/item3'),
         children: 'Item 3',
-        condition,
+        access,
       },
     ],
   },
   {
     href: getURL('/settings'),
     children: 'Settings',
-    condition,
+    access,
     menu: [
       {
         href: getURL('/settings/password'),
@@ -126,7 +126,7 @@ const menu: NavigationMenu = [
 
 innet(
   <Flex vertical gap={16}>
-    <Toggle checked={condition}>
+    <Toggle checked={access}>
       Show all
     </Toggle>
     <Navigation menu={menu} />
@@ -135,7 +135,7 @@ innet(
 )`,
   example: (
     <Flex vertical gap={16}>
-      <Toggle checked={condition}>
+      <Toggle checked={access}>
         Show all
       </Toggle>
       <Navigation menu={menu} />

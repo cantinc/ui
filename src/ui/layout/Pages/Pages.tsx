@@ -32,11 +32,11 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
 
   for (let i = 0; i < navigation.length; i++) {
     const navItem = navigation[i]
-    const { menu: oldMenu, slot, page, condition = true, ...rest } = navItem
+    const { menu: oldMenu, slot, page, access = true, ...rest } = navItem
     const href = prefix && slot === '/' ? prefix : `${prefix}/${slot === '/' ? '' : slot}`
     const item: NavigationItemProps = {
       ...rest,
-      condition,
+      access,
       href,
     }
 
@@ -45,7 +45,7 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
 
       const { default: Component } = await page()
 
-      yield <DelayPage>{inject(condition, condition => condition ? (<Component />) : handleAccess?.(navItem))}</DelayPage>
+      yield <DelayPage>{inject(access, condition => condition ? (<Component />) : handleAccess?.(navItem))}</DelayPage>
     }
 
     if (oldMenu) {
