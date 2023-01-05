@@ -1,4 +1,4 @@
-import { HTMLStyleProps, LinkProps, Ref, style } from '@innet/dom'
+import { HTMLStyleProps, LinkProps, Ref, StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -21,6 +21,7 @@ export type NavigationMenu = NavigationItemProps[]
 export interface NavigationItemProps extends LinkProps {
   children?: any
   menu?: NavigationMenu
+  condition?: StateProp<boolean>
 }
 
 export interface NavigationItemsProps extends HTMLStyleProps {
@@ -34,12 +35,13 @@ export interface NavigationProps extends FlexProps {
 function NavigationItem ({
   children = useChildren(),
   menu,
+  condition = true,
   ...props
 }: NavigationItemProps = {}) {
   const styles = useItemStyles()
 
   return (
-    <>
+    <show state={condition}>
       <a {...props} class={styles}>{children}</a>
       {menu && (
         <NavigationItems>
@@ -48,7 +50,7 @@ function NavigationItem ({
           ))}
         </NavigationItems>
       )}
-    </>
+    </show>
   )
 }
 

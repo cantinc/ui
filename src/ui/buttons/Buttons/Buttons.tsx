@@ -10,7 +10,7 @@ export function Buttons (props: ButtonsProps) {
   const children = useChildren()
 
   return (
-    <Flex {...props}>
+    <Flex wrap gap={24} {...props}>
       {children}
     </Flex>
   )

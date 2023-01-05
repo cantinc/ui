@@ -1,4 +1,4 @@
-import { routerContext } from '@innet/dom'
+import { inject, routerContext } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { AsyncSpin } from '../../external/AsyncSpin'
@@ -6,6 +6,7 @@ import { Navigation, NavigationItemProps } from '../Navigation'
 import { DelayPage } from '../Page'
 
 export type PagesMenu = PagesItemProps[]
+export type PageAccessHandler = (nav: PagesItemProps) => any
 
 export interface PagesItemProps extends NavigationItemProps {
   slot: string
@@ -16,9 +17,10 @@ export interface PagesItemProps extends NavigationItemProps {
 export interface PagesProps {
   navigation: PagesMenu
   prefix?: string
+  handleAccess?: PageAccessHandler
 }
 
-export function splitPagesItem (navigation: PagesMenu, prefix: string, parent?: any): [NavigationItemProps[], any] {
+export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAccess?: PageAccessHandler, parent?: any): [NavigationItemProps[], any] {
   const menu: NavigationItemProps[] = []
   const pages: any = {
     type: 'router',
@@ -29,10 +31,12 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, parent?: 
   }
 
   for (let i = 0; i < navigation.length; i++) {
-    const { menu: oldMenu, slot, page, ...rest } = navigation[i]
+    const navItem = navigation[i]
+    const { menu: oldMenu, slot, page, condition = true, ...rest } = navItem
     const href = prefix && slot === '/' ? prefix : `${prefix}/${slot === '/' ? '' : slot}`
     const item: NavigationItemProps = {
       ...rest,
+      condition,
       href,
     }
 
@@ -41,11 +45,11 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, parent?: 
 
       const { default: Component } = await page()
 
-      yield <DelayPage><Component /></DelayPage>
+      yield <DelayPage>{inject(condition, condition => condition ? (<Component />) : handleAccess?.(navItem))}</DelayPage>
     }
 
     if (oldMenu) {
-      const [newMenu, subpages] = splitPagesItem(oldMenu, href, {
+      const [newMenu, subpages] = splitPagesItem(oldMenu, href, handleAccess, {
         type: 'slot',
         props: { name: '/' },
         children: [<Page />],
@@ -75,10 +79,11 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, parent?: 
 export function Pages ({
   navigation,
   prefix = '',
+  handleAccess,
 }: PagesProps) {
   const children = useChildren()
 
-  const [menu, pages] = splitPagesItem(navigation, prefix)
+  const [menu, pages] = splitPagesItem(navigation, prefix, handleAccess)
 
   const slots = (
     <>
