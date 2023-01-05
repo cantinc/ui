@@ -11,7 +11,9 @@ function Browser(_a = {}) {
     var { height = 'auto' } = _a, props = __rest(_a, ["height"]);
     const children = useChildren();
     const styles = useStyle();
-    return ({type:'div',props:{...props,class:() => styles.root},children:[{type:Flex,props:{padding:8,gap:8},children:[{type:'span',props:{class:() => classes([styles.point, styles.pointClose])}},{type:'span',props:{class:() => classes([styles.point, styles.pointHide])}},{type:'span',props:{class:() => classes([styles.point, styles.pointFull])}}]},{type:'div',props:{style:`--ui-iframe-height:${typeof height === 'string' ? height : `${height}px`}`,class:() => styles.content},children:[children]}]});
+    return ({type:'div',props:{...props,class:() => styles.root},children:[{type:Flex,props:{padding:8,gap:8},children:[{type:'span',props:{class:() => classes([styles.point, styles.pointClose])}},{type:'span',props:{class:() => classes([styles.point, styles.pointHide])}},{type:'span',props:{class:() => classes([styles.point, styles.pointFull])}}]},{type:'div',props:{style:{
+            '--ui-iframe-height': typeof height === 'string' ? height : `${height}px`,
+        },class:() => styles.content},children:[children]}]});
 }
 
 export { Browser };

@@ -6,3 +6,5 @@ export * from './closeRouterModal';
 export * from './withModal';
 export * from './actionProp';
 export * from './createFormDate';
+export * from './debounceCall';
+export * from './bindWindowHeight';

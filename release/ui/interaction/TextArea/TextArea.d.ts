@@ -5,4 +5,4 @@ export interface TextAreaProps extends Omit<InputProps, 'renderInput' | 'inputRe
     rows?: number;
     inputRef?: Ref<HTMLTextAreaElement>;
 }
-export declare function TextArea({ resize, rows, inputRef, ...props }?: TextAreaProps): import("@innet/jsx").JSXElement<any, import("@innet/jsx").Props, import("@innet/jsx").Children>;
+export declare function TextArea({ resize, rows, style, inputRef, ...props }?: TextAreaProps): import("@innet/jsx").JSXElement<any, import("@innet/jsx").Props, import("@innet/jsx").Children>;

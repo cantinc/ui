@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, use } from '@innet/dom';
+import { style, inject } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
 import modules_e7b1950f from './Icon.scss.es6.js';
@@ -26,20 +26,13 @@ const iconsValues = {
 };
 const icons = Object.keys(iconsValues);
 function Icon(_a) {
-    var { icon, style = '', size, color = 'inherit', end } = _a, props = __rest(_a, ["icon", "style", "size", "color", "end"]);
+    var { icon, style, size, color = 'inherit', end } = _a, props = __rest(_a, ["icon", "style", "size", "color", "end"]);
     const children = useChildren();
     const styles = useStyle();
-    const styleProp = () => {
-        const currentSize = use(size);
-        const currentColor = use(color);
-        const sizeStyle = currentSize ? `--ui-icon-size:${currentSize}px;` : '';
-        const colorStyle = `--ui-icon-color:${currentColor};`;
-        return `--ui-icon:'${iconsValues[icon]}';${sizeStyle}${colorStyle}${use(style)}`;
-    };
     return ({type:'span',props:{...props,class:classes([
             styles.root,
             end && styles.end,
-        ]),style:styleProp},children:[children]});
+        ]),style:Object.assign(Object.assign({}, style), { '--ui-icon-size': inject(size, size => size ? `${size}px` : ''), '--ui-icon-color': color, '--ui-icon': `'${iconsValues[icon]}'` })},children:[children]});
 }
 
 export { Icon, icons, iconsValues };

@@ -39,7 +39,9 @@ function Notification({ notification, onclose, }) {
                 notification.value.type && styles[notification.value.type],
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hidden,
             ]);
-        }},children:[{type:Markdown.Markdown,props:{text:notification.value.content}},{type:'div',props:{class:styles.progress,style:`animation-duration: ${`${notification.value.timeout}s`}`}}]}]});
+        }},children:[{type:Markdown.Markdown,props:{text:notification.value.content}},{type:'div',props:{class:styles.progress,style:{
+            'animation-duration': `${notification.value.timeout}s`,
+        }}}]}]});
 }
 
 exports.Notification = Notification;

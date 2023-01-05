@@ -26,7 +26,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
         },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon.Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
-    var { values, value = new watchState.State(''), onchange, renderValue = defaultToggleBarRender, style = '' } = _a, props = tslib.__rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
+    var { values, value = new watchState.State(''), onchange, renderValue = defaultToggleBarRender, style } = _a, props = tslib.__rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
     const styles = useStyle();
     if (value instanceof watchState.State) {
         const oldOnChange = onchange;
@@ -55,19 +55,13 @@ function ToggleBar(_a) {
         lastFocusIndex = focusIndex.value;
         return result ? 'back' : 'forward';
     });
-    const selectStyle = new watchState.Cache(() => {
-        return `--ui-toggle-bar-index:${index.value};`;
-    });
-    const focusStyle = new watchState.Cache(() => {
-        return `--ui-toggle-bar-focus:${focusIndex.value};`;
-    });
     let blurTimeout;
     const handleBlur = () => {
         blurTimeout = setTimeout(() => {
             focusIndex.value = index.value;
         });
     };
-    return ({type:Flex.Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${dom.use(values).length};${dom.use(style)}`,class:() => classes__default["default"]([
+    return ({type:Flex.Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-count': dom.inject(values, values => String(values.length)), '--ui-toggle-bar-focus': dom.inject(focusIndex, String), '--ui-toggle-bar-index': dom.inject(index, String) }),class:() => classes__default["default"]([
             styles.root,
             styles[side.value],
             styles[`${focusSide.value}Focus`],

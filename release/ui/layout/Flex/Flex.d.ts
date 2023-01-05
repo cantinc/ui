@@ -13,7 +13,7 @@ export declare const justifyMap: {
     readonly center: "center";
     readonly stretch: "stretch";
 };
-export declare type FlexProps<E extends HTMLElement = HTMLElement, R = {}> = Omit<HTMLStyleProps<E>, keyof R> & {
+export declare type FlexProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
     vertical?: boolean;
     align?: keyof typeof alignMap;
     justify?: keyof typeof justifyMap;

@@ -2,9 +2,11 @@ import { __rest } from 'tslib';
 import { style, Ref, inject, use } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
+import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_4318a3aa from './Input.scss.es6.js';
+import { debounceCall } from '../../../utils/debounceCall/debounceCall.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 
@@ -22,14 +24,7 @@ function Input(_a = {}) {
         };
     }
     if (debounce && oninput) {
-        const oldOnChange = oninput;
-        let timer;
-        oninput = (val) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                oldOnChange(val);
-            }, debounce === true ? 300 : debounce);
-        };
+        oninput = debounceCall(oninput, debounce === true ? 300 : debounce);
     }
     const handleInput = (e) => {
         oninput === null || oninput === void 0 ? void 0 : oninput(e.target.value);

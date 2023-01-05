@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref, use } from '@innet/dom';
+import { style, Ref } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import { State } from 'watch-state';
 import '../Flex/index.es6.js';
@@ -26,7 +26,7 @@ function* NavigationItems(props) {
     const styles = useSubMenuStyles();
     const el = (props === null || props === void 0 ? void 0 : props.ref) || new Ref();
     const height = new State(0);
-    yield ({type:'section',props:{...props,ref:el,style:() => `--ui-sub-menu-height:${height.value}px;${use(props === null || props === void 0 ? void 0 : props.style) || ''}`,class:() => styles.root},children:[children]});
+    yield ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
     setTimeout(() => {
         height.value = el.value.scrollHeight;
     });

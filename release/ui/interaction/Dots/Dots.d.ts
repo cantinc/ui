@@ -3,9 +3,11 @@ import { FlexProps } from '../../layout';
 export interface DotsProps extends Omit<FlexProps<HTMLDivElement>, 'onchange'> {
     count: number;
     size?: StateProp<number>;
-    autoscroll?: number | boolean;
+    autoscroll?: StateProp<number | boolean>;
     progress?: boolean;
     value?: StateProp<number>;
     onchange?: (value: number) => void;
+    onend?: () => void;
+    circular?: boolean;
 }
-export declare function Dots({ ref, count, autoscroll, style, size, progress, value, onchange, ...props }: DotsProps): any;
+export declare function Dots({ ref, count, autoscroll, style, size, progress, value, onchange, onend, circular, ...props }: DotsProps): any;

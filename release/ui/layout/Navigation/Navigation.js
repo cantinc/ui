@@ -30,7 +30,7 @@ function* NavigationItems(props) {
     const styles = useSubMenuStyles();
     const el = (props === null || props === void 0 ? void 0 : props.ref) || new dom.Ref();
     const height = new watchState.State(0);
-    yield ({type:'section',props:{...props,ref:el,style:() => `--ui-sub-menu-height:${height.value}px;${dom.use(props === null || props === void 0 ? void 0 : props.style) || ''}`,class:() => styles.root},children:[children]});
+    yield ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
     setTimeout(() => {
         height.value = el.value.scrollHeight;
     });

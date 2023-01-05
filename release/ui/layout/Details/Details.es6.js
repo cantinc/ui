@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref, use } from '@innet/dom';
+import { style, Ref, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import { State } from 'watch-state';
 import '../../../utils/index.es6.js';
@@ -11,13 +11,13 @@ import { Arrow } from '../../icons/Arrow/Arrow.es6.js';
 const useStyle = style(modules_d6e4f4b2);
 function* Details(_a = {}) {
     var _b;
-    var { ref = new Ref(), style = '', open = new State(false), onToggle } = _a, props = __rest(_a, ["ref", "style", "open", "onToggle"]);
+    var { ref = new Ref(), style, open = new State(false), onToggle } = _a, props = __rest(_a, ["ref", "style", "open", "onToggle"]);
     const { '': children, summary } = useSlots();
     const styles = useStyle();
     const height = new State(0);
     let defaultHeight = 0;
     onToggle = actionProp(open, onToggle);
-    yield ({type:'details',props:{...props,style:() => `height:${height.value}px;${use(style)}`,ontoggle:(e) => {
+    yield ({type:'details',props:{...props,style:Object.assign(Object.assign({}, style), { height: inject(height, height => `${height}px`) }),ontoggle:(e) => {
             var _a, _b, _c, _d, _e;
             if ((_a = ref.value) === null || _a === void 0 ? void 0 : _a.open) {
                 height.value = ((_b = ref.value) === null || _b === void 0 ? void 0 : _b.scrollHeight) || 0;

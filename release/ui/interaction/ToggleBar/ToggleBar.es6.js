@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, use } from '@innet/dom';
+import { style, use, inject } from '@innet/dom';
 import classes from 'html-classes';
 import { State, Cache, Watch } from 'watch-state';
 import '../../icons/index.es6.js';
@@ -18,7 +18,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
         },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
-    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style = '' } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
+    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
     const styles = useStyle();
     if (value instanceof State) {
         const oldOnChange = onchange;
@@ -47,19 +47,13 @@ function ToggleBar(_a) {
         lastFocusIndex = focusIndex.value;
         return result ? 'back' : 'forward';
     });
-    const selectStyle = new Cache(() => {
-        return `--ui-toggle-bar-index:${index.value};`;
-    });
-    const focusStyle = new Cache(() => {
-        return `--ui-toggle-bar-focus:${focusIndex.value};`;
-    });
     let blurTimeout;
     const handleBlur = () => {
         blurTimeout = setTimeout(() => {
             focusIndex.value = index.value;
         });
     };
-    return ({type:Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:() => `${focusStyle.value}${selectStyle.value}--ui-toggle-bar-count:${use(values).length};${use(style)}`,class:() => classes([
+    return ({type:Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-count': inject(values, values => String(values.length)), '--ui-toggle-bar-focus': inject(focusIndex, String), '--ui-toggle-bar-index': inject(index, String) }),class:() => classes([
             styles.root,
             styles[side.value],
             styles[`${focusSide.value}Focus`],

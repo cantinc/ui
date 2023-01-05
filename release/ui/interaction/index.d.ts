@@ -7,3 +7,5 @@ export * from './Option';
 export * from './Checkbox';
 export * from './Radiobox';
 export * from './Dots';
+export * from './Slides';
+export * from './Stories';

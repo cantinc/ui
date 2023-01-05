@@ -11,17 +11,10 @@ var Flex = require('../Flex/Flex.js');
 
 const useStyle = dom.style(Image$1["default"]);
 function Image(_a) {
-    var { style = '', src, ratio = 1, size, radius = 8 } = _a, props = tslib.__rest(_a, ["style", "src", "ratio", "size", "radius"]);
+    var { style, src, ratio = 1, size, radius = 8 } = _a, props = tslib.__rest(_a, ["style", "src", "ratio", "size", "radius"]);
     const children = jsx.useChildren();
     const styles = useStyle();
-    const newStyle = () => {
-        const currentRatio = dom.use(ratio);
-        const currentRadius = dom.use(radius);
-        const ratioStyle = `--ui-image-ratio:${Array.isArray(currentRatio) ? `${currentRatio[0]} / ${currentRatio[1]}` : currentRatio};`;
-        const radiusStyle = `--ui-image-radius:${typeof currentRadius === 'number' ? `${currentRadius}px` : currentRadius};`;
-        return `background-image:url("${dom.use(src)}");${radiusStyle}${ratioStyle}--ui-image-size:${dom.use(size)}px;${dom.use(style)}`;
-    };
-    return ({type:Flex.Flex,props:{...props,style:newStyle,class:() => styles.root},children:[children]});
+    return ({type:Flex.Flex,props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-image-ratio': dom.inject(ratio, ratio => Array.isArray(ratio) ? `${ratio[0]} / ${ratio[1]}` : String(ratio)), '--ui-image-radius': dom.inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius), '--ui-image-size': dom.inject(size, size => `${size}px`), 'background-image': dom.inject(src, src => `url("${src}")`) }),class:() => styles.root},children:[children]});
 }
 
 exports.Image = Image;

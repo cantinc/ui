@@ -62,6 +62,8 @@ export { Option } from './ui/interaction/Option/Option.es6.js';
 export { Checkbox } from './ui/interaction/Checkbox/Checkbox.es6.js';
 export { Radiobox } from './ui/interaction/Radiobox/Radiobox.es6.js';
 export { Dots } from './ui/interaction/Dots/Dots.es6.js';
+export { Slides } from './ui/interaction/Slides/Slides.es6.js';
+export { Stories } from './ui/interaction/Stories/Stories.es6.js';
 export { SearchToggleBar } from './ui/search/SearchToggleBar/SearchToggleBar.es6.js';
 export { SearchToggle } from './ui/search/SearchToggle/SearchToggle.es6.js';
 export { SearchInput } from './ui/search/SearchInput/SearchInput.es6.js';
@@ -75,6 +77,8 @@ export { closeRouterModal, getCloseRouterModal } from './utils/closeRouterModal/
 export { withModal } from './utils/withModal/withModal.es6.js';
 export { actionProp } from './utils/actionProp/actionProp.es6.js';
 export { createFormDate } from './utils/createFormDate/createFormDate.es6.js';
+export { debounceCall } from './utils/debounceCall/debounceCall.es6.js';
+export { bindWindowHeight } from './utils/bindWindowHeight/bindWindowHeight.es6.js';
 export { useEscapeListener } from './hooks/useEscapeListener/useEscapeListener.es6.js';
 export { formContext, useForm } from './hooks/forms/useForm/useForm.es6.js';
 export { useField } from './hooks/forms/useField/useField.es6.js';

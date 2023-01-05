@@ -7,3 +7,5 @@ import './Option/index.es6.js';
 import './Checkbox/index.es6.js';
 import './Radiobox/index.es6.js';
 import './Dots/index.es6.js';
+import './Slides/index.es6.js';
+import './Stories/index.es6.js';

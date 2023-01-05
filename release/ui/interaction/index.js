@@ -9,4 +9,6 @@ require('./Option/index.js');
 require('./Checkbox/index.js');
 require('./Radiobox/index.js');
 require('./Dots/index.js');
+require('./Slides/index.js');
+require('./Stories/index.js');
 

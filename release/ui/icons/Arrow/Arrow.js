@@ -13,13 +13,9 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Arrow$1["default"]);
 function Arrow(_a = {}) {
-    var { direction = 'down', style = '', color, size = 18 } = _a, props = tslib.__rest(_a, ["direction", "style", "color", "size"]);
+    var { direction = 'down', style, color, size = 18 } = _a, props = tslib.__rest(_a, ["direction", "style", "color", "size"]);
     const styles = useStyle();
-    const getColor = () => {
-        const currentColor = dom.use(color);
-        return currentColor ? `--ui-arrow-color:${currentColor};` : '';
-    };
-    return ({type:'span',props:{...props,style:() => `${getColor()}--ui-arrow-size:${dom.use(size)}px${dom.use(style)}`,class:() => classes__default["default"]([
+    return ({type:'span',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-arrow-color': color || '', '--ui-arrow-size': dom.inject(size, size => `${size}px`) }),class:() => classes__default["default"]([
             styles.root,
             styles[dom.use(direction)],
         ])}});

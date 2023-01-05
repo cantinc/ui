@@ -6,9 +6,11 @@ var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var watchState = require('watch-state');
+require('../../../utils/index.js');
 require('../../icons/index.js');
 require('../../layout/index.js');
 var Input$1 = require('./Input.scss.js');
+var debounceCall = require('../../../utils/debounceCall/debounceCall.js');
 var Icon = require('../../icons/Icon/Icon.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
@@ -26,14 +28,7 @@ function Input(_a = {}) {
         };
     }
     if (debounce && oninput) {
-        const oldOnChange = oninput;
-        let timer;
-        oninput = (val) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                oldOnChange(val);
-            }, debounce === true ? 300 : debounce);
-        };
+        oninput = debounceCall.debounceCall(oninput, debounce === true ? 300 : debounce);
     }
     const handleInput = (e) => {
         oninput === null || oninput === void 0 ? void 0 : oninput(e.target.value);

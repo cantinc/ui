@@ -34,20 +34,13 @@ const iconsValues = {
 };
 const icons = Object.keys(iconsValues);
 function Icon(_a) {
-    var { icon, style = '', size, color = 'inherit', end } = _a, props = tslib.__rest(_a, ["icon", "style", "size", "color", "end"]);
+    var { icon, style, size, color = 'inherit', end } = _a, props = tslib.__rest(_a, ["icon", "style", "size", "color", "end"]);
     const children = jsx.useChildren();
     const styles = useStyle();
-    const styleProp = () => {
-        const currentSize = dom.use(size);
-        const currentColor = dom.use(color);
-        const sizeStyle = currentSize ? `--ui-icon-size:${currentSize}px;` : '';
-        const colorStyle = `--ui-icon-color:${currentColor};`;
-        return `--ui-icon:'${iconsValues[icon]}';${sizeStyle}${colorStyle}${dom.use(style)}`;
-    };
     return ({type:'span',props:{...props,class:classes__default["default"]([
             styles.root,
             end && styles.end,
-        ]),style:styleProp},children:[children]});
+        ]),style:Object.assign(Object.assign({}, style), { '--ui-icon-size': dom.inject(size, size => size ? `${size}px` : ''), '--ui-icon-color': color, '--ui-icon': `'${iconsValues[icon]}'` })},children:[children]});
 }
 
 exports.Icon = Icon;

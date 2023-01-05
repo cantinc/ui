@@ -13,29 +13,22 @@ var Input = require('../Input/Input.js');
 
 const useStyles = dom.style(TextArea$1["default"]);
 function TextArea(_a = {}) {
-    var { resize = 'auto', rows = 4, inputRef = new dom.Ref() } = _a, props = tslib.__rest(_a, ["resize", "rows", "inputRef"]);
+    var { resize = 'auto', rows = 4, style, inputRef = new dom.Ref() } = _a, props = tslib.__rest(_a, ["resize", "rows", "style", "inputRef"]);
     const styles = useStyles();
     const withChildren = useChildrenProvider.useChildrenProvider();
-    let style;
     const size = new watchState.State(0);
     const updateSize = () => {
         var _a;
         size.value = 0;
         size.value = Number((_a = inputRef.value) === null || _a === void 0 ? void 0 : _a.scrollHeight);
     };
-    if (resize) {
-        if (resize === 'auto') {
-            style = (() => `--ui-textarea-min:${rows * 20}px;--ui-textarea-autosize:${size.value}px;`);
-            const timer = setTimeout(updateSize);
-            watchState.onDestroy(() => clearTimeout(timer));
-        }
-        else {
-            style = () => `--ui-textarea-resize:${resize === true ? 'both' : resize};`;
-        }
+    if (resize === 'auto') {
+        const timer = setTimeout(updateSize);
+        watchState.onDestroy(() => clearTimeout(timer));
     }
     return withChildren({type:Input.Input,props:{inputRef:inputRef,...props,class:styles,renderInput:(_a) => {
             var { oninput } = _a, props = tslib.__rest(_a, ["oninput"]);
-            return ({type:'textarea',props:{rows:rows,style:style,required:props.required,placeholder:props.placeholder,ref:props.ref,name:props.name,disabled:props.disabled,oninput:(e) => {
+            return ({type:'textarea',props:{rows:rows,style:Object.assign(Object.assign({}, style), { '--ui-textarea-resize': !resize || resize === 'auto' ? '' : resize === true ? 'both' : resize, '--ui-textarea-min': !resize || resize !== 'auto' ? '' : `${rows * 20}px`, '--ui-textarea-autosize': !resize || resize !== 'auto' ? '' : () => `${size.value}px` }),required:props.required,placeholder:props.placeholder,ref:props.ref,name:props.name,disabled:props.disabled,oninput:(e) => {
                     ;
                     oninput(e);
                     updateSize();

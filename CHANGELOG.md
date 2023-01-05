@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1
+
+### v0.1.0 [![31.12.2022](https://img.shields.io/date/1672496003)](https://github.com/d8corp/innetjs/tree/v0.1.0)
+
+- new way to use `style` property of components
+- new `Slides` and `Stories` components
+
 ## v0.0
 
 ### v0.0.14 [![31.12.2022](https://img.shields.io/date/1672496003)](https://github.com/d8corp/innetjs/tree/v0.0.14)

@@ -24,7 +24,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 const useStyles = dom.style(Modal$1["default"]);
 let modalsCount = 0;
 function Modal(_a = {}) {
-    var { buttons, width, style = '', headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = tslib.__rest(_a, ["buttons", "width", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
+    var { buttons, width, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = tslib.__rest(_a, ["buttons", "width", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
     const _b = jsx.useSlots(), { '': children, title, content, subTitle } = _b, slots = tslib.__rest(_b, ['', "title", "content", "subTitle"]);
     const hidden = new dom.Ref();
@@ -32,7 +32,6 @@ function Modal(_a = {}) {
     const element = new dom.Ref();
     const headButtonsLength = headButtons === null || headButtons === void 0 ? void 0 : headButtons.length;
     const buttonsLength = buttons === null || buttons === void 0 ? void 0 : buttons.length;
-    const newStyle = width ? () => `--ui-modal-width:${width}px;${dom.use(style)}` : style;
     if (!('button-close' in slots)) {
         slots['button-close'] = {type:Icon.Icon,props:{icon:'cross'}};
     }
@@ -60,7 +59,7 @@ function Modal(_a = {}) {
             setOverflow.setOverflow('');
         }
     });
-    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:newStyle,ref:element,_close:() => handleClose,class:() => {
+    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': width ? `${width}px` : '' }),ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes__default["default"]([
                 styles.root,

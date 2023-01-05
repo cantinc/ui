@@ -8,4 +8,6 @@ require('./closeRouterModal/index.js');
 require('./withModal/index.js');
 require('./actionProp/index.js');
 require('./createFormDate/index.js');
+require('./debounceCall/index.js');
+require('./bindWindowHeight/index.js');
 

@@ -21,7 +21,7 @@ const transformPlacements = {
     bottom: '0, 30%',
 };
 function Drawer(_a = {}) {
-    var { onclose, size = 320, placement = 'left', style = '' } = _a, props = tslib.__rest(_a, ["onclose", "size", "placement", "style"]);
+    var { onclose, size = 320, placement = 'left', style } = _a, props = tslib.__rest(_a, ["onclose", "size", "placement", "style"]);
     const children = jsx.useChildren();
     const styles = useStyle();
     const show = dom.useShow();
@@ -36,16 +36,9 @@ function Drawer(_a = {}) {
             setOverflow.setOverflow('');
         }
     });
-    const styleHandler = () => {
-        const right = placement === 'right' ? '--ui-drawer-right:0;' : '';
-        const bottom = placement === 'bottom' ? '--ui-drawer-bottom:0;' : '';
-        const sizeStyle = `--ui-drawer-${['left', 'right'].includes(placement) ? 'width' : 'height'}:${size}px;`;
-        const transformStyle = `--ui-drawer-transform:translate(${transformPlacements[placement]});`;
-        return `${right}${bottom}${transformStyle}${sizeStyle}${dom.use(style)}`;
-    };
     // @ts-expect-error
     props._close = () => onclose;
-    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:Flex.Flex,props:{...props,style:styleHandler,class:() => {
+    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:Flex.Flex,props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-drawer-right': placement === 'right' ? '0' : '', '--ui-drawer-bottom': placement === 'bottom' ? '0' : '', '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '', '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '', '--ui-drawer-transform': `translate(${transformPlacements[placement]})` }),class:() => {
             var _a;
             return [
                 styles.root,
