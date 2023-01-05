@@ -12,7 +12,7 @@ var AsyncSpin = require('../../external/AsyncSpin/AsyncSpin.js');
 var Page = require('../Page/Page.js');
 var Navigation = require('../Navigation/Navigation.js');
 
-function splitPagesItem(navigation, prefix, parent) {
+function splitPagesItem(navigation, prefix, handleAccess, parent) {
     const menu = [];
     const pages = {
         type: 'router',
@@ -22,18 +22,20 @@ function splitPagesItem(navigation, prefix, parent) {
         children: parent ? [parent] : [],
     };
     for (let i = 0; i < navigation.length; i++) {
-        const _a = navigation[i], { menu: oldMenu, slot, page } = _a, rest = tslib.__rest(_a, ["menu", "slot", "page"]);
+        const navItem = navigation[i];
+        const { menu: oldMenu, slot, page, access = true } = navItem, rest = tslib.__rest(navItem, ["menu", "slot", "page", "access"]);
         const href = prefix && slot === '/' ? prefix : `${prefix}/${slot === '/' ? '' : slot}`;
-        const item = Object.assign(Object.assign({}, rest), { href });
+        const item = Object.assign(Object.assign({}, rest), { access,
+            href });
         const Page$1 = function () {
             return tslib.__asyncGenerator(this, arguments, function* () {
                 yield yield tslib.__await({type:AsyncSpin.AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
                 const { default: Component } = yield tslib.__await(page());
-                yield yield tslib.__await({type:Page.DelayPage,children:[{type:Component}]});
+                yield yield tslib.__await({type:Page.DelayPage,children:[dom.inject(access, condition => condition ? ({type:Component}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]});
             });
         };
         if (oldMenu) {
-            const [newMenu, subpages] = splitPagesItem(oldMenu, href, {
+            const [newMenu, subpages] = splitPagesItem(oldMenu, href, handleAccess, {
                 type: 'slot',
                 props: { name: '/' },
                 children: [{type:Page$1}],
@@ -56,9 +58,9 @@ function splitPagesItem(navigation, prefix, parent) {
     }
     return [menu, pages];
 }
-function Pages({ navigation, prefix = '', }) {
+function Pages({ navigation, prefix = '', handleAccess, }) {
     const children = jsx.useChildren();
-    const [menu, pages] = splitPagesItem(navigation, prefix);
+    const [menu, pages] = splitPagesItem(navigation, prefix, handleAccess);
     const slots = ([{type:'slot',props:{name:'menu'},children:[{type:Navigation.Navigation,props:{menu:menu}}]},{type:'slot',props:{name:'pages'},children:[pages]}]);
     if (!prefix) {
         return ({type:'slots',props:{from:slots},children:[children]});

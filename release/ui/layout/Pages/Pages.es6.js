@@ -1,5 +1,5 @@
 import { __rest, __asyncGenerator, __await } from 'tslib';
-import { routerContext } from '@innet/dom';
+import { inject, routerContext } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import '../../external/AsyncSpin/index.es6.js';
 import '../Navigation/index.es6.js';
@@ -8,7 +8,7 @@ import { AsyncSpin } from '../../external/AsyncSpin/AsyncSpin.es6.js';
 import { DelayPage } from '../Page/Page.es6.js';
 import { Navigation } from '../Navigation/Navigation.es6.js';
 
-function splitPagesItem(navigation, prefix, parent) {
+function splitPagesItem(navigation, prefix, handleAccess, parent) {
     const menu = [];
     const pages = {
         type: 'router',
@@ -18,18 +18,20 @@ function splitPagesItem(navigation, prefix, parent) {
         children: parent ? [parent] : [],
     };
     for (let i = 0; i < navigation.length; i++) {
-        const _a = navigation[i], { menu: oldMenu, slot, page } = _a, rest = __rest(_a, ["menu", "slot", "page"]);
+        const navItem = navigation[i];
+        const { menu: oldMenu, slot, page, access = true } = navItem, rest = __rest(navItem, ["menu", "slot", "page", "access"]);
         const href = prefix && slot === '/' ? prefix : `${prefix}/${slot === '/' ? '' : slot}`;
-        const item = Object.assign(Object.assign({}, rest), { href });
+        const item = Object.assign(Object.assign({}, rest), { access,
+            href });
         const Page = function () {
             return __asyncGenerator(this, arguments, function* () {
                 yield yield __await({type:AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
                 const { default: Component } = yield __await(page());
-                yield yield __await({type:DelayPage,children:[{type:Component}]});
+                yield yield __await({type:DelayPage,children:[inject(access, condition => condition ? ({type:Component}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]});
             });
         };
         if (oldMenu) {
-            const [newMenu, subpages] = splitPagesItem(oldMenu, href, {
+            const [newMenu, subpages] = splitPagesItem(oldMenu, href, handleAccess, {
                 type: 'slot',
                 props: { name: '/' },
                 children: [{type:Page}],
@@ -52,9 +54,9 @@ function splitPagesItem(navigation, prefix, parent) {
     }
     return [menu, pages];
 }
-function Pages({ navigation, prefix = '', }) {
+function Pages({ navigation, prefix = '', handleAccess, }) {
     const children = useChildren();
-    const [menu, pages] = splitPagesItem(navigation, prefix);
+    const [menu, pages] = splitPagesItem(navigation, prefix, handleAccess);
     const slots = ([{type:'slot',props:{name:'menu'},children:[{type:Navigation,props:{menu:menu}}]},{type:'slot',props:{name:'pages'},children:[pages]}]);
     if (!prefix) {
         return ({type:'slots',props:{from:slots},children:[children]});

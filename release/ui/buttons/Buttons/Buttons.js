@@ -8,7 +8,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 
 function Buttons(props) {
     const children = jsx.useChildren();
-    return ({type:Flex.Flex,props:{...props},children:[children]});
+    return ({type:Flex.Flex,props:{wrap:true,gap:24,...props},children:[children]});
 }
 
 exports.Buttons = Buttons;

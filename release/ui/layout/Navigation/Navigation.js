@@ -21,9 +21,9 @@ const useSubMenuStyles = dom.style({
     root: Navigation$1["default"].submenu,
 });
 function NavigationItem(_a = {}) {
-    var { children = jsx.useChildren(), menu } = _a, props = tslib.__rest(_a, ["children", "menu"]);
+    var { children = jsx.useChildren(), menu, access = true } = _a, props = tslib.__rest(_a, ["children", "menu", "access"]);
     const styles = useItemStyles();
-    return ([{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]);
+    return ({type:'show',props:{state:access},children:[{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]});
 }
 function* NavigationItems(props) {
     const children = jsx.useChildren();

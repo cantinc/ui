@@ -17,9 +17,9 @@ const useSubMenuStyles = style({
     root: modules_a22eb676.submenu,
 });
 function NavigationItem(_a = {}) {
-    var { children = useChildren(), menu } = _a, props = __rest(_a, ["children", "menu"]);
+    var { children = useChildren(), menu, access = true } = _a, props = __rest(_a, ["children", "menu", "access"]);
     const styles = useItemStyles();
-    return ([{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]);
+    return ({type:'show',props:{state:access},children:[{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]});
 }
 function* NavigationItems(props) {
     const children = useChildren();
