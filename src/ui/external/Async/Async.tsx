@@ -8,10 +8,6 @@ export interface AsyncProps<T extends object> {
   showDelay?: number
 }
 
-export interface LocalesProp {
-  locales: any[]
-}
-
 export async function * Async <T extends object> ({
   import: request,
   name,

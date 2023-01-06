@@ -5,6 +5,7 @@ export interface PagesItemProps extends NavigationItemProps {
     slot: string;
     page: () => Promise<{
         default: Function;
+        [key: string]: any;
     }>;
     menu?: PagesMenu;
 }

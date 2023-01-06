@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.2 [![06.01.2022](https://img.shields.io/date/1673003730)](https://github.com/d8corp/innetjs/tree/v0.1.2)
+
+- `Pages` supports props for a `page`
+
 ### v0.1.1 [![05.01.2022](https://img.shields.io/date/1672938216)](https://github.com/d8corp/innetjs/tree/v0.1.1)
 
 - add navigation `access`

@@ -10,7 +10,7 @@ export type PageAccessHandler = (nav: PagesItemProps) => any
 
 export interface PagesItemProps extends NavigationItemProps {
   slot: string
-  page: () => Promise<{ default: Function }>
+  page: () => Promise<{ default: Function, [key: string]: any }>
   menu?: PagesMenu
 }
 
@@ -43,9 +43,9 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
     const Page = async function * () {
       yield <AsyncSpin flex justify='center' align='center' show={300} />
 
-      const { default: Component } = await page()
+      const { default: Component, ...props } = await page()
 
-      yield <DelayPage>{inject(access, condition => condition ? (<Component />) : handleAccess?.(navItem))}</DelayPage>
+      yield <DelayPage>{inject(access, condition => condition ? (<Component {...props} />) : handleAccess?.(navItem))}</DelayPage>
     }
 
     if (oldMenu) {
