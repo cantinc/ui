@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.4 [![07.01.2022](https://img.shields.io/date/1673106813)](https://github.com/d8corp/innetjs/tree/v0.1.4)
+
+- fix `SearchInputMask` slots
+
 ### v0.1.3 [![07.01.2022](https://img.shields.io/date/1673103913)](https://github.com/d8corp/innetjs/tree/v0.1.3)
 
 - add `InputMask` components

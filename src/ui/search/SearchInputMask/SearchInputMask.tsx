@@ -1,5 +1,6 @@
 import { history, parsedSearch, stringifySearch } from '@innet/dom'
 
+import { useChildrenProvider } from '../../../hooks'
 import { InputMask, InputMaskProps } from '../../interaction'
 
 export interface SearchInputMaskProps extends Omit<InputMaskProps, 'value'> {
@@ -11,6 +12,7 @@ export function SearchInputMask ({
   oninput,
   ...props
 }: SearchInputMaskProps) {
+  const withChildren = useChildrenProvider()
   const handleChange = (val: string) => {
     const search = stringifySearch({
       ...parsedSearch.value,
@@ -21,11 +23,11 @@ export function SearchInputMask ({
     oninput?.(val)
   }
 
-  return (
+  return withChildren(
     <InputMask
       {...props}
       value={() => String(parsedSearch.value[key] || '')}
       oninput={handleChange}
-    />
+    />,
   )
 }

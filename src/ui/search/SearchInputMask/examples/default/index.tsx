@@ -10,10 +10,10 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { SearchInput } from '@cantinc/ui'
+import { SearchInputMask } from '@cantinc/ui'
 
 innet(
-  <SearchInput key='test' />,
+  <SearchInputMask key='test' />,
   dom,
 )`,
   example: (
