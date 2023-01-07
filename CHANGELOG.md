@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.3 [![07.01.2022](https://img.shields.io/date/1673103913)](https://github.com/d8corp/innetjs/tree/v0.1.3)
+
+- add `InputMask` components
+
 ### v0.1.2 [![06.01.2022](https://img.shields.io/date/1673003730)](https://github.com/d8corp/innetjs/tree/v0.1.2)
 
 - `Pages` supports props for a `page`
