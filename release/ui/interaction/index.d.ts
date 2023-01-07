@@ -9,3 +9,4 @@ export * from './Radiobox';
 export * from './Dots';
 export * from './Slides';
 export * from './Stories';
+export * from './InputMask';

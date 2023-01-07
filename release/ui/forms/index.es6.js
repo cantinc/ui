@@ -6,3 +6,4 @@ import './FormSelector/index.es6.js';
 import './FormCheckbox/index.es6.js';
 import './FormRadiobox/index.es6.js';
 import './FormHidden/index.es6.js';
+import './FormInputMask/index.es6.js';

@@ -11,4 +11,5 @@ require('./Radiobox/index.js');
 require('./Dots/index.js');
 require('./Slides/index.js');
 require('./Stories/index.js');
+require('./InputMask/index.js');
 
