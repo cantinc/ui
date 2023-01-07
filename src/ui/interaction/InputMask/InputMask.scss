@@ -1,0 +1,152 @@
+@import "src/styles/skeleton";
+
+.root {
+  position: relative;
+  margin-bottom: 24px;
+  cursor: text;
+  background: var(--color-100);
+  border-radius: var(--round-50);
+  min-height: 32px;
+  box-sizing: content-box;
+
+  @include skeletonAfter;
+}
+
+.loading {
+  @include skeletonAfterShow;
+}
+
+.before {
+  order: -1;
+}
+
+.before,
+.after {
+  cursor: default;
+}
+
+.border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-80);
+  border-radius: var(--round-50);
+  pointer-events: none;
+  transition: border-color .3s;
+
+  .input:focus ~ & {
+    border-color: var(--color-primary-50);
+  }
+  .error > .input:focus ~ &,
+  .error > & {
+    border-color: var(--color-negative-50);
+  }
+}
+
+.input {
+  transition: color .3s, opacity .3s;
+  display: flex;
+  background: transparent;
+  border: none;
+  flex: 1;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 0;
+  height: 20px;
+  margin: 6px 0;
+
+  &::placeholder {
+    color: var(--color-50);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .error > & {
+    color: var(--color-negative-50);
+  }
+
+  .error > &::placeholder {
+    color: var(--color-negative-50);
+  }
+  .withLabel > & {
+    margin: 12px 0 0;
+    opacity: 0;
+
+    &:not([data-value='']),
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &:-webkit-autofill{
+    -webkit-text-fill-color: var(--color-10) !important;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--color-100) inset !important;
+  }
+}
+
+.label {
+  top: min(calc(50% - 10px), 22px);
+  height: 20px;
+  transition: all .3s;
+  font-size: 16px;
+  color: var(--color-50);
+  position: absolute;
+
+  .error > & {
+    color: var(--color-negative-50);
+  }
+
+  .input:not([data-value='']) ~ &,
+  .input:focus ~ &,
+  .before ~ & {
+    top: min(calc(50% - 18px), 14px);
+    color: var(--color-50);
+    font-size: 12px;
+  }
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  font-size: 12px;
+  color: var(--color-50);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px;
+  max-width: 100%;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity .3s, padding-left .3s;
+
+  &:empty {
+    padding-left: 13px;
+    opacity: 0;
+  }
+
+  .error > & {
+    color: var(--color-negative-50);
+  }
+}
+
+.clear {
+  cursor: pointer;
+  transition: all .3s;
+  margin: 6px 0;
+
+  .root:not(:hover) .input:not(:focus) ~ &,
+  .input[data-value=''] ~ &,
+  .input:disabled ~ & {
+    opacity: 0;
+    //margin-left: -32px;
+    transform: scale(0);
+    visibility: hidden;
+  }
+}

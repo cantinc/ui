@@ -1,16 +1,16 @@
 import { history, parsedSearch, stringifySearch } from '@innet/dom'
 
-import { Input, InputProps } from '../../interaction'
+import { InputMask, InputMaskProps } from '../../interaction'
 
-export interface SearchInputProps extends Omit<InputProps, 'value'> {
+export interface SearchInputMaskProps extends Omit<InputMaskProps, 'value'> {
   key: string
 }
 
-export function SearchInput ({
+export function SearchInputMask ({
   key,
   oninput,
   ...props
-}: SearchInputProps) {
+}: SearchInputMaskProps) {
   const handleChange = (val: string) => {
     const search = stringifySearch({
       ...parsedSearch.value,
@@ -22,7 +22,7 @@ export function SearchInput ({
   }
 
   return (
-    <Input
+    <InputMask
       {...props}
       value={() => String(parsedSearch.value[key] || '')}
       oninput={handleChange}

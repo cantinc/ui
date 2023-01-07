@@ -1,12 +1,12 @@
 import { example } from 'src/app/Component'
-import { FormContext } from 'src/hooks'
-import { Button, Form, FormHidden, notify } from 'src/ui'
-import { createFormDate } from 'src/utils'
+import { Button, Form, FormInputMask, notify } from 'src/ui'
 
+import { FormContext } from '../../../../../hooks'
+import { createFormDate } from '../../../../../utils'
 import description from './README.md'
 
 const handleSuccess = (form: FormContext) => {
-  notify(`User: ${createFormDate(form).get('user')}`)
+  notify(`Phone: ${createFormDate(form).get('phone')}`)
 }
 
 export default example({
@@ -18,7 +18,7 @@ import dom from '@innet/dom'
 
 import {
   Form,
-  FormHidden,
+  FormInputMask,
   Button,
   Notifications,
   notify,
@@ -26,15 +26,21 @@ import {
 } from '@cantinc/ui'
 
 const handleSuccess = (form: FormContext) => {
-  notify(\`User: \${createFormDate(form, 'POST').get('user')}\`)
+  notify(\`Phone: \${createFormDate(form).get('phone')}\`)
 }
 
 innet(
   <>
     <Form onsuccess={handleSuccess} vertical>
-      <FormHidden name='user' value='1' />
-      <Button view='negative'>
-        Delete
+      <FormInputMask
+        mask='+7 (999) 999-99-99'
+        name='phone'
+        label='Phone'
+        required
+        clearable
+      />
+      <Button>
+        Send
       </Button>
     </Form>
     <Notifications />
@@ -43,9 +49,15 @@ innet(
 )`,
   example: (
     <Form onsuccess={handleSuccess} vertical>
-      <FormHidden name='user' value='1' />
-      <Button view='negative'>
-        Delete
+      <FormInputMask
+        mask='+7 (999) 999-99-99'
+        name='phone'
+        label='Phone'
+        required
+        clearable
+      />
+      <Button>
+        Send
       </Button>
     </Form>
   ),

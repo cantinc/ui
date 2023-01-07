@@ -1,7 +1,7 @@
 import { FormContext } from '../../hooks'
 import { FormMethod } from '../../ui'
 
-export function createFormDate (form: FormContext, method: FormMethod) {
+export function createFormDate (form: FormContext, method: FormMethod = 'POST') {
   const body = new FormData()
 
   for (const field of form.fields) {

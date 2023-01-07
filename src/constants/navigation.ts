@@ -232,9 +232,16 @@ export const navigation: PagesMenu = [
       },
       {
         slot: 'input',
+        exact: true,
         children: '<Input />',
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Input/Input.ui'),
+      },
+      {
+        slot: 'input-mask',
+        children: '<InputMask />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/InputMask/InputMask.ui'),
       },
       {
         slot: 'textarea',
@@ -306,9 +313,16 @@ export const navigation: PagesMenu = [
       },
       {
         slot: 'input',
+        exact: true,
         children: '<FormInput />',
         onclick: hideLayoutMenu,
         page: () => import('../ui/forms/FormInput/FormInput.ui'),
+      },
+      {
+        slot: 'input-mask',
+        children: '<FormInputMask />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/forms/FormInputMask/FormInputMask.ui'),
       },
       {
         slot: 'textarea',
@@ -344,9 +358,16 @@ export const navigation: PagesMenu = [
       },
       {
         slot: 'input',
+        exact: true,
         children: '<SearchInput />',
         onclick: hideLayoutMenu,
         page: () => import('../ui/search/SearchInput/SearchInput.ui'),
+      },
+      {
+        slot: 'input-mask',
+        children: '<SearchInputMask />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/search/SearchInputMask/SearchInputMask.ui'),
       },
       {
         slot: 'selector',
