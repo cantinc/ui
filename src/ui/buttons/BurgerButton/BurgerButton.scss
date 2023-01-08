@@ -1,76 +1,24 @@
 .root {
   --ui-burger-button-size: 16px;
-  --ui-burger-button-width: calc(var(--ui-burger-button-size) * 1.5);
 
-  position: relative;
-  border: none;
-  height: var(--ui-burger-button-size);
+  border: 1px solid var(--color-90);
   cursor: pointer;
-  background: none;
-  padding: 0 0 0 var(--ui-burger-button-width);
+  background: var(--color-100);
   font-size: var(--ui-burger-button-size);
-  display: inline-flex;
-  align-items: center;
+  border-radius: var(--round-50);
+  padding: var(--ui-burger-button-size);
+  display: flex;
 
   &:focus,
   &:hover {
-    color: var(--color-secondary-50);
 
-    & > .dash {
-      background: var(--color-secondary-50);
-
-      &:nth-child(2),
-      &:nth-child(odd) {
-        width: var(--ui-burger-button-width);
-      }
-    }
   }
 
   &:focus {
     outline: none;
   }
 
-  &:active > .dash {
-    background: var(--color-secondary-30);
-    transition: all .3s;
+  &:active {
 
-    &:nth-child(odd) {
-      width: calc(var(--ui-burger-button-width) * 1.1);
-      left: calc(var(--ui-burger-button-width) * 0.05 * -1);
-    }
-  }
-}
-
-.dash {
-  transition: all .3s cubic-bezier(0, 0.4, 0.4, 1.4);
-  position: absolute;
-  height: calc(var(--ui-burger-button-size) / 6);
-  border-radius: calc(var(--ui-burger-button-size) / 12);
-  background: var(--color-10);
-  left: 0;
-  width: var(--ui-burger-button-width);
-
-  &:nth-child(1) {
-    top: 0;
-  }
-
-  &:nth-child(3) {
-    bottom: 0;
-  }
-
-  &:nth-child(2) {
-    top: calc(50% - (var(--ui-burger-button-size) / 12));
-  }
-
-  &:nth-child(odd) {
-    width: calc(var(--ui-burger-button-width) * .7);
-  }
-}
-
-.children {
-  padding-left: calc(var(--ui-burger-button-size) * .5);
-
-  &:empty {
-    display: none;
   }
 }

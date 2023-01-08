@@ -19,7 +19,7 @@ import styles from './App.scss'
 export function App () {
   return (
     <Pages prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
-      <Layout class={styles.root} gap={20}>
+      <Layout class={styles.root} gap={[0, 20]}>
         <show state={isDesktop}>
           <Aside class={styles.aside} vertical>
             <slot name='menu' />
@@ -31,7 +31,7 @@ export function App () {
         </show>
         <show state={isMobile}>
           <Header class={styles.header}>
-            <BurgerButton size={24} onclick={showLayoutMenu} />
+            <BurgerButton onclick={showLayoutMenu} />
             <Space />
             <a href='/'>CANT inc. UI</a>
             <Space />
