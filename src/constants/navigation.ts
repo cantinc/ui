@@ -256,6 +256,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/interaction/Selector/Selector.ui'),
       },
       {
+        slot: 'upload',
+        children: '<Upload />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Upload/Upload.ui'),
+      },
+      {
         slot: 'dots',
         children: '<Dots />',
         onclick: hideLayoutMenu,

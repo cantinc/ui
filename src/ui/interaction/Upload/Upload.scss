@@ -1,0 +1,168 @@
+.root {
+  --ui-upload-height: 86px;
+  --ui-upload-width: var(--ui-upload-height);
+  --ui-upload-radius: 0;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 112px;
+  gap: 12px;
+  background: var(--color-100);
+  border: 1px solid var(--color-primary-50);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  transition: border .3s;
+  cursor: pointer;
+}
+
+.error {
+  border-color: var(--color-red);
+}
+
+.clear {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  transition: all .3s;
+
+  .root:not(:hover) .input:not(:focus) ~ &,
+  .input[data-empty='true'] ~ &,
+  .input:disabled ~ &, {
+    opacity: 0;
+    transform: scale(0);
+    visibility: hidden;
+  }
+}
+
+.input {
+  position: absolute;
+  inset: 50%;
+}
+
+.label,
+.drag,
+.drop {
+  position: absolute;
+  inset: 0 auto;
+  width: 75%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: none;
+}
+
+.label {
+  color: var(--color-60);
+
+  .input:not([data-empty='true']) ~ & {
+    opacity: 0;
+    transform: scale(1.5);
+    visibility: hidden;
+  }
+
+  .over &,
+  :global(.drag-over) & {
+    opacity: 0;
+    transform: scale(0);
+    visibility: hidden;
+  }
+}
+
+.drag,
+.drop {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.5);
+  color: var(--color-link-dark);
+}
+
+:global(.drag-over) .drag {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.over > .drag {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.over .drop{
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.image {
+  transition: transform .3s, opacity .3s;
+  border: 1px solid var(--color-input-border);
+  object-fit: cover;
+  background-color: var(--color-90);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transform: scale(0);
+  opacity: 0;
+
+  max-height: var(--ui-upload-height);
+  min-height: var(--ui-upload-height);
+
+  max-width: var(--ui-upload-width);
+  min-width: var(--ui-upload-width);
+
+  border-radius: var(--ui-upload-radius);
+}
+
+.name {
+  color: var(--color-60);
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  padding: 0 8px 4px;
+}
+
+.extension {
+  text-transform: uppercase;
+}
+
+.imageShow {
+  transform: scale(1);
+  opacity: 1;
+}
+
+:global(.drag-over) .imageShow,
+.imageHide {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.focus {
+  position: absolute;
+  inset: 4px;
+  border: dashed 1px var(--color-60);
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all .3s;
+
+  :global(.drag-over) &,
+  .input:focus ~ & {
+    opacity: 1;
+  }
+
+  :global(.drag-over) & {
+    border-color: var(--color-link-dark);
+  }
+}
