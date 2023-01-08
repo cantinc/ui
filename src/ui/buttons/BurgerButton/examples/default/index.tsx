@@ -21,6 +21,7 @@ innet(
     <BurgerButton size={12} />
     <BurgerButton size={10} />
     <BurgerButton size={8} />
+    <BurgerButton size={4} />
   </Flex>,
   dom,
 )`,
