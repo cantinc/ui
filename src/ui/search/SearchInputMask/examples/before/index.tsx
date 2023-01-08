@@ -15,7 +15,7 @@ import { SearchInputMask, Icon } from '@cantinc/ui'
 innet(
   <SearchInputMask mask='+7 (999) 999-99-99' key='before'>
     <slot name='before'>
-      <Icon icon='loupe' />
+      <Icon />
     </slot>
   </SearchInputMask>,
   dom,
@@ -23,7 +23,7 @@ innet(
   example: (
     <SearchInputMask mask='+7 (999) 999-99-99' key='before'>
       <slot name='before'>
-        <Icon icon='loupe' />
+        <Icon />
       </slot>
     </SearchInputMask>
   ),

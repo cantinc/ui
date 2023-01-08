@@ -4,9 +4,9 @@ import { ToggleBar, ToggleBarValue } from 'src/ui'
 import description from './README.md'
 
 const values: ToggleBarValue[] = [
-  { value: '', label: 'Home', icon: 'cant' },
-  { value: 'settings', label: 'Settings', icon: 'gear' },
-  { value: 'help', label: 'Location', icon: 'location' },
+  { value: '', label: 'Home', icon: 'default' },
+  { value: 'settings', label: 'Settings', icon: 'cross' },
+  { value: 'help', label: 'Edit', icon: 'edit' },
 ]
 
 export default example({
@@ -19,9 +19,9 @@ import dom from '@innet/dom'
 import { ToggleBar, ToggleBarValue } from '@cantinc/ui'
 
 const values: ToggleBarValue[] = [
-  { value: '', label: 'Home', icon: 'cant' },
-  { value: 'settings', label: 'Settings', icon: 'gear' },
-  { value: 'help', label: 'Location', icon: 'location' },
+  { value: '', label: 'Home', icon: 'default' },
+  { value: 'settings', label: 'Settings', icon: 'cross' },
+  { value: 'help', label: 'Edit', icon: 'edit' },
 ]
 
 innet(

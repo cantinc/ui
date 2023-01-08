@@ -24,8 +24,7 @@ innet(
     size={140}>
     <Icon
       color='var(--color-100)'
-      size={32}
-      icon='cant'>
+      size={32}>
       13
     </Icon>
   </Image>,
@@ -40,8 +39,7 @@ innet(
       size={140}>
       <Icon
         color='var(--color-100)'
-        size={32}
-        icon='cant'>
+        size={32}>
         13
       </Icon>
     </Image>

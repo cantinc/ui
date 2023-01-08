@@ -2,7 +2,7 @@ import { inject, LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State, Watch } from 'watch-state'
 
-import { Icon, Icons } from '../../icons'
+import { Icon, IconProp } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
 
@@ -11,7 +11,7 @@ const useStyle = style(styles)
 export interface ToggleBarValue {
   value: string
   label?: any
-  icon?: Icons
+  icon?: IconProp
 }
 
 export type ToggleBarOnChange = (value: string) => void
@@ -52,7 +52,7 @@ export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, 
       onmousedown={onchange}
       class={className}>
       <show state={icon}>
-        <Icon size={26} icon={icon as Icons} />
+        <Icon size={26} icon={icon} />
       </show>
       {label || value}
     </span>

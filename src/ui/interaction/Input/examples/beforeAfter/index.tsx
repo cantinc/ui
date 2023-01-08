@@ -18,10 +18,10 @@ innet(
     gap={8}
     inline>
     <slot name='before'>
-      <Icon icon='minus' />
+      <Icon />
     </slot>
     <slot name='after'>
-      <Icon icon='plus' />
+      <Icon />
     </slot>
   </Input>,
   dom,
@@ -32,10 +32,10 @@ innet(
       gap={8}
       inline>
       <slot name='before'>
-        <Icon icon='minus' />
+        <Icon />
       </slot>
       <slot name='after'>
-        <Icon icon='plus' />
+        <Icon />
       </slot>
     </Input>
   ),

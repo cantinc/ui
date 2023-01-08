@@ -13,10 +13,10 @@ import dom from '@innet/dom'
 import { Icon } from '@cantinc/ui'
 
 innet(
-  <Icon icon='cross' />,
+  <Icon />,
   dom,
 )`,
   example: (
-    <Icon icon='cross' />
+    <Icon />
   ),
 })

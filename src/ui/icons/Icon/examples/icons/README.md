@@ -1,1 +1,1 @@
-`icons` contains all types of icon.
+`icons` contains all icon names.

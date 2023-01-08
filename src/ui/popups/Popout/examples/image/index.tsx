@@ -58,8 +58,7 @@ innet(
       size={140}>
       <Icon
         color='var(--color-100)'
-        size={32}
-        icon='cant'>
+        size={32}>
         13
       </Icon>
     </Image>
@@ -72,7 +71,7 @@ innet(
           <Typography>
             <h1>DISCANT</h1>
             <p>This is a loyalty program. Count cants and get gifts.</p>
-            <p>You have: 13 <Icon icon='cant' /></p>
+            <p>You have: 13 <Icon /></p>
           </Typography>
           <Button flex onclick={hide}>
             Cancel
@@ -96,8 +95,7 @@ innet(
         size={140}>
         <Icon
           color='var(--color-100)'
-          size={32}
-          icon='cant'>
+          size={32}>
           13
         </Icon>
       </Image>
@@ -110,7 +108,7 @@ innet(
             <Typography>
               <h1>DISCANT</h1>
               <p>This is a loyalty program. Count cants and get gifts.</p>
-              <p>You have: 13 <Icon icon='cant' /></p>
+              <p>You have: 13 <Icon /></p>
             </Typography>
             <Button flex onclick={hide}>
               Cancel

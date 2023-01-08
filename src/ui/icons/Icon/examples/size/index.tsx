@@ -14,25 +14,25 @@ import { Flex, Icon } from '@cantinc/ui'
 
 innet(
   <Flex gap={16} wrap>
-    <Icon icon='cross' size={32} />
-    <Icon icon='cross' size={28} />
-    <Icon icon='cross' size={24} />
-    <Icon icon='cross' size={20} />
-    <Icon icon='cross' size={16} />
-    <Icon icon='cross' size={12} />
-    <Icon icon='cross' size={8} />
+    <Icon size={32} />
+    <Icon size={28} />
+    <Icon size={24} />
+    <Icon size={20} />
+    <Icon size={16} />
+    <Icon size={12} />
+    <Icon size={8} />
   </Flex>,
   dom,
 )`,
   example: (
     <Flex gap={16} wrap>
-      <Icon icon='cross' size={32} />
-      <Icon icon='cross' size={28} />
-      <Icon icon='cross' size={24} />
-      <Icon icon='cross' size={20} />
-      <Icon icon='cross' size={16} />
-      <Icon icon='cross' size={12} />
-      <Icon icon='cross' size={8} />
+      <Icon size={32} />
+      <Icon size={28} />
+      <Icon size={24} />
+      <Icon size={20} />
+      <Icon size={16} />
+      <Icon size={12} />
+      <Icon size={8} />
     </Flex>
   ),
 })

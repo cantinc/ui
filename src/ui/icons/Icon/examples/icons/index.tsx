@@ -15,9 +15,7 @@ import { Flex, Icon, icons } from '@cantinc/ui'
 innet(
   <Flex gap={16} wrap>
     {icons.map(icon => (
-      <Icon icon={icon}>
-        {icon}
-      </Icon>
+      <Icon icon={icon} />
     ))}
   </Flex>,
   dom,
@@ -25,9 +23,7 @@ innet(
   example: (
     <Flex gap={16} wrap>
       {icons.map((icon) => (
-        <Icon icon={icon}>
-          {icon}
-        </Icon>
+        <Icon icon={icon} />
       ))}
     </Flex>
   ),

@@ -1,66 +1,26 @@
-import { HTMLStyleProps, inject, StateProp, style } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
-import classes from 'html-classes'
+import { CustomIconProps } from './types'
 
-import styles from './Icon.scss'
-const useStyle = style(styles)
-
-export const iconsValues = {
-  cant: '\\e806',
-  cross: '\\e808',
-  edit: '\\e801',
-  gear: '\\e809',
-  gift: '\\e818',
-  location: '\\e800',
-  logout: '\\e803',
-  loupe: '\\e810',
-  menu: '\\e80c',
-  minus: '\\e805',
-  plus: '\\e80f',
-  tg: '\\e804',
-  truck: '\\e819',
-  user: '\\e80d',
-  viber: '\\e80a',
-  vk: '\\e807',
-  whatsapp: '\\e802',
+const iconsImports = {
+  default: () => import('./icons/DefaultIcon'),
+  cross: () => import('./icons/CrossIcon'),
+  edit: () => import('./icons/EditIcon'),
+  calendar: () => import('./icons/CalendarIcon'),
+  chevron: () => import('./icons/ChevronIcon'),
+  chevronUp: () => import('./icons/ChevronUpIcon'),
 } as const
 
-export type Icons = keyof typeof iconsValues
+export type IconProp = keyof typeof iconsImports
+export const icons = Object.keys(iconsImports) as IconProp[]
 
-export const icons: Icons[] = Object.keys(iconsValues) as any
-
-export interface IconProps extends HTMLStyleProps<HTMLSpanElement> {
-  icon: Icons
-  size?: StateProp<number>
-  color?: StateProp<string>
-  end?: boolean
+export interface IconProps extends CustomIconProps {
+  icon?: IconProp
 }
 
-export function Icon ({
-  icon,
-  style,
-  size,
-  color = 'inherit',
-  end,
+export async function Icon ({
+  icon = 'default',
   ...props
-}: IconProps) {
-  const children = useChildren()
-  const styles = useStyle()
+}: IconProps = {}) {
+  const { default: Icon } = await iconsImports[icon]()
 
-  return (
-    <span
-      {...props}
-      class={classes([
-        styles.root,
-        end && styles.end,
-      ])}
-      style={{
-        ...style,
-        '--ui-icon-size': inject(size, size => size ? `${size}px` : ''),
-        '--ui-icon-color': color,
-        '--ui-icon': `'${iconsValues[icon]}'`,
-      }}>
-      {children}
-    </span>
-  )
+  return <Icon {...props} />
 }

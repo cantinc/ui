@@ -16,7 +16,7 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Selector, SelectorItemProps } from '@cantinc/ui'
+import { Selector, SelectorItemProps, Icon } from '@cantinc/ui'
 
 const data: SelectorItemProps[] = [
   { value: '7701889831' },
@@ -27,7 +27,7 @@ const data: SelectorItemProps[] = [
 innet(
   <Selector values={data}>
     <slot name='after'>
-      <Icon icon='loupe' />
+      <Icon />
     </slot>
   </Selector>,
   dom,
@@ -35,7 +35,7 @@ innet(
   example: (
     <Selector values={data}>
       <slot name='after'>
-        <Icon icon='loupe' />
+        <Icon />
       </slot>
     </Selector>
   ),
