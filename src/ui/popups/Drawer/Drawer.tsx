@@ -1,8 +1,10 @@
 import { Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
+import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
 import { setOverflow } from '../../../utils'
+import { Icon } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Drawer.scss'
 
@@ -49,13 +51,14 @@ export function Drawer ({
     }
   })
 
-  // @ts-expect-error
-  props._close = () => onclose
+  const overlayHack: any = {
+    _close: () => onclose,
+  }
 
   return (
     <delay ref={hide} hide={300}>
-      <Flex
-        {...props}
+      <div
+        {...overlayHack}
         style={{
           ...style,
           '--ui-drawer-right': placement === 'right' ? '0' : '',
@@ -64,13 +67,22 @@ export function Drawer ({
           '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '',
           '--ui-drawer-transform': `translate(${transformPlacements[placement]})`,
         }}
-        class={() => [
+        class={() => classes([
           styles.root,
           show.value && styles.show,
           hide.value?.value && styles.hide,
-        ]}>
-        {children}
-      </Flex>
+        ])}>
+        <Flex
+          {...props}
+          class={() => styles.content}>
+          {children}
+        </Flex>
+        <Icon
+          onclick={() => onclose?.('close')}
+          icon='cross'
+          class={() => styles.close}
+        />
+      </div>
     </delay>
   )
 }
