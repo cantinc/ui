@@ -7,6 +7,7 @@ const iconsImports = {
   calendar: () => import('./icons/CalendarIcon'),
   chevron: () => import('./icons/ChevronIcon'),
   chevronUp: () => import('./icons/ChevronUpIcon'),
+  menu: () => import('./icons/MenuIcon'),
 } as const
 
 export type IconProp = keyof typeof iconsImports
