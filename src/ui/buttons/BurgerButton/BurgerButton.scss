@@ -6,7 +6,7 @@
   background: var(--color-100);
   font-size: var(--ui-burger-button-size);
   border-radius: var(--round-50);
-  padding: var(--ui-burger-button-size);
+  padding: calc(var(--ui-burger-button-size) - 1px);
   display: flex;
 
   &:focus,
