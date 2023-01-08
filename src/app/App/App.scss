@@ -13,8 +13,9 @@
 
 .aside {
   overflow: auto;
-  max-height: calc(100vh - 40px);
+  height: var(--window-height);
   position: sticky;
+  box-sizing: border-box;
   top: 20px;
 }
 

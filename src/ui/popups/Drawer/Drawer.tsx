@@ -27,7 +27,7 @@ const transformPlacements: Record<DrawerPlacement, string> = {
 
 export function Drawer ({
   onclose,
-  size = 320,
+  size = 388,
   placement = 'left',
   style,
   ...props

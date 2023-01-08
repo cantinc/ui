@@ -10,13 +10,15 @@
   opacity: 0;
   width: var(--ui-drawer-width);
   height: var(--ui-drawer-height);
-  background: var(--color-90);
+  background: var(--color-surface-gray);
   transform: var(--ui-drawer-transform);
   right: var(--ui-drawer-right);
   bottom: var(--ui-drawer-bottom);
   cursor: default;
   box-sizing: border-box;
   overflow: auto;
+  box-shadow: 0 0 10px 1px rgba(34, 34, 34, 0.15);
+  border: 1px solid var(--color-90);
 }
 
 .show {

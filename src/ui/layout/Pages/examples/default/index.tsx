@@ -156,7 +156,7 @@ innet(
   dom,
 )`,
   example: (
-    <Browser height={320}>
+    <Browser height={400}>
       <Pages prefix={`${process.env.CANTINC_UI_BASE_URL}/layout/pages`} navigation={navigation}>
         <Layout vertical>
           <Header style={{ background: 'var(--color-70)' }}>
@@ -181,7 +181,7 @@ innet(
         <Drawers>
           <show state={menuState}>
             <Drawer
-              padding={24}
+              padding={64}
               onclose={hideMenu}>
               <slot name='menu' />
             </Drawer>
