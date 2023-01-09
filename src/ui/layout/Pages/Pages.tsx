@@ -45,7 +45,11 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
 
       const { default: Component, ...props } = await page()
 
-      yield <DelayPage>{inject(access, condition => condition ? (<Component {...props} />) : handleAccess?.(navItem))}</DelayPage>
+      yield (
+        <DelayPage>
+          {inject(access, condition => condition ? (<Component {...props} />) : handleAccess?.(navItem))}
+        </DelayPage>
+      )
     }
 
     if (oldMenu) {

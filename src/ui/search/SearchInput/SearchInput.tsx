@@ -1,5 +1,6 @@
 import { history, parsedSearch, stringifySearch } from '@innet/dom'
 
+import { useChildrenProvider } from '../../../hooks'
 import { Input, InputProps } from '../../interaction'
 
 export interface SearchInputProps extends Omit<InputProps, 'value'> {
@@ -11,6 +12,7 @@ export function SearchInput ({
   oninput,
   ...props
 }: SearchInputProps) {
+  const provider = useChildrenProvider()
   const handleChange = (val: string) => {
     const search = stringifySearch({
       ...parsedSearch.value,
@@ -21,11 +23,11 @@ export function SearchInput ({
     oninput?.(val)
   }
 
-  return (
+  return provider(
     <Input
       {...props}
       value={() => String(parsedSearch.value[key] || '')}
       oninput={handleChange}
-    />
+    />,
   )
 }
