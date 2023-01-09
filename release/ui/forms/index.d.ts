@@ -7,3 +7,4 @@ export * from './FormCheckbox';
 export * from './FormRadiobox';
 export * from './FormHidden';
 export * from './FormInputMask';
+export * from './FormUpload';

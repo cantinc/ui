@@ -1,12 +1,15 @@
 import { __rest } from 'tslib';
 import { style, useShow, Ref } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
+import classes from 'html-classes';
 import { onDestroy } from 'watch-state';
 import '../../../utils/index.es6.js';
+import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_649c3d85 from './Drawer.scss.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
+import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_649c3d85);
 let drawersCount = 0;
@@ -17,7 +20,7 @@ const transformPlacements = {
     bottom: '0, 30%',
 };
 function Drawer(_a = {}) {
-    var { onclose, size = 320, placement = 'left', style } = _a, props = __rest(_a, ["onclose", "size", "placement", "style"]);
+    var { onclose, size = 388, placement = 'left', style } = _a, props = __rest(_a, ["onclose", "size", "placement", "style"]);
     const children = useChildren();
     const styles = useStyle();
     const show = useShow();
@@ -32,16 +35,17 @@ function Drawer(_a = {}) {
             setOverflow('');
         }
     });
-    // @ts-expect-error
-    props._close = () => onclose;
-    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:Flex,props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-drawer-right': placement === 'right' ? '0' : '', '--ui-drawer-bottom': placement === 'bottom' ? '0' : '', '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '', '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '', '--ui-drawer-transform': `translate(${transformPlacements[placement]})` }),class:() => {
+    const overlayHack = {
+        _close: () => onclose,
+    };
+    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:'div',props:{...overlayHack,style:Object.assign(Object.assign({}, style), { '--ui-drawer-right': placement === 'right' ? '0' : '', '--ui-drawer-bottom': placement === 'bottom' ? '0' : '', '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '', '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '', '--ui-drawer-transform': `translate(${transformPlacements[placement]})` }),class:() => {
             var _a;
-            return [
+            return classes([
                 styles.root,
                 show.value && styles.show,
                 ((_a = hide.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
-            ];
-        }},children:[children]}]});
+            ]);
+        }},children:[{type:Flex,props:{...props,class:() => styles.content},children:[children]},{type:Icon,props:{onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close'),icon:'cross',class:() => styles.close}}]}]});
 }
 
 export { Drawer };

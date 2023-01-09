@@ -1,0 +1,8 @@
+import { __rest } from 'tslib';
+
+function MenuIcon(_a = {}) {
+    var { size = 16, color = 'currentColor' } = _a, props = __rest(_a, ["size", "color"]);
+    return ({type:'svg',props:{width:size,height:size,viewBox:'0 0 16 16',fill:'none',xmlns:'http://www.w3.org/2000/svg',...props},children:[{type:'path',props:{d:'M0 2.91884C0 2.41138 0.431796 2 0.964444 2H15.0356C15.5682 2 16 2.41138 16 2.91884C16 3.42631 15.5682 3.83769 15.0356 3.83769H0.964443C0.431796 3.83769 0 3.42631 0 2.91884Z',fill:color}},{type:'path',props:{d:'M0 8C0 7.49254 0.431796 7.08116 0.964444 7.08116H15.0356C15.5682 7.08116 16 7.49254 16 8C16 8.50746 15.5682 8.91884 15.0356 8.91884H0.964443C0.431796 8.91884 0 8.50746 0 8Z',fill:color}},{type:'path',props:{d:'M0.964444 12.1623C0.431796 12.1623 0 12.5737 0 13.0812C0 13.5886 0.431796 14 0.964443 14H15.0356C15.5682 14 16 13.5886 16 13.0812C16 12.5737 15.5682 12.1623 15.0356 12.1623H0.964444Z',fill:color}}]});
+}
+
+export { MenuIcon as default };

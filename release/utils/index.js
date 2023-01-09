@@ -10,4 +10,5 @@ require('./actionProp/index.js');
 require('./createFormDate/index.js');
 require('./debounceCall/index.js');
 require('./bindWindowHeight/index.js');
+require('./file/index.js');
 

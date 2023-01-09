@@ -1,1 +1,1 @@
-export { Icon, icons, iconsValues } from './Icon.es6.js';
+export { Icon, icons } from './Icon.es6.js';

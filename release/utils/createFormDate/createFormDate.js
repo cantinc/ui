@@ -5,12 +5,17 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function createFormDate(form, method = 'POST') {
     const body = new FormData();
     for (const field of form.fields) {
+        const { value } = field.state;
         if (method === 'PATCH') {
-            if (field.defaultValue === field.state.value) {
+            if (field.defaultValue === value) {
                 continue;
             }
         }
-        body.append(field.name, field.state.value);
+        if (Array.isArray(value)) {
+            value.forEach(value => body.append(field.name, value));
+            continue;
+        }
+        body.append(field.name, value);
     }
     return body;
 }

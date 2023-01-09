@@ -1,10 +1,10 @@
 import { StateProp, WatchProp } from '@innet/dom';
-import { Icons } from '../../icons';
+import { IconProp } from '../../icons';
 import { FlexProps } from '../../layout';
 export interface ToggleBarValue {
     value: string;
     label?: any;
-    icon?: Icons;
+    icon?: IconProp;
 }
 export declare type ToggleBarOnChange = (value: string) => void;
 export declare type ToggleBarItemAction = () => void;

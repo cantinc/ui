@@ -1,38 +1,21 @@
-import { __rest } from 'tslib';
-import { style, inject } from '@innet/dom';
-import { useChildren } from '@innet/jsx';
-import classes from 'html-classes';
-import modules_e7b1950f from './Icon.scss.es6.js';
+import { __rest, __awaiter } from 'tslib';
 
-const useStyle = style(modules_e7b1950f);
-const iconsValues = {
-    cant: '\\e806',
-    cross: '\\e808',
-    edit: '\\e801',
-    gear: '\\e809',
-    gift: '\\e818',
-    location: '\\e800',
-    logout: '\\e803',
-    loupe: '\\e810',
-    menu: '\\e80c',
-    minus: '\\e805',
-    plus: '\\e80f',
-    tg: '\\e804',
-    truck: '\\e819',
-    user: '\\e80d',
-    viber: '\\e80a',
-    vk: '\\e807',
-    whatsapp: '\\e802',
+const iconsImports = {
+    default: () => import('./icons/DefaultIcon/index.es6.js'),
+    cross: () => import('./icons/CrossIcon/index.es6.js'),
+    edit: () => import('./icons/EditIcon/index.es6.js'),
+    calendar: () => import('./icons/CalendarIcon/index.es6.js'),
+    chevron: () => import('./icons/ChevronIcon/index.es6.js'),
+    chevronUp: () => import('./icons/ChevronUpIcon/index.es6.js'),
+    menu: () => import('./icons/MenuIcon/index.es6.js'),
 };
-const icons = Object.keys(iconsValues);
-function Icon(_a) {
-    var { icon, style, size, color = 'inherit', end } = _a, props = __rest(_a, ["icon", "style", "size", "color", "end"]);
-    const children = useChildren();
-    const styles = useStyle();
-    return ({type:'span',props:{...props,class:classes([
-            styles.root,
-            end && styles.end,
-        ]),style:Object.assign(Object.assign({}, style), { '--ui-icon-size': inject(size, size => size ? `${size}px` : ''), '--ui-icon-color': color, '--ui-icon': `'${iconsValues[icon]}'` })},children:[children]});
+const icons = Object.keys(iconsImports);
+function Icon(_a = {}) {
+    var { icon = 'default' } = _a, props = __rest(_a, ["icon"]);
+    return __awaiter(this, void 0, void 0, function* () {
+        const { default: Icon } = yield iconsImports[icon]();
+        return {type:Icon,props:{...props}};
+    });
 }
 
-export { Icon, icons, iconsValues };
+export { Icon, icons };

@@ -4,15 +4,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
 var dom = require('@innet/dom');
-var jsx = require('@innet/jsx');
+require('../../icons/index.js');
 var BurgerButton$1 = require('./BurgerButton.scss.js');
+var Icon = require('../../icons/Icon/Icon.js');
 
 const useStyle = dom.style(BurgerButton$1["default"]);
 function BurgerButton(_a = {}) {
-    var { size = 18, style } = _a, props = tslib.__rest(_a, ["size", "style"]);
+    var { size = 16, style } = _a, props = tslib.__rest(_a, ["size", "style"]);
     const styles = useStyle();
-    const children = jsx.useChildren();
-    return ({type:'button',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-burger-button-size': () => `${size}px` }),class:() => styles.root},children:[{type:'span',props:{class:() => styles.dash}},{type:'span',props:{class:() => styles.dash}},{type:'span',props:{class:() => styles.dash}},{type:'span',props:{class:() => styles.children},children:[children]}]});
+    return ({type:'button',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-burger-button-size': dom.inject(size, size => `${size}px`) }),class:() => styles.root},children:[{type:Icon.Icon,props:{size:size,icon:'menu'}}]});
 }
 
 exports.BurgerButton = BurgerButton;

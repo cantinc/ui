@@ -8,4 +8,3 @@ var Icon = require('./Icon.js');
 
 exports.Icon = Icon.Icon;
 exports.icons = Icon.icons;
-exports.iconsValues = Icon.iconsValues;

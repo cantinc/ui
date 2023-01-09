@@ -1,0 +1,12 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var tslib = require('tslib');
+
+function ChevronUpIcon(_a = {}) {
+    var { size = 16, color = 'currentColor' } = _a, props = tslib.__rest(_a, ["size", "color"]);
+    return ({type:'svg',props:{width:size,height:size,viewBox:'0 0 17 16',fill:'none',xmlns:'http://www.w3.org/2000/svg',...props},children:[{type:'path',props:{d:'M14.9963 11.7915C15.432 12.1486 16.0291 12.0302 16.33 11.5271C16.631 11.0241 16.5217 10.3267 16.086 9.96965L9.05726 4.20855C8.88941 4.07097 8.6976 4.00396 8.50799 4.00233C8.3132 4.00024 8.1153 4.06709 7.94274 4.20853L0.913956 9.96963C0.478279 10.3267 0.369043 11.024 0.669974 11.5271C0.970903 12.0302 1.56804 12.1485 2.00372 11.7914L8.49999 6.46682L14.9963 11.7915Z',fill:color}}]});
+}
+
+exports["default"] = ChevronUpIcon;

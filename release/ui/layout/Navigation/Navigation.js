@@ -39,7 +39,7 @@ function Navigation(_a = {}) {
     var { menu } = _a, props = tslib.__rest(_a, ["menu"]);
     const children = jsx.useChildren();
     const styles = useStyles();
-    return ({type:Flex.Flex,props:{element:'nav',...props,class:() => styles.root},children:[menu === null || menu === void 0 ? void 0 : menu.map(item => ({type:NavigationItem,props:{...item}})),' ',children]});
+    return ({type:Flex.Flex,props:{element:'nav',align:'stretch',gap:64,...props,class:() => styles.root},children:[menu === null || menu === void 0 ? void 0 : menu.map(item => ({type:NavigationItem,props:{...item}})),' ',children]});
 }
 Navigation.Item = NavigationItem;
 Navigation.Items = NavigationItems;
