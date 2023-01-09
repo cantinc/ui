@@ -86,19 +86,19 @@ export function Upload ({
       if (!imageExtensions.includes(ext)) {
         result.push({
           src: ext,
-        })
-        continue
-      }
-
-      result.push(new Promise((resolve, reject) => {
-        const fr = new FileReader()
-        fr.onload = () => resolve({
-          src: String(fr.result),
           file,
         })
-        fr.onerror = reject
-        fr.readAsDataURL(file)
-      }))
+      } else {
+        result.push(new Promise((resolve, reject) => {
+          const fr = new FileReader()
+          fr.onload = () => resolve({
+            src: String(fr.result),
+            file,
+          })
+          fr.onerror = reject
+          fr.readAsDataURL(file)
+        }))
+      }
 
       if (!use(multiple)) {
         break
