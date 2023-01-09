@@ -15,7 +15,7 @@ export interface UploadValue {
   file?: File
 }
 
-export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'oninput'> {
+export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'onchange'> {
   width?: StateProp<number>
   height?: StateProp<number>
   radius?: StateProp<number>
@@ -25,7 +25,7 @@ export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'fil
   error?: StateProp<boolean>
   hint?: StateProp<any>
   files?: StateProp<UploadValue[]>
-  oninput?: (files: UploadValue[]) => void
+  onchange?: (files: UploadValue[]) => void
   props?: {
     hint?: HTMLProps<HTMLSpanElement>
   }
@@ -45,7 +45,7 @@ export function Upload ({
   multiple,
   ref = new Ref(),
   files = new State([]),
-  oninput,
+  onchange,
   ...rest
 }: UploadProps = {}) {
   const styles = useStyle()
@@ -53,7 +53,7 @@ export function Upload ({
 
   const empty = new Cache(() => String(!use(files).length))
 
-  oninput = actionProp(files, oninput)
+  onchange = actionProp(files, onchange)
 
   const handleDragOver = (e: any) => {
     e.preventDefault()
@@ -106,7 +106,7 @@ export function Upload ({
     }
 
     Promise.all(result).then(newFiles => {
-      oninput?.(newFiles)
+      onchange?.(newFiles)
     })
   }
 
@@ -117,7 +117,7 @@ export function Upload ({
       ref.value.files = new DataTransfer().files
     }
 
-    oninput?.([])
+    onchange?.([])
   }
 
   const hintContent = inject(hint, hint => hint && (
