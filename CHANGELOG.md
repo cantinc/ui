@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.8 [![09.01.2023](https://img.shields.io/date/1673278640)](https://github.com/d8corp/innetjs/tree/v0.1.8)
+
+- add `width` and `height` of `Card`
+
 ### v0.1.7 [![09.01.2023](https://img.shields.io/date/1673272575)](https://github.com/d8corp/innetjs/tree/v0.1.7)
 
 - fix `Icon` bugs
