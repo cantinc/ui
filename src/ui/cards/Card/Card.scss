@@ -13,6 +13,7 @@
   text-decoration: none;
   width: var(--ui-card-width, auto);
   height: var(--ui-card-height, auto);
+  box-sizing: border-box;
 
   @include skeletonAfter(-1px);
 }
