@@ -2,23 +2,30 @@
 
 ## v0.1
 
-### v0.1.4 [![07.01.2022](https://img.shields.io/date/1673106813)](https://github.com/d8corp/innetjs/tree/v0.1.4)
+### v0.1.5 [![09.01.2023](https://img.shields.io/date/1673268157)](https://github.com/d8corp/innetjs/tree/v0.1.5)
+
+- refactor icons
+- change navigation styles
+- add `Upload` and `FormUpload`
+- add close drawer button
+
+### v0.1.4 [![07.01.2023](https://img.shields.io/date/1673106813)](https://github.com/d8corp/innetjs/tree/v0.1.4)
 
 - fix `SearchInputMask` slots
 
-### v0.1.3 [![07.01.2022](https://img.shields.io/date/1673103913)](https://github.com/d8corp/innetjs/tree/v0.1.3)
+### v0.1.3 [![07.01.2023](https://img.shields.io/date/1673103913)](https://github.com/d8corp/innetjs/tree/v0.1.3)
 
 - add `InputMask` components
 
-### v0.1.2 [![06.01.2022](https://img.shields.io/date/1673003730)](https://github.com/d8corp/innetjs/tree/v0.1.2)
+### v0.1.2 [![06.01.2023](https://img.shields.io/date/1673003730)](https://github.com/d8corp/innetjs/tree/v0.1.2)
 
 - `Pages` supports props for a `page`
 
-### v0.1.1 [![05.01.2022](https://img.shields.io/date/1672938216)](https://github.com/d8corp/innetjs/tree/v0.1.1)
+### v0.1.1 [![05.01.2023](https://img.shields.io/date/1672938216)](https://github.com/d8corp/innetjs/tree/v0.1.1)
 
 - add navigation `access`
 
-### v0.1.0 [![05.01.2022](https://img.shields.io/date/1672916040)](https://github.com/d8corp/innetjs/tree/v0.1.0)
+### v0.1.0 [![05.01.2023](https://img.shields.io/date/1672916040)](https://github.com/d8corp/innetjs/tree/v0.1.0)
 
 - new way to use `style` property of components
 - new `Slides` and `Stories` components
