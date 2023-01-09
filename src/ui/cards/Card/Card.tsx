@@ -12,6 +12,8 @@ export type CardProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
   clickable?: StateProp<boolean>
   loading?: StateProp<boolean>
   preventAnimation?: boolean
+  width?: StateProp<number>
+  height?: StateProp<number>
 }>
 
 export function Card<E extends HTMLElement = HTMLElement> ({
@@ -19,6 +21,9 @@ export function Card<E extends HTMLElement = HTMLElement> ({
   clickable = !!onclick,
   loading,
   preventAnimation,
+  width,
+  height,
+  style,
   ...props
 }: CardProps<E> = {} as any) {
   const children = useChildren()
@@ -58,6 +63,11 @@ export function Card<E extends HTMLElement = HTMLElement> ({
     <Flex<any>
       onclick={onclick}
       {...props}
+      style={{
+        ...style,
+        '--ui-card-width': inject(width, width => width ? `${width}px` : ''),
+        '--ui-card-height': inject(height, height => height ? `${height}px` : ''),
+      }}
       class={className}>
       <show state={inject(loading, loading => !loading)}>
         {children}
