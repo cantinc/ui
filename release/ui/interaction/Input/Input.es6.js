@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref, inject, use } from '@innet/dom';
+import { style, Ref, use, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
 import '../../../utils/index.es6.js';
@@ -29,11 +29,16 @@ function Input(_a = {}) {
     const handleInput = (e) => {
         oninput === null || oninput === void 0 ? void 0 : oninput(e.target.value);
     };
+    const handleChange = (e) => {
+        if (e.target.value !== use(value)) {
+            oninput === null || oninput === void 0 ? void 0 : oninput(e.target.value);
+        }
+    };
     const elementClass = () => styles.input;
     const element = renderInput(Object.assign(Object.assign({ type,
         disabled,
         required,
-        placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
+        placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, onchange: handleChange, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
     const labelContent = label
         ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.label,class:styles.label},children:[label]}
         : null;

@@ -9,7 +9,7 @@ import styles from './Input.scss'
 
 const useStyle = style(styles)
 
-export type InputType = 'text' | 'password' | 'date'
+export type InputType = 'text' | 'password' | 'date' | 'email' | 'tel'
 
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
   label?: StateProp<string>
@@ -78,6 +78,12 @@ export function Input ({
     oninput?.(e.target.value)
   }
 
+  const handleChange = (e: any) => {
+    if (e.target.value !== use(value)) {
+      oninput?.(e.target.value)
+    }
+  }
+
   const elementClass = () => styles.input
 
   const element = renderInput({
@@ -87,6 +93,7 @@ export function Input ({
     placeholder,
     ...(props?.input as HTMLProps<HTMLInputElement>),
     oninput: handleInput,
+    onchange: handleChange,
     'data-value': value,
     _value: value,
     class: elementClass,
