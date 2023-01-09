@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.7 [![09.01.2023](https://img.shields.io/date/1673272575)](https://github.com/d8corp/innetjs/tree/v0.1.7)
+
+- fix `Icon` bugs
+
 ### v0.1.6 [![09.01.2023](https://img.shields.io/date/1673272174)](https://github.com/d8corp/innetjs/tree/v0.1.6)
 
 - fix `Input` bugs

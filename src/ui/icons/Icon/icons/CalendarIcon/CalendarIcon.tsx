@@ -1,4 +1,4 @@
-import { CustomIconProps } from '../../types'
+import { CustomIconProps } from '../..'
 
 export default function CalendarIcon ({
   size = 16,

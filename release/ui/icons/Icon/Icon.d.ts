@@ -1,4 +1,8 @@
-import { CustomIconProps } from './types';
+import { HTMLStyleProps, StateProp } from '@innet/dom';
+export interface CustomIconProps extends HTMLStyleProps {
+    size?: StateProp<number>;
+    color?: StateProp<string>;
+}
 declare const iconsImports: {
     readonly default: () => Promise<typeof import("./icons/DefaultIcon")>;
     readonly cross: () => Promise<typeof import("./icons/CrossIcon")>;
