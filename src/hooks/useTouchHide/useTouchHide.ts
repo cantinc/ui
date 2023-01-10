@@ -29,20 +29,20 @@ export function useTouchHide ({
       touched.value = true
     },
     handleTouchMove (e: TouchEvent) {
-      if (!touched.value) return
+      if (!touched.value) return e.preventDefault()
 
       const y = e.touches[0].clientY - startY
       const x = e.touches[0].clientX - startX
       const touchX = Math.abs(x)
       const touchY = Math.abs(y)
 
-      const touch = vertical ? touchY : touchX
-
       if (vertical ? (placement === 'bottom' ? touchX > y : touchX > -y) : (placement === 'left' ? touchY > -x : touchY > x)) {
         touched.value = false
         touchHide.value = 0
         return
       }
+
+      const touch = vertical ? touchY : touchX
 
       if (touch > length) {
         touched.value = false

@@ -3,6 +3,7 @@ import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
+import { TouchHidePlacement, useTouchHide } from '../../../hooks'
 import { setOverflow } from '../../../utils'
 import { Icon } from '../../icons'
 import { Flex, FlexProps } from '../../layout'
@@ -10,22 +11,13 @@ import styles from './Drawer.scss'
 
 const useStyle = style(styles)
 
-export type DrawerPlacement = 'left' | 'top' | 'right' | 'bottom'
-
 export interface DrawerProps extends Omit<FlexProps, 'onclose'> {
   size?: number
-  placement?: DrawerPlacement
+  placement?: TouchHidePlacement
   onclose?: (result: string) => void
 }
 
 let drawersCount = 0
-
-const transformPlacements: Record<DrawerPlacement, string> = {
-  left: '-30%, 0',
-  top: '0, -30%',
-  right: '30%, 0',
-  bottom: '0, 30%',
-}
 
 export function Drawer ({
   onclose,
@@ -38,6 +30,10 @@ export function Drawer ({
   const styles = useStyle()
   const show = useShow()
   const hide = new Ref<State<boolean>>()
+  const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
+    hide: () => onclose?.('touch'),
+    placement,
+  })
 
   if (!drawersCount) {
     setOverflow('hidden')
@@ -59,17 +55,19 @@ export function Drawer ({
     <delay ref={hide} hide={300}>
       <div
         {...overlayHack}
+        ontouchstart={handleTouchStart}
+        ontouchmove={handleTouchMove}
+        ontouchend={handleTouchEnd}
         style={{
           ...style,
-          '--ui-drawer-right': placement === 'right' ? '0' : '',
-          '--ui-drawer-bottom': placement === 'bottom' ? '0' : '',
-          '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '',
-          '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '',
-          '--ui-drawer-transform': `translate(${transformPlacements[placement]})`,
+          '--ui-drawer-size': `${size}px`,
+          '--ui-drawer-touch-hide': () => `${touchHide.value}`,
         }}
         class={() => classes([
           styles.root,
           show.value && styles.show,
+          styles[placement],
+          touched.value && styles.touch,
           hide.value?.value && styles.hide,
         ])}>
         <Flex

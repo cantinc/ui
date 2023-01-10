@@ -1,28 +1,78 @@
 .root {
-  --ui-drawer-width: 100%;
-  --ui-drawer-height: 100%;
-  --ui-drawer-right: auto;
-  --ui-drawer-bottom: auto;
-  --ui-drawer-transform: translate(0);
-
   transition: opacity .3s, transform .3s;
   position: absolute;
   opacity: 0;
-  width: var(--ui-drawer-width);
-  height: var(--ui-drawer-height);
   background: var(--color-surface-gray);
   transform: var(--ui-drawer-transform);
-  right: var(--ui-drawer-right);
-  bottom: var(--ui-drawer-bottom);
   cursor: default;
   box-sizing: border-box;
   box-shadow: 0 0 10px 1px rgba(34, 34, 34, 0.15);
   border: 1px solid var(--color-90);
 }
 
+.top,
+.bottom {
+  width: 100%;
+  height: var(--ui-drawer-size);
+}
+
+.right,
+.left {
+  width: var(--ui-drawer-size);
+  height: 100%;
+}
+
+.top,
+.bottom,
+.left {
+  left: 0;
+}
+
+.top,
+.right,
+.left {
+  top: 0;
+}
+
+.bottom {
+  --ui-drawer-transform: translate(0, 30%);
+  top: calc(100% - var(--ui-drawer-size));
+}
+
+.right {
+  --ui-drawer-transform: translate(30%, 0);
+  left: calc(100% - var(--ui-drawer-size));
+}
+
+.top {
+  --ui-drawer-transform: translate(0, -30%);
+}
+
+.left {
+  --ui-drawer-transform: translate(-30%, 0);
+}
+
 .show {
   opacity: 1;
   transform: translate(0);
+}
+
+.touch {
+  transition: none;
+  opacity: calc(1 - (var(--ui-drawer-touch-hide) / 400));
+
+  &.left {
+    transform: translateX(calc(var(--ui-drawer-touch-hide) * -1px));
+  }
+  &.right {
+    transform: translateX(calc(var(--ui-drawer-touch-hide) * 1px));
+  }
+  &.top {
+    transform: translateY(calc(var(--ui-drawer-touch-hide) * -1px));
+  }
+  &.bottom {
+    transform: translateY(calc(var(--ui-drawer-touch-hide) * 1px));
+  }
 }
 
 .hide {
