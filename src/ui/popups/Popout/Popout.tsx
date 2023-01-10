@@ -3,7 +3,7 @@ import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State, Watch } from 'watch-state'
 
-import { useEscapeListener } from '../../../hooks'
+import { useEscapeListener, useTouchHide } from '../../../hooks'
 import { actionProp, setOverflow } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
 import styles from './Popout.scss'
@@ -38,11 +38,10 @@ function PopoutElement ({
   const hide = useHidden()
   const preshow = useShow()
   const show = useShow(200)
+  const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
+    hide: onhide,
+  })
   const styles = useStyle()
-  let touchStart: number
-  let touchStartX: number
-  const touched = new State(false)
-  const touchHide = new State(0)
 
   useEscapeListener(onhide)
 
@@ -91,34 +90,9 @@ function PopoutElement ({
         '--ui-popout-touch-hide': () => `${touchHide.value}px`,
         '--ui-popout-background': () => `${elementData.value.styles.background}`,
       }}
-      ontouchstart={(e: TouchEvent) => {
-        touchStart = e.touches[0].clientY
-        touchStartX = e.touches[0].clientX
-        touched.value = true
-      }}
-      ontouchmove={(e: TouchEvent) => {
-        if (!touched.value) return
-
-        const newTouchHide = e.touches[0].clientY - touchStart
-        const newTouchStartX = Math.abs(e.touches[0].clientX - touchStartX)
-
-        if (newTouchStartX > newTouchHide) {
-          touched.value = false
-          touchHide.value = 0
-          return
-        }
-
-        if (newTouchHide > 100) {
-          touched.value = false
-          onhide()
-        } else {
-          touchHide.value = e.touches[0].clientY - touchStart
-        }
-      }}
-      ontouchend={() => {
-        touched.value = false
-        touchHide.value = 0
-      }}
+      ontouchstart={handleTouchStart}
+      ontouchmove={handleTouchMove}
+      ontouchend={handleTouchEnd}
       class={() => classes([
         styles.root,
         preshow.value && styles.preshow,
