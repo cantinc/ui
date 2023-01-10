@@ -14,12 +14,20 @@
 .bottom {
   width: 100%;
   height: var(--ui-drawer-size);
+
+  .close {
+    left: calc(50% - 25px);
+  }
 }
 
 .right,
 .left {
   width: var(--ui-drawer-size);
   height: 100%;
+
+  .close {
+    top: 12px;
+  }
 }
 
 .top,
@@ -37,19 +45,35 @@
 .bottom {
   --ui-drawer-transform: translate(0, 30%);
   top: calc(100% - var(--ui-drawer-size));
+
+  .close {
+    top: -25px;
+  }
 }
 
 .right {
   --ui-drawer-transform: translate(30%, 0);
   left: calc(100% - var(--ui-drawer-size));
+
+  .close {
+    left: -25px;
+  }
 }
 
 .top {
   --ui-drawer-transform: translate(0, -30%);
+
+  .close {
+    top: calc(100% - 25px);
+  }
 }
 
 .left {
   --ui-drawer-transform: translate(-30%, 0);
+
+  .close {
+    left: calc(100% - 25px);
+  }
 }
 
 .show {
@@ -91,8 +115,6 @@
   cursor: pointer;
   position: absolute;
   display: flex;
-  top: 12px;
-  right: -21px;
   background: var(--color-primary-90);
   color: var(--color-100);
   padding: 17px;

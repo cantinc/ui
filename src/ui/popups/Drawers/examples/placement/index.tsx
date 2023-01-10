@@ -30,7 +30,7 @@ innet(
       <Drawers>
         <show state={left}>
           <Drawer
-            padding={24}
+            padding={64}
             placement='left'
             onclose={() => { left.value = false }}>
             Left
@@ -38,7 +38,7 @@ innet(
         </show>
         <show state={top}>
           <Drawer
-            padding={24}
+            padding={64}
             placement='top'
             onclose={() => { top.value = false }}>
             Top
@@ -46,7 +46,7 @@ innet(
         </show>
         <show state={right}>
           <Drawer
-            padding={24}
+            padding={64}
             placement='right'
             onclose={() => { right.value = false }}>
             Right
@@ -54,7 +54,7 @@ innet(
         </show>
         <show state={bottom}>
           <Drawer
-            padding={24}
+            padding={64}
             placement='bottom'
             onclose={() => { bottom.value = false }}>
             Bottom
@@ -83,7 +83,7 @@ innet(
         <Drawers>
           <show state={left}>
             <Drawer
-              padding={24}
+              padding={64}
               placement='left'
               onclose={() => { left.value = false }}>
               Left
@@ -91,7 +91,7 @@ innet(
           </show>
           <show state={top}>
             <Drawer
-              padding={24}
+              padding={64}
               placement='top'
               onclose={() => { top.value = false }}>
               Top
@@ -99,7 +99,7 @@ innet(
           </show>
           <show state={right}>
             <Drawer
-              padding={24}
+              padding={64}
               placement='right'
               onclose={() => { right.value = false }}>
               Right
@@ -107,7 +107,7 @@ innet(
           </show>
           <show state={bottom}>
             <Drawer
-              padding={24}
+              padding={64}
               placement='bottom'
               onclose={() => { bottom.value = false }}>
               Bottom
