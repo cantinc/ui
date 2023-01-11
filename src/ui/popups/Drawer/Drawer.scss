@@ -98,20 +98,27 @@
 }
 
 .touch {
+  --ui-drawer-touth-offset: 400;
+  --ui-drawer-touch: calc(min(var(--ui-drawer-touch-hide), var(--ui-drawer-touth-offset)) / var(--ui-drawer-touth-offset));
+
   transition: none;
-  opacity: calc(1 - (var(--ui-drawer-touch-hide) / 800));
+  opacity: calc(1 - var(--ui-drawer-touch));
 
   &.left {
-    transform: translateX(calc(var(--ui-drawer-touch-hide) * -.1px));
+    --ui-drawer-touch-transform: calc(-30% * var(--ui-drawer-touch));
+    transform: translateX(var(--ui-drawer-touch-transform));
   }
   &.right {
-    transform: translateX(calc(var(--ui-drawer-touch-hide) * .1px));
+    --ui-drawer-touch-transform: calc(30% * var(--ui-drawer-touch));
+    transform: translateX(var(--ui-drawer-touch-transform));
   }
   &.top {
-    transform: translateY(calc(var(--ui-drawer-touch-hide) * -.1px));
+    --ui-drawer-touch-transform: calc(-30% * var(--ui-drawer-touch));
+    transform: translateY(var(--ui-drawer-touch-transform));
   }
   &.bottom {
-    transform: translateY(calc(var(--ui-drawer-touch-hide) * .1px));
+    --ui-drawer-touch-transform: calc(30% * var(--ui-drawer-touch));
+    transform: translateY(var(--ui-drawer-touch-transform));
   }
 }
 
