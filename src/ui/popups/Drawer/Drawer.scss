@@ -99,19 +99,19 @@
 
 .touch {
   transition: none;
-  opacity: calc(1 - (var(--ui-drawer-touch-hide) / 400));
+  opacity: calc(1 - (var(--ui-drawer-touch-hide) / 800));
 
   &.left {
-    transform: translateX(calc(var(--ui-drawer-touch-hide) * -1px));
+    transform: translateX(calc(var(--ui-drawer-touch-hide) * -.1px));
   }
   &.right {
-    transform: translateX(calc(var(--ui-drawer-touch-hide) * 1px));
+    transform: translateX(calc(var(--ui-drawer-touch-hide) * .1px));
   }
   &.top {
-    transform: translateY(calc(var(--ui-drawer-touch-hide) * -1px));
+    transform: translateY(calc(var(--ui-drawer-touch-hide) * -.1px));
   }
   &.bottom {
-    transform: translateY(calc(var(--ui-drawer-touch-hide) * 1px));
+    transform: translateY(calc(var(--ui-drawer-touch-hide) * .1px));
   }
 }
 

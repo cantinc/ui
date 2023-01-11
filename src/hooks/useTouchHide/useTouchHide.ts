@@ -49,16 +49,13 @@ export function useTouchHide ({
         return
       }
 
-      const touch = vertical ? touchY : touchX
-
-      if (touch > length) {
-        touched.value = false
-        hide()
-      } else {
-        touchHide.value = touch
-      }
+      touchHide.value = vertical ? touchY : touchX
     },
     handleTouchEnd () {
+      if (touchHide.value > length) {
+        hide()
+      }
+
       touched.value = false
       touchHide.value = 0
     },
