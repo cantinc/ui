@@ -1,3 +1,5 @@
+@import "src/styles/breakpoints";
+
 .root {
   transition: opacity .3s, transform .3s;
   position: absolute;
@@ -14,6 +16,7 @@
 .bottom {
   width: 100%;
   height: var(--ui-drawer-size);
+  max-height: var(--window-height);
 
   .close {
     left: calc(50% - 25px);
@@ -22,11 +25,16 @@
 
 .right,
 .left {
-  width: var(--ui-drawer-size);
+  width: 100%;
   height: 100%;
+
+  @media (min-width: $mobile) {
+    width: var(--ui-drawer-size);
+  }
 
   .close {
     top: 12px;
+    left: calc(100% - 75px);
   }
 }
 
@@ -44,7 +52,7 @@
 
 .bottom {
   --ui-drawer-transform: translate(0, 30%);
-  top: calc(100% - var(--ui-drawer-size));
+  bottom: 0;
 
   .close {
     top: -25px;
@@ -53,10 +61,16 @@
 
 .right {
   --ui-drawer-transform: translate(30%, 0);
-  left: calc(100% - var(--ui-drawer-size));
+  left: 0;
+
+  @media (min-width: $mobile) {
+    left: calc(100% - var(--ui-drawer-size));
+  }
 
   .close {
-    left: -25px;
+    @media (min-width: $mobile) {
+      left: -25px;
+    }
   }
 }
 
@@ -72,7 +86,9 @@
   --ui-drawer-transform: translate(-30%, 0);
 
   .close {
-    left: calc(100% - 25px);
+    @media (min-width: $mobile) {
+      left: calc(100% - 25px);
+    }
   }
 }
 

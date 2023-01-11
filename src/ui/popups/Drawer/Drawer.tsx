@@ -24,6 +24,7 @@ export function Drawer ({
   size = 388,
   placement = 'left',
   style,
+  ref = new Ref(),
   ...props
 }: DrawerProps = {}) {
   const children = useChildren()
@@ -33,6 +34,7 @@ export function Drawer ({
   const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
     hide: () => onclose?.('touch'),
     placement,
+    element: ref,
   })
 
   if (!drawersCount) {
@@ -72,6 +74,7 @@ export function Drawer ({
         ])}>
         <Flex
           {...props}
+          ref={ref}
           class={() => styles.content}>
           {children}
         </Flex>

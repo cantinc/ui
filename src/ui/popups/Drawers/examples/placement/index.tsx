@@ -9,6 +9,10 @@ const top = new State(false)
 const right = new State(false)
 const bottom = new State(false)
 
+function content (str: string, count = 100) {
+  return [...new Array(count)].map(() => [str, <br />])
+}
+
 export default example({
   id: 'placement',
   title: 'placement',
@@ -24,6 +28,10 @@ const top = new State(false)
 const right = new State(false)
 const bottom = new State(false)
 
+function content (str: string, count = 100) {
+  return [...new Array(count)].map(() => [str, <br />])
+}
+
 innet(
   <Flex wrap gap={16}>
     <portal parent={document.body}>
@@ -33,7 +41,7 @@ innet(
             padding={64}
             placement='left'
             onclose={() => { left.value = false }}>
-            Left
+            {content('Left')}
           </Drawer>
         </show>
         <show state={top}>
@@ -41,7 +49,7 @@ innet(
             padding={64}
             placement='top'
             onclose={() => { top.value = false }}>
-            Top
+            {content('Top')}
           </Drawer>
         </show>
         <show state={right}>
@@ -49,7 +57,7 @@ innet(
             padding={64}
             placement='right'
             onclose={() => { right.value = false }}>
-            Right
+            {content('Right')}
           </Drawer>
         </show>
         <show state={bottom}>
@@ -57,7 +65,7 @@ innet(
             padding={64}
             placement='bottom'
             onclose={() => { bottom.value = false }}>
-            Bottom
+            {content('Bottom')}
           </Drawer>
         </show>
       </Drawers>
@@ -86,7 +94,7 @@ innet(
               padding={64}
               placement='left'
               onclose={() => { left.value = false }}>
-              Left
+              {content('Left')}
             </Drawer>
           </show>
           <show state={top}>
@@ -94,7 +102,7 @@ innet(
               padding={64}
               placement='top'
               onclose={() => { top.value = false }}>
-              Top
+              {content('Top')}
             </Drawer>
           </show>
           <show state={right}>
@@ -102,7 +110,7 @@ innet(
               padding={64}
               placement='right'
               onclose={() => { right.value = false }}>
-              Right
+              {content('Right')}
             </Drawer>
           </show>
           <show state={bottom}>
@@ -110,7 +118,7 @@ innet(
               padding={64}
               placement='bottom'
               onclose={() => { bottom.value = false }}>
-              Bottom
+              {content('Bottom')}
             </Drawer>
           </show>
         </Drawers>
