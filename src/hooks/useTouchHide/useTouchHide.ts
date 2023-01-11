@@ -53,7 +53,7 @@ export function useTouchHide ({
     },
     handleTouchEnd () {
       if (touchHide.value > length) {
-        setTimeout(hide)
+        hide()
       }
 
       touched.value = false
