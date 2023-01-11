@@ -85,7 +85,13 @@ function Form(_a = {}) {
             handleSuccess();
         }
     };
-    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,action:action,vertical:true,align:'stretch',...props},children:[children]}]});
+    const handleReset = (e) => {
+        e.preventDefault();
+        for (const { state, defaultValue } of form.fields) {
+            state.value = defaultValue;
+        }
+    };
+    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,onreset:handleReset,action:action,vertical:true,align:'stretch',...props},children:[children]}]});
 }
 
 export { Form, formActionHandler, formErrorHandler };

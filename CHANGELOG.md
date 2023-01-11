@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.10 [![11.01.2023](https://img.shields.io/date/1673464835)](https://github.com/d8corp/innetjs/tree/v0.1.10)
+
+- add required mark
+- reset form handler
+
 ### v0.1.9 [![11.01.2023](https://img.shields.io/date/1673451759)](https://github.com/d8corp/innetjs/tree/v0.1.9)
 
 - improve `Drawer` and `Popout` animation
