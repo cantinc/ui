@@ -109,6 +109,12 @@
     color: var(--color-50);
     font-size: 12px;
   }
+
+  .input[required] ~ &:after {
+    content: ' *';
+    display: inline;
+    color: var(--color-negative-50);
+  }
 }
 
 .hint {
