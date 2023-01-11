@@ -31,7 +31,7 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
             return tslib.__asyncGenerator(this, arguments, function* () {
                 yield yield tslib.__await({type:AsyncSpin.AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
                 const _a = yield tslib.__await(page()), { default: Component } = _a, props = tslib.__rest(_a, ["default"]);
-                yield yield tslib.__await({type:Page.DelayPage,children:[dom.inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]});
+                yield yield tslib.__await(({type:Page.DelayPage,children:[dom.inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]}));
             });
         };
         if (oldMenu) {

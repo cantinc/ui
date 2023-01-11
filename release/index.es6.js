@@ -92,3 +92,4 @@ export { useChildrenProvider } from './hooks/useChildrenProvider/useChildrenProv
 export { useResizeListener } from './hooks/useResizeListener/useResizeListener.es6.js';
 export { useClickListener } from './hooks/useClickListener/useClickListener.es6.js';
 export { useListener } from './hooks/useListener/useListener.es6.js';
+export { useTouchHide } from './hooks/useTouchHide/useTouchHide.es6.js';

@@ -27,7 +27,7 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
             return __asyncGenerator(this, arguments, function* () {
                 yield yield __await({type:AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
                 const _a = yield __await(page()), { default: Component } = _a, props = __rest(_a, ["default"]);
-                yield yield __await({type:DelayPage,children:[inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]});
+                yield yield __await(({type:DelayPage,children:[inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]}));
             });
         };
         if (oldMenu) {

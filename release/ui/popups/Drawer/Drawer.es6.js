@@ -1,30 +1,31 @@
 import { __rest } from 'tslib';
-import { style, useShow, Ref } from '@innet/dom';
+import { style, Ref, useShow } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
 import { onDestroy } from 'watch-state';
+import '../../../hooks/index.es6.js';
 import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_649c3d85 from './Drawer.scss.es6.js';
+import { useTouchHide } from '../../../hooks/useTouchHide/useTouchHide.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_649c3d85);
 let drawersCount = 0;
-const transformPlacements = {
-    left: '-30%, 0',
-    top: '0, -30%',
-    right: '30%, 0',
-    bottom: '0, 30%',
-};
 function Drawer(_a = {}) {
-    var { onclose, size = 388, placement = 'left', style } = _a, props = __rest(_a, ["onclose", "size", "placement", "style"]);
+    var { onclose, size = 388, placement = 'left', style, ref = new Ref() } = _a, props = __rest(_a, ["onclose", "size", "placement", "style", "ref"]);
     const children = useChildren();
     const styles = useStyle();
     const show = useShow();
     const hide = new Ref();
+    const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
+        hide: () => onclose === null || onclose === void 0 ? void 0 : onclose('touch'),
+        placement,
+        element: ref,
+    });
     if (!drawersCount) {
         setOverflow('hidden');
     }
@@ -38,14 +39,16 @@ function Drawer(_a = {}) {
     const overlayHack = {
         _close: () => onclose,
     };
-    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:'div',props:{...overlayHack,style:Object.assign(Object.assign({}, style), { '--ui-drawer-right': placement === 'right' ? '0' : '', '--ui-drawer-bottom': placement === 'bottom' ? '0' : '', '--ui-drawer-width': ['left', 'right'].includes(placement) ? `${size}px` : '', '--ui-drawer-height': ['top', 'bottom'].includes(placement) ? `${size}px` : '', '--ui-drawer-transform': `translate(${transformPlacements[placement]})` }),class:() => {
+    return ({type:'delay',props:{ref:hide,hide:300},children:[{type:'div',props:{...overlayHack,ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,style:Object.assign(Object.assign({}, style), { '--ui-drawer-size': `${size}px`, '--ui-drawer-touch-hide': () => `${touchHide.value}` }),class:() => {
             var _a;
             return classes([
                 styles.root,
                 show.value && styles.show,
+                styles[placement],
+                touched.value && styles.touch,
                 ((_a = hide.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
             ]);
-        }},children:[{type:Flex,props:{...props,class:() => styles.content},children:[children]},{type:Icon,props:{onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close'),icon:'cross',class:() => styles.close}}]}]});
+        }},children:[{type:Flex,props:{...props,ref:ref,class:() => styles.content},children:[children]},{type:Icon,props:{onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close'),icon:'cross',class:() => styles.close}}]}]});
 }
 
 export { Drawer };

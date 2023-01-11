@@ -6,4 +6,5 @@ require('./useChildrenProvider/index.js');
 require('./useResizeListener/index.js');
 require('./useClickListener/index.js');
 require('./useListener/index.js');
+require('./useTouchHide/index.js');
 

@@ -96,6 +96,7 @@ var useChildrenProvider = require('./hooks/useChildrenProvider/useChildrenProvid
 var useResizeListener = require('./hooks/useResizeListener/useResizeListener.js');
 var useClickListener = require('./hooks/useClickListener/useClickListener.js');
 var useListener = require('./hooks/useListener/useListener.js');
+var useTouchHide = require('./hooks/useTouchHide/useTouchHide.js');
 
 
 
@@ -201,3 +202,4 @@ exports.useChildrenProvider = useChildrenProvider.useChildrenProvider;
 exports.useResizeListener = useResizeListener.useResizeListener;
 exports.useClickListener = useClickListener.useClickListener;
 exports.useListener = useListener.useListener;
+exports.useTouchHide = useTouchHide.useTouchHide;

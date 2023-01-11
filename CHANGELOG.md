@@ -2,6 +2,13 @@
 
 ## v0.1
 
+### v0.1.9 [![11.01.2023](https://img.shields.io/date/1673451759)](https://github.com/d8corp/innetjs/tree/v0.1.9)
+
+- improve `Drawer` and `Popout` animation
+- fix `SearchInput` slots
+- add `useTouchHide`
+- add surface colors
+
 ### v0.1.8 [![09.01.2023](https://img.shields.io/date/1673278640)](https://github.com/d8corp/innetjs/tree/v0.1.8)
 
 - add `width` and `height` of `Card`

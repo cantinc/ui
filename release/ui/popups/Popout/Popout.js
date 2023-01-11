@@ -11,6 +11,7 @@ require('../../../hooks/index.js');
 require('../../../utils/index.js');
 require('../../layout/index.js');
 var Popout$1 = require('./Popout.scss.js');
+var useTouchHide = require('../../../hooks/useTouchHide/useTouchHide.js');
 var useEscapeListener = require('../../../hooks/useEscapeListener/useEscapeListener.js');
 var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
 var Flex = require('../../layout/Flex/Flex.js');
@@ -30,11 +31,10 @@ function PopoutElement(_a) {
     const hide = dom.useHidden();
     const preshow = dom.useShow();
     const show = dom.useShow(200);
+    const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide.useTouchHide({
+        hide: onhide,
+    });
     const styles = useStyle();
-    let touchStart;
-    let touchStartX;
-    const touched = new watchState.State(false);
-    const touchHide = new watchState.State(0);
     useEscapeListener.useEscapeListener(onhide);
     const elementData = new watchState.State({
         rect: element.value.getBoundingClientRect(),
@@ -60,31 +60,7 @@ function PopoutElement(_a) {
             setOverflow.setOverflow('');
         }
     });
-    return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}px`, '--ui-popout-background': () => `${elementData.value.styles.background}` }),ontouchstart:(e) => {
-            touchStart = e.touches[0].clientY;
-            touchStartX = e.touches[0].clientX;
-            touched.value = true;
-        },ontouchmove:(e) => {
-            if (!touched.value)
-                return;
-            const newTouchHide = e.touches[0].clientY - touchStart;
-            const newTouchStartX = Math.abs(e.touches[0].clientX - touchStartX);
-            if (newTouchStartX > newTouchHide) {
-                touched.value = false;
-                touchHide.value = 0;
-                return;
-            }
-            if (newTouchHide > 100) {
-                touched.value = false;
-                onhide();
-            }
-            else {
-                touchHide.value = e.touches[0].clientY - touchStart;
-            }
-        },ontouchend:() => {
-            touched.value = false;
-            touchHide.value = 0;
-        },class:() => classes__default["default"]([
+    return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}`, '--ui-popout-background': () => `${elementData.value.styles.background}` }),ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,class:() => classes__default["default"]([
             styles.root,
             preshow.value && styles.preshow,
             show.value && styles.show,
