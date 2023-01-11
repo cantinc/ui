@@ -87,7 +87,7 @@ function PopoutElement ({
         '--ui-popout-height': () => `${elementData.value.rect.height}px`,
         '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`,
         '--ui-popout-border': () => `${elementData.value.styles.border}`,
-        '--ui-popout-touch-hide': () => `${touchHide.value}px`,
+        '--ui-popout-touch-hide': () => `${touchHide.value}`,
         '--ui-popout-background': () => `${elementData.value.styles.background}`,
       }}
       ontouchstart={handleTouchStart}

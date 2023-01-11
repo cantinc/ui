@@ -37,17 +37,21 @@
 }
 
 .touch {
+  --ui-popout-touth-offset: 600;
+  --ui-popout-touch: calc(min(var(--ui-popout-touch-hide), var(--ui-popout-touth-offset)) / var(--ui-popout-touth-offset));
+
   transition: none;
-  border-radius: calc(var(--ui-popout-touch-hide) / 2);
-  left: calc(var(--ui-popout-touch-hide) / 2);
-  top: calc(var(--ui-popout-touch-hide) / 2);
-  width: calc(100% - var(--ui-popout-touch-hide));
-  height: calc(var(--window-height) - var(--ui-popout-touch-hide));
+  border-radius: calc(var(--ui-popout-touch) * var(--ui-popout-radius));
+  top: calc(var(--ui-popout-touch) * var(--ui-popout-top));
+  left: calc(var(--ui-popout-touch) * var(--ui-popout-left));
+  width: calc(100% * (1 - var(--ui-popout-touch)) + (var(--ui-popout-touch) * var(--ui-popout-width)));
+  height: calc(100% * (1 - var(--ui-popout-touch)) + (var(--ui-popout-touch) * var(--ui-popout-height)));
 
   .content {
+    opacity: calc(1 - var(--ui-popout-touch));
     transition: none;
-    left: calc(var(--ui-popout-touch-hide) / -2);
-    top: calc(var(--ui-popout-touch-hide) / -2);
+    top: calc(var(--ui-popout-touch) * var(--ui-popout-top) * -1);
+    left: calc(var(--ui-popout-touch) * var(--ui-popout-left) * -1);
   }
 }
 
