@@ -105,12 +105,21 @@ export function Form ({
     }
   }
 
+  const handleReset = (e: Event) => {
+    e.preventDefault()
+
+    for (const { state, defaultValue } of form.fields) {
+      state.value = defaultValue
+    }
+  }
+
   return (
     <context for={formContext} set={form}>
       <Flex<HTMLFormElement>
         novalidate
         element='form'
         onsubmit={handleSubmit}
+        onreset={handleReset}
         action={action}
         vertical
         align='stretch'
