@@ -11,11 +11,13 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const formErrorHandler = new Context(({ error }) => error);
 const formActionHandler = new Context(() => { });
+const formNotificationHandler = new Context(notification => notify(notification, 'success'));
 function Form(_a = {}) {
     var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror"]);
     const children = useChildren();
     const errorHandler = useContext(formErrorHandler);
     const actionHandler = useContext(formActionHandler);
+    const notificationHandler = useContext(formNotificationHandler);
     const form = {
         fields: new Set(),
         destroyed: false,
@@ -24,9 +26,9 @@ function Form(_a = {}) {
     onDestroy(() => {
         form.destroyed = true;
     });
-    const handleSuccess = () => {
+    const handleSuccess = (action, data) => {
         if (notification) {
-            notify(notification, 'success');
+            notificationHandler(notification, form, data, action, method);
         }
         onsuccess === null || onsuccess === void 0 ? void 0 : onsuccess(form);
     };
@@ -68,17 +70,23 @@ function Form(_a = {}) {
         if (error)
             return;
         if (action) {
-            const result = actionHandler(use(action), form, method);
+            const currentAction = use(action);
+            const result = actionHandler(currentAction, form, method);
             if (result) {
-                loading.value = true;
-                result
-                    .then(handleSuccess, e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
-                    .finally(() => {
-                    loading.value = false;
-                });
+                if (result instanceof Promise) {
+                    loading.value = true;
+                    result
+                        .then(data => handleSuccess(currentAction, data), e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
+                        .finally(() => {
+                        loading.value = false;
+                    });
+                }
+                else {
+                    handleSuccess(currentAction, result);
+                }
             }
             else {
-                handleSuccess();
+                handleSuccess(currentAction);
             }
         }
         else {
@@ -94,4 +102,4 @@ function Form(_a = {}) {
     return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,onreset:handleReset,action:action,vertical:true,align:'stretch',...props},children:[children]}]});
 }
 
-export { Form, formActionHandler, formErrorHandler };
+export { Form, formActionHandler, formErrorHandler, formNotificationHandler };

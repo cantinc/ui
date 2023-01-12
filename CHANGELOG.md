@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.11 [![12.01.2023](https://img.shields.io/date/1673519743)](https://github.com/d8corp/innetjs/tree/v0.1.11)
+
+- add `formNotificationHandler` and `parseForm`
+
 ### v0.1.10 [![11.01.2023](https://img.shields.io/date/1673464835)](https://github.com/d8corp/innetjs/tree/v0.1.10)
 
 - add required mark

@@ -11,4 +11,5 @@ require('./createFormDate/index.js');
 require('./debounceCall/index.js');
 require('./bindWindowHeight/index.js');
 require('./file/index.js');
+require('./parseForm/index.js');
 

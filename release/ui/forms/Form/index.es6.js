@@ -1,2 +1,2 @@
-export { Form, formActionHandler, formErrorHandler } from './Form.es6.js';
+export { Form, formActionHandler, formErrorHandler, formNotificationHandler } from './Form.es6.js';
 import './types.es6.js';

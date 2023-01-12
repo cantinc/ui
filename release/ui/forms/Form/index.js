@@ -10,3 +10,4 @@ require('./types.js');
 exports.Form = Form.Form;
 exports.formActionHandler = Form.formActionHandler;
 exports.formErrorHandler = Form.formErrorHandler;
+exports.formNotificationHandler = Form.formNotificationHandler;
