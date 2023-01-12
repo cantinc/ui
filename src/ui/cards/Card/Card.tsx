@@ -62,6 +62,7 @@ export function Card<E extends HTMLElement = HTMLElement> ({
   return (
     <Flex<any>
       onclick={onclick}
+      padding={18}
       {...props}
       style={{
         ...style,
