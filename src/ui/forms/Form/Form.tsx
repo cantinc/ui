@@ -6,10 +6,11 @@ import { onDestroy, State } from 'watch-state'
 import { FormContext, formContext, FormField } from '../../../hooks'
 import { Flex } from '../../layout'
 import { notify } from '../../popups'
-import { FormActionHandle, FormErrorHandle, FormProps } from './types'
+import { FormActionHandle, FormErrorHandle, FormNotificationHandle, FormProps } from './types'
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
 export const formActionHandler = new Context<FormActionHandle>(() => {})
+export const formNotificationHandler = new Context<FormNotificationHandle>(notification => notify(notification, 'success'))
 
 export function Form ({
   loading = new State(false),
@@ -23,6 +24,7 @@ export function Form ({
   const children = useChildren()
   const errorHandler = useContext(formErrorHandler)
   const actionHandler = useContext(formActionHandler)
+  const notificationHandler = useContext(formNotificationHandler)
 
   const form: FormContext = {
     fields: new Set(),
@@ -34,9 +36,9 @@ export function Form ({
     form.destroyed = true
   })
 
-  const handleSuccess = () => {
+  const handleSuccess = (action?: string, data?: any) => {
     if (notification) {
-      notify(notification, 'success')
+      notificationHandler(notification, form, data, action, method)
     }
     onsuccess?.(form)
   }
@@ -88,17 +90,22 @@ export function Form ({
     if (error) return
 
     if (action) {
-      const result = actionHandler(use(action), form, method)
+      const currentAction = use(action)
+      const result = actionHandler(currentAction, form, method)
 
       if (result) {
-        loading.value = true
-        result
-          .then(handleSuccess, e => onerror?.(form, e))
-          .finally(() => {
-            loading.value = false
-          })
+        if (result instanceof Promise) {
+          loading.value = true
+          result
+            .then(data => handleSuccess(currentAction, data), e => onerror?.(form, e))
+            .finally(() => {
+              loading.value = false
+            })
+        } else {
+          handleSuccess(currentAction, result)
+        }
       } else {
-        handleSuccess()
+        handleSuccess(currentAction)
       }
     } else {
       handleSuccess()

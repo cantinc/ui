@@ -1,10 +1,9 @@
 import { example } from 'src/app/Component'
-import { FormContext } from 'src/hooks'
-import { Button, Form, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
+import { Button, Form, FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
 
 import description from './README.md'
 
-const handleFormAction = (action: string, form: FormContext) => {
+const handleFormAction: FormActionHandle = (action, form) => {
   const params = Array
     .from(form.fields)
     .reduce((prev, field) =>
@@ -23,15 +22,15 @@ import dom from '@innet/dom'
 
 import {
   Form,
-  notify,
-  formActionHandler,
-  FormContext,
   FormInput,
   FormSelector,
   Button,
+  notify,
+  formActionHandler,
+  FormActionHandle,
 } from '@cantinc/ui'
 
-const handleFormAction = (action: string, form: FormContext) => {
+const handleFormAction: FormActionHandle = (action, form) => {
   const params = Array
     .from(form.fields)
     .reduce((prev, field) =>
