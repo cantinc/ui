@@ -13,17 +13,23 @@ import dom from '@innet/dom'
 import { Flex, Icon, icons } from '@cantinc/ui'
 
 innet(
-  <Flex gap={16} wrap>
-    {icons.map(icon => (
-      <Icon icon={icon} />
+  <Flex gap={24} wrap>
+    {icons.map((icon) => (
+      <Flex gap={8} align='center'>
+        <Icon icon={icon} />
+        {icon}
+      </Flex>
     ))}
   </Flex>,
   dom,
 )`,
   example: (
-    <Flex gap={16} wrap>
+    <Flex gap={24} wrap>
       {icons.map((icon) => (
-        <Icon icon={icon} />
+        <Flex gap={8} align='center'>
+          <Icon icon={icon} />
+          {icon}
+        </Flex>
       ))}
     </Flex>
   ),

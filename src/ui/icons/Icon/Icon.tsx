@@ -13,6 +13,16 @@ const iconsImports = {
   chevron: () => import('./icons/ChevronIcon'),
   chevronUp: () => import('./icons/ChevronUpIcon'),
   menu: () => import('./icons/MenuIcon'),
+  user: () => import('./icons/UserIcon'),
+  info: () => import('./icons/InfoIcon'),
+  check: () => import('./icons/CheckIcon'),
+  arrow: () => import('./icons/ArrowIcon'),
+  geo: () => import('./icons/GeoIcon'),
+  logout: () => import('./icons/LogoutIcon'),
+  gear: () => import('./icons/GearIcon'),
+  brick: () => import('./icons/BrickIcon'),
+  plus: () => import('./icons/PlusIcon'),
+  delivery: () => import('./icons/DeliveryIcon'),
 } as const
 
 export type IconProp = keyof typeof iconsImports
