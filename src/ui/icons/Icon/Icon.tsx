@@ -23,6 +23,8 @@ const iconsImports = {
   brick: () => import('./icons/BrickIcon'),
   plus: () => import('./icons/PlusIcon'),
   delivery: () => import('./icons/DeliveryIcon'),
+  gift: () => import('./icons/GiftIcon'),
+  trash: () => import('./icons/TrashIcon'),
 } as const
 
 export type IconProp = keyof typeof iconsImports
