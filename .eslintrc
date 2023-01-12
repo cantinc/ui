@@ -21,6 +21,7 @@
   "rules": {
     "no-redeclare": "off",
     "no-new": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
     "@typescript-eslint/restrict-plus-operands": "off",
     "no-control-regex": "off",
     "@typescript-eslint/no-misused-promises": "off",
