@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Icon, InputSet } from 'src/ui'
+import { Icon, Input, InputProps, Set } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,23 +10,25 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { InputSet, Icon } from '@cantinc/ui'
+import { Set, Input, InputProps, Icon } from '@cantinc/ui'
 
 innet(
-  <InputSet
+  <Set<InputProps>
+    element={Input}
     label='Address'
     name='address'>
     <Icon icon='plus' />
     Add an address
-  </InputSet>,
+  </Set>,
   dom,
 )`,
   example: (
-    <InputSet
+    <Set<InputProps>
+      element={Input}
       label='Address'
       name='address'>
       <Icon icon='plus' />
       Add an address
-    </InputSet>
+    </Set>
   ),
 })

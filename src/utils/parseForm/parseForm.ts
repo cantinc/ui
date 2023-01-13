@@ -19,7 +19,7 @@ export function parseForm (form: FormContext, method: FormMethod = 'POST') {
         data[name].push(value)
       } else {
         arrayData[name] = true
-        data[name] = [value]
+        data[name] = [data[name], value]
       }
     } else {
       data[name] = value
