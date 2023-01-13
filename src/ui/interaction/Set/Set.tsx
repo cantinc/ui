@@ -14,11 +14,13 @@ export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<P[]>
   onchange?: (value: P[]) => void
   element: (props: P) => any
+  handleItemProps?: (index: LoopItem<P>) => P
 }
 export function Set<P extends object> ({
   value = new State([]),
   onchange,
   element: Element,
+  handleItemProps = item => item.value,
   ...props
 }: SetProps<P>) {
   const styles = useStyle()
@@ -51,7 +53,7 @@ export function Set<P extends object> ({
     <>
       <for of={customValues} key={key}>
         {(item: LoopItem<P>) => (
-          <Element {...unwatch(() => item.value)}>
+          <Element {...unwatch(() => handleItemProps(item))}>
             <slot name='after'>
               <Icon
                 class={styles.remove}

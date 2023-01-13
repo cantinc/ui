@@ -40,6 +40,7 @@ innet(
     <Form onsuccess={form => console.log(parseForm(form))}>
       <Set<FormInputProps>
         element={FormInput}
+        handleItemProps={item => ({ ...item.value, label: () => `${item.value.label} ${item.index + 1}` })}
         label='Address'
         required
         name='address'>
