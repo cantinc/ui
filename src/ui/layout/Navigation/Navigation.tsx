@@ -89,7 +89,7 @@ export function Navigation ({
     <Flex
       element='nav'
       align='stretch'
-      gap={64}
+      gap={32}
       {...props}
       class={() => styles.root}>
       {menu?.map(item => (

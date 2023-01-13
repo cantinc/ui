@@ -12,8 +12,9 @@
   flex-direction: column;
   flex: 1;
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 900;
   font-style: italic;
+  text-transform: uppercase;
 }
 
 .submenu {
@@ -30,6 +31,7 @@
   visibility: hidden;
   margin-top: calc(var(--ui-flex-gap) * -1 + 8px);
   margin-bottom: -8px;
+  text-transform: none;
 }
 
 .link {
