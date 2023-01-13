@@ -1,0 +1,21 @@
+.add {
+  cursor: pointer;
+  user-select: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addPanel {
+  margin-bottom: 32px;
+}
+
+.remove {
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--color-negative-50);
+  }
+}

@@ -262,6 +262,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/interaction/Upload/Upload.ui'),
       },
       {
+        slot: 'input-set',
+        children: '<InputSet />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/InputSet/InputSet.ui'),
+      },
+      {
         slot: 'dots',
         children: '<Dots />',
         onclick: hideLayoutMenu,
