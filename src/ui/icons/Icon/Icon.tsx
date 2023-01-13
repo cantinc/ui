@@ -3,6 +3,8 @@ import { HTMLStyleProps, StateProp } from '@innet/dom'
 export interface CustomIconProps extends HTMLStyleProps {
   size?: StateProp<number>
   color?: StateProp<string>
+  color1?: StateProp<string>
+  color2?: StateProp<string>
 }
 
 const iconsImports = {
@@ -25,6 +27,10 @@ const iconsImports = {
   delivery: () => import('./icons/DeliveryIcon'),
   gift: () => import('./icons/GiftIcon'),
   trash: () => import('./icons/TrashIcon'),
+  vk: () => import('./icons/VKIcon'),
+  tg: () => import('./icons/TGIcon'),
+  vb: () => import('./icons/VBIcon'),
+  wa: () => import('./icons/WAIcon'),
 } as const
 
 export type IconProp = keyof typeof iconsImports
