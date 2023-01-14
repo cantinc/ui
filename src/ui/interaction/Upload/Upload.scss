@@ -10,7 +10,7 @@
   height: 112px;
   gap: 12px;
   background: var(--color-100);
-  border: 1px solid var(--color-primary-50);
+  border: 1px solid var(--color-80);
   border-radius: 10px;
   margin-bottom: 24px;
   transition: border .3s;
@@ -152,7 +152,7 @@
 .focus {
   position: absolute;
   inset: 4px;
-  border: dashed 1px var(--color-60);
+  border: dashed 1px var(--color-link-dark);
   border-radius: 6px;
   pointer-events: none;
   opacity: 0;
