@@ -1,6 +1,6 @@
 import { StateProp } from '@innet/dom';
 import { FlexProps } from '../../layout';
-export declare type CardProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type CardProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
     clickable?: StateProp<boolean>;
     loading?: StateProp<boolean>;
     preventAnimation?: boolean;

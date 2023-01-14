@@ -1,5 +1,5 @@
 import { HTMLStyleProps, StateProp } from '@innet/dom';
-export declare type OmitCheckProps = 'onchange' | '_checked' | '$checked' | '_disabled' | '$disabled';
+export type OmitCheckProps = 'onchange' | '_checked' | '$checked' | '_disabled' | '$disabled';
 declare const styles: {
     readonly root: string;
     readonly checked: "";

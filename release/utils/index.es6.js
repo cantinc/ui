@@ -10,3 +10,4 @@ import './debounceCall/index.es6.js';
 import './bindWindowHeight/index.es6.js';
 import './file/index.es6.js';
 import './parseForm/index.es6.js';
+import './generators/index.es6.js';

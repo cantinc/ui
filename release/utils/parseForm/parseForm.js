@@ -18,7 +18,7 @@ function parseForm(form, method = 'POST') {
             }
             else {
                 arrayData[name] = true;
-                data[name] = [value];
+                data[name] = [data[name], value];
             }
         }
         else {

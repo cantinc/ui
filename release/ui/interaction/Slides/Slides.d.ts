@@ -1,6 +1,6 @@
 import { StateProp } from '@innet/dom';
 import { FlexProps } from '../../layout';
-export declare type Slide<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type Slide<E extends HTMLElement = HTMLElement> = FlexProps<E, {
     children?: any;
 }>;
 export interface SlidesProps extends Omit<FlexProps, 'onchange'> {

@@ -4,9 +4,7 @@ export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclos
     width?: number;
     buttons?: string[];
     headButtons?: string[];
-    buttonProps?: {
-        [K: string]: ButtonProps;
-    };
+    buttonProps?: Record<string, ButtonProps>;
     onclose?: (result: string, close: () => void) => void;
     onclosed?: (result: string) => void;
     onshow?: () => void;

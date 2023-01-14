@@ -2,6 +2,8 @@ import { HTMLStyleProps, StateProp } from '@innet/dom';
 export interface CustomIconProps extends HTMLStyleProps {
     size?: StateProp<number>;
     color?: StateProp<string>;
+    color1?: StateProp<string>;
+    color2?: StateProp<string>;
 }
 declare const iconsImports: {
     readonly default: () => Promise<typeof import("./icons/DefaultIcon")>;
@@ -11,9 +13,25 @@ declare const iconsImports: {
     readonly chevron: () => Promise<typeof import("./icons/ChevronIcon")>;
     readonly chevronUp: () => Promise<typeof import("./icons/ChevronUpIcon")>;
     readonly menu: () => Promise<typeof import("./icons/MenuIcon")>;
+    readonly user: () => Promise<typeof import("./icons/UserIcon")>;
+    readonly info: () => Promise<typeof import("./icons/InfoIcon")>;
+    readonly check: () => Promise<typeof import("./icons/CheckIcon")>;
+    readonly arrow: () => Promise<typeof import("./icons/ArrowIcon")>;
+    readonly geo: () => Promise<typeof import("./icons/GeoIcon")>;
+    readonly logout: () => Promise<typeof import("./icons/LogoutIcon")>;
+    readonly gear: () => Promise<typeof import("./icons/GearIcon")>;
+    readonly brick: () => Promise<typeof import("./icons/BrickIcon")>;
+    readonly plus: () => Promise<typeof import("./icons/PlusIcon")>;
+    readonly delivery: () => Promise<typeof import("./icons/DeliveryIcon")>;
+    readonly gift: () => Promise<typeof import("./icons/GiftIcon")>;
+    readonly trash: () => Promise<typeof import("./icons/TrashIcon")>;
+    readonly vk: () => Promise<typeof import("./icons/VKIcon")>;
+    readonly tg: () => Promise<typeof import("./icons/TGIcon")>;
+    readonly vb: () => Promise<typeof import("./icons/VBIcon")>;
+    readonly wa: () => Promise<typeof import("./icons/WAIcon")>;
 };
-export declare type IconProp = keyof typeof iconsImports;
-export declare const icons: ("default" | "cross" | "edit" | "calendar" | "chevron" | "chevronUp" | "menu")[];
+export type IconProp = keyof typeof iconsImports;
+export declare const icons: ("default" | "cross" | "edit" | "calendar" | "chevron" | "chevronUp" | "menu" | "user" | "info" | "check" | "arrow" | "geo" | "logout" | "gear" | "brick" | "plus" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }

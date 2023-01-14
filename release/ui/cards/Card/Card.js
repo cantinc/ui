@@ -48,7 +48,7 @@ function Card(_a = {}) {
             (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
         ]);
     }
-    return ({type:Flex.Flex,props:{onclick:onclick,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex.Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Card = Card;

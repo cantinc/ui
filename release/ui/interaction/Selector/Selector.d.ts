@@ -2,7 +2,7 @@ import { StateProp } from '@innet/dom';
 import { State } from 'watch-state';
 import { DropdownPlacement, MenuOption } from '../../popups';
 import { InputProps } from '../Input';
-export declare type SelectorDisplay = 'auto' | 'value';
+export type SelectorDisplay = 'auto' | 'value';
 export interface SelectorProps extends InputProps {
     values?: StateProp<MenuOption[]>;
     placement?: DropdownPlacement;

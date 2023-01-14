@@ -40,7 +40,7 @@ function Card(_a = {}) {
             (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
         ]);
     }
-    return ({type:Flex,props:{onclick:onclick,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': inject(width, width => width ? `${width}px` : ''), '--ui-card-height': inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': inject(width, width => width ? `${width}px` : ''), '--ui-card-height': inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Card };

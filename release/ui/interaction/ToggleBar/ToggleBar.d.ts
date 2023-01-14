@@ -6,16 +6,16 @@ export interface ToggleBarValue {
     label?: any;
     icon?: IconProp;
 }
-export declare type ToggleBarOnChange = (value: string) => void;
-export declare type ToggleBarItemAction = () => void;
+export type ToggleBarOnChange = (value: string) => void;
+export type ToggleBarItemAction = () => void;
 export interface ToggleBarItemOptions {
     className: WatchProp<string>;
     onchange: ToggleBarItemAction;
     onfocus: ToggleBarItemAction;
     onblur: ToggleBarItemAction;
 }
-export declare type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItemOptions) => any;
-export declare type ToggleBarProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItemOptions) => any;
+export type ToggleBarProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
     values: StateProp<ToggleBarValue[]>;
     value?: StateProp<string>;
     renderValue?: ToggleBarRenderValue;

@@ -1,7 +1,7 @@
 import { StateProp } from '@innet/dom';
 import { FlexProps } from '../../layout';
-export declare type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive';
-export declare type ButtonProps<E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
+export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive';
+export type ButtonProps<E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
     view?: ButtonViews;
     loading?: StateProp<boolean>;
     disabled?: StateProp<boolean>;

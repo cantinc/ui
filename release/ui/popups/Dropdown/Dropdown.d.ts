@@ -1,6 +1,6 @@
 import { Ref, StateProp } from '@innet/dom';
 import { FlexProps } from '../../layout';
-export declare type DropdownPlacement = 'bottom' | 'top';
+export type DropdownPlacement = 'bottom' | 'top';
 export interface DropdownProps extends Omit<FlexProps, 'element'> {
     element: Ref<HTMLElement>;
     show: StateProp<boolean>;

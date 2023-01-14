@@ -1,6 +1,6 @@
 import { Ref } from '@innet/dom';
 import { State } from 'watch-state';
-export declare type TouchHidePlacement = 'left' | 'top' | 'right' | 'bottom';
+export type TouchHidePlacement = 'left' | 'top' | 'right' | 'bottom';
 export interface TouchHideOptions {
     hide: () => void;
     element?: Ref<HTMLElement>;

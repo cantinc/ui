@@ -11,3 +11,4 @@ import './Slides/index.es6.js';
 import './Stories/index.es6.js';
 import './InputMask/index.es6.js';
 import './Upload/index.es6.js';
+import './Set/index.es6.js';

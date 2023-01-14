@@ -1,1 +1,1 @@
-export declare type WatchProp<T> = T | ((update: boolean) => T);
+export type WatchProp<T> = T | ((update: boolean) => T);

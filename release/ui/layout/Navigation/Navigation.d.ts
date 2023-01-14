@@ -1,6 +1,6 @@
 import { HTMLStyleProps, LinkProps, StateProp } from '@innet/dom';
 import { FlexProps } from '../Flex';
-export declare type NavigationMenu = NavigationItemProps[];
+export type NavigationMenu = NavigationItemProps[];
 export interface NavigationItemProps extends LinkProps {
     children?: any;
     menu?: NavigationMenu;

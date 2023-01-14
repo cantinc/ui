@@ -35,7 +35,7 @@ function Navigation(_a = {}) {
     var { menu } = _a, props = __rest(_a, ["menu"]);
     const children = useChildren();
     const styles = useStyles();
-    return ({type:Flex,props:{element:'nav',align:'stretch',gap:64,...props,class:() => styles.root},children:[menu === null || menu === void 0 ? void 0 : menu.map(item => ({type:NavigationItem,props:{...item}})),' ',children]});
+    return ({type:Flex,props:{element:'nav',align:'stretch',gap:32,...props,class:() => styles.root},children:[menu === null || menu === void 0 ? void 0 : menu.map(item => ({type:NavigationItem,props:{...item}})),' ',children]});
 }
 Navigation.Item = NavigationItem;
 Navigation.Items = NavigationItems;

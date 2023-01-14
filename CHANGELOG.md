@@ -2,6 +2,15 @@
 
 ## v0.1
 
+### v0.1.12 [![14.01.2023](https://img.shields.io/date/1673689600)](https://github.com/d8corp/innetjs/tree/v0.1.12)
+
+- fix `Card` `padding`
+- improve forms
+- fix `Input` `after` and `before` position
+- add and fix icons
+- fix `Navigation` style
+- add `Set` component
+
 ### v0.1.11 [![12.01.2023](https://img.shields.io/date/1673519743)](https://github.com/d8corp/innetjs/tree/v0.1.11)
 
 - add `formNotificationHandler` and `parseForm`

@@ -10,3 +10,4 @@ export * from './debounceCall';
 export * from './bindWindowHeight';
 export * from './file';
 export * from './parseForm';
+export * from './generators';

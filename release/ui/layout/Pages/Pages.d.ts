@@ -1,6 +1,6 @@
 import { NavigationItemProps } from '../Navigation';
-export declare type PagesMenu = PagesItemProps[];
-export declare type PageAccessHandler = (nav: PagesItemProps) => any;
+export type PagesMenu = PagesItemProps[];
+export type PageAccessHandler = (nav: PagesItemProps) => any;
 export interface PagesItemProps extends NavigationItemProps {
     slot: string;
     page: () => Promise<{

@@ -12,4 +12,5 @@ require('./debounceCall/index.js');
 require('./bindWindowHeight/index.js');
 require('./file/index.js');
 require('./parseForm/index.js');
+require('./generators/index.js');
 
