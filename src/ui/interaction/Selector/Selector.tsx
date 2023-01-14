@@ -3,6 +3,7 @@ import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
+import { actionProp } from '../../../utils'
 import { Arrow } from '../../icons'
 import { DropdownMenu, DropdownPlacement, MenuOption } from '../../popups'
 import { Input, InputProps } from '../Input'
@@ -46,9 +47,15 @@ export function Selector ({
   const preselect = new State<string>('')
   const popupRef = new Ref<HTMLDivElement>()
 
-  if (value instanceof State) {
-    oninput = (val: string) => {
-      value.value = val
+  oninput = actionProp(value, oninput)
+
+  if (exact) {
+    const oldOnInput: (value: string) => void = oninput as any
+
+    oninput = (value) => {
+      if (show.value) return
+
+      oldOnInput(value)
     }
   }
 
