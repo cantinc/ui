@@ -1,10 +1,10 @@
 import { use } from '@innet/dom'
 import { example } from 'src/app/Component'
-import { Icon, Input, InputProps, Set, SetPropertyHandler, setPropsHandler } from 'src/ui'
+import { Icon, Input, InputProps, Set, SetPropsHandler, setPropsHandler } from 'src/ui'
 
 import description from './README.md'
 
-const handleSetProps: SetPropertyHandler<any> = ({
+const handleSetProps: SetPropsHandler<any> = ({
   index,
   value,
 }, Component) => {
@@ -36,7 +36,7 @@ import {
   setPropsHandler,
 } from '@cantinc/ui'
 
-const handleSetProps: SetPropertyHandler<any> = ({
+const handleSetProps: SetPropsHandler<any> = ({
   index,
   value,
 }, Component) => {

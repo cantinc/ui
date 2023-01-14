@@ -10,16 +10,16 @@ const useStyle = style(styles)
 
 const key = Symbol('SetKey') as unknown as string
 
-export type SetPropertyHandler <P> = (item: LoopItem<P>, Component: (props: P) => any) => P
+export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any) => P
 
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<P[]>
   onchange?: (value: P[]) => void
   element: (props: P) => any
-  handleItemProps?: SetPropertyHandler<P>
+  handleItemProps?: SetPropsHandler<P>
 }
 
-export const setPropsHandler = new Context<SetPropertyHandler<any>>(item => item.value)
+export const setPropsHandler = new Context<SetPropsHandler<any>>(item => item.value)
 
 export function Set<P extends object> ({
   value = new State([]),
