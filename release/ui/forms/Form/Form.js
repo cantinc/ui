@@ -17,7 +17,7 @@ const formErrorHandler = new jsx.Context(({ error }) => error);
 const formActionHandler = new jsx.Context(() => { });
 const formNotificationHandler = new jsx.Context(notification => helpers.notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror"]);
+    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit"]);
     const children = jsx.useChildren();
     const errorHandler = jsx.useContext(formErrorHandler);
     const actionHandler = jsx.useContext(formActionHandler);
@@ -70,6 +70,7 @@ function Form(_a = {}) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        onsubmit === null || onsubmit === void 0 ? void 0 : onsubmit(e);
         const error = validation();
         if (error)
             return;
@@ -99,12 +100,13 @@ function Form(_a = {}) {
     };
     const handleReset = (e) => {
         e.preventDefault();
+        onreset === null || onreset === void 0 ? void 0 : onreset(e);
         for (const { state, defaultValue, error } of form.fields) {
             state.value = defaultValue;
             error.value = '';
         }
     };
-    return ({type:'context',props:{for:useForm.formContext,set:form},children:[{type:Flex.Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,onreset:handleReset,action:action,vertical:true,align:'stretch',...props},children:[children]}]});
+    return ({type:'context',props:{for:useForm.formContext,set:form},children:[{type:Flex.Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }
 
 exports.Form = Form;

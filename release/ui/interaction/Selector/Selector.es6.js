@@ -47,7 +47,7 @@ function Selector(_a = {}) {
             if (!currentValues)
                 return currentValue;
             const currentItem = currentValues.find(({ value }) => value === currentValue);
-            return currentItem ? currentItem.label || currentValue : currentValue;
+            return currentItem && currentValue ? currentItem.label || currentValue : currentValue;
         });
     const hide = () => {
         show.value = false;

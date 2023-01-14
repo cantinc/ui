@@ -3,7 +3,7 @@ import { State } from 'watch-state';
 import { DropdownPlacement, MenuOption } from '../../popups';
 import { InputProps } from '../Input';
 export type SelectorDisplay = 'auto' | 'value';
-export interface SelectorProps extends InputProps {
+export interface SelectorProps extends Omit<InputProps, 'clearable'> {
     values?: StateProp<MenuOption[]>;
     placement?: DropdownPlacement;
     searchValue?: StateProp<string>;

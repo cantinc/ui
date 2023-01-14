@@ -13,7 +13,7 @@ const formErrorHandler = new Context(({ error }) => error);
 const formActionHandler = new Context(() => { });
 const formNotificationHandler = new Context(notification => notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror"]);
+    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit"]);
     const children = useChildren();
     const errorHandler = useContext(formErrorHandler);
     const actionHandler = useContext(formActionHandler);
@@ -66,6 +66,7 @@ function Form(_a = {}) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        onsubmit === null || onsubmit === void 0 ? void 0 : onsubmit(e);
         const error = validation();
         if (error)
             return;
@@ -95,12 +96,13 @@ function Form(_a = {}) {
     };
     const handleReset = (e) => {
         e.preventDefault();
+        onreset === null || onreset === void 0 ? void 0 : onreset(e);
         for (const { state, defaultValue, error } of form.fields) {
             state.value = defaultValue;
             error.value = '';
         }
     };
-    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,onreset:handleReset,action:action,vertical:true,align:'stretch',...props},children:[children]}]});
+    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }
 
 export { Form, formActionHandler, formErrorHandler, formNotificationHandler };

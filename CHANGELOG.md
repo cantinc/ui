@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.15 [![14.01.2023](https://img.shields.io/date/1673709759)](https://github.com/d8corp/innetjs/tree/v0.1.15)
+
+- fix form bugs
+- reduce `clearable` prop of `Form`
+
 ### v0.1.14 [![14.01.2023](https://img.shields.io/date/1673706459)](https://github.com/d8corp/innetjs/tree/v0.1.14)
 
 - fix errors on reset
