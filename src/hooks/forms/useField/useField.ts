@@ -1,4 +1,4 @@
-import { required } from '@cantinc/utils'
+import { optional, required } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { useProps } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
@@ -24,7 +24,7 @@ export function useField <
     state: new State<V>(defaultValue),
     error: new State(),
     element: ref,
-    validation: req ? required(validation) : validation,
+    validation: req ? required(validation) : validation ? optional(validation) : validation,
   }
 
   if (form) {
