@@ -1,1 +1,1 @@
-You can make the selector `clearable`.
+Add empty value to make the selector clearable.

@@ -4,15 +4,18 @@ import { Flex, MenuOption, Selector } from 'src/ui'
 import description from './README.md'
 
 const data: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'Eminem' },
   { value: 'Linkin Park' },
   { value: 'Louis Armstrong' },
 ]
 const genders: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'male', label: 'Male' },
   { value: 'female', label: 'Female' },
 ]
 const genres: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'Rap' },
   { value: 'Dance' },
   { value: 'Hip-Hop' },
@@ -29,15 +32,18 @@ import dom from '@innet/dom'
 import { Flex, Selector, MenuOption } from '@cantinc/ui'
 
 const data: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'Eminem' },
   { value: 'Linkin Park' },
   { value: 'Louis Armstrong' },
 ]
 const genders: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'male', label: 'Male' },
   { value: 'female', label: 'Female' },
 ]
 const genres: MenuOption[] = [
+  { value: '', label: 'Empty' },
   { value: 'Rap' },
   { value: 'Dance' },
   { value: 'Hip-Hop' },
@@ -46,17 +52,17 @@ const genres: MenuOption[] = [
 
 innet(
   <Flex gap={[0, 16]} wrap>
-    <Selector clearable label='Search' values={data} />
-    <Selector clearable exact label='Gender' arrow values={genders} />
-    <Selector clearable search label='Genres' arrow values={genres} />
+    <Selector label='Search' values={data} />
+    <Selector exact label='Gender' arrow values={genders} />
+    <Selector search label='Genres' arrow values={genres} />
   </Flex>,
   dom,
 )`,
   example: (
     <Flex gap={[0, 16]} wrap>
-      <Selector clearable label='Search' values={data} />
-      <Selector clearable exact label='Gender' arrow values={genders} />
-      <Selector clearable search label='Genres' arrow values={genres} />
+      <Selector label='Search' values={data} />
+      <Selector exact label='Gender' arrow values={genders} />
+      <Selector search label='Genres' arrow values={genres} />
     </Flex>
   ),
 })

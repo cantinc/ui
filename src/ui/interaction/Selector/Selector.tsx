@@ -13,7 +13,7 @@ const useStyle = style(styles)
 
 export type SelectorDisplay = 'auto' | 'value'
 
-export interface SelectorProps extends InputProps {
+export interface SelectorProps extends Omit<InputProps, 'clearable'> {
   values?: StateProp<MenuOption[]>
   placement?: DropdownPlacement
   searchValue?: StateProp<string>
@@ -79,7 +79,7 @@ export function Selector ({
 
       const currentItem = currentValues.find(({ value }) => value === currentValue)
 
-      return currentItem ? currentItem.label || currentValue : currentValue
+      return currentItem && currentValue ? currentItem.label || currentValue : currentValue
     })
 
   const hide = () => {
