@@ -1,4 +1,4 @@
-import { required } from '@cantinc/utils';
+import { required, optional } from '@cantinc/utils';
 import { Ref } from '@innet/dom';
 import { useProps } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
@@ -14,7 +14,7 @@ function useField(defValue, ref = new Ref()) {
         state: new State(defaultValue),
         error: new State(),
         element: ref,
-        validation: req ? required(validation) : validation,
+        validation: req ? required(validation) : validation ? optional(validation) : validation,
     };
     if (form) {
         form.fields.add(field);

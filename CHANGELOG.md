@@ -2,6 +2,12 @@
 
 ## v0.1
 
+### v0.1.14 [![14.01.2023](https://img.shields.io/date/1673706459)](https://github.com/d8corp/innetjs/tree/v0.1.14)
+
+- fix errors on reset
+- fix optional validation of forms
+- fix `exact` `Selector` bug
+
 ### v0.1.13 [![14.01.2023](https://img.shields.io/date/1673702076)](https://github.com/d8corp/innetjs/tree/v0.1.13)
 
 - fix `Card` styles

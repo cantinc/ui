@@ -95,8 +95,9 @@ function Form(_a = {}) {
     };
     const handleReset = (e) => {
         e.preventDefault();
-        for (const { state, defaultValue } of form.fields) {
+        for (const { state, defaultValue, error } of form.fields) {
             state.value = defaultValue;
+            error.value = '';
         }
     };
     return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{novalidate:true,element:'form',onsubmit:handleSubmit,onreset:handleReset,action:action,vertical:true,align:'stretch',...props},children:[children]}]});

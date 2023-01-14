@@ -117,8 +117,8 @@ function Selector(_a = {}) {
                     show.value = !show.value;
                 }}}]})
             : after && ({type:'slot',props:{name:'after'},children:[after]}),' ',hint && ({type:'slot',props:{name:'hint'},children:[hint]})]},{type:DropdownMenu,props:{ref:popupRef,placement:placement,show:show,element:ref,values:valuesFilter,preselect:preselect,select:value,showValues:showValues,onSelect:(val) => {
-            oninput === null || oninput === void 0 ? void 0 : oninput(val);
             hide();
+            oninput === null || oninput === void 0 ? void 0 : oninput(val);
         }}}]);
 }
 

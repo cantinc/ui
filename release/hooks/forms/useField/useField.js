@@ -18,7 +18,7 @@ function useField(defValue, ref = new dom.Ref()) {
         state: new watchState.State(defaultValue),
         error: new watchState.State(),
         element: ref,
-        validation: req ? utils.required(validation) : validation,
+        validation: req ? utils.required(validation) : validation ? utils.optional(validation) : validation,
     };
     if (form) {
         form.fields.add(field);
