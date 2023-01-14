@@ -1,5 +1,5 @@
 import { LoopItem, StateProp, style, use } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache, State, unwatch } from 'watch-state'
 
 import { actionProp, randomHash } from '../../../utils'
@@ -10,17 +10,22 @@ const useStyle = style(styles)
 
 const key = Symbol('SetKey') as unknown as string
 
+export type SetPropertyHandler <P> = (item: LoopItem<P>, Component: (props: P) => any) => P
+
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<P[]>
   onchange?: (value: P[]) => void
   element: (props: P) => any
-  handleItemProps?: (index: LoopItem<P>) => P
+  handleItemProps?: SetPropertyHandler<P>
 }
+
+export const setPropsHandler = new Context<SetPropertyHandler<any>>(item => item.value)
+
 export function Set<P extends object> ({
   value = new State([]),
   onchange,
   element: Element,
-  handleItemProps = item => item.value,
+  handleItemProps = useContext(setPropsHandler),
   ...props
 }: SetProps<P>) {
   const styles = useStyle()
@@ -53,7 +58,7 @@ export function Set<P extends object> ({
     <>
       <for of={customValues} key={key}>
         {(item: LoopItem<P>) => (
-          <Element {...unwatch(() => handleItemProps(item))}>
+          <Element {...unwatch(() => handleItemProps(item, Element))}>
             <slot name='after'>
               <Icon
                 class={styles.remove}
