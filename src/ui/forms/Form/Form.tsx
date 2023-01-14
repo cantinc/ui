@@ -19,6 +19,8 @@ export function Form ({
   method = 'POST',
   onsuccess,
   onerror,
+  onreset,
+  onsubmit,
   ...props
 }: FormProps = {}) {
   const children = useChildren()
@@ -84,6 +86,7 @@ export function Form ({
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
+    onsubmit?.(e)
 
     const error = validation()
 
@@ -114,6 +117,7 @@ export function Form ({
 
   const handleReset = (e: Event) => {
     e.preventDefault()
+    onreset?.(e)
 
     for (const { state, defaultValue, error } of form.fields) {
       state.value = defaultValue
@@ -124,14 +128,14 @@ export function Form ({
   return (
     <context for={formContext} set={form}>
       <Flex<HTMLFormElement>
-        novalidate
-        element='form'
-        onsubmit={handleSubmit}
-        onreset={handleReset}
-        action={action}
         vertical
         align='stretch'
-        {...props}>
+        novalidate
+        {...props}
+        element='form'
+        action={action}
+        onsubmit={handleSubmit}
+        onreset={handleReset}>
         {children}
       </Flex>
     </context>
