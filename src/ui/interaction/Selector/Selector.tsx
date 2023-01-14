@@ -192,8 +192,8 @@ export function Selector ({
         select={value}
         showValues={showValues}
         onSelect={(val) => {
-          oninput?.(val)
           hide()
+          oninput?.(val)
         }}
       />
     </>
