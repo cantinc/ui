@@ -1,6 +1,6 @@
 import { __rest } from 'tslib';
 import { style, use } from '@innet/dom';
-import { useChildren } from '@innet/jsx';
+import { Context, useContext, useChildren } from '@innet/jsx';
 import { State, Cache, unwatch } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
@@ -11,8 +11,9 @@ import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_e864a768);
 const key = Symbol('SetKey');
+const setPropsHandler = new Context(item => item.value);
 function Set(_a) {
-    var { value = new State([]), onchange, element: Element, handleItemProps = item => item.value } = _a, props = __rest(_a, ["value", "onchange", "element", "handleItemProps"]);
+    var { value = new State([]), onchange, element: Element, handleItemProps = useContext(setPropsHandler) } = _a, props = __rest(_a, ["value", "onchange", "element", "handleItemProps"]);
     const styles = useStyle();
     const children = useChildren();
     onchange = actionProp(value, onchange);
@@ -34,7 +35,7 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...unwatch(() => handleItemProps(item))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{class:styles.remove,onclick:() => handleRemove(item.index),icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
+    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...unwatch(() => handleItemProps(item, Element))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{class:styles.remove,onclick:() => handleRemove(item.index),icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
 }
 
-export { Set };
+export { Set, setPropsHandler };

@@ -15,8 +15,9 @@ var Icon = require('../../icons/Icon/Icon.js');
 
 const useStyle = dom.style(Set$1["default"]);
 const key = Symbol('SetKey');
+const setPropsHandler = new jsx.Context(item => item.value);
 function Set(_a) {
-    var { value = new watchState.State([]), onchange, element: Element, handleItemProps = item => item.value } = _a, props = tslib.__rest(_a, ["value", "onchange", "element", "handleItemProps"]);
+    var { value = new watchState.State([]), onchange, element: Element, handleItemProps = jsx.useContext(setPropsHandler) } = _a, props = tslib.__rest(_a, ["value", "onchange", "element", "handleItemProps"]);
     const styles = useStyle();
     const children = jsx.useChildren();
     onchange = actionProp.actionProp(value, onchange);
@@ -38,7 +39,8 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...watchState.unwatch(() => handleItemProps(item))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:() => handleRemove(item.index),icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
+    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...watchState.unwatch(() => handleItemProps(item, Element))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:() => handleRemove(item.index),icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
 }
 
 exports.Set = Set;
+exports.setPropsHandler = setPropsHandler;

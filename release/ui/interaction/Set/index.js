@@ -7,3 +7,4 @@ var Set = require('./Set.js');
 
 
 exports.Set = Set.Set;
+exports.setPropsHandler = Set.setPropsHandler;

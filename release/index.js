@@ -180,6 +180,7 @@ exports.Stories = Stories.Stories;
 exports.InputMask = InputMask.InputMask;
 exports.Upload = Upload.Upload;
 exports.Set = Set.Set;
+exports.setPropsHandler = Set.setPropsHandler;
 exports.SearchToggleBar = SearchToggleBar.SearchToggleBar;
 exports.SearchToggle = SearchToggle.SearchToggle;
 exports.SearchInput = SearchInput.SearchInput;

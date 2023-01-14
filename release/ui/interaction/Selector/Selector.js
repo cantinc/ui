@@ -7,10 +7,12 @@ var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var classes = require('html-classes');
 var watchState = require('watch-state');
+require('../../../utils/index.js');
 require('../../icons/index.js');
 require('../../popups/index.js');
 require('../Input/index.js');
 var Selector$1 = require('./Selector.scss.js');
+var actionProp = require('../../../utils/actionProp/actionProp.js');
 var Input = require('../Input/Input.js');
 var Arrow = require('../../icons/Arrow/Arrow.js');
 var DropdownMenu = require('../../popups/DropdownMenu/DropdownMenu.js');
@@ -27,9 +29,13 @@ function Selector(_a = {}) {
     const show = new watchState.State(false);
     const preselect = new watchState.State('');
     const popupRef = new dom.Ref();
-    if (value instanceof watchState.State) {
-        oninput = (val) => {
-            value.value = val;
+    oninput = actionProp.actionProp(value, oninput);
+    if (exact) {
+        const oldOnInput = oninput;
+        oninput = (value) => {
+            if (show.value)
+                return;
+            oldOnInput(value);
         };
     }
     if (!searchValue && search) {

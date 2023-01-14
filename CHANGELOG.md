@@ -2,6 +2,14 @@
 
 ## v0.1
 
+### v0.1.13 [![14.01.2023](https://img.shields.io/date/1673702076)](https://github.com/d8corp/innetjs/tree/v0.1.13)
+
+- fix `Card` styles
+- add `loupe` icon
+- improve `Buttons` styles
+- add `setPropsHandler`
+- fix `exact` of `Selector`
+
 ### v0.1.12 [![14.01.2023](https://img.shields.io/date/1673689600)](https://github.com/d8corp/innetjs/tree/v0.1.12)
 
 - fix `Card` `padding`

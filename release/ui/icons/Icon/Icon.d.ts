@@ -7,21 +7,22 @@ export interface CustomIconProps extends HTMLStyleProps {
 }
 declare const iconsImports: {
     readonly default: () => Promise<typeof import("./icons/DefaultIcon")>;
-    readonly cross: () => Promise<typeof import("./icons/CrossIcon")>;
     readonly edit: () => Promise<typeof import("./icons/EditIcon")>;
     readonly calendar: () => Promise<typeof import("./icons/CalendarIcon")>;
     readonly chevron: () => Promise<typeof import("./icons/ChevronIcon")>;
     readonly chevronUp: () => Promise<typeof import("./icons/ChevronUpIcon")>;
-    readonly menu: () => Promise<typeof import("./icons/MenuIcon")>;
-    readonly user: () => Promise<typeof import("./icons/UserIcon")>;
+    readonly cross: () => Promise<typeof import("./icons/CrossIcon")>;
     readonly info: () => Promise<typeof import("./icons/InfoIcon")>;
     readonly check: () => Promise<typeof import("./icons/CheckIcon")>;
+    readonly menu: () => Promise<typeof import("./icons/MenuIcon")>;
+    readonly user: () => Promise<typeof import("./icons/UserIcon")>;
     readonly arrow: () => Promise<typeof import("./icons/ArrowIcon")>;
     readonly geo: () => Promise<typeof import("./icons/GeoIcon")>;
     readonly logout: () => Promise<typeof import("./icons/LogoutIcon")>;
     readonly gear: () => Promise<typeof import("./icons/GearIcon")>;
     readonly brick: () => Promise<typeof import("./icons/BrickIcon")>;
     readonly plus: () => Promise<typeof import("./icons/PlusIcon")>;
+    readonly loupe: () => Promise<typeof import("./icons/LoupeIcon")>;
     readonly delivery: () => Promise<typeof import("./icons/DeliveryIcon")>;
     readonly gift: () => Promise<typeof import("./icons/GiftIcon")>;
     readonly trash: () => Promise<typeof import("./icons/TrashIcon")>;
@@ -31,7 +32,7 @@ declare const iconsImports: {
     readonly wa: () => Promise<typeof import("./icons/WAIcon")>;
 };
 export type IconProp = keyof typeof iconsImports;
-export declare const icons: ("default" | "cross" | "edit" | "calendar" | "chevron" | "chevronUp" | "menu" | "user" | "info" | "check" | "arrow" | "geo" | "logout" | "gear" | "brick" | "plus" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
+export declare const icons: ("default" | "edit" | "calendar" | "chevron" | "chevronUp" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }

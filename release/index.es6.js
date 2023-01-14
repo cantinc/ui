@@ -68,7 +68,7 @@ export { Slides } from './ui/interaction/Slides/Slides.es6.js';
 export { Stories } from './ui/interaction/Stories/Stories.es6.js';
 export { InputMask } from './ui/interaction/InputMask/InputMask.es6.js';
 export { Upload } from './ui/interaction/Upload/Upload.es6.js';
-export { Set } from './ui/interaction/Set/Set.es6.js';
+export { Set, setPropsHandler } from './ui/interaction/Set/Set.es6.js';
 export { SearchToggleBar } from './ui/search/SearchToggleBar/SearchToggleBar.es6.js';
 export { SearchToggle } from './ui/search/SearchToggle/SearchToggle.es6.js';
 export { SearchInput } from './ui/search/SearchInput/SearchInput.es6.js';

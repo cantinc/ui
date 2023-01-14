@@ -3,10 +3,12 @@ import { style, Ref, use } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import classes from 'html-classes';
 import { State, Cache } from 'watch-state';
+import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
 import '../../popups/index.es6.js';
 import '../Input/index.es6.js';
 import modules_14af6ac7 from './Selector.scss.es6.js';
+import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 import { Input } from '../Input/Input.es6.js';
 import { Arrow } from '../../icons/Arrow/Arrow.es6.js';
 import { DropdownMenu } from '../../popups/DropdownMenu/DropdownMenu.es6.js';
@@ -19,9 +21,13 @@ function Selector(_a = {}) {
     const show = new State(false);
     const preselect = new State('');
     const popupRef = new Ref();
-    if (value instanceof State) {
-        oninput = (val) => {
-            value.value = val;
+    oninput = actionProp(value, oninput);
+    if (exact) {
+        const oldOnInput = oninput;
+        oninput = (value) => {
+            if (show.value)
+                return;
+            oldOnInput(value);
         };
     }
     if (!searchValue && search) {
