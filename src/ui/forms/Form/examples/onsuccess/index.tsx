@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormInput, notify } from 'src/ui'
+import { Button, Buttons, Form, FormInput, notify } from 'src/ui'
 
 import { FormContext } from '../../../../../hooks'
 import description from './README.md'
@@ -21,7 +21,14 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Form, FormInput, Button, notify, Notifications } from '@cantinc/ui'
+import {
+  Form,
+  FormInput,
+  Button,
+  Buttons,
+  notify,
+  Notifications,
+} from '@cantinc/ui'
 
 const handleSuccess = (form: FormContext) => {
   const params = Array
@@ -47,9 +54,11 @@ innet(
         required
         label='Password'
       />
-      <Button>
-        Log-in
-      </Button>
+      <Buttons>
+        <Button flex>
+          Log-in
+        </Button>
+      </Buttons>
     </Form>
     <Notifications />
   </>,
@@ -68,9 +77,11 @@ innet(
         required
         label='Password'
       />
-      <Button>
-        Log-in
-      </Button>
+      <Buttons>
+        <Button flex>
+          Log-in
+        </Button>
+      </Buttons>
     </Form>
   ),
 })

@@ -1,7 +1,7 @@
 import { placeholder } from '@cantinc/utils'
 import { example } from 'src/app/Component'
 import {
-  Button,
+  Button, Buttons,
   Form,
   FormInput,
   FormNotificationHandle,
@@ -29,6 +29,7 @@ import {
   FormInput,
   Notifications,
   Button,
+  Buttons,
   notify,
   parseForm,
   formNotificationHandler,
@@ -42,9 +43,11 @@ innet(
   <context for={formNotificationHandler} set={handleFormNotification}>
     <Form notification='Item "{name}" added' action='/items'>
       <FormInput name='name' label='Name' required />
-      <Button>
-        Add
-      </Button>
+      <Buttons>
+        <Button flex>
+          Add
+        </Button>
+      </Buttons>
     </Form>
     <Notifications />
   </context>,
@@ -54,9 +57,11 @@ innet(
     <context for={formNotificationHandler} set={handleFormNotification}>
       <Form notification='Item "{name}" added' action='/items'>
         <FormInput name='name' label='Name' required />
-        <Button>
-          Add
-        </Button>
+        <Buttons>
+          <Button flex>
+            Add
+          </Button>
+        </Buttons>
       </Form>
     </context>
   ),

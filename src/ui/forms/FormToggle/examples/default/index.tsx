@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormToggle, notify } from 'src/ui'
+import { Button, Buttons, Form, FormToggle, notify } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,7 +10,13 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Form, FormToggle, Button, Notifications } from '@cantinc/ui'
+import {
+  Form,
+  FormToggle,
+  Button,
+  Buttons,
+  Notifications,
+} from '@cantinc/ui'
 
 innet(
   <>
@@ -20,9 +26,11 @@ innet(
       )}
       vertical>
       <FormToggle name='test' />
-      <Button>
-        Test
-      </Button>
+      <Buttons>
+        <Button>
+          Test
+        </Button>
+      </Buttons>
     </Form>
     <Notifications />
   </>,
@@ -35,9 +43,11 @@ innet(
       )}
       vertical>
       <FormToggle name='test' />
-      <Button>
-        Test
-      </Button>
+      <Buttons>
+        <Button>
+          Test
+        </Button>
+      </Buttons>
     </Form>
   ),
 })

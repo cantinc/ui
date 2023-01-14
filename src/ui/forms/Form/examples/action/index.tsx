@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
+import { Button, Buttons, Form, FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
 
 import description from './README.md'
 
@@ -25,6 +25,7 @@ import {
   FormInput,
   FormSelector,
   Button,
+  Buttons,
   notify,
   formActionHandler,
   FormActionHandle,
@@ -54,9 +55,11 @@ innet(
           { value: 'female', label: 'Female' },
         ]}
       />
-      <Button>
-        Save
-      </Button>
+      <Buttons>
+        <Button flex>
+          Save
+        </Button>
+      </Buttons>
     </Form>
   </context>,
   dom,
@@ -75,9 +78,11 @@ innet(
             { value: 'female', label: 'Female' },
           ]}
         />
-        <Button>
-          Save
-        </Button>
+        <Buttons>
+          <Button flex>
+            Save
+          </Button>
+        </Buttons>
       </Form>
     </context>
   ),
