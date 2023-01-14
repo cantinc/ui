@@ -28,6 +28,7 @@ export interface SelectorProps extends Omit<InputProps, 'clearable'> {
 
 export function Selector ({
   ref = new Ref<HTMLLabelElement>(),
+  inputRef = new Ref<HTMLInputElement>(),
   placement,
   value = new State(''),
   values,
@@ -111,6 +112,7 @@ export function Selector ({
         onmousedown={(e: MouseEvent) => {
           if (!show.value) {
             show.value = true
+            inputRef.value?.focus()
           } else if (exact || search) {
             hide()
           }
@@ -119,6 +121,7 @@ export function Selector ({
         renderInput={(props: any) => (
           <input
             {...props}
+            ref={inputRef}
             class={() => classes([
               props.class,
               styles.input,
