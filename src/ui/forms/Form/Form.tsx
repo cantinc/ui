@@ -115,8 +115,9 @@ export function Form ({
   const handleReset = (e: Event) => {
     e.preventDefault()
 
-    for (const { state, defaultValue } of form.fields) {
+    for (const { state, defaultValue, error } of form.fields) {
       state.value = defaultValue
+      error.value = ''
     }
   }
 
