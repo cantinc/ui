@@ -1,5 +1,5 @@
 import { __rest, __awaiter } from 'tslib';
-import { Ref, use } from '@innet/dom';
+import { Ref } from '@innet/dom';
 import { Context, useChildren, useContext } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
 import '../../../hooks/index.es6.js';
@@ -18,18 +18,18 @@ function Form(_a = {}) {
     const errorHandler = useContext(formErrorHandler);
     const actionHandler = useContext(formActionHandler);
     const notificationHandler = useContext(formNotificationHandler);
-    const form = {
-        fields: new Set(),
-        destroyed: false,
-        loading,
+    const form = Object.assign(Object.assign({}, props), { fields: new Set(), destroyed: false, loading,
         ref,
-    };
+        method,
+        notification,
+        action });
     onDestroy(() => {
         form.destroyed = true;
     });
-    const handleSuccess = (action, data) => {
+    const handleSuccess = (data) => {
+        form.data = data;
         if (notification) {
-            notificationHandler(notification, form, data, action, method);
+            notificationHandler(notification, form);
         }
         onsuccess === null || onsuccess === void 0 ? void 0 : onsuccess(form);
     };
@@ -72,23 +72,22 @@ function Form(_a = {}) {
         if (error)
             return;
         if (action) {
-            const currentAction = use(action);
-            const result = actionHandler(currentAction, form, method);
+            const result = actionHandler(form);
             if (result) {
                 if (result instanceof Promise) {
                     loading.value = true;
                     result
-                        .then(data => handleSuccess(currentAction, data), e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
+                        .then(data => handleSuccess(data), e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
                         .finally(() => {
                         loading.value = false;
                     });
                 }
                 else {
-                    handleSuccess(currentAction, result);
+                    handleSuccess();
                 }
             }
             else {
-                handleSuccess(currentAction);
+                handleSuccess();
             }
         }
         else {

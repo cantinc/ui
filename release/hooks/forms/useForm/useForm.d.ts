@@ -2,6 +2,7 @@ import { Validator } from '@cantinc/utils';
 import { Ref } from '@innet/dom';
 import { Context } from '@innet/jsx';
 import { State } from 'watch-state';
+import { FormProps } from '../../../ui';
 export interface FormField<V, E extends HTMLElement> {
     name: string;
     state: State<V>;
@@ -10,11 +11,12 @@ export interface FormField<V, E extends HTMLElement> {
     defaultValue?: V;
     validation?: Validator<any, any>[];
 }
-export interface FormContext {
+export interface FormContext extends FormProps {
     fields: Set<FormField<any, any>>;
     destroyed: boolean;
     loading: State<boolean>;
     ref: Ref<HTMLFormElement>;
+    data?: any;
 }
 export declare const formContext: Context<FormContext, FormContext>;
 export declare function useForm(): FormContext;

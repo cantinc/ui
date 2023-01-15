@@ -2,6 +2,12 @@
 
 ## v0.1
 
+### v0.1.17 [![15.01.2023](https://img.shields.io/date/1673793209)](https://github.com/d8corp/innetjs/tree/v0.1.17)
+
+- improve form handlers
+- add `FormUpload` `accept` validation
+- fix `Selector` bug
+
 ### v0.1.16 [![15.01.2023](https://img.shields.io/date/1673786912)](https://github.com/d8corp/innetjs/tree/v0.1.16)
 
 - add `FormSet`

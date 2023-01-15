@@ -73,7 +73,7 @@ function Selector(_a = {}) {
                 return (!label || showValues) && val.toLowerCase().startsWith(currentValue);
             }) || []
             : () => dom.use(values);
-    return ([{type:Input.Input,props:{...props,value:displayValue,oninput:oninput,onmousedown:(e) => {
+    return ([{type:Input.Input,props:{...props,inputRef:inputRef,value:displayValue,oninput:oninput,onmousedown:(e) => {
             var _a, _b;
             if (!show.value) {
                 show.value = true;
@@ -83,8 +83,8 @@ function Selector(_a = {}) {
                 hide();
             }
             ;
-            (_b = props === null || props === void 0 ? void 0 : props.onclick) === null || _b === void 0 ? void 0 : _b.call(props, e);
-        },renderInput:(props) => ({type:'input',props:{...props,ref:inputRef,class:() => classes__default["default"]([
+            (_b = props === null || props === void 0 ? void 0 : props.onmousedown) === null || _b === void 0 ? void 0 : _b.call(props, e);
+        },renderInput:(props) => ({type:'input',props:{...props,class:() => classes__default["default"]([
                 props.class,
                 styles.input,
             ]),autocomplete:'off',onkeydown:(e) => {

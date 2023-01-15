@@ -22,18 +22,18 @@ function Form(_a = {}) {
     const errorHandler = jsx.useContext(formErrorHandler);
     const actionHandler = jsx.useContext(formActionHandler);
     const notificationHandler = jsx.useContext(formNotificationHandler);
-    const form = {
-        fields: new Set(),
-        destroyed: false,
-        loading,
+    const form = Object.assign(Object.assign({}, props), { fields: new Set(), destroyed: false, loading,
         ref,
-    };
+        method,
+        notification,
+        action });
     watchState.onDestroy(() => {
         form.destroyed = true;
     });
-    const handleSuccess = (action, data) => {
+    const handleSuccess = (data) => {
+        form.data = data;
         if (notification) {
-            notificationHandler(notification, form, data, action, method);
+            notificationHandler(notification, form);
         }
         onsuccess === null || onsuccess === void 0 ? void 0 : onsuccess(form);
     };
@@ -76,23 +76,22 @@ function Form(_a = {}) {
         if (error)
             return;
         if (action) {
-            const currentAction = dom.use(action);
-            const result = actionHandler(currentAction, form, method);
+            const result = actionHandler(form);
             if (result) {
                 if (result instanceof Promise) {
                     loading.value = true;
                     result
-                        .then(data => handleSuccess(currentAction, data), e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
+                        .then(data => handleSuccess(data), e => onerror === null || onerror === void 0 ? void 0 : onerror(form, e))
                         .finally(() => {
                         loading.value = false;
                     });
                 }
                 else {
-                    handleSuccess(currentAction, result);
+                    handleSuccess();
                 }
             }
             else {
-                handleSuccess(currentAction);
+                handleSuccess();
             }
         }
         else {
