@@ -1,12 +1,10 @@
-'use strict';
+import { use } from '@innet/dom';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function createFormDate(form, method = 'POST') {
+function createFormData(form) {
     const body = new FormData();
     for (const field of form.fields) {
         const { value } = field.state;
-        if (method === 'PATCH') {
+        if (use(form.method) === 'PATCH') {
             if (field.defaultValue === value) {
                 continue;
             }
@@ -20,4 +18,4 @@ function createFormDate(form, method = 'POST') {
     return body;
 }
 
-exports.createFormDate = createFormDate;
+export { createFormData };

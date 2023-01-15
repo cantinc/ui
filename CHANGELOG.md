@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.18 [![15.01.2023](https://img.shields.io/date/1673794194)](https://github.com/d8corp/innetjs/tree/v0.1.18)
+
+- improve form utils
+- improve `formNotificationHandler`
+
 ### v0.1.17 [![15.01.2023](https://img.shields.io/date/1673793209)](https://github.com/d8corp/innetjs/tree/v0.1.17)
 
 - improve form handlers

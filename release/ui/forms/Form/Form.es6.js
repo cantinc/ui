@@ -11,7 +11,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const formErrorHandler = new Context(({ error }) => error);
 const formActionHandler = new Context(() => { });
-const formNotificationHandler = new Context(notification => notify(notification, 'success'));
+const formNotificationHandler = new Context(({ notification }) => notification && notify(notification, 'success'));
 function Form(_a = {}) {
     var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new Ref() } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
     const children = useChildren();
@@ -29,7 +29,7 @@ function Form(_a = {}) {
     const handleSuccess = (data) => {
         form.data = data;
         if (notification) {
-            notificationHandler(notification, form);
+            notificationHandler(form);
         }
         onsuccess === null || onsuccess === void 0 ? void 0 : onsuccess(form);
     };

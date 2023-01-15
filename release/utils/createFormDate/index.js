@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var createFormDate = require('./createFormDate.js');
+var createFormData = require('./createFormData.js');
 
 
 
-exports.createFormDate = createFormDate.createFormDate;
+exports.createFormData = createFormData.createFormData;

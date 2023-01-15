@@ -2,12 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function parseForm(form, method = 'POST') {
+var dom = require('@innet/dom');
+
+function parseForm(form) {
     const data = {};
     const arrayData = {};
     for (const field of form.fields) {
         const { name, state: { value } } = field;
-        if (method === 'PATCH') {
+        if (dom.use(form.method) === 'PATCH') {
             if (field.defaultValue === value) {
                 continue;
             }

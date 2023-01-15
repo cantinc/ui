@@ -1,9 +1,11 @@
-function parseForm(form, method = 'POST') {
+import { use } from '@innet/dom';
+
+function parseForm(form) {
     const data = {};
     const arrayData = {};
     for (const field of form.fields) {
         const { name, state: { value } } = field;
-        if (method === 'PATCH') {
+        if (use(form.method) === 'PATCH') {
             if (field.defaultValue === value) {
                 continue;
             }

@@ -83,7 +83,7 @@ export { setOverflow } from './utils/setOverflow/setOverflow.es6.js';
 export { closeRouterModal, getCloseRouterModal } from './utils/closeRouterModal/closeRouterModal.es6.js';
 export { withModal } from './utils/withModal/withModal.es6.js';
 export { actionProp } from './utils/actionProp/actionProp.es6.js';
-export { createFormDate } from './utils/createFormDate/createFormDate.es6.js';
+export { createFormData } from './utils/createFormDate/createFormData.es6.js';
 export { debounceCall } from './utils/debounceCall/debounceCall.es6.js';
 export { bindWindowHeight } from './utils/bindWindowHeight/bindWindowHeight.es6.js';
 export { extReg, getExtension } from './utils/file/getExtension/getExtension.es6.js';

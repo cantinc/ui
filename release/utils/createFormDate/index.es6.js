@@ -1,1 +1,1 @@
-export { createFormDate } from './createFormDate.es6.js';
+export { createFormData } from './createFormData.es6.js';

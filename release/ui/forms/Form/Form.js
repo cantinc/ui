@@ -15,7 +15,7 @@ var Flex = require('../../layout/Flex/Flex.js');
 
 const formErrorHandler = new jsx.Context(({ error }) => error);
 const formActionHandler = new jsx.Context(() => { });
-const formNotificationHandler = new jsx.Context(notification => helpers.notify(notification, 'success'));
+const formNotificationHandler = new jsx.Context(({ notification }) => notification && helpers.notify(notification, 'success'));
 function Form(_a = {}) {
     var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
     const children = jsx.useChildren();
@@ -33,7 +33,7 @@ function Form(_a = {}) {
     const handleSuccess = (data) => {
         form.data = data;
         if (notification) {
-            notificationHandler(notification, form);
+            notificationHandler(form);
         }
         onsuccess === null || onsuccess === void 0 ? void 0 : onsuccess(form);
     };
