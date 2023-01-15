@@ -30,19 +30,25 @@ export function Form ({
   const notificationHandler = useContext(formNotificationHandler)
 
   const form: FormContext = {
+    ...props,
     fields: new Set(),
     destroyed: false,
     loading,
     ref,
+    method,
+    notification,
+    action,
   }
 
   onDestroy(() => {
     form.destroyed = true
   })
 
-  const handleSuccess = (action?: string, data?: any) => {
+  const handleSuccess = (data?: any) => {
+    form.data = data
+
     if (notification) {
-      notificationHandler(notification, form, data, action, method)
+      notificationHandler(notification, form)
     }
     onsuccess?.(form)
   }
@@ -95,22 +101,21 @@ export function Form ({
     if (error) return
 
     if (action) {
-      const currentAction = use(action)
-      const result = actionHandler(currentAction, form, method)
+      const result = actionHandler(form)
 
       if (result) {
         if (result instanceof Promise) {
           loading.value = true
           result
-            .then(data => handleSuccess(currentAction, data), e => onerror?.(form, e))
+            .then(data => handleSuccess(data), e => onerror?.(form, e))
             .finally(() => {
               loading.value = false
             })
         } else {
-          handleSuccess(currentAction, result)
+          handleSuccess()
         }
       } else {
-        handleSuccess(currentAction)
+        handleSuccess()
       }
     } else {
       handleSuccess()

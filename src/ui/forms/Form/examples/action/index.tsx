@@ -1,16 +1,17 @@
+import { use } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { Button, Buttons, Form, FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
 
 import description from './README.md'
 
-const handleFormAction: FormActionHandle = (action, form) => {
+const handleFormAction: FormActionHandle = form => {
   const params = Array
     .from(form.fields)
     .reduce((prev, field) =>
       `${prev}\n\n${field.name}: ${field.state.value}`,
     '')
 
-  notify(`action: ${action}${params}`)
+  notify(`action: ${use(form.action)}${params}`)
 }
 
 export default example({
@@ -31,14 +32,14 @@ import {
   FormActionHandle,
 } from '@cantinc/ui'
 
-const handleFormAction: FormActionHandle = (action, form) => {
+const handleFormAction: FormActionHandle = form => {
   const params = Array
     .from(form.fields)
     .reduce((prev, field) =>
       \`\${prev}\\n\\n\${field.name}: \${field.state.value}\`,
     '')
 
-  notify(\`action: \${action}\${params}\`)
+  notify(\`action: \${use(form.action)}\${params}\`)
 }
 
 innet(

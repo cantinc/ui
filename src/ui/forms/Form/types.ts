@@ -17,8 +17,8 @@ export interface FormProps extends FlexProps<HTMLFormElement> {
 }
 
 export type FormErrorHandle = (error: ValidationError<any>, form: FormContext) => string | Promise<string>
-export type FormActionHandle = (action: string, form: FormContext, method: FormMethod) => Promise<any> | any
-export type FormNotificationHandle = (notification: string, form: FormContext, data?: any, action?: string, method?: FormMethod) => void
+export type FormActionHandle = (form: FormContext) => Promise<any> | any
+export type FormNotificationHandle = (notification: string, form: FormContext) => void
 
 export interface FormFieldProps <V = string> {
   name: string
