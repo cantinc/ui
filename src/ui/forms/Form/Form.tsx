@@ -10,7 +10,9 @@ import { FormActionHandle, FormErrorHandle, FormNotificationHandle, FormProps } 
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
 export const formActionHandler = new Context<FormActionHandle>(() => {})
-export const formNotificationHandler = new Context<FormNotificationHandle>(notification => notify(notification, 'success'))
+export const formNotificationHandler = new Context<FormNotificationHandle>(
+  ({ notification }) => notification && notify(notification, 'success'),
+)
 
 export function Form ({
   loading = new State(false),
@@ -48,7 +50,7 @@ export function Form ({
     form.data = data
 
     if (notification) {
-      notificationHandler(notification, form)
+      notificationHandler(form)
     }
     onsuccess?.(form)
   }

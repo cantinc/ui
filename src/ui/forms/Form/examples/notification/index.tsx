@@ -12,8 +12,10 @@ import { parseForm } from 'src/utils'
 
 import description from './README.md'
 
-const handleFormNotification: FormNotificationHandle = (notification, form) => {
-  notify(placeholder(notification, parseForm(form)), 'success')
+const handleFormNotification: FormNotificationHandle = (form) => {
+  if (form.notification) {
+    notify(placeholder(form.notification, parseForm(form)), 'success')
+  }
 }
 
 export default example({
