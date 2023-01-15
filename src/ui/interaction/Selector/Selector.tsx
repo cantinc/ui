@@ -107,6 +107,7 @@ export function Selector ({
     <>
       <Input
         {...props}
+        inputRef={inputRef}
         value={displayValue}
         oninput={oninput}
         onmousedown={(e: MouseEvent) => {
@@ -116,12 +117,11 @@ export function Selector ({
           } else if (exact || search) {
             hide()
           }
-          ;(props as any)?.onclick?.(e)
+          ;(props as any)?.onmousedown?.(e)
         }}
         renderInput={(props: any) => (
           <input
             {...props}
-            ref={inputRef}
             class={() => classes([
               props.class,
               styles.input,
