@@ -1,12 +1,12 @@
 import { example } from 'src/app/Component'
 import { FormContext } from 'src/hooks'
 import { Button, Form, FormHidden, notify } from 'src/ui'
-import { createFormDate } from 'src/utils'
+import { createFormData } from 'src/utils'
 
 import description from './README.md'
 
 const handleSuccess = (form: FormContext) => {
-  notify(`User: ${createFormDate(form).get('user')}`)
+  notify(`User: ${createFormData(form).get('user')}`)
 }
 
 export default example({

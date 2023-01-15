@@ -1,14 +1,15 @@
-import { FormContext } from '../../hooks'
-import { FormMethod } from '../../ui'
+import { use } from '@innet/dom'
 
-export function parseForm (form: FormContext, method: FormMethod = 'POST') {
+import { FormContext } from '../../hooks'
+
+export function parseForm (form: FormContext) {
   const data: Record<string, any> = {}
   const arrayData: Record<string, boolean> = {}
 
   for (const field of form.fields) {
     const { name, state: { value } } = field
 
-    if (method === 'PATCH') {
+    if (use(form.method) === 'PATCH') {
       if (field.defaultValue === value) {
         continue
       }

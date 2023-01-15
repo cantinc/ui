@@ -2,11 +2,11 @@ import { example } from 'src/app/Component'
 import { Button, Form, FormInputMask, notify } from 'src/ui'
 
 import { FormContext } from '../../../../../hooks'
-import { createFormDate } from '../../../../../utils'
+import { createFormData } from '../../../../../utils'
 import description from './README.md'
 
 const handleSuccess = (form: FormContext) => {
-  notify(`Phone: ${createFormDate(form).get('phone')}`)
+  notify(`Phone: ${createFormData(form).get('phone')}`)
 }
 
 export default example({

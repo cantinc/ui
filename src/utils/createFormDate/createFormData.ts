@@ -1,13 +1,14 @@
-import { FormContext } from '../../hooks'
-import { FormMethod } from '../../ui'
+import { use } from '@innet/dom'
 
-export function createFormDate (form: FormContext, method: FormMethod = 'POST') {
+import { FormContext } from '../../hooks'
+
+export function createFormData (form: FormContext) {
   const body = new FormData()
 
   for (const field of form.fields) {
     const { value } = field.state
 
-    if (method === 'PATCH') {
+    if (use(form.method) === 'PATCH') {
       if (field.defaultValue === value) {
         continue
       }
