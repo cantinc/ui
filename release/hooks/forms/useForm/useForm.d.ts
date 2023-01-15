@@ -14,6 +14,7 @@ export interface FormContext {
     fields: Set<FormField<any, any>>;
     destroyed: boolean;
     loading: State<boolean>;
+    ref: Ref<HTMLFormElement>;
 }
 export declare const formContext: Context<FormContext, FormContext>;
 export declare function useForm(): FormContext;

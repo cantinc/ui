@@ -17,7 +17,7 @@ const formErrorHandler = new jsx.Context(({ error }) => error);
 const formActionHandler = new jsx.Context(() => { });
 const formNotificationHandler = new jsx.Context(notification => helpers.notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit"]);
+    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
     const children = jsx.useChildren();
     const errorHandler = jsx.useContext(formErrorHandler);
     const actionHandler = jsx.useContext(formActionHandler);
@@ -26,6 +26,7 @@ function Form(_a = {}) {
         fields: new Set(),
         destroyed: false,
         loading,
+        ref,
     };
     watchState.onDestroy(() => {
         form.destroyed = true;
@@ -106,7 +107,7 @@ function Form(_a = {}) {
             error.value = '';
         }
     };
-    return ({type:'context',props:{for:useForm.formContext,set:form},children:[{type:Flex.Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
+    return ({type:'context',props:{for:useForm.formContext,set:form},children:[{type:Flex.Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,ref:ref,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }
 
 exports.Form = Form;

@@ -10,4 +10,5 @@ require('./FormRadiobox/index.js');
 require('./FormHidden/index.js');
 require('./FormInputMask/index.js');
 require('./FormUpload/index.js');
+require('./FormSet/index.js');
 

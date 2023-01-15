@@ -1,5 +1,5 @@
 import { __rest, __awaiter } from 'tslib';
-import { use } from '@innet/dom';
+import { Ref, use } from '@innet/dom';
 import { Context, useChildren, useContext } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
 import '../../../hooks/index.es6.js';
@@ -13,7 +13,7 @@ const formErrorHandler = new Context(({ error }) => error);
 const formActionHandler = new Context(() => { });
 const formNotificationHandler = new Context(notification => notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit"]);
+    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new Ref() } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
     const children = useChildren();
     const errorHandler = useContext(formErrorHandler);
     const actionHandler = useContext(formActionHandler);
@@ -22,6 +22,7 @@ function Form(_a = {}) {
         fields: new Set(),
         destroyed: false,
         loading,
+        ref,
     };
     onDestroy(() => {
         form.destroyed = true;
@@ -102,7 +103,7 @@ function Form(_a = {}) {
             error.value = '';
         }
     };
-    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
+    return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,ref:ref,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }
 
 export { Form, formActionHandler, formErrorHandler, formNotificationHandler };

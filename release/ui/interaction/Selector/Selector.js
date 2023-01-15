@@ -23,7 +23,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Selector$1["default"]);
 function Selector(_a = {}) {
-    var { ref = new dom.Ref(), placement, value = new watchState.State(''), values, oninput, searchValue, showValues, display = 'auto', search, exact, arrow = exact, onsearch } = _a, props = tslib.__rest(_a, ["ref", "placement", "value", "values", "oninput", "searchValue", "showValues", "display", "search", "exact", "arrow", "onsearch"]);
+    var { ref = new dom.Ref(), inputRef = new dom.Ref(), placement, value = new watchState.State(''), values, oninput, searchValue, showValues, display = 'auto', search, exact, arrow = exact, onsearch } = _a, props = tslib.__rest(_a, ["ref", "inputRef", "placement", "value", "values", "oninput", "searchValue", "showValues", "display", "search", "exact", "arrow", "onsearch"]);
     const { hint, after } = jsx.useSlots();
     const styles = useStyle();
     const show = new watchState.State(false);
@@ -74,16 +74,17 @@ function Selector(_a = {}) {
             }) || []
             : () => dom.use(values);
     return ([{type:Input.Input,props:{...props,value:displayValue,oninput:oninput,onmousedown:(e) => {
-            var _a;
+            var _a, _b;
             if (!show.value) {
                 show.value = true;
+                (_a = inputRef.value) === null || _a === void 0 ? void 0 : _a.focus();
             }
             else if (exact || search) {
                 hide();
             }
             ;
-            (_a = props === null || props === void 0 ? void 0 : props.onclick) === null || _a === void 0 ? void 0 : _a.call(props, e);
-        },renderInput:(props) => ({type:'input',props:{...props,class:() => classes__default["default"]([
+            (_b = props === null || props === void 0 ? void 0 : props.onclick) === null || _b === void 0 ? void 0 : _b.call(props, e);
+        },renderInput:(props) => ({type:'input',props:{...props,ref:inputRef,class:() => classes__default["default"]([
                 props.class,
                 styles.input,
             ]),autocomplete:'off',onkeydown:(e) => {

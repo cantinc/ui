@@ -55,6 +55,7 @@ export { FormRadiobox } from './ui/forms/FormRadiobox/FormRadiobox.es6.js';
 export { FormHidden } from './ui/forms/FormHidden/FormHidden.es6.js';
 export { FormInputMask } from './ui/forms/FormInputMask/FormInputMask.es6.js';
 export { FormUpload } from './ui/forms/FormUpload/FormUpload.es6.js';
+export { FormSet } from './ui/forms/FormSet/FormSet.es6.js';
 export { Toggle } from './ui/interaction/Toggle/Toggle.es6.js';
 export { ToggleBar, defaultToggleBarRender } from './ui/interaction/ToggleBar/ToggleBar.es6.js';
 export { Input, defaultRenderInput } from './ui/interaction/Input/Input.es6.js';

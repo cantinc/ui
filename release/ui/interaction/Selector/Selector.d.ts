@@ -15,4 +15,4 @@ export interface SelectorProps extends Omit<InputProps, 'clearable'> {
     displayState?: State<string>;
     onsearch?: (search: string) => void;
 }
-export declare function Selector({ ref, placement, value, values, oninput, searchValue, showValues, display, search, exact, arrow, onsearch, ...props }?: SelectorProps): any;
+export declare function Selector({ ref, inputRef, placement, value, values, oninput, searchValue, showValues, display, search, exact, arrow, onsearch, ...props }?: SelectorProps): any;

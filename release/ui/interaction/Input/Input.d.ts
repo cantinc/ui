@@ -1,7 +1,7 @@
 import { HTMLProps, Ref, StateProp } from '@innet/dom';
 import { IconProps } from '../../icons';
 import { FlexProps } from '../../layout';
-export type InputType = 'text' | 'password' | 'date' | 'email' | 'tel';
+export type InputType = 'text' | 'password' | 'date' | 'email' | 'tel' | 'number' | 'color';
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
     label?: StateProp<string>;
     value?: StateProp<string>;
