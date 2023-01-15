@@ -1,25 +1,27 @@
 import { use } from '@innet/dom'
+import { State } from 'watch-state'
 
 import { UIValidationErrors } from '../../../constants/validation'
 import { useField, useForm } from '../../../hooks'
-import { getExtension } from '../../../utils'
-import { Upload, UploadProps } from '../../interaction'
+import { actionProp, getExtension } from '../../../utils'
+import { Upload, UploadFile, UploadProps } from '../../interaction'
 import { FormFieldProps } from '../Form/types'
 
-export interface FormUploadProps extends Omit<UploadProps, keyof FormFieldProps>, FormFieldProps<File[]> {
+export interface FormUploadProps extends Omit<UploadProps, keyof FormFieldProps>, FormFieldProps<UploadFile[]> {
 
 }
 
 export function FormUpload (props: FormUploadProps) {
   const {
     ref,
-    onchange,
     disabled,
     validation = [],
     defaultValue,
     hint,
     accept,
     name,
+    files = new State([]),
+    onchange = actionProp(files, props.onchange),
     ...rest
   } = props
 
@@ -52,19 +54,21 @@ export function FormUpload (props: FormUploadProps) {
   }
 
   const { loading } = useForm()
-  const { error, element, state } = useField<File[]>([], ref)
+  const { error, element, state } = useField<UploadFile[]>([], ref)
+
+  const handleChange = (files: UploadFile[]) => {
+    error.value = ''
+    onchange?.(files)
+  }
 
   return (
     <Upload
       {...rest}
+      files={state}
       accept={accept}
       name={name}
       ref={element}
-      onchange={(files) => {
-        error.value = ''
-        state.value = files.map(({ file }) => file).filter(file => file) as File[]
-        onchange?.(state.value)
-      }}
+      onchange={handleChange}
       error={() => Boolean(error.value)}
       disabled={() => use(disabled) ?? loading.value}
       hint={() => error.value || hint}

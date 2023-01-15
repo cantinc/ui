@@ -10,9 +10,8 @@ const useStyle = style(styles)
 
 const imageExtensions = ['jpg', 'webp', 'png', 'jpeg']
 
-export interface UploadValue {
+export interface UploadFile extends Partial<File> {
   src: string
-  file?: File
 }
 
 export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'onchange'> {
@@ -24,8 +23,8 @@ export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'fil
   dropText?: StateProp<string>
   error?: StateProp<boolean>
   hint?: StateProp<any>
-  files?: StateProp<UploadValue[]>
-  onchange?: (files: UploadValue[]) => void
+  files?: StateProp<UploadFile[]>
+  onchange?: (files: UploadFile[]) => void
   props?: {
     hint?: HTMLProps<HTMLSpanElement>
   }
@@ -78,23 +77,25 @@ export function Upload ({
   const handleInput = () => {
     if (!ref?.value?.files) return
 
-    const result: (Promise<UploadValue> | UploadValue)[] = []
+    const result: (Promise<UploadFile> | UploadFile)[] = []
 
     for (const file of ref.value.files) {
       const ext = getExtension(file)
 
       if (!imageExtensions.includes(ext)) {
-        result.push({
-          src: ext,
-          file,
-        })
+        // @ts-expect-error
+        file.src = ext
+        // @ts-expect-error
+        result.push(file)
       } else {
         result.push(new Promise((resolve, reject) => {
           const fr = new FileReader()
-          fr.onload = () => resolve({
-            src: String(fr.result),
-            file,
-          })
+          fr.onload = () => {
+            // @ts-expect-error
+            file.src = String(fr.result)
+            // @ts-expect-error
+            resolve(file)
+          }
           fr.onerror = reject
           fr.readAsDataURL(file)
         }))
@@ -163,7 +164,7 @@ export function Upload ({
       </span>
       <span class={() => styles.focus} />
       <for of={files} key='src'>
-        {(item: LoopItem<UploadValue>) => {
+        {(item: LoopItem<UploadFile>) => {
           const show = useShow(400)
           const hide = new Ref<any>()
           const getClass = () => classes([
@@ -184,7 +185,7 @@ export function Upload ({
                 : (
                   <span class={getClass}>
                     <span class={() => styles.name}>
-                      {item.value.file?.name.replace(/\.[^.]+$/, '')}
+                      {item.value?.name?.replace(/\.[^.]+$/, '')}
                     </span>
                     <span class={() => styles.extension}>
                       {item.value.src}

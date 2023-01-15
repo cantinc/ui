@@ -1,7 +1,8 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormUpload } from 'src/ui'
+import { Button, Buttons, Form, FormUpload } from 'src/ui'
 
 import description from './README.md'
+import test from './test.jpg'
 
 export default example({
   id: 'accept',
@@ -14,33 +15,64 @@ import {
   Form,
   FormUpload,
   Button,
+  Buttons,
 } from '@cantinc/ui'
 
+import test from './test.jpg'
+
 innet(
-  <Form vertical>
+  <Form onsuccess={form => console.log(form)} vertical>
     <FormUpload
       accept='.jpg, .jpeg, .png, .webp'
       name='name'
       label='Name'
       required
+      multiple
+      defaultValue={[
+        { src: test, name: 'test.jpg' },
+        { src: 'JPEG', name: 'test.jpg' },
+      ]}
     />
-    <Button>
-      Send
-    </Button>
+    <Buttons>
+      <Button
+        flex
+        view='secondary'
+        type='reset'>
+        Reset
+      </Button>
+      <Button
+        flex>
+        Send
+      </Button>
+    </Buttons>
   </Form>,
   dom,
 )`,
   example: (
-    <Form vertical>
+    <Form onsuccess={form => console.log(form)} vertical>
       <FormUpload
         accept='.jpg, .jpeg, .png, .webp'
         name='name'
         label='Name'
         required
+        multiple
+        defaultValue={[
+          { src: test, name: 'test.jpg' },
+          { src: 'JPEG', name: 'test.jpg' },
+        ]}
       />
-      <Button>
-        Send
-      </Button>
+      <Buttons>
+        <Button
+          flex
+          view='secondary'
+          type='reset'>
+          Reset
+        </Button>
+        <Button
+          flex>
+          Send
+        </Button>
+      </Buttons>
     </Form>
   ),
 })
