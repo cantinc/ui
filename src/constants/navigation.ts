@@ -349,6 +349,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/forms/FormSelector/FormSelector.ui'),
       },
       {
+        slot: 'set',
+        children: '<FormSet />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/forms/FormSet/FormSet.ui'),
+      },
+      {
         slot: 'upload',
         children: '<FormUpload />',
         onclick: hideLayoutMenu,

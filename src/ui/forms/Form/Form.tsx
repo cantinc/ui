@@ -1,5 +1,5 @@
 import { ValidationError } from '@cantinc/utils'
-import { use } from '@innet/dom'
+import { Ref, use } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
@@ -21,6 +21,7 @@ export function Form ({
   onerror,
   onreset,
   onsubmit,
+  ref = new Ref(),
   ...props
 }: FormProps = {}) {
   const children = useChildren()
@@ -32,6 +33,7 @@ export function Form ({
     fields: new Set(),
     destroyed: false,
     loading,
+    ref,
   }
 
   onDestroy(() => {
@@ -132,6 +134,7 @@ export function Form ({
         align='stretch'
         novalidate
         {...props}
+        ref={ref}
         element='form'
         action={action}
         onsubmit={handleSubmit}

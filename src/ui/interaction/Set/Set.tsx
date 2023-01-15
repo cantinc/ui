@@ -13,8 +13,8 @@ const key = Symbol('SetKey') as unknown as string
 export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any) => P
 
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
-  value?: StateProp<P[]>
-  onchange?: (value: P[]) => void
+  value?: StateProp<Partial<P>[]>
+  onchange?: (value: Partial<P>[]) => void
   element: (props: P) => any
   handleItemProps?: SetPropsHandler<P>
 }
@@ -33,7 +33,7 @@ export function Set<P extends object> ({
 
   onchange = actionProp(value, onchange)
 
-  const customValues = new Cache<P[]>(() => {
+  const customValues = new Cache<Partial<P>[]>(() => {
     const values = use(value)
 
     for (const value of values) {

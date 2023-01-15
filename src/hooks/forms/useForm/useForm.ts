@@ -16,6 +16,7 @@ export interface FormContext {
   fields: Set<FormField<any, any>>
   destroyed: boolean
   loading: State<boolean>
+  ref: Ref<HTMLFormElement>
 }
 
 export const formContext = new Context<FormContext>()
