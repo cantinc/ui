@@ -1,7 +1,6 @@
 import { HTMLProps, HTMLStyleProps, StateProp } from '@innet/dom';
-export interface UploadValue {
+export interface UploadFile extends Partial<File> {
     src: string;
-    file?: File;
 }
 export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'onchange'> {
     width?: StateProp<number>;
@@ -12,8 +11,8 @@ export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'fil
     dropText?: StateProp<string>;
     error?: StateProp<boolean>;
     hint?: StateProp<any>;
-    files?: StateProp<UploadValue[]>;
-    onchange?: (files: UploadValue[]) => void;
+    files?: StateProp<UploadFile[]>;
+    onchange?: (files: UploadFile[]) => void;
     props?: {
         hint?: HTMLProps<HTMLSpanElement>;
     };

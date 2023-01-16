@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.19 [![16.01.2023](https://img.shields.io/date/1673877572)](https://github.com/d8corp/innetjs/tree/v0.1.19)
+
+- add `HoverCard`
+- refactor `Upload` components
+
 ### v0.1.18 [![15.01.2023](https://img.shields.io/date/1673794194)](https://github.com/d8corp/innetjs/tree/v0.1.18)
 
 - improve form utils

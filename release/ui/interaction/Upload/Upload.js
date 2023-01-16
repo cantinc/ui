@@ -50,18 +50,20 @@ function Upload(_a = {}) {
         for (const file of ref.value.files) {
             const ext = getExtension.getExtension(file);
             if (!imageExtensions.includes(ext)) {
-                result.push({
-                    src: ext,
-                    file,
-                });
+                // @ts-expect-error
+                file.src = ext;
+                // @ts-expect-error
+                result.push(file);
             }
             else {
                 result.push(new Promise((resolve, reject) => {
                     const fr = new FileReader();
-                    fr.onload = () => resolve({
-                        src: String(fr.result),
-                        file,
-                    });
+                    fr.onload = () => {
+                        // @ts-expect-error
+                        file.src = String(fr.result);
+                        // @ts-expect-error
+                        resolve(file);
+                    };
                     fr.onerror = reject;
                     fr.readAsDataURL(file);
                 }));
@@ -87,7 +89,7 @@ function Upload(_a = {}) {
             over.value && styles.over,
             dom.use(error) && styles.error,
         ])},children:[{type:'input',props:{...rest,multiple:multiple,type:'file',ref:ref,'data-empty':empty,oninput:handleInput,class:() => styles.input}},{type:'span',props:{class:() => styles.label},children:[label]},{type:'span',props:{class:() => styles.drag},children:[dragText]},{type:'span',props:{class:() => styles.drop},children:[dropText]},{type:'span',props:{class:() => styles.focus}},{type:'for',props:{of:files,key:'src'},children:[(item) => {
-            var _a;
+            var _a, _b;
             const show = dom.useShow(400);
             const hide = new dom.Ref();
             const getClass = () => classes__default["default"]([
@@ -97,7 +99,7 @@ function Upload(_a = {}) {
             ]);
             return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[item.value.src.length > 10
                     ? ({type:'img',props:{class:getClass,src:item.value.src}})
-                    : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_a = item.value.file) === null || _a === void 0 ? void 0 : _a.name.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[item.value.src]}]})]});
+                    : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_b = (_a = item.value) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[item.value.src]}]})]});
         }]},hintContent,{type:Icon.Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]});
 }
 
