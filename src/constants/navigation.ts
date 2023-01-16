@@ -198,6 +198,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/cards/Cards/Cards.ui'),
       },
+      {
+        slot: 'hover-card',
+        children: '<HoverCard />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/cards/HoverCard/HoverCard.ui'),
+      },
     ],
   },
   {

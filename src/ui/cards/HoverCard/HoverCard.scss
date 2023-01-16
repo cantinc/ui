@@ -1,0 +1,26 @@
+.root {
+  position: relative;
+  border: none;
+  background: transparent;
+  font: inherit;
+
+  width: var(--ui-hover-card-width, auto);
+}
+
+.card {
+  position: absolute;
+  transition: opacity .3s;
+  left: -1px;
+  right: -1px;
+  top: -1px;
+  z-index: 1;
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
