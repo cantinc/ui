@@ -59,7 +59,10 @@ export function useTouchHide ({
       touchHide.value = vertical ? touchY : touchX
     },
     handleTouchEnd () {
-      touchEnd?.()
+      if (touched.value) {
+        touchEnd?.()
+      }
+
       if (touchHide.value > length) {
         hide()
       }
