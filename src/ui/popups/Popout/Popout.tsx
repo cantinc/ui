@@ -11,7 +11,7 @@ import styles from './Popout.scss'
 const useStyle = style(styles)
 
 interface PopoutElementProps extends Omit<FlexProps, 'element'> {
-  element: Ref<HTMLElement>
+  element?: Ref<HTMLElement>
   contentStyle?: HTMLStyleProp
   onhide: () => void
   rootRef?: Ref<HTMLDivElement>
@@ -22,7 +22,19 @@ export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
   onhide?: () => void
 }
 
+export interface PopoutElementData {
+  rect: DOMRect
+  styles: CSSStyleDeclaration
+}
+
 let popoutCount = 0
+
+const createStyles = () => {
+  const styles = document.createElement('span').style
+  styles.setProperty('border-radius', '20px')
+
+  return styles
+}
 
 function PopoutElement ({
   element,
@@ -32,34 +44,36 @@ function PopoutElement ({
   rootRef = new Ref(),
   ...props
 }: PopoutElementProps) {
-  if (!element.value) return null
-
   const children = useChildren()
   const hide = useHidden()
   const preshow = useShow()
   const show = useShow(200)
   const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
     hide: onhide,
+    touchStart () {
+      elementData.value = getData()
+    },
   })
   const styles = useStyle()
 
   useEscapeListener(onhide)
 
-  const elementData = new State<{
-    rect: DOMRect
-    styles: CSSStyleDeclaration
-  }>({
-    rect: element.value.getBoundingClientRect(),
-    styles: window.getComputedStyle(element.value),
-  })
+  const getData = (): PopoutElementData => element?.value?.isConnected
+    ? ({
+        rect: element.value.getBoundingClientRect(),
+        styles: window.getComputedStyle(element.value),
+      })
+    : ({
+        rect: new DOMRect(window.innerWidth / 2, window.innerHeight / 2, 0, 0),
+        styles: createStyles(),
+      })
+
+  const elementData = new State<PopoutElementData>(getData())
 
   if (hide) {
     new Watch(() => {
-      if (element.value && hide.value) {
-        elementData.value = {
-          rect: element.value.getBoundingClientRect(),
-          styles: window.getComputedStyle(element.value),
-        }
+      if (hide.value) {
+        elementData.value = getData()
       }
     })
   }
@@ -124,7 +138,9 @@ export function Popout ({
     <show state={show}>
       <portal parent={document.body}>
         <delay ref={hide} hide={600}>
-          <PopoutElement onhide={() => setHide?.(false)} {...props}>
+          <PopoutElement
+            onhide={() => setHide?.(false)}
+            {...props}>
             {children}
           </PopoutElement>
         </delay>

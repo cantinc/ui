@@ -8,6 +8,8 @@ export interface TouchHideOptions {
   element?: Ref<HTMLElement>
   placement?: TouchHidePlacement
   length?: number
+  touchStart?: (e: TouchEvent) => void
+  touchEnd?: () => void
 }
 
 export function useTouchHide ({
@@ -15,6 +17,8 @@ export function useTouchHide ({
   element,
   placement = 'bottom',
   length = 100,
+  touchStart,
+  touchEnd,
 }: TouchHideOptions) {
   const vertical = placement === 'bottom' || placement === 'top'
   let startX: number
@@ -31,6 +35,8 @@ export function useTouchHide ({
       if (placement === 'bottom' && currentElement?.scrollTop) return
       if (placement === 'top' && currentElement && (currentElement.scrollHeight - currentElement.scrollTop !== currentElement.clientHeight)) return
 
+      touchStart?.(e)
+
       startX = e.touches[0].clientX
       startY = e.touches[0].clientY
       touched.value = true
@@ -44,6 +50,7 @@ export function useTouchHide ({
       const touchY = Math.abs(y)
 
       if (vertical ? (placement === 'bottom' ? touchX > y : touchX > -y) : (placement === 'left' ? touchY > -x : touchY > x)) {
+        touchEnd?.()
         touched.value = false
         touchHide.value = 0
         return
@@ -52,6 +59,7 @@ export function useTouchHide ({
       touchHide.value = vertical ? touchY : touchX
     },
     handleTouchEnd () {
+      touchEnd?.()
       if (touchHide.value > length) {
         hide()
       }
