@@ -291,6 +291,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Stories/Stories.ui'),
       },
+      {
+        slot: 'calendar',
+        children: '<Calendar />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Calendar/Calendar.ui'),
+      },
     ],
   },
   {
