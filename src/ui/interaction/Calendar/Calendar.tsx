@@ -1,6 +1,6 @@
-import { LoopItem, style } from '@innet/dom'
+import { LoopItem, pushSync, style } from '@innet/dom'
 import classes from 'html-classes'
-import { Cache, createEvent, State } from 'watch-state'
+import { Cache, createEvent, State, unwatch, Watch } from 'watch-state'
 
 import { getDaysInMonth, getMonth, getWeek, inputDateFormat } from '../../../utils'
 import { Icon } from '../../icons'
@@ -27,15 +27,15 @@ export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
   activeHandler?: (date: Date) => boolean
   selectedHandler?: (date: Date) => boolean
   disableHandler?: (date: Date) => boolean
-  renderCell?: (date: CalendarGridCell) => any
+  renderCell?: (date: LoopItem<CalendarGridCell>) => any
   onselect?: (date: string) => void
 }
 
-export const defaultCalendarCellRender = ({ date }: CalendarGridCell) => {
-  return date.getDate()
+export const defaultCalendarCellRender = (item: LoopItem<CalendarGridCell>): any => {
+  return new Cache(() => item.value.date.getDate())
 }
 
-export function Calendar ({
+export function * Calendar ({
   activeHandler,
   disableHandler,
   selectedHandler,
@@ -47,6 +47,10 @@ export function Calendar ({
   ...props
 }: CalendarProps = {}) {
   const styles = useStyle()
+  let position = -42
+  let rotationTop: boolean
+  const top = new State(0)
+  const margin = new State(0)
 
   const createCell = (date: Date, current = false) => {
     return {
@@ -104,6 +108,8 @@ export function Calendar ({
   })
 
   const handleNext = createEvent(() => {
+    rotationTop = false
+
     if (month.value > 10) {
       month.value = 0
       year.value++
@@ -113,6 +119,8 @@ export function Calendar ({
   })
 
   const handlePrev = createEvent(() => {
+    rotationTop = true
+
     if (month.value < 1) {
       month.value = 11
       year.value--
@@ -121,7 +129,7 @@ export function Calendar ({
     }
   })
 
-  return (
+  yield (
     <Flex
       {...props}
       vertical
@@ -152,22 +160,57 @@ export function Calendar ({
           </span>
         ))}
       </div>
-      <div class={() => styles.grid}>
-        <for of={grid} key='value'>
-          {(item: LoopItem<CalendarGridCell>) => (
-            <span class={() => classes([
-              styles.cell,
-              styles.cell,
-              item.value.current && styles.cellCurrent,
-              activeHandler?.(item.value.date) && styles.active,
-              disableHandler?.(item.value.date) && styles.disabled,
-              selectedHandler?.(item.value.date) && styles.selected,
-            ])}>
-              {() => renderCell(item.value)}
-            </span>
-          )}
-        </for>
+      <div class={() => styles.gridWrapper}>
+        <div
+          style={{
+            'margin-top': () => `${margin.value}px`,
+            top: () => `${top.value}px`,
+          }}
+          class={() => styles.grid}>
+          <for of={grid} key='value'>
+            {(item: LoopItem<CalendarGridCell>) => {
+              if (rotationTop) {
+                position--
+              } else {
+                position++
+              }
+
+              return (
+                <delay hide={300}>
+                  <span class={() => classes([
+                    styles.cell,
+                    styles.cell,
+                    item.value.current && styles.cellCurrent,
+                    activeHandler?.(item.value.date) && styles.active,
+                    disableHandler?.(item.value.date) && styles.disabled,
+                    selectedHandler?.(item.value.date) && styles.selected,
+                  ])}>
+                    {() => renderCell(item)}
+                  </span>
+                </delay>
+              )
+            }}
+          </for>
+        </div>
       </div>
     </Flex>
   )
+  new Watch(() => {
+    unwatch(() => {
+      top.value = position / 7 * -48
+
+      if (rotationTop) {
+        margin.value = position / 7 * 48
+      } else {
+        const nextValue = position / 7 * 48
+
+        setTimeout(() => {
+          pushSync(() => {
+            margin.value = nextValue
+          })
+        }, 300)
+      }
+    })
+    return grid.value
+  })
 }
