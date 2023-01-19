@@ -1,4 +1,4 @@
-import { LoopItem, pushSync, style } from '@innet/dom'
+import { inject, LoopItem, pushSync, StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State, unwatch, Watch } from 'watch-state'
 
@@ -28,6 +28,7 @@ export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
   selectedHandler?: (date: Date) => boolean
   disableHandler?: (date: Date) => boolean
   renderCell?: (date: LoopItem<CalendarGridCell>) => any
+  cellHeight?: StateProp<number>
   onselect?: (date: string) => void
 }
 
@@ -39,6 +40,7 @@ export function * Calendar ({
   activeHandler,
   disableHandler,
   selectedHandler,
+  cellHeight = 48,
   renderCell = defaultCalendarCellRender,
   onselect,
   selector = new State('date'),
@@ -49,6 +51,7 @@ export function * Calendar ({
   const styles = useStyle()
   let position = -42
   const rotationTop = new State(true)
+  const stopAnimation = new State(false)
   const top = new State(0)
   const margin = new State(0)
 
@@ -145,9 +148,14 @@ export function * Calendar ({
           </span>
         ))}
       </div>
-      <div class={() => styles.gridWrapper}>
+      <div
+        style={{
+          '--ui-calendar-cell-height': inject(cellHeight, height => `${height}px`),
+        }}
+        class={() => styles.gridWrapper}>
         <div
           style={{
+            transition: () => stopAnimation.value ? 'none' : '',
             'margin-top': () => `${margin.value}px`,
             top: () => `${top.value}px`,
           }}
@@ -162,14 +170,15 @@ export function * Calendar ({
 
               return (
                 <delay hide={300}>
-                  <span class={() => classes([
-                    styles.cell,
-                    styles.cell,
-                    item.value.current && styles.cellCurrent,
-                    activeHandler?.(item.value.date) && styles.active,
-                    disableHandler?.(item.value.date) && styles.disabled,
-                    selectedHandler?.(item.value.date) && styles.selected,
-                  ])}>
+                  <span
+                    class={() => classes([
+                      styles.cell,
+                      styles.cell,
+                      item.value.current && styles.cellCurrent,
+                      activeHandler?.(item.value.date) && styles.active,
+                      disableHandler?.(item.value.date) && styles.disabled,
+                      selectedHandler?.(item.value.date) && styles.selected,
+                    ])}>
                     {() => renderCell(item)}
                   </span>
                 </delay>
@@ -180,14 +189,34 @@ export function * Calendar ({
       </div>
     </Flex>
   )
+
+  let timer: any
+
+  new Watch((update) => {
+    const height = use(cellHeight)
+
+    if (update) {
+      stopAnimation.value = true
+      top.value = position / 7 * -1 * height
+      margin.value = position / 7 * height
+
+      clearTimeout(timer)
+
+      timer = setTimeout(() => {
+        stopAnimation.value = false
+      }, 100)
+    }
+  })
+
   new Watch(() => {
     unwatch(() => {
-      top.value = position / 7 * -48
+      const height = use(cellHeight)
+      top.value = position / 7 * -1 * height
 
       if (rotationTop.value) {
-        margin.value = position / 7 * 48
+        margin.value = position / 7 * height
       } else {
-        const nextValue = position / 7 * 48
+        const nextValue = position / 7 * height
 
         setTimeout(() => {
           pushSync(() => {
@@ -196,6 +225,7 @@ export function * Calendar ({
         }, 300)
       }
     })
+
     return grid.value
   })
 }

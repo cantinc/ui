@@ -21,7 +21,7 @@
 
 .gridWrapper {
   overflow: hidden;
-  height: 288px;
+  height: calc(var(--ui-calendar-cell-height) * 6);
 }
 
 .grid {
@@ -32,10 +32,12 @@
 }
 
 .cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color .3s, color .3s;
-  text-align: center;
-  padding: 14px 0;
   color: var(--color-50);
+  height: var(--ui-calendar-cell-height);
 
   &:hover {
     background: var(--color-surface-purple);
