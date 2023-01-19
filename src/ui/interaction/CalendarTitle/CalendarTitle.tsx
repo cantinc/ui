@@ -1,6 +1,6 @@
 import { HTMLStyleProps, Ref, style, useShow } from '@innet/dom'
 import classes from 'html-classes'
-import { createEvent, State } from 'watch-state'
+import { Cache, createEvent, State } from 'watch-state'
 
 import { getMonth } from '../../../utils'
 import { Icon } from '../../icons'
@@ -27,6 +27,7 @@ export function CalendarTitle ({
   ...props
 }: CalendarTitleProps = {}) {
   const styles = useStyle()
+  const disablePrev = new Cache(() => !year.value && !month.value)
 
   const handleNext = createEvent(() => {
     rotationTop.value = false
@@ -58,6 +59,7 @@ export function CalendarTitle ({
     <div {...props} class={() => styles.root}>
       <button
         type='button'
+        disabled={disablePrev}
         onclick={handlePrev}
         class={() => styles.arrow}>
         <Icon

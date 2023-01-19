@@ -8,8 +8,8 @@ const year = new State(new Date().getFullYear())
 const month = new State(new Date().getMonth())
 const rotationTop = new State(true)
 
-const startDate = new Date(2023, 0, 1)
-const endDate = new Date(2023, 1, 4)
+const startDate = new Date(year.value, month.value, 1)
+const endDate = new Date(year.value, month.value + 1, 4)
 const min = startDate.getTime()
 const max = endDate.getTime()
 
@@ -43,8 +43,8 @@ const year = new State(new Date().getFullYear())
 const month = new State(new Date().getMonth())
 const rotationTop = new State(true)
 
-const startDate = new Date(2023, 0, 1)
-const endDate = new Date(2023, 1, 4)
+const startDate = new Date(year.value, month.value, 1)
+const endDate = new Date(year.value, month.value + 1, 4)
 const min = startDate.getTime()
 const max = endDate.getTime()
 
