@@ -11,6 +11,12 @@ const useStyle = style(styles)
 
 export type CalendarSelector = 'date' | 'month' | 'year'
 
+const today = new Date()
+
+const todayYear = today.getFullYear()
+const todayMonth = today.getMonth()
+const todayDay = today.getDate()
+
 export interface CalendarGridCell {
   value: string
   date: Date
@@ -37,6 +43,10 @@ export const defaultCalendarCellRender = (item: LoopItem<CalendarGridCell>): any
   return new Cache(() => item.value.date.getDate())
 }
 
+const isToday = (date: Date) => {
+  return date.getDate() === todayDay && date.getFullYear() === todayYear && date.getMonth() === todayMonth
+}
+
 export function * Calendar ({
   activeHandler,
   disableHandler,
@@ -45,8 +55,8 @@ export function * Calendar ({
   renderCell = defaultCalendarCellRender,
   onselect,
   selector = new State('date'),
-  year = new State(new Date().getFullYear()),
-  month = new State(new Date().getMonth()),
+  year = new State(todayYear),
+  month = new State(todayMonth),
   rotationTop = new State(true),
   ...props
 }: CalendarProps = {}) {
@@ -151,7 +161,7 @@ export function * Calendar ({
                   <span
                     class={() => classes([
                       styles.cell,
-                      styles.cell,
+                      isToday(item.value.date) && styles.today,
                       item.value.current && styles.cellCurrent,
                       activeHandler?.(item.value.date) && styles.active,
                       disableHandler?.(item.value.date) && styles.disabled,
