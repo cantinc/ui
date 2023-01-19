@@ -1,35 +1,47 @@
 import { inject } from '@innet/dom'
 import { example } from 'src/app/Component'
-import { Calendar, Flex, Input } from 'src/ui'
+import { Calendar, Input } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
 
-const height = new State(120)
+const height = new State(24)
 
 export default example({
   id: 'cellHeight',
   title: 'cellHeight',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { inject } from '@innet/dom'
+import { State } from 'watch-state'
 
-import { Calendar } from '@cantinc/ui'
+import { Calendar, Input } from '@cantinc/ui'
+
+const height = new State(24)
 
 innet(
-  <Calendar />,
+  <Calendar cellHeight={height}>
+    <Input
+      padding={[0, 8]}
+      type='number'
+      oninput={value => {
+        height.value = Number(value)
+      }}
+      value={inject(height, String)}
+    />
+  </Calendar>,
   dom,
 )`,
   example: (
-    <Flex gap={16} vertical align='stretch'>
+    <Calendar cellHeight={height}>
       <Input
+        padding={[0, 8]}
         type='number'
         oninput={value => {
           height.value = Number(value)
         }}
         value={inject(height, String)}
       />
-      <Calendar cellHeight={height} />
-    </Flex>
+    </Calendar>
   ),
 })

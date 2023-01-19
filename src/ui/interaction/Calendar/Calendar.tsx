@@ -1,10 +1,10 @@
 import { inject, LoopItem, pushSync, StateProp, style, use } from '@innet/dom'
+import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { Cache, createEvent, State, unwatch, Watch } from 'watch-state'
+import { Cache, State, unwatch, Watch } from 'watch-state'
 
 import { getDaysInMonth, getWeek, inputDateFormat } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
-import { CalendarTitle } from '../CalendarTitle'
 import styles from './Calendar.scss'
 
 const useStyle = style(styles)
@@ -24,6 +24,7 @@ export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
   selector?: State<CalendarSelector>
   year?: State<number>
   month?: State<number>
+  rotationTop?: State<boolean>
   activeHandler?: (date: Date) => boolean
   selectedHandler?: (date: Date) => boolean
   disableHandler?: (date: Date) => boolean
@@ -46,11 +47,12 @@ export function * Calendar ({
   selector = new State('date'),
   year = new State(new Date().getFullYear()),
   month = new State(new Date().getMonth()),
+  rotationTop = new State(true),
   ...props
 }: CalendarProps = {}) {
+  const children = useChildren()
   const styles = useStyle()
   let position = -42
-  const rotationTop = new State(true)
   const stopAnimation = new State(false)
   const top = new State(0)
   const margin = new State(0)
@@ -110,37 +112,13 @@ export function * Calendar ({
     return grid
   })
 
-  const handleNext = createEvent(() => {
-    if (month.value > 10) {
-      month.value = 0
-      year.value++
-    } else {
-      month.value++
-    }
-  })
-
-  const handlePrev = createEvent(() => {
-    if (month.value < 1) {
-      month.value = 11
-      year.value--
-    } else {
-      month.value--
-    }
-  })
-
   yield (
     <Flex
       {...props}
       vertical
       align='stretch'
       class={() => styles.root}>
-      <CalendarTitle
-        rotationTop={rotationTop}
-        year={year}
-        month={month}
-        onPrev={handlePrev}
-        onNext={handleNext}
-      />
+      {children}
       <div class={() => styles.week}>
         {[...new Array(7)].map((_, i) => (
           <span class={() => styles.weekCell}>

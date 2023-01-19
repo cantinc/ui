@@ -293,9 +293,16 @@ export const navigation: PagesMenu = [
       },
       {
         slot: 'calendar',
+        exact: true,
         children: '<Calendar />',
         onclick: hideLayoutMenu,
         page: () => import('../ui/interaction/Calendar/Calendar.ui'),
+      },
+      {
+        slot: 'calendar-title',
+        children: '<CalendarTitle />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/CalendarTitle/CalendarTitle.ui'),
       },
     ],
   },
