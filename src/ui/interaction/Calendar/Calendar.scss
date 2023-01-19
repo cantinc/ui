@@ -2,23 +2,6 @@
   user-select: none;
 }
 
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-}
-
-.date {
-  text-transform: capitalize;
-  color: var(--color-secondary-50);
-  cursor: pointer;
-}
-
-.arrow {
-  cursor: pointer;
-}
-
 .week {
   margin-top: 24px;
   display: grid;

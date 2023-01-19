@@ -2,9 +2,9 @@ import { LoopItem, pushSync, style } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State, unwatch, Watch } from 'watch-state'
 
-import { getDaysInMonth, getMonth, getWeek, inputDateFormat } from '../../../utils'
-import { Icon } from '../../icons'
+import { getDaysInMonth, getWeek, inputDateFormat } from '../../../utils'
 import { Flex, FlexProps } from '../../layout'
+import { CalendarTitle } from '../CalendarTitle'
 import styles from './Calendar.scss'
 
 const useStyle = style(styles)
@@ -48,7 +48,7 @@ export function * Calendar ({
 }: CalendarProps = {}) {
   const styles = useStyle()
   let position = -42
-  let rotationTop: boolean
+  const rotationTop = new State(true)
   const top = new State(0)
   const margin = new State(0)
 
@@ -108,8 +108,6 @@ export function * Calendar ({
   })
 
   const handleNext = createEvent(() => {
-    rotationTop = false
-
     if (month.value > 10) {
       month.value = 0
       year.value++
@@ -119,8 +117,6 @@ export function * Calendar ({
   })
 
   const handlePrev = createEvent(() => {
-    rotationTop = true
-
     if (month.value < 1) {
       month.value = 11
       year.value--
@@ -135,24 +131,13 @@ export function * Calendar ({
       vertical
       align='stretch'
       class={() => styles.root}>
-      <div class={() => styles.title}>
-        <Icon
-          onclick={handlePrev}
-          icon='chevronLeft'
-          tabIndex={0}
-          class={() => styles.arrow}
-        />
-        <span tabIndex={0} class={() => styles.date}>
-          {() => getMonth(month.value)}
-          {year}
-        </span>
-        <Icon
-          onclick={handleNext}
-          icon='chevronRight'
-          tabIndex={0}
-          class={() => styles.arrow}
-        />
-      </div>
+      <CalendarTitle
+        rotationTop={rotationTop}
+        year={year}
+        month={month}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
       <div class={() => styles.week}>
         {[...new Array(7)].map((_, i) => (
           <span class={() => styles.weekCell}>
@@ -169,7 +154,7 @@ export function * Calendar ({
           class={() => styles.grid}>
           <for of={grid} key='value'>
             {(item: LoopItem<CalendarGridCell>) => {
-              if (rotationTop) {
+              if (unwatch(() => rotationTop.value)) {
                 position--
               } else {
                 position++
@@ -199,7 +184,7 @@ export function * Calendar ({
     unwatch(() => {
       top.value = position / 7 * -48
 
-      if (rotationTop) {
+      if (rotationTop.value) {
         margin.value = position / 7 * 48
       } else {
         const nextValue = position / 7 * 48

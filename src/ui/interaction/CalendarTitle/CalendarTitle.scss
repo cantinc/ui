@@ -1,0 +1,66 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  flex: 1;
+}
+
+.date {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-transform: capitalize;
+  color: var(--color-secondary-50);
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  transform: translate(-50%, 0);
+  font: inherit;
+  border: none;
+  background: none;
+
+  &.rotationTop {
+    transform: translate(-50%, -100%);
+  }
+}
+
+.dateShow {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+
+  &.rotationTop {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.dateHide {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+
+  &.rotationTop {
+    transform: translate(-50%, 0);
+  }
+}
+
+.arrow {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background: none;
+
+  & ~ & {
+    left: auto;
+    right: 5%;
+  }
+}
