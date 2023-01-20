@@ -2,16 +2,48 @@
 
 }
 
-.content {
-  align-items: stretch;
-  padding: 0 20px;
-  margin: 0 4px 24px;
-}
-
-.header {
-  padding: 24px;
-}
-
 .cell {
   cursor: pointer;
+}
+
+.content {
+  top: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.contentWrapper {
+  transition: opacity .3s, transform .3s;
+  height: 516px;
+  opacity: 0;
+  transform: translateX(100%);
+
+  &.date {
+    transform: translateX(-100%);
+  }
+}
+
+.contentShow {
+  &.date,
+  &.month,
+  &.year, {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contentHide {
+  &.date,
+  &.month,
+  &.year, {
+    opacity: 0;
+    position: absolute;
+    width: calc(100% - 48px);
+  }
+  &.date {
+    transform: translateX(-100%);
+  }
+  &.year {
+    transform: translateX(100%);
+  }
 }

@@ -1,5 +1,6 @@
 .root {
   --ui-space-flex: 1;
 
+  display: block;
   flex: var(--ui-space-flex);
 }
