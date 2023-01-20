@@ -159,6 +159,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/popups/Popout/Popout.ui'),
       },
+      {
+        slot: 'date-picker',
+        children: '<DatePicker />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/popups/DatePicker/DatePicker.ui'),
+      },
     ],
   },
   {

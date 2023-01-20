@@ -9,8 +9,6 @@ import styles from './Calendar.scss'
 
 const useStyle = style(styles)
 
-export type CalendarSelector = 'date' | 'month' | 'year'
-
 const today = new Date()
 
 const todayYear = today.getFullYear()
@@ -20,23 +18,19 @@ const todayDay = today.getDate()
 export interface CalendarGridCell {
   value: string
   date: Date
-  disabled: boolean
-  active: boolean
-  selected: boolean
   current: boolean
 }
 
 export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
-  selector?: State<CalendarSelector>
   year?: State<number>
   month?: State<number>
   rotationTop?: State<boolean>
-  activeHandler?: (date: Date) => boolean
-  selectedHandler?: (date: Date) => boolean
-  disableHandler?: (date: Date) => boolean
+  activeHandler?: (date: CalendarGridCell) => boolean
+  selectedHandler?: (date: CalendarGridCell) => boolean
+  disableHandler?: (date: CalendarGridCell) => boolean
   renderCell?: (date: LoopItem<CalendarGridCell>) => any
   cellHeight?: StateProp<number>
-  onselect?: (date: string) => void
+  onselect?: (cell: CalendarGridCell) => void
 }
 
 export const defaultCalendarCellRender = (item: LoopItem<CalendarGridCell>): any => {
@@ -54,7 +48,6 @@ export function * Calendar ({
   cellHeight = 48,
   renderCell = defaultCalendarCellRender,
   onselect,
-  selector = new State('date'),
   year = new State(todayYear),
   month = new State(todayMonth),
   rotationTop = new State(true),
@@ -68,13 +61,12 @@ export function * Calendar ({
   const margin = new State(0)
 
   const createCell = (date: Date, current = false) => {
+    const value = inputDateFormat(date)
+
     return {
       date,
-      value: inputDateFormat(date),
+      value,
       current,
-      disabled: disableHandler?.(date) || false,
-      active: activeHandler?.(date) || false,
-      selected: selectedHandler?.(date) || false,
     }
   }
 
@@ -159,13 +151,14 @@ export function * Calendar ({
               return (
                 <delay hide={300}>
                   <span
+                    onclick={() => onselect?.(item.value)}
                     class={() => classes([
                       styles.cell,
                       isToday(item.value.date) && styles.today,
                       item.value.current && styles.cellCurrent,
-                      activeHandler?.(item.value.date) && styles.active,
-                      disableHandler?.(item.value.date) && styles.disabled,
-                      selectedHandler?.(item.value.date) && styles.selected,
+                      activeHandler?.(item.value) && styles.active,
+                      disableHandler?.(item.value) && styles.disabled,
+                      selectedHandler?.(item.value) && styles.selected,
                     ])}>
                     {() => renderCell(item)}
                   </span>

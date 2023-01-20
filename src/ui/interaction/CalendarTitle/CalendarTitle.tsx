@@ -15,6 +15,8 @@ export interface CalendarTitleProps extends HTMLStyleProps<HTMLDivElement> {
   onNext?: () => void
   onPrev?: () => void
   onClick?: () => void
+  min?: Date
+  max?: Date
 }
 
 export function CalendarTitle ({
@@ -24,10 +26,20 @@ export function CalendarTitle ({
   onNext,
   onPrev,
   onClick,
+  min,
+  max,
   ...props
 }: CalendarTitleProps = {}) {
   const styles = useStyle()
-  const disablePrev = new Cache(() => !year.value && !month.value)
+  const disablePrev = new Cache(() => {
+    if (!year.value && !month.value) return true
+    return min && new Date(year.value, month.value) <= min
+  })
+
+  const disableNext = new Cache(() => {
+    if (year.value * 12 + month.value > 10000 * 12) return true
+    return max && new Date(year.value, month.value + 1) >= max
+  })
 
   const handleNext = createEvent(() => {
     rotationTop.value = false
@@ -91,6 +103,7 @@ export function CalendarTitle ({
       </div>
       <button
         type='button'
+        disabled={disableNext}
         onclick={handleNext}
         class={() => styles.arrow}>
         <Icon

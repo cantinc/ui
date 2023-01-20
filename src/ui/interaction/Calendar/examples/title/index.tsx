@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Calendar, CalendarTitle } from 'src/ui'
+import { Calendar, CalendarGridCell, CalendarTitle } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
@@ -13,17 +13,17 @@ const endDate = new Date(year.value, month.value + 1, 4)
 const min = startDate.getTime()
 const max = endDate.getTime()
 
-const handleActive = (date: Date) => {
+const handleActive = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time > min && time < max
 }
-const handleDisable = (date: Date) => {
+const handleDisable = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time < min
 }
-const handleSelect = (date: Date) => {
+const handleSelect = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time === endDate.getTime() || time === startDate.getTime()

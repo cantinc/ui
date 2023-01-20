@@ -96,10 +96,10 @@ export function Modal ({
         ])}>
         {title
           ? (
-            <header class={styles.header}>
+            <header class={() => styles.header}>
               {title || null}
               {subTitle && (
-                <div class={styles.subTitle}>
+                <div class={() => styles.subTitle}>
                   {subTitle}
                 </div>
               )}
@@ -108,13 +108,13 @@ export function Modal ({
           : null}
         {headButtonsLength
           ? (
-            <div class={styles.headButtons}>
+            <div class={() => styles.headButtons}>
               {headButtons.map(id => (
                 <button
                   {...buttonProps[id]}
                   data-button={id}
                   onclick={() => handleClose(id)}
-                  class={styles.headButton}>
+                  class={() => styles.headButton}>
                   {slots[`button-${id}`] || id}
                 </button>
               ))}
@@ -122,7 +122,7 @@ export function Modal ({
             )
           : null}
         {content && (
-          <div class={styles.content}>
+          <div class={() => styles.content}>
             {content}
           </div>
         )}
