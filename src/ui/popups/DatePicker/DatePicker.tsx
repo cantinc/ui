@@ -22,7 +22,7 @@ const todayMonth = today.getMonth()
 const todayDay = today.getDate()
 
 export const dataPickerCellHeight = new Cache<number>(() => {
-  return windowWidth.value < 768 ? (windowHeight.value - 285) / 6 : 57
+  return windowWidth.value < 768 ? (windowHeight.value - 290) / 6 : 57
 })
 
 export interface DatePickerProps extends ModalProps {
