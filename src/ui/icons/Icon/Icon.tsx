@@ -21,6 +21,7 @@ const iconsImports = {
   menu: () => import('./icons/MenuIcon'),
   user: () => import('./icons/UserIcon'),
   arrow: () => import('./icons/ArrowIcon'),
+  arrowLeft: () => import('./icons/ArrowLeftIcon'),
   geo: () => import('./icons/GeoIcon'),
   logout: () => import('./icons/LogoutIcon'),
   gear: () => import('./icons/GearIcon'),

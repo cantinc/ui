@@ -1,6 +1,5 @@
+import { windowWidth } from 'src/utils'
 import { Cache, State } from 'watch-state'
-
-import { windowWidth } from '../../window'
 
 export const isMobile = new Cache(() => windowWidth.value <= 1024)
 export const isDesktop = new Cache(() => !isMobile.value)

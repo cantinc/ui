@@ -37,10 +37,11 @@
 
 .link {
   text-decoration: none;
+  color: inherit;
 }
 
 .linkActive {
-  color: var(--color-link-dark);
+  color: var(--color-secondary-50);
 
   & + .submenu {
     visibility: visible;

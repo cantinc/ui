@@ -1,4 +1,4 @@
-import { inject, LoopItem, pushSync, StateProp, style, use } from '@innet/dom'
+import { inject, LoopItem, setTimeoutSync, StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State, unwatch, Watch } from 'watch-state'
@@ -199,10 +199,8 @@ export function * Calendar ({
       } else {
         const nextValue = position / 7 * height
 
-        setTimeout(() => {
-          pushSync(() => {
-            margin.value = nextValue
-          })
+        setTimeoutSync(() => {
+          margin.value = nextValue
         }, 300)
       }
     })

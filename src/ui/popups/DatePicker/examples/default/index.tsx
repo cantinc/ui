@@ -37,6 +37,8 @@ innet(
         <Modals>
           <show state={state}>
             <DatePicker
+              goBackText='Go back'
+              todayText='Today'
               apply='Apply'
               min={new Date(2023, 0, 20)}
               max={new Date(2023, 3, 20)}

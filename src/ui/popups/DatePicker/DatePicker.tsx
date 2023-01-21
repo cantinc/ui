@@ -1,9 +1,9 @@
 import { Ref, StateProp, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { State } from 'watch-state'
+import { Cache, createEvent, State } from 'watch-state'
 
-import { getDaysInMonth } from '../../../utils'
+import { getDaysInMonth, windowHeight, windowWidth } from '../../../utils'
 import { Button, Buttons } from '../../buttons'
 import { Icon } from '../../icons'
 import { Calendar, CalendarGridCell } from '../../interaction/Calendar'
@@ -21,6 +21,10 @@ const todayYear = today.getFullYear()
 const todayMonth = today.getMonth()
 const todayDay = today.getDate()
 
+export const dataPickerCellHeight = new Cache<number>(() => {
+  return windowWidth.value < 768 ? (windowHeight.value - 285) / 6 : 57
+})
+
 export interface DatePickerProps extends ModalProps {
   selector?: State<DataPickerSelector>
   year?: State<number>
@@ -31,6 +35,8 @@ export interface DatePickerProps extends ModalProps {
   min?: Date
   max?: Date
   value?: StateProp<string>
+  goBackText?: any
+  todayText?: any
   onChange?: (value: string) => void
 }
 
@@ -43,10 +49,13 @@ export function DatePicker ({
   rotationTop = new State(true),
   min,
   max,
+  goBackText,
+  todayText,
   ...props
 }: DatePickerProps = {}) {
   const children = useChildren()
   const styles = useStyle()
+  const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear())
 
   const handleDisable = ({ date }: CalendarGridCell) => {
     if (min && date < min) {
@@ -70,7 +79,7 @@ export function DatePicker ({
 
     const classNames = () => classes([
       styles.contentWrapper,
-      styles[currentSelector],
+      currentSelector !== 'date' && styles.rightContent,
       (!show || show.value) && styles.contentShow,
       hide.value?.value && styles.contentHide,
     ])
@@ -81,7 +90,7 @@ export function DatePicker ({
           <div class={classNames}>
             <Space />
             <Calendar
-              cellHeight={57}
+              cellHeight={dataPickerCellHeight}
               onselect={({ date }) => {
                 const newMonth = date.getMonth()
 
@@ -94,6 +103,7 @@ export function DatePicker ({
               }}
               class={{
                 cell: () => styles.cell,
+                gridWrapper: () => styles.gridWrapper,
               }}
               year={year}
               month={month}
@@ -102,7 +112,11 @@ export function DatePicker ({
               disableHandler={handleDisable}>
               <CalendarTitle
                 onClick={() => {
-                  selector.value = 'year'
+                  if (isYearSelectable) {
+                    selector.value = 'year'
+                  } else {
+                    selector.value = 'month'
+                  }
                 }}
                 onNext={() => {
                   const currentDate = new Date(year.value, month.value + 1, -1)
@@ -142,31 +156,35 @@ export function DatePicker ({
       )
     }
 
-    if (currentSelector === 'month') {
-      return (
-        <div class={classNames}>
-          <Flex>
-            <Icon icon='arrow' />
-            <a>Go back</a>
-          </Flex>
-        </div>
-      )
-    }
-
     return (
       <delay ref={hide} hide={300}>
         <div class={classNames}>
-          <Flex>
-            <Flex<HTMLAnchorElement>
+          <Flex
+            padding={[28, 8]}
+            class={() => styles.contentHeader}>
+            <button
+              class={() => styles.contentHeaderButton}
               onclick={() => {
                 selector.value = 'date'
-              }}
-              gap={8}
-              element='a'>
-              <Icon icon='chevronLeft' />
-              Go back
-            </Flex>
+              }}>
+              <Icon icon='arrowLeft' />
+              {goBackText}
+            </button>
+            <Space />
+            <button
+              class={() => styles.contentHeaderButton}
+              onclick={createEvent(() => {
+                year.value = today.getFullYear()
+                month.value = today.getMonth()
+                day.value = today.getDate()
+                selector.value = 'date'
+              })}>
+              {todayText}
+            </button>
           </Flex>
+          <div style={{ height: '436px' }}>
+            123
+          </div>
         </div>
       </delay>
     )
@@ -178,7 +196,6 @@ export function DatePicker ({
       {...props}
       class={{
         root: () => styles.root,
-        header: () => styles.header,
         content: () => styles.content,
       }}>
       {children && <slot name='title'>{children}</slot>}
