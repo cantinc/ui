@@ -32,6 +32,39 @@
   cursor: pointer;
 }
 
+.cellCustom {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: var(--color-surface-purple);
+  }
+}
+
+.cellSelected {
+  background-color: var(--color-primary-50);
+  color: var(--color-100);
+
+  &:hover {
+    background-color: var(--color-primary-40);
+  }
+}
+
+.cellToday {
+  border: 1px solid var(--color-primary-70);
+  box-sizing: border-box;
+}
+
+.cellDisabled {
+  pointer-events: none;
+  background-color: var(--color-90);
+  color: var(--color-70);
+}
+
 .content {
   top: 0;
   overflow: hidden;
@@ -67,4 +100,17 @@
   &.rightContent {
     transform: translateX(100%);
   }
+}
+
+.contentGridWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 436px;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 1;
 }

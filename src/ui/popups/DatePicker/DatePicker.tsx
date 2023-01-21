@@ -3,7 +3,7 @@ import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
 
-import { getDaysInMonth, windowHeight, windowWidth } from '../../../utils'
+import { getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
 import { Button, Buttons } from '../../buttons'
 import { Icon } from '../../icons'
 import { Calendar, CalendarGridCell } from '../../interaction/Calendar'
@@ -72,6 +72,45 @@ export function DatePicker ({
     return day.value === date.getDate() && month.value === date.getMonth()
   }
 
+  const handleNext = () => {
+    const currentDate = new Date(year.value, month.value + 1, -1)
+
+    if (max && max < new Date(year.value, month.value, day.value)) {
+      day.value = max.getDate()
+    } else if (getDaysInMonth(currentDate) < day.value) {
+      day.value = getDaysInMonth(currentDate)
+    }
+  }
+
+  const handlePrev = () => {
+    const currentDate = new Date(year.value, month.value + 1, -1)
+
+    if (min && min > new Date(year.value, month.value, day.value)) {
+      day.value = min.getDate()
+    } else if (getDaysInMonth(currentDate) < day.value) {
+      day.value = getDaysInMonth(currentDate)
+    }
+  }
+
+  const handleTitleClick = () => {
+    if (isYearSelectable) {
+      selector.value = 'year'
+    } else {
+      selector.value = 'month'
+    }
+  }
+
+  const handleSelectDate = ({ date }: CalendarGridCell) => {
+    const newMonth = date.getMonth()
+
+    if (month.value !== newMonth) {
+      rotationTop.value = month.value > newMonth
+      month.value = date.getMonth()
+    }
+
+    day.value = date.getDate()
+  }
+
   const renderContent = (update: boolean) => {
     const show = update && useShow()
     const hide = new Ref<State<boolean>>()
@@ -91,16 +130,7 @@ export function DatePicker ({
             <Space />
             <Calendar
               cellHeight={dataPickerCellHeight}
-              onselect={({ date }) => {
-                const newMonth = date.getMonth()
-
-                if (month.value !== newMonth) {
-                  rotationTop.value = month.value > newMonth
-                  month.value = date.getMonth()
-                }
-
-                day.value = date.getDate()
-              }}
+              onselect={handleSelectDate}
               class={{
                 cell: () => styles.cell,
                 gridWrapper: () => styles.gridWrapper,
@@ -111,31 +141,9 @@ export function DatePicker ({
               selectedHandler={handleSelect}
               disableHandler={handleDisable}>
               <CalendarTitle
-                onClick={() => {
-                  if (isYearSelectable) {
-                    selector.value = 'year'
-                  } else {
-                    selector.value = 'month'
-                  }
-                }}
-                onNext={() => {
-                  const currentDate = new Date(year.value, month.value + 1, -1)
-
-                  if (max && max < new Date(year.value, month.value, day.value)) {
-                    day.value = max.getDate()
-                  } else if (getDaysInMonth(currentDate) < day.value) {
-                    day.value = getDaysInMonth(currentDate)
-                  }
-                }}
-                onPrev={() => {
-                  const currentDate = new Date(year.value, month.value + 1, -1)
-
-                  if (min && min > new Date(year.value, month.value, day.value)) {
-                    day.value = min.getDate()
-                  } else if (getDaysInMonth(currentDate) < day.value) {
-                    day.value = getDaysInMonth(currentDate)
-                  }
-                }}
+                onClick={handleTitleClick}
+                onNext={handleNext}
+                onPrev={handlePrev}
                 min={min}
                 max={max}
                 rotationTop={rotationTop}
@@ -154,6 +162,40 @@ export function DatePicker ({
           </div>
         </delay>
       )
+    }
+
+    const renderMonth = () => {
+      return (
+        <div class={() => styles.monthGrid}>
+          {[...new Array(12)].map((_, i) => (
+            <div
+              onclick={() => {
+                if (i > month.value) {
+                  month.value = i
+                  handleNext()
+                } else {
+                  month.value = i
+                  handlePrev()
+                }
+
+                selector.value = 'date'
+              }}
+              class={() => classes([
+                styles.cellCustom,
+                month.value === i && styles.cellSelected,
+                i === todayMonth && styles.cellToday,
+                year.value === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
+                year.value === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
+              ])}>
+              {getMonth(i, 'short')}
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    const renderYear = () => {
+      return 'year'
     }
 
     return (
@@ -182,8 +224,8 @@ export function DatePicker ({
               {todayText}
             </button>
           </Flex>
-          <div style={{ height: '436px' }}>
-            123
+          <div class={() => styles.contentGridWrapper}>
+            {currentSelector === 'month' ? renderMonth : renderYear}
           </div>
         </div>
       </delay>
