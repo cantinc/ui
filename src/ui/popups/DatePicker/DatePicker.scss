@@ -39,6 +39,7 @@
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
   text-transform: capitalize;
+  min-height: 60px;
 
   &:hover {
     background-color: var(--color-surface-purple);
@@ -114,10 +115,48 @@
   align-items: stretch;
   flex: 1;
   flex-basis: 436px;
+  overflow: hidden auto;
+  position: relative;
 }
 
 .monthGrid {
+  position: sticky;
+  top: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex: 1;
+  opacity: 0;
+  transform: translateX(50%);
+  transition: opacity .3s, transform .3s;
+}
+
+.monthGridShow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.monthGridHide {
+  opacity: 0;
+}
+
+.yearGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex: 1;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  transform: translateX(50%);
+}
+
+.yearGridShow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.yearGridHide {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  transform: translateX(-50%);
 }

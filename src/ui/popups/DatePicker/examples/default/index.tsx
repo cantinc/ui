@@ -40,8 +40,8 @@ innet(
               goBackText='Go back'
               todayText='Today'
               apply='Apply'
-              min={new Date(2023, 0, 20)}
-              max={new Date(2023, 3, 20)}
+              min={new Date(2024, 0, 20)}
+              max={new Date(2024, 3, 20)}
               onclose={hide}>
               Title
             </DatePicker>

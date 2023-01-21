@@ -1,7 +1,7 @@
 import { Ref, StateProp, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { Cache, createEvent, State } from 'watch-state'
+import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
 
 import { getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
 import { Button, Buttons } from '../../buttons'
@@ -56,6 +56,7 @@ export function DatePicker ({
   const children = useChildren()
   const styles = useStyle()
   const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear())
+  const showCustomGrid = new Cache(() => selector.value !== 'date')
 
   const handleDisable = ({ date }: CalendarGridCell) => {
     if (min && date < min) {
@@ -114,16 +115,16 @@ export function DatePicker ({
   const renderContent = (update: boolean) => {
     const show = update && useShow()
     const hide = new Ref<State<boolean>>()
-    const currentSelector = selector.value
+    const isCustom = showCustomGrid.value
 
     const classNames = () => classes([
       styles.contentWrapper,
-      currentSelector !== 'date' && styles.rightContent,
+      isCustom && styles.rightContent,
       (!show || show.value) && styles.contentShow,
       hide.value?.value && styles.contentHide,
     ])
 
-    if (currentSelector === 'date') {
+    if (!isCustom) {
       return (
         <delay ref={hide} hide={300}>
           <div class={classNames}>
@@ -165,37 +166,93 @@ export function DatePicker ({
     }
 
     const renderMonth = () => {
-      return (
-        <div class={() => styles.monthGrid}>
-          {[...new Array(12)].map((_, i) => (
-            <div
-              onclick={() => {
-                if (i > month.value) {
-                  month.value = i
-                  handleNext()
-                } else {
-                  month.value = i
-                  handlePrev()
-                }
+      const show = useShow()
+      const hide = new Ref<State<boolean>>()
 
-                selector.value = 'date'
-              }}
-              class={() => classes([
-                styles.cellCustom,
-                month.value === i && styles.cellSelected,
-                i === todayMonth && styles.cellToday,
-                year.value === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
-                year.value === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
-              ])}>
-              {getMonth(i, 'short')}
-            </div>
-          ))}
-        </div>
+      return (
+        <delay ref={hide} hide={300}>
+          <div class={() => classes([
+            styles.monthGrid,
+            show.value && styles.monthGridShow,
+            hide.value?.value && styles.monthGridHide,
+          ])}>
+            {[...new Array(12)].map((_, i) => (
+              <div
+                onclick={() => {
+                  if (i > month.value) {
+                    month.value = i
+                    handleNext()
+                  } else {
+                    month.value = i
+                    handlePrev()
+                  }
+
+                  selector.value = 'date'
+                }}
+                class={() => classes([
+                  styles.cellCustom,
+                  month.value === i && styles.cellSelected,
+                  i === todayMonth && styles.cellToday,
+                  year.value === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
+                  year.value === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
+                ])}>
+                {getMonth(i, 'short')}
+              </div>
+            ))}
+          </div>
+        </delay>
       )
     }
 
     const renderYear = () => {
-      return 'year'
+      const minYear = min ? min.getFullYear() : 1900
+      const maxYear = max ? max.getMonth() : 2050
+      const hide = new Ref<State<boolean>>()
+      const show = useShow()
+
+      return (
+        <delay ref={hide} hide={300}>
+          <div class={() => classes([
+            styles.yearGrid,
+            show.value && styles.yearGridShow,
+            hide.value?.value && styles.yearGridHide,
+          ])}>
+            {[...new Array(maxYear - minYear + 1)].map((_, i) => {
+              const currentYear = minYear + i
+              const ref = new Ref<HTMLDivElement>()
+
+              if (unwatch(() => year.value) === currentYear) {
+                const timer = setTimeout(() => {
+                  ref.value?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                  })
+                }, 400)
+
+                onDestroy(() => {
+                  clearTimeout(timer)
+                })
+              }
+
+              return (
+                <div
+                  ref={ref}
+                  onclick={() => {
+                    year.value = currentYear
+                    selector.value = 'month'
+                  }}
+                  class={() => classes([
+                    styles.cellCustom,
+                    year.value === currentYear && styles.cellSelected,
+                    currentYear === todayYear && styles.cellToday,
+                  ])}>
+                  {currentYear}
+                </div>
+              )
+            })}
+          </div>
+        </delay>
+      )
     }
 
     return (
@@ -225,7 +282,7 @@ export function DatePicker ({
             </button>
           </Flex>
           <div class={() => styles.contentGridWrapper}>
-            {currentSelector === 'month' ? renderMonth : renderYear}
+            {() => selector.value === 'date' ? null : selector.value === 'month' ? renderMonth() : renderYear()}
           </div>
         </div>
       </delay>
