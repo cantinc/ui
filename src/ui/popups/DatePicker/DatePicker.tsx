@@ -40,15 +40,27 @@ export interface DatePickerProps extends ModalProps {
   onChange?: (value: string) => void
 }
 
+const getMinMax = (value: number, min?: number, max?: number) => {
+  if (min !== undefined && min > value) {
+    return min
+  }
+
+  if (max !== undefined && max < value) {
+    return max
+  }
+
+  return value
+}
+
 export function DatePicker ({
   apply,
-  selector = new State('date'),
-  year = new State(todayYear),
-  month = new State(todayMonth),
-  day = new State(todayDay),
-  rotationTop = new State(true),
   min,
   max,
+  selector = new State('date'),
+  year = new State(getMinMax(todayYear, min?.getFullYear(), max?.getFullYear())),
+  month = new State(getMinMax(todayMonth, min?.getMonth(), max?.getMonth())),
+  day = new State(getMinMax(todayDay, min?.getDate(), max?.getDate())),
+  rotationTop = new State(true),
   goBackText,
   todayText,
   ...props
@@ -101,16 +113,22 @@ export function DatePicker ({
     }
   }
 
-  const handleSelectDate = ({ date }: CalendarGridCell) => {
+  const handleSelectDate = createEvent(({ date }: CalendarGridCell) => {
     const newMonth = date.getMonth()
+    const newYear = date.getFullYear()
 
     if (month.value !== newMonth) {
       rotationTop.value = month.value > newMonth
-      month.value = date.getMonth()
+      month.value = newMonth
+    }
+
+    if (year.value !== newYear) {
+      rotationTop.value = year.value > newYear
+      year.value = newYear
     }
 
     day.value = date.getDate()
-  }
+  })
 
   const renderContent = (update: boolean) => {
     const show = update && useShow()
@@ -206,9 +224,23 @@ export function DatePicker ({
 
     const renderYear = () => {
       const minYear = min ? min.getFullYear() : 1900
-      const maxYear = max ? max.getMonth() : 2050
+      const maxYear = max ? max.getFullYear() : 2050
       const hide = new Ref<State<boolean>>()
       const show = useShow()
+
+      const availableYears = maxYear - minYear + 1
+      let before = 0
+      let after = 0
+
+      if (availableYears < 28) {
+        const half = (28 - availableYears) / 2
+        if (half % 1) {
+          before = half | 0
+          after = (half | 0) + 1
+        } else {
+          before = after = half
+        }
+      }
 
       return (
         <delay ref={hide} hide={300}>
@@ -217,7 +249,22 @@ export function DatePicker ({
             show.value && styles.yearGridShow,
             hide.value?.value && styles.yearGridHide,
           ])}>
-            {[...new Array(maxYear - minYear + 1)].map((_, i) => {
+            {[...new Array(before)].map((_, i) => {
+              const currentYear = minYear - before + i
+
+              return (
+                <div
+                  class={() => classes([
+                    styles.cellCustom,
+                    styles.cellDisabled,
+                    year.value === currentYear && styles.cellSelected,
+                    currentYear === todayYear && styles.cellToday,
+                  ])}>
+                  {currentYear}
+                </div>
+              )
+            })}
+            {[...new Array(availableYears)].map((_, i) => {
               const currentYear = minYear + i
               const ref = new Ref<HTMLDivElement>()
 
@@ -243,6 +290,21 @@ export function DatePicker ({
                   }}
                   class={() => classes([
                     styles.cellCustom,
+                    year.value === currentYear && styles.cellSelected,
+                    currentYear === todayYear && styles.cellToday,
+                  ])}>
+                  {currentYear}
+                </div>
+              )
+            })}
+            {[...new Array(after)].map((_, i) => {
+              const currentYear = minYear + availableYears + i
+
+              return (
+                <div
+                  class={() => classes([
+                    styles.cellCustom,
+                    styles.cellDisabled,
                     year.value === currentYear && styles.cellSelected,
                     currentYear === todayYear && styles.cellToday,
                   ])}>
