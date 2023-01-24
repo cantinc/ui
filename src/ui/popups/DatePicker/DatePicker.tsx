@@ -166,8 +166,11 @@ export function DatePicker ({
                 min={min}
                 max={max}
                 rotationTop={rotationTop}
-                year={year}
-                month={month}
+                value={new Cache(() => new Date(year.value, month.value))}
+                onChange={createEvent((date: Date) => {
+                  year.value = date.getFullYear()
+                  month.value = date.getMonth()
+                })}
               />
             </Calendar>
             <Space gap={apply && 24} />

@@ -1,6 +1,6 @@
 import { example } from 'src/app/Component'
 import { Calendar, CalendarGridCell, CalendarTitle } from 'src/ui'
-import { State } from 'watch-state'
+import { Cache, createEvent, State } from 'watch-state'
 
 import description from './README.md'
 
@@ -90,8 +90,11 @@ innet(
       activeHandler={handleActive}>
       <CalendarTitle
         rotationTop={rotationTop}
-        year={year}
-        month={month}
+        value={new Cache(() => new Date(year.value, month.value))}
+        onChange={createEvent((date: Date) => {
+          year.value = date.getFullYear()
+          month.value = date.getMonth()
+        })}
       />
     </Calendar>
   ),

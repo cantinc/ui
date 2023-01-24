@@ -1,16 +1,16 @@
-import { HTMLStyleProps, Ref, style, useShow } from '@innet/dom'
+import { HTMLStyleProps, Ref, StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
 
-import { getMonth } from '../../../utils'
+import { actionProp, getMonth } from '../../../utils'
 import { Icon } from '../../icons'
 import styles from './CalendarTitle.scss'
 
 const useStyle = style(styles)
 
 export interface CalendarTitleProps extends HTMLStyleProps<HTMLDivElement> {
-  year?: State<number>
-  month?: State<number>
+  value?: StateProp<Date>
+  onChange?: (date: Date) => void
   rotationTop?: State<boolean>
   onNext?: () => void
   onPrev?: () => void
@@ -19,36 +19,35 @@ export interface CalendarTitleProps extends HTMLStyleProps<HTMLDivElement> {
   max?: Date
 }
 
+export const minCalendarDate = new Date(0, 0, 0, 0, 0, 0, 0)
+export const maxCalendarDate = new Date(10000, 0, 0, 0, 0, 0, 0)
+
 export function CalendarTitle ({
-  year = new State(new Date().getFullYear()),
-  month = new State(new Date().getMonth()),
+  value = new State(new Date()),
+  onChange,
   rotationTop = new State(),
   onNext,
   onPrev,
   onClick,
-  min,
-  max,
+  min = minCalendarDate,
+  max = maxCalendarDate,
   ...props
 }: CalendarTitleProps = {}) {
-  const styles = useStyle()
-  const disablePrev = new Cache(() => {
-    if (!year.value && !month.value) return true
-    return min && new Date(year.value, month.value) <= min
-  })
+  onChange = actionProp(value, onChange)
 
-  const disableNext = new Cache(() => {
-    if (year.value * 12 + month.value > 10000 * 12) return true
-    return max && new Date(year.value, month.value + 1) >= max
-  })
+  const styles = useStyle()
+  const disablePrev = new Cache(() => use(value) <= min)
+  const disableNext = new Cache(() => use(value) >= max)
 
   const handleNext = createEvent(() => {
     rotationTop.value = false
+    const date = use(value)
+    const month = date.getMonth()
 
-    if (month.value > 10) {
-      month.value = 0
-      year.value++
+    if (month > 10) {
+      onChange?.(new Date(date.getFullYear() + 1, 0))
     } else {
-      month.value++
+      onChange?.(new Date(date.getFullYear(), month + 1))
     }
 
     onNext?.()
@@ -56,12 +55,13 @@ export function CalendarTitle ({
 
   const handlePrev = createEvent(() => {
     rotationTop.value = true
+    const date = use(value)
+    const month = date.getMonth()
 
-    if (month.value < 1) {
-      month.value = 11
-      year.value--
+    if (month < 1) {
+      onChange?.(new Date(date.getFullYear() - 1, 0))
     } else {
-      month.value--
+      onChange?.(new Date(date.getFullYear(), month - 1))
     }
 
     onPrev?.()
@@ -82,6 +82,7 @@ export function CalendarTitle ({
         {() => {
           const show = useShow()
           const hide = new Ref<State<boolean>>()
+          const date = use(value)
 
           return (
             <delay ref={hide} hide={300}>
@@ -94,8 +95,8 @@ export function CalendarTitle ({
                   show.value && styles.dateShow,
                   hide.value?.value && styles.dateHide,
                 ])}>
-                {getMonth(month.value)}
-                {year?.value}
+                {getMonth(date.getMonth())}
+                {date.getFullYear()}
               </button>
             </delay>
           )
