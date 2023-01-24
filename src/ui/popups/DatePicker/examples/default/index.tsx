@@ -19,13 +19,38 @@ export default example({
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
+import { State } from 'watch-state'
 
-import { DatePicker, Modals } from '@cantinc/ui'
+import { DatePicker, Modals, Button } from '@cantinc/ui'
+
+const state = new State(false)
+
+const show = () => {
+  state.value = true
+}
+const hide = () => {
+  state.value = false
+}
 
 innet(
-  <Modals>
-    <DatePicker />
-  </Modals>,
+  <>
+    <Button onclick={show}>
+      Show
+    </Button>
+    <portal parent={document.body}>
+      <Modals>
+        <show state={state}>
+          <DatePicker
+            goBackText='Go back'
+            todayText='Today'
+            apply='Apply'
+            onclose={hide}>
+            Title
+          </DatePicker>
+        </show>
+      </Modals>
+    </portal>
+  </>,
   dom,
 )`,
   example: (
@@ -40,8 +65,6 @@ innet(
               goBackText='Go back'
               todayText='Today'
               apply='Apply'
-              min={new Date(2024, 0, 20)}
-              max={new Date(2024, 3, 20)}
               onclose={hide}>
               Title
             </DatePicker>

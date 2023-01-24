@@ -1,3 +1,5 @@
+@import "src/styles/breakpoints";
+
 .root {
 
 }
@@ -110,13 +112,23 @@
 }
 
 .contentGridWrapper {
+  --ui-data-picker-content-height: calc(var(--window-height) - 200px);
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
   flex: 1;
-  flex-basis: 436px;
-  overflow: hidden auto;
   position: relative;
+  overflow: hidden auto;
+  height: var(--ui-data-picker-content-height);
+  max-height: var(--ui-data-picker-content-height);
+  min-height: var(--ui-data-picker-content-height);
+
+  @media (min-width: $tablet) {
+    height: 436px;
+    max-height: 436px;
+    min-height: 436px;
+  }
 }
 
 .monthGrid {

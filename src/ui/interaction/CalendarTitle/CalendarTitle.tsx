@@ -2,7 +2,7 @@ import { HTMLStyleProps, Ref, StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
 
-import { actionProp, getMonth } from '../../../utils'
+import { actionProp, dateMinMax, getDaysInMonth, getMonth } from '../../../utils'
 import { Icon } from '../../icons'
 import styles from './CalendarTitle.scss'
 
@@ -38,6 +38,8 @@ export function CalendarTitle ({
   const styles = useStyle()
   const disablePrev = new Cache(() => use(value) <= min)
   const disableNext = new Cache(() => use(value) >= max)
+  const year = new Cache(() => use(value).getFullYear())
+  const month = new Cache(() => use(value).getMonth())
 
   const handleNext = createEvent(() => {
     rotationTop.value = false
@@ -45,9 +47,23 @@ export function CalendarTitle ({
     const month = date.getMonth()
 
     if (month > 10) {
-      onChange?.(new Date(date.getFullYear() + 1, 0))
+      onChange?.(dateMinMax(
+        new Date(date.getFullYear() + 1, 0, Math.min(
+          date.getDate(),
+          getDaysInMonth(new Date(date.getFullYear() + 1, 0)),
+        )),
+        min,
+        max,
+      ))
     } else {
-      onChange?.(new Date(date.getFullYear(), month + 1))
+      onChange?.(dateMinMax(
+        new Date(date.getFullYear(), month + 1, Math.min(
+          date.getDate(),
+          getDaysInMonth(new Date(date.getFullYear(), month + 1)),
+        )),
+        min,
+        max,
+      ))
     }
 
     onNext?.()
@@ -59,9 +75,23 @@ export function CalendarTitle ({
     const month = date.getMonth()
 
     if (month < 1) {
-      onChange?.(new Date(date.getFullYear() - 1, 11))
+      onChange?.(dateMinMax(
+        new Date(date.getFullYear() - 1, 11, Math.min(
+          date.getDate(),
+          getDaysInMonth(new Date(date.getFullYear() - 1, 11)),
+        )),
+        min,
+        max,
+      ))
     } else {
-      onChange?.(new Date(date.getFullYear(), month - 1))
+      onChange?.(dateMinMax(
+        new Date(date.getFullYear(), month - 1, Math.min(
+          date.getDate(),
+          getDaysInMonth(new Date(date.getFullYear(), month - 1)),
+        )),
+        min,
+        max,
+      ))
     }
 
     onPrev?.()
@@ -82,7 +112,8 @@ export function CalendarTitle ({
         {() => {
           const show = useShow()
           const hide = new Ref<State<boolean>>()
-          const date = use(value)
+          const curYear = year.value
+          const curMonth = month.value
 
           return (
             <delay ref={hide} hide={300}>
@@ -95,8 +126,8 @@ export function CalendarTitle ({
                   show.value && styles.dateShow,
                   hide.value?.value && styles.dateHide,
                 ])}>
-                {getMonth(date.getMonth())}
-                {date.getFullYear()}
+                {getMonth(curMonth)}
+                {curYear}
               </button>
             </delay>
           )

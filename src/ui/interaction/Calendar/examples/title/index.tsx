@@ -38,26 +38,25 @@ import { State } from 'watch-state'
 
 import { Calendar, CalendarTitle } from '@cantinc/ui'
 
-const year = new State(new Date().getFullYear())
-const month = new State(new Date().getMonth())
+const value = new State(new Date())
 const rotationTop = new State(true)
 
-const startDate = new Date(year.value, month.value, 1)
-const endDate = new Date(year.value, month.value + 1, 4)
+const startDate = new Date(value.value.getFullYear(), value.value.getMonth(), 1)
+const endDate = new Date(value.value.getFullYear(), value.value.getMonth() + 1, 4)
 const min = startDate.getTime()
 const max = endDate.getTime()
 
-const handleActive = (date: Date) => {
+const handleActive = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time > min && time < max
 }
-const handleDisable = (date: Date) => {
+const handleDisable = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time < min
 }
-const handleSelect = (date: Date) => {
+const handleSelect = ({ date }: CalendarGridCell) => {
   const time = date.getTime()
 
   return time === endDate.getTime() || time === startDate.getTime()

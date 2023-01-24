@@ -1,9 +1,9 @@
-import { Ref, StateProp, style, useShow } from '@innet/dom'
+import { Ref, StateProp, style, use, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
 
-import { getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
+import { actionProp, dateMinMax, getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
 import { Button, Buttons } from '../../buttons'
 import { Icon } from '../../icons'
 import { Calendar, CalendarGridCell } from '../../interaction/Calendar'
@@ -19,7 +19,6 @@ export type DataPickerSelector = 'date' | 'month' | 'year'
 const today = new Date()
 const todayYear = today.getFullYear()
 const todayMonth = today.getMonth()
-const todayDay = today.getDate()
 
 export const dataPickerCellHeight = new Cache<number>(() => {
   return windowWidth.value < 768 ? (windowHeight.value - 290) / 6 : 57
@@ -27,29 +26,14 @@ export const dataPickerCellHeight = new Cache<number>(() => {
 
 export interface DatePickerProps extends ModalProps {
   selector?: State<DataPickerSelector>
-  year?: State<number>
-  month?: State<number>
-  day?: State<number>
+  value?: StateProp<Date>
+  onChange?: (date: Date) => void
   apply?: any
   rotationTop?: State<boolean>
   min?: Date
   max?: Date
-  value?: StateProp<string>
   goBackText?: any
   todayText?: any
-  onChange?: (value: string) => void
-}
-
-const getMinMax = (value: number, min?: number, max?: number) => {
-  if (min !== undefined && min > value) {
-    return min
-  }
-
-  if (max !== undefined && max < value) {
-    return max
-  }
-
-  return value
 }
 
 export function DatePicker ({
@@ -57,14 +41,15 @@ export function DatePicker ({
   min,
   max,
   selector = new State('date'),
-  year = new State(getMinMax(todayYear, min?.getFullYear(), max?.getFullYear())),
-  month = new State(getMinMax(todayMonth, min?.getMonth(), max?.getMonth())),
-  day = new State(getMinMax(todayDay, min?.getDate(), max?.getDate())),
+  value = new State(dateMinMax(today, min, max)),
+  onChange,
   rotationTop = new State(true),
   goBackText,
   todayText,
   ...props
 }: DatePickerProps = {}) {
+  onChange = actionProp(value, onChange)
+
   const children = useChildren()
   const styles = useStyle()
   const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear())
@@ -82,26 +67,38 @@ export function DatePicker ({
     return false
   }
   const handleSelect = ({ date }: CalendarGridCell) => {
-    return day.value === date.getDate() && month.value === date.getMonth()
+    const currentValue = use(value)
+
+    return currentValue.getDate() === date.getDate() &&
+      currentValue.getMonth() === date.getMonth() &&
+      currentValue.getFullYear() === date.getFullYear()
   }
 
   const handleNext = () => {
-    const currentDate = new Date(year.value, month.value + 1, -1)
+    const date = use(value)
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const day = date.getDate()
+    const nextDate = new Date(year, month + 1, -1)
 
-    if (max && max < new Date(year.value, month.value, day.value)) {
-      day.value = max.getDate()
-    } else if (getDaysInMonth(currentDate) < day.value) {
-      day.value = getDaysInMonth(currentDate)
+    if (max && max < new Date(year, month, day)) {
+      onChange?.(new Date(year, month, max.getDate()))
+    } else if (getDaysInMonth(nextDate) < day) {
+      onChange?.(new Date(year, month, getDaysInMonth(nextDate)))
     }
   }
 
   const handlePrev = () => {
-    const currentDate = new Date(year.value, month.value + 1, -1)
+    const date = use(value)
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const day = date.getDate()
+    const prevDate = new Date(year, month + 1, -1)
 
-    if (min && min > new Date(year.value, month.value, day.value)) {
-      day.value = min.getDate()
-    } else if (getDaysInMonth(currentDate) < day.value) {
-      day.value = getDaysInMonth(currentDate)
+    if (min && min > new Date(year, month, day)) {
+      onChange?.(new Date(year, month, min.getDate()))
+    } else if (getDaysInMonth(prevDate) < day) {
+      onChange?.(new Date(year, month, getDaysInMonth(prevDate)))
     }
   }
 
@@ -114,20 +111,24 @@ export function DatePicker ({
   }
 
   const handleSelectDate = createEvent(({ date }: CalendarGridCell) => {
+    const curDate = use(value)
+
+    if (date === curDate) return
+
+    const year = curDate.getFullYear()
+    const month = curDate.getMonth()
     const newMonth = date.getMonth()
     const newYear = date.getFullYear()
 
-    if (month.value !== newMonth) {
-      rotationTop.value = month.value > newMonth
-      month.value = newMonth
+    if (month !== newMonth) {
+      rotationTop.value = month > newMonth
     }
 
-    if (year.value !== newYear) {
-      rotationTop.value = year.value > newYear
-      year.value = newYear
+    if (year !== newYear) {
+      rotationTop.value = year > newYear
     }
 
-    day.value = date.getDate()
+    onChange?.(date)
   })
 
   const renderContent = (update: boolean) => {
@@ -154,7 +155,7 @@ export function DatePicker ({
                 cell: () => styles.cell,
                 gridWrapper: () => styles.gridWrapper,
               }}
-              value={new Cache(() => new Date(year.value, month.value))}
+              value={value}
               rotationTop={rotationTop}
               selectedHandler={handleSelect}
               disableHandler={handleDisable}>
@@ -165,11 +166,8 @@ export function DatePicker ({
                 min={min}
                 max={max}
                 rotationTop={rotationTop}
-                value={new Cache(() => new Date(year.value, month.value))}
-                onChange={createEvent((date: Date) => {
-                  year.value = date.getFullYear()
-                  month.value = date.getMonth()
-                })}
+                value={value}
+                onChange={onChange}
               />
             </Calendar>
             <Space gap={apply && 24} />
@@ -199,11 +197,13 @@ export function DatePicker ({
             {[...new Array(12)].map((_, i) => (
               <div
                 onclick={() => {
-                  if (i > month.value) {
-                    month.value = i
+                  const date = use(value)
+
+                  onChange?.(new Date(date.getFullYear(), i, date.getDate()))
+
+                  if (i > date.getMonth()) {
                     handleNext()
                   } else {
-                    month.value = i
                     handlePrev()
                   }
 
@@ -211,10 +211,10 @@ export function DatePicker ({
                 }}
                 class={() => classes([
                   styles.cellCustom,
-                  month.value === i && styles.cellSelected,
+                  use(value).getMonth() === i && styles.cellSelected,
                   i === todayMonth && styles.cellToday,
-                  year.value === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
-                  year.value === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
+                  use(value).getFullYear() === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
+                  use(value).getFullYear() === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
                 ])}>
                 {getMonth(i, 'short')}
               </div>
@@ -259,7 +259,7 @@ export function DatePicker ({
                   class={() => classes([
                     styles.cellCustom,
                     styles.cellDisabled,
-                    year.value === currentYear && styles.cellSelected,
+                    use(value).getFullYear() === currentYear && styles.cellSelected,
                     currentYear === todayYear && styles.cellToday,
                   ])}>
                   {currentYear}
@@ -270,13 +270,13 @@ export function DatePicker ({
               const currentYear = minYear + i
               const ref = new Ref<HTMLDivElement>()
 
-              if (unwatch(() => year.value) === currentYear) {
+              if (unwatch(() => use(value).getFullYear()) === currentYear) {
                 const timer = setTimeout(() => {
                   ref.value?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'center',
                   })
-                }, 400)
+                }, 500)
 
                 onDestroy(() => {
                   clearTimeout(timer)
@@ -287,12 +287,13 @@ export function DatePicker ({
                 <div
                   ref={ref}
                   onclick={() => {
-                    year.value = currentYear
+                    const date = use(value)
+                    onChange?.(new Date(currentYear, date.getMonth(), date.getDate()))
                     selector.value = 'month'
                   }}
                   class={() => classes([
                     styles.cellCustom,
-                    year.value === currentYear && styles.cellSelected,
+                    use(value).getFullYear() === currentYear && styles.cellSelected,
                     currentYear === todayYear && styles.cellToday,
                   ])}>
                   {currentYear}
@@ -307,7 +308,7 @@ export function DatePicker ({
                   class={() => classes([
                     styles.cellCustom,
                     styles.cellDisabled,
-                    year.value === currentYear && styles.cellSelected,
+                    use(value).getFullYear() === currentYear && styles.cellSelected,
                     currentYear === todayYear && styles.cellToday,
                   ])}>
                   {currentYear}
@@ -337,9 +338,7 @@ export function DatePicker ({
             <button
               class={() => styles.contentHeaderButton}
               onclick={createEvent(() => {
-                year.value = today.getFullYear()
-                month.value = today.getMonth()
-                day.value = today.getDate()
+                onChange?.(dateMinMax(today, min, max))
                 selector.value = 'date'
               })}>
               {todayText}
