@@ -77,7 +77,8 @@ export function * Calendar ({
     const countDays = getDaysInMonth(firstDate)
     const deltaAfterTemp = 7 - ((countDays + deltaBefore) % 7)
     const deltaAfterTemp2 = deltaAfterTemp === 7 ? 0 : deltaAfterTemp
-    const deltaAfter = deltaBefore + countDays + deltaAfterTemp2 < 42 ? deltaAfterTemp2 + 7 : deltaAfterTemp2
+    const deltaSum = deltaBefore + countDays + deltaAfterTemp2
+    const deltaAfter = deltaSum >= 42 ? deltaAfterTemp2 : deltaSum === 28 ? deltaAfterTemp2 + 14 : deltaAfterTemp2 + 7
     const grid: CalendarGridCell[] = []
     const currentYear = year.value
     const currentMonth = month.value
