@@ -154,8 +154,7 @@ export function DatePicker ({
                 cell: () => styles.cell,
                 gridWrapper: () => styles.gridWrapper,
               }}
-              year={year}
-              month={month}
+              value={new Cache(() => new Date(year.value, month.value))}
               rotationTop={rotationTop}
               selectedHandler={handleSelect}
               disableHandler={handleDisable}>

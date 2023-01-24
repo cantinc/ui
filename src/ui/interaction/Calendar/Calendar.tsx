@@ -22,8 +22,7 @@ export interface CalendarGridCell {
 }
 
 export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
-  year?: State<number>
-  month?: State<number>
+  value?: StateProp<Date>
   rotationTop?: State<boolean>
   activeHandler?: (date: CalendarGridCell) => boolean
   selectedHandler?: (date: CalendarGridCell) => boolean
@@ -48,8 +47,7 @@ export function * Calendar ({
   cellHeight = 48,
   renderCell = defaultCalendarCellRender,
   onselect,
-  year = new State(todayYear),
-  month = new State(todayMonth),
+  value = new State(today),
   rotationTop = new State(true),
   ...props
 }: CalendarProps = {}) {
@@ -71,7 +69,10 @@ export function * Calendar ({
   }
 
   const grid = new Cache<CalendarGridCell[]>(() => {
-    const firstDate = new Date(year.value, month.value, 1)
+    const date = use(value)
+    const currentYear = date.getFullYear()
+    const currentMonth = date.getMonth()
+    const firstDate = new Date(currentYear, currentMonth, 1)
     const deltaBeforeTemp = firstDate.getDay() - 1
     const deltaBefore = deltaBeforeTemp === -1 ? 6 : deltaBeforeTemp
     const countDays = getDaysInMonth(firstDate)
@@ -80,9 +81,7 @@ export function * Calendar ({
     const deltaSum = deltaBefore + countDays + deltaAfterTemp2
     const deltaAfter = deltaSum >= 42 ? deltaAfterTemp2 : deltaSum === 28 ? deltaAfterTemp2 + 14 : deltaAfterTemp2 + 7
     const grid: CalendarGridCell[] = []
-    const currentYear = year.value
-    const currentMonth = month.value
-    const currentBeforeDataStart = new Date(year.value, month.value, 0).getDate()
+    const currentBeforeDataStart = new Date(currentYear, currentMonth, 0).getDate()
     const currentDeltaBefore = deltaBefore
     const currentDeltaAfter = deltaAfter
     const currentCountDays = countDays

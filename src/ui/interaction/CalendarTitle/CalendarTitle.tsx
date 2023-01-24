@@ -59,7 +59,7 @@ export function CalendarTitle ({
     const month = date.getMonth()
 
     if (month < 1) {
-      onChange?.(new Date(date.getFullYear() - 1, 0))
+      onChange?.(new Date(date.getFullYear() - 1, 11))
     } else {
       onChange?.(new Date(date.getFullYear(), month - 1))
     }

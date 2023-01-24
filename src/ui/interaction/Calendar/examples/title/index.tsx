@@ -1,15 +1,14 @@
 import { example } from 'src/app/Component'
 import { Calendar, CalendarGridCell, CalendarTitle } from 'src/ui'
-import { Cache, createEvent, State } from 'watch-state'
+import { State } from 'watch-state'
 
 import description from './README.md'
 
-const year = new State(new Date().getFullYear())
-const month = new State(new Date().getMonth())
+const value = new State(new Date())
 const rotationTop = new State(true)
 
-const startDate = new Date(year.value, month.value, 1)
-const endDate = new Date(year.value, month.value + 1, 4)
+const startDate = new Date(value.value.getFullYear(), value.value.getMonth(), 1)
+const endDate = new Date(value.value.getFullYear(), value.value.getMonth() + 1, 4)
 const min = startDate.getTime()
 const max = endDate.getTime()
 
@@ -66,35 +65,28 @@ const handleSelect = (date: Date) => {
 
 innet(
   <Calendar
-    year={year}
-    month={month}
+    value={value}
     rotationTop={rotationTop}
     selectedHandler={handleSelect}
     disableHandler={handleDisable}
     activeHandler={handleActive}>
     <CalendarTitle
       rotationTop={rotationTop}
-      year={year}
-      month={month}
+      value={value}
     />
   </Calendar>,
   dom,
 )`,
   example: (
     <Calendar
-      year={year}
-      month={month}
+      value={value}
       rotationTop={rotationTop}
       selectedHandler={handleSelect}
       disableHandler={handleDisable}
       activeHandler={handleActive}>
       <CalendarTitle
         rotationTop={rotationTop}
-        value={new Cache(() => new Date(year.value, month.value))}
-        onChange={createEvent((date: Date) => {
-          year.value = date.getFullYear()
-          month.value = date.getMonth()
-        })}
+        value={value}
       />
     </Calendar>
   ),
