@@ -6,6 +6,6 @@ Use this component to add textarea element
 import { TextArea } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Input](/interaction/input)

@@ -6,12 +6,13 @@ Use the component to add input text element.
 import { Input } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)
 
-## Extend
+## Dependents
 
+- [InputMask](/interaction/input-mask)
 - [Selector](/interaction/selector)
 - [Textarea](/interaction/textarea)
 - [FormInput](/forms/input)

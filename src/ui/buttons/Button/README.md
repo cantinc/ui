@@ -6,6 +6,6 @@ This component reacts on click.
 import { Button } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)

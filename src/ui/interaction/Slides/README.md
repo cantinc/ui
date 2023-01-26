@@ -6,10 +6,10 @@ Use this component to add slides.
 import { Slides } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)
 
-## Extend
+## Dependents
 
 - [Stories](/interaction/stories)

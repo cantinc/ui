@@ -6,6 +6,6 @@ Use this component to add dots.
 import { Dots } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)

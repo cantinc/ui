@@ -6,6 +6,6 @@ Use this component to add a card.
 import { Card } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)

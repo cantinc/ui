@@ -6,6 +6,6 @@ Use this component to add arrow icon.
 import { Arrow } from '@cantinc/ui'
 ```
 
-## Extend
+## Dependents
 
 - [Selector](/interaction/selector)

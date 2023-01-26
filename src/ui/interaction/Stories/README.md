@@ -6,7 +6,7 @@ Use this component to add stories.
 import { Stories } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)
 - [Image](/layout/image)

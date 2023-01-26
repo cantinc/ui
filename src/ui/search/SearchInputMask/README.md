@@ -6,6 +6,6 @@ Use this component to bind input value to search.
 import { SearchInputMask } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [InputMask](/interaction/input-mask)

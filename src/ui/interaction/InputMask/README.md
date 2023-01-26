@@ -6,11 +6,12 @@ Use the component to add input text element.
 import { InputMask } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
-- [Input](/layout/input)
+- [Input](/interaction/input)
 
-## Extend
+## Dependents
 
+- [InputDate](/interaction/input-date)
 - [FormInputMask](/forms/input-mask)
 - [SearchInputMask](/search/input-mask)

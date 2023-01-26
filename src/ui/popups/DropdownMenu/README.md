@@ -6,10 +6,10 @@ This component show a popup for an HTML element.
 import { DropdownMenu } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Dropdown](/popups/dropdown)
 
-## Extend
+## Dependents
 
 - [Selector](/interaction/selector)

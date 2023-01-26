@@ -8,7 +8,7 @@ and as a method that could offer space distribution between items in an interfac
 import { Flex } from '@cantinc/ui'
 ```
 
-## Extend
+## Dependents
 
 - [Input](/interaction/input)
 - [Card](/cards/card)

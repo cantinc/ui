@@ -6,6 +6,6 @@ Use this component to add a `HoverCard`.
 import { HoverCard } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Card](/cards/card)

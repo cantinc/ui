@@ -6,11 +6,11 @@ Use the component to add input date element.
 import { InputDate } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
-- [InputMask](/layout/input-mask)
+- [InputMask](/interaction/input-mask)
 
-## Extend
+## Dependents
 
 - [FormInputDate](/forms/input-date)
 - [SearchInputDate](/search/input-date)

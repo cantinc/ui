@@ -6,7 +6,7 @@ Use this component to add input element
 import { Selector } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Input](/interaction/input)
 - [DropdownMenu](/popups/dropdown-menu)

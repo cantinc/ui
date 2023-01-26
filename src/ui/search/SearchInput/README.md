@@ -6,6 +6,6 @@ Use this component to bind input value to search.
 import { SearchInput } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Input](/interaction/input)

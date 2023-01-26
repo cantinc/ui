@@ -4,6 +4,6 @@
 import { Image } from '@cantinc/ui'
 ```
 
-## Extends
+## Dependencies
 
 - [Flex](/layout/flex)
