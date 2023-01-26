@@ -8,7 +8,7 @@ function SearchToggleBar(_a) {
     function defaultSearchToggleBarRender({ value, label }, { className, onfocus, onblur }) {
         return ({type:'a',props:{onfocus:onfocus,onblur:onblur,onmouseenter:onfocus,onmousedown:(e) => {
                 e.preventDefault();
-            },class:className,href:value ? `?${key}=${value}` : '?'},children:[label !== null && label !== void 0 ? label : value]});
+            },class:className,scrollTo:-1,href:value ? `?${key}=${value}` : '?'},children:[label !== null && label !== void 0 ? label : value]});
     }
     return ({type:ToggleBar,props:{...props,value:() => history.getSearch(key) || '',element:'nav',renderValue:defaultSearchToggleBarRender}});
 }

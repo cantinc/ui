@@ -7,6 +7,7 @@ export interface CustomIconProps extends HTMLStyleProps {
 }
 declare const iconsImports: {
     readonly default: () => Promise<typeof import("./icons/DefaultIcon")>;
+    readonly cant: () => Promise<typeof import("./icons/CantIcon")>;
     readonly edit: () => Promise<typeof import("./icons/EditIcon")>;
     readonly calendar: () => Promise<typeof import("./icons/CalendarIcon")>;
     readonly chevron: () => Promise<typeof import("./icons/ChevronIcon")>;
@@ -35,7 +36,7 @@ declare const iconsImports: {
     readonly wa: () => Promise<typeof import("./icons/WAIcon")>;
 };
 export type IconProp = keyof typeof iconsImports;
-export declare const icons: ("default" | "edit" | "calendar" | "chevron" | "chevronUp" | "chevronLeft" | "chevronRight" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "arrowLeft" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
+export declare const icons: ("default" | "cant" | "edit" | "calendar" | "chevron" | "chevronUp" | "chevronLeft" | "chevronRight" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "arrowLeft" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }

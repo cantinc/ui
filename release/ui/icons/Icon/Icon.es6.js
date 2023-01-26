@@ -2,6 +2,7 @@ import { __rest, __awaiter } from 'tslib';
 
 const iconsImports = {
     default: () => import('./icons/DefaultIcon/index.es6.js'),
+    cant: () => import('./icons/CantIcon/index.es6.js'),
     edit: () => import('./icons/EditIcon/index.es6.js'),
     calendar: () => import('./icons/CalendarIcon/index.es6.js'),
     chevron: () => import('./icons/ChevronIcon/index.es6.js'),

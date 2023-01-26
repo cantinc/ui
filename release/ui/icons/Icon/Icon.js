@@ -6,6 +6,7 @@ var tslib = require('tslib');
 
 const iconsImports = {
     default: () => Promise.resolve().then(function () { return require('./icons/DefaultIcon/index.js'); }),
+    cant: () => Promise.resolve().then(function () { return require('./icons/CantIcon/index.js'); }),
     edit: () => Promise.resolve().then(function () { return require('./icons/EditIcon/index.js'); }),
     calendar: () => Promise.resolve().then(function () { return require('./icons/CalendarIcon/index.js'); }),
     chevron: () => Promise.resolve().then(function () { return require('./icons/ChevronIcon/index.js'); }),

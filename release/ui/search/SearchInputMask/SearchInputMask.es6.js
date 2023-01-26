@@ -10,7 +10,7 @@ function SearchInputMask(_a) {
     const withChildren = useChildrenProvider();
     const handleChange = (val) => {
         const search = stringifySearch(Object.assign(Object.assign({}, parsedSearch.value), { [key]: val || undefined }), { addQueryPrefix: true });
-        history.push(`${history.path}${search}`);
+        history.push(`${history.path}${search}`, -1);
         oninput === null || oninput === void 0 ? void 0 : oninput(val);
     };
     return withChildren({type:InputMask,props:{...props,value:() => String(parsedSearch.value[key] || ''),oninput:handleChange}});

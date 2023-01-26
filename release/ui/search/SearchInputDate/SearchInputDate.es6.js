@@ -12,7 +12,7 @@ function SearchInputDate(_a) {
     const provider = useChildrenProvider();
     const handleChange = (date) => {
         const search = stringifySearch(Object.assign(Object.assign({}, parsedSearch.value), { [key]: date && inputDateFormat(date) }), { addQueryPrefix: true });
-        history.push(`${history.path}${search}`);
+        history.push(`${history.path}${search}`, -1);
         oninput === null || oninput === void 0 ? void 0 : oninput(date);
     };
     return provider({type:InputDate,props:{...props,value:() => parsedSearch.value[key] ? new Date(String(parsedSearch.value[key])) : undefined,oninput:handleChange}});

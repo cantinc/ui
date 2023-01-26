@@ -14,7 +14,7 @@ function SearchInput(_a) {
     const provider = useChildrenProvider.useChildrenProvider();
     const handleChange = (val) => {
         const search = dom.stringifySearch(Object.assign(Object.assign({}, dom.parsedSearch.value), { [key]: val || undefined }), { addQueryPrefix: true });
-        dom.history.push(`${dom.history.path}${search}`);
+        dom.history.push(`${dom.history.path}${search}`, -1);
         oninput === null || oninput === void 0 ? void 0 : oninput(val);
     };
     return provider({type:Input.Input,props:{...props,value:() => String(dom.parsedSearch.value[key] || ''),oninput:handleChange}});

@@ -9,7 +9,7 @@ function SearchToggle(_a) {
     const state = new Cache(() => history.getSearch(key) === use(value));
     const handleChange = (val) => {
         const search = stringifySearch(Object.assign(Object.assign({}, parsedSearch.value), { [key]: val ? use(value) : undefined }), { addQueryPrefix: true });
-        history.push(`${history.path}${search}`);
+        history.push(`${history.path}${search}`, -1);
         onchange === null || onchange === void 0 ? void 0 : onchange(val);
     };
     return ({type:Toggle,props:{...props,onchange:handleChange,checked:state}});
