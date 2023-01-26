@@ -368,6 +368,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/forms/FormInputMask/FormInputMask.ui'),
       },
       {
+        slot: 'input-date',
+        children: '<FormInputDate />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/forms/FormInputDate/FormInputDate.ui'),
+      },
+      {
         slot: 'textarea',
         children: '<FormTextArea />',
         onclick: hideLayoutMenu,
