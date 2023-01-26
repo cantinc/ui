@@ -15,7 +15,7 @@ const ModalsPortal = () => {
     const children = jsx.useChildren();
     return modalsRef.value && ({type:'portal',props:{parent:modalsRef.value},children:[children]});
 };
-function Modals(_a) {
+function Modals(_a = {}) {
     var { main, ref } = _a, props = tslib.__rest(_a, ["main", "ref"]);
     const children = jsx.useChildren();
     const styles = useStyle();

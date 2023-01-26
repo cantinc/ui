@@ -5,4 +5,4 @@ export interface ModalsProps extends OverlayProps {
 }
 export declare const modalsRef: Ref<HTMLElement>;
 export declare const ModalsPortal: () => any;
-export declare function Modals({ main, ref, ...props }: ModalsProps): any;
+export declare function Modals({ main, ref, ...props }?: ModalsProps): any;

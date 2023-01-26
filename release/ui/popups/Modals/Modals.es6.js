@@ -11,7 +11,7 @@ const ModalsPortal = () => {
     const children = useChildren();
     return modalsRef.value && ({type:'portal',props:{parent:modalsRef.value},children:[children]});
 };
-function Modals(_a) {
+function Modals(_a = {}) {
     var { main, ref } = _a, props = __rest(_a, ["main", "ref"]);
     const children = useChildren();
     const styles = useStyle();

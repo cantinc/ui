@@ -26,7 +26,7 @@ export function Modals ({
   main,
   ref,
   ...props
-}: ModalsProps) {
+}: ModalsProps = {}) {
   const children = useChildren()
   const styles = useStyle()
 
