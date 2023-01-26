@@ -17,7 +17,7 @@ export function SearchSelector ({
       [key]: val || undefined,
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`)
+    history.push(`${history.path}${search}`, -1)
     oninput?.(val)
   }
 

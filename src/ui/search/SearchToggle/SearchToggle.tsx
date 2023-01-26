@@ -22,7 +22,7 @@ export function SearchToggle ({
       [key]: val ? use(value) : undefined,
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`)
+    history.push(`${history.path}${search}`, -1)
     onchange?.(val)
   }
 

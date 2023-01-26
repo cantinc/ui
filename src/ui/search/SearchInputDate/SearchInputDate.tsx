@@ -20,7 +20,7 @@ export function SearchInputDate ({
       [key]: date && inputDateFormat(date),
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`)
+    history.push(`${history.path}${search}`, -1)
     oninput?.(date)
   }
 

@@ -21,6 +21,7 @@ export function SearchToggleBar ({
           e.preventDefault()
         }}
         class={className as any}
+        scrollTo={-1}
         href={value ? `?${key}=${value}` : '?'}>
         {label ?? value}
       </a>
