@@ -9,6 +9,7 @@ export interface CustomIconProps extends HTMLStyleProps {
 
 const iconsImports = {
   default: () => import('./icons/DefaultIcon'),
+  cant: () => import('./icons/CantIcon'),
   edit: () => import('./icons/EditIcon'),
   calendar: () => import('./icons/CalendarIcon'),
   chevron: () => import('./icons/ChevronIcon'),
