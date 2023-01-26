@@ -1,3 +1,4 @@
+import align from './align'
 import def from './default'
 import gap from './gap'
 import inline from './inline'
@@ -12,4 +13,5 @@ export default [
   vertical,
   padding,
   gap,
+  align,
 ]

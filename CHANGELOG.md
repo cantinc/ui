@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.22 [![xx.xx.2023](https://img.shields.io/date/xxx)](https://github.com/d8corp/innetjs/tree/v0.1.22)
+
+- fix `HoverCard` alignment
+
 ### v0.1.21 [![26.01.2023](https://img.shields.io/date/1674742275)](https://github.com/d8corp/innetjs/tree/v0.1.21)
 
 - fix `Modals` bug
