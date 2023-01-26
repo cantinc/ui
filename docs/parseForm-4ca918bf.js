@@ -1,1 +1,0 @@
-function n(n,t="POST"){const e={},o={};for(const s of n.fields){const{name:n,state:{value:a}}=s;"PATCH"===t&&s.defaultValue===a||(n in e?n in o?e[n].push(a):(o[n]=!0,e[n]=[e[n],a]):e[n]=a)}return e}export{n as p};
