@@ -13,10 +13,10 @@ const useStyles = style(styles)
 
 const mask: Mask.Options = {
   alias: 'datetime',
-  inputmode: 'numeric',
-  placeholder: localeDateFormatPlaceholder,
   inputFormat: localeDateFormat,
-  clearIncomplete: true,
+  placeholder: localeDateFormatPlaceholder,
+  inputmode: 'numeric',
+  clearMaskOnLostFocus: false,
 }
 
 export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 'oninput'> {
@@ -76,8 +76,11 @@ export function InputDate ({
       <InputMask
         value={convertValue}
         oninput={handleInput}
-        mask={mask}
-        placeholder={localeDateFormatPlaceholder}
+        mask={{
+          ...mask,
+          min: min?.toLocaleDateString(),
+          max: max?.toLocaleDateString(),
+        }}
         {...props}>
         <slot name='after'>
           <Icon
