@@ -431,6 +431,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/search/SearchInputMask/SearchInputMask.ui'),
       },
       {
+        slot: 'input-date',
+        children: '<SearchInputDate />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/search/SearchInputDate/SearchInputDate.ui'),
+      },
+      {
         slot: 'selector',
         children: '<SearchSelector />',
         onclick: hideLayoutMenu,
