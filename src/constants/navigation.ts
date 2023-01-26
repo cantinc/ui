@@ -256,6 +256,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/interaction/InputMask/InputMask.ui'),
       },
       {
+        slot: 'input-date',
+        children: '<InputDate />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/InputDate/InputDate.ui'),
+      },
+      {
         slot: 'textarea',
         children: '<TextArea />',
         onclick: hideLayoutMenu,

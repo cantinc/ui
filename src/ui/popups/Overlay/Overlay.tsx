@@ -8,10 +8,12 @@ import { HTMLOverlayElement, OverlayProps } from './types'
 
 const useStyle = style(styles)
 
-export function Overlay (props: OverlayProps) {
+export function Overlay ({
+  ref = new Ref<HTMLDivElement>(),
+  ...props
+}: OverlayProps) {
   const children = useChildren()
   const styles = useStyle()
-  const ref = new Ref<HTMLDivElement>()
   let mouseDown = false
 
   useEscapeListener(() => handleClose('escape'))

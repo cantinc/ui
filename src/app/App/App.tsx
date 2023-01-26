@@ -7,6 +7,7 @@ import {
   Header,
   Layout,
   Main,
+  Modals,
   Notifications,
   Pages,
   Space,
@@ -53,6 +54,7 @@ export function App () {
           </Drawer>
         </show>
       </Drawers>
+      <Modals main />
     </Pages>
   )
 }

@@ -27,7 +27,9 @@ export const dataPickerCellHeight = new Cache<number>(() => {
 export interface DatePickerProps extends ModalProps {
   selector?: State<DataPickerSelector>
   value?: StateProp<Date>
+  defaultValue?: StateProp<Date | undefined>
   onChange?: (date: Date) => void
+  onApply?: (date: Date) => void
   apply?: any
   rotationTop?: State<boolean>
   min?: Date
@@ -41,11 +43,13 @@ export function DatePicker ({
   min,
   max,
   selector = new State('date'),
-  value = new State(dateMinMax(today, min, max)),
+  defaultValue = today,
+  value = new State(dateMinMax(unwatch(() => use(defaultValue) || today), min, max)),
   onChange,
   rotationTop = new State(true),
   goBackText,
   todayText,
+  onApply,
   ...props
 }: DatePickerProps = {}) {
   onChange = actionProp(value, onChange)
@@ -173,7 +177,11 @@ export function DatePicker ({
             <Space gap={apply && 24} />
             <show state={apply}>
               <Buttons>
-                <Button flex>
+                <Button
+                  onclick={() => {
+                    onApply?.(use(value))
+                  }}
+                  flex>
                   {apply}
                 </Button>
               </Buttons>

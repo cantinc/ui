@@ -37,19 +37,17 @@ innet(
     <Button onclick={show}>
       Show
     </Button>
-    <portal parent={document.body}>
-      <Modals>
-        <show state={state}>
-          <DatePicker
-            goBackText='Go back'
-            todayText='Today'
-            apply='Apply'
-            onclose={hide}>
-            Title
-          </DatePicker>
-        </show>
-      </Modals>
-    </portal>
+    <Modals>
+      <show state={state}>
+        <DatePicker
+          goBackText='Go back'
+          todayText='Today'
+          apply='Apply'
+          onclose={hide}>
+          Title
+        </DatePicker>
+      </show>
+    </Modals>
   </>,
   dom,
 )`,
