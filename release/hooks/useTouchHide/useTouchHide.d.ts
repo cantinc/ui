@@ -6,8 +6,10 @@ export interface TouchHideOptions {
     element?: Ref<HTMLElement>;
     placement?: TouchHidePlacement;
     length?: number;
+    touchStart?: (e: TouchEvent) => void;
+    touchEnd?: () => void;
 }
-export declare function useTouchHide({ hide, element, placement, length, }: TouchHideOptions): {
+export declare function useTouchHide({ hide, element, placement, length, touchStart, touchEnd, }: TouchHideOptions): {
     touched: State<boolean>;
     touchHide: State<number>;
     handleTouchStart(e: TouchEvent): void;

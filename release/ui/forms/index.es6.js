@@ -9,3 +9,4 @@ import './FormHidden/index.es6.js';
 import './FormInputMask/index.es6.js';
 import './FormUpload/index.es6.js';
 import './FormSet/index.es6.js';
+import './FormInputDate/index.es6.js';

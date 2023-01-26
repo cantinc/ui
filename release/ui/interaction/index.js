@@ -14,4 +14,7 @@ require('./Stories/index.js');
 require('./InputMask/index.js');
 require('./Upload/index.js');
 require('./Set/index.js');
+require('./Calendar/index.js');
+require('./CalendarTitle/index.js');
+require('./InputDate/index.js');
 

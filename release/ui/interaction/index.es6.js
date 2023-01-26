@@ -12,3 +12,6 @@ import './Stories/index.es6.js';
 import './InputMask/index.es6.js';
 import './Upload/index.es6.js';
 import './Set/index.es6.js';
+import './Calendar/index.es6.js';
+import './CalendarTitle/index.es6.js';
+import './InputDate/index.es6.js';

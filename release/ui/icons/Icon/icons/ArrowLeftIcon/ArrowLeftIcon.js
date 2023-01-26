@@ -1,0 +1,12 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var tslib = require('tslib');
+
+function ArrowLeftIcon(_a = {}) {
+    var { size = 16, color = 'currentColor' } = _a, props = tslib.__rest(_a, ["size", "color"]);
+    return ({type:'svg',props:{width:size,height:size,viewBox:'0 0 16 16',fill:'none',xmlns:'http://www.w3.org/2000/svg',...props},children:[{type:'path',props:{'fill-rule':'evenodd','clip-rule':'evenodd',d:'M6.55517 14.2415L0.76642 8.62415C0.411192 8.27944 0.411192 7.72056 0.76642 7.37585L6.55517 1.75853C6.9104 1.41382 7.48634 1.41382 7.84156 1.75853C8.19679 2.10324 8.19679 2.66212 7.84156 3.00682L3.60562 7.11732L15.6173 7.11732C16.1048 7.11732 16.5 7.51251 16.5 8C16.5 8.48749 16.1048 8.88268 15.6173 8.88268L3.60562 8.88268L7.84156 12.9932C8.19679 13.3379 8.19679 13.8968 7.84156 14.2415C7.48634 14.5862 6.9104 14.5862 6.55517 14.2415Z',fill:color}}]});
+}
+
+exports["default"] = ArrowLeftIcon;

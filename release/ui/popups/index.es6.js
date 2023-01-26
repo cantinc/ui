@@ -7,3 +7,4 @@ import './Modal/index.es6.js';
 import './Drawers/index.es6.js';
 import './Drawer/index.es6.js';
 import './Popout/index.es6.js';
+import './DatePicker/index.es6.js';

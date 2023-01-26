@@ -2,6 +2,12 @@
 
 ## v0.1
 
+### v0.1.20 [![26.01.2023](https://img.shields.io/date/1674741804)](https://github.com/d8corp/innetjs/tree/v0.1.20)
+
+- add `SearchInputDate`, `FormInputDate`, `InputDate`
+- add `Calendar` and `DatePicker`
+- improve styles and animations
+
 ### v0.1.19 [![16.01.2023](https://img.shields.io/date/1673877572)](https://github.com/d8corp/innetjs/tree/v0.1.19)
 
 - add `HoverCard`

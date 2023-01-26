@@ -1,6 +1,6 @@
 {
   "name": "@cantinc/ui",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "UI components of innetjs",
   "homepage": "https://cantinc.github.io/ui",
   "author": "Mikhail Lysikov <d8corp@mail.ru>",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@cantinc/utils": "^1.4.1",
-    "@innet/dom": "^0.12.1",
+    "@innet/dom": "^0.12.4",
     "@innet/jsx": "^1.1.0",
     "@textlint/ast-node-types": "^12.2.2",
     "@textlint/markdown-to-ast": "^12.2.3",

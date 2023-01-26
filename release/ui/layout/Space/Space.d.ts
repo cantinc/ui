@@ -1,5 +1,6 @@
-import { HTMLStyleProps, WatchProp } from '@innet/dom';
+import { HTMLStyleProps, StateProp } from '@innet/dom';
 export interface SpaceProps extends HTMLStyleProps<HTMLSpanElement> {
-    flex?: WatchProp<number>;
+    flex?: StateProp<number>;
+    gap?: StateProp<number>;
 }
-export declare function Space({ flex, style, ...props }?: SpaceProps): any;
+export declare function Space({ flex, style, gap, ...props }?: SpaceProps): any;

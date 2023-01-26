@@ -23,30 +23,42 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Popout$1["default"]);
 let popoutCount = 0;
+const createStyles = () => {
+    const styles = document.createElement('span').style;
+    styles.setProperty('border-radius', '20px');
+    return styles;
+};
 function PopoutElement(_a) {
     var { element, style, contentStyle, onhide, rootRef = new dom.Ref() } = _a, props = tslib.__rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef"]);
-    if (!element.value)
-        return null;
     const children = jsx.useChildren();
     const hide = dom.useHidden();
     const preshow = dom.useShow();
     const show = dom.useShow(200);
     const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide.useTouchHide({
         hide: onhide,
+        touchStart() {
+            elementData.value = getData();
+        },
     });
     const styles = useStyle();
     useEscapeListener.useEscapeListener(onhide);
-    const elementData = new watchState.State({
-        rect: element.value.getBoundingClientRect(),
-        styles: window.getComputedStyle(element.value),
-    });
+    const getData = () => {
+        var _a;
+        return ((_a = element === null || element === void 0 ? void 0 : element.value) === null || _a === void 0 ? void 0 : _a.isConnected)
+            ? ({
+                rect: element.value.getBoundingClientRect(),
+                styles: window.getComputedStyle(element.value),
+            })
+            : ({
+                rect: new DOMRect(window.innerWidth / 2, window.innerHeight / 2, 0, 0),
+                styles: createStyles(),
+            });
+    };
+    const elementData = new watchState.State(getData());
     if (hide) {
         new watchState.Watch(() => {
-            if (element.value && hide.value) {
-                elementData.value = {
-                    rect: element.value.getBoundingClientRect(),
-                    styles: window.getComputedStyle(element.value),
-                };
+            if (hide.value) {
+                elementData.value = getData();
             }
         });
     }

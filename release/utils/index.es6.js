@@ -1,5 +1,6 @@
 import './bindDragOver/index.es6.js';
 import './bindScrollPosition/index.es6.js';
+import './bindWindowHeight/index.es6.js';
 import './jsxStringify/index.es6.js';
 import './setOverflow/index.es6.js';
 import './closeRouterModal/index.es6.js';
@@ -7,7 +8,8 @@ import './withModal/index.es6.js';
 import './actionProp/index.es6.js';
 import './createFormDate/index.es6.js';
 import './debounceCall/index.es6.js';
-import './bindWindowHeight/index.es6.js';
 import './file/index.es6.js';
 import './parseForm/index.es6.js';
 import './generators/index.es6.js';
+import './date/index.es6.js';
+import './core/index.es6.js';

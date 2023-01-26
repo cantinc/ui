@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var watchState = require('watch-state');
+var height = require('../core/window/height.js');
+
 function bindWindowHeight() {
-    const listener = () => {
-        document.body.style.setProperty('--window-height', `${window.innerHeight}px`);
-    };
-    window.addEventListener('resize', listener);
-    listener();
-    return () => window.removeEventListener('resize', listener);
+    return new watchState.Watch(() => {
+        document.body.style.setProperty('--window-height', `${height.windowHeight.value}px`);
+    });
 }
 
 exports.bindWindowHeight = bindWindowHeight;

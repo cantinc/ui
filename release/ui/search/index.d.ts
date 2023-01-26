@@ -3,3 +3,4 @@ export * from './SearchToggle';
 export * from './SearchInput';
 export * from './SearchSelector';
 export * from './SearchInputMask';
+export * from './SearchInputDate';

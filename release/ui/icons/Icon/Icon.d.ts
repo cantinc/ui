@@ -11,12 +11,15 @@ declare const iconsImports: {
     readonly calendar: () => Promise<typeof import("./icons/CalendarIcon")>;
     readonly chevron: () => Promise<typeof import("./icons/ChevronIcon")>;
     readonly chevronUp: () => Promise<typeof import("./icons/ChevronUpIcon")>;
+    readonly chevronLeft: () => Promise<typeof import("./icons/ChevronLeftIcon")>;
+    readonly chevronRight: () => Promise<typeof import("./icons/ChevronRightIcon")>;
     readonly cross: () => Promise<typeof import("./icons/CrossIcon")>;
     readonly info: () => Promise<typeof import("./icons/InfoIcon")>;
     readonly check: () => Promise<typeof import("./icons/CheckIcon")>;
     readonly menu: () => Promise<typeof import("./icons/MenuIcon")>;
     readonly user: () => Promise<typeof import("./icons/UserIcon")>;
     readonly arrow: () => Promise<typeof import("./icons/ArrowIcon")>;
+    readonly arrowLeft: () => Promise<typeof import("./icons/ArrowLeftIcon")>;
     readonly geo: () => Promise<typeof import("./icons/GeoIcon")>;
     readonly logout: () => Promise<typeof import("./icons/LogoutIcon")>;
     readonly gear: () => Promise<typeof import("./icons/GearIcon")>;
@@ -32,7 +35,7 @@ declare const iconsImports: {
     readonly wa: () => Promise<typeof import("./icons/WAIcon")>;
 };
 export type IconProp = keyof typeof iconsImports;
-export declare const icons: ("default" | "edit" | "calendar" | "chevron" | "chevronUp" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
+export declare const icons: ("default" | "edit" | "calendar" | "chevron" | "chevronUp" | "chevronLeft" | "chevronRight" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "arrowLeft" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }

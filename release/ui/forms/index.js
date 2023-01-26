@@ -11,4 +11,5 @@ require('./FormHidden/index.js');
 require('./FormInputMask/index.js');
 require('./FormUpload/index.js');
 require('./FormSet/index.js');
+require('./FormInputDate/index.js');
 

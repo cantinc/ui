@@ -8,8 +8,8 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 
 var injector_8363bc92__default = /*#__PURE__*/_interopDefaultLegacy(injector_8363bc92);
 
-var css = ".Space_root__4bc9a83f{--ui-space-flex:1;flex:var(--ui-space-flex)}";
-var modules_9abee610 = {"root":"Space_root__4bc9a83f"};
+var css = ".Space_root__cbbe6809{--ui-space-flex:1;display:block;flex:var(--ui-space-flex)}";
+var modules_9abee610 = {"root":"Space_root__cbbe6809"};
 injector_8363bc92__default["default"](css,{});
 
 exports.css = css;

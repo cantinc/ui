@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var watchState = require('watch-state');
 
-function useTouchHide({ hide, element, placement = 'bottom', length = 100, }) {
+function useTouchHide({ hide, element, placement = 'bottom', length = 100, touchStart, touchEnd, }) {
     const vertical = placement === 'bottom' || placement === 'top';
     let startX;
     let startY;
@@ -19,6 +19,7 @@ function useTouchHide({ hide, element, placement = 'bottom', length = 100, }) {
                 return;
             if (placement === 'top' && currentElement && (currentElement.scrollHeight - currentElement.scrollTop !== currentElement.clientHeight))
                 return;
+            touchStart === null || touchStart === void 0 ? void 0 : touchStart(e);
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
             touched.value = true;
@@ -31,6 +32,7 @@ function useTouchHide({ hide, element, placement = 'bottom', length = 100, }) {
             const touchX = Math.abs(x);
             const touchY = Math.abs(y);
             if (vertical ? (placement === 'bottom' ? touchX > y : touchX > -y) : (placement === 'left' ? touchY > -x : touchY > x)) {
+                touchEnd === null || touchEnd === void 0 ? void 0 : touchEnd();
                 touched.value = false;
                 touchHide.value = 0;
                 return;
@@ -38,6 +40,9 @@ function useTouchHide({ hide, element, placement = 'bottom', length = 100, }) {
             touchHide.value = vertical ? touchY : touchX;
         },
         handleTouchEnd() {
+            if (touched.value) {
+                touchEnd === null || touchEnd === void 0 ? void 0 : touchEnd();
+            }
             if (touchHide.value > length) {
                 hide();
             }

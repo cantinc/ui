@@ -9,3 +9,4 @@ export * from './FormHidden';
 export * from './FormInputMask';
 export * from './FormUpload';
 export * from './FormSet';
+export * from './FormInputDate';

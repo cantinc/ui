@@ -1,3 +1,4 @@
+import { __rest } from 'tslib';
 import { style, Ref } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import '../../../hooks/index.es6.js';
@@ -7,10 +8,10 @@ import { useEscapeListener } from '../../../hooks/useEscapeListener/useEscapeLis
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_fd0db19c);
-function Overlay(props) {
+function Overlay(_a) {
+    var { ref = new Ref() } = _a, props = __rest(_a, ["ref"]);
     const children = useChildren();
     const styles = useStyle();
-    const ref = new Ref();
     let mouseDown = false;
     useEscapeListener(() => handleClose('escape'));
     const handleMouseDown = (e) => {

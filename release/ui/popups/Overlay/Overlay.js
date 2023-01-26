@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 require('../../../hooks/index.js');
@@ -11,10 +12,10 @@ var useEscapeListener = require('../../../hooks/useEscapeListener/useEscapeListe
 var Flex = require('../../layout/Flex/Flex.js');
 
 const useStyle = dom.style(Overlay$1["default"]);
-function Overlay(props) {
+function Overlay(_a) {
+    var { ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["ref"]);
     const children = jsx.useChildren();
     const styles = useStyle();
-    const ref = new dom.Ref();
     let mouseDown = false;
     useEscapeListener.useEscapeListener(() => handleClose('escape'));
     const handleMouseDown = (e) => {
