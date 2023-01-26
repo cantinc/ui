@@ -1,1 +1,1 @@
-`mask` is a required property.
+Simple example:

@@ -10,30 +10,13 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Flex, InputMask } from '@cantinc/ui'
+import { InputDate } from '@cantinc/ui'
 
 innet(
-  <Flex vertical>
-    <InputMask
-      label='Visible mask'
-      name='phone'
-      mask='+7 (999) 999-99-99'
-    />
-    <InputMask
-      label='Unvisible mask'
-      name='phone'
-      mask={{
-        mask: '+7 (999) 999-99-99',
-        jitMasking: true,
-      }}
-    />
-  </Flex>,
+  <InputDate label='Your Birthday' />,
   dom,
 )`,
   example: (
-    <InputDate
-      oninput={date => console.log(date)}
-      label='Your Birthday'
-    />
+    <InputDate label='Your Birthday' />
   ),
 })

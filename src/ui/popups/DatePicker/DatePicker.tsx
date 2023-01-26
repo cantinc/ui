@@ -220,7 +220,7 @@ export function DatePicker ({
                 class={() => classes([
                   styles.cellCustom,
                   use(value).getMonth() === i && styles.cellSelected,
-                  i === todayMonth && styles.cellToday,
+                  use(value).getFullYear() === todayYear && i === todayMonth && styles.cellToday,
                   use(value).getFullYear() === min?.getFullYear() && min.getMonth() > i && styles.cellDisabled,
                   use(value).getFullYear() === max?.getFullYear() && max.getMonth() < i && styles.cellDisabled,
                 ])}>

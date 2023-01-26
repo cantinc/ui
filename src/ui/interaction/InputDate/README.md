@@ -1,16 +1,16 @@
-# InputMask
+# InputDate
 
-Use the component to add input text element.
+Use the component to add input date element.
 
 ```typescript
-import { InputMask } from '@cantinc/ui'
+import { InputDate } from '@cantinc/ui'
 ```
 
 ## Extends
 
-- [Input](/layout/input)
+- [InputMask](/layout/input-mask)
 
 ## Extend
 
-- [FormInputMask](/forms/input-mask)
-- [SearchInputMask](/search/input-mask)
+- [FormInputDate](/forms/input-date)
+- [SearchInputDate](/search/input-date)
