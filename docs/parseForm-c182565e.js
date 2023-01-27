@@ -1,1 +1,0 @@
-import{a as o}from"./docs-d3f6b389.js";function t(t){const s={},e={};for(const n of t.fields){const{name:a,state:{value:f}}=n;"PATCH"===o(t.method)&&n.defaultValue===f||(a in s?a in e?s[a].push(f):(e[a]=!0,s[a]=[s[a],f]):s[a]=f)}return s}export{t as p};

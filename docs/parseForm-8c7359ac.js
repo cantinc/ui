@@ -1,0 +1,1 @@
+import{a as o}from"./docs-ec277aa5.js";function t(t){const a={},e={};for(const s of t.fields){const{name:n,state:{value:c}}=s;"PATCH"===o(t.method)&&s.defaultValue===c||(n in a?n in e?a[n].push(c):(e[n]=!0,a[n]=[a[n],c]):a[n]=c)}return a}export{t as p};
