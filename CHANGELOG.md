@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.24 [![27.01.2023](https://img.shields.io/date/1674827080)](https://github.com/d8corp/innetjs/tree/v0.1.24)
+
+- add `AsyncSpin`
+
 ### v0.1.23 [![27.01.2023](https://img.shields.io/date/1674814390)](https://github.com/d8corp/innetjs/tree/v0.1.23)
 
 - fix `InputDate` bug

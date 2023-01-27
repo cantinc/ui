@@ -5,5 +5,4 @@ require('./Async/index.js');
 require('./Highlight/index.js');
 require('./Browser/index.js');
 require('./Listener/index.js');
-require('./AsyncSpin/index.js');
 

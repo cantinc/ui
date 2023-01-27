@@ -1,10 +1,10 @@
 import { __rest, __asyncGenerator, __await } from 'tslib';
 import { inject, routerContext } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
-import '../../external/AsyncSpin/index.es6.js';
+import '../AsyncSpin/index.es6.js';
 import '../Navigation/index.es6.js';
 import '../Page/index.es6.js';
-import { AsyncSpin } from '../../external/AsyncSpin/AsyncSpin.es6.js';
+import { AsyncSpin } from '../AsyncSpin/AsyncSpin.es6.js';
 import { DelayPage } from '../Page/Page.es6.js';
 import { Navigation } from '../Navigation/Navigation.es6.js';
 
@@ -25,7 +25,7 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
             href });
         const Page = function () {
             return __asyncGenerator(this, arguments, function* () {
-                yield yield __await({type:AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
+                yield yield __await({type:AsyncSpin,props:{flex:true,justify:'center',align:'center',showDelay:300}});
                 const _a = yield __await(page()), { default: Component } = _a, props = __rest(_a, ["default"]);
                 yield yield __await(({type:DelayPage,children:[inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]}));
             });

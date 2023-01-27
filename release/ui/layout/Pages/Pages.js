@@ -5,10 +5,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
-require('../../external/AsyncSpin/index.js');
+require('../AsyncSpin/index.js');
 require('../Navigation/index.js');
 require('../Page/index.js');
-var AsyncSpin = require('../../external/AsyncSpin/AsyncSpin.js');
+var AsyncSpin = require('../AsyncSpin/AsyncSpin.js');
 var Page = require('../Page/Page.js');
 var Navigation = require('../Navigation/Navigation.js');
 
@@ -29,7 +29,7 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
             href });
         const Page$1 = function () {
             return tslib.__asyncGenerator(this, arguments, function* () {
-                yield yield tslib.__await({type:AsyncSpin.AsyncSpin,props:{flex:true,justify:'center',align:'center',show:300}});
+                yield yield tslib.__await({type:AsyncSpin.AsyncSpin,props:{flex:true,justify:'center',align:'center',showDelay:300}});
                 const _a = yield tslib.__await(page()), { default: Component } = _a, props = tslib.__rest(_a, ["default"]);
                 yield yield tslib.__await(({type:Page.DelayPage,children:[dom.inject(access, condition => condition ? ({type:Component,props:{...props}}) : handleAccess === null || handleAccess === void 0 ? void 0 : handleAccess(navItem))]}));
             });
