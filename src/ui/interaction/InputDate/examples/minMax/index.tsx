@@ -22,6 +22,9 @@ innet(
       min={new Date(2022, 10, 20)}
       max={new Date(2023, 0, 1)}
     />
+    <InputDate
+      min={new Date()}
+    />
   </Flex>,
   dom,
 )`,
@@ -34,6 +37,9 @@ innet(
       <InputDate
         min={new Date(2022, 10, 20)}
         max={new Date(2023, 0, 1)}
+      />
+      <InputDate
+        min={new Date()}
       />
     </Flex>
   ),

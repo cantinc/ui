@@ -11,6 +11,9 @@ import styles from './InputDate.scss'
 
 const useStyles = style(styles)
 
+const minDate = new Date(1900, 0, 1)
+const maxDate = new Date(2050, 11, 31)
+
 const mask: Mask.Options = {
   alias: 'datetime',
   inputFormat: localeDateFormat,
@@ -32,8 +35,8 @@ export function InputDate ({
   apply = 'Apply',
   value = new State(),
   oninput,
-  min,
-  max,
+  min = minDate,
+  max = maxDate,
   goBackText,
   todayText,
   ...props
@@ -78,8 +81,8 @@ export function InputDate ({
         oninput={handleInput}
         mask={{
           ...mask,
-          min: min?.toLocaleDateString(),
-          max: max?.toLocaleDateString(),
+          min: min.toLocaleDateString(),
+          max: max.toLocaleDateString(),
         }}
         {...props}>
         <slot name='after'>
