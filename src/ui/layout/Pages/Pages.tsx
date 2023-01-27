@@ -1,7 +1,7 @@
 import { inject, routerContext } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { AsyncSpin } from '../../external/AsyncSpin'
+import { AsyncSpin } from '../AsyncSpin'
 import { Navigation, NavigationItemProps } from '../Navigation'
 import { DelayPage } from '../Page'
 
@@ -41,7 +41,7 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
     }
 
     const Page = async function * () {
-      yield <AsyncSpin flex justify='center' align='center' show={300} />
+      yield <AsyncSpin flex justify='center' align='center' showDelay={300} />
 
       const { default: Component, ...props } = await page()
 

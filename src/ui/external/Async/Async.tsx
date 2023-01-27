@@ -1,4 +1,4 @@
-import { AsyncSpin } from '../AsyncSpin'
+import { AsyncSpin } from '../../layout'
 
 export interface AsyncProps<T extends object> {
   import: () => Promise<T>
@@ -15,7 +15,7 @@ export async function * Async <T extends object> ({
   children,
   showDelay = 300,
 }: AsyncProps<T>) {
-  yield <AsyncSpin flex align='center' justify='center' show={showDelay} />
+  yield <AsyncSpin flex align='center' justify='center' showDelay={showDelay} />
 
   const result = await request()
   const Component: any = name ? result[name] : result

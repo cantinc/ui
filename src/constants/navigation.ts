@@ -85,6 +85,13 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/layout/Spin/Spin.ui'),
       },
       {
+        exact: true,
+        slot: 'async-spin',
+        children: '<AsyncSpin />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/layout/AsyncSpin/AsyncSpin.ui'),
+      },
+      {
         slot: 'spin-box',
         children: '<SpinBox />',
         onclick: hideLayoutMenu,
