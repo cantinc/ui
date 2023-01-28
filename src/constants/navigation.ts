@@ -122,6 +122,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/layout/Pages/Pages.ui'),
       },
+      {
+        slot: 'badge-footer',
+        children: '<BadgeFooter />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/layout/BadgeFooter/BadgeFooter.ui'),
+      },
     ],
   },
   {

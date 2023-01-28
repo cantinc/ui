@@ -1,0 +1,10 @@
+.root {
+  position: absolute;
+  bottom: var(--ui-badge-footer-offset, 0);
+  left: var(--ui-badge-footer-offset, 0);
+  right: var(--ui-badge-footer-offset, 0);
+  background: var(--color-primary-50);
+  color: var(--color-100);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
