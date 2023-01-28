@@ -3,10 +3,21 @@ import { Flex } from 'src/ui'
 
 import description from './README.md'
 
-const content = (
+const content = (position: string) => (
   <>
-    <div style={{ background: 'var(--color-40)', padding: '12px' }}>align</div>
-    <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
+    <div style={{
+      height: '48px',
+      background: 'var(--color-40)',
+      padding: '12px',
+    }}>
+      align
+    </div>
+    <div style={{
+      background: 'var(--color-60)',
+      padding: '6px',
+    }}>
+      {position}
+    </div>
   </>
 )
 
@@ -19,43 +30,70 @@ import dom from '@innet/dom'
 
 import { Flex } from '@cantinc/ui'
 
-const content = (
+const content = (position: string) => (
   <>
-    <div style={{ background: 'var(--color-40)', padding: '12px' }}>align</div>
-    <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
+    <div style={{
+      height: '48px',
+      background: 'var(--color-40)',
+      padding: '12px',
+    }}>
+      align
+    </div>
+    <div style={{
+      background: 'var(--color-60)',
+      padding: '6px',
+    }}>
+      {position}
+    </div>
   </>
 )
 
 innet(
-  <Flex wrap gap={16} style={{ background: 'var(--color-80)' }}>
+  <Flex
+    wrap
+    gap={16}
+    style={{
+      background: 'var(--color-80)',
+    }}>
     <Flex align='center'>
-      {content}
+      {content('center')}
     </Flex>
     <Flex align='start'>
-      {content}
+      {content('start')}
     </Flex>
     <Flex align='end'>
-      {content}
+      {content('end')}
     </Flex>
     <Flex align='stretch'>
-      {content}
+      {content('stretch')}
+    </Flex>
+    <Flex align='baseline'>
+      {content('baseline')}
     </Flex>
   </Flex>,
   dom,
 )`,
   example: (
-    <Flex wrap gap={16} style={{ background: 'var(--color-80)' }}>
+    <Flex
+      wrap
+      gap={16}
+      style={{
+        background: 'var(--color-80)',
+      }}>
       <Flex align='center'>
-        {content}
+        {content('center')}
       </Flex>
       <Flex align='start'>
-        {content}
+        {content('start')}
       </Flex>
       <Flex align='end'>
-        {content}
+        {content('end')}
       </Flex>
       <Flex align='stretch'>
-        {content}
+        {content('stretch')}
+      </Flex>
+      <Flex align='baseline'>
+        {content('baseline')}
       </Flex>
     </Flex>
   ),

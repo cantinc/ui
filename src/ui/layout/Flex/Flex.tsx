@@ -5,11 +5,15 @@ import styles from './Flex.scss'
 
 const useStyle = style(styles)
 
-export const alignMap = {
+export const alignJustifyMap = {
   start: 'flex-start',
   end: 'flex-end',
   center: 'center',
   stretch: 'stretch',
+} as const
+export const alignMap = {
+  ...alignJustifyMap,
+  baseline: 'baseline',
 } as const
 
 export const justifyMap = {
