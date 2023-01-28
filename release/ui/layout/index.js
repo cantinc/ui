@@ -16,4 +16,5 @@ require('./Details/index.js');
 require('./Image/index.js');
 require('./Pages/index.js');
 require('./AsyncSpin/index.js');
+require('./BadgeFooter/index.js');
 

@@ -14,3 +14,4 @@ import './Details/index.es6.js';
 import './Image/index.es6.js';
 import './Pages/index.es6.js';
 import './AsyncSpin/index.es6.js';
+import './BadgeFooter/index.es6.js';

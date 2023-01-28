@@ -33,6 +33,7 @@ export { Details } from './ui/layout/Details/Details.es6.js';
 export { Image } from './ui/layout/Image/Image.es6.js';
 export { Pages, splitPagesItem } from './ui/layout/Pages/Pages.es6.js';
 export { AsyncSpin } from './ui/layout/AsyncSpin/AsyncSpin.es6.js';
+export { BadgeFooter } from './ui/layout/BadgeFooter/BadgeFooter.es6.js';
 export { Notification } from './ui/popups/Notification/Notification.es6.js';
 export { Notifications } from './ui/popups/Notifications/Notifications.es6.js';
 export { notify } from './ui/popups/Notifications/helpers.es6.js';

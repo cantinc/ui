@@ -8,9 +8,9 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 
 var injector_8363bc92__default = /*#__PURE__*/_interopDefaultLegacy(injector_8363bc92);
 
-var css = ".Image_root__9472e9d8{aspect-ratio:var(--ui-image-ratio);background-position:50%;background-size:cover;border-radius:var(--ui-image-radius);box-sizing:border-box;overflow:hidden;position:relative;width:var(--ui-image-size)}";
-var modules_565fa2bc = {"root":"Image_root__9472e9d8"};
+var css = ".BadgeFooter_root__1ee58a84{background:var(--color-primary-50);border-bottom-left-radius:inherit;border-bottom-right-radius:inherit;bottom:var(--ui-badge-footer-offset,0);color:var(--color-100);left:var(--ui-badge-footer-offset,0);position:absolute;right:var(--ui-badge-footer-offset,0)}";
+var modules_b78b788d = {"root":"BadgeFooter_root__1ee58a84"};
 injector_8363bc92__default["default"](css,{});
 
 exports.css = css;
-exports["default"] = modules_565fa2bc;
+exports["default"] = modules_b78b788d;

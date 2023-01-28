@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.26 [![28.01.2023](https://img.shields.io/date/1674912645)](https://github.com/d8corp/innetjs/tree/v0.1.26)
+
+- add `BadgeFooter`
+- small fixes
+
 ### v0.1.25 [![28.01.2023](https://img.shields.io/date/1674906034)](https://github.com/d8corp/innetjs/tree/v0.1.25)
 
 - add `baseline` value of `Flex` `align` prop

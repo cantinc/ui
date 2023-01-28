@@ -14,3 +14,4 @@ export * from './Details';
 export * from './Image';
 export * from './Pages';
 export * from './AsyncSpin';
+export * from './BadgeFooter';
