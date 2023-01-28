@@ -13,6 +13,7 @@
   width: var(--ui-card-width, auto);
   height: var(--ui-card-height, auto);
   box-sizing: border-box;
+  position: relative;
 
   @include skeletonAfter(-1px);
 }
