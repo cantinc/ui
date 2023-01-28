@@ -29,6 +29,7 @@ declare const iconsImports: {
     readonly loupe: () => Promise<typeof import("./icons/LoupeIcon")>;
     readonly delivery: () => Promise<typeof import("./icons/DeliveryIcon")>;
     readonly gift: () => Promise<typeof import("./icons/GiftIcon")>;
+    readonly qr: () => Promise<typeof import("./icons/QRIcon")>;
     readonly trash: () => Promise<typeof import("./icons/TrashIcon")>;
     readonly vk: () => Promise<typeof import("./icons/VKIcon")>;
     readonly tg: () => Promise<typeof import("./icons/TGIcon")>;
@@ -36,7 +37,7 @@ declare const iconsImports: {
     readonly wa: () => Promise<typeof import("./icons/WAIcon")>;
 };
 export type IconProp = keyof typeof iconsImports;
-export declare const icons: ("default" | "cant" | "edit" | "calendar" | "chevron" | "chevronUp" | "chevronLeft" | "chevronRight" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "arrowLeft" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "trash" | "vk" | "tg" | "vb" | "wa")[];
+export declare const icons: ("default" | "cant" | "edit" | "calendar" | "chevron" | "chevronUp" | "chevronLeft" | "chevronRight" | "cross" | "info" | "check" | "menu" | "user" | "arrow" | "arrowLeft" | "geo" | "logout" | "gear" | "brick" | "plus" | "loupe" | "delivery" | "gift" | "qr" | "trash" | "vk" | "tg" | "vb" | "wa")[];
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }

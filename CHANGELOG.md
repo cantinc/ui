@@ -2,6 +2,11 @@
 
 ## v0.1
 
+### v0.1.25 [![28.01.2023](https://img.shields.io/date/1674906034)](https://github.com/d8corp/innetjs/tree/v0.1.25)
+
+- add `baseline` value of `Flex` `align` prop
+- add `qr` icon
+
 ### v0.1.24 [![27.01.2023](https://img.shields.io/date/1674827080)](https://github.com/d8corp/innetjs/tree/v0.1.24)
 
 - add `AsyncSpin`

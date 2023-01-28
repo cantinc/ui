@@ -18,7 +18,7 @@ export { Listener } from './ui/external/Listener/Listener.es6.js';
 export { Icon, icons } from './ui/icons/Icon/Icon.es6.js';
 export { Arrow } from './ui/icons/Arrow/Arrow.es6.js';
 export { DelayPage, Page } from './ui/layout/Page/Page.es6.js';
-export { Flex, alignMap, justifyMap } from './ui/layout/Flex/Flex.es6.js';
+export { Flex, alignJustifyMap, alignMap, justifyMap } from './ui/layout/Flex/Flex.es6.js';
 export { Space } from './ui/layout/Space/Space.es6.js';
 export { Layout } from './ui/layout/Layout/Layout.es6.js';
 export { Header } from './ui/layout/Header/Header.es6.js';

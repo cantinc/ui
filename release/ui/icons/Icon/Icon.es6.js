@@ -24,6 +24,7 @@ const iconsImports = {
     loupe: () => import('./icons/LoupeIcon/index.es6.js'),
     delivery: () => import('./icons/DeliveryIcon/index.es6.js'),
     gift: () => import('./icons/GiftIcon/index.es6.js'),
+    qr: () => import('./icons/QRIcon/index.es6.js'),
     trash: () => import('./icons/TrashIcon/index.es6.js'),
     vk: () => import('./icons/VKIcon/index.es6.js'),
     tg: () => import('./icons/TGIcon/index.es6.js'),

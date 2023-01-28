@@ -7,5 +7,6 @@ var Flex = require('./Flex.js');
 
 
 exports.Flex = Flex.Flex;
+exports.alignJustifyMap = Flex.alignJustifyMap;
 exports.alignMap = Flex.alignMap;
 exports.justifyMap = Flex.justifyMap;

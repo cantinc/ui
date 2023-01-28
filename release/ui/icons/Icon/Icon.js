@@ -28,6 +28,7 @@ const iconsImports = {
     loupe: () => Promise.resolve().then(function () { return require('./icons/LoupeIcon/index.js'); }),
     delivery: () => Promise.resolve().then(function () { return require('./icons/DeliveryIcon/index.js'); }),
     gift: () => Promise.resolve().then(function () { return require('./icons/GiftIcon/index.js'); }),
+    qr: () => Promise.resolve().then(function () { return require('./icons/QRIcon/index.js'); }),
     trash: () => Promise.resolve().then(function () { return require('./icons/TrashIcon/index.js'); }),
     vk: () => Promise.resolve().then(function () { return require('./icons/VKIcon/index.js'); }),
     tg: () => Promise.resolve().then(function () { return require('./icons/TGIcon/index.js'); }),

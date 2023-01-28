@@ -1,5 +1,12 @@
 import { HTMLStyleProps } from '@innet/dom';
+export declare const alignJustifyMap: {
+    readonly start: "flex-start";
+    readonly end: "flex-end";
+    readonly center: "center";
+    readonly stretch: "stretch";
+};
 export declare const alignMap: {
+    readonly baseline: "baseline";
     readonly start: "flex-start";
     readonly end: "flex-end";
     readonly center: "center";
@@ -8,6 +15,7 @@ export declare const alignMap: {
 export declare const justifyMap: {
     readonly between: "space-between";
     readonly around: "space-around";
+    readonly baseline: "baseline";
     readonly start: "flex-start";
     readonly end: "flex-end";
     readonly center: "center";

@@ -138,6 +138,7 @@ exports.Arrow = Arrow.Arrow;
 exports.DelayPage = Page.DelayPage;
 exports.Page = Page.Page;
 exports.Flex = Flex.Flex;
+exports.alignJustifyMap = Flex.alignJustifyMap;
 exports.alignMap = Flex.alignMap;
 exports.justifyMap = Flex.justifyMap;
 exports.Space = Space.Space;

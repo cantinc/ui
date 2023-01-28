@@ -8,12 +8,13 @@ var jsx = require('@innet/jsx');
 var Flex$1 = require('./Flex.scss.js');
 
 const useStyle = dom.style(Flex$1["default"]);
-const alignMap = {
+const alignJustifyMap = {
     start: 'flex-start',
     end: 'flex-end',
     center: 'center',
     stretch: 'stretch',
 };
+const alignMap = Object.assign(Object.assign({}, alignJustifyMap), { baseline: 'baseline' });
 const justifyMap = Object.assign(Object.assign({}, alignMap), { between: 'space-between', around: 'space-around' });
 function Flex(_a = {}) {
     var { vertical, align, justify, gap, flex, wrap, inline, reverse, style, padding, element: Element = 'div' } = _a, props = tslib.__rest(_a, ["vertical", "align", "justify", "gap", "flex", "wrap", "inline", "reverse", "style", "padding", "element"]);
@@ -23,5 +24,6 @@ function Flex(_a = {}) {
 }
 
 exports.Flex = Flex;
+exports.alignJustifyMap = alignJustifyMap;
 exports.alignMap = alignMap;
 exports.justifyMap = justifyMap;
