@@ -275,6 +275,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/interaction/InputDate/InputDate.ui'),
       },
       {
+        slot: 'input-number',
+        children: '<InputNumber />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/InputNumber/InputNumber.ui'),
+      },
+      {
         slot: 'textarea',
         children: '<TextArea />',
         onclick: hideLayoutMenu,

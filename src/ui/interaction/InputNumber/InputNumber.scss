@@ -1,0 +1,24 @@
+.root {
+
+}
+
+.label {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.input {
+  text-align: center;
+
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.minus,
+.plus {
+  cursor: pointer;
+}
