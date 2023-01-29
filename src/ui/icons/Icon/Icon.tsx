@@ -28,6 +28,7 @@ const iconsImports = {
   gear: () => import('./icons/GearIcon'),
   brick: () => import('./icons/BrickIcon'),
   plus: () => import('./icons/PlusIcon'),
+  minus: () => import('./icons/MinusIcon'),
   loupe: () => import('./icons/LoupeIcon'),
   delivery: () => import('./icons/DeliveryIcon'),
   gift: () => import('./icons/GiftIcon'),
