@@ -456,6 +456,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/search/SearchInputDate/SearchInputDate.ui'),
       },
       {
+        slot: 'input-number',
+        children: '<SearchInputNumber />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/search/SearchInputNumber/SearchInputNumber.ui'),
+      },
+      {
         slot: 'selector',
         children: '<SearchSelector />',
         onclick: hideLayoutMenu,
