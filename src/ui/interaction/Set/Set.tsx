@@ -1,8 +1,9 @@
+import { randomHash } from '@cantinc/utils'
 import { LoopItem, StateProp, style, use } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache, State, unwatch } from 'watch-state'
 
-import { actionProp, randomHash } from '../../../utils'
+import { actionProp } from '../../../utils'
 import { Icon } from '../../icons'
 import styles from './Set.scss'
 

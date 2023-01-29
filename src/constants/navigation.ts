@@ -387,6 +387,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/forms/FormInputMask/FormInputMask.ui'),
       },
       {
+        slot: 'input-number',
+        children: '<FormInputNumber />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/forms/FormInputNumber/FormInputNumber.ui'),
+      },
+      {
         slot: 'input-date',
         children: '<FormInputDate />',
         onclick: hideLayoutMenu,
