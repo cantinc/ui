@@ -1,1 +1,1 @@
-By default, do nothing on click
+You can use `element` prop from [Flex](/layout/flex#element)

@@ -4,6 +4,7 @@ import element from './element'
 import inline from './inline'
 import loading from './loading'
 import onclick from './onclick'
+import radius from './radius'
 
 export default [
   def,
@@ -11,5 +12,6 @@ export default [
   clickable,
   onclick,
   loading,
+  radius,
   element,
 ]
