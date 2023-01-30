@@ -15,8 +15,8 @@ require('../../interaction/CalendarTitle/index.js');
 require('../../layout/index.js');
 require('../Modal/index.js');
 var DatePicker$1 = require('./DatePicker.scss.js');
-var width = require('../../../utils/core/window/width.js');
-var height = require('../../../utils/core/window/height.js');
+var windowWidth = require('../../../utils/core/window/windowWidth.js');
+var windowHeight = require('../../../utils/core/window/windowHeight.js');
 var dateMinMax = require('../../../utils/date/dateMinMax/dateMinMax.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
 var getDaysInMonth = require('../../../utils/date/getDaysInMonth/getDaysInMonth.js');
@@ -39,7 +39,7 @@ const today = new Date();
 const todayYear = today.getFullYear();
 const todayMonth = today.getMonth();
 const dataPickerCellHeight = new watchState.Cache(() => {
-    return width.windowWidth.value < 768 ? (height.windowHeight.value - 290) / 6 : 57;
+    return windowWidth.windowWidth.value < 768 ? (windowHeight.windowHeight.value - 290) / 6 : 57;
 });
 function DatePicker(_a = {}) {
     var { apply, min, max, selector = new watchState.State('date'), defaultValue = today, value = new watchState.State(dateMinMax.dateMinMax(watchState.unwatch(() => dom.use(defaultValue) || today), min, max)), onChange, rotationTop = new watchState.State(true), goBackText, todayText, onApply } = _a, props = tslib.__rest(_a, ["apply", "min", "max", "selector", "defaultValue", "value", "onChange", "rotationTop", "goBackText", "todayText", "onApply"]);

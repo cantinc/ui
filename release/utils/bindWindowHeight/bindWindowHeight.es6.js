@@ -1,5 +1,6 @@
 import { Watch } from 'watch-state';
-import { windowHeight } from '../core/window/height.es6.js';
+import '../core/index.es6.js';
+import { windowHeight } from '../core/window/windowHeight.es6.js';
 
 function bindWindowHeight() {
     return new Watch(() => {

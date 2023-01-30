@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var height = require('./height.js');
-var width = require('./width.js');
+var windowWidth = require('./windowWidth.js');
+var windowHeight = require('./windowHeight.js');
 
 
 
-exports.windowHeight = height.windowHeight;
-exports.windowWidth = width.windowWidth;
+exports.windowWidth = windowWidth.windowWidth;
+exports.windowHeight = windowHeight.windowHeight;

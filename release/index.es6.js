@@ -106,8 +106,8 @@ export { inputDateFormat } from './utils/date/inputDateFormat/inputDateFormat.es
 export { dateMinMax } from './utils/date/dateMinMax/dateMinMax.es6.js';
 export { getLocaleDateFormat } from './utils/date/getLocaleDateFormat/getLocaleDateFormat.es6.js';
 export { createDateFromLocal } from './utils/date/createDateFromLocal/createDateFromLocal.es6.js';
-export { windowHeight } from './utils/core/window/height.es6.js';
-export { windowWidth } from './utils/core/window/width.es6.js';
+export { windowWidth } from './utils/core/window/windowWidth.es6.js';
+export { windowHeight } from './utils/core/window/windowHeight.es6.js';
 export { useEscapeListener } from './hooks/useEscapeListener/useEscapeListener.es6.js';
 export { formContext, useForm } from './hooks/forms/useForm/useForm.es6.js';
 export { useField } from './hooks/forms/useField/useField.es6.js';

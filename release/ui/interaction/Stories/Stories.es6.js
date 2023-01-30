@@ -16,7 +16,7 @@ import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_b1e1aef6);
 function Stories(_a) {
-    var { stories, ref = new Ref() } = _a, props = __rest(_a, ["stories", "ref"]);
+    var { stories, ref = new Ref(), props: { preview: previewProps } = {} } = _a, props = __rest(_a, ["stories", "ref", "props"]);
     const styles = useStyle();
     const popoutElement = new Ref();
     const popoutRoot = new Ref();
@@ -103,10 +103,10 @@ function Stories(_a) {
                     dot: () => styles.dot,
                 },onend:next,autoscroll:() => story.value === index && autoscroll.value,count:slides.length}},children]) }));
     });
-    return ([{type:Flex,props:{gap:16,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image,props:{ref:previewRef,src:preview,size:100,class:() => styles.preview,onclick:() => {
+    return ([{type:Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => styles.preview,onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,class:{
+            }}}))]},{type:Popout,props:{class:{ content: () => styles.popoutContent },ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
         },flex:true,slides:slides}},{type:Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);

@@ -20,7 +20,7 @@ var Icon = require('../../icons/Icon/Icon.js');
 
 const useStyle = dom.style(Stories$1["default"]);
 function Stories(_a) {
-    var { stories, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["stories", "ref"]);
+    var { stories, ref = new dom.Ref(), props: { preview: previewProps } = {} } = _a, props = tslib.__rest(_a, ["stories", "ref", "props"]);
     const styles = useStyle();
     const popoutElement = new dom.Ref();
     const popoutRoot = new dom.Ref();
@@ -107,10 +107,10 @@ function Stories(_a) {
                     dot: () => styles.dot,
                 },onend:next,autoscroll:() => story.value === index && autoscroll.value,count:slides.length}},children]) }));
     });
-    return ([{type:Flex.Flex,props:{gap:16,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image.Image,props:{ref:previewRef,src:preview,size:100,class:() => styles.preview,onclick:() => {
+    return ([{type:Flex.Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image.Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => styles.preview,onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,class:{
+            }}}))]},{type:Popout.Popout,props:{class:{ content: () => styles.popoutContent },ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
         },flex:true,slides:slides}},{type:Icon.Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);
