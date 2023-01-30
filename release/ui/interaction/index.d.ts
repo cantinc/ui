@@ -15,3 +15,4 @@ export * from './Set';
 export * from './Calendar';
 export * from './CalendarTitle';
 export * from './InputDate';
+export * from './InputNumber';

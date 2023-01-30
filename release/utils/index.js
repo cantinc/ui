@@ -12,7 +12,6 @@ require('./createFormDate/index.js');
 require('./debounceCall/index.js');
 require('./file/index.js');
 require('./parseForm/index.js');
-require('./generators/index.js');
 require('./date/index.js');
 require('./core/index.js');
 

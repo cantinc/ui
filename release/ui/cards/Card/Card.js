@@ -17,7 +17,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Card$1["default"]);
 function Card(_a = {}) {
-    var { onclick, clickable = !!onclick, loading, preventAnimation, width, height, style } = _a, props = tslib.__rest(_a, ["onclick", "clickable", "loading", "preventAnimation", "width", "height", "style"]);
+    var { onclick, clickable = !!onclick, loading, preventAnimation, width, height, style, radius = 8 } = _a, props = tslib.__rest(_a, ["onclick", "clickable", "loading", "preventAnimation", "width", "height", "style", "radius"]);
     const children = jsx.useChildren();
     const hidden = dom.useHidden();
     const styles = useStyle();
@@ -48,7 +48,7 @@ function Card(_a = {}) {
             (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
         ]);
     }
-    return ({type:Flex.Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex.Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-radius': dom.inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius), '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }
 
 exports.Card = Card;

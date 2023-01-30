@@ -25,6 +25,7 @@ const iconsImports = {
     gear: () => Promise.resolve().then(function () { return require('./icons/GearIcon/index.js'); }),
     brick: () => Promise.resolve().then(function () { return require('./icons/BrickIcon/index.js'); }),
     plus: () => Promise.resolve().then(function () { return require('./icons/PlusIcon/index.js'); }),
+    minus: () => Promise.resolve().then(function () { return require('./icons/MinusIcon/index.js'); }),
     loupe: () => Promise.resolve().then(function () { return require('./icons/LoupeIcon/index.js'); }),
     delivery: () => Promise.resolve().then(function () { return require('./icons/DeliveryIcon/index.js'); }),
     gift: () => Promise.resolve().then(function () { return require('./icons/GiftIcon/index.js'); }),

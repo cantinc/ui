@@ -10,6 +10,5 @@ export * from './createFormDate';
 export * from './debounceCall';
 export * from './file';
 export * from './parseForm';
-export * from './generators';
 export * from './date';
 export * from './core';

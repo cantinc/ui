@@ -15,3 +15,4 @@ import './Set/index.es6.js';
 import './Calendar/index.es6.js';
 import './CalendarTitle/index.es6.js';
 import './InputDate/index.es6.js';
+import './InputNumber/index.es6.js';

@@ -9,7 +9,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_8c949659);
 function Card(_a = {}) {
-    var { onclick, clickable = !!onclick, loading, preventAnimation, width, height, style } = _a, props = __rest(_a, ["onclick", "clickable", "loading", "preventAnimation", "width", "height", "style"]);
+    var { onclick, clickable = !!onclick, loading, preventAnimation, width, height, style, radius = 8 } = _a, props = __rest(_a, ["onclick", "clickable", "loading", "preventAnimation", "width", "height", "style", "radius"]);
     const children = useChildren();
     const hidden = useHidden();
     const styles = useStyle();
@@ -40,7 +40,7 @@ function Card(_a = {}) {
             (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
         ]);
     }
-    return ({type:Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-width': inject(width, width => width ? `${width}px` : ''), '--ui-card-height': inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{onclick:onclick,padding:18,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-radius': inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius), '--ui-card-width': inject(width, width => width ? `${width}px` : ''), '--ui-card-height': inject(height, height => height ? `${height}px` : '') }),class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Card };

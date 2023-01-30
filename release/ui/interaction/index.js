@@ -17,4 +17,5 @@ require('./Set/index.js');
 require('./Calendar/index.js');
 require('./CalendarTitle/index.js');
 require('./InputDate/index.js');
+require('./InputNumber/index.js');
 

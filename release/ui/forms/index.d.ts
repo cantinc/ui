@@ -10,3 +10,4 @@ export * from './FormInputMask';
 export * from './FormUpload';
 export * from './FormSet';
 export * from './FormInputDate';
+export * from './FormInputNumber';

@@ -2,6 +2,12 @@
 
 ## v0.1
 
+### v0.1.27 [![30.01.2023](https://img.shields.io/date/1675087197)](https://github.com/d8corp/innetjs/tree/v0.1.27)
+
+- add minus icon
+- add InputNumber components
+- some improvements
+
 ### v0.1.26 [![28.01.2023](https://img.shields.io/date/1674912645)](https://github.com/d8corp/innetjs/tree/v0.1.26)
 
 - add `BadgeFooter`

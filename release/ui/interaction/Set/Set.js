@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
+var utils = require('@cantinc/utils');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var watchState = require('watch-state');
@@ -10,7 +11,6 @@ require('../../../utils/index.js');
 require('../../icons/index.js');
 var Set$1 = require('./Set.scss.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
-var randomHash = require('../../../utils/generators/randomHash/randomHash.js');
 var Icon = require('../../icons/Icon/Icon.js');
 
 const useStyle = dom.style(Set$1["default"]);
@@ -27,7 +27,7 @@ function Set(_a) {
             if (key in value)
                 continue;
             // @ts-expect-error
-            value[key] = randomHash.randomHash();
+            value[key] = utils.randomHash();
         }
         return values;
     });

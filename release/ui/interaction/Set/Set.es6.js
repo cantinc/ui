@@ -1,4 +1,5 @@
 import { __rest } from 'tslib';
+import { randomHash } from '@cantinc/utils';
 import { style, use } from '@innet/dom';
 import { Context, useContext, useChildren } from '@innet/jsx';
 import { State, Cache, unwatch } from 'watch-state';
@@ -6,7 +7,6 @@ import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
 import modules_e864a768 from './Set.scss.es6.js';
 import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
-import { randomHash } from '../../../utils/generators/randomHash/randomHash.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_e864a768);
