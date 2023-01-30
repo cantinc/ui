@@ -6,12 +6,12 @@ import styles from './Image.scss'
 
 const useStyle = style(styles)
 
-export interface ImageProps extends FlexProps {
+export type ImageProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
   src: StateProp<string>
   size: StateProp<number>
   ratio?: StateProp<number | [number, number]>
   radius?: StateProp<number | string>
-}
+}>
 
 export function Image ({
   style,
