@@ -1,2 +1,2 @@
-export * from './height'
-export * from './width'
+export * from './windowWidth'
+export * from './windowHeight'

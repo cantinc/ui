@@ -2,7 +2,7 @@ import { Ref, style } from '@innet/dom'
 import { State, Watch } from 'watch-state'
 
 import { Icon } from '../../icons'
-import { Flex, FlexProps, Image } from '../../layout'
+import { Flex, FlexProps, Image, ImageProps } from '../../layout'
 import { Popout } from '../../popups'
 import { Dots } from '../Dots'
 import { Slide, Slides } from '../Slides'
@@ -18,11 +18,15 @@ export interface Story extends Slide {
 
 export interface StoriesProps extends FlexProps {
   stories: Story[]
+  props?: {
+    preview?: ImageProps
+  }
 }
 
 export function Stories ({
   stories,
   ref = new Ref<HTMLElement>(),
+  props: { preview: previewProps } = {},
   ...props
 }: StoriesProps) {
   const styles = useStyle()
@@ -152,9 +156,11 @@ export function Stories ({
       <Flex gap={16} {...props} ref={ref} class={() => styles.root}>
         {stories.map(({ preview, previewRef }, index) => (
           <Image
+            size={110}
+            radius={previewProps?.size || 110}
+            {...previewProps}
             ref={previewRef}
             src={preview}
-            size={100}
             class={() => styles.preview}
             onclick={() => {
               story.value = index
@@ -164,6 +170,7 @@ export function Stories ({
         ))}
       </Flex>
       <Popout
+        class={{ content: () => styles.popoutContent }}
         ontouchstart={stopAutoscroll}
         ontouchend={continueAutoscroll}
         rootRef={popoutRoot}
