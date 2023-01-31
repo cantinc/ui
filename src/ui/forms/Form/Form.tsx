@@ -1,14 +1,16 @@
-import { ValidationError } from '@cantinc/utils'
+import { validation, ValidationError } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
 import { FormContext, formContext, FormField } from '../../../hooks'
+import { parseForm } from '../../../utils'
 import { Flex } from '../../layout'
 import { notify } from '../../popups'
-import { FormActionHandle, FormErrorHandle, FormNotificationHandle, FormProps } from './types'
+import { FormActionHandle, FormErrorHandle, FormInvalidHandle, FormNotificationHandle, FormProps } from './types'
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
+export const formInvalidHandler = new Context<FormInvalidHandle>(() => {})
 export const formActionHandler = new Context<FormActionHandle>(() => {})
 export const formNotificationHandler = new Context<FormNotificationHandle>(
   ({ notification }) => notification && notify(notification, 'success'),
@@ -23,11 +25,14 @@ export function Form ({
   onerror,
   onreset,
   onsubmit,
+  validation: validationProp,
+  oninvalid,
   ref = new Ref(),
   ...props
 }: FormProps = {}) {
   const children = useChildren()
   const errorHandler = useContext(formErrorHandler)
+  const invalidHandler = useContext(formInvalidHandler)
   const actionHandler = useContext(formActionHandler)
   const notificationHandler = useContext(formNotificationHandler)
 
@@ -40,14 +45,15 @@ export function Form ({
     method,
     notification,
     action,
+    validation: validationProp || {},
   }
 
   onDestroy(() => {
     form.destroyed = true
   })
 
-  const handleSuccess = (data?: any) => {
-    form.data = data
+  const handleSuccess = (responseData?: any) => {
+    form.responseData = responseData
 
     if (notification) {
       notificationHandler(form)
@@ -59,7 +65,7 @@ export function Form ({
     field.error.value = await errorHandler(error, form)
   }
 
-  const validation = () => {
+  const validate = () => {
     let result = false
 
     const setError = (error: ValidationError<any>, field: FormField<any, any>) => {
@@ -91,14 +97,26 @@ export function Form ({
       }
     }
 
+    if (result) return result
+
+    const error = validation(form.validation, form.submitData)
+
+    if (error) {
+      invalidHandler(error, form)
+      oninvalid?.(error, form)
+      return error
+    }
+
     return result
   }
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
+    form.submitData = parseForm(form)
+
     onsubmit?.(e)
 
-    const error = validation()
+    const error = validate()
 
     if (error) return
 

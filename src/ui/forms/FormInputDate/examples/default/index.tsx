@@ -1,7 +1,6 @@
 import { example } from 'src/app/Component'
 import { Button, Form, FormInputDate } from 'src/ui'
 
-import { parseForm } from '../../../../../utils'
 import description from './README.md'
 
 export default example({
@@ -19,7 +18,7 @@ import {
 
 innet(
   <Form
-    onsuccess={form => console.log(parseForm(form))}
+    onsuccess={form => console.log(form.submitData)}
     vertical>
     <FormInputDate
       name='birthday'
@@ -34,7 +33,7 @@ innet(
 )`,
   example: (
     <Form
-      onsuccess={form => console.log(parseForm(form))}
+      onsuccess={form => console.log(form.submitData)}
       vertical>
       <FormInputDate
         name='birthday'

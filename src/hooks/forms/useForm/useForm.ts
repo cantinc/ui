@@ -1,4 +1,4 @@
-import { Validator } from '@cantinc/utils'
+import { ValidationMap, Validator } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { Context, useContext } from '@innet/jsx'
 import { State } from 'watch-state'
@@ -19,7 +19,9 @@ export interface FormContext extends FormProps {
   destroyed: boolean
   loading: State<boolean>
   ref: Ref<HTMLFormElement>
-  data?: any
+  responseData?: any
+  submitData?: any
+  validation: ValidationMap<any>
 }
 
 export const formContext = new Context<FormContext>()

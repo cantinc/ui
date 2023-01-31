@@ -8,13 +8,12 @@ import {
   formNotificationHandler,
   notify,
 } from 'src/ui'
-import { parseForm } from 'src/utils'
 
 import description from './README.md'
 
 const handleFormNotification: FormNotificationHandle = (form) => {
   if (form.notification) {
-    notify(placeholder(form.notification, parseForm(form)), 'success')
+    notify(placeholder(form.notification, form.submitData), 'success')
   }
 }
 
@@ -33,12 +32,11 @@ import {
   Button,
   Buttons,
   notify,
-  parseForm,
   formNotificationHandler,
 } from '@cantinc/ui'
 
 const handleFormNotification: FormNotificationHandle = (notification, form) => {
-  notify(placeholder(notification, parseForm(form)), 'success')
+  notify(placeholder(notification, form.submitData), 'success')
 }
 
 innet(

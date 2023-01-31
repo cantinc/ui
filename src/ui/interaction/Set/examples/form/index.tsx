@@ -1,7 +1,6 @@
 import { example } from 'src/app/Component'
 import { Button, Form, FormInput, FormInputProps, Icon, Set } from 'src/ui'
 
-import { parseForm } from '../../../../../utils'
 import description from './README.md'
 
 export default example({
@@ -21,7 +20,7 @@ import {
 } from '@cantinc/ui'
 
 innet(
-  <Form onsuccess={form => console.log(parseForm(form))}>
+  <Form onsuccess={form => console.log(form.submitData)}>
     <Set<FormInputProps>
       element={FormInput}
       label='Address'
@@ -37,7 +36,7 @@ innet(
   dom,
 )`,
   example: (
-    <Form onsuccess={form => console.log(parseForm(form))}>
+    <Form onsuccess={form => console.log(form.submitData)}>
       <Set<FormInputProps>
         element={FormInput}
         handleItemProps={item => ({ ...item.value, label: () => `${item.value.label} ${item.index + 1}` })}
