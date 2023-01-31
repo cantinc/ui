@@ -170,7 +170,6 @@ export function Stories ({
         ))}
       </Flex>
       <Popout
-        class={{ content: () => styles.popoutContent }}
         ontouchstart={stopAutoscroll}
         ontouchend={continueAutoscroll}
         rootRef={popoutRoot}
