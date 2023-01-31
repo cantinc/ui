@@ -3,35 +3,40 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
+var utils = require('@cantinc/utils');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var watchState = require('watch-state');
 require('../../../hooks/index.js');
+require('../../../utils/index.js');
 require('../../layout/index.js');
 require('../../popups/index.js');
 var helpers = require('../../popups/Notifications/helpers.js');
+var parseForm = require('../../../utils/parseForm/parseForm.js');
 var useForm = require('../../../hooks/forms/useForm/useForm.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
 const formErrorHandler = new jsx.Context(({ error }) => error);
+const formInvalidHandler = new jsx.Context(() => { });
 const formActionHandler = new jsx.Context(() => { });
 const formNotificationHandler = new jsx.Context(({ notification }) => notification && helpers.notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
+    var { loading = new watchState.State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, validation: validationProp, oninvalid, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "validation", "oninvalid", "ref"]);
     const children = jsx.useChildren();
     const errorHandler = jsx.useContext(formErrorHandler);
+    const invalidHandler = jsx.useContext(formInvalidHandler);
     const actionHandler = jsx.useContext(formActionHandler);
     const notificationHandler = jsx.useContext(formNotificationHandler);
     const form = Object.assign(Object.assign({}, props), { fields: new Set(), destroyed: false, loading,
         ref,
         method,
         notification,
-        action });
+        action, validation: validationProp || {} });
     watchState.onDestroy(() => {
         form.destroyed = true;
     });
-    const handleSuccess = (data) => {
-        form.data = data;
+    const handleSuccess = (responseData) => {
+        form.responseData = responseData;
         if (notification) {
             notificationHandler(form);
         }
@@ -40,7 +45,7 @@ function Form(_a = {}) {
     const setValidationError = (error, field) => tslib.__awaiter(this, void 0, void 0, function* () {
         field.error.value = yield errorHandler(error, form);
     });
-    const validation = () => {
+    const validate = () => {
         let result = false;
         const setError = (error, field) => {
             if (!result) {
@@ -67,12 +72,21 @@ function Form(_a = {}) {
                 }
             }
         }
+        if (result)
+            return result;
+        const error = utils.validation(form.validation, form.submitData);
+        if (error) {
+            invalidHandler(error, form);
+            oninvalid === null || oninvalid === void 0 ? void 0 : oninvalid(error, form);
+            return error;
+        }
         return result;
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        form.submitData = parseForm.parseForm(form);
         onsubmit === null || onsubmit === void 0 ? void 0 : onsubmit(e);
-        const error = validation();
+        const error = validate();
         if (error)
             return;
         if (action) {
@@ -112,4 +126,5 @@ function Form(_a = {}) {
 exports.Form = Form;
 exports.formActionHandler = formActionHandler;
 exports.formErrorHandler = formErrorHandler;
+exports.formInvalidHandler = formInvalidHandler;
 exports.formNotificationHandler = formNotificationHandler;

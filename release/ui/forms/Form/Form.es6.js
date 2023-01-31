@@ -1,33 +1,38 @@
 import { __rest, __awaiter } from 'tslib';
+import { validation } from '@cantinc/utils';
 import { Ref } from '@innet/dom';
 import { Context, useChildren, useContext } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
 import '../../../hooks/index.es6.js';
+import '../../../utils/index.es6.js';
 import '../../layout/index.es6.js';
 import '../../popups/index.es6.js';
 import { notify } from '../../popups/Notifications/helpers.es6.js';
+import { parseForm } from '../../../utils/parseForm/parseForm.es6.js';
 import { formContext } from '../../../hooks/forms/useForm/useForm.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const formErrorHandler = new Context(({ error }) => error);
+const formInvalidHandler = new Context(() => { });
 const formActionHandler = new Context(() => { });
 const formNotificationHandler = new Context(({ notification }) => notification && notify(notification, 'success'));
 function Form(_a = {}) {
-    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, ref = new Ref() } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "ref"]);
+    var { loading = new State(false), action, notification, method = 'POST', onsuccess, onerror, onreset, onsubmit, validation: validationProp, oninvalid, ref = new Ref() } = _a, props = __rest(_a, ["loading", "action", "notification", "method", "onsuccess", "onerror", "onreset", "onsubmit", "validation", "oninvalid", "ref"]);
     const children = useChildren();
     const errorHandler = useContext(formErrorHandler);
+    const invalidHandler = useContext(formInvalidHandler);
     const actionHandler = useContext(formActionHandler);
     const notificationHandler = useContext(formNotificationHandler);
     const form = Object.assign(Object.assign({}, props), { fields: new Set(), destroyed: false, loading,
         ref,
         method,
         notification,
-        action });
+        action, validation: validationProp || {} });
     onDestroy(() => {
         form.destroyed = true;
     });
-    const handleSuccess = (data) => {
-        form.data = data;
+    const handleSuccess = (responseData) => {
+        form.responseData = responseData;
         if (notification) {
             notificationHandler(form);
         }
@@ -36,7 +41,7 @@ function Form(_a = {}) {
     const setValidationError = (error, field) => __awaiter(this, void 0, void 0, function* () {
         field.error.value = yield errorHandler(error, form);
     });
-    const validation = () => {
+    const validate = () => {
         let result = false;
         const setError = (error, field) => {
             if (!result) {
@@ -63,12 +68,21 @@ function Form(_a = {}) {
                 }
             }
         }
+        if (result)
+            return result;
+        const error = validation(form.validation, form.submitData);
+        if (error) {
+            invalidHandler(error, form);
+            oninvalid === null || oninvalid === void 0 ? void 0 : oninvalid(error, form);
+            return error;
+        }
         return result;
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        form.submitData = parseForm(form);
         onsubmit === null || onsubmit === void 0 ? void 0 : onsubmit(e);
-        const error = validation();
+        const error = validate();
         if (error)
             return;
         if (action) {
@@ -105,4 +119,4 @@ function Form(_a = {}) {
     return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,ref:ref,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }
 
-export { Form, formActionHandler, formErrorHandler, formNotificationHandler };
+export { Form, formActionHandler, formErrorHandler, formInvalidHandler, formNotificationHandler };

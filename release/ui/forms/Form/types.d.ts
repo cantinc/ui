@@ -1,4 +1,4 @@
-import { ValidationError, Validator } from '@cantinc/utils';
+import { ValidationError, ValidationMap, Validator } from '@cantinc/utils';
 import { StateProp } from '@innet/dom';
 import { State } from 'watch-state';
 import { FormContext } from '../../../hooks';
@@ -8,11 +8,14 @@ export interface FormProps extends FlexProps<HTMLFormElement> {
     action?: StateProp<string>;
     loading?: State<boolean>;
     notification?: string;
+    validation?: ValidationMap<any>;
     method?: FormMethod;
     onerror?: (form: FormContext, error?: any) => void;
     onsuccess?: (form: FormContext) => void;
+    oninvalid?: (error: ValidationError<any>, form: FormContext) => void;
 }
 export type FormErrorHandle = (error: ValidationError<any>, form: FormContext) => string | Promise<string>;
+export type FormInvalidHandle = (error: ValidationError<any>, form: FormContext) => void;
 export type FormActionHandle = (form: FormContext) => Promise<any> | any;
 export type FormNotificationHandle = (form: FormContext) => void;
 export interface FormFieldProps<V = string> {

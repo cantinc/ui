@@ -181,6 +181,7 @@ exports.HoverCard = HoverCard.HoverCard;
 exports.Form = Form.Form;
 exports.formActionHandler = Form.formActionHandler;
 exports.formErrorHandler = Form.formErrorHandler;
+exports.formInvalidHandler = Form.formInvalidHandler;
 exports.formNotificationHandler = Form.formNotificationHandler;
 exports.FormToggle = FormToggle.FormToggle;
 exports.FormInput = FormInput.FormInput;
