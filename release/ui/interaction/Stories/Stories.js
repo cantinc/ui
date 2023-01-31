@@ -110,7 +110,7 @@ function Stories(_a) {
     return ([{type:Flex.Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image.Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => styles.preview,onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout.Popout,props:{class:{ content: () => styles.popoutContent },ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,class:{
+            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
         },flex:true,slides:slides}},{type:Icon.Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);
