@@ -13,6 +13,8 @@ import dom from '@innet/dom'
 
 import { BadgeFooter, Image } from '@cantinc/ui'
 
+import background from './background.jpg'
+
 innet(
   <Image
     size={100}
