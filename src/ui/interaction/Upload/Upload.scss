@@ -3,18 +3,33 @@
   --ui-upload-width: var(--ui-upload-height);
   --ui-upload-radius: 0;
 
-  display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
-  height: 112px;
-  gap: 12px;
+  min-height: 112px;
   background: var(--color-100);
   border: 1px solid var(--ui-color-separator);
-  border-radius: 10px;
+  border-radius: var(--round-50);
   margin-bottom: 24px;
   transition: border .3s;
   cursor: pointer;
+}
+
+.labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.files {
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  height: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  gap: inherit;
+  flex-wrap: inherit;
+  max-width: 100%;
 }
 
 .error {
@@ -47,7 +62,7 @@
 .drop {
   position: absolute;
   inset: 0 auto;
-  width: 75%;
+  width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -55,13 +70,12 @@
   transition: all .3s;
   opacity: 1;
   transform: scale(1);
-  pointer-events: none;
 }
 
 .label {
   color: var(--color-60);
 
-  .input:not([data-empty='true']) ~ & {
+  .input:not([data-empty='true']) ~ .labels > & {
     opacity: 0;
     transform: scale(1.5);
     visibility: hidden;
@@ -89,7 +103,7 @@
   transform: scale(1);
 }
 
-.over > .drag {
+.over .drag {
   opacity: 0;
   visibility: hidden;
   transform: scale(0);
@@ -106,7 +120,7 @@
   border: 1px solid var(--color-input-border);
   object-fit: cover;
   background-color: var(--color-90);
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;

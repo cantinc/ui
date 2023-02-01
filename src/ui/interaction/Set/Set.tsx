@@ -59,11 +59,15 @@ export function Set<P extends object> ({
     <>
       <for of={customValues} key={key}>
         {(item: LoopItem<P>) => (
-          <Element {...unwatch(() => handleItemProps(item, Element))}>
+          <Element {...props} {...unwatch(() => handleItemProps(item, Element))}>
             <slot name='after'>
               <Icon
                 class={styles.remove}
-                onclick={() => handleRemove(item.index)}
+                onclick={(e: MouseEvent) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleRemove(item.index)
+                }}
                 icon='brick'
               />
             </slot>

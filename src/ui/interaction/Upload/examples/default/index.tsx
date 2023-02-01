@@ -15,16 +15,12 @@ import { Upload } from '@cantinc/ui'
 innet(
   <Upload
     label='Upload a file'
-    dragText='Move the file here'
-    dropText='Drop the file here'
   />,
   dom,
 )`,
   example: (
     <Upload
       label='Upload a file'
-      dragText='Move the file here'
-      dropText='Drop the file here'
     />
   ),
 })

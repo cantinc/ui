@@ -16,8 +16,6 @@ innet(
   <Upload
     multiple
     label='Upload a file'
-    dragText='Move the file here'
-    dropText='Drop the file here'
   />,
   dom,
 )`,
@@ -25,8 +23,6 @@ innet(
     <Upload
       multiple
       label='Upload a file'
-      dragText='Move the file here'
-      dropText='Drop the file here'
     />
   ),
 })

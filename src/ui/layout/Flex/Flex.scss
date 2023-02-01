@@ -8,6 +8,7 @@
   --ui-flex-justify: flex-start;
   --ui-flex-padding: 0;
 
+  box-sizing: border-box;
   display: var(--ui-flex);
   flex: var(--ui-flex-flex);
   gap: var(--ui-flex-gap);

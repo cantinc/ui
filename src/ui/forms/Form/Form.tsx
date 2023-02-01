@@ -106,8 +106,6 @@ export function Form ({
       oninvalid?.(error, form)
       return error
     }
-
-    return result
   }
 
   const handleSubmit = (e: SubmitEvent) => {

@@ -1,9 +1,11 @@
-import { type HTMLProps, type HTMLStyleProps, inject, type LoopItem, Ref, type StateProp, style, use, useShow } from '@innet/dom'
+import { type HTMLProps, inject, type LoopItem, Ref, type StateProp, style, use, useShow } from '@innet/dom'
+import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
 import { actionProp, getExtension } from '../../../utils'
 import { Icon } from '../../icons'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Upload.scss'
 
 const useStyle = style(styles)
@@ -14,19 +16,23 @@ export interface UploadFile extends Partial<File> {
   src: string
 }
 
-export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'onchange'> {
+export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' | 'onchange'> {
+  inputRef?: Ref<HTMLInputElement>
+  accept?: StateProp<string>
+  name?: StateProp<string>
+  disabled?: StateProp<boolean>
   width?: StateProp<number>
   height?: StateProp<number>
   radius?: StateProp<number>
   label?: StateProp<string>
-  dragText?: StateProp<string>
-  dropText?: StateProp<string>
   error?: StateProp<boolean>
   hint?: StateProp<any>
+  multiple?: StateProp<boolean>
   files?: StateProp<UploadFile[]>
   onchange?: (files: UploadFile[]) => void
   props?: {
     hint?: HTMLProps<HTMLSpanElement>
+    input?: HTMLProps<HTMLInputElement>
   }
 }
 
@@ -35,18 +41,20 @@ export function Upload ({
   height,
   radius = 8,
   label,
-  dragText,
-  dropText,
   error,
   hint,
   style,
   props,
   multiple,
-  ref = new Ref(),
+  inputRef = new Ref(),
   files = new State([]),
   onchange,
+  accept,
+  name,
+  disabled,
   ...rest
 }: UploadProps = {}) {
+  const { after, before } = useSlots()
   const styles = useStyle()
   const over = new State(false)
 
@@ -65,8 +73,8 @@ export function Upload ({
     e.preventDefault()
     over.value = false
 
-    if (e.dataTransfer?.files.length && ref.value) {
-      ref.value.files = e.dataTransfer.files
+    if (e.dataTransfer?.files.length && inputRef.value) {
+      inputRef.value.files = e.dataTransfer.files
 
       handleInput()
     }
@@ -75,11 +83,11 @@ export function Upload ({
   }
 
   const handleInput = () => {
-    if (!ref?.value?.files) return
+    if (!inputRef?.value?.files) return
 
     const result: (Promise<UploadFile> | UploadFile)[] = []
 
-    for (const file of ref.value.files) {
+    for (const file of inputRef.value.files) {
       const ext = getExtension(file)
 
       if (!imageExtensions.includes(ext)) {
@@ -114,8 +122,8 @@ export function Upload ({
   const handleClear = (e: Event) => {
     e.preventDefault()
 
-    if (ref.value) {
-      ref.value.files = new DataTransfer().files
+    if (inputRef.value) {
+      inputRef.value.files = new DataTransfer().files
     }
 
     onchange?.([])
@@ -128,7 +136,14 @@ export function Upload ({
   ))
 
   return (
-    <label
+    <Flex<HTMLLabelElement>
+      element='label'
+      align='center'
+      justify='center'
+      padding={12}
+      gap={12}
+      wrap
+      {...rest}
       ondragleave={handleDragLeave}
       ondragend={handleDragLeave}
       ondragover={handleDragOver}
@@ -145,63 +160,76 @@ export function Upload ({
         use(error) && styles.error,
       ])}>
       <input
-        {...rest}
+        {...props?.input}
+        accept={accept}
+        name={name}
+        disabled={disabled}
         multiple={multiple}
         type='file'
-        ref={ref}
+        ref={inputRef}
         data-empty={empty}
         oninput={handleInput}
         class={() => styles.input}
       />
-      <span class={() => styles.label}>
-        {label}
-      </span>
-      <span class={() => styles.drag}>
-        {dragText}
-      </span>
-      <span class={() => styles.drop}>
-        {dropText}
-      </span>
+      <div class={() => styles.labels}>
+        <span class={() => styles.label}>
+          {label}
+        </span>
+        <span class={() => styles.drag}>
+          <slot name='ui-upload-drag'>
+            Move the file here
+          </slot>
+        </span>
+        <span class={() => styles.drop}>
+          <slot name='ui-upload-drag'>
+            Drop the file here
+          </slot>
+        </span>
+      </div>
       <span class={() => styles.focus} />
-      <for of={files} key='src'>
-        {(item: LoopItem<UploadFile>) => {
-          const show = useShow(400)
-          const hide = new Ref<any>()
-          const getClass = () => classes([
-            styles.image,
-            show.value && styles.imageShow,
-            hide.value.value && styles.imageHide,
-          ])
+      {before}
+      <div class={() => styles.files}>
+        <for of={files} key='src'>
+          {(item: LoopItem<UploadFile>) => {
+            const show = useShow(400)
+            const hide = new Ref<any>()
+            const getClass = () => classes([
+              styles.image,
+              show.value && styles.imageShow,
+              hide.value.value && styles.imageHide,
+            ])
 
-          return (
-            <delay show={300} ref={hide} hide={300}>
-              {item.value.src.length > 10
-                ? (
-                  <img
-                    class={getClass}
-                    src={item.value.src}
-                  />
-                  )
-                : (
-                  <span class={getClass}>
-                    <span class={() => styles.name}>
-                      {item.value?.name?.replace(/\.[^.]+$/, '')}
+            return (
+              <delay show={300} ref={hide} hide={300}>
+                {item.value.src.length > 10
+                  ? (
+                    <img
+                      class={getClass}
+                      src={item.value.src}
+                    />
+                    )
+                  : (
+                    <span class={getClass}>
+                      <span class={() => styles.name}>
+                        {item.value?.name?.replace(/\.[^.]+$/, '')}
+                      </span>
+                      <span class={() => styles.extension}>
+                        {item.value.src}
+                      </span>
                     </span>
-                    <span class={() => styles.extension}>
-                      {item.value.src}
-                    </span>
-                  </span>
-                  )}
-            </delay>
-          )
-        }}
-      </for>
+                    )}
+              </delay>
+            )
+          }}
+        </for>
+      </div>
+      {after}
       {hintContent}
       <Icon
         icon='cross'
         class={() => styles.clear}
         onclick={handleClear}
       />
-    </label>
+    </Flex>
   )
 }
