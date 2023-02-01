@@ -92,7 +92,7 @@ export function Upload ({
 
       if (!imageExtensions.includes(ext)) {
         // @ts-expect-error: Making the file as UploadFile
-        file.src = ext
+        file.src = file.name
         // @ts-expect-error: Making the file as UploadFile
         result.push(file)
       } else {
@@ -201,7 +201,7 @@ export function Upload ({
 
             return (
               <delay show={300} ref={hide} hide={300}>
-                {item.value.src.length > 10
+                {item.value.src !== item.value.name
                   ? (
                     <img
                       class={getClass}
@@ -214,7 +214,7 @@ export function Upload ({
                         {item.value?.name?.replace(/\.[^.]+$/, '')}
                       </span>
                       <span class={() => styles.extension}>
-                        {item.value.src}
+                        {getExtension(item.value)}
                       </span>
                     </span>
                     )}

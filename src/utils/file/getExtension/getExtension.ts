@@ -1,6 +1,8 @@
+import { type UploadFile } from '../../../ui'
+
 export const extReg = /^(.+)\.([^.]+)$/
 
-export const getExtension = (file?: File): string => {
+export const getExtension = (file?: UploadFile | File): string => {
   if (!file?.name) {
     return '???'
   }
