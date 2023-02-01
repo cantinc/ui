@@ -30,7 +30,7 @@ innet(
       multiple
       defaultValue={[
         { src: test, name: 'test.jpg' },
-        { src: 'JPEG', name: 'test.jpg' },
+        { src: 'test.jpg', name: 'test.jpg' },
       ]}
     />
     <Buttons>
@@ -58,7 +58,7 @@ innet(
         multiple
         defaultValue={[
           { src: test, name: 'test.jpg' },
-          { src: 'JPEG', name: 'test.jpg' },
+          { src: 'test.jpg', name: 'test.jpg' },
         ]}
       />
       <Buttons>
