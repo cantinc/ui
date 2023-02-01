@@ -1,13 +1,13 @@
-import { validation, ValidationError } from '@cantinc/utils'
+import { validation, type ValidationError } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
-import { FormContext, formContext, FormField } from '../../../hooks'
+import { type FormContext, formContext, type FormField } from '../../../hooks'
 import { parseForm } from '../../../utils'
 import { Flex } from '../../layout'
 import { notify } from '../../popups'
-import { FormActionHandle, FormErrorHandle, FormInvalidHandle, FormNotificationHandle, FormProps } from './types'
+import { type FormActionHandle, type FormErrorHandle, type FormInvalidHandle, type FormNotificationHandle, type FormProps } from './types'
 
 export const formErrorHandler = new Context<FormErrorHandle>(({ error }) => error)
 export const formInvalidHandler = new Context<FormInvalidHandle>(() => {})

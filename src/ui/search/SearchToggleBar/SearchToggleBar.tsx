@@ -1,6 +1,6 @@
 import { history } from '@innet/dom'
 
-import { ToggleBar, ToggleBarItemOptions, ToggleBarProps, ToggleBarValue } from '../../interaction'
+import { ToggleBar, type ToggleBarItemOptions, type ToggleBarProps, type ToggleBarValue } from '../../interaction'
 
 export interface SearchToggleBarProps extends Pick<ToggleBarProps, 'values'> {
   key: string

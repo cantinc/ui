@@ -3,8 +3,8 @@ import { Ref } from '@innet/dom'
 import { useProps } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
-import { FormFieldProps } from '../../../ui/forms/Form/types'
-import { FormField, useForm } from '../useForm'
+import { type FormFieldProps } from '../../../ui/forms/Form/types'
+import { type FormField, useForm } from '../useForm'
 
 export function useField <
   V = string,

@@ -1,7 +1,7 @@
 import { example } from 'src/app/Component'
 import { Button, Form, FormInputMask, notify } from 'src/ui'
 
-import { FormContext } from '../../../../../hooks'
+import { type FormContext } from '../../../../../hooks'
 import { createFormData } from '../../../../../utils'
 import description from './README.md'
 

@@ -1,4 +1,4 @@
-import { HTMLProps, Style, style } from '@innet/dom'
+import { type HTMLProps, type Style, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './Divider.scss'

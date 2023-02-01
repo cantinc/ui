@@ -4,7 +4,7 @@ import { useChildren } from '@innet/jsx'
 import { useEscapeListener } from '../../../hooks'
 import { Flex } from '../../layout'
 import styles from './Overlay.scss'
-import { HTMLOverlayElement, OverlayProps } from './types'
+import { type HTMLOverlayElement, type OverlayProps } from './types'
 
 const useStyle = style(styles)
 

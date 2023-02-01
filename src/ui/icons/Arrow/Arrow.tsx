@@ -1,4 +1,4 @@
-import { HTMLStyleProps, inject, StateProp, style, use } from '@innet/dom'
+import { type HTMLStyleProps, inject, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
 import styles from './Arrow.scss'

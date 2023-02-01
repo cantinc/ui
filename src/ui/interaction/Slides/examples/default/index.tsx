@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Slide, Slides } from 'src/ui'
+import { type Slide, Slides } from 'src/ui'
 
 import description from './README.md'
 

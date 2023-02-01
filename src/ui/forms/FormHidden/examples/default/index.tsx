@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { FormContext } from 'src/hooks'
+import { type FormContext } from 'src/hooks'
 import { Button, Form, FormHidden, notify } from 'src/ui'
 import { createFormData } from 'src/utils'
 

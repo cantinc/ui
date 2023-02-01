@@ -1,5 +1,5 @@
 import { parsedSearch, stringifySearch } from '@innet/dom'
-import { IStringifyOptions } from 'qs'
+import { type IStringifyOptions } from 'qs'
 
 const options: IStringifyOptions = {
   indices: false,

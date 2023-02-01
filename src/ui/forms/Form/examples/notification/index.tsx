@@ -4,7 +4,7 @@ import {
   Button, Buttons,
   Form,
   FormInput,
-  FormNotificationHandle,
+  type FormNotificationHandle,
   formNotificationHandler,
   notify,
 } from 'src/ui'

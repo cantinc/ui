@@ -1,12 +1,12 @@
-import { StateProp, style, use } from '@innet/dom'
-import Mask from 'inputmask'
+import { type StateProp, style, use } from '@innet/dom'
+import type Mask from 'inputmask'
 import { State } from 'watch-state'
 
 import { localeDateFormat, localeDateFormatPlaceholder } from '../../../constants/locale'
-import { ActionProp, actionProp, createDateFromLocal } from '../../../utils'
+import { type ActionProp, actionProp, createDateFromLocal } from '../../../utils'
 import { Icon } from '../../icons'
 import { DatePicker, ModalsPortal } from '../../popups'
-import { InputMask, InputMaskProps } from '../InputMask'
+import { InputMask, type InputMaskProps } from '../InputMask'
 import styles from './InputDate.scss'
 
 const useStyles = style(styles)

@@ -1,7 +1,7 @@
-import { JSXElement } from '@innet/jsx'
-import { ASTNodeTypes, TxtNode } from '@textlint/ast-node-types'
+import { type JSXElement } from '@innet/jsx'
+import { type ASTNodeTypes, type TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
-import { WatchProp } from 'src/types'
+import { type WatchProp } from 'src/types'
 
 import { Highlight } from '../../external'
 import { Divider } from '../../typography/Divider'

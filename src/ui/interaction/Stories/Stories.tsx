@@ -2,10 +2,10 @@ import { Ref, style } from '@innet/dom'
 import { State, Watch } from 'watch-state'
 
 import { Icon } from '../../icons'
-import { Flex, FlexProps, Image, ImageProps } from '../../layout'
+import { Flex, type FlexProps, Image, type ImageProps } from '../../layout'
 import { Popout } from '../../popups'
 import { Dots } from '../Dots'
-import { Slide, Slides } from '../Slides'
+import { type Slide, Slides } from '../Slides'
 import styles from './Stories.scss'
 
 const useStyle = style(styles)

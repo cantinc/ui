@@ -2,7 +2,7 @@ import { inject, routerContext } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { AsyncSpin } from '../AsyncSpin'
-import { Navigation, NavigationItemProps } from '../Navigation'
+import { Navigation, type NavigationItemProps } from '../Navigation'
 import { DelayPage } from '../Page'
 
 export type PagesMenu = PagesItemProps[]

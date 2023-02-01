@@ -2,7 +2,7 @@ import { Ref, style } from '@innet/dom'
 import { onDestroy, State } from 'watch-state'
 
 import { useChildrenProvider } from '../../../hooks'
-import { Input, InputProps } from '../Input'
+import { Input, type InputProps } from '../Input'
 import styles from './TextArea.scss'
 
 const useStyles = style(styles)

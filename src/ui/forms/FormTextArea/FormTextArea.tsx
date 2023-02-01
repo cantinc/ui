@@ -2,8 +2,8 @@ import { use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
-import { TextArea, TextAreaProps } from '../../interaction'
-import { FormFieldProps } from '../Form'
+import { TextArea, type TextAreaProps } from '../../interaction'
+import { type FormFieldProps } from '../Form'
 
 export interface FormTextAreaProps extends Omit<TextAreaProps, keyof FormFieldProps>, FormFieldProps {
 

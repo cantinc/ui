@@ -1,4 +1,4 @@
-import { HTMLStyleProps, style } from '@innet/dom'
+import { type HTMLStyleProps, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './Nowrap.scss'

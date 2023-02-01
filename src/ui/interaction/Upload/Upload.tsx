@@ -1,4 +1,4 @@
-import { HTMLProps, HTMLStyleProps, inject, LoopItem, Ref, StateProp, style, use, useShow } from '@innet/dom'
+import { type HTMLProps, type HTMLStyleProps, inject, type LoopItem, Ref, type StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
@@ -83,17 +83,17 @@ export function Upload ({
       const ext = getExtension(file)
 
       if (!imageExtensions.includes(ext)) {
-        // @ts-expect-error
+        // @ts-expect-error: Making the file as UploadFile
         file.src = ext
-        // @ts-expect-error
+        // @ts-expect-error: Making the file as UploadFile
         result.push(file)
       } else {
         result.push(new Promise((resolve, reject) => {
           const fr = new FileReader()
           fr.onload = () => {
-            // @ts-expect-error
+            // @ts-expect-error: Making the file as UploadFile
             file.src = String(fr.result)
-            // @ts-expect-error
+            // @ts-expect-error: Making the file as UploadFile
             resolve(file)
           }
           fr.onerror = reject

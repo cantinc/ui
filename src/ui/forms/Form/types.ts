@@ -1,9 +1,9 @@
-import { ValidationError, ValidationMap, Validator } from '@cantinc/utils'
-import { StateProp } from '@innet/dom'
-import { State } from 'watch-state'
+import { type ValidationError, type ValidationMap, type Validator } from '@cantinc/utils'
+import { type StateProp } from '@innet/dom'
+import { type State } from 'watch-state'
 
-import { FormContext } from '../../../hooks'
-import { FlexProps } from '../../layout'
+import { type FormContext } from '../../../hooks'
+import { type FlexProps } from '../../layout'
 
 export type FormMethod = 'GET' | 'HEAD' | 'POST' | 'DELETE' | 'PUT' | 'CONNECT' | 'OPTIONS' | 'TRACE' | 'PATCH'
 

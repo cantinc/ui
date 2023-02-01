@@ -1,7 +1,7 @@
 import { Ref, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { Overlay, OverlayProps } from '../Overlay'
+import { Overlay, type OverlayProps } from '../Overlay'
 import styles from './Modals.scss'
 
 const useStyle = style(styles)

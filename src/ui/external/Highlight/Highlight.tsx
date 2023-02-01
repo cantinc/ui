@@ -1,4 +1,4 @@
-import { HTMLProps, Ref, statePropToWatchProp } from '@innet/dom'
+import { type HTMLProps, Ref, statePropToWatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import Prism from 'prismjs'
 

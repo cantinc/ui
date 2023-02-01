@@ -1,4 +1,4 @@
-import { Ref, StateProp, style, use, useShow } from '@innet/dom'
+import { Ref, type StateProp, style, use, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
@@ -6,10 +6,10 @@ import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
 import { actionProp, dateMinMax, getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
 import { Button, Buttons } from '../../buttons'
 import { Icon } from '../../icons'
-import { Calendar, CalendarGridCell } from '../../interaction/Calendar'
+import { Calendar, type CalendarGridCell } from '../../interaction/Calendar'
 import { CalendarTitle } from '../../interaction/CalendarTitle'
 import { Flex, Space } from '../../layout'
-import { Modal, ModalProps } from '../Modal'
+import { Modal, type ModalProps } from '../Modal'
 import styles from './DatePicker.scss'
 
 const useStyle = style(styles)

@@ -1,6 +1,6 @@
 import { useChildren } from '@innet/jsx'
 
-import { Overlay, OverlayProps } from '../Overlay'
+import { Overlay, type OverlayProps } from '../Overlay'
 
 export interface DrawersProps extends OverlayProps {
 

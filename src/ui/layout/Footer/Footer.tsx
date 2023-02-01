@@ -1,6 +1,6 @@
 import { useChildren } from '@innet/jsx'
 
-import { Flex, FlexProps } from '../Flex'
+import { Flex, type FlexProps } from '../Flex'
 
 export interface FooterProps extends FlexProps {
 

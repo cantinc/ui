@@ -1,6 +1,6 @@
 import { history, parsedSearch, stringifySearch } from '@innet/dom'
 
-import { Selector, SelectorProps } from '../../interaction'
+import { Selector, type SelectorProps } from '../../interaction'
 
 export interface SearchSelectorProps extends Omit<SelectorProps, 'value'> {
   key: string

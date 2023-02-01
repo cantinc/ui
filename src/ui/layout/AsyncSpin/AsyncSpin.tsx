@@ -2,7 +2,7 @@ import { Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { type State } from 'watch-state'
 
-import { Spin, SpinProps } from '../Spin'
+import { Spin, type SpinProps } from '../Spin'
 import styles from './AsyncSpin.scss'
 
 const useStyle = style(styles)

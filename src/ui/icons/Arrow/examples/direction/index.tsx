@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Arrow, ArrowDirection, Flex, Radiobox, RadioItem } from 'src/ui'
+import { Arrow, type ArrowDirection, Flex, Radiobox, type RadioItem } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'

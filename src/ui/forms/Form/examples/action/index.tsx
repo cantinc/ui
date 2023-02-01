@@ -1,6 +1,6 @@
 import { use } from '@innet/dom'
 import { example } from 'src/app/Component'
-import { Button, Buttons, Form, FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
+import { Button, Buttons, Form, type FormActionHandle, formActionHandler, FormInput, FormSelector, notify } from 'src/ui'
 
 import description from './README.md'
 

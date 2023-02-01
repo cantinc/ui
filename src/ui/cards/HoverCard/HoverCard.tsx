@@ -2,8 +2,8 @@ import { inject, Ref, style, useHidden, useShow } from '@innet/dom'
 import { useChildren, useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
-import { Flex, FlexProps } from '../../layout'
-import { Card, CardProps } from '../Card'
+import { Flex, type FlexProps } from '../../layout'
+import { Card, type CardProps } from '../Card'
 import styles from './HoverCard.scss'
 
 const useStyle = style(styles)

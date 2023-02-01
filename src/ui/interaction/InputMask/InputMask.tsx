@@ -3,7 +3,7 @@ import Mask from 'inputmask'
 import { onDestroy } from 'watch-state'
 
 import { useChildrenProvider } from '../../../hooks'
-import { Input, InputProps } from '../Input'
+import { Input, type InputProps } from '../Input'
 
 export interface InputMaskProps extends InputProps {
   mask: Mask.Options | string | string[]

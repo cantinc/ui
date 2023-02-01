@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Icon, Input, InputProps, Set } from 'src/ui'
+import { Icon, Input, type InputProps, Set } from 'src/ui'
 
 import description from './README.md'
 

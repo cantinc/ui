@@ -1,8 +1,8 @@
-import { LoopItem, StateProp, style, use } from '@innet/dom'
+import { type LoopItem, type StateProp, style, use } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Flex, FlexProps } from '../../layout'
-import { Check, CheckProps } from '../../prototypes'
+import { Flex, type FlexProps } from '../../layout'
+import { Check, type CheckProps } from '../../prototypes'
 import styles from './Radiobox.scss'
 
 const useStyle = style({ root: '', radio: '', ...styles })

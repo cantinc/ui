@@ -1,4 +1,4 @@
-import { CustomIconProps } from '../..'
+import { type CustomIconProps } from '../..'
 
 export default function MinusIcon ({
   size = 16,

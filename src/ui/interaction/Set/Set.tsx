@@ -1,5 +1,5 @@
 import { randomHash } from '@cantinc/utils'
-import { LoopItem, StateProp, style, use } from '@innet/dom'
+import { type LoopItem, type StateProp, style, use } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache, State, unwatch } from 'watch-state'
 
@@ -39,7 +39,7 @@ export function Set<P extends object> ({
 
     for (const value of values) {
       if (key in value) continue
-      // @ts-expect-error
+      // @ts-expect-error: unic value hack
       value[key] = randomHash()
     }
 

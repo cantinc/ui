@@ -10,7 +10,7 @@ import {
   Layout,
   Main,
   Pages,
-  PagesMenu,
+  type PagesMenu,
   Space,
 } from 'src/ui'
 import { State } from 'watch-state'

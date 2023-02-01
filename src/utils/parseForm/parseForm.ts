@@ -1,6 +1,6 @@
 import { use } from '@innet/dom'
 
-import { FormContext } from '../../hooks'
+import { type FormContext } from '../../hooks'
 
 export function parseForm (form: FormContext) {
   const data: Record<string, any> = {}

@@ -2,8 +2,8 @@ import { use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
-import { Selector, SelectorProps } from '../../interaction'
-import { FormFieldProps } from '../Form/types'
+import { Selector, type SelectorProps } from '../../interaction'
+import { type FormFieldProps } from '../Form/types'
 
 export interface FormSelectorProps extends Omit<SelectorProps, keyof FormFieldProps>, FormFieldProps {
 

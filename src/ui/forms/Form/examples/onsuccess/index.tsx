@@ -1,7 +1,7 @@
 import { example } from 'src/app/Component'
 import { Button, Buttons, Form, FormInput, notify } from 'src/ui'
 
-import { FormContext } from '../../../../../hooks'
+import { type FormContext } from '../../../../../hooks'
 import description from './README.md'
 
 const handleSuccess = (form: FormContext) => {

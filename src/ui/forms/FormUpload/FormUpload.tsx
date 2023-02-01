@@ -4,8 +4,8 @@ import { State } from 'watch-state'
 import { UIValidationErrors } from '../../../constants/validation'
 import { useField, useForm } from '../../../hooks'
 import { actionProp, getExtension } from '../../../utils'
-import { Upload, UploadFile, UploadProps } from '../../interaction'
-import { FormFieldProps } from '../Form/types'
+import { Upload, type UploadFile, type UploadProps } from '../../interaction'
+import { type FormFieldProps } from '../Form/types'
 
 export interface FormUploadProps extends Omit<UploadProps, keyof FormFieldProps>, FormFieldProps<UploadFile[]> {
 

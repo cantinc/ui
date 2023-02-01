@@ -1,4 +1,4 @@
-import { ValidationError, ValidationMap } from '@cantinc/utils'
+import { type ValidationError, type ValidationMap } from '@cantinc/utils'
 import { example } from 'src/app/Component'
 import { Button, Buttons, Form, FormInput, notify } from 'src/ui'
 

@@ -1,13 +1,13 @@
-import { HTMLStyleProps, Ref, style } from '@innet/dom'
+import { type HTMLStyleProps, Ref, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
 import { setOverflow } from '../../../utils'
-import { Button, ButtonProps } from '../../buttons'
+import { Button, type ButtonProps } from '../../buttons'
 import { Icon } from '../../icons'
 import { Flex } from '../../layout'
-import { HTMLOverlayElement } from '../Overlay'
+import { type HTMLOverlayElement } from '../Overlay'
 import styles from './Modal.scss'
 
 const useStyles = style(styles)
@@ -87,7 +87,7 @@ export function Modal ({
           '--ui-modal-width': width ? `${width}px` : '',
         }}
         ref={element}
-        // @ts-expect-error
+        // @ts-expect-error: used in Modal
         _close={() => handleClose}
         class={() => classes([
           styles.root,

@@ -1,4 +1,4 @@
-import { CustomIconProps } from '../..'
+import { type CustomIconProps } from '../..'
 
 export default function TGIcon ({
   size = 16,

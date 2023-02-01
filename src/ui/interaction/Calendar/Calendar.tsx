@@ -1,10 +1,10 @@
-import { inject, LoopItem, setTimeoutSync, StateProp, style, use } from '@innet/dom'
+import { inject, type LoopItem, setTimeoutSync, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State, unwatch, Watch } from 'watch-state'
 
 import { getDaysInMonth, getWeek, inputDateFormat } from '../../../utils'
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Calendar.scss'
 
 const useStyle = style(styles)

@@ -1,9 +1,9 @@
-import { HTMLStyleProps, LoopItem, Ref, style } from '@innet/dom'
+import { type HTMLStyleProps, type LoopItem, Ref, style } from '@innet/dom'
 import classes from 'html-classes'
-import { onDestroy, State, Watch } from 'watch-state'
+import { onDestroy, type State, Watch } from 'watch-state'
 
 import { Markdown } from '../../typography'
-import { NotificationOptions } from '../Notifications/types'
+import { type NotificationOptions } from '../Notifications/types'
 import { Timer } from './helpers'
 import styles from './Notification.scss'
 

@@ -1,10 +1,10 @@
-import { inject, StateProp, style, use } from '@innet/dom'
+import { inject, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, onDestroy, State, unwatch, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Dots.scss'
 
 const useStyle = style(styles)

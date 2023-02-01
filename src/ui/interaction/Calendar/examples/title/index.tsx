@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Calendar, CalendarGridCell, CalendarTitle } from 'src/ui'
+import { Calendar, type CalendarGridCell, CalendarTitle } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'

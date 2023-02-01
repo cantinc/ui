@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Stories, Story } from 'src/ui'
+import { Stories, type Story } from 'src/ui'
 
 import description from './README.md'
 import story1 from './story1.webp'

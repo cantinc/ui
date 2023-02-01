@@ -2,8 +2,8 @@ import { use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
-import { InputMask, InputMaskProps } from '../../interaction'
-import { FormFieldProps } from '../Form/types'
+import { InputMask, type InputMaskProps } from '../../interaction'
+import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputMaskProps extends Omit<InputMaskProps, keyof FormFieldProps>, FormFieldProps {
 

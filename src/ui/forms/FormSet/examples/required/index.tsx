@@ -1,6 +1,6 @@
-import { ValidationError, ValidationErrors } from '@cantinc/utils'
+import { type ValidationError, ValidationErrors } from '@cantinc/utils'
 import { example } from 'src/app/Component'
-import { Button, Buttons, Form, FormInput, FormInputProps, FormSet, Icon, notify } from 'src/ui'
+import { Button, Buttons, Form, FormInput, type FormInputProps, FormSet, Icon, notify } from 'src/ui'
 
 import description from './README.md'
 

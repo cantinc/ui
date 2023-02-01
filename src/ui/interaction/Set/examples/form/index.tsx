@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Form, FormInput, FormInputProps, Icon, Set } from 'src/ui'
+import { Button, Form, FormInput, type FormInputProps, Icon, Set } from 'src/ui'
 
 import description from './README.md'
 

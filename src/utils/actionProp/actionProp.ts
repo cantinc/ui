@@ -1,4 +1,4 @@
-import { StateProp } from '@innet/dom'
+import { type StateProp } from '@innet/dom'
 import { State } from 'watch-state'
 
 export type ActionProp <V> = (value: V) => void

@@ -1,4 +1,4 @@
-import { HTMLStyleProps, Ref, StateProp, style, use } from '@innet/dom'
+import { type HTMLStyleProps, Ref, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
 import styles from './Option.scss'

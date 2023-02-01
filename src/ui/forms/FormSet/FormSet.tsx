@@ -4,7 +4,7 @@ import { onDestroy, State } from 'watch-state'
 
 import { useForm } from '../../../hooks'
 import { actionProp } from '../../../utils'
-import { Set, SetProps } from '../../interaction'
+import { Set, type SetProps } from '../../interaction'
 
 export type FormSetProps <P> = SetProps<P> & {
   name: string

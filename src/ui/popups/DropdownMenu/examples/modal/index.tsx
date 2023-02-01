@@ -1,5 +1,5 @@
 import { Ref, use } from '@innet/dom'
-import { Arrow, Button, DropdownMenu, MenuOption, Modal, Modals } from 'src'
+import { Arrow, Button, DropdownMenu, type MenuOption, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 

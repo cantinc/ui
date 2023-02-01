@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { MenuOption, Selector } from 'src/ui'
+import { type MenuOption, Selector } from 'src/ui'
 
 import description from './README.md'
 

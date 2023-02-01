@@ -1,6 +1,6 @@
 import { hideLayoutMenu } from 'src/core'
 
-import { PagesMenu } from '../ui'
+import { type PagesMenu } from '../ui'
 
 export const navigation: PagesMenu = [
   {

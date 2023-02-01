@@ -1,4 +1,4 @@
-import { Style, style } from '@innet/dom'
+import { type Style, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './JSXStringify.scss'

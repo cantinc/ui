@@ -1,6 +1,6 @@
 import { useField, useForm } from '../../../hooks'
-import { Checkbox, CheckboxProps } from '../../interaction'
-import { FormFieldProps } from '../Form'
+import { Checkbox, type CheckboxProps } from '../../interaction'
+import { type FormFieldProps } from '../Form'
 
 export interface FormCheckboxProps extends Omit<CheckboxProps, keyof FormFieldProps>, FormFieldProps {
 

@@ -1,7 +1,7 @@
-import { history, parsedSearch, StateProp, stringifySearch, use } from '@innet/dom'
+import { history, parsedSearch, type StateProp, stringifySearch, use } from '@innet/dom'
 import { Cache } from 'watch-state'
 
-import { Toggle, ToggleProps } from '../../interaction'
+import { Toggle, type ToggleProps } from '../../interaction'
 
 export interface SearchToggleProps extends Omit<ToggleProps, 'checked'> {
   key: string

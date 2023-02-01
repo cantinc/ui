@@ -1,4 +1,4 @@
-import { HTMLStyleProps, Ref, StateProp, style, use, useShow } from '@innet/dom'
+import { type HTMLStyleProps, Ref, type StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
 

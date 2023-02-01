@@ -1,8 +1,8 @@
-import { Ref, StateProp, style, use } from '@innet/dom'
+import { Ref, type StateProp, style, use } from '@innet/dom'
 import { onDestroy, State, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Slides.scss'
 
 const useStyle = style(styles)

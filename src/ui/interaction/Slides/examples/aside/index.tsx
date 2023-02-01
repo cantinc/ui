@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { BurgerButton, Icon, Slide, Slides } from 'src/ui'
+import { BurgerButton, Icon, type Slide, Slides } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'

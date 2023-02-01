@@ -1,7 +1,7 @@
-import { Ref, StateProp, use } from '@innet/dom'
+import { Ref, type StateProp, use } from '@innet/dom'
 import { Cache, onDestroy, State, unwatch, Watch } from 'watch-state'
 
-import { FormField, useForm } from '../../../hooks'
+import { type FormField, useForm } from '../../../hooks'
 
 export interface FormHiddenProps {
   name: string

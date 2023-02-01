@@ -3,8 +3,8 @@ import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
 import { inputDateFormat } from '../../../utils'
-import { InputDate, InputDateProps } from '../../interaction'
-import { FormFieldProps } from '../Form/types'
+import { InputDate, type InputDateProps } from '../../interaction'
+import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputDateProps extends Omit<InputDateProps, keyof FormFieldProps>, FormFieldProps {
 

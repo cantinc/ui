@@ -1,12 +1,12 @@
 import { Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { onDestroy, State } from 'watch-state'
+import { onDestroy, type State } from 'watch-state'
 
-import { TouchHidePlacement, useTouchHide } from '../../../hooks'
+import { type TouchHidePlacement, useTouchHide } from '../../../hooks'
 import { setOverflow } from '../../../utils'
 import { Icon } from '../../icons'
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Drawer.scss'
 
 const useStyle = style(styles)

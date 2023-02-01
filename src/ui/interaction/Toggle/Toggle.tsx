@@ -1,6 +1,6 @@
 import { style } from '@innet/dom'
 
-import { Check, CheckProps } from '../../prototypes'
+import { Check, type CheckProps } from '../../prototypes'
 import styles from './Toggle.scss'
 
 const useStyle = style({ root: '', ...styles })

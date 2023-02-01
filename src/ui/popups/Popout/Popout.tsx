@@ -1,11 +1,11 @@
-import { HTMLStyleProp, Ref, StateProp, style, useHidden, useShow } from '@innet/dom'
+import { type HTMLStyleProp, Ref, type StateProp, style, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State, Watch } from 'watch-state'
 
 import { useEscapeListener, useTouchHide } from '../../../hooks'
 import { actionProp, setOverflow } from '../../../utils'
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Popout.scss'
 
 const useStyle = style(styles)

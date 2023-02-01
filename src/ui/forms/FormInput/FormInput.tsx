@@ -2,8 +2,8 @@ import { use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
-import { Input, InputProps } from '../../interaction'
-import { FormFieldProps } from '../Form/types'
+import { Input, type InputProps } from '../../interaction'
+import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputProps extends Omit<InputProps, keyof FormFieldProps>, FormFieldProps {
 

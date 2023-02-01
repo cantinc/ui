@@ -1,9 +1,9 @@
-import { inject, LoopItem, StateProp, style, use, WatchProp } from '@innet/dom'
+import { inject, type LoopItem, type StateProp, style, use, type WatchProp } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State, Watch } from 'watch-state'
 
-import { Icon, IconProp } from '../../icons'
-import { Flex, FlexProps } from '../../layout'
+import { Icon, type IconProp } from '../../icons'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
 
 const useStyle = style(styles)

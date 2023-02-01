@@ -1,4 +1,4 @@
-import { JSXElement, useChildren } from '@innet/jsx'
+import { type JSXElement, useChildren } from '@innet/jsx'
 
 export function useChildrenProvider () {
   const children = useChildren()

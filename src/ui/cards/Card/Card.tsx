@@ -1,9 +1,9 @@
-import { inject, StateProp, style, use, useHidden, useShow } from '@innet/dom'
+import { inject, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Card.scss'
 
 const useStyle = style(styles)

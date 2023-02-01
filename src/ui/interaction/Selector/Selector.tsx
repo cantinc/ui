@@ -1,12 +1,12 @@
-import { Ref, StateProp, style, use } from '@innet/dom'
+import { Ref, type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Arrow } from '../../icons'
-import { DropdownMenu, DropdownPlacement, MenuOption } from '../../popups'
-import { Input, InputProps } from '../Input'
+import { DropdownMenu, type DropdownPlacement, type MenuOption } from '../../popups'
+import { Input, type InputProps } from '../Input'
 import styles from './Selector.scss'
 
 const useStyle = style(styles)

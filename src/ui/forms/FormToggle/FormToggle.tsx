@@ -1,6 +1,6 @@
 import { useField, useForm } from '../../../hooks'
-import { Toggle, ToggleProps } from '../../interaction'
-import { FormFieldProps } from '../Form'
+import { Toggle, type ToggleProps } from '../../interaction'
+import { type FormFieldProps } from '../Form'
 
 export interface FormToggleProps extends Omit<ToggleProps, keyof FormFieldProps>, FormFieldProps {
 

@@ -1,4 +1,4 @@
-import { HTMLStyleProps, inject, Ref, StateProp, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, Ref, type StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 

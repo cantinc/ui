@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Radiobox, RadioItem } from 'src/ui'
+import { Radiobox, type RadioItem } from 'src/ui'
 
 import description from './README.md'
 

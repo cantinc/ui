@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Icon, OptionProps, Selector } from 'src/ui'
+import { Icon, type OptionProps, Selector } from 'src/ui'
 
 import description from './README.md'
 

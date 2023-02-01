@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Flex, MenuOption, Selector } from 'src/ui'
+import { Flex, type MenuOption, Selector } from 'src/ui'
 
 import description from './README.md'
 

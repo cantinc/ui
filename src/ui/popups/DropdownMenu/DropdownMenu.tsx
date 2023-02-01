@@ -1,11 +1,11 @@
-import { LoopItem, StateProp, style, use } from '@innet/dom'
+import { type LoopItem, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Listener } from '../../external'
 import { Option } from '../../interaction/Option'
-import { Dropdown, DropdownProps } from '../Dropdown'
+import { Dropdown, type DropdownProps } from '../Dropdown'
 import styles from './DropdownMenu.scss'
 
 const useStyle = style(styles)

@@ -1,7 +1,7 @@
 import { history, parsedSearch, stringifySearch } from '@innet/dom'
 
 import { useChildrenProvider } from '../../../hooks'
-import { InputMask, InputMaskProps } from '../../interaction'
+import { InputMask, type InputMaskProps } from '../../interaction'
 
 export interface SearchInputMaskProps extends Omit<InputMaskProps, 'value'> {
   key: string

@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Flex, Radiobox, RadioItem } from 'src/ui'
+import { Flex, Radiobox, type RadioItem } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'

@@ -1,11 +1,11 @@
 import { strip } from '@cantinc/utils'
-import { inject, StateProp, style, use } from '@innet/dom'
+import { inject, type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Icon } from '../../icons'
-import { Input, InputProps } from '../Input'
+import { Input, type InputProps } from '../Input'
 import styles from './InputNumber.scss'
 
 const useStyles = style(styles)

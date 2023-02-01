@@ -1,4 +1,4 @@
-import { HTMLStyleProps, inject, StateProp, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, type StateProp, style } from '@innet/dom'
 
 import { Icon } from '../../icons'
 import styles from './BurgerButton.scss'

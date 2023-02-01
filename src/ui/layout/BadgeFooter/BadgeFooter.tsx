@@ -1,7 +1,7 @@
-import { inject, StateProp, style } from '@innet/dom'
+import { inject, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { Flex, FlexProps } from '../Flex'
+import { Flex, type FlexProps } from '../Flex'
 import styles from './BadgeFooter.scss'
 
 const useStyle = style(styles)

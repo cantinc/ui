@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Navigation, NavigationMenu } from 'src/ui'
+import { Navigation, type NavigationMenu } from 'src/ui'
 
 import description from './README.md'
 

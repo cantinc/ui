@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Input, ToggleBar, ToggleBarValue } from 'src/ui'
+import { Input, ToggleBar, type ToggleBarValue } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'

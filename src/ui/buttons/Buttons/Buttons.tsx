@@ -1,7 +1,7 @@
 import { style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
-import { Flex, FlexProps } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Buttons.scss'
 
 const useStyles = style(styles)

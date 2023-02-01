@@ -1,8 +1,8 @@
-import { HTMLStyleProps, LinkProps, Ref, StateProp, style } from '@innet/dom'
+import { type HTMLStyleProps, type LinkProps, Ref, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State } from 'watch-state'
 
-import { Flex, FlexProps } from '../Flex'
+import { Flex, type FlexProps } from '../Flex'
 import styles from './Navigation.scss'
 
 const useStyles = style({

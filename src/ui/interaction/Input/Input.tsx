@@ -1,10 +1,10 @@
-import { HTMLProps, inject, Ref, StateProp, style, use } from '@innet/dom'
+import { type HTMLProps, inject, Ref, type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
 import { debounceCall } from '../../../utils'
-import { Icon, IconProps } from '../../icons'
-import { Flex, FlexProps } from '../../layout'
+import { Icon, type IconProps } from '../../icons'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Input.scss'
 
 const useStyle = style(styles)

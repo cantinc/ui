@@ -1,8 +1,8 @@
 import { use } from '@innet/dom'
 
 import { useField, useForm } from '../../../hooks'
-import { Radiobox, RadioboxProps } from '../../interaction'
-import { FormFieldProps } from '../Form'
+import { Radiobox, type RadioboxProps } from '../../interaction'
+import { type FormFieldProps } from '../Form'
 
 export interface FormRadioboxProps extends Omit<RadioboxProps, keyof FormFieldProps>, FormFieldProps {
 
