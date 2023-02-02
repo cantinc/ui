@@ -181,7 +181,7 @@ export function Upload ({
           </slot>
         </span>
         <span class={() => styles.drop}>
-          <slot name='ui-upload-drag'>
+          <slot name='ui-upload-drop'>
             Drop the file here
           </slot>
         </span>
