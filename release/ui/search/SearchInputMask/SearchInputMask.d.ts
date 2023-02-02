@@ -1,4 +1,4 @@
-import { InputMaskProps } from '../../interaction';
+import { type InputMaskProps } from '../../interaction';
 export interface SearchInputMaskProps extends Omit<InputMaskProps, 'value'> {
     key: string;
 }

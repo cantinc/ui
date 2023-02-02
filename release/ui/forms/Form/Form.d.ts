@@ -1,5 +1,5 @@
 import { Context } from '@innet/jsx';
-import { FormActionHandle, FormErrorHandle, FormInvalidHandle, FormNotificationHandle, FormProps } from './types';
+import { type FormActionHandle, type FormErrorHandle, type FormInvalidHandle, type FormNotificationHandle, type FormProps } from './types';
 export declare const formErrorHandler: Context<FormErrorHandle, FormErrorHandle>;
 export declare const formInvalidHandler: Context<FormInvalidHandle, FormInvalidHandle>;
 export declare const formActionHandler: Context<FormActionHandle, FormActionHandle>;

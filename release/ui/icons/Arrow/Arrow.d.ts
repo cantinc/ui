@@ -1,4 +1,4 @@
-import { HTMLStyleProps, StateProp } from '@innet/dom';
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
 export type ArrowDirection = 'down' | 'top' | 'left' | 'right';
 export interface ArrowProps extends HTMLStyleProps<HTMLDivElement> {
     direction?: StateProp<ArrowDirection>;

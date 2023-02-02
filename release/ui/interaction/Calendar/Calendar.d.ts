@@ -1,6 +1,6 @@
-import { LoopItem, StateProp } from '@innet/dom';
+import { type LoopItem, type StateProp } from '@innet/dom';
 import { State } from 'watch-state';
-import { FlexProps } from '../../layout';
+import { type FlexProps } from '../../layout';
 export interface CalendarGridCell {
     value: string;
     date: Date;

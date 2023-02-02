@@ -80,7 +80,6 @@ function Form(_a = {}) {
             oninvalid === null || oninvalid === void 0 ? void 0 : oninvalid(error, form);
             return error;
         }
-        return result;
     };
     const handleSubmit = (e) => {
         e.preventDefault();

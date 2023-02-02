@@ -1,5 +1,5 @@
-import { HTMLStyleProps } from '@innet/dom';
-import { ButtonProps } from '../../buttons';
+import { type HTMLStyleProps } from '@innet/dom';
+import { type ButtonProps } from '../../buttons';
 export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclose'> {
     width?: number;
     buttons?: string[];

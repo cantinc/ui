@@ -1,4 +1,4 @@
-import { Ref } from '@innet/dom';
+import { type Ref } from '@innet/dom';
 import { State } from 'watch-state';
 export type TouchHidePlacement = 'left' | 'top' | 'right' | 'bottom';
 export interface TouchHideOptions {

@@ -1,4 +1,4 @@
-import { HTMLStyleProps, StateProp } from '@innet/dom';
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
 export interface SpaceProps extends HTMLStyleProps<HTMLSpanElement> {
     flex?: StateProp<number>;
     gap?: StateProp<number>;

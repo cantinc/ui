@@ -1,4 +1,4 @@
-import { FlexProps } from '../../layout/Flex';
+import { type FlexProps } from '../../layout/Flex';
 export interface PageProps extends FlexProps {
 }
 export interface DelayPageProps extends PageProps {

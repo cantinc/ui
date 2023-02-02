@@ -2,6 +2,10 @@
 
 ## v0.1
 
+### v0.1.31 [![02.02.2023](https://img.shields.io/date/1675341475)](https://github.com/d8corp/innetjs/tree/v0.1.31)
+
+- improve `Upload` and `Set`
+
 ### v0.1.30 [![31.01.2023](https://img.shields.io/date/1675184747)](https://github.com/d8corp/innetjs/tree/v0.1.30)
 
 - fix stories styles

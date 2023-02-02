@@ -1,5 +1,5 @@
-import { HTMLStyleProp, Ref, StateProp } from '@innet/dom';
-import { FlexProps } from '../../layout';
+import { type HTMLStyleProp, Ref, type StateProp } from '@innet/dom';
+import { type FlexProps } from '../../layout';
 interface PopoutElementProps extends Omit<FlexProps, 'element'> {
     element?: Ref<HTMLElement>;
     contentStyle?: HTMLStyleProp;

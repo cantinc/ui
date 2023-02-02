@@ -1,20 +1,25 @@
-import { HTMLProps, HTMLStyleProps, StateProp } from '@innet/dom';
+import { type HTMLProps, Ref, type StateProp } from '@innet/dom';
+import { type FlexProps } from '../../layout';
 export interface UploadFile extends Partial<File> {
     src: string;
 }
-export interface UploadProps extends Omit<HTMLStyleProps<HTMLInputElement>, 'files' | 'onchange'> {
+export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' | 'onchange'> {
+    inputRef?: Ref<HTMLInputElement>;
+    accept?: StateProp<string>;
+    name?: StateProp<string>;
+    disabled?: StateProp<boolean>;
     width?: StateProp<number>;
     height?: StateProp<number>;
     radius?: StateProp<number>;
     label?: StateProp<string>;
-    dragText?: StateProp<string>;
-    dropText?: StateProp<string>;
     error?: StateProp<boolean>;
     hint?: StateProp<any>;
+    multiple?: StateProp<boolean>;
     files?: StateProp<UploadFile[]>;
     onchange?: (files: UploadFile[]) => void;
     props?: {
         hint?: HTMLProps<HTMLSpanElement>;
+        input?: HTMLProps<HTMLInputElement>;
     };
 }
-export declare function Upload({ width, height, radius, label, dragText, dropText, error, hint, style, props, multiple, ref, files, onchange, ...rest }?: UploadProps): any;
+export declare function Upload({ width, height, radius, label, error, hint, style, props, multiple, inputRef, files, onchange, accept, name, disabled, ...rest }?: UploadProps): any;

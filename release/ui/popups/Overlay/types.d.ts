@@ -1,5 +1,5 @@
-import { Style } from '@innet/dom';
-import { FlexProps } from '../../layout';
+import { type Style } from '@innet/dom';
+import { type FlexProps } from '../../layout';
 export type HTMLOverlayElement = HTMLDivElement & {
     close: (result: string) => void;
 };

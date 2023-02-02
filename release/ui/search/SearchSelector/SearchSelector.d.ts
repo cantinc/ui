@@ -1,4 +1,4 @@
-import { SelectorProps } from '../../interaction';
+import { type SelectorProps } from '../../interaction';
 export interface SearchSelectorProps extends Omit<SelectorProps, 'value'> {
     key: string;
 }

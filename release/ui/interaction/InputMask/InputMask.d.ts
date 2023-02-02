@@ -1,5 +1,5 @@
 import Mask from 'inputmask';
-import { InputProps } from '../Input';
+import { type InputProps } from '../Input';
 export interface InputMaskProps extends InputProps {
     mask: Mask.Options | string | string[];
 }

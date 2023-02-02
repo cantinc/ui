@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { FlexProps } from '../../layout';
+import { type StateProp } from '@innet/dom';
+import { type FlexProps } from '../../layout';
 export interface DotsProps extends Omit<FlexProps<HTMLDivElement>, 'onchange'> {
     count: number;
     size?: StateProp<number>;

@@ -1,4 +1,4 @@
-import { FlexProps } from '../Flex';
+import { type FlexProps } from '../Flex';
 export interface SpinBoxProps extends Exclude<FlexProps, 'vertical'> {
     loading: () => boolean;
     horizontal?: boolean;

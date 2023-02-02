@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { FlexProps } from '../Flex';
+import { type StateProp } from '@innet/dom';
+import { type FlexProps } from '../Flex';
 export interface BadgeFooterProps extends FlexProps {
     offset?: StateProp<number>;
 }

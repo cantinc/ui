@@ -1,6 +1,6 @@
 import { Ref } from '@innet/dom';
-import { FlexProps, ImageProps } from '../../layout';
-import { Slide } from '../Slides';
+import { type FlexProps, type ImageProps } from '../../layout';
+import { type Slide } from '../Slides';
 export interface Story extends Slide {
     preview: string;
     slides: string[];

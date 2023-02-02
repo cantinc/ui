@@ -1,4 +1,4 @@
-import { SpinProps } from '../Spin';
+import { type SpinProps } from '../Spin';
 export interface AsyncSpinProps extends SpinProps {
     delay?: number;
     showDelay?: number;

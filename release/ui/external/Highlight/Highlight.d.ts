@@ -1,4 +1,4 @@
-import { HTMLProps } from '@innet/dom';
+import { type HTMLProps } from '@innet/dom';
 export interface HighlightProps extends HTMLProps<HTMLPreElement> {
     code: string;
     language: string;

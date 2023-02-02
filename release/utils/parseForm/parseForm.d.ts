@@ -1,2 +1,2 @@
-import { FormContext } from '../../hooks';
+import { type FormContext } from '../../hooks';
 export declare function parseForm(form: FormContext): Record<string, any>;

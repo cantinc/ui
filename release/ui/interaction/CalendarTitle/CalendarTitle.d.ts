@@ -1,4 +1,4 @@
-import { HTMLStyleProps, StateProp } from '@innet/dom';
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
 import { State } from 'watch-state';
 export interface CalendarTitleProps extends HTMLStyleProps<HTMLDivElement> {
     value?: StateProp<Date>;

@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom';
-import { OverlayProps } from '../Overlay';
+import { type OverlayProps } from '../Overlay';
 export interface ModalsProps extends OverlayProps {
     main?: boolean;
 }

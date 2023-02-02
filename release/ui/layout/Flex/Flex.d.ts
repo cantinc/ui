@@ -1,4 +1,4 @@
-import { HTMLStyleProps } from '@innet/dom';
+import { type HTMLStyleProps } from '@innet/dom';
 export declare const alignJustifyMap: {
     readonly start: "flex-start";
     readonly end: "flex-end";

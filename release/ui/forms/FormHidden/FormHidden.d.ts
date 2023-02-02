@@ -1,4 +1,4 @@
-import { StateProp } from '@innet/dom';
+import { type StateProp } from '@innet/dom';
 export interface FormHiddenProps {
     name: string;
     value: StateProp<string>;

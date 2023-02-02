@@ -1,6 +1,6 @@
-import { StateProp } from '@innet/dom';
+import { type StateProp } from '@innet/dom';
 import { Cache, State } from 'watch-state';
-import { ModalProps } from '../Modal';
+import { type ModalProps } from '../Modal';
 export type DataPickerSelector = 'date' | 'month' | 'year';
 export declare const dataPickerCellHeight: Cache<number>;
 export interface DatePickerProps extends ModalProps {

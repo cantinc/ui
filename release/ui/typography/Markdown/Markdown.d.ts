@@ -1,5 +1,5 @@
-import { JSXElement } from '@innet/jsx';
-import { WatchProp } from 'src/types';
+import { type JSXElement } from '@innet/jsx';
+import { type WatchProp } from 'src/types';
 export interface MarkdownProps {
     text: WatchProp<string>;
 }

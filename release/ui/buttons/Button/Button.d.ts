@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { FlexProps } from '../../layout';
+import { type StateProp } from '@innet/dom';
+import { type FlexProps } from '../../layout';
 export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive';
 export type ButtonProps<E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
     view?: ButtonViews;

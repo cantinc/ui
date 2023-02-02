@@ -1,6 +1,6 @@
-import { StateProp } from '@innet/dom';
-import { ActionProp } from '../../../utils';
-import { InputMaskProps } from '../InputMask';
+import { type StateProp } from '@innet/dom';
+import { type ActionProp } from '../../../utils';
+import { type InputMaskProps } from '../InputMask';
 export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 'oninput'> {
     apply?: any;
     value?: StateProp<Date | undefined>;

@@ -1,6 +1,6 @@
-import { StateProp } from '@innet/dom';
-import { FlexProps } from '../../layout';
-import { CheckProps } from '../../prototypes';
+import { type StateProp } from '@innet/dom';
+import { type FlexProps } from '../../layout';
+import { type CheckProps } from '../../prototypes';
 export interface RadioItem extends CheckProps {
     value: StateProp<string>;
 }

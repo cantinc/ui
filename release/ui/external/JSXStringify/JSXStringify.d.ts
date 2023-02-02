@@ -1,4 +1,4 @@
-import { Style } from '@innet/dom';
+import { type Style } from '@innet/dom';
 export interface JSXStringifyProps extends Style {
     components?: Record<string, string>;
     functions?: Map<Function, string>;

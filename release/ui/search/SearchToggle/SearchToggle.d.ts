@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { ToggleProps } from '../../interaction';
+import { type StateProp } from '@innet/dom';
+import { type ToggleProps } from '../../interaction';
 export interface SearchToggleProps extends Omit<ToggleProps, 'checked'> {
     key: string;
     value?: StateProp<string>;

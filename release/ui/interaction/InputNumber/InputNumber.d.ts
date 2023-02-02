@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { InputProps } from '../Input';
+import { type StateProp } from '@innet/dom';
+import { type InputProps } from '../Input';
 export interface InputNumberProps extends Omit<InputProps, 'value' | 'oninput'> {
     value?: StateProp<number>;
     step?: StateProp<number>;

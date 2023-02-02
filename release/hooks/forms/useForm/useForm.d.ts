@@ -1,8 +1,8 @@
-import { ValidationMap, Validator } from '@cantinc/utils';
-import { Ref } from '@innet/dom';
+import { type ValidationMap, type Validator } from '@cantinc/utils';
+import { type Ref } from '@innet/dom';
 import { Context } from '@innet/jsx';
-import { State } from 'watch-state';
-import { FormProps } from '../../../ui';
+import { type State } from 'watch-state';
+import { type FormProps } from '../../../ui';
 export interface FormField<V, E extends HTMLElement> {
     name: string;
     state: State<V>;

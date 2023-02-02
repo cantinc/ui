@@ -1,4 +1,4 @@
-import { HTMLStyleProps, StateProp } from '@innet/dom';
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
 export interface DetailsProps extends HTMLStyleProps<HTMLDetailsElement> {
     onToggle?: (value: boolean) => void;
     open?: StateProp<boolean>;

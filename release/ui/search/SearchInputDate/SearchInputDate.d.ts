@@ -1,4 +1,4 @@
-import { InputDateProps } from '../../interaction';
+import { type InputDateProps } from '../../interaction';
 export interface SearchInputDateProps extends Omit<InputDateProps, 'value'> {
     key: string;
 }

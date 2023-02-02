@@ -1,4 +1,4 @@
-import { InputProps } from '../../interaction';
+import { type InputProps } from '../../interaction';
 export interface SearchInputProps extends Omit<InputProps, 'value'> {
     key: string;
 }

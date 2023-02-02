@@ -1,2 +1,3 @@
+import { type UploadFile } from '../../../ui';
 export declare const extReg: RegExp;
-export declare const getExtension: (file?: File) => string;
+export declare const getExtension: (file?: UploadFile | File) => string;

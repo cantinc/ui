@@ -1,5 +1,5 @@
-import { StateProp } from '@innet/dom';
-import { DropdownProps } from '../Dropdown';
+import { type StateProp } from '@innet/dom';
+import { type DropdownProps } from '../Dropdown';
 export interface MenuOption {
     value: string;
     label?: string;

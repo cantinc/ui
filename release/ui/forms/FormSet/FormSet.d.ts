@@ -1,4 +1,4 @@
-import { SetProps } from '../../interaction';
+import { type SetProps } from '../../interaction';
 export type FormSetProps<P> = SetProps<P> & {
     name: string;
     defaultValues?: Partial<P>[];

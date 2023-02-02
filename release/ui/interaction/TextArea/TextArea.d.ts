@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom';
-import { InputProps } from '../Input';
+import { type InputProps } from '../Input';
 export interface TextAreaProps extends Omit<InputProps, 'renderInput' | 'inputRef'> {
     resize?: boolean | 'auto' | 'none' | 'both' | 'horizontal' | 'vertical' | 'inherit';
     rows?: number;

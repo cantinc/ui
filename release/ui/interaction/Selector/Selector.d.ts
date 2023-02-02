@@ -1,7 +1,7 @@
-import { StateProp } from '@innet/dom';
+import { type StateProp } from '@innet/dom';
 import { State } from 'watch-state';
-import { DropdownPlacement, MenuOption } from '../../popups';
-import { InputProps } from '../Input';
+import { type DropdownPlacement, type MenuOption } from '../../popups';
+import { type InputProps } from '../Input';
 export type SelectorDisplay = 'auto' | 'value';
 export interface SelectorProps extends Omit<InputProps, 'clearable'> {
     values?: StateProp<MenuOption[]>;

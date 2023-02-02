@@ -1,4 +1,4 @@
-import { NavigationItemProps } from '../Navigation';
+import { type NavigationItemProps } from '../Navigation';
 export type PagesMenu = PagesItemProps[];
 export type PageAccessHandler = (nav: PagesItemProps) => any;
 export interface PagesItemProps extends NavigationItemProps {

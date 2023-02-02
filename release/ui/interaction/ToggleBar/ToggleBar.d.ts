@@ -1,6 +1,6 @@
-import { StateProp, WatchProp } from '@innet/dom';
-import { IconProp } from '../../icons';
-import { FlexProps } from '../../layout';
+import { type StateProp, type WatchProp } from '@innet/dom';
+import { type IconProp } from '../../icons';
+import { type FlexProps } from '../../layout';
 export interface ToggleBarValue {
     value: string;
     label?: any;

@@ -1,4 +1,4 @@
-import { FlexProps } from '../Flex';
+import { type FlexProps } from '../Flex';
 export interface LayoutProps extends FlexProps {
     width?: number;
 }

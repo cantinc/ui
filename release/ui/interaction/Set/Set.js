@@ -26,7 +26,7 @@ function Set(_a) {
         for (const value of values) {
             if (key in value)
                 continue;
-            // @ts-expect-error
+            // @ts-expect-error: unic value hack
             value[key] = utils.randomHash();
         }
         return values;
@@ -39,7 +39,11 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...watchState.unwatch(() => handleItemProps(item, Element))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:() => handleRemove(item.index),icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
+    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...props,...watchState.unwatch(() => handleItemProps(item, Element))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleRemove(item.index);
+            },icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
 }
 
 exports.Set = Set;

@@ -1,5 +1,5 @@
-import { TouchHidePlacement } from '../../../hooks';
-import { FlexProps } from '../../layout';
+import { type TouchHidePlacement } from '../../../hooks';
+import { type FlexProps } from '../../layout';
 export interface DrawerProps extends Omit<FlexProps, 'onclose'> {
     size?: number;
     placement?: TouchHidePlacement;
