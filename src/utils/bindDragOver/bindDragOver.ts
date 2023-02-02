@@ -1,7 +1,10 @@
 export function bindDragOver () {
   let over = false
+  let timer: any
 
   const addListener = () => {
+    clearTimeout(timer)
+
     if (!over) {
       over = true
       document.body.classList.add('drag-over')
@@ -10,20 +13,23 @@ export function bindDragOver () {
 
   const removeListener = () => {
     if (over) {
-      over = false
-      document.body.classList.remove('drag-over')
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        over = false
+        document.body.classList.remove('drag-over')
+      }, 100)
     }
   }
 
   document.addEventListener('dragover', addListener)
   document.addEventListener('dragend', removeListener)
   document.addEventListener('drop', removeListener)
-  document.addEventListener('dragleave', removeListener)
+  window.addEventListener('dragleave', removeListener)
 
   return () => {
     document.removeEventListener('dragover', addListener)
     document.removeEventListener('dragend', removeListener)
     document.removeEventListener('drop', removeListener)
-    document.removeEventListener('dragleave', removeListener)
+    window.removeEventListener('dragleave', removeListener)
   }
 }
