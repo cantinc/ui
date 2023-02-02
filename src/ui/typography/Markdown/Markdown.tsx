@@ -3,14 +3,14 @@ import { type ASTNodeTypes, type TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 import { type WatchProp } from 'src/types'
 
-import { Highlight } from '../../external'
+import { Highlight } from '../../external/Highlight'
 import { Divider } from '../../typography/Divider'
 
 export interface MarkdownProps {
   text: WatchProp<string>
 }
 
-const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => JSXElement>> = {
+const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<JSXElement>>> = {
   Document: ({ children }) => children.map(ast2jsx),
   Paragraph: ({ children }) => ({
     type: 'p',

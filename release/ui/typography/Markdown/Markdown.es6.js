@@ -1,5 +1,5 @@
 import { parse } from '@textlint/markdown-to-ast';
-import '../../external/index.es6.js';
+import '../../external/Highlight/index.es6.js';
 import '../Divider/index.es6.js';
 import { Divider } from '../Divider/Divider.es6.js';
 import { Highlight } from '../../external/Highlight/Highlight.es6.js';

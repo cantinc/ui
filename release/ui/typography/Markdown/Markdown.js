@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var markdownToAst = require('@textlint/markdown-to-ast');
-require('../../external/index.js');
+require('../../external/Highlight/index.js');
 require('../Divider/index.js');
 var Divider = require('../Divider/Divider.js');
 var Highlight = require('../../external/Highlight/Highlight.js');

@@ -87,7 +87,6 @@ export function Modal ({
           '--ui-modal-width': width ? `${width}px` : '',
         }}
         ref={element}
-        // @ts-expect-error: used in Modal
         _close={() => handleClose}
         class={() => classes([
           styles.root,
