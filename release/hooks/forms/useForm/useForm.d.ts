@@ -19,6 +19,7 @@ export interface FormContext extends FormProps {
     responseData?: any;
     submitData?: any;
     validation: ValidationMap<any>;
+    touched: Record<string, boolean>;
 }
 export declare const formContext: Context<FormContext, FormContext>;
 export declare function useForm(): FormContext;

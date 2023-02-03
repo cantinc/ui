@@ -1,7 +1,7 @@
 import { required, optional } from '@cantinc/utils';
 import { Ref } from '@innet/dom';
 import { useProps } from '@innet/jsx';
-import { State, onDestroy } from 'watch-state';
+import { State, Watch, onDestroy } from 'watch-state';
 import '../useForm/index.es6.js';
 import { useForm } from '../useForm/useForm.es6.js';
 
@@ -16,6 +16,11 @@ function useField(defValue, ref = new Ref()) {
         element: ref,
         validation: req ? required(validation) : validation ? optional(validation) : validation,
     };
+    new Watch(() => {
+        if (field.state.value !== defaultValue) {
+            form.touched[name] = true;
+        }
+    });
     if (form) {
         form.fields.add(field);
         onDestroy(() => {

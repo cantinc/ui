@@ -2,6 +2,7 @@ import { type HTMLProps, Ref, type StateProp } from '@innet/dom';
 import { type FlexProps } from '../../layout';
 export interface UploadFile extends Partial<File> {
     src: string;
+    name: string;
 }
 export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' | 'onchange'> {
     inputRef?: Ref<HTMLInputElement>;

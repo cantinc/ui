@@ -20,6 +20,11 @@ function useField(defValue, ref = new dom.Ref()) {
         element: ref,
         validation: req ? utils.required(validation) : validation ? utils.optional(validation) : validation,
     };
+    new watchState.Watch(() => {
+        if (field.state.value !== defaultValue) {
+            form.touched[name] = true;
+        }
+    });
     if (form) {
         form.fields.add(field);
         watchState.onDestroy(() => {

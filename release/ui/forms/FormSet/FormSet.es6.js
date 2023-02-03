@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { required } from '@cantinc/utils';
+import { ValidationErrors, required } from '@cantinc/utils';
 import { useChildren } from '@innet/jsx';
 import { State, onDestroy } from 'watch-state';
 import '../../../hooks/index.es6.js';
@@ -15,8 +15,29 @@ function FormSet(_a) {
     const form = useForm();
     const formElement = form.ref.value;
     onchange = actionProp(value, onchange);
+    const oldOnchange = onchange;
+    onchange = (value) => {
+        if (value !== defaultValues) {
+            form.touched[name] = true;
+        }
+        oldOnchange === null || oldOnchange === void 0 ? void 0 : oldOnchange(value);
+    };
     if (requiredSet) {
-        form.validation[name] = required(form.validation[name]);
+        if (form.method === 'PATCH') {
+            form.validation[name] = [(value, key) => {
+                    if (Array.isArray(value) && !value.length) {
+                        return {
+                            error: ValidationErrors.required,
+                            data: {
+                                key,
+                            },
+                        };
+                    }
+                }];
+        }
+        else {
+            form.validation[name] = required(form.validation[name]);
+        }
     }
     if (formElement && onchange) {
         const resetListener = () => {

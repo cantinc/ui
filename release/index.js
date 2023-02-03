@@ -236,6 +236,7 @@ exports.closeRouterModal = closeRouterModal.closeRouterModal;
 exports.getCloseRouterModal = closeRouterModal.getCloseRouterModal;
 exports.withModal = withModal.withModal;
 exports.actionProp = actionProp.actionProp;
+exports.appendFormDate = createFormData.appendFormDate;
 exports.createFormData = createFormData.createFormData;
 exports.debounceCall = debounceCall.debounceCall;
 exports.extReg = getExtension.extReg;

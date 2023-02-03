@@ -6,4 +6,5 @@ var createFormData = require('./createFormData.js');
 
 
 
+exports.appendFormDate = createFormData.appendFormDate;
 exports.createFormData = createFormData.createFormData;

@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.1 [![03.02.2023](https://img.shields.io/date/1675431344)](https://github.com/d8corp/innetjs/tree/v0.2.1)
+
+- fix multiple fields bug
+- fix `bindDragOver` bug
+
 ### v0.2.0 [![02.02.2023](https://img.shields.io/date/1675341475)](https://github.com/d8corp/innetjs/tree/v0.2.0)
 
 - fix `Upload` bug

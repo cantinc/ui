@@ -27,7 +27,7 @@ function Form(_a = {}) {
         ref,
         method,
         notification,
-        action, validation: validationProp || {} });
+        action, validation: validationProp || {}, touched: {} });
     onDestroy(() => {
         form.destroyed = true;
     });
@@ -114,6 +114,7 @@ function Form(_a = {}) {
             state.value = defaultValue;
             error.value = '';
         }
+        form.touched = {};
     };
     return ({type:'context',props:{for:formContext,set:form},children:[{type:Flex,props:{vertical:true,align:'stretch',novalidate:true,...props,ref:ref,element:'form',action:action,onsubmit:handleSubmit,onreset:handleReset},children:[children]}]});
 }

@@ -19,8 +19,29 @@ function FormSet(_a) {
     const form = useForm.useForm();
     const formElement = form.ref.value;
     onchange = actionProp.actionProp(value, onchange);
+    const oldOnchange = onchange;
+    onchange = (value) => {
+        if (value !== defaultValues) {
+            form.touched[name] = true;
+        }
+        oldOnchange === null || oldOnchange === void 0 ? void 0 : oldOnchange(value);
+    };
     if (requiredSet) {
-        form.validation[name] = utils.required(form.validation[name]);
+        if (form.method === 'PATCH') {
+            form.validation[name] = [(value, key) => {
+                    if (Array.isArray(value) && !value.length) {
+                        return {
+                            error: utils.ValidationErrors.required,
+                            data: {
+                                key,
+                            },
+                        };
+                    }
+                }];
+        }
+        else {
+            form.validation[name] = utils.required(form.validation[name]);
+        }
     }
     if (formElement && onchange) {
         const resetListener = () => {

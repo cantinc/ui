@@ -10,7 +10,7 @@ function parseForm(form) {
     for (const field of form.fields) {
         const { name, state: { value } } = field;
         if (dom.use(form.method) === 'PATCH') {
-            if (field.defaultValue === value) {
+            if (!form.touched[name]) {
                 continue;
             }
         }
