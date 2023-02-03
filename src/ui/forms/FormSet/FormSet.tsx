@@ -1,4 +1,4 @@
-import { required } from '@cantinc/utils'
+import { required, ValidationErrors } from '@cantinc/utils'
 import { useChildren } from '@innet/jsx'
 import { onDestroy, State } from 'watch-state'
 
@@ -26,8 +26,30 @@ export function FormSet <P extends object> ({
 
   onchange = actionProp(value, onchange)
 
+  const oldOnchange = onchange
+  onchange = (value) => {
+    if (value !== defaultValues) {
+      form.touched[name] = true
+    }
+
+    oldOnchange?.(value)
+  }
+
   if (requiredSet) {
-    form.validation[name] = required(form.validation[name])
+    if (form.method === 'PATCH') {
+      form.validation[name] = [(value, key) => {
+        if (Array.isArray(value) && !value.length) {
+          return {
+            error: ValidationErrors.required,
+            data: {
+              key,
+            },
+          }
+        }
+      }]
+    } else {
+      form.validation[name] = required(form.validation[name])
+    }
   }
 
   if (formElement && onchange) {

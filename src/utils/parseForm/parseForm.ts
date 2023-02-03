@@ -10,7 +10,7 @@ export function parseForm (form: FormContext) {
     const { name, state: { value } } = field
 
     if (use(form.method) === 'PATCH') {
-      if (field.defaultValue === value) {
+      if (!form.touched[name]) {
         continue
       }
     }

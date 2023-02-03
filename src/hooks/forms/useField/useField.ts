@@ -1,7 +1,7 @@
 import { optional, required } from '@cantinc/utils'
 import { Ref } from '@innet/dom'
 import { useProps } from '@innet/jsx'
-import { onDestroy, State } from 'watch-state'
+import { onDestroy, State, Watch } from 'watch-state'
 
 import { type FormFieldProps } from '../../../ui/forms/Form/types'
 import { type FormField, useForm } from '../useForm'
@@ -26,6 +26,12 @@ export function useField <
     element: ref,
     validation: req ? required(validation) : validation ? optional(validation) : validation,
   }
+
+  new Watch(() => {
+    if (field.state.value !== defaultValue) {
+      form.touched[name] = true
+    }
+  })
 
   if (form) {
     form.fields.add(field)

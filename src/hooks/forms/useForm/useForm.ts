@@ -22,6 +22,7 @@ export interface FormContext extends FormProps {
   responseData?: any
   submitData?: any
   validation: ValidationMap<any>
+  touched: Record<string, boolean>
 }
 
 export const formContext = new Context<FormContext>()

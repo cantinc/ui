@@ -14,6 +14,7 @@ const imageExtensions = ['jpg', 'webp', 'png', 'jpeg']
 
 export interface UploadFile extends Partial<File> {
   src: string
+  name: string
 }
 
 export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' | 'onchange'> {

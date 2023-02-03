@@ -46,6 +46,7 @@ export function Form ({
     notification,
     action,
     validation: validationProp || {},
+    touched: {},
   }
 
   onDestroy(() => {
@@ -148,6 +149,8 @@ export function Form ({
       state.value = defaultValue
       error.value = ''
     }
+
+    form.touched = {}
   }
 
   return (
