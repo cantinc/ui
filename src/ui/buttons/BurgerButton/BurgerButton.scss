@@ -5,7 +5,7 @@
   cursor: pointer;
   background: var(--color-100);
   font-size: var(--ui-burger-button-size);
-  border-radius: var(--round-50);
+  border-radius: 50%;
   padding: calc(var(--ui-burger-button-size) - 1px);
   display: flex;
 

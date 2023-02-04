@@ -7,6 +7,7 @@
   background: var(--color-100);
   min-height: 32px;
   box-sizing: content-box;
+  border-radius: var(--round-50);
 
   @include skeletonAfter;
 }
@@ -29,7 +30,7 @@
   position: absolute;
   inset: 0;
   border: 1px solid var(--ui-color-separator);
-  border-radius: var(--round-40);
+  border-radius: inherit;
   pointer-events: none;
   transition: border-color .3s;
 

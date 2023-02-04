@@ -167,7 +167,7 @@
   position: absolute;
   inset: 4px;
   border: dashed 1px var(--color-link-dark);
-  border-radius: 6px;
+  border-radius: calc(var(--round-50) - 4px);
   pointer-events: none;
   opacity: 0;
   transition: all .3s;

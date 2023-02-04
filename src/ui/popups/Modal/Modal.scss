@@ -31,7 +31,7 @@
   }
 
   @media (min-width: $tablet) {
-    border-radius: 10px;
+    border-radius: var(--round-60);
   }
 
   @media (max-width: $tablet) {
