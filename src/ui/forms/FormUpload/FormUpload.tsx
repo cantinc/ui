@@ -1,4 +1,4 @@
-import { use } from '@innet/dom'
+import { inject, use } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { UIValidationErrors } from '../../../constants/validation'
@@ -22,6 +22,8 @@ export function FormUpload (props: FormUploadProps) {
     accept,
     name,
     files = new State([]),
+    required,
+    clearable,
     onchange = actionProp(files, props.onchange),
     ...rest
   } = props
@@ -65,6 +67,7 @@ export function FormUpload (props: FormUploadProps) {
   return provideChildren(
     <Upload
       {...rest}
+      clearable={clearable || inject(required, required => !required)}
       files={state}
       accept={accept}
       name={name}

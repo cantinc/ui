@@ -29,6 +29,7 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
   error?: StateProp<boolean>
   hint?: StateProp<any>
   multiple?: StateProp<boolean>
+  clearable?: StateProp<boolean>
   files?: StateProp<UploadFile[]>
   onchange?: (files: UploadFile[]) => void
   props?: {
@@ -53,6 +54,7 @@ export function Upload ({
   accept,
   name,
   disabled,
+  clearable,
   ...rest
 }: UploadProps = {}) {
   const { after, before } = useSlots()
@@ -226,11 +228,13 @@ export function Upload ({
       </div>
       {after}
       {hintContent}
-      <Icon
-        icon='cross'
-        class={() => styles.clear}
-        onclick={handleClear}
-      />
+      <show state={clearable}>
+        <Icon
+          icon='cross'
+          class={() => styles.clear}
+          onclick={handleClear}
+        />
+      </show>
     </Flex>
   )
 }
