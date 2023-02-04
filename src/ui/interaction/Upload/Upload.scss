@@ -30,6 +30,8 @@
   gap: inherit;
   flex-wrap: inherit;
   max-width: 100%;
+  min-width: var(--ui-upload-width);
+  min-height: var(--ui-upload-height);
 }
 
 .error {

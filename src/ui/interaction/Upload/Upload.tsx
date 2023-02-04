@@ -145,7 +145,6 @@ export function Upload ({
       justify='center'
       padding={12}
       gap={12}
-      wrap
       {...rest}
       ondragleave={handleDragLeave}
       ondragend={handleDragLeave}

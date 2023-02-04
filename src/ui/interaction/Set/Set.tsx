@@ -74,12 +74,14 @@ export function Set<P extends object> ({
           </Element>
         )}
       </for>
-      <button
-        type='button'
-        onclick={handleAdd}
-        class={() => styles.addButton}>
-        {children}
-      </button>
+      <div class={() => styles.root}>
+        <button
+          type='button'
+          onclick={handleAdd}
+          class={() => styles.addButton}>
+          {children}
+        </button>
+      </div>
     </>
   )
 }
