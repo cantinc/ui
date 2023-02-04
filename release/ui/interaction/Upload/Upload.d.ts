@@ -16,6 +16,7 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
     error?: StateProp<boolean>;
     hint?: StateProp<any>;
     multiple?: StateProp<boolean>;
+    clearable?: StateProp<boolean>;
     files?: StateProp<UploadFile[]>;
     onchange?: (files: UploadFile[]) => void;
     props?: {
@@ -23,4 +24,4 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
         input?: HTMLProps<HTMLInputElement>;
     };
 }
-export declare function Upload({ width, height, radius, label, error, hint, style, props, multiple, inputRef, files, onchange, accept, name, disabled, ...rest }?: UploadProps): any;
+export declare function Upload({ width, height, radius, label, error, hint, style, props, multiple, inputRef, files, onchange, accept, name, disabled, clearable, ...rest }?: UploadProps): any;

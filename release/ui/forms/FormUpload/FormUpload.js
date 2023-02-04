@@ -18,7 +18,7 @@ var Upload = require('../../interaction/Upload/Upload.js');
 
 function FormUpload(props) {
     const provideChildren = useChildrenProvider.useChildrenProvider();
-    const { inputRef, disabled, validation: validation$1 = [], defaultValue, hint, accept, name, files = new watchState.State([]), onchange = actionProp.actionProp(files, props.onchange) } = props, rest = tslib.__rest(props, ["inputRef", "disabled", "validation", "defaultValue", "hint", "accept", "name", "files", "onchange"]);
+    const { inputRef, disabled, validation: validation$1 = [], defaultValue, hint, accept, name, files = new watchState.State([]), required, clearable, onchange = actionProp.actionProp(files, props.onchange) } = props, rest = tslib.__rest(props, ["inputRef", "disabled", "validation", "defaultValue", "hint", "accept", "name", "files", "required", "clearable", "onchange"]);
     if (accept) {
         props.validation = [
             (values) => {
@@ -49,7 +49,7 @@ function FormUpload(props) {
         error.value = '';
         onchange === null || onchange === void 0 ? void 0 : onchange(files);
     };
-    return provideChildren({type:Upload.Upload,props:{...rest,files:state,accept:accept,name:name,inputRef:element,onchange:handleChange,error:() => Boolean(error.value),disabled:() => { var _a; return (_a = dom.use(disabled)) !== null && _a !== void 0 ? _a : loading.value; },hint:() => error.value || hint}});
+    return provideChildren({type:Upload.Upload,props:{...rest,clearable:clearable || dom.inject(required, required => !required),files:state,accept:accept,name:name,inputRef:element,onchange:handleChange,error:() => Boolean(error.value),disabled:() => { var _a; return (_a = dom.use(disabled)) !== null && _a !== void 0 ? _a : loading.value; },hint:() => error.value || hint}});
 }
 
 exports.FormUpload = FormUpload;

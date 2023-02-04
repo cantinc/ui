@@ -15,7 +15,7 @@ import { Icon } from '../../icons/Icon/Icon.es6.js';
 const useStyle = style(modules_ab4cd8f7);
 const imageExtensions = ['jpg', 'webp', 'png', 'jpeg'];
 function Upload(_a = {}) {
-    var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new Ref(), files = new State([]), onchange, accept, name, disabled } = _a, rest = __rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled"]);
+    var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new Ref(), files = new State([]), onchange, accept, name, disabled, clearable } = _a, rest = __rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled", "clearable"]);
     const { after, before } = useSlots();
     const styles = useStyle();
     const over = new State(false);
@@ -80,7 +80,7 @@ function Upload(_a = {}) {
         onchange === null || onchange === void 0 ? void 0 : onchange([]);
     };
     const hintContent = inject(hint, hint => hint && ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}));
-    return ({type:Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,wrap:true,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': inject(height, height => height ? `${height}px` : '') }),class:() => classes([
+    return ({type:Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': inject(height, height => height ? `${height}px` : '') }),class:() => classes([
             styles.root,
             over.value && styles.over,
             use(error) && styles.error,
@@ -96,7 +96,7 @@ function Upload(_a = {}) {
             return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[item.value.src !== item.value.name
                     ? ({type:'img',props:{class:getClass,src:item.value.src}})
                     : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_b = (_a = item.value) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[getExtension(item.value)]}]})]});
-        }]}]},after,' ',hintContent,{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]});
+        }]}]},after,' ',hintContent,{type:'show',props:{state:clearable},children:[{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
 }
 
 export { Upload };

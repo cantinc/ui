@@ -23,7 +23,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 const useStyle = dom.style(Upload$1["default"]);
 const imageExtensions = ['jpg', 'webp', 'png', 'jpeg'];
 function Upload(_a = {}) {
-    var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new dom.Ref(), files = new watchState.State([]), onchange, accept, name, disabled } = _a, rest = tslib.__rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled"]);
+    var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new dom.Ref(), files = new watchState.State([]), onchange, accept, name, disabled, clearable } = _a, rest = tslib.__rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled", "clearable"]);
     const { after, before } = jsx.useSlots();
     const styles = useStyle();
     const over = new watchState.State(false);
@@ -88,7 +88,7 @@ function Upload(_a = {}) {
         onchange === null || onchange === void 0 ? void 0 : onchange([]);
     };
     const hintContent = dom.inject(hint, hint => hint && ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}));
-    return ({type:Flex.Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,wrap:true,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': dom.inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': dom.inject(height, height => height ? `${height}px` : '') }),class:() => classes__default["default"]([
+    return ({type:Flex.Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': dom.inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': dom.inject(height, height => height ? `${height}px` : '') }),class:() => classes__default["default"]([
             styles.root,
             over.value && styles.over,
             dom.use(error) && styles.error,
@@ -104,7 +104,7 @@ function Upload(_a = {}) {
             return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[item.value.src !== item.value.name
                     ? ({type:'img',props:{class:getClass,src:item.value.src}})
                     : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_b = (_a = item.value) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[getExtension.getExtension(item.value)]}]})]});
-        }]}]},after,' ',hintContent,{type:Icon.Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]});
+        }]}]},after,' ',hintContent,{type:'show',props:{state:clearable},children:[{type:Icon.Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
 }
 
 exports.Upload = Upload;

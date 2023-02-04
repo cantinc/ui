@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.3 [![04.02.2023](https://img.shields.io/date/1675521736)](https://github.com/d8corp/innetjs/tree/v0.2.3)
+
+- fix bugs
+
 ### v0.2.2 [![04.02.2023](https://img.shields.io/date/1675514011)](https://github.com/d8corp/innetjs/tree/v0.2.2)
 
 - fix focus styles

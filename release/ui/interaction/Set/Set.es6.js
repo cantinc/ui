@@ -39,7 +39,7 @@ function Set(_a) {
                 e.preventDefault();
                 e.stopPropagation();
                 handleRemove(item.index);
-            },icon:'brick'}}]}]})]},{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]);
+            },icon:'brick'}}]}]})]},{type:'div',props:{class:() => styles.root},children:[{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]}]);
 }
 
 export { Set, setPropsHandler };
