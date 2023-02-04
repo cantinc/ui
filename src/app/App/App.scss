@@ -7,7 +7,7 @@
 }
 
 .content {
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--round-70) var(--round-70) 0 0;
   background: var(--color-100);
 }
 

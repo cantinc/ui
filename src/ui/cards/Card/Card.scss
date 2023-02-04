@@ -2,7 +2,7 @@
 
 .root {
   border: 1px solid var(--ui-color-separator);
-  border-radius: var(--ui-card-radius, var(--round-50));
+  border-radius: var(--ui-card-radius, var(--round-60));
   background-color: var(--color-100);
   transition: all .3s;
   max-width: 100%;
@@ -14,6 +14,10 @@
   height: var(--ui-card-height, auto);
   box-sizing: border-box;
   position: relative;
+
+  & & {
+    border-radius: var(--ui-card-radius, var(--round-50));
+  }
 
   @include skeletonAfter(-1px);
 }

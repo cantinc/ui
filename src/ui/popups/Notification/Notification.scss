@@ -9,7 +9,7 @@
     width: 0;
   }
   to {
-    width: 100%;
+    width: calc(var(--round-20) * 2 + 100%);
   }
 }
 
@@ -26,10 +26,11 @@
   border: 2px solid #0003;
   z-index: 3;
   animation: show 0.3s;
-  border-radius: 5px;
+  border-radius: var(--round-50);
   color: var(--color-100);
   background-color: var(--color-orange);
   text-align: center;
+  overflow: hidden;
 
   & ~ & {
     pointer-events: none;
@@ -66,9 +67,11 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 6px;
-  border-radius: 3px;
+  height: 8px;
+  margin: 0 calc(var(--round-20) * -1);
+  border-radius: var(--round-20);
   background: #0003;
+  box-sizing: border-box;
 
   .root:first-child & {
     animation: time linear both;
