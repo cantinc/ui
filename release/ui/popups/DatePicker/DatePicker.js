@@ -42,7 +42,7 @@ const dataPickerCellHeight = new watchState.Cache(() => {
     return windowWidth.windowWidth.value < 768 ? (windowHeight.windowHeight.value - 290) / 6 : 57;
 });
 function DatePicker(_a = {}) {
-    var { apply, min, max, selector = new watchState.State('date'), defaultValue = today, value = new watchState.State(dateMinMax.dateMinMax(watchState.unwatch(() => dom.use(defaultValue) || today), min, max)), onChange, rotationTop = new watchState.State(true), goBackText, todayText, onApply } = _a, props = tslib.__rest(_a, ["apply", "min", "max", "selector", "defaultValue", "value", "onChange", "rotationTop", "goBackText", "todayText", "onApply"]);
+    var { apply, min, max, selector = new watchState.State('date'), defaultValue = today, value = new watchState.State(dateMinMax.dateMinMax(watchState.unwatch(() => dom.use(defaultValue) || today), min, max)), onChange, rotationTop = new watchState.State(true), onApply } = _a, props = tslib.__rest(_a, ["apply", "min", "max", "selector", "defaultValue", "value", "onChange", "rotationTop", "onApply"]);
     onChange = actionProp.actionProp(value, onChange);
     const children = jsx.useChildren();
     const styles = useStyle();
@@ -231,10 +231,10 @@ function DatePicker(_a = {}) {
         };
         return ({type:'delay',props:{ref:hide,hide:300},children:[{type:'div',props:{class:classNames},children:[{type:Flex.Flex,props:{padding:[28, 8],class:() => styles.contentHeader},children:[{type:'button',props:{class:() => styles.contentHeaderButton,onclick:() => {
                 selector.value = 'date';
-            }},children:[{type:Icon.Icon,props:{icon:'arrowLeft'}},goBackText]},{type:Space.Space},{type:'button',props:{class:() => styles.contentHeaderButton,onclick:watchState.createEvent(() => {
+            }},children:[{type:Icon.Icon,props:{icon:'arrowLeft'}},{type:'slot',props:{name:'ui-date-picker-go-back'},children:['Go back']}]},{type:Space.Space},{type:'button',props:{class:() => styles.contentHeaderButton,onclick:watchState.createEvent(() => {
                 onChange === null || onChange === void 0 ? void 0 : onChange(dateMinMax.dateMinMax(today, min, max));
                 selector.value = 'date';
-            })},children:[todayText]}]},{type:'div',props:{class:() => styles.contentGridWrapper},children:[() => selector.value === 'date' ? null : selector.value === 'month' ? renderMonth() : renderYear()]}]}]});
+            })},children:[{type:'slot',props:{name:'ui-date-picker-today'},children:['Today']}]}]},{type:'div',props:{class:() => styles.contentGridWrapper},children:[() => selector.value === 'date' ? null : selector.value === 'month' ? renderMonth() : renderYear()]}]}]});
     };
     return ({type:Modal.Modal,props:{width:480,...props,class:{
             root: () => styles.root,

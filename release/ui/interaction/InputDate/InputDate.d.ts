@@ -6,8 +6,6 @@ export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 
     value?: StateProp<Date | undefined>;
     min?: Date;
     max?: Date;
-    goBackText?: any;
-    todayText?: any;
     oninput?: ActionProp<Date | undefined>;
 }
-export declare function InputDate({ apply, value, oninput, min, max, goBackText, todayText, ...props }: InputDateProps): any;
+export declare function InputDate({ apply, value, oninput, min, max, ...props }: InputDateProps): any;

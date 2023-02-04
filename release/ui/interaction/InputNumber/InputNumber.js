@@ -9,11 +9,13 @@ var jsx = require('@innet/jsx');
 var watchState = require('watch-state');
 require('../../../utils/index.js');
 require('../../icons/index.js');
+require('../../typography/index.js');
 require('../Input/index.js');
 var InputNumber$1 = require('./InputNumber.scss.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
 var Input = require('../Input/Input.js');
 var Icon = require('../../icons/Icon/Icon.js');
+var Divider = require('../../typography/Divider/Divider.js');
 
 const useStyles = dom.style(InputNumber$1["default"]);
 function InputNumber(_a = {}) {
@@ -28,7 +30,7 @@ function InputNumber(_a = {}) {
     const decrease = () => {
         oninput === null || oninput === void 0 ? void 0 : oninput(dom.use(value) - dom.use(step));
     };
-    return ({type:Input.Input,props:{type:'number',value:() => String(dom.use(value)),oninput:value => oninput === null || oninput === void 0 ? void 0 : oninput(Number(value)),props:Object.assign(Object.assign({}, props.props), { input: Object.assign({ step: dom.inject(step, String) }, (_b = props.props) === null || _b === void 0 ? void 0 : _b.input) }),...props,class:styles},children:[{type:'slot',props:{name:'before'},children:[{type:Icon.Icon,props:{icon:'minus',onclick:decrease,class:() => styles.minus}}]},{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{icon:'plus',onclick:increase,class:() => styles.minus}}]},hint && {type:'slot',children:[hint]}]});
+    return ({type:Input.Input,props:{type:'number',value:() => String(dom.use(value)),oninput:value => oninput === null || oninput === void 0 ? void 0 : oninput(Number(value)),props:Object.assign(Object.assign({}, props.props), { input: Object.assign({ step: dom.inject(step, String) }, (_b = props.props) === null || _b === void 0 ? void 0 : _b.input) }),...props,class:styles},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{icon:'minus',onclick:decrease,class:() => styles.minus}},{type:Divider.Divider,props:{vertical:true}},{type:Icon.Icon,props:{icon:'plus',onclick:increase,class:() => styles.minus}}]},hint && {type:'slot',children:[hint]}]});
 }
 
 exports.InputNumber = InputNumber;

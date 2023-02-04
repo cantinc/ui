@@ -12,3 +12,4 @@ import './file/index.es6.js';
 import './parseForm/index.es6.js';
 import './date/index.es6.js';
 import './core/index.es6.js';
+import './bindTab/index.es6.js';

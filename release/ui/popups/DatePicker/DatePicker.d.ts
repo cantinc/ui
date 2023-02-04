@@ -13,7 +13,5 @@ export interface DatePickerProps extends ModalProps {
     rotationTop?: State<boolean>;
     min?: Date;
     max?: Date;
-    goBackText?: any;
-    todayText?: any;
 }
-export declare function DatePicker({ apply, min, max, selector, defaultValue, value, onChange, rotationTop, goBackText, todayText, onApply, ...props }?: DatePickerProps): any;
+export declare function DatePicker({ apply, min, max, selector, defaultValue, value, onChange, rotationTop, onApply, ...props }?: DatePickerProps): any;

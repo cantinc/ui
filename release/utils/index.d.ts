@@ -12,3 +12,4 @@ export * from './file';
 export * from './parseForm';
 export * from './date';
 export * from './core';
+export * from './bindTab';

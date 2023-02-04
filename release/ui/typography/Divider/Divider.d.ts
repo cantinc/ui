@@ -1,2 +1,6 @@
-import { type HTMLProps, type Style } from '@innet/dom';
-export declare function Divider(props: HTMLProps & Style): any;
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
+interface DividerPros extends HTMLStyleProps {
+    vertical?: StateProp<boolean>;
+}
+export declare function Divider({ vertical, ...props }?: DividerPros): any;
+export {};

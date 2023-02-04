@@ -29,7 +29,7 @@ const mask = {
     clearMaskOnLostFocus: false,
 };
 function InputDate(_a) {
-    var { apply = 'Apply', value = new watchState.State(), oninput, min = minDate, max = maxDate, goBackText, todayText } = _a, props = tslib.__rest(_a, ["apply", "value", "oninput", "min", "max", "goBackText", "todayText"]);
+    var { apply = 'Apply', value = new watchState.State(), oninput, min = minDate, max = maxDate } = _a, props = tslib.__rest(_a, ["apply", "value", "oninput", "min", "max"]);
     oninput = actionProp.actionProp(value, oninput);
     const styles = useStyles();
     const showCalendar = new watchState.State(false);
@@ -59,7 +59,7 @@ function InputDate(_a) {
             return;
         oninput === null || oninput === void 0 ? void 0 : oninput(curDate);
     };
-    return ([{type:InputMask.InputMask,props:{value:convertValue,oninput:handleInput,mask:Object.assign(Object.assign({}, mask), { min: min.toLocaleDateString(), max: max.toLocaleDateString() }),...props},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{icon:'calendar',class:() => styles.icon,onclick:handleCalendarClick}}]}]},{type:'show',props:{state:showCalendar},children:[{type:Modals.ModalsPortal,children:[{type:DatePicker.DatePicker,props:{min:min,max:max,goBackText:goBackText,todayText:todayText,defaultValue:value,apply:apply,onApply:handleApply,onclose:handleCalendarClose},children:[props.label]}]}]}]);
+    return ([{type:InputMask.InputMask,props:{value:convertValue,oninput:handleInput,mask:Object.assign(Object.assign({}, mask), { min: min.toLocaleDateString(), max: max.toLocaleDateString() }),...props},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{icon:'calendar',class:() => styles.icon,onclick:handleCalendarClick}}]}]},{type:'show',props:{state:showCalendar},children:[{type:Modals.ModalsPortal,children:[{type:DatePicker.DatePicker,props:{min:min,max:max,defaultValue:value,apply:apply,onApply:handleApply,onclose:handleCalendarClose},children:[props.label]}]}]}]);
 }
 
 exports.InputDate = InputDate;
