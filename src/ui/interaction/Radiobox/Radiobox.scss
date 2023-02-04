@@ -35,7 +35,9 @@
   }
 
   .input:focus + & {
-    border-color: var(--color-warning-50);
+    :global(.tab) & {
+      border-color: var(--color-warning-50);
+    }
   }
 
   .checked & {

@@ -32,7 +32,10 @@
 
   &:focus {
     outline: none;
-    color: var(--color-warning-50);
+
+    :global(.tab) & {
+      color: var(--color-warning-50);
+    }
   }
 
   &:active {
@@ -74,7 +77,10 @@
 
   &:focus {
     outline: none;
-    color: var(--color-warning-50);
+
+    :global(.tab) & {
+      color: var(--color-warning-50);
+    }
   }
 
   & ~ & {

@@ -102,16 +102,18 @@
   &[data-button="delete"],
   &[data-button="remove"],
   &[data-button="close"], {
-    &:hover,
-    &:focus {
+    &:hover {
       background: none;
-      color: var(--color-red);
+      color: var(--color-negative-50);
     }
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: none;
     color: var(--color-link-dark);
+  }
+
+  :global(.tab) &:focus {
+    color: var(--color-warning-50);
   }
 }

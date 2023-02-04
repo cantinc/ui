@@ -16,12 +16,23 @@
     display:none;
   }
 
-  &:focus {
+  &:hover {
     outline: none;
     color: var(--color-secondary-50);
 
     .arrow {
       --ui-arrow-color: var(--color-secondary-50);
+    }
+  }
+  &:focus {
+    outline: none;
+
+    :global(.tab) & {
+      color: var(--color-warning-50);
+
+      .arrow {
+        --ui-arrow-color: var(--color-warning-50);
+      }
     }
   }
 }

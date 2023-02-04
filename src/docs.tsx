@@ -11,10 +11,11 @@ import dom from '@innet/dom'
 import innet from 'innet'
 import { App } from 'src/app/App'
 
-import { bindDragOver, bindScrollPosition, bindWindowHeight } from './utils'
+import { bindDragOver, bindScrollPosition, bindTab, bindWindowHeight } from './utils'
 
 bindScrollPosition()
 bindWindowHeight()
 bindDragOver()
+bindTab()
 
 innet(<App />, dom)
