@@ -5,7 +5,6 @@ import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Icon } from '../../icons'
-import { Space } from '../../layout'
 import { Divider } from '../../typography'
 import { Input, type InputProps } from '../Input'
 import styles from './InputNumber.scss'

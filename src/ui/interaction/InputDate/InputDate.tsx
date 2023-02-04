@@ -27,8 +27,6 @@ export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 
   value?: StateProp<Date | undefined>
   min?: Date
   max?: Date
-  goBackText?: any
-  todayText?: any
   oninput?: ActionProp<Date | undefined>
 }
 export function InputDate ({
@@ -37,8 +35,6 @@ export function InputDate ({
   oninput,
   min = minDate,
   max = maxDate,
-  goBackText,
-  todayText,
   ...props
 }: InputDateProps) {
   oninput = actionProp(value, oninput)
@@ -98,8 +94,6 @@ export function InputDate ({
           <DatePicker
             min={min}
             max={max}
-            goBackText={goBackText}
-            todayText={todayText}
             defaultValue={value}
             apply={apply}
             onApply={handleApply}

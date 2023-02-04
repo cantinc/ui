@@ -34,8 +34,6 @@ export interface DatePickerProps extends ModalProps {
   rotationTop?: State<boolean>
   min?: Date
   max?: Date
-  goBackText?: any
-  todayText?: any
 }
 
 export function DatePicker ({
@@ -47,8 +45,6 @@ export function DatePicker ({
   value = new State(dateMinMax(unwatch(() => use(defaultValue) || today), min, max)),
   onChange,
   rotationTop = new State(true),
-  goBackText,
-  todayText,
   onApply,
   ...props
 }: DatePickerProps = {}) {
@@ -340,7 +336,9 @@ export function DatePicker ({
                 selector.value = 'date'
               }}>
               <Icon icon='arrowLeft' />
-              {goBackText}
+              <slot name='ui-date-picker-go-back'>
+                Go back
+              </slot>
             </button>
             <Space />
             <button
@@ -349,7 +347,9 @@ export function DatePicker ({
                 onChange?.(dateMinMax(today, min, max))
                 selector.value = 'date'
               })}>
-              {todayText}
+              <slot name='ui-date-picker-today'>
+                Today
+              </slot>
             </button>
           </Flex>
           <div class={() => styles.contentGridWrapper}>

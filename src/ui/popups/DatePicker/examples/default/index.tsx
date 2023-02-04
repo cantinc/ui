@@ -40,8 +40,6 @@ innet(
     <Modals>
       <show state={state}>
         <DatePicker
-          goBackText='Go back'
-          todayText='Today'
           apply='Apply'
           onclose={hide}>
           Title
@@ -60,8 +58,6 @@ innet(
         <Modals>
           <show state={state}>
             <DatePicker
-              goBackText='Go back'
-              todayText='Today'
               apply='Apply'
               onclose={hide}>
               Title
