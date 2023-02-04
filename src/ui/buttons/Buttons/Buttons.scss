@@ -4,8 +4,13 @@
   form > &:last-child {
     --ui-buttons-background: linear-gradient(to bottom, transparent -8px, var(--color-100) 48px);
 
+    pointer-events: none;
     padding-top: 48px;
     position: sticky;
     bottom: 0;
+
+    & > * {
+      pointer-events: all;
+    }
   }
 }
