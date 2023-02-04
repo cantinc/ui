@@ -2,13 +2,8 @@
 
 }
 
-.label {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .input {
-  text-align: center;
+  width: 101px;
 
   -moz-appearance: textfield;
   &::-webkit-outer-spin-button,

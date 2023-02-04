@@ -5,6 +5,8 @@ import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Icon } from '../../icons'
+import { Space } from '../../layout'
+import { Divider } from '../../typography'
 import { Input, type InputProps } from '../Input'
 import styles from './InputNumber.scss'
 
@@ -48,14 +50,13 @@ export function InputNumber ({
       }}
       {...props}
       class={styles}>
-      <slot name='before'>
+      <slot name='after'>
         <Icon
           icon='minus'
           onclick={decrease}
           class={() => styles.minus}
         />
-      </slot>
-      <slot name='after'>
+        <Divider vertical />
         <Icon
           icon='plus'
           onclick={increase}

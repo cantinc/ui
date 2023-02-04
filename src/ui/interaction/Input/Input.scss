@@ -5,7 +5,6 @@
   margin-bottom: 24px;
   cursor: text;
   background: var(--color-100);
-  border-radius: var(--round-50);
   min-height: 32px;
   box-sizing: content-box;
 
@@ -30,7 +29,7 @@
   position: absolute;
   inset: 0;
   border: 1px solid var(--ui-color-separator);
-  border-radius: var(--round-50);
+  border-radius: var(--round-40);
   pointer-events: none;
   transition: border-color .3s;
 

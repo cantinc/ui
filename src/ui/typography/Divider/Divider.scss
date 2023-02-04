@@ -1,14 +1,22 @@
 .root {
   transition: all 0.3s;
   border: none;
-  border-top: solid 1px #0003;
-  margin: 18px 0;
   padding: 0;
   text-align: center;
   font-size: 16px;
+
+  &:not(.vertical) {
+    margin: 18px 0;
+    border-top: solid 1px #0003;
+  }
 }
 
 .legend {
   padding: 0 16px;
   color: var(--color-50);
+}
+
+.vertical {
+  margin: 0 18px;
+  border-left: solid 1px #0003;
 }

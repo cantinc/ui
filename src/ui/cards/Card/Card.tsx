@@ -25,7 +25,7 @@ export function Card<E extends HTMLElement = HTMLElement> ({
   width,
   height,
   style,
-  radius = 8,
+  radius,
   ...props
 }: CardProps<E> = {} as any) {
   const children = useChildren()
@@ -68,7 +68,7 @@ export function Card<E extends HTMLElement = HTMLElement> ({
       {...props}
       style={{
         ...style,
-        '--ui-card-radius': inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius),
+        '--ui-card-radius': inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius || ''),
         '--ui-card-width': inject(width, width => width ? `${width}px` : ''),
         '--ui-card-height': inject(height, height => height ? `${height}px` : ''),
       }}
