@@ -36,6 +36,8 @@ const dataPickerCellHeight = new Cache(() => {
 function DatePicker(_a = {}) {
     var { apply, min, max, selector = new State('date'), defaultValue = today, value = new State(dateMinMax(unwatch(() => use(defaultValue) || today), min, max)), onChange, rotationTop = new State(true), onApply } = _a, props = __rest(_a, ["apply", "min", "max", "selector", "defaultValue", "value", "onChange", "rotationTop", "onApply"]);
     onChange = actionProp(value, onChange);
+    min = min && new Date(min.getFullYear(), min.getMonth(), min.getDate());
+    max = max && new Date(max.getFullYear(), max.getMonth(), max.getDate());
     const children = useChildren();
     const styles = useStyle();
     const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear());

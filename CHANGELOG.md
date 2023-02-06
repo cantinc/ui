@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.4 [![04.02.2023](https://img.shields.io/date/1675692555)](https://github.com/d8corp/innetjs/tree/v0.2.4)
+
+- add `unread` state of stories
+- fix date picker `min` and `max`
+
 ### v0.2.3 [![04.02.2023](https://img.shields.io/date/1675521736)](https://github.com/d8corp/innetjs/tree/v0.2.3)
 
 - fix bugs

@@ -44,6 +44,8 @@ const dataPickerCellHeight = new watchState.Cache(() => {
 function DatePicker(_a = {}) {
     var { apply, min, max, selector = new watchState.State('date'), defaultValue = today, value = new watchState.State(dateMinMax.dateMinMax(watchState.unwatch(() => dom.use(defaultValue) || today), min, max)), onChange, rotationTop = new watchState.State(true), onApply } = _a, props = tslib.__rest(_a, ["apply", "min", "max", "selector", "defaultValue", "value", "onChange", "rotationTop", "onApply"]);
     onChange = actionProp.actionProp(value, onChange);
+    min = min && new Date(min.getFullYear(), min.getMonth(), min.getDate());
+    max = max && new Date(max.getFullYear(), max.getMonth(), max.getDate());
     const children = jsx.useChildren();
     const styles = useStyle();
     const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear());

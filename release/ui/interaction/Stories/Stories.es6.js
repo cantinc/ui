@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref } from '@innet/dom';
+import { style, Ref, use } from '@innet/dom';
 import { State, Watch } from 'watch-state';
 import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
@@ -59,7 +59,7 @@ function Stories(_a) {
         state.value = false;
     };
     const slides = stories.map((_a, index) => {
-        var { preview, slides, previewRef, children, style = '', onclick, ref = new Ref() } = _a, rest = __rest(_a, ["preview", "slides", "previewRef", "children", "style", "onclick", "ref"]);
+        var { preview, slides, previewRef, children, style = '', onclick, unread, ref = new Ref() } = _a, rest = __rest(_a, ["preview", "slides", "previewRef", "children", "style", "onclick", "unread", "ref"]);
         const currentProgress = new State(0);
         new Watch(() => {
             if (!state.value || story.value !== index) {
@@ -103,7 +103,10 @@ function Stories(_a) {
                     dot: () => styles.dot,
                 },onend:next,autoscroll:() => story.value === index && autoscroll.value,count:slides.length}},children]) }));
     });
-    return ([{type:Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => styles.preview,onclick:() => {
+    return ([{type:Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef, unread }, index) => ({type:Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => [
+                styles.preview,
+                use(unread) && styles.unread,
+            ],onclick:() => {
                 story.value = index;
                 show();
             }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,class:{

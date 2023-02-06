@@ -63,7 +63,7 @@ function Stories(_a) {
         state.value = false;
     };
     const slides = stories.map((_a, index) => {
-        var { preview, slides, previewRef, children, style = '', onclick, ref = new dom.Ref() } = _a, rest = tslib.__rest(_a, ["preview", "slides", "previewRef", "children", "style", "onclick", "ref"]);
+        var { preview, slides, previewRef, children, style = '', onclick, unread, ref = new dom.Ref() } = _a, rest = tslib.__rest(_a, ["preview", "slides", "previewRef", "children", "style", "onclick", "unread", "ref"]);
         const currentProgress = new watchState.State(0);
         new watchState.Watch(() => {
             if (!state.value || story.value !== index) {
@@ -107,7 +107,10 @@ function Stories(_a) {
                     dot: () => styles.dot,
                 },onend:next,autoscroll:() => story.value === index && autoscroll.value,count:slides.length}},children]) }));
     });
-    return ([{type:Flex.Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef }, index) => ({type:Image.Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => styles.preview,onclick:() => {
+    return ([{type:Flex.Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef, unread }, index) => ({type:Image.Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => [
+                styles.preview,
+                dom.use(unread) && styles.unread,
+            ],onclick:() => {
                 story.value = index;
                 show();
             }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,class:{
