@@ -52,8 +52,13 @@ function Stories(_a) {
             stories[i].previewRef = new Ref();
         }
     }
+    const read = () => {
+        var _a, _b;
+        (_b = (_a = stories[story.value]).onread) === null || _b === void 0 ? void 0 : _b.call(_a);
+    };
     const show = () => {
         state.value = true;
+        read();
     };
     const hide = () => {
         state.value = false;
@@ -72,6 +77,7 @@ function Stories(_a) {
             }
             else if (story.value < stories.length - 1) {
                 story.value++;
+                read();
             }
             else {
                 hide();
@@ -85,6 +91,7 @@ function Stories(_a) {
                         }
                         else if (story.value > 0) {
                             story.value--;
+                            read();
                         }
                         else {
                             hide();
@@ -109,7 +116,7 @@ function Stories(_a) {
             ],onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,class:{
+            }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
         },flex:true,slides:slides}},{type:Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);

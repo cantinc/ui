@@ -15,6 +15,7 @@ export interface Story extends Slide {
   slides: string[]
   previewRef?: Ref<HTMLElement>
   unread?: StateProp<boolean>
+  onread?: () => void
 }
 
 export interface StoriesProps extends FlexProps {
@@ -72,8 +73,12 @@ export function Stories ({
     }
   }
 
+  const read = () => {
+    stories[story.value].onread?.()
+  }
   const show = () => {
     state.value = true
+    read()
   }
   const hide = () => {
     state.value = false
@@ -103,6 +108,7 @@ export function Stories ({
         currentProgress.value++
       } else if (story.value < stories.length - 1) {
         story.value++
+        read()
       } else {
         hide()
       }
@@ -120,6 +126,7 @@ export function Stories ({
               currentProgress.value--
             } else if (story.value > 0) {
               story.value--
+              read()
             } else {
               hide()
             }
@@ -186,6 +193,7 @@ export function Stories ({
           gap={16}
           align='stretch'
           value={story}
+          onchange={read}
           class={{
             root: () => styles.slides,
             slide: () => styles.slide,

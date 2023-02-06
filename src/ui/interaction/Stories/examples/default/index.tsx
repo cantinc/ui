@@ -16,16 +16,19 @@ const stories: Story[] = [
   {
     preview: story1,
     slides: [story1_1, story1_2, story1_3],
+    onread: () => console.log(1),
   },
   {
     preview: story2,
     unread: true,
     slides: [story2_1, story2_2],
+    onread: () => console.log(2),
   },
   {
     preview: story3,
     unread: true,
     slides: [story3_1],
+    onread: () => console.log(3),
   },
 ]
 

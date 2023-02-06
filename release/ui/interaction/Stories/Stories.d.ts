@@ -6,6 +6,7 @@ export interface Story extends Slide {
     slides: string[];
     previewRef?: Ref<HTMLElement>;
     unread?: StateProp<boolean>;
+    onread?: () => void;
 }
 export interface StoriesProps extends FlexProps {
     stories: Story[];
