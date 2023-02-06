@@ -1,4 +1,4 @@
-import { Ref, style } from '@innet/dom'
+import { Ref, type StateProp, style, use } from '@innet/dom'
 import { State, Watch } from 'watch-state'
 
 import { Icon } from '../../icons'
@@ -14,6 +14,7 @@ export interface Story extends Slide {
   preview: string
   slides: string[]
   previewRef?: Ref<HTMLElement>
+  unread?: StateProp<boolean>
 }
 
 export interface StoriesProps extends FlexProps {
@@ -85,6 +86,7 @@ export function Stories ({
     children,
     style = '',
     onclick,
+    unread,
     ref = new Ref<HTMLElement>(),
     ...rest
   }, index): Slide => {
@@ -154,14 +156,17 @@ export function Stories ({
   return (
     <>
       <Flex gap={24} {...props} ref={ref} class={() => styles.root}>
-        {stories.map(({ preview, previewRef }, index) => (
+        {stories.map(({ preview, previewRef, unread }, index) => (
           <Image
             size={110}
             radius={previewProps?.size || 110}
             {...previewProps}
             ref={previewRef}
             src={preview}
-            class={() => styles.preview}
+            class={() => [
+              styles.preview,
+              use(unread) && styles.unread,
+            ]}
             onclick={() => {
               story.value = index
               show()

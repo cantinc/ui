@@ -16,6 +16,13 @@
 
 .preview {
   cursor: pointer;
+  border: 2px solid var(--color-80);
+  transition: border .3s;
+
+  &.unread,
+  &:hover {
+    border-color: var(--color-primary-50);
+  }
 }
 
 .slides {

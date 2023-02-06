@@ -10,22 +10,24 @@ export interface CardsProps extends FlexProps {
 
 }
 
-export function * Cards (props: CardsProps) {
+export function * Cards ({
+  ref = new Ref<HTMLDivElement>(),
+  ...props
+}: CardsProps = {}) {
   const styles = useStyle()
   const children = useChildren()
-  const element = new Ref<HTMLDivElement>()
-  const getTop = () => element.value?.getBoundingClientRect().top
+  const getTop = () => ref.value?.getBoundingClientRect().top
 
   yield (
     <Flex
       gap={24}
       wrap
       {...props}
-      ref={element}
+      ref={ref}
       class={styles.root}>
       {children}
     </Flex>
   )
 
-  element.value?.style.setProperty('--ui-cards-top', `${getTop()}px`)
+  ref.value?.style.setProperty('--ui-cards-top', `${getTop()}px`)
 }

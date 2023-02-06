@@ -19,10 +19,12 @@ const stories: Story[] = [
   },
   {
     preview: story2,
+    unread: true,
     slides: [story2_1, story2_2],
   },
   {
     preview: story3,
+    unread: true,
     slides: [story3_1],
   },
 ]
@@ -53,10 +55,12 @@ const stories: Story[] = [
   },
   {
     preview: story2,
+    unread: true,
     slides: [story2_1, story2_2],
   },
   {
     preview: story3,
+    unread: true,
     slides: [story3_1],
   },
 ]
