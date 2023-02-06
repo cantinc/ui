@@ -50,6 +50,9 @@ export function DatePicker ({
 }: DatePickerProps = {}) {
   onChange = actionProp(value, onChange)
 
+  min = min && new Date(min.getFullYear(), min.getMonth(), min.getDate())
+  max = max && new Date(max.getFullYear(), max.getMonth(), max.getDate())
+
   const children = useChildren()
   const styles = useStyle()
   const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear())
