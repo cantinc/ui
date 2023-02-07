@@ -47,6 +47,7 @@ innet(
   example: (
     <Form onsuccess={handleSuccess} vertical>
       <FormInputNumber
+        defaultValue={0}
         name='count'
         label='Count'
       />

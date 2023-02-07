@@ -5,6 +5,10 @@ export function appendFormDate (body: FormData, key: string, value: any) {
     body.append(key, value)
     return
   }
+  if (typeof value === 'number') {
+    body.append(key, String(value))
+    return
+  }
 
   if (Array.isArray(value)) {
     value.forEach(value => appendFormDate(body, key, value))

@@ -2,7 +2,11 @@
 
 ## v0.2
 
-### v0.2.5 [![06.02.2023](https://img.shields.io/date/1675698856)](https://github.com/d8corp/innetjs/tree/v0.2.6)
+### v0.2.6 [![07.02.2023](https://img.shields.io/date/1675783047)](https://github.com/d8corp/innetjs/tree/v0.2.6)
+
+- fix `FormInputNumber` bugs
+
+### v0.2.5 [![06.02.2023](https://img.shields.io/date/1675698856)](https://github.com/d8corp/innetjs/tree/v0.2.5)
 
 - add `onread` for a story
 
