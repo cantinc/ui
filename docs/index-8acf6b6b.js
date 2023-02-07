@@ -1,0 +1,1 @@
+import{M as e}from"./docs-9c5485ea.js";import{T as r}from"./Typography-794137ee.js";function n(){return{type:r,children:[{type:e,props:{text:"# Search\n\nHere you can find components work with query string.\n\n"}}]}}export{n as default};

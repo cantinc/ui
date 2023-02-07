@@ -1,1 +1,0 @@
-import{a}from"./docs-ec277aa5.js";function e(e){const o=new FormData;for(const r of e.fields){const{value:t}=r.state;"PATCH"===a(e.method)&&r.defaultValue===t||(Array.isArray(t)?t.forEach((a=>o.append(r.name,a))):o.append(r.name,t))}return o}export{e as c};

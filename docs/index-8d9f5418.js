@@ -1,0 +1,1 @@
+import{M as e}from"./docs-9c5485ea.js";import{T as o}from"./Typography-794137ee.js";function r(){return{type:o,children:[{type:e,props:{text:"# Forms\n\nHere you can find components related to forms.\n\n"}}]}}export{r as default};

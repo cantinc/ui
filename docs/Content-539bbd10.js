@@ -1,1 +1,0 @@
-import{_ as s,F as t,i as a,s as e,E as c,u as i}from"./docs-ec277aa5.js";const n=e(c);function o(e={}){var{width:c,style:o}=e,r=s(e,["width","style"]);const l=i(),p=n();return{type:t,props:{align:"stretch",...r,style:Object.assign(Object.assign({},o),{"--ui-content-width":a(c,(s=>s?`${s}px`:""))}),class:()=>p.root},children:[l]}}export{o as C};
