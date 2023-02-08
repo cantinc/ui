@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Space, Title } from 'src/ui'
+import { Button, Title } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,32 +10,36 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Title, Space, Button } from '@cantinc/ui'
+import { Title, Button } from '@cantinc/ui'
 
 innet(
   <Title
+    justify='between'
     align='end'
     h={2}
     text='Heading 2'>
-    <Space />
-    <Button
+    <Button<HTMLAnchorElement>
+      element='a'
+      href='/'
       padding={[8, 24]}
       view='secondary'>
-      Header button
+      Home
     </Button>
   </Title>,
   dom,
 )`,
   example: (
     <Title
+      justify='between'
       align='end'
       h={2}
       text='Heading 2'>
-      <Space />
-      <Button
+      <Button<HTMLAnchorElement>
+        element='a'
+        href='/'
         padding={[8, 24]}
         view='secondary'>
-        Header button
+        Home
       </Button>
     </Title>
   ),
