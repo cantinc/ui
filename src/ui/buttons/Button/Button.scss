@@ -13,7 +13,8 @@
   text-decoration: none;
   position: relative;
   min-width: 96px;
-  min-height: 22px;
+  height: 14px;
+  line-height: 14px;
   box-sizing: content-box;
   color: var(--color-100);
 
@@ -34,19 +35,20 @@
 }
 
 .secondary {
-  background-color: var(--color-primary-100);
+  background-color: var(--color-100);
   border-color: var(--color-primary-100);
-  color: var(--color-primary-50);
+  color: var(--color-primary-70);
 
   &:hover {
-    background-color: var(--color-primary-90);
-    border-color: var(--color-primary-90);
+    background-color: var(--color-primary-100);
+    border-color: var(--color-primary-100);
     color: var(--color-primary-50);
   }
 
   &:active {
     background-color: var(--color-primary-80);
     border-color: var(--color-primary-80);
+    color: var(--color-primary-40);
   }
 }
 
