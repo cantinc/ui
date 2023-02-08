@@ -1,0 +1,16 @@
+.root {
+  color: var(--color-primary-50);
+  transform: translateX(10px);
+  transition: transform .3s;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.show {
+  transform: translateX(0);
+}
+
+.hide {
+  transform: translateX(-10px);
+}

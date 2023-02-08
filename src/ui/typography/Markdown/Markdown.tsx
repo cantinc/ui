@@ -5,6 +5,7 @@ import { type WatchProp } from 'src/types'
 
 import { Highlight } from '../../external/Highlight'
 import { Divider } from '../../typography/Divider'
+import { Title } from '../Title'
 
 export interface MarkdownProps {
   text: WatchProp<string>
@@ -32,10 +33,16 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<J
     type: 'li',
     children: children?.map(ast2jsx),
   }),
-  Header: ({ children, depth }) => ({
-    type: `h${depth}`,
-    children: children?.map(ast2jsx),
-  }),
+  Header: ({ children, depth }) => {
+    const jsxChildren = children?.map(ast2jsx)
+    const text = jsxChildren?.length === 1 && typeof jsxChildren[0] === 'string' ? jsxChildren[0] : undefined
+
+    return ({
+      type: Title,
+      props: { h: depth, text },
+      children: text ? undefined : jsxChildren,
+    })
+  },
   HorizontalRule: () => ({
     type: Divider,
   }),
