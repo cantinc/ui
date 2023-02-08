@@ -10,6 +10,7 @@ export { Markdown } from './ui/typography/Markdown/Markdown.es6.js';
 export { Typography } from './ui/typography/Typography/Typography.es6.js';
 export { Nowrap } from './ui/typography/Nowrap/Nowrap.es6.js';
 export { Divider } from './ui/typography/Divider/Divider.es6.js';
+export { Title } from './ui/typography/Title/Title.es6.js';
 export { JSXStringify } from './ui/external/JSXStringify/JSXStringify.es6.js';
 export { Async } from './ui/external/Async/Async.es6.js';
 export { Highlight } from './ui/external/Highlight/Highlight.es6.js';

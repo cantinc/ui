@@ -1,6 +1,8 @@
 import { parse } from '@textlint/markdown-to-ast';
 import '../../external/Highlight/index.es6.js';
 import '../Divider/index.es6.js';
+import '../Title/index.es6.js';
+import { Title } from '../Title/Title.es6.js';
 import { Divider } from '../Divider/Divider.es6.js';
 import { Highlight } from '../../external/Highlight/Highlight.es6.js';
 
@@ -26,10 +28,15 @@ const astMap = {
         type: 'li',
         children: children === null || children === void 0 ? void 0 : children.map(ast2jsx),
     }),
-    Header: ({ children, depth }) => ({
-        type: `h${depth}`,
-        children: children === null || children === void 0 ? void 0 : children.map(ast2jsx),
-    }),
+    Header: ({ children, depth }) => {
+        const jsxChildren = children === null || children === void 0 ? void 0 : children.map(ast2jsx);
+        const text = (jsxChildren === null || jsxChildren === void 0 ? void 0 : jsxChildren.length) === 1 && typeof jsxChildren[0] === 'string' ? jsxChildren[0] : undefined;
+        return ({
+            type: Title,
+            props: { h: depth, text },
+            children: text ? undefined : jsxChildren,
+        });
+    },
     HorizontalRule: () => ({
         type: Divider,
     }),

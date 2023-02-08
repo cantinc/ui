@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.8 [![08.02.2023](https://img.shields.io/date/1675878857)](https://github.com/d8corp/innetjs/tree/v0.2.8)
+
+- add `Title` component
+
 ### v0.2.7 [![08.02.2023](https://img.shields.io/date/1675866288)](https://github.com/d8corp/innetjs/tree/v0.2.7)
 
 - improve `Button` styles
