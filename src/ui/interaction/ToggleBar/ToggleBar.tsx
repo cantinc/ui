@@ -129,22 +129,24 @@ export function ToggleBar ({
         styles[side.value],
         styles[`${focusSide.value}Focus`],
       ])}>
-      <div class={styles.focus} />
-      <div class={styles.selected} />
-      <for of={values} key='value'>
-        {(item: LoopItem<ToggleBarValue>) => renderValue(item.value, {
-          onchange: () => onchange?.(item.value.value),
-          className: () => classes([
-            styles.link,
-            index.value === item.index && styles.active,
-          ]),
-          onblur: handleBlur,
-          onfocus: () => {
-            clearTimeout(blurTimeout)
-            focusIndex.value = item.index
-          },
-        })}
-      </for>
+      <show state={inject(loading, loading => !loading)}>
+        <div class={styles.focus} />
+        <div class={styles.selected} />
+        <for of={values} key='value'>
+          {(item: LoopItem<ToggleBarValue>) => renderValue(item.value, {
+            onchange: () => onchange?.(item.value.value),
+            className: () => classes([
+              styles.link,
+              index.value === item.index && styles.active,
+            ]),
+            onblur: handleBlur,
+            onfocus: () => {
+              clearTimeout(blurTimeout)
+              focusIndex.value = item.index
+            },
+          })}
+        </for>
+      </show>
     </Flex>
   )
 }
