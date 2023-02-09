@@ -29,6 +29,7 @@ export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, 
   value?: StateProp<string>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
+  loading?: StateProp<boolean>
 }>
 
 export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, {
@@ -65,6 +66,7 @@ export function ToggleBar ({
   onchange,
   renderValue = defaultToggleBarRender,
   style,
+  loading,
   ...props
 }: ToggleBarProps) {
   const styles = useStyle()
@@ -123,6 +125,7 @@ export function ToggleBar ({
       }}
       class={() => classes([
         styles.root,
+        use(loading) && styles.loading,
         styles[side.value],
         styles[`${focusSide.value}Focus`],
       ])}>

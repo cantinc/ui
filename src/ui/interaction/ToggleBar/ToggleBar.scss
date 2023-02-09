@@ -1,12 +1,18 @@
+@import "src/styles/skeleton";
+
 .root {
   --ui-toggle-bar-index: -1;
+  --ui-toggle-bar-inset: 0px;
+  --ui-toggle-bar-inset-2: calc(var(--ui-toggle-bar-inset) * 2);
 
   position: relative;
   overflow: auto hidden;
   max-width: 100%;
   min-height: 36px;
-  border: 2px solid var(--color-80);
-  border-radius: 18px;
+  border: 2px solid var(--color-primary-50);
+  border-radius: 500px;
+
+  @include skeletonAfter;
 }
 
 .link {
@@ -21,7 +27,7 @@
   transition: color .3s;
   cursor: pointer;
   text-decoration: none;
-  border-radius: var(--round-80);
+  border-radius: 500px;
   margin: 2px 0;
   gap: 4px;
 
@@ -36,11 +42,11 @@
 @media (pointer: fine) {
   .focus {
     position: absolute;
-    inset: 2px;
+    inset: var(--ui-toggle-bar-inset);
     background: var(--color-primary-100);
-    border-radius: 15px;
-    left: calc((100% - 4px) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-focus) + 2px);
-    right: calc(((100% - 4px) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-focus) - 1) + 2px);
+    border-radius: 500px;
+    left: calc((100% - var(--ui-toggle-bar-inset-2)) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-focus) + var(--ui-toggle-bar-inset));
+    right: calc(((100% - var(--ui-toggle-bar-inset-2)) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-focus) - 1) + var(--ui-toggle-bar-inset));
   }
 }
 
@@ -78,9 +84,13 @@
 
 .selected {
   position: absolute;
-  inset: 2px;
+  inset: var(--ui-toggle-bar-inset);
   background: var(--color-primary-50);
-  border-radius: 15px;
-  left: calc((100% - 4px) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-index) + 2px);
-  right: calc(((100% - 4px) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-index) - 1) + 2px);
+  border-radius: 500px;
+  left: calc((100% - var(--ui-toggle-bar-inset-2)) / var(--ui-toggle-bar-count) * var(--ui-toggle-bar-index) + var(--ui-toggle-bar-inset));
+  right: calc(((100% - var(--ui-toggle-bar-inset-2)) / var(--ui-toggle-bar-count)) * (var(--ui-toggle-bar-count) - var(--ui-toggle-bar-index) - 1) + var(--ui-toggle-bar-inset));
+}
+
+.loading {
+  @include skeletonAfterShow;
 }
