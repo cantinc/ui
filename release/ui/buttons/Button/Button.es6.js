@@ -8,7 +8,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_009aad45);
 function Button(_a = {}) {
-    var { view = 'primary', loading, disabled } = _a, props = __rest(_a, ["view", "loading", "disabled"]);
+    var { view = 'primary', loading, disabled, width } = _a, props = __rest(_a, ["view", "loading", "disabled", "width"]);
     const children = useChildren();
     const styles = useStyle();
     const className = () => classes([
@@ -22,7 +22,7 @@ function Button(_a = {}) {
         },
     ]);
     const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : use(loading)) || undefined);
-    return ({type:Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': inject(width, width => width !== undefined ? `${width}px` : '') }),disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
 }
 
 export { Button };
