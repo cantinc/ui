@@ -39,6 +39,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/typography/Title/Title.ui'),
       },
+      {
+        slot: 'section',
+        children: '<Section />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/typography/Section/Section.ui'),
+      },
     ],
   },
   {
