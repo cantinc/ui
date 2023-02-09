@@ -11,6 +11,7 @@ export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
 
 export type ButtonProps <E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
   view?: ButtonViews
+  width?: StateProp<number>
   loading?: StateProp<boolean>
   disabled?: StateProp<boolean>
 }>
@@ -19,6 +20,7 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
   view = 'primary',
   loading,
   disabled,
+  width,
   ...props
 }: ButtonProps<E> = {} as ButtonProps<E>) {
   const children = useChildren()
@@ -43,6 +45,10 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
       padding={24}
       element='button'
       {...props}
+      style={{
+        ...props?.style,
+        '--ui-button-width': inject(width, width => width !== undefined ? `${width}px` : ''),
+      }}
       disabled={disabledValue}
       class={className}>
       <show state={inject(loading, loading => !loading)}>

@@ -5,6 +5,7 @@ import flex from './flex'
 import loading from './loading'
 import padding from './padding'
 import view from './view'
+import width from './width'
 
 export default [
   def,
@@ -14,4 +15,5 @@ export default [
   flex,
   loading,
   element,
+  width,
 ]

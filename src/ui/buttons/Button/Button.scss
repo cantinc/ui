@@ -12,7 +12,8 @@
   text-align: center;
   text-decoration: none;
   position: relative;
-  min-width: 96px;
+  min-width: var(--ui-button-width, 96px);
+  width: var(--ui-button-width, initial);
   height: 14px;
   line-height: 14px;
   box-sizing: content-box;
