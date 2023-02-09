@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.10 [![09.02.2023](https://img.shields.io/date/1675943126)](https://github.com/d8corp/innetjs/tree/v0.2.10)
+
+- add `Section` component
+
 ### v0.2.9 [![09.02.2023](https://img.shields.io/date/1675933243)](https://github.com/d8corp/innetjs/tree/v0.2.9)
 
 - add `width` prop of `Button`
