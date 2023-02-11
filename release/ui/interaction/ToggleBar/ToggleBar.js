@@ -66,7 +66,7 @@ function ToggleBar(_a) {
             dom.use(loading) && styles.loading,
             styles[side.value],
             styles[`${focusSide.value}Focus`],
-        ])},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
+        ])},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
             onchange: () => onchange === null || onchange === void 0 ? void 0 : onchange(item.value.value),
             className: () => classes__default["default"]([
                 styles.link,
@@ -77,7 +77,7 @@ function ToggleBar(_a) {
                 clearTimeout(blurTimeout);
                 focusIndex.value = item.index;
             },
-        })]}]});
+        })]}]}]});
 }
 
 exports.ToggleBar = ToggleBar;

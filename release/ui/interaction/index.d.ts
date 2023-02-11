@@ -16,3 +16,5 @@ export * from './Calendar';
 export * from './CalendarTitle';
 export * from './InputDate';
 export * from './InputNumber';
+export * from './Tag';
+export * from './Tags';

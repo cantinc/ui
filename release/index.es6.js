@@ -81,6 +81,8 @@ export { Calendar, defaultCalendarCellRender } from './ui/interaction/Calendar/C
 export { CalendarTitle, maxCalendarDate, minCalendarDate } from './ui/interaction/CalendarTitle/CalendarTitle.es6.js';
 export { InputDate } from './ui/interaction/InputDate/InputDate.es6.js';
 export { InputNumber } from './ui/interaction/InputNumber/InputNumber.es6.js';
+export { Tag } from './ui/interaction/Tag/Tag.es6.js';
+export { Tags } from './ui/interaction/Tags/Tags.es6.js';
 export { SearchToggleBar } from './ui/search/SearchToggleBar/SearchToggleBar.es6.js';
 export { SearchToggle } from './ui/search/SearchToggle/SearchToggle.es6.js';
 export { SearchInput } from './ui/search/SearchInput/SearchInput.es6.js';
@@ -88,6 +90,7 @@ export { SearchSelector } from './ui/search/SearchSelector/SearchSelector.es6.js
 export { SearchInputMask } from './ui/search/SearchInputMask/SearchInputMask.es6.js';
 export { SearchInputDate } from './ui/search/SearchInputDate/SearchInputDate.es6.js';
 export { SearchInputNumber } from './ui/search/SearchInputNumber/SearchInputNumber.es6.js';
+export { SearchTags } from './ui/search/SearchTags/SearchTags.es6.js';
 export { Check } from './ui/prototypes/Check/Check.es6.js';
 export { bindDragOver } from './utils/bindDragOver/bindDragOver.es6.js';
 export { bindScrollPosition } from './utils/bindScrollPosition/bindScrollPosition.es6.js';

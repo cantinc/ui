@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.12 [![11.02.2023](https://img.shields.io/date/1676119480)](https://github.com/d8corp/innetjs/tree/v0.2.12)
+
+- small fixes and improvements
+- add `Tag`, `Tags`, `SearchTags`
+
 ### v0.2.11 [![09.02.2023](https://img.shields.io/date/1675946230)](https://github.com/d8corp/innetjs/tree/v0.2.11)
 
 - add `loading` of `ToggleBar`

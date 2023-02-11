@@ -16,3 +16,5 @@ import './Calendar/index.es6.js';
 import './CalendarTitle/index.es6.js';
 import './InputDate/index.es6.js';
 import './InputNumber/index.es6.js';
+import './Tag/index.es6.js';
+import './Tags/index.es6.js';

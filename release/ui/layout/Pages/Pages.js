@@ -40,7 +40,9 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
                 props: { name: '/' },
                 children: [{type:Page$1}],
             });
-            item.menu = newMenu;
+            if (newMenu.length) {
+                item.menu = newMenu;
+            }
             pages.children.push({
                 type: 'slot',
                 props: { name: slot },
@@ -54,7 +56,9 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
                 children: [{type:Page$1}],
             });
         }
-        menu.push(item);
+        if (slot) {
+            menu.push(item);
+        }
     }
     return [menu, pages];
 }

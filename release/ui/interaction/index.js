@@ -18,4 +18,6 @@ require('./Calendar/index.js');
 require('./CalendarTitle/index.js');
 require('./InputDate/index.js');
 require('./InputNumber/index.js');
+require('./Tag/index.js');
+require('./Tags/index.js');
 
