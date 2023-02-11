@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, Ref, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, Ref, type StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
@@ -13,7 +13,8 @@ import styles from './Modal.scss'
 const useStyles = style(styles)
 
 export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclose'> {
-  width?: number
+  height?: StateProp<number | string>
+  width?: StateProp<number | string>
   buttons?: string[]
   headButtons?: string[]
   buttonProps?: Record<string, ButtonProps>
@@ -27,6 +28,7 @@ let modalsCount = 0
 export function Modal ({
   buttons,
   width,
+  height,
   style,
   headButtons = ['close'],
   buttonProps = {},
@@ -84,7 +86,8 @@ export function Modal ({
         {...props}
         style={{
           ...style,
-          '--ui-modal-width': width ? `${width}px` : '',
+          '--ui-modal-width': inject(width, width => typeof width === 'number' ? `${width}px` : width || ''),
+          '--ui-modal-height': inject(height, height => typeof height === 'number' ? `${height}px` : height || ''),
         }}
         ref={element}
         _close={() => handleClose}
