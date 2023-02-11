@@ -498,6 +498,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/search/SearchSelector/SearchSelector.ui'),
       },
+      {
+        slot: 'tags',
+        children: '<SearchTags />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/search/SearchTags/SearchTags.ui'),
+      },
     ],
   },
 ]
