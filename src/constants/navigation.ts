@@ -255,6 +255,19 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/interaction/Radiobox/Radiobox.ui'),
       },
       {
+        slot: 'tag',
+        exact: true,
+        children: '<Tag />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Tag/Tag.ui'),
+      },
+      {
+        slot: 'tags',
+        children: '<Tags />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/interaction/Tags/Tags.ui'),
+      },
+      {
         exact: true,
         slot: 'toggle',
         children: '<Toggle />',

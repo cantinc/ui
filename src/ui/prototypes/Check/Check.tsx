@@ -1,6 +1,7 @@
 import { type HTMLStyleProps, type StateProp, style, use } from '@innet/dom'
+import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { Cache, State } from 'watch-state'
+import { Cache, createEvent, State } from 'watch-state'
 
 import checkStyles from './Check.scss'
 
@@ -28,15 +29,16 @@ export function Check ({
   disabled,
   ...props
 }: CheckProps) {
+  const children = useChildren()
   const styles = useStyle()
   const hasLabel = new Cache(() => Boolean(use(label)))
 
   if (checked instanceof State) {
     const oldOnChange = onchange
-    onchange = (val: boolean) => {
+    onchange = createEvent((val: boolean) => {
       checked.value = val
       oldOnChange?.(val)
-    }
+    })
   }
 
   const handleChange = (e: any) => {
@@ -44,7 +46,12 @@ export function Check ({
   }
 
   return (
-    <label class={() => classes([styles.root, use(checked) && styles.checked, use(disabled) && styles.disabled])}>
+    <label
+      class={() => classes([
+        styles.root,
+        use(checked) && styles.checked,
+        use(disabled) && styles.disabled,
+      ])}>
       <input
         {...props}
         class={() => styles.input}
@@ -56,6 +63,7 @@ export function Check ({
       <show state={hasLabel}>
         {label}
       </show>
+      {children}
     </label>
   )
 }
