@@ -59,7 +59,9 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
         children: [<Page />],
       })
 
-      item.menu = newMenu
+      if (newMenu.length) {
+        item.menu = newMenu
+      }
 
       pages.children.push({
         type: 'slot',
@@ -74,7 +76,9 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
       })
     }
 
-    menu.push(item)
+    if (slot) {
+      menu.push(item)
+    }
   }
 
   return [menu, pages]
