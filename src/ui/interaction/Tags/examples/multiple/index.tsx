@@ -39,7 +39,7 @@ innet(
       values={tags}
       value={state}
     />
-    Value: {state}
+    Value: {() => JSON.stringify(state.value)}
   </Flex>,
   dom,
 )`,
