@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.13 [![11.02.2023](https://img.shields.io/date/1676120325)](https://github.com/d8corp/innetjs/tree/v0.2.13)
+
+- make `StateProp` for `values` prop of `Tags`
+
 ### v0.2.12 [![11.02.2023](https://img.shields.io/date/1676119480)](https://github.com/d8corp/innetjs/tree/v0.2.12)
 
 - small fixes and improvements

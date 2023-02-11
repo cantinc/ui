@@ -6,7 +6,7 @@ export interface TagsItem extends Omit<TagProps, 'type'> {
 }
 export type ITags = TagsItem[];
 export interface TagsMainProps extends Omit<FlexProps, 'onchange'> {
-    values?: ITags;
+    values?: StateProp<ITags>;
 }
 export interface TagsSingleProps extends TagsMainProps {
     value?: StateProp<string>;
