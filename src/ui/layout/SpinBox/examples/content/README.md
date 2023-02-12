@@ -1,1 +1,1 @@
-By default, shows a spinner
+You can switch

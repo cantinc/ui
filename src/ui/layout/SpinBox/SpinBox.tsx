@@ -1,4 +1,4 @@
-import { style } from '@innet/dom'
+import { type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { Cache } from 'watch-state'
 
@@ -8,19 +8,17 @@ import styles from './SpinBox.scss'
 
 const useStyle = style(styles)
 
-export interface SpinBoxProps extends Exclude<FlexProps, 'vertical'> {
-  loading: () => boolean
-  horizontal?: boolean
+export interface SpinBoxProps extends FlexProps {
+  loading: StateProp<boolean>
 }
 
 export function SpinBox ({
   loading,
-  horizontal,
   ...props
 }: SpinBoxProps) {
   const children = useChildren()
   const styles = useStyle()
-  const loadingCache = new Cache(loading)
+  const loadingCache = new Cache(() => use(loading))
 
   const spinner = (
     <delay show={300} hide={300}>
@@ -31,7 +29,6 @@ export function SpinBox ({
   return (
     <Flex
       {...props}
-      vertical={!horizontal}
       class={() => [
         styles.root,
         loadingCache.value && styles.loading,

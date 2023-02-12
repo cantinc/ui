@@ -10,25 +10,33 @@ export default example({
   id: 'content',
   title: 'With content',
   description,
-  code: `<Flex vertical>
-  <SpinBox align='center' loading={() => loading.value}>
-    <span>
-      Top
-    </span>
-    <span>
-      Content
-    </span>
-    <span>
-      Bottom
-    </span>
-  </SpinBox>
-  <Button onclick={() => { loading.value = !loading.value }}>
-    Switch
-  </Button>
-</Flex>`,
+  code: `import innet from 'innet'
+import dom from '@innet/dom'
+
+import { Flex, SpinBox, Button} from '@cantinc/ui'
+
+innet(
+  <Flex vertical>
+    <SpinBox align='center' loading={loading}>
+      <span>
+        Top
+      </span>
+      <span>
+        Content
+      </span>
+      <span>
+        Bottom
+      </span>
+    </SpinBox>
+    <Button onclick={() => { loading.value = !loading.value }}>
+      Switch
+    </Button>
+  </Flex>,
+  dom,
+)`,
   example: (
-    <Flex vertical>
-      <SpinBox align='center' loading={() => loading.value}>
+    <Flex align='stretch' gap={16} vertical>
+      <SpinBox vertical align='center' loading={loading}>
         <span>
           Top
         </span>
