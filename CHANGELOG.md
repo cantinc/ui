@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.16 [![12.02.2023](https://img.shields.io/date/1676202429)](https://github.com/d8corp/innetjs/tree/v0.2.16)
+
+- improve `SpinBox`
+
 ### v0.2.15 [![12.02.2023](https://img.shields.io/date/1676200466)](https://github.com/d8corp/innetjs/tree/v0.2.15)
 
 - improve `Modals` styles

@@ -1,6 +1,6 @@
+import { type StateProp } from '@innet/dom';
 import { type FlexProps } from '../Flex';
-export interface SpinBoxProps extends Exclude<FlexProps, 'vertical'> {
-    loading: () => boolean;
-    horizontal?: boolean;
+export interface SpinBoxProps extends FlexProps {
+    loading: StateProp<boolean>;
 }
-export declare function SpinBox({ loading, horizontal, ...props }: SpinBoxProps): any;
+export declare function SpinBox({ loading, ...props }: SpinBoxProps): any;
