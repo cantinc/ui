@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref } from '@innet/dom';
+import { style, Ref, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import classes from 'html-classes';
 import { State, onDestroy } from 'watch-state';
@@ -16,7 +16,7 @@ import { Button } from '../../buttons/Button/Button.es6.js';
 const useStyles = style(modules_8f0e29bb);
 let modalsCount = 0;
 function Modal(_a = {}) {
-    var { buttons, width, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = __rest(_a, ["buttons", "width", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
+    var { buttons, width, height, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = __rest(_a, ["buttons", "width", "height", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
     const _b = useSlots(), { '': children, title, content, subTitle } = _b, slots = __rest(_b, ['', "title", "content", "subTitle"]);
     const hidden = new Ref();
@@ -51,7 +51,7 @@ function Modal(_a = {}) {
             setOverflow('');
         }
     });
-    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': width ? `${width}px` : '' }),ref:element,_close:() => handleClose,class:() => {
+    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': inject(width, width => typeof width === 'number' ? `${width}px` : width || ''), '--ui-modal-height': inject(height, height => typeof height === 'number' ? `${height}px` : height || '') }),ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes([
                 styles.root,

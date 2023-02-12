@@ -24,7 +24,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 const useStyles = dom.style(Modal$1["default"]);
 let modalsCount = 0;
 function Modal(_a = {}) {
-    var { buttons, width, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = tslib.__rest(_a, ["buttons", "width", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
+    var { buttons, width, height, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = tslib.__rest(_a, ["buttons", "width", "height", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
     const _b = jsx.useSlots(), { '': children, title, content, subTitle } = _b, slots = tslib.__rest(_b, ['', "title", "content", "subTitle"]);
     const hidden = new dom.Ref();
@@ -59,7 +59,7 @@ function Modal(_a = {}) {
             setOverflow.setOverflow('');
         }
     });
-    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': width ? `${width}px` : '' }),ref:element,_close:() => handleClose,class:() => {
+    return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': dom.inject(width, width => typeof width === 'number' ? `${width}px` : width || ''), '--ui-modal-height': dom.inject(height, height => typeof height === 'number' ? `${height}px` : height || '') }),ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes__default["default"]([
                 styles.root,

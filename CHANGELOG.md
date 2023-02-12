@@ -2,6 +2,12 @@
 
 ## v0.2
 
+### v0.2.14 [![12.02.2023](https://img.shields.io/date/1676197188)](https://github.com/d8corp/innetjs/tree/v0.2.14)
+
+- improve `BadgeFooter` styles
+- improve `width` of `Modal`
+- add `height` of `Modal`
+
 ### v0.2.13 [![11.02.2023](https://img.shields.io/date/1676120325)](https://github.com/d8corp/innetjs/tree/v0.2.13)
 
 - make `StateProp` for `values` prop of `Tags`
