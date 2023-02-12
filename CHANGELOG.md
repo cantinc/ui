@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.15 [![12.02.2023](https://img.shields.io/date/1676200466)](https://github.com/d8corp/innetjs/tree/v0.2.15)
+
+- improve `Modals` styles
+- add `withoutModal` util
+
 ### v0.2.14 [![12.02.2023](https://img.shields.io/date/1676197188)](https://github.com/d8corp/innetjs/tree/v0.2.14)
 
 - improve `BadgeFooter` styles

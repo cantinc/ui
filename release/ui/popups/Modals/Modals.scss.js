@@ -8,8 +8,8 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 
 var injector_8363bc92__default = /*#__PURE__*/_interopDefaultLegacy(injector_8363bc92);
 
-var css = ".Modals_root__45cfc7f0{background:rgba(0,0,0,.8)}@media (max-width:767px){.Modals_root__45cfc7f0{background:var(--color-100)}}";
-var modules_383942b3 = {"root":"Modals_root__45cfc7f0"};
+var css = ".Modals_root__b8ae2da1{background:rgba(74,47,124,.9)}@media (max-width:767px){.Modals_root__b8ae2da1{background:var(--color-100)}}";
+var modules_383942b3 = {"root":"Modals_root__b8ae2da1"};
 injector_8363bc92__default["default"](css,{});
 
 exports.css = css;

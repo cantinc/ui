@@ -114,6 +114,7 @@ export { createDateFromLocal } from './utils/date/createDateFromLocal/createDate
 export { windowWidth } from './utils/core/window/windowWidth.es6.js';
 export { windowHeight } from './utils/core/window/windowHeight.es6.js';
 export { bindTab } from './utils/bindTab/bindTab.es6.js';
+export { withoutModal } from './utils/withoutModal/withoutModal.es6.js';
 export { useEscapeListener } from './hooks/useEscapeListener/useEscapeListener.es6.js';
 export { formContext, useForm } from './hooks/forms/useForm/useForm.es6.js';
 export { useField } from './hooks/forms/useField/useField.es6.js';

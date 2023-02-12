@@ -15,4 +15,5 @@ require('./parseForm/index.js');
 require('./date/index.js');
 require('./core/index.js');
 require('./bindTab/index.js');
+require('./withoutModal/index.js');
 
