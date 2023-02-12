@@ -1,7 +1,7 @@
 @import "src/styles/breakpoints";
 
 .root {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(74, 47, 124, 0.9);
 
   @media (max-width: $tablet) {
     background: var(--color-100);
