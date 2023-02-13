@@ -9,23 +9,47 @@ export type SearchTagsProps = (Omit<TagsMultipleProps, 'value'> | Omit<TagsSingl
 export function SearchTags ({
   key,
   onchange,
+  multiple,
   ...props
 }: SearchTagsProps) {
   const handleChange = (val: string | string[]) => {
+    console.log(val)
     const search = stringifySearch({
       ...parsedSearch.value,
-      [key]: val || undefined,
+      [key]: Array.isArray(val) && val.length === 1 ? val[0] : val || undefined,
     }, { addQueryPrefix: true })
 
     history.push(`${history.path}${search}`, -1)
 
     onchange?.(val as any)
   }
+  const value: any = (): string | string[] => {
+    const val = parsedSearch.value[key] || ''
+
+    if (!Array.isArray(val) && typeof val === 'object') {
+      return ''
+    }
+
+    if (multiple) {
+      if (Array.isArray(val)) {
+        return val as string[]
+      }
+
+      return val ? [val] : []
+    }
+
+    if (Array.isArray(val)) {
+      return val[0] as string
+    }
+
+    return val
+  }
 
   return (
     <Tags
       {...props}
-      value={() => parsedSearch.value[key] as any || ''}
+      multiple={multiple}
+      value={value}
       onchange={handleChange as any}
     />
   )

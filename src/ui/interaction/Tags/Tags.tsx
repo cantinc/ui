@@ -53,15 +53,21 @@ export function Tags ({
               checked={() => {
                 const currentValue: any = use(value)
 
-                return multiple
-                  ? currentValue.includes(tag.value)
-                  : currentValue === tag.value
+                return !multiple
+                  ? currentValue === tag.value
+                  : tag.value
+                    ? currentValue.includes(tag.value)
+                    : currentValue.length === 0
               }}
               onchange={val => {
                 if (onchange) {
                   if (multiple) {
                     if (val) {
-                      onchange([...use(value as StateProp<string[]>), tag.value] as any)
+                      if (tag.value) {
+                        onchange([...use(value as StateProp<string[]>), tag.value] as any)
+                      } else {
+                        onchange([] as any)
+                      }
                     } else {
                       onchange(use(value as StateProp<string[]>).filter(v => v !== tag.value) as any)
                     }

@@ -4,6 +4,7 @@ import { type ITags, SearchTags } from 'src/ui'
 import description from './README.md'
 
 const values: ITags = [
+  { value: '', label: 'All' },
   { value: 'test1', label: 'Test 1' },
   { value: 'test2', label: 'Test 2' },
   { value: 'test3', label: 'Test 3' },

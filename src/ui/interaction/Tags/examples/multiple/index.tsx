@@ -7,7 +7,7 @@ import description from './README.md'
 const state = new State([])
 
 const tags: ITags = [
-  { value: '', label: 'Other' },
+  { value: '', label: 'All' },
   { value: 'eat', label: 'Eat' },
   { value: 'drink', label: 'Drink' },
   { value: 'sweet', label: 'Sweet' },
