@@ -21,15 +21,22 @@ function Tags(_a = {}) {
             const tag = watchState.unwatch(() => item.value);
             return ({type:Tag.Tag,props:{...tag,checked:() => {
                     const currentValue = dom.use(value);
-                    return multiple
-                        ? currentValue.includes(tag.value)
-                        : currentValue === tag.value;
+                    return !multiple
+                        ? currentValue === tag.value
+                        : tag.value
+                            ? currentValue.includes(tag.value)
+                            : currentValue.length === 0;
                 },onchange:val => {
                     var _a;
                     if (onchange) {
                         if (multiple) {
                             if (val) {
-                                onchange([...dom.use(value), tag.value]);
+                                if (tag.value) {
+                                    onchange([...dom.use(value), tag.value]);
+                                }
+                                else {
+                                    onchange([]);
+                                }
                             }
                             else {
                                 onchange(dom.use(value).filter(v => v !== tag.value));

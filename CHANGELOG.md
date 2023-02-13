@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.17 [![13.02.2023](https://img.shields.io/date/1676302719)](https://github.com/d8corp/innetjs/tree/v0.2.17)
+
+- improve `Tags`
+
 ### v0.2.16 [![12.02.2023](https://img.shields.io/date/1676202429)](https://github.com/d8corp/innetjs/tree/v0.2.16)
 
 - improve `SpinBox`
