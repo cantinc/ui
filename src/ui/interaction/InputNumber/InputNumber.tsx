@@ -15,12 +15,16 @@ export interface InputNumberProps extends Omit<InputProps, 'value' | 'oninput'> 
   value?: StateProp<number>
   step?: StateProp<number>
   oninput?: (value: number) => void
+  min?: StateProp<number>
+  max?: StateProp<number>
 }
 
 export function InputNumber ({
   value = new State(0),
   step = 1,
   oninput,
+  min,
+  max,
   ...props
 }: InputNumberProps = {}) {
   const { hint } = useSlots()
@@ -29,10 +33,34 @@ export function InputNumber ({
   oninput = actionProp(value, oninput)
 
   const increase = () => {
-    oninput?.(strip(use(value) + use(step)))
+    const newValue = strip(use(value) + use(step))
+    const currentMin = use(min)
+    const currentMax = use(max)
+
+    if (currentMin !== undefined && newValue < currentMin) {
+      return oninput?.(currentMin)
+    }
+
+    if (currentMax !== undefined && newValue > currentMax) {
+      return oninput?.(currentMax)
+    }
+
+    oninput?.(newValue)
   }
   const decrease = () => {
-    oninput?.(use(value) - use(step))
+    const newValue = strip(use(value) - use(step))
+    const currentMin = use(min)
+    const currentMax = use(max)
+
+    if (currentMin !== undefined && newValue < currentMin) {
+      return oninput?.(currentMin)
+    }
+
+    if (currentMax !== undefined && newValue > currentMax) {
+      return oninput?.(currentMax)
+    }
+
+    oninput?.(newValue)
   }
 
   return (
@@ -44,6 +72,8 @@ export function InputNumber ({
         ...props.props,
         input: {
           step: inject(step, String),
+          min: inject(min, String),
+          max: inject(max, String),
           ...props.props?.input,
         },
       }}
