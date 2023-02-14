@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.18 [![14.02.2023](https://img.shields.io/date/1676379272)](https://github.com/d8corp/innetjs/tree/v0.2.18)
+
+- improve `InputNumber`
+
 ### v0.2.17 [![13.02.2023](https://img.shields.io/date/1676302719)](https://github.com/d8corp/innetjs/tree/v0.2.17)
 
 - improve `Tags`
