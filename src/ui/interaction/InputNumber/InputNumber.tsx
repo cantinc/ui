@@ -26,6 +26,7 @@ export function InputNumber ({
   min,
   max,
   inputRef = new Ref(),
+  onkeydown,
   ...props
 }: InputNumberProps = {}) {
   const { hint } = useSlots()
@@ -64,19 +65,13 @@ export function InputNumber ({
     oninput?.(newValue)
   }
 
+  let lastKey = ''
+
   return (
     <Input
       inputRef={inputRef}
       type='number'
       value={() => String(use(value))}
-      oninput={function (value) {
-        const newValue = Number(value)
-        oninput?.(newValue)
-
-        if (inputRef.value) {
-          inputRef.value.value = String(newValue)
-        }
-      }}
       props={{
         ...props.props,
         input: {
@@ -87,6 +82,20 @@ export function InputNumber ({
         },
       }}
       {...props}
+      oninput={val => {
+        const newValue = Number(val)
+        const oldValue = use(value)
+
+        if (oldValue !== newValue) {
+          oninput?.(newValue)
+        } else if (!newValue && inputRef.value && lastKey === 'Backspace') {
+          inputRef.value.value = '0'
+        }
+      }}
+      onkeydown={(e: KeyboardEvent) => {
+        lastKey = e.key
+        ;(onkeydown as any)?.(e)
+      }}
       class={styles}>
       <slot name='after'>
         <Icon
