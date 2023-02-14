@@ -1,5 +1,5 @@
 import { strip } from '@cantinc/utils'
-import { inject, type StateProp, style, use } from '@innet/dom'
+import { inject, Ref, type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -25,6 +25,7 @@ export function InputNumber ({
   oninput,
   min,
   max,
+  inputRef = new Ref(),
   ...props
 }: InputNumberProps = {}) {
   const { hint } = useSlots()
@@ -65,9 +66,17 @@ export function InputNumber ({
 
   return (
     <Input
+      inputRef={inputRef}
       type='number'
       value={() => String(use(value))}
-      oninput={value => oninput?.(Number(value))}
+      oninput={function (value) {
+        const newValue = Number(value)
+        oninput?.(newValue)
+
+        if (inputRef.value) {
+          inputRef.value.value = String(newValue)
+        }
+      }}
       props={{
         ...props.props,
         input: {
