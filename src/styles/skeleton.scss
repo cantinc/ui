@@ -19,6 +19,7 @@
   background-size: 500%;
   background-attachment: fixed;
   animation: skeleton 2s reverse infinite linear;
+  background-position: 70%;
 }
 
 @mixin skeletonAfter($inset: 0) {

@@ -1,0 +1,12 @@
+@import "src/styles/skeleton";
+
+.loading {
+  @include skeletonAfter;
+  @include skeletonAfterShow;
+
+  display: inline-flex;
+  width: var(--ui-icon-size, 16px);
+  height: var(--ui-icon-size, 16px);
+  border-radius: 500px;
+  position: relative;
+}

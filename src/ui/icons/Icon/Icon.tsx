@@ -1,4 +1,6 @@
-import { type HTMLStyleProps, type StateProp } from '@innet/dom'
+import { type HTMLStyleProps, inject, type StateProp } from '@innet/dom'
+
+import styles from './Icon.scss'
 
 export interface CustomIconProps extends HTMLStyleProps {
   size?: StateProp<number>
@@ -47,11 +49,26 @@ export interface IconProps extends CustomIconProps {
   icon?: IconProp
 }
 
-export async function Icon ({
+export async function * Icon ({
   icon = 'default',
+  size = 16,
   ...props
 }: IconProps = {}) {
+  yield (
+    <span
+      style={{
+        '--ui-icon-size': inject(size, size => `${size}px`),
+      }}
+      class={styles.loading}
+    />
+  )
+
   const { default: Icon } = await iconsImports[icon]()
 
-  return <Icon {...props} />
+  yield (
+    <Icon
+      {...props}
+      size={size}
+    />
+  )
 }
