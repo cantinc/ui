@@ -1,1 +1,0 @@
-import{M as t}from"./docs-9c5485ea.js";import{T as e}from"./Typography-794137ee.js";function o(){return{type:e,children:[{type:t,props:{text:"# Buttons\n\nHere you can find components related to buttons.\n\n"}}]}}export{o as default};

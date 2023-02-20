@@ -1,1 +1,0 @@
-function n(a,e,t){"string"!=typeof t?Array.isArray(t)?t.forEach((t=>n(a,e,t))):null!==t?t instanceof File?a.append(e,t):"object"==typeof t&&t.src&&t.name&&a.append(e,new File([""],t.name)):a.append(e,""):a.append(e,t)}function a(a){const e=new FormData;for(const t in a.submitData)n(e,t,a.submitData[t]);return e}export{a as c};
