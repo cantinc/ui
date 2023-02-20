@@ -363,6 +363,19 @@ export const navigation: PagesMenu = [
     ],
   },
   {
+    slot: 'info',
+    children: 'Info',
+    page: () => import('../pages/InfoPage'),
+    menu: [
+      {
+        slot: 'progress',
+        children: '<Progress />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/info/Progress/Progress.ui'),
+      },
+    ],
+  },
+  {
     slot: 'forms',
     children: 'Forms',
     page: () => import('../pages/FormsPage'),

@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  background: var(--color-90);
+  border-radius: 50px;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    transition: width .3s;
+    background: var(--color-primary-50);
+    width: calc(var(--ui-progress) * 100%);
+    box-sizing: border-box;
+  }
+}
