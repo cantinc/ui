@@ -3,6 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
+var dom = require('@innet/dom');
+var Icon$1 = require('./Icon.scss.js');
 
 const iconsImports = {
     default: () => Promise.resolve().then(function () { return require('./icons/DefaultIcon/index.js'); }),
@@ -38,10 +40,13 @@ const iconsImports = {
 };
 const icons = Object.keys(iconsImports);
 function Icon(_a = {}) {
-    var { icon = 'default' } = _a, props = tslib.__rest(_a, ["icon"]);
-    return tslib.__awaiter(this, void 0, void 0, function* () {
-        const { default: Icon } = yield iconsImports[icon]();
-        return {type:Icon,props:{...props}};
+    var { icon = 'default', size = 16 } = _a, props = tslib.__rest(_a, ["icon", "size"]);
+    return tslib.__asyncGenerator(this, arguments, function* Icon_1() {
+        yield yield tslib.__await(({type:'span',props:{style:{
+                '--ui-icon-size': dom.inject(size, size => `${size}px`),
+            },class:Icon$1["default"].loading}}));
+        const { default: Icon } = yield tslib.__await(iconsImports[icon]());
+        yield yield tslib.__await(({type:Icon,props:{...props,size:size}}));
     });
 }
 

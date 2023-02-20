@@ -1,4 +1,6 @@
-import { __rest, __awaiter } from 'tslib';
+import { __rest, __asyncGenerator, __await } from 'tslib';
+import { inject } from '@innet/dom';
+import modules_e7b1950f from './Icon.scss.es6.js';
 
 const iconsImports = {
     default: () => import('./icons/DefaultIcon/index.es6.js'),
@@ -34,10 +36,13 @@ const iconsImports = {
 };
 const icons = Object.keys(iconsImports);
 function Icon(_a = {}) {
-    var { icon = 'default' } = _a, props = __rest(_a, ["icon"]);
-    return __awaiter(this, void 0, void 0, function* () {
-        const { default: Icon } = yield iconsImports[icon]();
-        return {type:Icon,props:{...props}};
+    var { icon = 'default', size = 16 } = _a, props = __rest(_a, ["icon", "size"]);
+    return __asyncGenerator(this, arguments, function* Icon_1() {
+        yield yield __await(({type:'span',props:{style:{
+                '--ui-icon-size': inject(size, size => `${size}px`),
+            },class:modules_e7b1950f.loading}}));
+        const { default: Icon } = yield __await(iconsImports[icon]());
+        yield yield __await(({type:Icon,props:{...props,size:size}}));
     });
 }
 

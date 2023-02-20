@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.19 [![20.02.2023](https://img.shields.io/date/1676907031)](https://github.com/d8corp/innetjs/tree/v0.2.19)
+
+- improve icons async loading
+- add `Progress`
+
 ### v0.2.18 [![14.02.2023](https://img.shields.io/date/1676379272)](https://github.com/d8corp/innetjs/tree/v0.2.18)
 
 - improve `InputNumber`

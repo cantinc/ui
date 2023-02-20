@@ -11,4 +11,5 @@ require('./forms/index.js');
 require('./interaction/index.js');
 require('./search/index.js');
 require('./prototypes/index.js');
+require('./info/index.js');
 

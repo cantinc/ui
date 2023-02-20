@@ -42,5 +42,5 @@ export declare const icons: ("default" | "cant" | "edit" | "calendar" | "chevron
 export interface IconProps extends CustomIconProps {
     icon?: IconProp;
 }
-export declare function Icon({ icon, ...props }?: IconProps): Promise<any>;
+export declare function Icon({ icon, size, ...props }?: IconProps): AsyncGenerator<any, void, unknown>;
 export {};

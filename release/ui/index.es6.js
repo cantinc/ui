@@ -9,3 +9,4 @@ import './forms/index.es6.js';
 import './interaction/index.es6.js';
 import './search/index.es6.js';
 import './prototypes/index.es6.js';
+import './info/index.es6.js';

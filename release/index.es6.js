@@ -92,6 +92,7 @@ export { SearchInputDate } from './ui/search/SearchInputDate/SearchInputDate.es6
 export { SearchInputNumber } from './ui/search/SearchInputNumber/SearchInputNumber.es6.js';
 export { SearchTags } from './ui/search/SearchTags/SearchTags.es6.js';
 export { Check } from './ui/prototypes/Check/Check.es6.js';
+export { Progress } from './ui/info/Progress/Progress.es6.js';
 export { bindDragOver } from './utils/bindDragOver/bindDragOver.es6.js';
 export { bindScrollPosition } from './utils/bindScrollPosition/bindScrollPosition.es6.js';
 export { bindWindowHeight } from './utils/bindWindowHeight/bindWindowHeight.es6.js';
