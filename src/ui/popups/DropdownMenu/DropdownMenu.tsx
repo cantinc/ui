@@ -118,6 +118,7 @@ export function DropdownMenu ({
         type='keydown'
         listener={listener}
       />
+      {children}
       <for of={values || []} key='value'>
         {(item: LoopItem<MenuOption>) => (
           <Option
@@ -130,7 +131,6 @@ export function DropdownMenu ({
           />
         )}
       </for>
-      {children}
     </Dropdown>
   )
 }

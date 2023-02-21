@@ -42,7 +42,7 @@ export function Selector ({
   onsearch,
   ...props
 }: SelectorProps = {}) {
-  const { hint, after } = useSlots()
+  const { '': children, hint, after } = useSlots()
   const styles = useStyle()
   const show = new State(false)
   const preselect = new State<string>('')
@@ -197,8 +197,9 @@ export function Selector ({
         onSelect={(val) => {
           hide()
           oninput?.(val)
-        }}
-      />
+        }}>
+        {children}
+      </DropdownMenu>
     </>
   )
 }

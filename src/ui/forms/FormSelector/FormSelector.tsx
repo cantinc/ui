@@ -16,7 +16,7 @@ export function FormSelector ({
   onchange,
   ...props
 }: FormSelectorProps) {
-  const { before, after, hint } = useSlots()
+  const { '': children, before, after, hint } = useSlots()
   const { loading } = useForm()
   const { state, error, element } = useField('', inputRef)
 
@@ -35,6 +35,7 @@ export function FormSelector ({
       {before && <slot name='before'>{before}</slot>}
       {after && <slot name='after'>{after}</slot>}
       <slot name='hint'>{() => error.value || hint}</slot>
+      {children}
     </Selector>
   )
 }
