@@ -1,1 +1,1 @@
-By default, shows an input
+Use `hint` field of `MenuOption` to show option hint.
