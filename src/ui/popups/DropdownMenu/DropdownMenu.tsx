@@ -13,6 +13,7 @@ const useStyle = style(styles)
 export interface MenuOption {
   value: string
   label?: string
+  hint?: string
 }
 
 export interface DropdownMenuProps extends DropdownProps {

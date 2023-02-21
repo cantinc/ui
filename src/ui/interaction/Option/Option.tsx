@@ -8,6 +8,7 @@ const useStyle = style(styles)
 export interface OptionProps extends HTMLStyleProps<HTMLDivElement> {
   value: string
   label?: string
+  hint?: string
   showValues?: boolean
   preselected?: StateProp<boolean>
   selected?: StateProp<boolean>
@@ -18,6 +19,7 @@ export interface OptionProps extends HTMLStyleProps<HTMLDivElement> {
 export function Option ({
   value,
   label,
+  hint,
   showValues,
   preselected,
   selected,
@@ -51,11 +53,11 @@ export function Option ({
         use(preselected) && styles.preselected,
       ])}>
       {label || value}
-      {showValues && (
+      <show state={showValues || hint}>
         <span class={styles.value}>
-          {value}
+          {hint || value}
         </span>
-      )}
+      </show>
     </div>
   )
 }

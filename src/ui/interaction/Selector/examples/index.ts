@@ -5,6 +5,7 @@ import display from './display'
 import exact from './exact'
 import input from './input'
 import labels from './labels'
+import optionHint from './optionHint'
 import placement from './placement'
 import search from './search'
 import searchExact from './searchExact'
@@ -23,5 +24,6 @@ export default [
   labels,
   display,
   showValues,
+  optionHint,
   placement,
 ]
