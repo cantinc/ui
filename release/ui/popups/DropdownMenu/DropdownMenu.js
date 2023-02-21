@@ -79,7 +79,7 @@ function DropdownMenu(_a) {
             }
         }
     };
-    return ({type:Dropdown.Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener.Listener,props:{type:'keydown',listener:listener}},{type:'for',props:{of:values || [],key:'value'},children:[(item) => ({type:Option.Option,props:{...item.value,selected:() => dom.use(select) === item.value.value,onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(item.value.value),preselected:() => dom.use(preselect) === item.value.value,onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(item.value.value),showValues:showValues}})]},children]});
+    return ({type:Dropdown.Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener.Listener,props:{type:'keydown',listener:listener}},children,{type:'for',props:{of:values || [],key:'value'},children:[(item) => ({type:Option.Option,props:{...item.value,selected:() => dom.use(select) === item.value.value,onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(item.value.value),preselected:() => dom.use(preselect) === item.value.value,onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(item.value.value),showValues:showValues}})]}]});
 }
 
 exports.DropdownMenu = DropdownMenu;

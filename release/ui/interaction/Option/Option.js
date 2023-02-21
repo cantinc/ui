@@ -13,7 +13,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Option$1["default"]);
 function Option(_a) {
-    var { value, label, showValues, preselected, selected, onPreselect, onSelect, onmousedown, onmouseenter, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["value", "label", "showValues", "preselected", "selected", "onPreselect", "onSelect", "onmousedown", "onmouseenter", "ref"]);
+    var { value, label, hint, showValues, preselected, selected, onPreselect, onSelect, onmousedown, onmouseenter, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["value", "label", "hint", "showValues", "preselected", "selected", "onPreselect", "onSelect", "onmousedown", "onmouseenter", "ref"]);
     const styles = useStyle();
     const handleClick = (e) => {
         e.preventDefault();
@@ -27,7 +27,7 @@ function Option(_a) {
             styles.root,
             dom.use(selected) && styles.selected,
             dom.use(preselected) && styles.preselected,
-        ])},children:[label || value,' ',showValues && ({type:'span',props:{class:styles.value},children:[value]})]});
+        ])},children:[label || value,{type:'show',props:{state:showValues || hint},children:[{type:'span',props:{class:styles.value},children:[hint || value]}]}]});
 }
 
 exports.Option = Option;

@@ -24,7 +24,7 @@ var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 const useStyle = dom.style(Selector$1["default"]);
 function Selector(_a = {}) {
     var { ref = new dom.Ref(), inputRef = new dom.Ref(), placement, value = new watchState.State(''), values, oninput, searchValue, showValues, display = 'auto', search, exact, arrow = exact, onsearch } = _a, props = tslib.__rest(_a, ["ref", "inputRef", "placement", "value", "values", "oninput", "searchValue", "showValues", "display", "search", "exact", "arrow", "onsearch"]);
-    const { hint, after } = jsx.useSlots();
+    const { '': children, hint, after } = jsx.useSlots();
     const styles = useStyle();
     const show = new watchState.State(false);
     const preselect = new watchState.State('');
@@ -128,7 +128,7 @@ function Selector(_a = {}) {
             : after && ({type:'slot',props:{name:'after'},children:[after]}),' ',hint && ({type:'slot',props:{name:'hint'},children:[hint]})]},{type:DropdownMenu.DropdownMenu,props:{ref:popupRef,placement:placement,show:show,element:ref,values:valuesFilter,preselect:preselect,select:value,showValues:showValues,onSelect:(val) => {
             hide();
             oninput === null || oninput === void 0 ? void 0 : oninput(val);
-        }}}]);
+        }},children:[children]}]);
 }
 
 exports.Selector = Selector;

@@ -3,6 +3,7 @@ import { type DropdownProps } from '../Dropdown';
 export interface MenuOption {
     value: string;
     label?: string;
+    hint?: string;
 }
 export interface DropdownMenuProps extends DropdownProps {
     values?: StateProp<MenuOption[]>;

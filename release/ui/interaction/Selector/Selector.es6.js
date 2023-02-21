@@ -16,7 +16,7 @@ import { DropdownMenu } from '../../popups/DropdownMenu/DropdownMenu.es6.js';
 const useStyle = style(modules_14af6ac7);
 function Selector(_a = {}) {
     var { ref = new Ref(), inputRef = new Ref(), placement, value = new State(''), values, oninput, searchValue, showValues, display = 'auto', search, exact, arrow = exact, onsearch } = _a, props = __rest(_a, ["ref", "inputRef", "placement", "value", "values", "oninput", "searchValue", "showValues", "display", "search", "exact", "arrow", "onsearch"]);
-    const { hint, after } = useSlots();
+    const { '': children, hint, after } = useSlots();
     const styles = useStyle();
     const show = new State(false);
     const preselect = new State('');
@@ -120,7 +120,7 @@ function Selector(_a = {}) {
             : after && ({type:'slot',props:{name:'after'},children:[after]}),' ',hint && ({type:'slot',props:{name:'hint'},children:[hint]})]},{type:DropdownMenu,props:{ref:popupRef,placement:placement,show:show,element:ref,values:valuesFilter,preselect:preselect,select:value,showValues:showValues,onSelect:(val) => {
             hide();
             oninput === null || oninput === void 0 ? void 0 : oninput(val);
-        }}}]);
+        }},children:[children]}]);
 }
 
 export { Selector };
