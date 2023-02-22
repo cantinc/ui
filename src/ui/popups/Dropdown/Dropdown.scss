@@ -8,6 +8,7 @@
   z-index: var(--ui-over-z-index);
   transform: translateY(-8px);
   overflow: hidden auto;
+  max-height: 300px;
 
   &:empty {
     display: none;
