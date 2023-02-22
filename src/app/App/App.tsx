@@ -22,7 +22,7 @@ export function App () {
     <Pages prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
       <Layout class={styles.root} gap={[0, 20]}>
         <show state={isDesktop}>
-          <Aside padding={44} class={styles.aside} vertical>
+          <Aside padding={24} class={styles.aside} vertical>
             <slot name='menu' />
             <Space />
             <Flex justify='center'>
