@@ -16,12 +16,13 @@ export function useField <
     defaultValue = defValue,
     required: req = false,
     validation,
+    value = new State<V>(defaultValue),
   } = useProps<FormFieldProps<V>>()
 
   const field: FormField<V, E> = {
     name,
     defaultValue,
-    state: new State<V>(defaultValue),
+    state: value,
     error: new State(),
     element: ref,
     validation: req ? required(validation) : validation ? optional(validation) : validation,

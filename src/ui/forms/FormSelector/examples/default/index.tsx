@@ -1,7 +1,11 @@
 import { example } from 'src/app/Component'
 import { Button, Form, FormSelector, notify } from 'src/ui'
+import { State } from 'watch-state'
 
 import description from './README.md'
+
+const rotation = new State('')
+const size = new State('')
 
 export default example({
   id: 'default',
@@ -9,6 +13,7 @@ export default example({
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
+import { State } from 'watch-state'
 
 import {
   Form,
@@ -17,6 +22,9 @@ import {
   notify,
   Notifications,
 } from '@cantinc/ui'
+
+const rotation = new State('')
+const size = new State('')
 
 innet(
   <div>
@@ -29,6 +37,7 @@ innet(
         name='size'
         label='Size'
         exact
+        value={size}
         values={[
           { value: 'small', label: 'Small' },
           { value: 'mid', label: 'Mid' },
@@ -41,13 +50,14 @@ innet(
         label='Rotation'
         exact
         defaultValue='horizontal'
+        value={rotation}
         values={[
           { value: 'horizontal', label: 'Horizontal' },
           { value: 'vertical', label: 'Vertical' },
         ]}
       />
       <Button>
-        Send
+        Send {rotation}/{size}
       </Button>
     </Form>
     <Notifications />
@@ -64,6 +74,7 @@ innet(
         name='size'
         label='Size'
         exact
+        value={size}
         values={[
           { value: 'small', label: 'Small' },
           { value: 'mid', label: 'Mid' },
@@ -76,13 +87,14 @@ innet(
         label='Rotation'
         exact
         defaultValue='horizontal'
+        value={rotation}
         values={[
           { value: 'horizontal', label: 'Horizontal' },
           { value: 'vertical', label: 'Vertical' },
         ]}
       />
       <Button>
-        Send
+        Send {rotation}/{size}
       </Button>
     </Form>
   ),

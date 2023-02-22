@@ -26,6 +26,7 @@ export type FormNotificationHandle = (form: FormContext) => void
 export interface FormFieldProps <V = string> {
   name: string
   defaultValue?: V
+  value?: State<V>
   required?: boolean
   disabled?: boolean
   validation?: Validator<any, any>[]
