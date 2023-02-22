@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.21 [![22.02.2023](https://img.shields.io/date/1677060006)](https://github.com/d8corp/innetjs/tree/v0.2.21)
+
+- style fixes
+
 ### v0.2.20 [![21.02.2023](https://img.shields.io/date/1676983366)](https://github.com/d8corp/innetjs/tree/v0.2.20)
 
 - add `hint` into `MenuOption`
