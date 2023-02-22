@@ -7,11 +7,11 @@ import { useForm } from '../useForm/useForm.es6.js';
 
 function useField(defValue, ref = new Ref()) {
     const form = useForm();
-    const { name, defaultValue = defValue, required: req = false, validation, } = useProps();
+    const { name, defaultValue = defValue, required: req = false, validation, value = new State(defaultValue), } = useProps();
     const field = {
         name,
         defaultValue,
-        state: new State(defaultValue),
+        state: value,
         error: new State(),
         element: ref,
         validation: req ? required(validation) : validation ? optional(validation) : validation,

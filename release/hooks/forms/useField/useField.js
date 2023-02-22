@@ -11,11 +11,11 @@ var useForm = require('../useForm/useForm.js');
 
 function useField(defValue, ref = new dom.Ref()) {
     const form = useForm.useForm();
-    const { name, defaultValue = defValue, required: req = false, validation, } = jsx.useProps();
+    const { name, defaultValue = defValue, required: req = false, validation, value = new watchState.State(defaultValue), } = jsx.useProps();
     const field = {
         name,
         defaultValue,
-        state: new watchState.State(defaultValue),
+        state: value,
         error: new watchState.State(),
         element: ref,
         validation: req ? utils.required(validation) : validation ? utils.optional(validation) : validation,
