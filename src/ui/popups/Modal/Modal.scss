@@ -1,8 +1,6 @@
 @import "src/styles/breakpoints";
 
 .root {
-  --ui-modal-width: 602px;
-
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -12,7 +10,7 @@
   opacity: 0;
   width: calc(100% - 20px);
   height: var(--ui-modal-height);
-  max-width: var(--ui-modal-width);
+  max-width: var(--ui-modal-width, 620px);
   max-height: calc(100% - 20px);
   overscroll-behavior: none;
   background: var(--color-100);
@@ -74,10 +72,13 @@
   text-overflow: ellipsis;
   padding: 24px;
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 900;
   min-height: 1em;
   box-sizing: content-box;
   white-space: nowrap;
+  font-style: italic;
+  color: var(--color-primary-50);
+  text-transform: uppercase;
 }
 
 .headButtons {
