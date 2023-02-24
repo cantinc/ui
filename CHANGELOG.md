@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.23 [![24.02.2023](https://img.shields.io/date/1677255267)](https://github.com/d8corp/innetjs/tree/v0.2.23)
+
+- improve styles
+
 ### v0.2.22 [![22.02.2023](https://img.shields.io/date/1677061559)](https://github.com/d8corp/innetjs/tree/v0.2.22)
 
 - improve form components
