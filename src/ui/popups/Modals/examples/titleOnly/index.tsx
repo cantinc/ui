@@ -1,4 +1,4 @@
-import { Button, Modal, Modals } from 'src'
+import { Button, Icon, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -7,14 +7,14 @@ import description from './README.md'
 const show = new State(false)
 
 export default example({
-  id: 'title',
-  title: 'title',
+  id: 'titleOnly',
+  title: 'Title Only',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Modals, Modal, Button } from '@cantinc/ui'
+import { Modals, Modal, Button, Icon } from '@cantinc/ui'
 
 const show = new State(false)
 
@@ -25,12 +25,12 @@ innet(
     </Button>
     <Modals>
       <show state={show}>
-        <Modal onclose={() => { show.value = false }}>
+        <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
           <slot name='title'>
-            Title
+            Do you like this modal?
           </slot>
-          <slot name='content'>
-            Content
+          <slot name='button-accept'>
+            <Icon icon='check' />
           </slot>
         </Modal>
       </show>
@@ -43,12 +43,12 @@ innet(
       <portal parent={document.body}>
         <Modals>
           <show state={show}>
-            <Modal onclose={() => { show.value = false }}>
+            <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
               <slot name='title'>
-                Title
+                Do you like this modal?
               </slot>
-              <slot name='content'>
-                Content
+              <slot name='button-accept'>
+                <Icon icon='check' />
               </slot>
             </Modal>
           </show>

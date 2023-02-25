@@ -71,7 +71,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 24px;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 900;
   min-height: 1em;
   box-sizing: content-box;
@@ -79,20 +79,20 @@
   font-style: italic;
   color: var(--color-primary-50);
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 100%;
 }
 
 .headButtons {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  right: 16px;
   display: flex;
   gap: 24px;
 }
 
 .headButton {
   display: flex;
-  padding: 16px 0;
+  padding: 0;
   outline: none;
   cursor: pointer;
   background: none;
@@ -100,6 +100,7 @@
   border: none;
   font-size: 22px;
   transition: all 0.3s;
+  align-items: center;
 
   &[data-button="delete"],
   &[data-button="remove"],
