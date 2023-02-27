@@ -24,8 +24,30 @@ export function TextArea ({
   const withChildren = useChildrenProvider()
   const size = new State(0)
   const updateSize = () => {
-    size.value = 0
-    size.value = Number(inputRef.value?.scrollHeight)
+    const scrollHeight = Number(inputRef.value?.scrollHeight)
+    const clientHeight = Number(inputRef.value?.clientHeight)
+
+    if (scrollHeight !== clientHeight) {
+      size.value = scrollHeight
+    } else {
+      size.value--
+      let scrollHeight = Number(inputRef.value?.scrollHeight)
+      let clientHeight = Number(inputRef.value?.clientHeight)
+
+      if (scrollHeight === clientHeight) {
+        while ((scrollHeight = Number(inputRef.value?.scrollHeight)) === (clientHeight = Number(inputRef.value?.clientHeight))) {
+          size.value -= 10
+
+          if (size.value < 0) {
+            size.value = 0
+            break
+          }
+        }
+        size.value = scrollHeight
+      } else {
+        size.value++
+      }
+    }
   }
 
   if (resize === 'auto') {
@@ -54,7 +76,9 @@ export function TextArea ({
           disabled={props.disabled}
           oninput={(e: Event) => {
             ;(oninput as any)(e)
-            updateSize()
+            if (resize === 'auto') {
+              updateSize()
+            }
           }}
           _value={props._value}
           data-value={props['data-value']}
