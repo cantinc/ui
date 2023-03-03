@@ -1,1 +1,1 @@
-export { Pages, splitPagesItem } from './Pages.es6.js';
+export { Pages, splitPagesItem, titleContext, titleSeparatorContext } from './Pages.es6.js';

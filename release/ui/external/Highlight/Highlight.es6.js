@@ -11,8 +11,13 @@ function* Highlight(_a) {
             modules_ca773f94.root,
             statePropToWatchProp(props.class),
         ]),ref:ref}});
-    if ((ref === null || ref === void 0 ? void 0 : ref.value) && language in Prism.languages) {
-        ref.value.innerHTML = Prism.highlight(code, Prism.languages[language], language);
+    if (ref === null || ref === void 0 ? void 0 : ref.value) {
+        if (language in Prism.languages) {
+            ref.value.innerHTML = Prism.highlight(code, Prism.languages[language], language);
+        }
+        else {
+            ref.value.innerText = code;
+        }
     }
 }
 

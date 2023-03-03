@@ -20,8 +20,13 @@ function* Highlight(_a) {
             Highlight$1["default"].root,
             dom.statePropToWatchProp(props.class),
         ]),ref:ref}});
-    if ((ref === null || ref === void 0 ? void 0 : ref.value) && language in Prism__default["default"].languages) {
-        ref.value.innerHTML = Prism__default["default"].highlight(code, Prism__default["default"].languages[language], language);
+    if (ref === null || ref === void 0 ? void 0 : ref.value) {
+        if (language in Prism__default["default"].languages) {
+            ref.value.innerHTML = Prism__default["default"].highlight(code, Prism__default["default"].languages[language], language);
+        }
+        else {
+            ref.value.innerText = code;
+        }
     }
 }
 

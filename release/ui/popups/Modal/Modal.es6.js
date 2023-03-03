@@ -58,10 +58,10 @@ function Modal(_a = {}) {
                 show.value && styles.show,
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
             ]);
-        }},children:[title
-            ? ({type:'header',props:{class:() => styles.header},children:[title || null,' ',subTitle && ({type:'div',props:{class:() => styles.subTitle},children:[subTitle]})]})
-            : null,' ',headButtonsLength
-            ? ({type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({type:'button',props:{...buttonProps[id],'data-button':id,onclick:() => handleClose(id),class:() => styles.headButton},children:[slots[`button-${id}`] || id]}))]})
+        }},children:[title || headButtonsLength
+            ? ({type:'header',props:{class:() => styles.header},children:[title || null,' ',subTitle && ({type:'div',props:{class:() => styles.subTitle},children:[subTitle]}),' ',headButtonsLength
+                    ? ({type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({type:'button',props:{...buttonProps[id],'data-button':id,onclick:() => handleClose(id),class:() => styles.headButton},children:[slots[`button-${id}`] || id]}))]})
+                    : null]})
             : null,' ',content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,' ',buttonsLength
             ? ({type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]})
             : null]}]});

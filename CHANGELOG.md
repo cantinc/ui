@@ -2,6 +2,13 @@
 
 ## v0.2
 
+### v0.2.24 [![03.03.2023](https://img.shields.io/date/1677864613)](https://github.com/d8corp/innetjs/tree/v0.2.24)
+
+- improve `Modal` styles
+- fix `Textarea` bug
+- fix `Markdown` bug
+- improve control of document title
+
 ### v0.2.23 [![24.02.2023](https://img.shields.io/date/1677255267)](https://github.com/d8corp/innetjs/tree/v0.2.23)
 
 - improve styles

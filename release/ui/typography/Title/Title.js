@@ -7,6 +7,7 @@ var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 require('../../layout/index.js');
 var Title$1 = require('./Title.scss.js');
+var Pages = require('../../layout/Pages/Pages.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
 const useStyle = dom.style(Title$1["default"]);
@@ -15,9 +16,16 @@ function Title(_a = {}) {
     const children = jsx.useChildren();
     const show = dom.useShow();
     const hide = dom.useHidden();
+    const contextTitle = jsx.useContext(Pages.titleContext);
+    const titleSeparator = jsx.useContext(Pages.titleSeparatorContext);
     const styles = useStyle();
-    if (text !== undefined && h === 1) {
-        document.title = text;
+    if (h === 1 && (text !== undefined || contextTitle !== undefined)) {
+        if (contextTitle) {
+            document.title = !text || contextTitle === text ? contextTitle : `${contextTitle}${titleSeparator}${text}`;
+        }
+        else if (text) {
+            document.title = text;
+        }
     }
     return ({type:Flex.Flex,props:{element:`h${h}`,...props,class:() => [
             styles.root,

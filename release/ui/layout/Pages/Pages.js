@@ -12,6 +12,8 @@ var AsyncSpin = require('../AsyncSpin/AsyncSpin.js');
 var Page = require('../Page/Page.js');
 var Navigation = require('../Navigation/Navigation.js');
 
+const titleContext = new jsx.Context();
+const titleSeparatorContext = new jsx.Context(' | ');
 function splitPagesItem(navigation, prefix, handleAccess, parent) {
     const menu = [];
     const pages = {
@@ -62,15 +64,20 @@ function splitPagesItem(navigation, prefix, handleAccess, parent) {
     }
     return [menu, pages];
 }
-function Pages({ navigation, prefix = '', handleAccess, }) {
+function Pages({ navigation, prefix = '', title, titleSeparator = ' | ', handleAccess, }) {
     const children = jsx.useChildren();
+    if (title) {
+        document.title = title;
+    }
     const [menu, pages] = splitPagesItem(navigation, prefix, handleAccess);
     const slots = ([{type:'slot',props:{name:'menu'},children:[{type:Navigation.Navigation,props:{menu:menu}}]},{type:'slot',props:{name:'pages'},children:[pages]}]);
-    if (!prefix) {
-        return ({type:'slots',props:{from:slots},children:[children]});
-    }
-    return ({type:'slots',props:{from:slots},children:[{type:'context',props:{for:dom.routerContext,set:(prefix.match(/\//g) || []).length + 1},children:[children]}]});
+    const result = prefix
+        ? ({type:'slots',props:{from:slots},children:[{type:'context',props:{for:dom.routerContext,set:(prefix.match(/\//g) || []).length + 1},children:[children]}]})
+        : ({type:'slots',props:{from:slots},children:[children]});
+    return ({type:'context',props:{for:titleContext,set:title},children:[{type:'context',props:{for:titleSeparatorContext,set:titleSeparator},children:[result]}]});
 }
 
 exports.Pages = Pages;
 exports.splitPagesItem = splitPagesItem;
+exports.titleContext = titleContext;
+exports.titleSeparatorContext = titleSeparatorContext;
