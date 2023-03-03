@@ -27,7 +27,11 @@ export function * Highlight ({
     />
   )
 
-  if (ref?.value && language in Prism.languages) {
-    ref.value.innerHTML = Prism.highlight(code, Prism.languages[language], language)
+  if (ref?.value) {
+    if (language in Prism.languages) {
+      ref.value.innerHTML = Prism.highlight(code, Prism.languages[language], language)
+    } else {
+      ref.value.innerText = code
+    }
   }
 }

@@ -19,7 +19,7 @@ import styles from './App.scss'
 
 export function App () {
   return (
-    <Pages prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
+    <Pages title='@cantinc/ui' prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
       <Layout class={styles.root} gap={[0, 20]}>
         <show state={isDesktop}>
           <Aside padding={24} class={styles.aside} vertical>

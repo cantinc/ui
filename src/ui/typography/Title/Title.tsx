@@ -1,7 +1,7 @@
 import { style, useHidden, useShow } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { useChildren, useContext } from '@innet/jsx'
 
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexProps, titleContext, titleSeparatorContext } from '../../layout'
 import styles from './Title.scss'
 
 const useStyle = style(styles)
@@ -19,10 +19,16 @@ export function Title ({
   const children = useChildren()
   const show = useShow()
   const hide = useHidden()
+  const contextTitle = useContext(titleContext)
+  const titleSeparator = useContext(titleSeparatorContext)
   const styles = useStyle()
 
-  if (text !== undefined && h === 1) {
-    document.title = text
+  if (h === 1 && (text !== undefined || contextTitle !== undefined)) {
+    if (contextTitle) {
+      document.title = !text || contextTitle === text ? contextTitle : `${contextTitle}${titleSeparator}${text}`
+    } else if (text) {
+      document.title = text
+    }
   }
 
   return (

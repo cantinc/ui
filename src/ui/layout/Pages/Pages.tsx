@@ -1,5 +1,5 @@
 import { inject, routerContext } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Context, useChildren } from '@innet/jsx'
 
 import { AsyncSpin } from '../AsyncSpin'
 import { Navigation, type NavigationItemProps } from '../Navigation'
@@ -18,7 +18,12 @@ export interface PagesProps {
   navigation: PagesMenu
   prefix?: string
   handleAccess?: PageAccessHandler
+  title?: string
+  titleSeparator?: string
 }
+
+export const titleContext = new Context<string>()
+export const titleSeparatorContext = new Context<string>(' | ')
 
 export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAccess?: PageAccessHandler, parent?: any): [NavigationItemProps[], any] {
   const menu: NavigationItemProps[] = []
@@ -87,9 +92,15 @@ export function splitPagesItem (navigation: PagesMenu, prefix: string, handleAcc
 export function Pages ({
   navigation,
   prefix = '',
+  title,
+  titleSeparator = ' | ',
   handleAccess,
 }: PagesProps) {
   const children = useChildren()
+
+  if (title) {
+    document.title = title
+  }
 
   const [menu, pages] = splitPagesItem(navigation, prefix, handleAccess)
 
@@ -104,19 +115,25 @@ export function Pages ({
     </>
   )
 
-  if (!prefix) {
-    return (
+  const result = prefix
+    ? (
+      <slots from={slots}>
+        <context for={routerContext} set={(prefix.match(/\//g) || []).length + 1}>
+          {children}
+        </context>
+      </slots>
+      )
+    : (
       <slots from={slots}>
         {children}
       </slots>
-    )
-  }
+      )
 
   return (
-    <slots from={slots}>
-      <context for={routerContext} set={(prefix.match(/\//g) || []).length + 1}>
-        {children}
+    <context for={titleContext} set={title}>
+      <context for={titleSeparatorContext} set={titleSeparator}>
+        {result}
       </context>
-    </slots>
+    </context>
   )
 }
