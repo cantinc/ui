@@ -51,7 +51,7 @@ export interface IconProps extends CustomIconProps {
 
 export async function * Icon ({
   icon = 'default',
-  size = 16,
+  size = 14,
   ...props
 }: IconProps = {}) {
   yield (

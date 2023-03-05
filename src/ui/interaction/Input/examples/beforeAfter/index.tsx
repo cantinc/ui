@@ -32,7 +32,7 @@ innet(
       gap={8}
       inline>
       <slot name='before'>
-        <Icon />
+        <Icon icon='loupe' />
       </slot>
       <slot name='after'>
         <Icon />
