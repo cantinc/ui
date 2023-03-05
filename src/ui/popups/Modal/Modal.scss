@@ -60,17 +60,10 @@
   }
 }
 
-.subTitle {
-  color: var(--color-40);
-  font-size: 18px;
-  font-weight: normal;
-}
-
 .header {
   z-index: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 24px;
   font-size: 24px;
   font-weight: 900;
   min-height: 1em;
@@ -79,15 +72,21 @@
   font-style: italic;
   color: var(--color-primary-50);
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   line-height: 100%;
+}
+
+.subTitle {
+  color: var(--color-40);
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none;
 }
 
 .headButtons {
   display: flex;
   gap: 24px;
+  margin-left: auto;
 }
 
 .headButton {

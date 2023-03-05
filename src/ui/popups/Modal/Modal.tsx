@@ -6,7 +6,7 @@ import { onDestroy, State } from 'watch-state'
 import { setOverflow } from '../../../utils'
 import { Button, type ButtonProps } from '../../buttons'
 import { Icon } from '../../icons'
-import { Flex } from '../../layout'
+import { Flex, Space } from '../../layout'
 import { type HTMLOverlayElement } from '../Overlay'
 import styles from './Modal.scss'
 
@@ -96,17 +96,13 @@ export function Modal ({
           show.value && styles.show,
           hidden.value?.value && styles.hide,
         ])}>
-        {title || headButtonsLength
-          ? (
-            <header class={() => styles.header}>
-              {title || null}
-              {subTitle && (
-                <div class={() => styles.subTitle}>
-                  {subTitle}
-                </div>
-              )}
-              {headButtonsLength
-                ? (
+        <show state={title || subTitle || headButtonsLength}>
+          <Flex padding={24} element='header' vertical align='stretch' class={() => styles.header}>
+            <show state={title || headButtonsLength}>
+              <Flex flex>
+                {title || null}
+                <show state={headButtonsLength}>
+                  <Space gap={8} />
                   <div class={() => styles.headButtons}>
                     {headButtons.map(id => (
                       <button
@@ -118,33 +114,36 @@ export function Modal ({
                       </button>
                     ))}
                   </div>
-                  )
-                : null}
-            </header>
-            )
-          : null}
+                </show>
+              </Flex>
+            </show>
+            <show state={subTitle}>
+              <div class={() => styles.subTitle}>
+                {subTitle}
+              </div>
+            </show>
+          </Flex>
+        </show>
         {content && (
           <div class={() => styles.content}>
             {content}
           </div>
         )}
         {children}
-        {buttonsLength
-          ? (
-            <Flex reverse justify='center' wrap padding={16} gap={16}>
-              {buttons.map((id, index) => (
-                <Button
-                  flex
-                  view={index ? 'secondary' : 'primary'}
-                  {...buttonProps[id]}
-                  data-button={id}
-                  onclick={() => handleClose(id)}>
-                  {slots[`button-${id}`] || id}
-                </Button>
-              ))}
-            </Flex>
-            )
-          : null}
+        <show state={buttonsLength}>
+          <Flex reverse justify='center' wrap padding={16} gap={16}>
+            {buttons?.map((id, index) => (
+              <Button
+                flex
+                view={index ? 'secondary' : 'primary'}
+                {...buttonProps[id]}
+                data-button={id}
+                onclick={() => handleClose(id)}>
+                {slots[`button-${id}`] || id}
+              </Button>
+            ))}
+          </Flex>
+        </show>
       </div>
     </delay>
   )
