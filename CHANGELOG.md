@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.27 [![05.03.2023](https://img.shields.io/date/1678022973)](https://github.com/d8corp/innetjs/tree/v0.2.27)
+
+- improve styles
+- add `subTitle` prop to `Title` and `Section` components
+
 ### v0.2.26 [![05.03.2023](https://img.shields.io/date/1678013325)](https://github.com/d8corp/innetjs/tree/v0.2.26)
 
 - fix `Modal` styles

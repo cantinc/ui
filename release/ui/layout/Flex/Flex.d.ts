@@ -1,4 +1,4 @@
-import { type HTMLStyleProps } from '@innet/dom';
+import { type HTMLStyleProps, type StateProp } from '@innet/dom';
 export declare const alignJustifyMap: {
     readonly start: "flex-start";
     readonly end: "flex-end";
@@ -22,7 +22,7 @@ export declare const justifyMap: {
     readonly stretch: "stretch";
 };
 export type FlexProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
-    vertical?: boolean;
+    vertical?: StateProp<boolean>;
     align?: keyof typeof alignMap;
     justify?: keyof typeof justifyMap;
     gap?: number | [number, number];
