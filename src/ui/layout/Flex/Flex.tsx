@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import styles from './Flex.scss'
@@ -23,7 +23,7 @@ export const justifyMap = {
 } as const
 
 export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
-  vertical?: boolean
+  vertical?: StateProp<boolean>
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
   gap?: number | [number, number]
@@ -62,7 +62,7 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
         '--ui-flex-wrap': wrap ? 'wrap' : '',
         '--ui-flex-flex': String(flex === true ? 1 : flex || ''),
         '--ui-flex': inline ? 'inline-flex' : '',
-        '--ui-flex-direction': vertical ? (reverse ? 'column-reverse' : 'column') : reverse ? 'row-reverse' : '',
+        '--ui-flex-direction': inject(vertical, vertical => vertical ? (reverse ? 'column-reverse' : 'column') : reverse ? 'row-reverse' : ''),
         '--ui-flex-padding': !padding ? '' : Array.isArray(padding) ? `${padding.join('px ')}px` : `${padding}px`,
         '--ui-flex-gap': !gap ? '' : Array.isArray(gap) ? `${gap[0]}px ${gap[1]}px` : `${gap}px`,
       }}

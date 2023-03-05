@@ -33,7 +33,7 @@ innet(
       justify='between'
       align='end'
       h={2}
-      vertical={false}
+      subTitle='Subtitle'
       title='Heading 2'>
       <Button<HTMLAnchorElement>
         element='a'

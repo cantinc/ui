@@ -1,4 +1,4 @@
-import { style } from '@innet/dom'
+import { type StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
 import { Flex, type FlexProps } from '../../layout'
@@ -9,6 +9,7 @@ const useStyle = style(styles)
 
 export interface SectionProps extends FlexProps<HTMLDivElement> {
   title?: string
+  subTitle?: StateProp<string>
 
   titleProps?: TitleProps
 }
@@ -16,6 +17,7 @@ export interface SectionProps extends FlexProps<HTMLDivElement> {
 export function Section ({
   title,
   titleProps,
+  subTitle,
   ...props
 }: SectionProps = {}) {
   const { '': children, title: aside } = useSlots()
@@ -33,7 +35,8 @@ export function Section ({
         justify='between'
         align='end'
         {...titleProps}
-        text={title}
+        subTitle={subTitle}
+        title={title}
         class={() => styles.title}>
         {aside}
       </Title>
