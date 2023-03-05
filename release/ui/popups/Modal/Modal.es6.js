@@ -11,6 +11,7 @@ import modules_8f0e29bb from './Modal.scss.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
+import { Space } from '../../layout/Space/Space.es6.js';
 import { Button } from '../../buttons/Button/Button.es6.js';
 
 const useStyles = style(modules_8f0e29bb);
@@ -58,13 +59,7 @@ function Modal(_a = {}) {
                 show.value && styles.show,
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
             ]);
-        }},children:[title || headButtonsLength
-            ? ({type:'header',props:{class:() => styles.header},children:[title || null,' ',subTitle && ({type:'div',props:{class:() => styles.subTitle},children:[subTitle]}),' ',headButtonsLength
-                    ? ({type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({type:'button',props:{...buttonProps[id],'data-button':id,onclick:() => handleClose(id),class:() => styles.headButton},children:[slots[`button-${id}`] || id]}))]})
-                    : null]})
-            : null,' ',content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,' ',buttonsLength
-            ? ({type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]})
-            : null]}]});
+        }},children:[{type:'show',props:{state:title || subTitle || headButtonsLength},children:[{type:Flex,props:{padding:24,element:'header',vertical:true,align:'stretch',class:() => styles.header},children:[{type:'show',props:{state:title || headButtonsLength},children:[{type:Flex,props:{flex:true},children:[title || null,{type:'show',props:{state:headButtonsLength},children:[{type:Space,props:{gap:8}},{type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({type:'button',props:{...buttonProps[id],'data-button':id,onclick:() => handleClose(id),class:() => styles.headButton},children:[slots[`button-${id}`] || id]}))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
 }
 
 export { Modal };

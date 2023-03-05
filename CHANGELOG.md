@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.25 [![05.03.2023](https://img.shields.io/date/1678012549)](https://github.com/d8corp/innetjs/tree/v0.2.25)
+
+- fix `Modal` styles
+
 ### v0.2.24 [![03.03.2023](https://img.shields.io/date/1677864613)](https://github.com/d8corp/innetjs/tree/v0.2.24)
 
 - improve `Modal` styles
