@@ -6,7 +6,7 @@ import { onDestroy, State } from 'watch-state'
 import { setOverflow } from '../../../utils'
 import { Button, type ButtonProps } from '../../buttons'
 import { Icon } from '../../icons'
-import { Flex, Space } from '../../layout'
+import { Flex } from '../../layout'
 import { type HTMLOverlayElement } from '../Overlay'
 import styles from './Modal.scss'
 
@@ -100,9 +100,10 @@ export function Modal ({
           <Flex padding={24} element='header' vertical align='stretch' class={() => styles.header}>
             <show state={title || headButtonsLength}>
               <Flex flex>
-                {title || null}
+                <Flex flex>
+                  {title || null}
+                </Flex>
                 <show state={headButtonsLength}>
-                  <Space gap={8} />
                   <div class={() => styles.headButtons}>
                     {headButtons.map(id => (
                       <button
