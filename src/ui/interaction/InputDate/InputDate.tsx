@@ -1,4 +1,5 @@
 import { type StateProp, style, use } from '@innet/dom'
+import { Context, useContext } from '@innet/jsx'
 import type Mask from 'inputmask'
 import { State } from 'watch-state'
 
@@ -22,6 +23,8 @@ const mask: Mask.Options = {
   clearMaskOnLostFocus: false,
 }
 
+export const inputDateApply = new Context('Apply')
+
 export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 'oninput'> {
   apply?: any
   value?: StateProp<Date | undefined>
@@ -30,7 +33,7 @@ export interface InputDateProps extends Omit<InputMaskProps, 'mask' | 'value' | 
   oninput?: ActionProp<Date | undefined>
 }
 export function InputDate ({
-  apply = 'Apply',
+  apply = useContext(inputDateApply),
   value = new State(),
   oninput,
   min = minDate,
