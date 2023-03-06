@@ -95,6 +95,7 @@ export function Modal ({
           styles.root,
           show.value && styles.show,
           hidden.value?.value && styles.hide,
+          !title && !subTitle && styles.noTitle,
         ])}>
         <show state={title || subTitle || headButtonsLength}>
           <Flex padding={24} element='header' vertical align='stretch' class={() => styles.header}>
