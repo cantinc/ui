@@ -79,7 +79,7 @@ export { Upload } from './ui/interaction/Upload/Upload.es6.js';
 export { Set, setPropsHandler } from './ui/interaction/Set/Set.es6.js';
 export { Calendar, defaultCalendarCellRender } from './ui/interaction/Calendar/Calendar.es6.js';
 export { CalendarTitle, maxCalendarDate, minCalendarDate } from './ui/interaction/CalendarTitle/CalendarTitle.es6.js';
-export { InputDate } from './ui/interaction/InputDate/InputDate.es6.js';
+export { InputDate, inputDateApply } from './ui/interaction/InputDate/InputDate.es6.js';
 export { InputNumber } from './ui/interaction/InputNumber/InputNumber.es6.js';
 export { Tag } from './ui/interaction/Tag/Tag.es6.js';
 export { Tags } from './ui/interaction/Tags/Tags.es6.js';

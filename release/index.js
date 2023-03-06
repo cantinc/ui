@@ -230,6 +230,7 @@ exports.CalendarTitle = CalendarTitle.CalendarTitle;
 exports.maxCalendarDate = CalendarTitle.maxCalendarDate;
 exports.minCalendarDate = CalendarTitle.minCalendarDate;
 exports.InputDate = InputDate.InputDate;
+exports.inputDateApply = InputDate.inputDateApply;
 exports.InputNumber = InputNumber.InputNumber;
 exports.Tag = Tag.Tag;
 exports.Tags = Tags.Tags;

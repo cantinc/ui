@@ -2,6 +2,12 @@
 
 ## v0.2
 
+### v0.2.28 [![06.03.2023](https://img.shields.io/date/1678109823)](https://github.com/d8corp/innetjs/tree/v0.2.28)
+
+- add context of `InputDate` `apply`
+- fix `Modal` styles
+- improve `before` `Input` styles
+
 ### v0.2.27 [![05.03.2023](https://img.shields.io/date/1678022973)](https://github.com/d8corp/innetjs/tree/v0.2.27)
 
 - improve styles

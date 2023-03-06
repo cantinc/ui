@@ -7,3 +7,4 @@ var InputDate = require('./InputDate.js');
 
 
 exports.InputDate = InputDate.InputDate;
+exports.inputDateApply = InputDate.inputDateApply;

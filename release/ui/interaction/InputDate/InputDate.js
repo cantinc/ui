@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
 var dom = require('@innet/dom');
+var jsx = require('@innet/jsx');
 var watchState = require('watch-state');
 var locale = require('../../../constants/locale.js');
 require('../../../utils/index.js');
@@ -28,8 +29,9 @@ const mask = {
     inputmode: 'numeric',
     clearMaskOnLostFocus: false,
 };
+const inputDateApply = new jsx.Context('Apply');
 function InputDate(_a) {
-    var { apply = 'Apply', value = new watchState.State(), oninput, min = minDate, max = maxDate } = _a, props = tslib.__rest(_a, ["apply", "value", "oninput", "min", "max"]);
+    var { apply = jsx.useContext(inputDateApply), value = new watchState.State(), oninput, min = minDate, max = maxDate } = _a, props = tslib.__rest(_a, ["apply", "value", "oninput", "min", "max"]);
     oninput = actionProp.actionProp(value, oninput);
     const styles = useStyles();
     const showCalendar = new watchState.State(false);
@@ -63,3 +65,4 @@ function InputDate(_a) {
 }
 
 exports.InputDate = InputDate;
+exports.inputDateApply = inputDateApply;

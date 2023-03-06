@@ -1,5 +1,6 @@
 import { __rest } from 'tslib';
 import { style, use } from '@innet/dom';
+import { Context, useContext } from '@innet/jsx';
 import { State } from 'watch-state';
 import { localeDateFormat, localeDateFormatPlaceholder } from '../../../constants/locale.es6.js';
 import '../../../utils/index.es6.js';
@@ -24,8 +25,9 @@ const mask = {
     inputmode: 'numeric',
     clearMaskOnLostFocus: false,
 };
+const inputDateApply = new Context('Apply');
 function InputDate(_a) {
-    var { apply = 'Apply', value = new State(), oninput, min = minDate, max = maxDate } = _a, props = __rest(_a, ["apply", "value", "oninput", "min", "max"]);
+    var { apply = useContext(inputDateApply), value = new State(), oninput, min = minDate, max = maxDate } = _a, props = __rest(_a, ["apply", "value", "oninput", "min", "max"]);
     oninput = actionProp(value, oninput);
     const styles = useStyles();
     const showCalendar = new State(false);
@@ -58,4 +60,4 @@ function InputDate(_a) {
     return ([{type:InputMask,props:{value:convertValue,oninput:handleInput,mask:Object.assign(Object.assign({}, mask), { min: min.toLocaleDateString(), max: max.toLocaleDateString() }),...props},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{icon:'calendar',class:() => styles.icon,onclick:handleCalendarClick}}]}]},{type:'show',props:{state:showCalendar},children:[{type:ModalsPortal,children:[{type:DatePicker,props:{min:min,max:max,defaultValue:value,apply:apply,onApply:handleApply,onclose:handleCalendarClose},children:[props.label]}]}]}]);
 }
 
-export { InputDate };
+export { InputDate, inputDateApply };

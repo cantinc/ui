@@ -36,7 +36,7 @@ const iconsImports = {
 };
 const icons = Object.keys(iconsImports);
 function Icon(_a = {}) {
-    var { icon = 'default', size = 16 } = _a, props = __rest(_a, ["icon", "size"]);
+    var { icon = 'default', size = 14 } = _a, props = __rest(_a, ["icon", "size"]);
     return __asyncGenerator(this, arguments, function* Icon_1() {
         yield yield __await(({type:'span',props:{style:{
                 '--ui-icon-size': inject(size, size => `${size}px`),
