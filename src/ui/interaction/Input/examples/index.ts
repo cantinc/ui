@@ -9,6 +9,7 @@ import inline from './inline'
 import labelPlaceholder from './labelPlaceholder'
 import loading from './loading'
 import padding from './padding'
+import required from './required'
 
 export default [
   autofocus,
@@ -17,6 +18,7 @@ export default [
   clearable,
   padding,
   labelPlaceholder,
+  required,
   hint,
   error,
   hintError,

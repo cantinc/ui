@@ -1,5 +1,6 @@
 import { type HTMLProps, inject, Ref, type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
+import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
 import { debounceCall } from '../../../utils'
@@ -10,6 +11,7 @@ import styles from './Input.scss'
 const useStyle = style(styles)
 
 export type InputType = 'text' | 'password' | 'date' | 'email' | 'tel' | 'number' | 'color'
+export type RequiredType = 'star'
 
 export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
   label?: StateProp<string>
@@ -19,7 +21,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   error?: StateProp<boolean>
   disabled?: StateProp<boolean>
   loading?: StateProp<boolean>
-  required?: StateProp<boolean>
+  required?: StateProp<boolean | RequiredType>
   type?: StateProp<InputType>
   name?: StateProp<string>
   autofocus?: boolean | number
@@ -89,7 +91,7 @@ export function Input ({
   const element = renderInput({
     type,
     disabled,
-    required,
+    required: inject(required, required => required ? true : undefined),
     placeholder,
     ...(props?.input as HTMLProps<HTMLInputElement>),
     oninput: handleInput,
@@ -102,19 +104,28 @@ export function Input ({
   })
 
   const labelContent = label
-    ? <span {...props?.label} class={styles.label}>{label}</span>
+    ? (
+      <span
+        {...props?.label}
+        class={() => classes([
+          styles.label,
+          use(required) === 'star' && styles.labelStar,
+        ])}>
+        {label}
+      </span>
+      )
     : null
 
   const beforeContent = before
-    ? <span {...props?.before} class={styles.before}>{before}</span>
+    ? <span {...props?.before} class={() => styles.before}>{before}</span>
     : null
 
   const afterContent = after
-    ? <span {...props?.after} class={styles.after}>{after}</span>
+    ? <span {...props?.after} class={() => styles.after}>{after}</span>
     : null
 
   const hintContent = hint
-    ? <span {...props?.hint} class={styles.hint}>{hint}</span>
+    ? <span {...props?.hint} class={() => styles.hint}>{hint}</span>
     : null
 
   const clearContent = clearable
