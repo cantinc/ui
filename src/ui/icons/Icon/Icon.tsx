@@ -27,6 +27,7 @@ const iconsImports = {
   arrowLeft: () => import('./icons/ArrowLeftIcon'),
   geo: () => import('./icons/GeoIcon'),
   logout: () => import('./icons/LogoutIcon'),
+  lock: () => import('./icons/LockIcon'),
   gear: () => import('./icons/GearIcon'),
   brick: () => import('./icons/BrickIcon'),
   plus: () => import('./icons/PlusIcon'),
