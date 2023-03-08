@@ -1,0 +1,1 @@
+import{M as o}from"./docs-c7a99efa.js";import{T as n}from"./Typography-21d0fa4f.js";function t(){return{type:n,children:[{type:o,props:{text:"# Info\n\nHere you can find components that show you some information.\n\n"}}]}}export{t as default};
