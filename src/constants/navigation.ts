@@ -373,6 +373,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/info/Progress/Progress.ui'),
       },
+      {
+        slot: 'field',
+        children: '<InfoField />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/info/InfoField/InfoField.ui'),
+      },
     ],
   },
   {
