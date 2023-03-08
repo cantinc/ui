@@ -20,6 +20,7 @@ const iconsImports = {
     arrowLeft: () => import('./icons/ArrowLeftIcon/index.es6.js'),
     geo: () => import('./icons/GeoIcon/index.es6.js'),
     logout: () => import('./icons/LogoutIcon/index.es6.js'),
+    lock: () => import('./icons/LockIcon/index.es6.js'),
     gear: () => import('./icons/GearIcon/index.es6.js'),
     brick: () => import('./icons/BrickIcon/index.es6.js'),
     plus: () => import('./icons/PlusIcon/index.es6.js'),

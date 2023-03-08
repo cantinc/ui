@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.30 [![08.03.2023](https://img.shields.io/date/1678287749)](https://github.com/cantinc/ui/tree/v0.2.30)
+
+- add lock icon
+
 ### v0.2.29 [![08.03.2023](https://img.shields.io/date/1678281050)](https://github.com/cantinc/ui/tree/v0.2.29)
 
 - add `InfoField`
