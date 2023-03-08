@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
+var classes = require('html-classes');
 var watchState = require('watch-state');
 require('../../../utils/index.js');
 require('../../icons/index.js');
@@ -13,6 +14,10 @@ var Input$1 = require('./Input.scss.js');
 var debounceCall = require('../../../utils/debounceCall/debounceCall.js');
 var Icon = require('../../icons/Icon/Icon.js');
 var Flex = require('../../layout/Flex/Flex.js');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Input$1["default"]);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
@@ -40,20 +45,21 @@ function Input(_a = {}) {
     };
     const elementClass = () => styles.input;
     const element = renderInput(Object.assign(Object.assign({ type,
-        disabled,
-        required,
-        placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, onchange: handleChange, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
+        disabled, required: dom.inject(required, required => required ? true : undefined), placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, onchange: handleChange, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
     const labelContent = label
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.label,class:styles.label},children:[label]}
+        ? ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.label,class:() => classes__default["default"]([
+                styles.label,
+                dom.use(required) === 'star' && styles.labelStar,
+            ])},children:[label]})
         : null;
     const beforeContent = before
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.before,class:styles.before},children:[before]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.before,class:() => styles.before},children:[before]}
         : null;
     const afterContent = after
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.after,class:styles.after},children:[after]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.after,class:() => styles.after},children:[after]}
         : null;
     const hintContent = hint
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:styles.hint},children:[hint]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}
         : null;
     const clearContent = clearable
         ? ({type:Icon.Icon,props:{icon:'cross',...props === null || props === void 0 ? void 0 : props.clear,onmousedown:(e) => {

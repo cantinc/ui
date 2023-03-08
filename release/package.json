@@ -1,6 +1,6 @@
 {
   "name": "@cantinc/ui",
-  "version": "0.2.28",
+  "version": "0.2.29",
   "description": "UI components of innetjs",
   "homepage": "https://cantinc.github.io/ui",
   "author": "Mikhail Lysikov <d8corp@mail.ru>",
@@ -13,7 +13,7 @@
   "scripts": {
     "start": "innetjs start -i docs -e",
     "build": "npm run build:ui && npm run build:docs",
-    "build:docs": "BASE_URL=/ui innetjs build -i docs",
+    "build:docs": "innetjs build -i docs",
     "build:ui": "innetjs release",
     "test": "jest",
     "lint": "eslint src --ext .ts,.tsx",

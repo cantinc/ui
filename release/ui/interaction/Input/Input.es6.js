@@ -1,6 +1,7 @@
 import { __rest } from 'tslib';
 import { style, Ref, use, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
+import classes from 'html-classes';
 import { State, onDestroy } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
@@ -36,20 +37,21 @@ function Input(_a = {}) {
     };
     const elementClass = () => styles.input;
     const element = renderInput(Object.assign(Object.assign({ type,
-        disabled,
-        required,
-        placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, onchange: handleChange, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
+        disabled, required: inject(required, required => required ? true : undefined), placeholder }, props === null || props === void 0 ? void 0 : props.input), { oninput: handleInput, onchange: handleChange, 'data-value': value, _value: value, class: elementClass, ref: inputRef, name }));
     const labelContent = label
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.label,class:styles.label},children:[label]}
+        ? ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.label,class:() => classes([
+                styles.label,
+                use(required) === 'star' && styles.labelStar,
+            ])},children:[label]})
         : null;
     const beforeContent = before
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.before,class:styles.before},children:[before]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.before,class:() => styles.before},children:[before]}
         : null;
     const afterContent = after
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.after,class:styles.after},children:[after]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.after,class:() => styles.after},children:[after]}
         : null;
     const hintContent = hint
-        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:styles.hint},children:[hint]}
+        ? {type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}
         : null;
     const clearContent = clearable
         ? ({type:Icon,props:{icon:'cross',...props === null || props === void 0 ? void 0 : props.clear,onmousedown:(e) => {

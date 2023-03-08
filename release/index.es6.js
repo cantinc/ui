@@ -93,6 +93,7 @@ export { SearchInputNumber } from './ui/search/SearchInputNumber/SearchInputNumb
 export { SearchTags } from './ui/search/SearchTags/SearchTags.es6.js';
 export { Check } from './ui/prototypes/Check/Check.es6.js';
 export { Progress } from './ui/info/Progress/Progress.es6.js';
+export { InfoField } from './ui/info/InfoField/InfoField.es6.js';
 export { bindDragOver } from './utils/bindDragOver/bindDragOver.es6.js';
 export { bindScrollPosition } from './utils/bindScrollPosition/bindScrollPosition.es6.js';
 export { bindWindowHeight } from './utils/bindWindowHeight/bindWindowHeight.es6.js';
