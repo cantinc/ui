@@ -1,1 +1,1 @@
-By default, it looks and works like [Input](/interaction/input)
+By default, it looks and works like [Input](/ui/interaction/input)

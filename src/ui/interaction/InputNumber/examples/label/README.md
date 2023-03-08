@@ -1,1 +1,1 @@
-You can use `label` from [Input](/interaction/input#labelPlaceholder)
+You can use `label` from [Input](/ui/interaction/input#labelPlaceholder)

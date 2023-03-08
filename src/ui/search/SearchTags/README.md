@@ -8,4 +8,4 @@ import { SearchTags } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Tags](/interaction/tags)
+- [Tags](/ui/interaction/tags)

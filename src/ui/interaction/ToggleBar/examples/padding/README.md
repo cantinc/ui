@@ -1,1 +1,1 @@
-`ToggleBar` extends [padding](/layout/flex#padding) property of Flex.
+`ToggleBar` extends [padding](/ui/layout/flex#padding) property of Flex.

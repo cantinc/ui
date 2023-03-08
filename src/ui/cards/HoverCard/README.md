@@ -8,4 +8,4 @@ import { HoverCard } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Card](/cards/card)
+- [Card](/ui/cards/card)

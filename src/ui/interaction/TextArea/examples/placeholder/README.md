@@ -1,1 +1,1 @@
-`TextArea` extends `placeholder` property from [Input](/interaction/input#placeholder)
+`TextArea` extends `placeholder` property from [Input](/ui/interaction/input#placeholder)

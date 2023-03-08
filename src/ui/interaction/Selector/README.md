@@ -8,6 +8,6 @@ import { Selector } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Input](/interaction/input)
-- [DropdownMenu](/popups/dropdown-menu)
-- [Arrow](/icons/arrow)
+- [Input](/ui/interaction/input)
+- [DropdownMenu](/ui/popups/dropdown-menu)
+- [Arrow](/ui/icons/arrow)

@@ -8,4 +8,4 @@ import { SearchSelector } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Selector](/interaction/selector)
+- [Selector](/ui/interaction/selector)

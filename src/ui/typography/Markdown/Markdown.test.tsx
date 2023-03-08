@@ -41,7 +41,7 @@ describe('Markdown', () => {
   describe('link', () => {
     it('should return a link', function () {
       expect(getHTML(render(
-        <Markdown text='[Test](/test)' />,
+        <Markdown text='[Test](/ui/test)' />,
       ))).toBe(
         '<p><a href="/test">Test</a></p>',
       )

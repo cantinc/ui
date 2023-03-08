@@ -1,1 +1,1 @@
-Override [Markdown](/typography/markdown) to remove spaces around
+Override [Markdown](/ui/typography/markdown) to remove spaces around

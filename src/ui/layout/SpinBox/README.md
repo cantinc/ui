@@ -8,5 +8,5 @@ import { SpinBox } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
-- [Spin](/layout/spin)
+- [Flex](/ui/layout/flex)
+- [Spin](/ui/layout/spin)

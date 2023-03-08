@@ -8,4 +8,4 @@ import { Arrow } from '@cantinc/ui'
 
 ## Dependents
 
-- [Selector](/interaction/selector)
+- [Selector](/ui/interaction/selector)

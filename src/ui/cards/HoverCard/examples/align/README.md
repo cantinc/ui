@@ -1,1 +1,1 @@
-Use `align` to place content like [here](/layout/flex#align).
+Use `align` to place content like [here](/ui/layout/flex#align).

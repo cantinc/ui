@@ -8,8 +8,8 @@ import { Upload } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
+- [Flex](/ui/layout/flex)
 
 ## Dependents
 
-- [FormUpload](/forms/upload)
+- [FormUpload](/ui/forms/upload)

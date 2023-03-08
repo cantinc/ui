@@ -8,8 +8,8 @@ import { Slides } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
+- [Flex](/ui/layout/flex)
 
 ## Dependents
 
-- [Stories](/interaction/stories)
+- [Stories](/ui/interaction/stories)

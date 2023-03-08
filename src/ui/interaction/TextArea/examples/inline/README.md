@@ -1,1 +1,1 @@
-`TextArea` extends `inline` property from [Flex](/layout/flex#inline)
+`TextArea` extends `inline` property from [Flex](/ui/layout/flex#inline)

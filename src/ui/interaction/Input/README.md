@@ -8,12 +8,12 @@ import { Input } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
+- [Flex](/ui/layout/flex)
 
 ## Dependents
 
-- [InputMask](/interaction/input-mask)
-- [Selector](/interaction/selector)
-- [Textarea](/interaction/textarea)
-- [FormInput](/forms/input)
-- [SearchInput](/search/input)
+- [InputMask](/ui/interaction/input-mask)
+- [Selector](/ui/interaction/selector)
+- [Textarea](/ui/interaction/textarea)
+- [FormInput](/ui/forms/input)
+- [SearchInput](/ui/search/input)

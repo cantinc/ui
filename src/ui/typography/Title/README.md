@@ -8,4 +8,4 @@ import { Title } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
+- [Flex](/ui/layout/flex)

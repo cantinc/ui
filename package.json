@@ -14,7 +14,7 @@
   "scripts": {
     "start": "innetjs start -i docs -e",
     "build": "npm run build:ui && npm run build:docs",
-    "build:docs": "BASE_URL=/ui innetjs build -i docs",
+    "build:docs": "innetjs build -i docs",
     "build:ui": "innetjs release",
     "test": "jest",
     "lint": "eslint src --ext .ts,.tsx",
@@ -69,7 +69,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "innet-jest": "^1.3.5",
-    "innetjs": "^2.3.10",
+    "innetjs": "^2.4.1",
     "jest-scss-transform": "^1.0.3",
     "typescript": "^4.9.5",
     "web-scroll": "^1.1.0"

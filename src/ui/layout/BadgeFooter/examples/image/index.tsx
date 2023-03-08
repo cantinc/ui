@@ -1,7 +1,7 @@
 import { example } from 'src/app/Component'
 import { BadgeFooter, Image } from 'src/ui'
 
-import background from './background.jpg'
+import background from './background1.jpg'
 import description from './README.md'
 
 export default example({

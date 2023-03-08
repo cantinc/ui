@@ -8,4 +8,4 @@ import { SearchInputNumber } from '@cantinc/ui'
 
 ## Dependencies
 
-- [InputNumber](/interaction/input-number)
+- [InputNumber](/ui/interaction/input-number)

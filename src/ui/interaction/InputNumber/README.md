@@ -8,9 +8,9 @@ import { InputNumber } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Input](/interaction/input)
+- [Input](/ui/interaction/input)
 
 ## Dependents
 
-- [FormInputNumber](/forms/input-number)
-- [SearchInputNumber](/search/input-number)
+- [FormInputNumber](/ui/forms/input-number)
+- [SearchInputNumber](/ui/search/input-number)

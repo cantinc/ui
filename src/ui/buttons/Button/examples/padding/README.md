@@ -1,1 +1,1 @@
-The component extends `padding` prop of [Flex](/layout/flex#padding).
+The component extends `padding` prop of [Flex](/ui/layout/flex#padding).

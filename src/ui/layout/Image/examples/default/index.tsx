@@ -1,7 +1,7 @@
 import { example } from 'src/app/Component'
 import { Icon, Image } from 'src/ui'
 
-import background from './background.jpg'
+import background from './background2.jpg'
 import description from './README.md'
 
 export default example({

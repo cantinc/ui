@@ -8,4 +8,4 @@ import { TextArea } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Input](/interaction/input)
+- [Input](/ui/interaction/input)

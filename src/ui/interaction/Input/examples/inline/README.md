@@ -1,1 +1,1 @@
-`Input` extends `inline` property from [Flex](/layout/flex#inline)
+`Input` extends `inline` property from [Flex](/ui/layout/flex#inline)

@@ -8,8 +8,8 @@ import { FormUpload } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Upload](/interaction/upload)
+- [Upload](/ui/interaction/upload)
 
 ## Dependents
 
-- [FormUpload](/forms/upload)
+- [FormUpload](/ui/forms/upload)

@@ -8,8 +8,8 @@ import { DropdownMenu } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Dropdown](/popups/dropdown)
+- [Dropdown](/ui/popups/dropdown)
 
 ## Dependents
 
-- [Selector](/interaction/selector)
+- [Selector](/ui/interaction/selector)

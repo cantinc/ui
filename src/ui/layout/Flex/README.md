@@ -10,8 +10,8 @@ import { Flex } from '@cantinc/ui'
 
 ## Dependents
 
-- [Input](/interaction/input)
-- [Card](/cards/card)
-- [Button](/buttons/button)
-- [Dots](/interaction/dots)
-- [Slides](/interaction/slides)
+- [Input](/ui/interaction/input)
+- [Card](/ui/cards/card)
+- [Button](/ui/buttons/button)
+- [Dots](/ui/interaction/dots)
+- [Slides](/ui/interaction/slides)

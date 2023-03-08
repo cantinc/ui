@@ -1,1 +1,1 @@
-Usage with [Input](/interaction/input)
+Usage with [Input](/ui/interaction/input)

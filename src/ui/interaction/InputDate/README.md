@@ -8,9 +8,9 @@ import { InputDate } from '@cantinc/ui'
 
 ## Dependencies
 
-- [InputMask](/interaction/input-mask)
+- [InputMask](/ui/interaction/input-mask)
 
 ## Dependents
 
-- [FormInputDate](/forms/input-date)
-- [SearchInputDate](/search/input-date)
+- [FormInputDate](/ui/forms/input-date)
+- [SearchInputDate](/ui/search/input-date)

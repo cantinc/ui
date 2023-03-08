@@ -8,5 +8,5 @@ import { Section } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
-- [Title](/typography/title)
+- [Flex](/ui/layout/flex)
+- [Title](/ui/typography/title)

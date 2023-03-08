@@ -1,1 +1,1 @@
-Extends [Toggle](/interaction/toggle)
+Extends [Toggle](/ui/interaction/toggle)

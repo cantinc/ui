@@ -8,4 +8,4 @@ import { SearchInputDate } from '@cantinc/ui'
 
 ## Dependencies
 
-- [InputDate](/interaction/input-date)
+- [InputDate](/ui/interaction/input-date)

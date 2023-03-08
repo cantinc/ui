@@ -1,1 +1,1 @@
-Usage with [FormInput](/forms/input)
+Usage with [FormInput](/ui/forms/input)

@@ -8,8 +8,8 @@ import { Stories } from '@cantinc/ui'
 
 ## Dependencies
 
-- [Flex](/layout/flex)
-- [Image](/layout/image)
-- [Popout](/popups/popout)
-- [Dots](/interaction/dots)
-- [Slides](/interaction/slides)
+- [Flex](/ui/layout/flex)
+- [Image](/ui/layout/image)
+- [Popout](/ui/popups/popout)
+- [Dots](/ui/interaction/dots)
+- [Slides](/ui/interaction/slides)

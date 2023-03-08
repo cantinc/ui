@@ -1,1 +1,1 @@
-Extends [ToggleBar](/interaction/toggle-bar)
+Extends [ToggleBar](/ui/interaction/toggle-bar)

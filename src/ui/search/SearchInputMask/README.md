@@ -8,4 +8,4 @@ import { SearchInputMask } from '@cantinc/ui'
 
 ## Dependencies
 
-- [InputMask](/interaction/input-mask)
+- [InputMask](/ui/interaction/input-mask)

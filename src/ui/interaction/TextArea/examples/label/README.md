@@ -1,1 +1,1 @@
-`TextArea` extends `label` property from [Input](/interaction/input#label)
+`TextArea` extends `label` property from [Input](/ui/interaction/input#label)
