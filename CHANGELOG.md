@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.32 [![09.03.2023](https://img.shields.io/date/1678352564)](https://github.com/cantinc/ui/tree/v0.2.32)
+
+- fix `Notifications` position
+
 ### v0.2.31 [![09.03.2023](https://img.shields.io/date/1678348288)](https://github.com/cantinc/ui/tree/v0.2.31)
 
 - improve `Popout` animation
