@@ -33,7 +33,6 @@ export function Stories ({
 }: StoriesProps) {
   const styles = useStyle()
   const popoutElement = new Ref<HTMLElement>()
-  const popoutRoot = new Ref<HTMLDivElement>()
   const state = new State<boolean>(false)
   const story = new State<number>()
   const autoscroll = new State<boolean>(true)
@@ -52,10 +51,6 @@ export function Stories ({
 
       if (currentElement) {
         popoutElement.value = currentElement
-
-        if (popoutRoot.value) {
-          popoutRoot.value.style.setProperty('background-image', `url("${stories[currentValue].preview}")`)
-        }
 
         if (ref.value) {
           const x = currentElement.offsetLeft - (ref.value.offsetWidth / 2)
@@ -184,10 +179,10 @@ export function Stories ({
       <Popout
         ontouchstart={stopAutoscroll}
         ontouchend={continueAutoscroll}
-        rootRef={popoutRoot}
         align='stretch'
         vertical
         show={state}
+        background='var(--color-0)'
         element={popoutElement}>
         <Slides
           gap={16}

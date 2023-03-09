@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom'
-import { Button, Buttons, Content, Popout, Typography } from 'src'
+import { Button, Buttons, Card, Content, Popout, Typography } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -87,29 +87,33 @@ innet(
         padding={16}
         show={state1}
         element={button1}>
-        <Content width={480} gap={16} vertical>
-          <Typography>
-            <p>Do you want to see the next screen?</p>
-          </Typography>
-          <Buttons gap={16}>
-            <Button flex view='negative' onclick={hide1}>
-              No
-            </Button>
-            <Button ref={button2} flex view='positive' onclick={show2}>
-              Yes
-            </Button>
-          </Buttons>
+        <Content width={480} vertical>
+          <Card preventAnimation vertical align='stretch' gap={16}>
+            <Typography>
+              <p>Do you want to see the next screen?</p>
+            </Typography>
+            <Buttons gap={16}>
+              <Button flex view='negative' onclick={hide1}>
+                No
+              </Button>
+              <Button ref={button2} flex view='positive' onclick={show2}>
+                Yes
+              </Button>
+            </Buttons>
+          </Card>
           <Popout
             padding={16}
             show={state2}
             element={button2}>
-            <Content width={480} gap={16} vertical>
-              <Typography>
-                <p>This is the second screen</p>
-              </Typography>
-              <Button flex onclick={hide2}>
-                Cancel
-              </Button>
+            <Content width={480} vertical>
+              <Card preventAnimation vertical align='stretch' gap={16}>
+                <Typography>
+                  <p>This is the second screen</p>
+                </Typography>
+                <Button flex onclick={hide2}>
+                  Cancel
+                </Button>
+              </Card>
             </Content>
           </Popout>
         </Content>

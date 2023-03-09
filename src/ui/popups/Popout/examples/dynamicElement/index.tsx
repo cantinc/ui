@@ -1,5 +1,5 @@
 import { Ref } from '@innet/dom'
-import { Button, Buttons, Content, Flex, Popout, Typography } from 'src'
+import { Button, Buttons, Card, Content, Flex, Popout, Typography } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -24,7 +24,15 @@ export default example({
 import dom, { Ref } from '@innet/dom'
 import { State } from 'watch-state'
 
-import { Content, Button, Popout, Typography, Buttons, Flex } from '@cantinc/ui'
+import {
+  Content,
+  Button,
+  Popout,
+  Typography,
+  Buttons,
+  Card,
+  Flex
+} from '@cantinc/ui'
 
 const state = new State(false)
 const button = new Ref<HTMLButtonElement>()
@@ -53,19 +61,21 @@ innet(
       padding={16}
       show={state}
       element={button}>
-      <Content width={480} gap={16} vertical>
-        <Typography>
-          <h2>Answer for next question</h2>
-          <p>Is it looks like a modal?</p>
-        </Typography>
-        <Buttons gap={16}>
-          <Button flex view='negative' onclick={hide}>
-            No
-          </Button>
-          <Button flex view='positive' onclick={hide}>
-            Yes
-          </Button>
-        </Buttons>
+      <Content width={480}>
+        <Card preventAnimation vertical align='stretch' gap={16}>
+          <Typography>
+            <h2>Answer for next question</h2>
+            <p>Is it looks like a modal?</p>
+          </Typography>
+          <Buttons gap={16}>
+            <Button flex view='negative' onclick={hide}>
+              No
+            </Button>
+            <Button flex view='positive' onclick={hide}>
+              Yes
+            </Button>
+          </Buttons>
+        </Card>
       </Content>
     </Popout>
   </Flex>,
@@ -87,19 +97,21 @@ innet(
         padding={16}
         show={state}
         element={button}>
-        <Content width={480} gap={16} vertical>
-          <Typography>
-            <h2>Answer for next question</h2>
-            <p>Is it looks like a modal?</p>
-          </Typography>
-          <Buttons gap={16}>
-            <Button flex view='negative' onclick={hide}>
-              No
-            </Button>
-            <Button flex view='positive' onclick={hide}>
-              Yes
-            </Button>
-          </Buttons>
+        <Content width={480}>
+          <Card preventAnimation vertical align='stretch' gap={16}>
+            <Typography>
+              <h2>Answer for next question</h2>
+              <p>Is it looks like a modal?</p>
+            </Typography>
+            <Buttons gap={16}>
+              <Button flex view='negative' onclick={hide}>
+                No
+              </Button>
+              <Button flex view='positive' onclick={hide}>
+                Yes
+              </Button>
+            </Buttons>
+          </Card>
         </Content>
       </Popout>
     </Flex>

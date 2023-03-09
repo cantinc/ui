@@ -1,3 +1,4 @@
+import background from './background'
 import deep from './deep'
 import def from './default'
 import dynamicElement from './dynamicElement'
@@ -8,4 +9,5 @@ export default [
   dynamicElement,
   deep,
   image,
+  background,
 ]

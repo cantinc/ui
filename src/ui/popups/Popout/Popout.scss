@@ -17,6 +17,10 @@
 
 .preshow {
   opacity: 1;
+
+  .content {
+    opacity: 1;
+  }
 }
 
 .show {
@@ -27,13 +31,15 @@
   height: var(--window-height);
   border: solid 0 transparent;
   border-radius: 0;
-  pointer-events: all;
 
   .content {
     left: 0;
     top: 0;
-    opacity: 1;
   }
+}
+
+.shown {
+  pointer-events: all;
 }
 
 .touch {
@@ -80,7 +86,7 @@
   width: 100vw;
   height: var(--window-height);
   transition: all .3s;
-  background: var(--color-100);
+  background: transparent;
   opacity: 0;
   overflow: auto;
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-import { type HTMLStyleProp, Ref, type StateProp, style, useHidden, useShow } from '@innet/dom'
+import { type HTMLStyleProp, Ref, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { onDestroy, State, Watch } from 'watch-state'
@@ -15,10 +15,12 @@ interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   contentStyle?: HTMLStyleProp
   onhide: () => void
   rootRef?: Ref<HTMLDivElement>
+  background?: StateProp<string>
 }
 
 export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
   show?: StateProp<any>
+  background?: StateProp<string>
   onhide?: () => void
 }
 
@@ -42,12 +44,14 @@ function PopoutElement ({
   contentStyle,
   onhide,
   rootRef = new Ref(),
+  background,
   ...props
 }: PopoutElementProps) {
   const children = useChildren()
   const hide = useHidden()
   const preshow = useShow()
   const show = useShow(200)
+  const shown = useShow(500)
   const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
     hide: onhide,
     touchStart () {
@@ -102,7 +106,7 @@ function PopoutElement ({
         '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`,
         '--ui-popout-border': () => `${elementData.value.styles.border}`,
         '--ui-popout-touch-hide': () => `${touchHide.value}`,
-        '--ui-popout-background': () => `${elementData.value.styles.background}`,
+        '--ui-popout-background': () => `${use(background) || elementData.value.styles.background}`,
       }}
       ontouchstart={handleTouchStart}
       ontouchmove={handleTouchMove}
@@ -111,6 +115,7 @@ function PopoutElement ({
         styles.root,
         preshow.value && styles.preshow,
         show.value && styles.show,
+        shown.value && styles.shown,
         hide?.value && styles.hide,
         touched.value && styles.touch,
       ])}>

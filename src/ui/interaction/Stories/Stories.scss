@@ -12,6 +12,7 @@
   top: 24px;
   right: 24px;
   cursor: pointer;
+  color: var(--color-100);
 }
 
 .preview {
@@ -27,7 +28,6 @@
 
 .slides {
   user-select: none;
-  background: var(--color-0);
 }
 
 .slide {
