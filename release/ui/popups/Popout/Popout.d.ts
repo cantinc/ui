@@ -5,9 +5,11 @@ interface PopoutElementProps extends Omit<FlexProps, 'element'> {
     contentStyle?: HTMLStyleProp;
     onhide: () => void;
     rootRef?: Ref<HTMLDivElement>;
+    background?: StateProp<string>;
 }
 export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
     show?: StateProp<any>;
+    background?: StateProp<string>;
     onhide?: () => void;
 }
 export interface PopoutElementData {

@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, Ref, useHidden, useShow } from '@innet/dom';
+import { style, Ref, useHidden, useShow, use } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
 import { State, Watch, onDestroy } from 'watch-state';
@@ -21,11 +21,12 @@ const createStyles = () => {
     return styles;
 };
 function PopoutElement(_a) {
-    var { element, style, contentStyle, onhide, rootRef = new Ref() } = _a, props = __rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef"]);
+    var { element, style, contentStyle, onhide, rootRef = new Ref(), background } = _a, props = __rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background"]);
     const children = useChildren();
     const hide = useHidden();
     const preshow = useShow();
     const show = useShow(200);
+    const shown = useShow(500);
     const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
         hide: onhide,
         touchStart() {
@@ -64,10 +65,11 @@ function PopoutElement(_a) {
             setOverflow('');
         }
     });
-    return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}`, '--ui-popout-background': () => `${elementData.value.styles.background}` }),ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,class:() => classes([
+    return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}`, '--ui-popout-background': () => `${use(background) || elementData.value.styles.background}` }),ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,class:() => classes([
             styles.root,
             preshow.value && styles.preshow,
             show.value && styles.show,
+            shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
         ])},children:[{type:Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});

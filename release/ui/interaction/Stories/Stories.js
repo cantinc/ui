@@ -23,7 +23,6 @@ function Stories(_a) {
     var { stories, ref = new dom.Ref(), props: { preview: previewProps } = {} } = _a, props = tslib.__rest(_a, ["stories", "ref", "props"]);
     const styles = useStyle();
     const popoutElement = new dom.Ref();
-    const popoutRoot = new dom.Ref();
     const state = new watchState.State(false);
     const story = new watchState.State();
     const autoscroll = new watchState.State(true);
@@ -40,9 +39,6 @@ function Stories(_a) {
             const currentElement = (_a = stories[currentValue].previewRef) === null || _a === void 0 ? void 0 : _a.value;
             if (currentElement) {
                 popoutElement.value = currentElement;
-                if (popoutRoot.value) {
-                    popoutRoot.value.style.setProperty('background-image', `url("${stories[currentValue].preview}")`);
-                }
                 if (ref.value) {
                     const x = currentElement.offsetLeft - (ref.value.offsetWidth / 2);
                     const y = currentElement.offsetTop - (ref.value.offsetHeight / 2);
@@ -120,7 +116,7 @@ function Stories(_a) {
             ],onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,rootRef:popoutRoot,align:'stretch',vertical:true,show:state,element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
+            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,align:'stretch',vertical:true,show:state,background:'var(--color-0)',element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
         },flex:true,slides:slides}},{type:Icon.Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);
