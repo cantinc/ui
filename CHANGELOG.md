@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.34 [![10.03.2023](https://img.shields.io/date/1678448864)](https://github.com/cantinc/ui/tree/v0.2.34)
+
+- add default `Section` title gap
+- improve `CardProps`
+
 ### v0.2.33 [![10.03.2023](https://img.shields.io/date/1678439013)](https://github.com/cantinc/ui/tree/v0.2.33)
 
 - improve `ImageProps`

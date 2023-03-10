@@ -8,14 +8,14 @@ import styles from './Card.scss'
 
 const useStyle = style(styles)
 
-export type CardProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type CardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = FlexProps<E, R & {
   clickable?: StateProp<boolean>
   loading?: StateProp<boolean>
   preventAnimation?: boolean
   width?: StateProp<number>
   height?: StateProp<number>
   radius?: StateProp<number | string>
-}>
+}, S>
 
 export function Card<E extends HTMLElement = HTMLElement> ({
   onclick,

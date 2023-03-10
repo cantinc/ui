@@ -12,7 +12,7 @@ function Section(_a = {}) {
     var { title, titleProps, subTitle } = _a, props = __rest(_a, ["title", "titleProps", "subTitle"]);
     const { '': children, title: aside } = useSlots();
     const styles = useStyle();
-    return ({type:Flex,props:{element:'section',align:'stretch',vertical:true,...props,class:() => styles.root},children:[{type:Title,props:{h:2,justify:'between',align:'end',...titleProps,subTitle:subTitle,title:title,class:() => styles.title},children:[aside]},children]});
+    return ({type:Flex,props:{element:'section',align:'stretch',vertical:true,...props,class:() => styles.root},children:[{type:Title,props:{h:2,justify:'between',align:'end',gap:16,...titleProps,subTitle:subTitle,title:title,class:() => styles.title},children:[aside]},children]});
 }
 
 export { Section };
