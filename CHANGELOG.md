@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.36 [![10.03.2023](https://img.shields.io/date/1678459234)](https://github.com/cantinc/ui/tree/v0.2.36)
+
+- add `timeout` for `Cards`
+
 ### v0.2.35 [![10.03.2023](https://img.shields.io/date/1678457086)](https://github.com/cantinc/ui/tree/v0.2.35)
 
 - add `FlipCard`
