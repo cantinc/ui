@@ -14,6 +14,7 @@
   height: var(--ui-card-height, auto);
   box-sizing: border-box;
   position: relative;
+  transform-origin: center;
 
   & & {
     border-radius: var(--ui-card-radius, var(--round-50));

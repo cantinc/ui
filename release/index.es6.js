@@ -50,6 +50,7 @@ export { DatePicker, dataPickerCellHeight } from './ui/popups/DatePicker/DatePic
 export { Card } from './ui/cards/Card/Card.es6.js';
 export { Cards } from './ui/cards/Cards/Cards.es6.js';
 export { HoverCard } from './ui/cards/HoverCard/HoverCard.es6.js';
+export { FlipCard } from './ui/cards/FlipCard/FlipCard.es6.js';
 export { Form, formActionHandler, formErrorHandler, formInvalidHandler, formNotificationHandler } from './ui/forms/Form/Form.es6.js';
 export { FormToggle } from './ui/forms/FormToggle/FormToggle.es6.js';
 export { FormInput } from './ui/forms/FormInput/FormInput.es6.js';

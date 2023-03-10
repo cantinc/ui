@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.35 [![10.03.2023](https://img.shields.io/date/1678457086)](https://github.com/cantinc/ui/tree/v0.2.35)
+
+- add `FlipCard`
+
 ### v0.2.34 [![10.03.2023](https://img.shields.io/date/1678448864)](https://github.com/cantinc/ui/tree/v0.2.34)
 
 - add default `Section` title gap

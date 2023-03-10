@@ -1,0 +1,30 @@
+.root {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.front {
+  backface-visibility: hidden;
+}
+
+.back,
+.back:hover {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: rotateX(-180deg) translateZ(-20px);
+}
+
+.flip {
+  & > .front {
+    &, &:hover {
+      transform: rotateX(180deg) translateZ(-20px);
+    }
+  }
+  & > .back {
+    &, &:hover {
+      transform: rotateX(0) translateZ(20px);
+      box-shadow: 0 0 30px -10px rgba(109, 109, 109, 0.15);
+    }
+  }
+}

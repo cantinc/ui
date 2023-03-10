@@ -230,6 +230,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/cards/Cards/Cards.ui'),
       },
       {
+        slot: 'flip',
+        children: '<FlipCard />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/cards/FlipCard/FlipCard.ui'),
+      },
+      {
         slot: 'hover-card',
         children: '<HoverCard />',
         onclick: hideLayoutMenu,
