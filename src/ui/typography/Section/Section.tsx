@@ -34,6 +34,7 @@ export function Section ({
         h={2}
         justify='between'
         align='end'
+        gap={16}
         {...titleProps}
         subTitle={subTitle}
         title={title}
