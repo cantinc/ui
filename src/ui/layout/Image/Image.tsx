@@ -6,27 +6,27 @@ import styles from './Image.scss'
 
 const useStyle = style(styles)
 
-export type ImageProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type ImageProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = FlexProps<E, R & {
   src: StateProp<string>
   size: StateProp<number>
   ratio?: StateProp<number | [number, number]>
   radius?: StateProp<number | string>
-}>
+}, S>
 
-export function Image ({
-  style,
+export function Image<E extends HTMLElement = HTMLElement> ({
   src,
-  ratio = 1,
   size,
+  ratio = 1,
   radius = 8,
+  style,
   ...props
-}: ImageProps) {
+}: ImageProps<E>) {
   const children = useChildren()
   const styles = useStyle()
 
   return (
-    <Flex
-      {...props}
+    <Flex<E>
+      {...(props as FlexProps<E>)}
       style={{
         ...style,
         '--ui-image-ratio': inject(ratio, ratio => Array.isArray(ratio) ? `${ratio[0]} / ${ratio[1]}` : String(ratio)),
