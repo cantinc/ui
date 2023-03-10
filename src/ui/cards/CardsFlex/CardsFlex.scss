@@ -1,0 +1,13 @@
+.root {
+  transform-style: preserve-3d;
+
+  --ui-cards-delay: 0s;
+
+  &:nth-child(odd) {
+    --ui-cards-delay: .1s;
+  }
+
+  &:nth-child(3n) {
+    --ui-cards-delay: .2s;
+  }
+}

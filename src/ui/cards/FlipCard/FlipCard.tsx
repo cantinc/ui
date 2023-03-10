@@ -1,8 +1,8 @@
 import { type StateProp, style, use } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 
-import { Flex } from '../../layout'
 import { Card, type CardProps } from '../Card'
+import { CardsFlex } from '../CardsFlex'
 import styles from './FlipCard.scss'
 
 const useStyle = style(styles)
@@ -26,7 +26,7 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
   }
 
   return (
-    <Flex
+    <CardsFlex
       inline={inline}
       align='stretch'
       flex={flex}
@@ -47,6 +47,6 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
         class={() => styles.back}>
         {backside}
       </Card>
-    </Flex>
+    </CardsFlex>
   )
 }
