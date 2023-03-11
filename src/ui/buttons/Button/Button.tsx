@@ -1,4 +1,4 @@
-import { inject, type StateProp, style, use } from '@innet/dom'
+import { inject, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 
@@ -12,7 +12,6 @@ export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
 export type ButtonProps <E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
   view?: ButtonViews
   width?: StateProp<number>
-  loading?: StateProp<boolean>
   disabled?: StateProp<boolean>
 }>
 
@@ -33,10 +32,8 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
       [styles.secondary]: view === 'secondary',
       [styles.negative]: view === 'negative',
       [styles.positive]: view === 'positive',
-      [styles.loading]: use(loading),
     },
   ])
-  const disabledValue = (() => (disabled ?? use(loading)) || undefined) as unknown as boolean
 
   return (
     <Flex<any>
@@ -44,16 +41,16 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
       inline
       padding={24}
       element='button'
+      loadingOffset={1}
+      disabled={loading}
       {...props}
+      loading={loading}
       style={{
         ...props?.style,
         '--ui-button-width': inject(width, width => width !== undefined ? `${width}px` : ''),
       }}
-      disabled={disabledValue}
       class={className}>
-      <show state={inject(loading, loading => !loading)}>
-        {children}
-      </show>
+      {children}
     </Flex>
   )
 }
