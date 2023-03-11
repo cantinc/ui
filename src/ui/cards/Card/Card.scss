@@ -1,7 +1,5 @@
-@import "src/styles/skeleton";
-
 .root {
-  border: 1px solid var(--ui-color-separator);
+  border: var(--ui-flex-loading-offset) solid var(--ui-color-separator);
   border-radius: var(--ui-card-radius, var(--round-60));
   background-color: var(--color-100);
   transition: all .3s;
@@ -19,8 +17,6 @@
   & & {
     border-radius: var(--ui-card-radius, var(--round-50));
   }
-
-  @include skeletonAfter(-1px);
 }
 
 .show {
@@ -56,10 +52,6 @@
   &:nth-child(3n) {
     transition: all var(--ui-cards-delay, .2s);
   }
-}
-
-.loading {
-  @include skeletonAfterShow;
 }
 
 .clickable {

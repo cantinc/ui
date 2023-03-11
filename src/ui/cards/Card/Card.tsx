@@ -10,7 +10,7 @@ const useStyle = style(styles)
 
 export type CardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = FlexProps<E, R & {
   clickable?: StateProp<boolean>
-  loading?: StateProp<boolean>
+  border?: StateProp<number>
   preventAnimation?: boolean
   width?: StateProp<number>
   height?: StateProp<number>
@@ -20,7 +20,7 @@ export type CardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = Fl
 export function Card<E extends HTMLElement = HTMLElement> ({
   onclick,
   clickable = !!onclick,
-  loading,
+  border = 1,
   preventAnimation,
   width,
   height,
@@ -37,7 +37,6 @@ export function Card<E extends HTMLElement = HTMLElement> ({
   const mainClasses = () => [
     styles.root,
     use(clickable) && styles.clickable,
-    use(loading) && styles.loading,
   ]
 
   if (preventAnimation) {
@@ -65,6 +64,7 @@ export function Card<E extends HTMLElement = HTMLElement> ({
     <Flex<any>
       onclick={onclick}
       padding={18}
+      loadingOffset={border}
       {...props}
       style={{
         ...style,
@@ -73,9 +73,7 @@ export function Card<E extends HTMLElement = HTMLElement> ({
         '--ui-card-height': inject(height, height => height ? `${height}px` : ''),
       }}
       class={className}>
-      <show state={inject(loading, loading => !loading)}>
-        {children}
-      </show>
+      {children}
     </Flex>
   )
 }

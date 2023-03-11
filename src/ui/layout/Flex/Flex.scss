@@ -1,3 +1,5 @@
+@import "src/styles/skeleton";
+
 .root {
   --ui-flex: flex;
   --ui-flex-flex: none;
@@ -7,6 +9,7 @@
   --ui-flex-align: flex-start;
   --ui-flex-justify: flex-start;
   --ui-flex-padding: 0;
+  --ui-flex-loading-offset: 0;
 
   box-sizing: border-box;
   display: var(--ui-flex);
@@ -17,4 +20,10 @@
   align-items: var(--ui-flex-align);
   justify-content: var(--ui-flex-justify);
   padding: var(--ui-flex-padding);
+
+  @include skeletonAfter(calc(var(--ui-flex-loading-offset) * -1));
+}
+
+.loading {
+  @include skeletonAfterShow;
 }

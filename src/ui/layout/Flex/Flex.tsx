@@ -1,5 +1,6 @@
-import { type HTMLStyleProps, inject, type StateProp, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
+import classes from 'html-classes'
 
 import styles from './Flex.scss'
 
@@ -24,6 +25,8 @@ export const justifyMap = {
 
 export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
   vertical?: StateProp<boolean>
+  loading?: StateProp<boolean>
+  loadingOffset?: StateProp<number>
   align?: keyof typeof alignMap
   justify?: keyof typeof justifyMap
   gap?: number | [number, number]
@@ -47,6 +50,8 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
   style,
   padding,
   element: Element = 'div',
+  loading,
+  loadingOffset = 0,
   ...props
 }: FlexProps<E> = {} as any) {
   const children = useChildren()
@@ -65,9 +70,15 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
         '--ui-flex-direction': inject(vertical, vertical => vertical ? (reverse ? 'column-reverse' : 'column') : reverse ? 'row-reverse' : ''),
         '--ui-flex-padding': !padding ? '' : Array.isArray(padding) ? `${padding.join('px ')}px` : `${padding}px`,
         '--ui-flex-gap': !gap ? '' : Array.isArray(gap) ? `${gap[0]}px ${gap[1]}px` : `${gap}px`,
+        '--ui-flex-loading-offset': () => `${use(loadingOffset)}px`,
       }}
-      class={() => styles.root}>
-      {children}
+      class={() => classes([
+        styles.root,
+        use(loading) && styles.loading,
+      ])}>
+      <show state={inject(loading, loading => !loading)}>
+        {children}
+      </show>
     </Element>
   )
 }
