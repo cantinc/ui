@@ -29,7 +29,6 @@ export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, 
   value?: StateProp<string>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
-  loading?: StateProp<boolean>
 }>
 
 export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, {
@@ -66,7 +65,6 @@ export function ToggleBar ({
   onchange,
   renderValue = defaultToggleBarRender,
   style,
-  loading,
   ...props
 }: ToggleBarProps) {
   const styles = useStyle()
@@ -125,28 +123,25 @@ export function ToggleBar ({
       }}
       class={() => classes([
         styles.root,
-        use(loading) && styles.loading,
         styles[side.value],
         styles[`${focusSide.value}Focus`],
       ])}>
-      <show state={inject(loading, loading => !loading)}>
-        <div class={styles.focus} />
-        <div class={styles.selected} />
-        <for of={values} key='value'>
-          {(item: LoopItem<ToggleBarValue>) => renderValue(item.value, {
-            onchange: () => onchange?.(item.value.value),
-            className: () => classes([
-              styles.link,
-              index.value === item.index && styles.active,
-            ]),
-            onblur: handleBlur,
-            onfocus: () => {
-              clearTimeout(blurTimeout)
-              focusIndex.value = item.index
-            },
-          })}
-        </for>
-      </show>
+      <div class={styles.focus} />
+      <div class={styles.selected} />
+      <for of={values} key='value'>
+        {(item: LoopItem<ToggleBarValue>) => renderValue(item.value, {
+          onchange: () => onchange?.(item.value.value),
+          className: () => classes([
+            styles.link,
+            index.value === item.index && styles.active,
+          ]),
+          onblur: handleBlur,
+          onfocus: () => {
+            clearTimeout(blurTimeout)
+            focusIndex.value = item.index
+          },
+        })}
+      </for>
     </Flex>
   )
 }
