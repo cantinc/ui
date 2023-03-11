@@ -1,1 +1,1 @@
-By default, do nothing on click
+Click on a card to flip it.

@@ -7,8 +7,12 @@ import styles from './FlipCard.scss'
 
 const useStyle = style(styles)
 
+export type FlipCardAnimation = 'vertical' | 'horizontal'
+
 export type FlipCardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = CardProps<E, R & {
   flip: StateProp<boolean>
+  animation?: FlipCardAnimation
+  revertAnimation?: boolean
 }, S>
 
 export function FlipCard<E extends HTMLElement = HTMLElement> ({
@@ -16,6 +20,8 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
   flex,
   inline,
   onclick,
+  animation = 'vertical',
+  revertAnimation,
   ...props
 }: FlipCardProps<E> = {} as any) {
   const { '': children, backside } = useSlots()
@@ -32,6 +38,8 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
       flex={flex}
       class={() => [
         styles.root,
+        revertAnimation && styles.revert,
+        styles[animation],
         use(flip) && styles.flip,
       ]}>
       <Card

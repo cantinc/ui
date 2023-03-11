@@ -1,5 +1,23 @@
 .root {
+  --ui-flip-card-rotation1: -179deg;
+  --ui-flip-card-rotation2: 179deg;
+
   position: relative;
+}
+
+.revert {
+  --ui-flip-card-rotation1: 179deg;
+  --ui-flip-card-rotation2: -179deg;
+}
+
+.vertical {
+  --ui-flip-card-animation1: rotateX(var(--ui-flip-card-rotation1));
+  --ui-flip-card-animation2: rotateX(var(--ui-flip-card-rotation2));
+}
+
+.horizontal {
+  --ui-flip-card-animation1: rotateY(var(--ui-flip-card-rotation1));
+  --ui-flip-card-animation2: rotateY(var(--ui-flip-card-rotation2));
 }
 
 .front {
@@ -11,18 +29,18 @@
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
-  transform: rotateX(-180deg) translateZ(-20px);
+  transform: var(--ui-flip-card-animation1) translateZ(-20px);
 }
 
 .flip {
   & > .front {
     &, &:hover {
-      transform: rotateX(180deg) translateZ(-20px);
+      transform: var(--ui-flip-card-animation2) translateZ(-20px);
     }
   }
   & > .back {
     &, &:hover {
-      transform: rotateX(0) translateZ(20px);
+      transform: rotate(0) translateZ(20px);
       box-shadow: 0 0 30px -10px rgba(109, 109, 109, 0.15);
     }
   }
