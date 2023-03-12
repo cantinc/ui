@@ -103,7 +103,7 @@ innet(
           ['test3-root'],
           () => `${state.value}-root`,
         ],
-        content: () => ['test-content', `${state.value}-content`],
+        primary: () => ['test-primary', `${state.value}-primary`],
       }}>
       Click me
     </Button>
