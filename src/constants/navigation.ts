@@ -230,6 +230,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/cards/Cards/Cards.ui'),
       },
       {
+        slot: 'flex',
+        children: '<CardsFlex />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/cards/CardsFlex/CardsFlex.ui'),
+      },
+      {
         slot: 'flip',
         children: '<FlipCard />',
         onclick: hideLayoutMenu,

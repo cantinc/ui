@@ -9,6 +9,7 @@
   box-shadow: 0 0 30px -10px rgba(109, 109, 109, 0);
   text-decoration: none;
   width: var(--ui-card-width, auto);
+  min-width: min(var(--ui-card-width, 0), 100%);
   height: var(--ui-card-height, auto);
   box-sizing: border-box;
   position: relative;
@@ -23,14 +24,14 @@
   opacity: 1;
   box-shadow: 0 0 0 0 rgba(109, 109, 109, 0.5);
   transform: translateZ(0);
-  transition-delay: var(--ui-cards-delay, 0s);
+  transition-delay: 0s;
 
   &:nth-child(odd) {
-    transition-delay: var(--ui-cards-delay, .1s);
+    transition-delay: .1s;
   }
 
   &:nth-child(3n) {
-    transition-delay: var(--ui-cards-delay, .2s);
+    transition-delay: .2s;
   }
 }
 
@@ -43,14 +44,14 @@
 .hide {
   opacity: 0;
   transform: translateZ(50px);
-  transition: all var(--ui-cards-delay, 0s);
+  transition: all 0s;
 
   &:nth-child(odd) {
-    transition: all var(--ui-cards-delay, .1s);
+    transition: all .1s;
   }
 
   &:nth-child(3n) {
-    transition: all var(--ui-cards-delay, .2s);
+    transition: all .2s;
   }
 }
 
