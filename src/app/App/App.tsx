@@ -25,7 +25,7 @@ export function App () {
           <Aside padding={24} class={styles.aside} vertical>
             <slot name='menu' />
             <Space />
-            <Flex justify='center'>
+            <Flex padding={24} class={styles.version} justify='center'>
               v{process.env.CANTINC_UI_VERSION}
             </Flex>
           </Aside>
