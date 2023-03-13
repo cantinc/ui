@@ -46,7 +46,12 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
         flex
         {...props as CardProps<E>}
         onclick={handleClick}
-        class={() => styles.front}>
+        class={{
+          root: () => styles.front,
+          show: () => styles.show,
+          shown: () => styles.shown,
+          hide: () => styles.hide,
+        }}>
         {children}
       </Card>
       <Card

@@ -44,7 +44,7 @@
 .hide {
   opacity: 0;
   transform: translateZ(50px);
-  transition: all 0s;
+  transition: all .1s .05s;
 
   &:nth-child(odd) {
     transition: all .1s;

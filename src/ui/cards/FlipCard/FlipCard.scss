@@ -32,6 +32,40 @@
   transform: var(--ui-flip-card-animation1) translateZ(-20px);
 }
 
+.show {
+  .root:nth-child(1n) > & {
+    transition-delay: 0s;
+  }
+
+  .root:nth-child(odd) > & {
+    transition-delay: .1s;
+  }
+
+  .root:nth-child(3n) > & {
+    transition-delay: .2s;
+  }
+}
+
+.shown {
+  .root:nth-child(1n) > & {
+    transition: all .3s;
+  }
+}
+
+.hide {
+  .root:nth-child(1n) > & {
+    transition: all .1s .05s;
+  }
+
+  .root:nth-child(odd) > & {
+    transition: all .1s;
+  }
+
+  .root:nth-child(3n) > & {
+    transition: all .2s;
+  }
+}
+
 .flip {
   & > .front {
     &, &:hover {
