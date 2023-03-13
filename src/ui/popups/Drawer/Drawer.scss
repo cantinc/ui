@@ -17,10 +17,6 @@
   width: 100%;
   height: var(--ui-drawer-size);
   max-height: var(--window-height);
-
-  .close {
-    left: calc(50% - 25px);
-  }
 }
 
 .right,
@@ -30,11 +26,6 @@
 
   @media (min-width: $mobile) {
     width: var(--ui-drawer-size);
-  }
-
-  .close {
-    top: 12px;
-    left: calc(100% - 75px);
   }
 }
 
@@ -53,10 +44,6 @@
 .bottom {
   --ui-drawer-transform: translate(0, 30%);
   bottom: 0;
-
-  .close {
-    top: -25px;
-  }
 }
 
 .right {
@@ -66,30 +53,14 @@
   @media (min-width: $mobile) {
     left: calc(100% - var(--ui-drawer-size));
   }
-
-  .close {
-    @media (min-width: $mobile) {
-      left: -25px;
-    }
-  }
 }
 
 .top {
   --ui-drawer-transform: translate(0, -30%);
-
-  .close {
-    top: calc(100% - 25px);
-  }
 }
 
 .left {
   --ui-drawer-transform: translate(-30%, 0);
-
-  .close {
-    @media (min-width: $mobile) {
-      left: calc(100% - 25px);
-    }
-  }
 }
 
 .show {
@@ -132,14 +103,4 @@
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
-}
-
-.close {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  background: var(--color-primary-90);
-  color: var(--color-100);
-  padding: 17px;
-  border-radius: 50%;
 }

@@ -209,6 +209,12 @@ export const navigation: PagesMenu = [
         onclick: hideLayoutMenu,
         page: () => import('../ui/buttons/BurgerButton/BurgerButton.ui'),
       },
+      {
+        slot: 'close',
+        children: '<CloseButton />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/buttons/CloseButton/CloseButton.ui'),
+      },
     ],
   },
   {

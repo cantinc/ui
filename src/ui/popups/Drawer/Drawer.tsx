@@ -5,7 +5,8 @@ import { onDestroy, type State } from 'watch-state'
 
 import { type TouchHidePlacement, useTouchHide } from '../../../hooks'
 import { setOverflow } from '../../../utils'
-import { Icon } from '../../icons'
+import { CloseButton, type CloseButtonPlacement } from '../../buttons'
+import { type IconProp } from '../../icons'
 import { Flex, type FlexProps } from '../../layout'
 import styles from './Drawer.scss'
 
@@ -14,6 +15,8 @@ const useStyle = style(styles)
 export interface DrawerProps extends Omit<FlexProps, 'onclose'> {
   size?: number
   placement?: TouchHidePlacement
+  closeButtonPlacement?: CloseButtonPlacement
+  closeIcon?: IconProp
   onclose?: (result: string) => void
 }
 
@@ -23,6 +26,8 @@ export function Drawer ({
   onclose,
   size = 388,
   placement = 'left',
+  closeButtonPlacement,
+  closeIcon,
   style,
   ref = new Ref(),
   ...props
@@ -78,10 +83,10 @@ export function Drawer ({
           class={() => styles.content}>
           {children}
         </Flex>
-        <Icon
+        <CloseButton
+          icon={closeIcon}
+          placement={closeButtonPlacement}
           onclick={() => onclose?.('close')}
-          icon='cross'
-          class={() => styles.close}
         />
       </div>
     </delay>
