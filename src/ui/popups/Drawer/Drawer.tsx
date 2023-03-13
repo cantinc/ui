@@ -77,17 +77,17 @@ export function Drawer ({
           touched.value && styles.touch,
           hide.value?.value && styles.hide,
         ])}>
+        <CloseButton
+          icon={closeIcon}
+          placement={closeButtonPlacement}
+          onclick={() => onclose?.('close')}
+        />
         <Flex
           {...props}
           ref={ref}
           class={() => styles.content}>
           {children}
         </Flex>
-        <CloseButton
-          icon={closeIcon}
-          placement={closeButtonPlacement}
-          onclick={() => onclose?.('close')}
-        />
       </div>
     </delay>
   )
