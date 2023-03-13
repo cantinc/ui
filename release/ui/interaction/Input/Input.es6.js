@@ -14,7 +14,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 const useStyle = style(modules_4318a3aa);
 const defaultRenderInput = (props) => ({type:'input',props:{...props}});
 function Input(_a = {}) {
-    var { label, value = new State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new Ref(), name, type, loading, clearable, debounce } = _a, rest = __rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "loading", "clearable", "debounce"]);
+    var { label, value = new State(''), oninput, props, placeholder, autofocus, renderInput = defaultRenderInput, error, disabled, required, inputRef = new Ref(), name, type, clearable, debounce } = _a, rest = __rest(_a, ["label", "value", "oninput", "props", "placeholder", "autofocus", "renderInput", "error", "disabled", "required", "inputRef", "name", "type", "clearable", "debounce"]);
     const styles = useStyle();
     const { before, after, hint } = useSlots();
     if (value instanceof State) {
@@ -66,7 +66,6 @@ function Input(_a = {}) {
         }, typeof autofocus === 'number' ? autofocus : 0);
         onDestroy(() => clearTimeout(timer));
     }
-    const loaded = inject(loading, loading => !loading);
     return ({type:Flex,props:{align:'center',padding:16,gap:8,element:'label',...rest,onmousedown:(e) => {
             var _a;
             if (e.target !== inputRef.value) {
@@ -78,8 +77,7 @@ function Input(_a = {}) {
             styles.root,
             use(label) && styles.withLabel,
             use(error) && styles.error,
-            use(loading) && styles.loading,
-        ]},children:[{type:'show',props:{state:loaded},children:[element,' ',clearContent,' ',beforeContent,' ',labelContent,' ',afterContent,' ',hintContent,{type:'span',props:{...props === null || props === void 0 ? void 0 : props.border,class:() => styles.border}}]}]});
+        ]},children:[element,' ',clearContent,' ',beforeContent,' ',labelContent,' ',afterContent,' ',hintContent,{type:'span',props:{...props === null || props === void 0 ? void 0 : props.border,class:() => styles.border}}]});
 }
 
 export { Input, defaultRenderInput };

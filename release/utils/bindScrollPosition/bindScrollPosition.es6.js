@@ -1,6 +1,8 @@
 function bindScrollPosition() {
     const listener = () => {
-        document.body.style.setProperty('--scroll', `${document.documentElement.scrollTop}px`);
+        requestAnimationFrame(() => {
+            document.body.style.setProperty('--scroll', `${document.documentElement.scrollTop}px`);
+        });
     };
     document.addEventListener('scroll', listener);
     listener();

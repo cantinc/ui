@@ -4,7 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function bindScrollPosition() {
     const listener = () => {
-        document.body.style.setProperty('--scroll', `${document.documentElement.scrollTop}px`);
+        requestAnimationFrame(() => {
+            document.body.style.setProperty('--scroll', `${document.documentElement.scrollTop}px`);
+        });
     };
     document.addEventListener('scroll', listener);
     listener();

@@ -26,7 +26,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
         },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon.Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
-    var { values, value = new watchState.State(''), onchange, renderValue = defaultToggleBarRender, style, loading } = _a, props = tslib.__rest(_a, ["values", "value", "onchange", "renderValue", "style", "loading"]);
+    var { values, value = new watchState.State(''), onchange, renderValue = defaultToggleBarRender, style } = _a, props = tslib.__rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
     const styles = useStyle();
     if (value instanceof watchState.State) {
         const oldOnChange = onchange;
@@ -63,10 +63,9 @@ function ToggleBar(_a) {
     };
     return ({type:Flex.Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-count': dom.inject(values, values => String(values.length)), '--ui-toggle-bar-focus': dom.inject(focusIndex, String), '--ui-toggle-bar-index': dom.inject(index, String) }),class:() => classes__default["default"]([
             styles.root,
-            dom.use(loading) && styles.loading,
             styles[side.value],
             styles[`${focusSide.value}Focus`],
-        ])},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
+        ])},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
             onchange: () => onchange === null || onchange === void 0 ? void 0 : onchange(item.value.value),
             className: () => classes__default["default"]([
                 styles.link,
@@ -77,7 +76,7 @@ function ToggleBar(_a) {
                 clearTimeout(blurTimeout);
                 focusIndex.value = item.index;
             },
-        })]}]}]});
+        })]}]});
 }
 
 exports.ToggleBar = ToggleBar;

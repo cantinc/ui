@@ -6,6 +6,7 @@ import './hooks/index.es6.js';
 export { Button } from './ui/buttons/Button/Button.es6.js';
 export { BurgerButton } from './ui/buttons/BurgerButton/BurgerButton.es6.js';
 export { Buttons } from './ui/buttons/Buttons/Buttons.es6.js';
+export { CloseButton } from './ui/buttons/CloseButton/CloseButton.es6.js';
 export { Markdown } from './ui/typography/Markdown/Markdown.es6.js';
 export { Typography } from './ui/typography/Typography/Typography.es6.js';
 export { Nowrap } from './ui/typography/Nowrap/Nowrap.es6.js';

@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, use, inject } from '@innet/dom';
+import { style, inject } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
 import '../../layout/index.es6.js';
@@ -18,11 +18,9 @@ function Button(_a = {}) {
             [styles.secondary]: view === 'secondary',
             [styles.negative]: view === 'negative',
             [styles.positive]: view === 'positive',
-            [styles.loading]: use(loading),
         },
     ]);
-    const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : use(loading)) || undefined);
-    return ({type:Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': inject(width, width => width !== undefined ? `${width}px` : '') }),disabled:disabledValue,class:className},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex,props:{justify:'center',inline:true,padding:24,element:'button',loadingOffset:1,disabled:loading,...props,loading:loading,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': inject(width, width => width !== undefined ? `${width}px` : '') }),class:className},children:[children]});
 }
 
 export { Button };

@@ -2,6 +2,15 @@
 
 ## v0.2
 
+### v0.2.38 [![13.03.2023](https://img.shields.io/date/1678713081)](https://github.com/cantinc/ui/tree/v0.2.38)
+
+- improve `BurgerButton` styles
+- add `CloseButton`
+- add `CardsFlex`
+- add `loading` and `fallback` for `Image`
+- add `Flex` prop of `loading`
+- update dependencies
+
 ### v0.2.37 [![11.03.2023](https://img.shields.io/date/1678528241)](https://github.com/cantinc/ui/tree/v0.2.37)
 
 - add `CardsFlex`

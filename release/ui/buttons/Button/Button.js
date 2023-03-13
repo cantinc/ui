@@ -26,11 +26,9 @@ function Button(_a = {}) {
             [styles.secondary]: view === 'secondary',
             [styles.negative]: view === 'negative',
             [styles.positive]: view === 'positive',
-            [styles.loading]: dom.use(loading),
         },
     ]);
-    const disabledValue = (() => (disabled !== null && disabled !== void 0 ? disabled : dom.use(loading)) || undefined);
-    return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,element:'button',...props,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': dom.inject(width, width => width !== undefined ? `${width}px` : '') }),disabled:disabledValue,class:className},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+    return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,element:'button',loadingOffset:1,disabled:loading,...props,loading:loading,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': dom.inject(width, width => width !== undefined ? `${width}px` : '') }),class:className},children:[children]});
 }
 
 exports.Button = Button;

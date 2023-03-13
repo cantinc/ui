@@ -18,7 +18,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
         },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
-    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style, loading } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style", "loading"]);
+    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
     const styles = useStyle();
     if (value instanceof State) {
         const oldOnChange = onchange;
@@ -55,10 +55,9 @@ function ToggleBar(_a) {
     };
     return ({type:Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-count': inject(values, values => String(values.length)), '--ui-toggle-bar-focus': inject(focusIndex, String), '--ui-toggle-bar-index': inject(index, String) }),class:() => classes([
             styles.root,
-            use(loading) && styles.loading,
             styles[side.value],
             styles[`${focusSide.value}Focus`],
-        ])},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
+        ])},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
             onchange: () => onchange === null || onchange === void 0 ? void 0 : onchange(item.value.value),
             className: () => classes([
                 styles.link,
@@ -69,7 +68,7 @@ function ToggleBar(_a) {
                 clearTimeout(blurTimeout);
                 focusIndex.value = item.index;
             },
-        })]}]}]});
+        })]}]});
 }
 
 export { ToggleBar, defaultToggleBarRender };
