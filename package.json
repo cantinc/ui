@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@cantinc/utils": "^1.4.2",
-    "@innet/dom": "^0.13.2",
+    "@innet/dom": "^0.13.4",
     "@innet/jsx": "^1.2.1",
     "@textlint/ast-node-types": "^13.1.1",
     "@textlint/markdown-to-ast": "^13.1.1",
