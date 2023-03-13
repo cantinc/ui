@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.39 [![13.03.2023](https://img.shields.io/date/1678719367)](https://github.com/cantinc/ui/tree/v0.2.39)
+
+- fix `Section` `class`
+- fix tabs order for `Drawer`
+
 ### v0.2.38 [![13.03.2023](https://img.shields.io/date/1678713081)](https://github.com/cantinc/ui/tree/v0.2.38)
 
 - improve `BurgerButton` styles

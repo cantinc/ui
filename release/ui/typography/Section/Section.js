@@ -11,7 +11,7 @@ var Section$1 = require('./Section.scss.js');
 var Flex = require('../../layout/Flex/Flex.js');
 var Title = require('../Title/Title.js');
 
-const useStyle = dom.style(Section$1["default"]);
+const useStyle = dom.style(Section$1["default"], { title: '' });
 function Section(_a = {}) {
     var { title, titleProps, subTitle } = _a, props = tslib.__rest(_a, ["title", "titleProps", "subTitle"]);
     const { '': children, title: aside } = jsx.useSlots();

@@ -5,9 +5,14 @@ import { Flex, type FlexProps } from '../../layout'
 import { Title, type TitleProps } from '../Title'
 import styles from './Section.scss'
 
-const useStyle = style(styles)
+const useStyle = style(styles, { title: '' })
 
-export interface SectionProps extends FlexProps<HTMLDivElement> {
+export interface SectionStyles {
+  root: any
+  title: any
+}
+
+export interface SectionProps extends FlexProps<HTMLDivElement, {}, SectionStyles> {
   title?: string
   subTitle?: StateProp<string>
 

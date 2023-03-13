@@ -7,7 +7,7 @@ import modules_31bb216d from './Section.scss.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Title } from '../Title/Title.es6.js';
 
-const useStyle = style(modules_31bb216d);
+const useStyle = style(modules_31bb216d, { title: '' });
 function Section(_a = {}) {
     var { title, titleProps, subTitle } = _a, props = __rest(_a, ["title", "titleProps", "subTitle"]);
     const { '': children, title: aside } = useSlots();

@@ -10,8 +10,8 @@ import '../../layout/index.es6.js';
 import modules_649c3d85 from './Drawer.scss.es6.js';
 import { useTouchHide } from '../../../hooks/useTouchHide/useTouchHide.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
-import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { CloseButton } from '../../buttons/CloseButton/CloseButton.es6.js';
+import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_649c3d85);
 let drawersCount = 0;
@@ -48,7 +48,7 @@ function Drawer(_a = {}) {
                 touched.value && styles.touch,
                 ((_a = hide.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
             ]);
-        }},children:[{type:Flex,props:{...props,ref:ref,class:() => styles.content},children:[children]},{type:CloseButton,props:{icon:closeIcon,placement:closeButtonPlacement,onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close')}}]}]});
+        }},children:[{type:CloseButton,props:{icon:closeIcon,placement:closeButtonPlacement,onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close')}},{type:Flex,props:{...props,ref:ref,class:() => styles.content},children:[children]}]}]});
 }
 
 export { Drawer };

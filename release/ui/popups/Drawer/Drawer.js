@@ -14,8 +14,8 @@ require('../../layout/index.js');
 var Drawer$1 = require('./Drawer.scss.js');
 var useTouchHide = require('../../../hooks/useTouchHide/useTouchHide.js');
 var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
-var Flex = require('../../layout/Flex/Flex.js');
 var CloseButton = require('../../buttons/CloseButton/CloseButton.js');
+var Flex = require('../../layout/Flex/Flex.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -56,7 +56,7 @@ function Drawer(_a = {}) {
                 touched.value && styles.touch,
                 ((_a = hide.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
             ]);
-        }},children:[{type:Flex.Flex,props:{...props,ref:ref,class:() => styles.content},children:[children]},{type:CloseButton.CloseButton,props:{icon:closeIcon,placement:closeButtonPlacement,onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close')}}]}]});
+        }},children:[{type:CloseButton.CloseButton,props:{icon:closeIcon,placement:closeButtonPlacement,onclick:() => onclose === null || onclose === void 0 ? void 0 : onclose('close')}},{type:Flex.Flex,props:{...props,ref:ref,class:() => styles.content},children:[children]}]}]});
 }
 
 exports.Drawer = Drawer;
