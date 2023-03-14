@@ -50,11 +50,12 @@ innet(
       Click Me
     </Button>
     <Popout
+      closeButton
       padding={16}
       show={state}
       element={button}>
       <Content width={480}>
-        <Card preventAnimation vertical align='stretch' gap={16}>
+        <Card flex preventAnimation vertical align='stretch' gap={16}>
           <Typography>
             <h2>Answer for next question</h2>
             <p>Is it looks like a modal?</p>
@@ -81,11 +82,12 @@ innet(
         Click Me
       </Button>
       <Popout
+        closeButton
         padding={16}
         show={state}
         element={button}>
         <Content width={480}>
-          <Card preventAnimation vertical align='stretch' gap={16}>
+          <Card flex preventAnimation vertical align='stretch' gap={16}>
             <Typography>
               <h2>Answer for next question</h2>
               <p>Is it looks like a modal?</p>

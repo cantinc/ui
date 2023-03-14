@@ -47,6 +47,7 @@ function PopoutElement ({
   contentStyle,
   onhide,
   rootRef = new Ref(),
+  ref = new Ref(),
   background,
   closeButton,
   ...props
@@ -61,6 +62,7 @@ function PopoutElement ({
     touchStart () {
       elementData.value = getData()
     },
+    element: ref,
   })
   const styles = useStyle()
 
@@ -133,6 +135,7 @@ function PopoutElement ({
       </show>
       <Flex
         {...props}
+        ref={ref}
         style={contentStyle}
         class={() => styles.content}>
         {children}
