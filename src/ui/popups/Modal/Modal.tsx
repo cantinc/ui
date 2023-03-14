@@ -43,7 +43,8 @@ export function Modal ({
   const { '': children, title, content, subTitle, ...slots } = useSlots()
 
   const hidden = new Ref<State<boolean>>()
-  const show = new State<boolean>(false)
+  const show = new State(false)
+  const scroll = new State(0)
   const element = new Ref<HTMLOverlayElement>()
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
@@ -131,7 +132,14 @@ export function Modal ({
           </Flex>
         </show>
         {content && (
-          <div class={() => styles.content}>
+          <div
+            onscroll={(e: any) => {
+              scroll.value = e.target.scrollTop
+            }}
+            style={{
+              '--scroll': () => `${scroll.value}px`,
+            }}
+            class={() => styles.content}>
             {content}
           </div>
         )}
