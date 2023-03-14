@@ -5,7 +5,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var tslib = require('tslib');
 var dom = require('@innet/dom');
 var watchState = require('watch-state');
-require('../../icons/index.js');
 require('../../layout/index.js');
 require('../../popups/index.js');
 require('../Dots/index.js');
@@ -16,7 +15,6 @@ var Flex = require('../../layout/Flex/Flex.js');
 var Image = require('../../layout/Image/Image.js');
 var Popout = require('../../popups/Popout/Popout.js');
 var Slides = require('../Slides/Slides.js');
-var Icon = require('../../icons/Icon/Icon.js');
 
 const useStyle = dom.style(Stories$1["default"]);
 function Stories(_a) {
@@ -116,10 +114,10 @@ function Stories(_a) {
             ],onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,align:'stretch',vertical:true,show:state,background:'var(--color-0)',element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
+            }}}))]},{type:Popout.Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,align:'stretch',vertical:true,show:state,onhide:hide,closeButton:true,background:'var(--color-0)',element:popoutElement},children:[{type:Slides.Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
-        },flex:true,slides:slides}},{type:Icon.Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);
+        },flex:true,slides:slides}}]}]);
 }
 
 exports.Stories = Stories;

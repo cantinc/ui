@@ -1,7 +1,6 @@
 import { __rest } from 'tslib';
 import { style, Ref, use } from '@innet/dom';
 import { State, Watch } from 'watch-state';
-import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import '../../popups/index.es6.js';
 import '../Dots/index.es6.js';
@@ -12,7 +11,6 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Image } from '../../layout/Image/Image.es6.js';
 import { Popout } from '../../popups/Popout/Popout.es6.js';
 import { Slides } from '../Slides/Slides.es6.js';
-import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_b1e1aef6);
 function Stories(_a) {
@@ -112,10 +110,10 @@ function Stories(_a) {
             ],onclick:() => {
                 story.value = index;
                 show();
-            }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,align:'stretch',vertical:true,show:state,background:'var(--color-0)',element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
+            }}}))]},{type:Popout,props:{ontouchstart:stopAutoscroll,ontouchend:continueAutoscroll,align:'stretch',vertical:true,show:state,onhide:hide,closeButton:true,background:'var(--color-0)',element:popoutElement},children:[{type:Slides,props:{gap:16,align:'stretch',value:story,onchange:read,class:{
             root: () => styles.slides,
             slide: () => styles.slide,
-        },flex:true,slides:slides}},{type:Icon,props:{class:() => styles.close,icon:'cross',size:24,onclick:hide}}]}]);
+        },flex:true,slides:slides}}]}]);
 }
 
 export { Stories };

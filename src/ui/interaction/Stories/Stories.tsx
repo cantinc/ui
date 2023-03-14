@@ -1,7 +1,6 @@
 import { Ref, type StateProp, style, use } from '@innet/dom'
 import { State, Watch } from 'watch-state'
 
-import { Icon } from '../../icons'
 import { Flex, type FlexProps, Image, type ImageProps } from '../../layout'
 import { Popout } from '../../popups'
 import { Dots } from '../Dots'
@@ -182,6 +181,8 @@ export function Stories ({
         align='stretch'
         vertical
         show={state}
+        onhide={hide}
+        closeButton
         background='var(--color-0)'
         element={popoutElement}>
         <Slides
@@ -195,12 +196,6 @@ export function Stories ({
           }}
           flex
           slides={slides}
-        />
-        <Icon
-          class={() => styles.close}
-          icon='cross'
-          size={24}
-          onclick={hide}
         />
       </Popout>
     </>

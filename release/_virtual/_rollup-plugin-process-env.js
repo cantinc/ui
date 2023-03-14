@@ -1,7 +1,7 @@
 'use strict';
 
 ;(function () {
-  const env = {"CANTINC_UI_VERSION":"0.2.40","CANTINC_UI_BASE_URL":"/ui"};
+  const env = {"CANTINC_UI_VERSION":"0.2.41","CANTINC_UI_BASE_URL":"/ui"};
   if (typeof process === 'undefined') {
     globalThis.process = { env: env };
   } else if (process.env) {

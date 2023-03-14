@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.41 [![14.03.2023](https://img.shields.io/date/1678798465)](https://github.com/cantinc/ui/tree/v0.2.41)
+
+- change close button for `Stories`
+
 ### v0.2.40 [![14.03.2023](https://img.shields.io/date/1678797606)](https://github.com/cantinc/ui/tree/v0.2.40)
 
 - fix `FlipCard` animations

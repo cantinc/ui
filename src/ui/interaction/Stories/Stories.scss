@@ -7,14 +7,6 @@
   @include hide-scroll;
 }
 
-.close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  cursor: pointer;
-  color: var(--color-100);
-}
-
 .preview {
   cursor: pointer;
   border: 2px solid var(--color-80);
