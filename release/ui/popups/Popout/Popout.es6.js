@@ -5,11 +5,13 @@ import classes from 'html-classes';
 import { State, Watch, onDestroy } from 'watch-state';
 import '../../../hooks/index.es6.js';
 import '../../../utils/index.es6.js';
+import '../../buttons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_f03e01a5 from './Popout.scss.es6.js';
 import { useTouchHide } from '../../../hooks/useTouchHide/useTouchHide.es6.js';
 import { useEscapeListener } from '../../../hooks/useEscapeListener/useEscapeListener.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
+import { CloseButton } from '../../buttons/CloseButton/CloseButton.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 
@@ -21,7 +23,7 @@ const createStyles = () => {
     return styles;
 };
 function PopoutElement(_a) {
-    var { element, style, contentStyle, onhide, rootRef = new Ref(), background } = _a, props = __rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background"]);
+    var { element, style, contentStyle, onhide, rootRef = new Ref(), background, closeButton } = _a, props = __rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background", "closeButton"]);
     const children = useChildren();
     const hide = useHidden();
     const preshow = useShow();
@@ -72,7 +74,7 @@ function PopoutElement(_a) {
             shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
-        ])},children:[{type:Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});
+        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});
 }
 function Popout(_a) {
     var { show = true, onhide } = _a, props = __rest(_a, ["show", "onhide"]);

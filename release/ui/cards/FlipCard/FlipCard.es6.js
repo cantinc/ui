@@ -20,7 +20,12 @@ function FlipCard(_a = {}) {
             revertAnimation && styles.revert,
             styles[animation],
             use(flip) && styles.flip,
-        ]},children:[{type:Card,props:{flex:true,...props,onclick:handleClick,class:() => styles.front},children:[children]},{type:Card,props:{...props,onclick:handleClick,class:() => styles.back},children:[backside]}]});
+        ]},children:[{type:Card,props:{flex:true,...props,onclick:handleClick,class:{
+            root: () => styles.front,
+            show: () => styles.show,
+            shown: () => styles.shown,
+            hide: () => styles.hide,
+        }},children:[children]},{type:Card,props:{...props,onclick:handleClick,class:() => styles.back},children:[backside]}]});
 }
 
 export { FlipCard };

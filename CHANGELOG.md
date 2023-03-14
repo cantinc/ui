@@ -2,6 +2,13 @@
 
 ## v0.2
 
+### v0.2.40 [![14.03.2023](https://img.shields.io/date/1678797606)](https://github.com/cantinc/ui/tree/v0.2.40)
+
+- fix `FlipCard` animations
+- improve `Flex`
+- add `CloseButton` into `Modal`
+- add `closeButton` into `Popout`
+
 ### v0.2.39 [![13.03.2023](https://img.shields.io/date/1678719367)](https://github.com/cantinc/ui/tree/v0.2.39)
 
 - fix `Section` `class`

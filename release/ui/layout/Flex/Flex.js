@@ -27,6 +27,7 @@ function Flex(_a = {}) {
     const styles = useStyle();
     return ({type:Element,props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-flex-justify': justify && justify !== 'start' ? justifyMap[justify] : '', '--ui-flex-align': align && align !== 'start' ? alignMap[align] : '', '--ui-flex-wrap': wrap ? 'wrap' : '', '--ui-flex-flex': String(flex === true ? 1 : flex || ''), '--ui-flex': inline ? 'inline-flex' : '', '--ui-flex-direction': dom.inject(vertical, vertical => vertical ? (reverse ? 'column-reverse' : 'column') : reverse ? 'row-reverse' : ''), '--ui-flex-padding': !padding ? '' : Array.isArray(padding) ? `${padding.join('px ')}px` : `${padding}px`, '--ui-flex-gap': !gap ? '' : Array.isArray(gap) ? `${gap[0]}px ${gap[1]}px` : `${gap}px`, '--ui-flex-loading-offset': () => `${dom.use(loadingOffset)}px` }),class:() => classes__default["default"]([
             styles.root,
+            loading && styles.load,
             dom.use(loading) && styles.loading,
         ])},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
 }

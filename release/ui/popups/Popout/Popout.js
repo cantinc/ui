@@ -9,11 +9,13 @@ var classes = require('html-classes');
 var watchState = require('watch-state');
 require('../../../hooks/index.js');
 require('../../../utils/index.js');
+require('../../buttons/index.js');
 require('../../layout/index.js');
 var Popout$1 = require('./Popout.scss.js');
 var useTouchHide = require('../../../hooks/useTouchHide/useTouchHide.js');
 var useEscapeListener = require('../../../hooks/useEscapeListener/useEscapeListener.js');
 var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
+var CloseButton = require('../../buttons/CloseButton/CloseButton.js');
 var Flex = require('../../layout/Flex/Flex.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
 
@@ -29,7 +31,7 @@ const createStyles = () => {
     return styles;
 };
 function PopoutElement(_a) {
-    var { element, style, contentStyle, onhide, rootRef = new dom.Ref(), background } = _a, props = tslib.__rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background"]);
+    var { element, style, contentStyle, onhide, rootRef = new dom.Ref(), background, closeButton } = _a, props = tslib.__rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background", "closeButton"]);
     const children = jsx.useChildren();
     const hide = dom.useHidden();
     const preshow = dom.useShow();
@@ -80,7 +82,7 @@ function PopoutElement(_a) {
             shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
-        ])},children:[{type:Flex.Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});
+        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton.CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex.Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});
 }
 function Popout(_a) {
     var { show = true, onhide } = _a, props = tslib.__rest(_a, ["show", "onhide"]);

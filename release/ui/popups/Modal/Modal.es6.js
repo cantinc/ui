@@ -5,16 +5,16 @@ import classes from 'html-classes';
 import { State, onDestroy } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../buttons/index.es6.js';
-import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_8f0e29bb from './Modal.scss.es6.js';
-import { Icon } from '../../icons/Icon/Icon.es6.js';
+import { CloseButton } from '../../buttons/CloseButton/CloseButton.es6.js';
 import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Button } from '../../buttons/Button/Button.es6.js';
 
 const useStyles = style(modules_8f0e29bb);
 let modalsCount = 0;
+const defaultCloseButton = {type:CloseButton,props:{offset:8,padding:8,size:16}};
 function Modal(_a = {}) {
     var { buttons, width, height, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = __rest(_a, ["buttons", "width", "height", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
@@ -25,7 +25,7 @@ function Modal(_a = {}) {
     const headButtonsLength = headButtons === null || headButtons === void 0 ? void 0 : headButtons.length;
     const buttonsLength = buttons === null || buttons === void 0 ? void 0 : buttons.length;
     if (!('button-close' in slots)) {
-        slots['button-close'] = {type:Icon,props:{icon:'cross'}};
+        slots['button-close'] = defaultCloseButton;
     }
     setTimeout(() => {
         show.value = true;
@@ -59,7 +59,13 @@ function Modal(_a = {}) {
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
                 !title && !subTitle && styles.noTitle,
             ]);
-        }},children:[{type:'show',props:{state:title || subTitle || headButtonsLength},children:[{type:Flex,props:{padding:24,element:'header',vertical:true,align:'stretch',class:() => styles.header},children:[{type:'show',props:{state:title || headButtonsLength},children:[{type:Flex,props:{flex:true},children:[{type:Flex,props:{flex:true},children:[title || null]},{type:'show',props:{state:headButtonsLength},children:[{type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({type:'button',props:{...buttonProps[id],'data-button':id,onclick:() => handleClose(id),class:() => styles.headButton},children:[slots[`button-${id}`] || id]}))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
+        }},children:[{type:'show',props:{state:title || subTitle || headButtonsLength},children:[{type:Flex,props:{padding:24,element:'header',vertical:true,align:'stretch',class:() => styles.header},children:[{type:'show',props:{state:title || headButtonsLength},children:[{type:Flex,props:{flex:true},children:[{type:Flex,props:{flex:true},children:[title || null]},{type:'show',props:{state:headButtonsLength},children:[{type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({
+            type: id === 'close' ? 'span' : 'button',
+            props: Object.assign(Object.assign({}, buttonProps[id]), { 'data-button': id, onclick: () => handleClose(id), class: () => styles.headButton }),
+            children: [
+                slots[`button-${id}`] || id,
+            ],
+        }))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
 }
 
 export { Modal };

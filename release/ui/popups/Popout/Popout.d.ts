@@ -1,4 +1,5 @@
 import { type HTMLStyleProp, Ref, type StateProp } from '@innet/dom';
+import { type CloseButtonProps } from '../../buttons';
 import { type FlexProps } from '../../layout';
 interface PopoutElementProps extends Omit<FlexProps, 'element'> {
     element?: Ref<HTMLElement>;
@@ -6,11 +7,13 @@ interface PopoutElementProps extends Omit<FlexProps, 'element'> {
     onhide: () => void;
     rootRef?: Ref<HTMLDivElement>;
     background?: StateProp<string>;
+    closeButton?: CloseButtonProps | boolean;
 }
 export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
     show?: StateProp<any>;
     background?: StateProp<string>;
     onhide?: () => void;
+    closeButton?: CloseButtonProps | boolean;
 }
 export interface PopoutElementData {
     rect: DOMRect;
