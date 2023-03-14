@@ -5,6 +5,7 @@ import { onDestroy, State, Watch } from 'watch-state'
 
 import { useEscapeListener, useTouchHide } from '../../../hooks'
 import { actionProp, setOverflow } from '../../../utils'
+import { CloseButton, type CloseButtonProps } from '../../buttons'
 import { Flex, type FlexProps } from '../../layout'
 import styles from './Popout.scss'
 
@@ -16,12 +17,14 @@ interface PopoutElementProps extends Omit<FlexProps, 'element'> {
   onhide: () => void
   rootRef?: Ref<HTMLDivElement>
   background?: StateProp<string>
+  closeButton?: CloseButtonProps | boolean
 }
 
 export interface PopoutProps extends Omit<PopoutElementProps, 'onhide'> {
   show?: StateProp<any>
   background?: StateProp<string>
   onhide?: () => void
+  closeButton?: CloseButtonProps | boolean
 }
 
 export interface PopoutElementData {
@@ -45,6 +48,7 @@ function PopoutElement ({
   onhide,
   rootRef = new Ref(),
   background,
+  closeButton,
   ...props
 }: PopoutElementProps) {
   const children = useChildren()
@@ -119,6 +123,14 @@ function PopoutElement ({
         hide?.value && styles.hide,
         touched.value && styles.touch,
       ])}>
+      <show state={closeButton}>
+        <div class={() => styles.static}>
+          <CloseButton
+            onclick={onhide}
+            {...typeof closeButton === 'boolean' ? {} : closeButton}
+          />
+        </div>
+      </show>
       <Flex
         {...props}
         style={contentStyle}
