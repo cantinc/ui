@@ -74,6 +74,7 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
       }}
       class={() => classes([
         styles.root,
+        loading && styles.load,
         use(loading) && styles.loading,
       ])}>
       <show state={inject(loading, loading => !loading)}>

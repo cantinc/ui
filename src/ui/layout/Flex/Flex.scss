@@ -20,7 +20,9 @@
   align-items: var(--ui-flex-align);
   justify-content: var(--ui-flex-justify);
   padding: var(--ui-flex-padding);
+}
 
+.load {
   @include skeletonAfter(calc(var(--ui-flex-loading-offset) * -1));
 }
 
