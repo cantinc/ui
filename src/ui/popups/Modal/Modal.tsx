@@ -4,8 +4,7 @@ import classes from 'html-classes'
 import { onDestroy, State } from 'watch-state'
 
 import { setOverflow } from '../../../utils'
-import { Button, type ButtonProps } from '../../buttons'
-import { Icon } from '../../icons'
+import { Button, type ButtonProps, CloseButton } from '../../buttons'
 import { Flex } from '../../layout'
 import { type HTMLOverlayElement } from '../Overlay'
 import styles from './Modal.scss'
@@ -24,6 +23,8 @@ export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclos
 }
 
 let modalsCount = 0
+
+const defaultCloseButton = <CloseButton offset={8} padding={8} size={16} />
 
 export function Modal ({
   buttons,
@@ -48,7 +49,7 @@ export function Modal ({
   const buttonsLength = buttons?.length
 
   if (!('button-close' in slots)) {
-    slots['button-close'] = <Icon icon='cross' />
+    slots['button-close'] = defaultCloseButton
   }
 
   setTimeout(() => {
@@ -106,15 +107,18 @@ export function Modal ({
                 </Flex>
                 <show state={headButtonsLength}>
                   <div class={() => styles.headButtons}>
-                    {headButtons.map(id => (
-                      <button
-                        {...buttonProps[id]}
-                        data-button={id}
-                        onclick={() => handleClose(id)}
-                        class={() => styles.headButton}>
-                        {slots[`button-${id}`] || id}
-                      </button>
-                    ))}
+                    {headButtons.map(id => ({
+                      type: id === 'close' ? 'span' : 'button',
+                      props: {
+                        ...buttonProps[id],
+                        'data-button': id,
+                        onclick: () => handleClose(id),
+                        class: () => styles.headButton,
+                      },
+                      children: [
+                        slots[`button-${id}`] || id,
+                      ],
+                    }))}
                   </div>
                 </show>
               </Flex>
