@@ -156,7 +156,7 @@ export function Stories ({
 
   return (
     <>
-      <Flex gap={24} {...props} ref={ref} class={() => styles.root}>
+      <Flex gap={16} {...props} ref={ref} class={() => styles.root}>
         {stories.map(({ preview, previewRef, unread }, index) => (
           <Image
             size={110}
