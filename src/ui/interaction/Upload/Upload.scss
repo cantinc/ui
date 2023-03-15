@@ -4,7 +4,7 @@
   --ui-upload-radius: 0;
 
   position: relative;
-  min-height: 112px;
+  min-height: var(--ui-upload-height);
   background: var(--color-100);
   border: 1px solid var(--ui-color-separator);
   border-radius: var(--round-50);
