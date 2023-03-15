@@ -10,7 +10,7 @@ import styles from './Upload.scss'
 
 const useStyle = style(styles)
 
-const imageExtensions = ['jpg', 'webp', 'png', 'jpeg']
+const imageExtensions = ['jpg', 'webp', 'png', 'jpeg', 'svg']
 
 export interface UploadFile extends Partial<File> {
   src: string
