@@ -47,7 +47,7 @@
   --ui-popout-touth-offset: 600;
   --ui-popout-touch: calc(min(var(--ui-popout-touch-hide), var(--ui-popout-touth-offset)) / var(--ui-popout-touth-offset));
 
-  transition: none;
+  transition: background .3s;
   border-radius: calc(var(--ui-popout-touch) * var(--ui-popout-radius));
   top: calc(var(--ui-popout-touch) * var(--ui-popout-top));
   left: calc(var(--ui-popout-touch) * var(--ui-popout-left));
