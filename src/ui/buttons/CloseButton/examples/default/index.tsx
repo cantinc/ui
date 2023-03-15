@@ -13,13 +13,13 @@ import dom from '@innet/dom'
 import { Card, CloseButton } from '@cantinc/ui'
 
 innet(
-  <Card width={200} height={200}>
+  <Card preventAnimation width={200} height={200}>
     <CloseButton />
   </Card>,
   dom,
 )`,
   example: (
-    <Card width={200} height={200}>
+    <Card preventAnimation width={200} height={200}>
       <CloseButton />
     </Card>
   ),

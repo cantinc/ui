@@ -4,10 +4,11 @@
   position: absolute;
   background: var(--color-primary-90);
   color: var(--color-100);
-  transition: background-color .3s, border-color .3s;
+  transition: background-color .3s, border-color .3s, opacity .3s;
   border: 2px solid var(--color-primary-90);
   border-radius: 50%;
   cursor: pointer;
+  opacity: 0;
 
   @media (pointer: fine) {
     &:hover {
@@ -27,6 +28,13 @@
       border-color: var(--color-warning-50);
     }
   }
+}
+
+.show {
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
 }
 
 .left,

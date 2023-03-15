@@ -1,13 +1,11 @@
 export function bindScrollPosition () {
   const listener = () => {
-    requestAnimationFrame(() => {
-      document.body.style.setProperty('--scroll', `${document.documentElement.scrollTop}px`)
-    })
+    document.body.style.setProperty('--scroll', `${window.scrollY}px`)
   }
 
-  document.addEventListener('scroll', listener)
+  window.addEventListener('scroll', listener, { capture: false, passive: true })
 
   listener()
 
-  return () => document.removeEventListener('scroll', listener)
+  return () => window.removeEventListener('scroll', listener)
 }

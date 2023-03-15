@@ -1,4 +1,4 @@
-import { inject, type StateProp, style } from '@innet/dom'
+import { inject, type StateProp, style, useHidden, useShow } from '@innet/dom'
 
 import { Icon, type IconProp } from '../../icons'
 import { Flex, type FlexProps } from '../../layout'
@@ -24,6 +24,8 @@ export function CloseButton ({
   ...props
 }: CloseButtonProps = {}) {
   const styles = useStyle()
+  const show = useShow()
+  const hide = useHidden()
 
   return (
     <Flex<HTMLButtonElement>
@@ -37,6 +39,8 @@ export function CloseButton ({
       }}
       class={() => [
         styles.root,
+        show.value && styles.show,
+        hide?.value && styles.hide,
         styles[placement],
       ]}>
       <Icon
