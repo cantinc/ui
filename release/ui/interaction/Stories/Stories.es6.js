@@ -104,7 +104,7 @@ function Stories(_a) {
                     dot: () => styles.dot,
                 },onend:next,autoscroll:() => story.value === index && autoscroll.value,count:slides.length}},children]) }));
     });
-    return ([{type:Flex,props:{gap:24,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef, unread }, index) => ({type:Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => [
+    return ([{type:Flex,props:{gap:16,...props,ref:ref,class:() => styles.root},children:[stories.map(({ preview, previewRef, unread }, index) => ({type:Image,props:{size:110,radius:(previewProps === null || previewProps === void 0 ? void 0 : previewProps.size) || 110,...previewProps,ref:previewRef,src:preview,class:() => [
                 styles.preview,
                 use(unread) && styles.unread,
             ],onclick:() => {

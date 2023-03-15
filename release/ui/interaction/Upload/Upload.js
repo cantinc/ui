@@ -21,7 +21,7 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Upload$1["default"]);
-const imageExtensions = ['jpg', 'webp', 'png', 'jpeg'];
+const imageExtensions = ['jpg', 'webp', 'png', 'jpeg', 'svg'];
 function Upload(_a = {}) {
     var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new dom.Ref(), files = new watchState.State([]), onchange, accept, name, disabled, clearable } = _a, rest = tslib.__rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled", "clearable"]);
     const { after, before } = jsx.useSlots();

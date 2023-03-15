@@ -13,7 +13,7 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_ab4cd8f7);
-const imageExtensions = ['jpg', 'webp', 'png', 'jpeg'];
+const imageExtensions = ['jpg', 'webp', 'png', 'jpeg', 'svg'];
 function Upload(_a = {}) {
     var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new Ref(), files = new State([]), onchange, accept, name, disabled, clearable } = _a, rest = __rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled", "clearable"]);
     const { after, before } = useSlots();
