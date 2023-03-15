@@ -21,6 +21,7 @@ function Modal(_a = {}) {
     const _b = useSlots(), { '': children, title, content, subTitle } = _b, slots = __rest(_b, ['', "title", "content", "subTitle"]);
     const hidden = new Ref();
     const show = new State(false);
+    const scroll = new State(0);
     const element = new Ref();
     const headButtonsLength = headButtons === null || headButtons === void 0 ? void 0 : headButtons.length;
     const buttonsLength = buttons === null || buttons === void 0 ? void 0 : buttons.length;
@@ -65,7 +66,11 @@ function Modal(_a = {}) {
             children: [
                 slots[`button-${id}`] || id,
             ],
-        }))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
+        }))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{onscroll:(e) => {
+                scroll.value = e.target.scrollTop;
+            },style:{
+                '--scroll': () => `${scroll.value}px`,
+            },class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
 }
 
 export { Modal };

@@ -31,7 +31,7 @@ const createStyles = () => {
     return styles;
 };
 function PopoutElement(_a) {
-    var { element, style, contentStyle, onhide, rootRef = new dom.Ref(), background, closeButton } = _a, props = tslib.__rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "background", "closeButton"]);
+    var { element, style, contentStyle, onhide, rootRef = new dom.Ref(), ref = new dom.Ref(), background, closeButton } = _a, props = tslib.__rest(_a, ["element", "style", "contentStyle", "onhide", "rootRef", "ref", "background", "closeButton"]);
     const children = jsx.useChildren();
     const hide = dom.useHidden();
     const preshow = dom.useShow();
@@ -42,6 +42,7 @@ function PopoutElement(_a) {
         touchStart() {
             elementData.value = getData();
         },
+        element: ref,
     });
     const styles = useStyle();
     useEscapeListener.useEscapeListener(onhide);
@@ -82,7 +83,7 @@ function PopoutElement(_a) {
             shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
-        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton.CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex.Flex,props:{...props,style:contentStyle,class:() => styles.content},children:[children]}]});
+        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton.CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex.Flex,props:{...props,ref:ref,style:contentStyle,class:() => styles.content},children:[children]}]});
 }
 function Popout(_a) {
     var { show = true, onhide } = _a, props = tslib.__rest(_a, ["show", "onhide"]);

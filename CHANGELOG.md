@@ -2,6 +2,15 @@
 
 ## v0.2
 
+### v0.2.42 [![15.03.2023](https://img.shields.io/date/1678876160)](https://github.com/cantinc/ui/tree/v0.2.42)
+
+- add `Modal` scroll css variable
+- improve `Popout`
+- add `CloseButton` animation
+- improve `bindScrollPosition`
+- style improvements
+- fix `DatePicker` style
+
 ### v0.2.41 [![14.03.2023](https://img.shields.io/date/1678798465)](https://github.com/cantinc/ui/tree/v0.2.41)
 
 - change close button for `Stories`
