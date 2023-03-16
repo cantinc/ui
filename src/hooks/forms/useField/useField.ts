@@ -15,6 +15,7 @@ export function useField <
     name,
     defaultValue = defValue,
     required: req = false,
+    removeValue,
     validation,
     value = new State<V>(defaultValue),
   } = useProps<FormFieldProps<V>>()
@@ -25,6 +26,7 @@ export function useField <
     state: value,
     error: new State(),
     element: ref,
+    removed: false,
     validation: req ? required(validation) : validation ? optional(validation) : validation,
   }
 
@@ -38,7 +40,12 @@ export function useField <
     form.fields.add(field)
 
     onDestroy(() => {
-      if (!form.destroyed) {
+      if (form.destroyed) return
+
+      if (removeValue !== undefined) {
+        field.removed = true
+        field.state.value = removeValue
+      } else {
         form.fields.delete(field)
       }
     })

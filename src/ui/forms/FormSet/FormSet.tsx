@@ -7,14 +7,16 @@ import { actionProp } from '../../../utils'
 import { Set, type SetProps } from '../../interaction'
 
 export type FormSetProps <P> = SetProps<P> & {
-  name: string
+  name?: string | string[]
   defaultValues?: Partial<P>[]
   requiredSet?: boolean
+  removeValue?: string | Blob
 }
 
 export function FormSet <P extends object> ({
   defaultValues = [],
-  value = new State(defaultValues),
+  removeValue,
+  value = new State(defaultValues = defaultValues?.map(props => ({ ...props, removeValue }))),
   onchange,
   requiredSet,
   name,
@@ -26,34 +28,39 @@ export function FormSet <P extends object> ({
 
   onchange = actionProp(value, onchange)
 
-  const oldOnchange = onchange
-  onchange = (value) => {
-    if (value !== defaultValues) {
-      form.touched[name] = true
-    }
-
-    oldOnchange?.(value)
-  }
-
   if (requiredSet) {
-    if (form.method === 'PATCH') {
-      form.validation[name] = [(value, key) => {
-        if (Array.isArray(value) && !value.length) {
-          return {
-            error: ValidationErrors.required,
-            data: {
-              key,
-            },
-          }
+    const setName = form.method === 'PATCH'
+      ? (name: string) => {
+          form.validation[name] = [(value, key) => {
+            if (!value || (Array.isArray(value) && !value.length)) {
+              return {
+                error: ValidationErrors.required,
+                data: {
+                  key,
+                },
+              }
+            }
+          }]
         }
-      }]
-    } else {
-      form.validation[name] = required(form.validation[name])
+      : (name: string) => {
+          form.validation[name] = required(form.validation[name])
+        }
+
+    if (Array.isArray(name)) {
+      name.forEach(setName)
+    } else if (name) {
+      setName(name)
     }
   }
 
   if (formElement && onchange) {
     const resetListener = () => {
+      for (const field of form.fields) {
+        if (field.removed) {
+          form.fields.delete(field)
+        }
+      }
+
       onchange?.(defaultValues)
     }
 

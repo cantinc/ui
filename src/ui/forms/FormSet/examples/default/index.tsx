@@ -1,7 +1,11 @@
+import { Button, Buttons, Form, type FormContext, FormInput, type FormInputProps, FormSet, Icon, notify } from 'src'
 import { example } from 'src/app/Component'
-import { Button, Buttons, Form, FormInput, type FormInputProps, FormSet, Icon } from 'src/ui'
 
 import description from './README.md'
+
+const handleSuccess = (form: FormContext) => {
+  notify(JSON.stringify(form.submitData))
+}
 
 export default example({
   id: 'default',
@@ -17,10 +21,18 @@ import {
   Buttons,
   FormInput,
   FormInputProps,
+  Notifications,
+  Icon,
+  FormContext,
+  notify,
 } from '@cantinc/ui'
 
+const handleSuccess = (form: FormContext) => {
+  notify(JSON.stringify(form.submitData))
+}
+
 innet(
-  <Form vertical>
+  <Form vertical onsuccess={handleSuccess}>
     <FormSet<FormInputProps>
       element={FormInput}
       name='address'
@@ -36,11 +48,12 @@ innet(
         Subscribe
       </Button>
     </Buttons>
+    <Notifications />
   </Form>,
   dom,
 )`,
   example: (
-    <Form vertical>
+    <Form vertical onsuccess={handleSuccess}>
       <FormSet<FormInputProps>
         element={FormInput}
         name='address'

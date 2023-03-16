@@ -84,7 +84,7 @@ export function Form ({
 
     for (const field of form.fields) {
       const { value } = field.state
-      const key = field.name
+      const key = field.name.substring(0, field.name.indexOf('['))
 
       if (field.validation) {
         for (const validator of field.validation) {

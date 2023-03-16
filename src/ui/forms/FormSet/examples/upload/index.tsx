@@ -33,7 +33,6 @@ innet(
     <FormSet<FormUploadProps>
       element={FormUpload}
       required
-      requiredSet
       name='files'
       label='File'>
       <Icon icon='plus' />
@@ -55,7 +54,6 @@ innet(
       <FormSet<FormUploadProps>
         element={FormUpload}
         required
-        requiredSet
         name='files'
         label='File'>
         <Icon icon='plus' />
