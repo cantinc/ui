@@ -55,12 +55,6 @@ export function FormSet <P extends object> ({
 
   if (formElement && onchange) {
     const resetListener = () => {
-      for (const field of form.fields) {
-        if (field.removed) {
-          form.fields.delete(field)
-        }
-      }
-
       onchange?.(defaultValues)
     }
 

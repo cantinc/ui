@@ -145,7 +145,14 @@ export function Form ({
     e.preventDefault()
     onreset?.(e)
 
-    for (const { state, defaultValue, error } of form.fields) {
+    for (const field of form.fields) {
+      if (field.removed) {
+        form.fields.delete(field)
+        continue
+      }
+
+      const { state, defaultValue, error } = field
+
       state.value = defaultValue
       error.value = ''
     }
