@@ -61,7 +61,7 @@ function Form(_a = {}) {
         };
         for (const field of form.fields) {
             const { value } = field.state;
-            const key = field.name;
+            const key = field.name.substring(0, field.name.indexOf('['));
             if (field.validation) {
                 for (const validator of field.validation) {
                     const error = validator(value, key, form);
@@ -114,7 +114,12 @@ function Form(_a = {}) {
     const handleReset = (e) => {
         e.preventDefault();
         onreset === null || onreset === void 0 ? void 0 : onreset(e);
-        for (const { state, defaultValue, error } of form.fields) {
+        for (const field of form.fields) {
+            if (field.removed) {
+                form.fields.delete(field);
+                continue;
+            }
+            const { state, defaultValue, error } = field;
             state.value = defaultValue;
             error.value = '';
         }

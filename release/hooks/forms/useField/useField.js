@@ -11,13 +11,14 @@ var useForm = require('../useForm/useForm.js');
 
 function useField(defValue, ref = new dom.Ref()) {
     const form = useForm.useForm();
-    const { name, defaultValue = defValue, required: req = false, validation, value = new watchState.State(defaultValue), } = jsx.useProps();
+    const { name, defaultValue = defValue, required: req = false, removeValue, validation, value = new watchState.State(defaultValue), } = jsx.useProps();
     const field = {
         name,
         defaultValue,
         state: value,
         error: new watchState.State(),
         element: ref,
+        removed: false,
         validation: req ? utils.required(validation) : validation ? utils.optional(validation) : validation,
     };
     new watchState.Watch(() => {
@@ -28,7 +29,13 @@ function useField(defValue, ref = new dom.Ref()) {
     if (form) {
         form.fields.add(field);
         watchState.onDestroy(() => {
-            if (!form.destroyed) {
+            if (form.destroyed)
+                return;
+            if (removeValue !== undefined) {
+                field.removed = true;
+                field.state.value = removeValue;
+            }
+            else {
                 form.fields.delete(field);
             }
         });

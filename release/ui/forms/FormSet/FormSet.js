@@ -14,33 +14,33 @@ var actionProp = require('../../../utils/actionProp/actionProp.js');
 var Set = require('../../interaction/Set/Set.js');
 
 function FormSet(_a) {
-    var { defaultValues = [], value = new watchState.State(defaultValues), onchange, requiredSet, name } = _a, props = tslib.__rest(_a, ["defaultValues", "value", "onchange", "requiredSet", "name"]);
+    var { defaultValues = [], removeValue, value = new watchState.State(defaultValues = defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues.map(props => (Object.assign(Object.assign({}, props), { removeValue })))), onchange, requiredSet, name } = _a, props = tslib.__rest(_a, ["defaultValues", "removeValue", "value", "onchange", "requiredSet", "name"]);
     const children = jsx.useChildren();
     const form = useForm.useForm();
     const formElement = form.ref.value;
     onchange = actionProp.actionProp(value, onchange);
-    const oldOnchange = onchange;
-    onchange = (value) => {
-        if (value !== defaultValues) {
-            form.touched[name] = true;
-        }
-        oldOnchange === null || oldOnchange === void 0 ? void 0 : oldOnchange(value);
-    };
     if (requiredSet) {
-        if (form.method === 'PATCH') {
-            form.validation[name] = [(value, key) => {
-                    if (Array.isArray(value) && !value.length) {
-                        return {
-                            error: utils.ValidationErrors.required,
-                            data: {
-                                key,
-                            },
-                        };
-                    }
-                }];
+        const setName = form.method === 'PATCH'
+            ? (name) => {
+                form.validation[name] = [(value, key) => {
+                        if (!value || (Array.isArray(value) && !value.length)) {
+                            return {
+                                error: utils.ValidationErrors.required,
+                                data: {
+                                    key,
+                                },
+                            };
+                        }
+                    }];
+            }
+            : (name) => {
+                form.validation[name] = utils.required(form.validation[name]);
+            };
+        if (Array.isArray(name)) {
+            name.forEach(setName);
         }
-        else {
-            form.validation[name] = utils.required(form.validation[name]);
+        else if (name) {
+            setName(name);
         }
     }
     if (formElement && onchange) {

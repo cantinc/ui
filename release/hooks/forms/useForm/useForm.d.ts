@@ -9,6 +9,7 @@ export interface FormField<V, E extends HTMLElement> {
     error: State<string>;
     element: Ref<E>;
     defaultValue?: V;
+    removed?: boolean;
     validation?: Validator<any, any>[];
 }
 export interface FormContext extends FormProps {

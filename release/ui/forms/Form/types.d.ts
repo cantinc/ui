@@ -24,6 +24,7 @@ export interface FormFieldProps<V = string> {
     value?: State<V>;
     required?: boolean;
     disabled?: boolean;
+    removeValue?: V;
     validation?: Validator<any, any>[];
     onchange?: (value: V) => void;
 }

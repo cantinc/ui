@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.44 [![16.03.2023](https://img.shields.io/date/1678980439)](https://github.com/cantinc/ui/tree/v0.2.44)
+
+- refactor forms
+
 ### v0.2.43 [![15.03.2023](https://img.shields.io/date/1678897990)](https://github.com/cantinc/ui/tree/v0.2.43)
 
 - change `Stories` styles

@@ -10,33 +10,33 @@ import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 import { Set } from '../../interaction/Set/Set.es6.js';
 
 function FormSet(_a) {
-    var { defaultValues = [], value = new State(defaultValues), onchange, requiredSet, name } = _a, props = __rest(_a, ["defaultValues", "value", "onchange", "requiredSet", "name"]);
+    var { defaultValues = [], removeValue, value = new State(defaultValues = defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues.map(props => (Object.assign(Object.assign({}, props), { removeValue })))), onchange, requiredSet, name } = _a, props = __rest(_a, ["defaultValues", "removeValue", "value", "onchange", "requiredSet", "name"]);
     const children = useChildren();
     const form = useForm();
     const formElement = form.ref.value;
     onchange = actionProp(value, onchange);
-    const oldOnchange = onchange;
-    onchange = (value) => {
-        if (value !== defaultValues) {
-            form.touched[name] = true;
-        }
-        oldOnchange === null || oldOnchange === void 0 ? void 0 : oldOnchange(value);
-    };
     if (requiredSet) {
-        if (form.method === 'PATCH') {
-            form.validation[name] = [(value, key) => {
-                    if (Array.isArray(value) && !value.length) {
-                        return {
-                            error: ValidationErrors.required,
-                            data: {
-                                key,
-                            },
-                        };
-                    }
-                }];
+        const setName = form.method === 'PATCH'
+            ? (name) => {
+                form.validation[name] = [(value, key) => {
+                        if (!value || (Array.isArray(value) && !value.length)) {
+                            return {
+                                error: ValidationErrors.required,
+                                data: {
+                                    key,
+                                },
+                            };
+                        }
+                    }];
+            }
+            : (name) => {
+                form.validation[name] = required(form.validation[name]);
+            };
+        if (Array.isArray(name)) {
+            name.forEach(setName);
         }
-        else {
-            form.validation[name] = required(form.validation[name]);
+        else if (name) {
+            setName(name);
         }
     }
     if (formElement && onchange) {
