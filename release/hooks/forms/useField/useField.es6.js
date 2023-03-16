@@ -29,6 +29,7 @@ function useField(defValue, ref = new Ref()) {
                 return;
             if (removeValue !== undefined) {
                 field.removed = true;
+                form.touched[field.name] = true;
                 field.state.value = removeValue;
             }
             else {

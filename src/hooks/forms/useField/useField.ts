@@ -44,6 +44,7 @@ export function useField <
 
       if (removeValue !== undefined) {
         field.removed = true
+        form.touched[field.name] = true
         field.state.value = removeValue
       } else {
         form.fields.delete(field)
