@@ -60,9 +60,9 @@ function Form(_a = {}) {
             setValidationError(error, field);
         };
         for (const field of form.fields) {
-            const { value } = field.state;
-            const key = field.name.substring(0, field.name.indexOf('['));
-            if (field.validation) {
+            if (field.validation && !field.removed) {
+                const { value } = field.state;
+                const key = field.name.substring(0, field.name.indexOf('['));
                 for (const validator of field.validation) {
                     const error = validator(value, key, form);
                     if (error) {
