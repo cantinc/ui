@@ -80,7 +80,7 @@ function Upload(_a = {}) {
         onchange === null || onchange === void 0 ? void 0 : onchange([]);
     };
     const hintContent = inject(hint, hint => hint && ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}));
-    return ({type:Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': inject(height, height => height ? `${height}px` : '') }),class:() => classes([
+    return ({type:Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': inject(width, width => !width ? '' : typeof width === 'string' ? width : `${width}px`), '--ui-upload-height': inject(height, height => height ? `${height}px` : '') }),class:() => classes([
             styles.root,
             over.value && styles.over,
             use(error) && styles.error,

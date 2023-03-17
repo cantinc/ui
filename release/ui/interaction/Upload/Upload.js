@@ -88,7 +88,7 @@ function Upload(_a = {}) {
         onchange === null || onchange === void 0 ? void 0 : onchange([]);
     };
     const hintContent = dom.inject(hint, hint => hint && ({type:'span',props:{...props === null || props === void 0 ? void 0 : props.hint,class:() => styles.hint},children:[hint]}));
-    return ({type:Flex.Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': dom.inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-upload-height': dom.inject(height, height => height ? `${height}px` : '') }),class:() => classes__default["default"]([
+    return ({type:Flex.Flex,props:{element:'label',align:'center',justify:'center',padding:12,gap:12,...rest,ondragleave:handleDragLeave,ondragend:handleDragLeave,ondragover:handleDragOver,ondrop:handleDrop,style:Object.assign(Object.assign({}, style), { '--ui-upload-radius': dom.inject(radius, radius => radius ? `${radius}px` : ''), '--ui-upload-width': dom.inject(width, width => !width ? '' : typeof width === 'string' ? width : `${width}px`), '--ui-upload-height': dom.inject(height, height => height ? `${height}px` : '') }),class:() => classes__default["default"]([
             styles.root,
             over.value && styles.over,
             dom.use(error) && styles.error,

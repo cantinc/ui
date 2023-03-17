@@ -22,7 +22,7 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
   accept?: StateProp<string>
   name?: StateProp<string>
   disabled?: StateProp<boolean>
-  width?: StateProp<number>
+  width?: StateProp<number | string>
   height?: StateProp<number>
   radius?: StateProp<number>
   label?: StateProp<string>
@@ -153,7 +153,7 @@ export function Upload ({
       style={{
         ...style,
         '--ui-upload-radius': inject(radius, radius => radius ? `${radius}px` : ''),
-        '--ui-upload-width': inject(width, width => width ? `${width}px` : ''),
+        '--ui-upload-width': inject(width, width => !width ? '' : typeof width === 'string' ? width : `${width}px`),
         '--ui-upload-height': inject(height, height => height ? `${height}px` : ''),
       }}
       class={() => classes([

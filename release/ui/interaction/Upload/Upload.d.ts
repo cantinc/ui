@@ -9,7 +9,7 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
     accept?: StateProp<string>;
     name?: StateProp<string>;
     disabled?: StateProp<boolean>;
-    width?: StateProp<number>;
+    width?: StateProp<number | string>;
     height?: StateProp<number>;
     radius?: StateProp<number>;
     label?: StateProp<string>;

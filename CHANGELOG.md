@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.48 [![17.03.2023](https://img.shields.io/date/1679056482)](https://github.com/cantinc/ui/tree/v0.2.48)
+
+- improve `Upload`
+
 ### v0.2.47 [![17.03.2023](https://img.shields.io/date/1679053448)](https://github.com/cantinc/ui/tree/v0.2.47)
 
 - improve `setPropsHandler`
