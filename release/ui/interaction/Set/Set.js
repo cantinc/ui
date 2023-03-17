@@ -39,7 +39,7 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...props,...watchState.unwatch(() => handleItemProps(item, Element))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:(e) => {
+    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...props,...watchState.unwatch(() => handleItemProps(item, Element, props))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 handleRemove(item.index);

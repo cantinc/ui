@@ -11,7 +11,7 @@ const useStyle = style(styles)
 
 const key = Symbol('SetKey') as unknown as string
 
-export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any) => P
+export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any, props: P) => P
 
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<Partial<P>[]>
@@ -59,7 +59,7 @@ export function Set<P extends object> ({
     <>
       <for of={customValues} key={key}>
         {(item: LoopItem<P>) => (
-          <Element {...props} {...unwatch(() => handleItemProps(item, Element))}>
+          <Element {...props} {...unwatch(() => handleItemProps(item, Element, props as P))}>
             <slot name='after'>
               <Icon
                 class={styles.remove}

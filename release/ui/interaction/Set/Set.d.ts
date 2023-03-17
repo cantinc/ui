@@ -1,6 +1,6 @@
 import { type LoopItem, type StateProp } from '@innet/dom';
 import { Context } from '@innet/jsx';
-export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any) => P;
+export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any, props: P) => P;
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
     value?: StateProp<Partial<P>[]>;
     onchange?: (value: Partial<P>[]) => void;

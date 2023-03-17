@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.47 [![17.03.2023](https://img.shields.io/date/1679053448)](https://github.com/cantinc/ui/tree/v0.2.47)
+
+- improve `setPropsHandler`
+
 ### v0.2.46 [![16.03.2023](https://img.shields.io/date/1678982076)](https://github.com/cantinc/ui/tree/v0.2.46)
 
 - fix forms submit data generation
