@@ -1,12 +1,14 @@
 .root {
   --ui-toggle-bar-index: -1;
   --ui-toggle-bar-inset: 0px;
+  --ui-toggle-bar-width: 100%;
   --ui-toggle-bar-inset-2: calc(var(--ui-toggle-bar-inset) * 2);
 
   position: relative;
   overflow: auto hidden;
   max-width: 100%;
   min-height: 36px;
+  width: var(--ui-toggle-bar-width);
   border: 2px solid var(--color-primary-50);
   border-radius: 500px;
 }

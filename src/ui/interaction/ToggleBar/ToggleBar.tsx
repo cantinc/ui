@@ -27,6 +27,7 @@ export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItem
 export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, {
   values: StateProp<ToggleBarValue[]>
   value?: StateProp<string>
+  width?: StateProp<string | number>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
 }>
@@ -65,6 +66,7 @@ export function ToggleBar ({
   onchange,
   renderValue = defaultToggleBarRender,
   style,
+  width,
   ...props
 }: ToggleBarProps) {
   const styles = useStyle()
@@ -117,6 +119,7 @@ export function ToggleBar ({
       onmouseleave={handleBlur}
       style={{
         ...style,
+        '--ui-toggle-bar-width': inject(width, width => typeof width === 'string' ? width : width ? `${width}px` : ''),
         '--ui-toggle-bar-count': inject(values, values => String(values.length)),
         '--ui-toggle-bar-focus': inject(focusIndex, String),
         '--ui-toggle-bar-index': inject(index, String),
