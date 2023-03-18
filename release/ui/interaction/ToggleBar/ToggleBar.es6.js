@@ -18,7 +18,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
         },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
-    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style"]);
+    var { values, value = new State(''), onchange, renderValue = defaultToggleBarRender, style, width } = _a, props = __rest(_a, ["values", "value", "onchange", "renderValue", "style", "width"]);
     const styles = useStyle();
     if (value instanceof State) {
         const oldOnChange = onchange;
@@ -53,7 +53,7 @@ function ToggleBar(_a) {
             focusIndex.value = index.value;
         });
     };
-    return ({type:Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-count': inject(values, values => String(values.length)), '--ui-toggle-bar-focus': inject(focusIndex, String), '--ui-toggle-bar-index': inject(index, String) }),class:() => classes([
+    return ({type:Flex,props:{element:'nav',align:'stretch',...props,onmouseleave:handleBlur,style:Object.assign(Object.assign({}, style), { '--ui-toggle-bar-width': inject(width, width => typeof width === 'string' ? width : width ? `${width}px` : ''), '--ui-toggle-bar-count': inject(values, values => String(values.length)), '--ui-toggle-bar-focus': inject(focusIndex, String), '--ui-toggle-bar-index': inject(index, String) }),class:() => classes([
             styles.root,
             styles[side.value],
             styles[`${focusSide.value}Focus`],

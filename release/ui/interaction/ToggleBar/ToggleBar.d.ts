@@ -18,8 +18,9 @@ export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItem
 export type ToggleBarProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
     values: StateProp<ToggleBarValue[]>;
     value?: StateProp<string>;
+    width?: StateProp<string | number>;
     renderValue?: ToggleBarRenderValue;
     onchange?: ToggleBarOnChange;
 }>;
 export declare function defaultToggleBarRender({ value, label, icon }: ToggleBarValue, { className, onchange, onfocus, onblur, }: ToggleBarItemOptions): any;
-export declare function ToggleBar({ values, value, onchange, renderValue, style, ...props }: ToggleBarProps): any;
+export declare function ToggleBar({ values, value, onchange, renderValue, style, width, ...props }: ToggleBarProps): any;

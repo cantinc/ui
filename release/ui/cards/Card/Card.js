@@ -47,7 +47,7 @@ function Card(_a = {}) {
             (hidden === null || hidden === void 0 ? void 0 : hidden.value) && styles.hide,
         ]);
     }
-    return ({type:Flex.Flex,props:{onclick:onclick,padding:18,loadingOffset:border,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-radius': dom.inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius || ''), '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[children]});
+    return ({type:Flex.Flex,props:{onclick:onclick,padding:24,loadingOffset:border,...props,style:Object.assign(Object.assign({}, style), { '--ui-card-radius': dom.inject(radius, radius => typeof radius === 'number' ? `${radius}px` : radius || ''), '--ui-card-width': dom.inject(width, width => width ? `${width}px` : ''), '--ui-card-height': dom.inject(height, height => height ? `${height}px` : '') }),class:className},children:[children]});
 }
 
 exports.Card = Card;

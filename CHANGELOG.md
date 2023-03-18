@@ -2,6 +2,13 @@
 
 ## v0.2
 
+### v0.2.49 [![18.03.2023](https://img.shields.io/date/1679146001)](https://github.com/cantinc/ui/tree/v0.2.49)
+
+- fix `Upload` focus bug
+- improve styles
+- change default `Card` padding
+- add width for `ToggleBar`
+
 ### v0.2.48 [![17.03.2023](https://img.shields.io/date/1679056482)](https://github.com/cantinc/ui/tree/v0.2.48)
 
 - improve `Upload`
