@@ -1,11 +1,11 @@
+import { Watch } from 'watch-state'
+
+import { scrollPosition } from '../../store'
+
 export function bindScrollPosition () {
-  const listener = () => {
-    document.body.style.setProperty('--scroll', `${window.scrollY}px`)
-  }
+  const watcher = new Watch(() => {
+    document.body.style.setProperty('--scroll', `${scrollPosition.value}px`)
+  })
 
-  window.addEventListener('scroll', listener, { capture: false, passive: true })
-
-  listener()
-
-  return () => window.removeEventListener('scroll', listener)
+  return () => watcher.destroy()
 }
