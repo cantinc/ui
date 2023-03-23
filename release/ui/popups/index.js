@@ -10,4 +10,5 @@ require('./Drawers/index.js');
 require('./Drawer/index.js');
 require('./Popout/index.js');
 require('./DatePicker/index.js');
+require('./Alert/index.js');
 

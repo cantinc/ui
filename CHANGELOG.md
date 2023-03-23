@@ -2,6 +2,12 @@
 
 ## v0.2
 
+### v0.2.50 [![23.03.2023](https://img.shields.io/date/1679576805)](https://github.com/cantinc/ui/tree/v0.2.50)
+
+- fix `ToggleBar` styles
+- add `scrollPosition`
+- add `Alert`
+
 ### v0.2.49 [![18.03.2023](https://img.shields.io/date/1679146001)](https://github.com/cantinc/ui/tree/v0.2.49)
 
 - fix `Upload` focus bug

@@ -21,12 +21,7 @@ function Button(_a = {}) {
     const styles = useStyle();
     const className = () => classes__default["default"]([
         styles.root,
-        {
-            [styles.primary]: view === 'primary',
-            [styles.secondary]: view === 'secondary',
-            [styles.negative]: view === 'negative',
-            [styles.positive]: view === 'positive',
-        },
+        styles[view],
     ]);
     return ({type:Flex.Flex,props:{justify:'center',inline:true,padding:24,element:'button',loadingOffset:1,disabled:loading,...props,loading:loading,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-button-width': dom.inject(width, width => width !== undefined ? `${width}px` : '') }),class:className},children:[children]});
 }

@@ -1,10 +1,12 @@
+import { Watch } from 'watch-state';
+import '../../store/index.es6.js';
+import { scrollPosition } from '../../store/window/window.es6.js';
+
 function bindScrollPosition() {
-    const listener = () => {
-        document.body.style.setProperty('--scroll', `${window.scrollY}px`);
-    };
-    window.addEventListener('scroll', listener, { capture: false, passive: true });
-    listener();
-    return () => window.removeEventListener('scroll', listener);
+    const watcher = new Watch(() => {
+        document.body.style.setProperty('--scroll', `${scrollPosition.value}px`);
+    });
+    return () => watcher.destroy();
 }
 
 export { bindScrollPosition };
