@@ -154,6 +154,12 @@ export const navigation: PagesMenu = [
         page: () => import('../ui/popups/Notifications/Notifications.ui'),
       },
       {
+        slot: 'alert',
+        children: '<Alert />',
+        onclick: hideLayoutMenu,
+        page: () => import('../ui/popups/Alert/Alert.ui'),
+      },
+      {
         slot: 'modals',
         children: '<Modals />',
         onclick: hideLayoutMenu,

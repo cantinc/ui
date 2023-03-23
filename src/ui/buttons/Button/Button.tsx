@@ -7,7 +7,7 @@ import styles from './Button.scss'
 
 const useStyle = style(styles)
 
-export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive'
+export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive' | 'ghost'
 
 export type ButtonProps <E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
   view?: ButtonViews
@@ -27,12 +27,7 @@ export function Button<E extends HTMLElement = HTMLButtonElement> ({
 
   const className = () => classes([
     styles.root,
-    {
-      [styles.primary]: view === 'primary',
-      [styles.secondary]: view === 'secondary',
-      [styles.negative]: view === 'negative',
-      [styles.positive]: view === 'positive',
-    },
+    styles[view],
   ])
 
   return (
