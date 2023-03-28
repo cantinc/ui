@@ -59,17 +59,14 @@
   cursor: pointer;
   transition: all .3s;
   user-select: none;
-  color: inherit;
 
   &:hover {
     transform: translateZ(10px);
     box-shadow: 0 0 30px -10px rgba(109, 109, 109, 0.15);
-    color: inherit;
   }
 
   &:active {
     transition: all .2s;
     transform: translateZ(20px);
-    color: inherit;
   }
 }
