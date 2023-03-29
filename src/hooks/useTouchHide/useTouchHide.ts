@@ -56,6 +56,9 @@ export function useTouchHide ({
         return
       }
 
+      e.preventDefault()
+      e.stopImmediatePropagation()
+
       touchHide.value = vertical ? touchY : touchX
     },
     handleTouchEnd () {
