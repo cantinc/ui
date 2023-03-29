@@ -1,1 +1,0 @@
-import{M as t}from"./docs-c7a99efa.js";import{T as n}from"./Typography-21d0fa4f.js";function e(){return{type:n,children:[{type:t,props:{text:"# Interaction\n\nHere you can find components related to interaction.\n\n"}}]}}export{e as default};

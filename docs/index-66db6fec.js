@@ -1,1 +1,0 @@
-import{M as o}from"./docs-c7a99efa.js";import{T as p}from"./Typography-21d0fa4f.js";function e(){return{type:p,children:[{type:o,props:{text:"# PopupsPage\n\nPopups are windows that suddenly pop up in the foreground of a visual interface.\n\n"}}]}}export{e as default};
