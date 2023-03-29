@@ -5,7 +5,7 @@ import { Flex, type FlexProps } from '../../layout'
 import { Title, type TitleProps } from '../Title'
 import styles from './Section.scss'
 
-const useStyle = style(styles, { title: '' })
+const useStyle = style(styles, { root: '' })
 
 export interface SectionStyles {
   root: any
@@ -33,6 +33,7 @@ export function Section ({
       element='section'
       align='stretch'
       vertical
+      gap={24}
       {...props}
       class={() => styles.root}>
       <Title

@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.53 [![29.03.2023](https://img.shields.io/date/1680108209)](https://github.com/cantinc/ui/tree/v0.2.53)
+
+- fix `Section` styles
+
 ### v0.2.52 [![29.03.2023](https://img.shields.io/date/1680098259)](https://github.com/cantinc/ui/tree/v0.2.52)
 
 - add `color` for `BurgerButton`
