@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.52 [![29.03.2023](https://img.shields.io/date/1680098259)](https://github.com/cantinc/ui/tree/v0.2.52)
+
+- add `color` for `BurgerButton`
+
 ### v0.2.51 [![29.03.2023](https://img.shields.io/date/1680087059)](https://github.com/cantinc/ui/tree/v0.2.51)
 
 - fix `useTouchHide` bug
