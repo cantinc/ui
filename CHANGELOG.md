@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.51 [![29.03.2023](https://img.shields.io/date/1680087059)](https://github.com/cantinc/ui/tree/v0.2.51)
+
+- fix `useTouchHide` bug
+
 ### v0.2.50 [![23.03.2023](https://img.shields.io/date/1679576805)](https://github.com/cantinc/ui/tree/v0.2.50)
 
 - fix `ToggleBar` styles

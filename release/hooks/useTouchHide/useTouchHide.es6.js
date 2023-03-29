@@ -33,6 +33,8 @@ function useTouchHide({ hide, element, placement = 'bottom', length = 100, touch
                 touchHide.value = 0;
                 return;
             }
+            e.preventDefault();
+            e.stopImmediatePropagation();
             touchHide.value = vertical ? touchY : touchX;
         },
         handleTouchEnd() {
