@@ -42,7 +42,12 @@ export function Check ({
   }
 
   const handleChange = (e: any) => {
-    onchange?.(e.target.checked)
+    e.preventDefault()
+    e.stopPropagation()
+
+    setTimeout(() => {
+      onchange?.(!use(checked))
+    })
   }
 
   return (
@@ -57,7 +62,7 @@ export function Check ({
         class={() => styles.input}
         _checked={checked}
         _disabled={disabled}
-        onchange={handleChange}
+        onclick={handleChange}
       />
       <span class={() => styles.icon} />
       <show state={hasLabel}>

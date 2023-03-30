@@ -26,13 +26,17 @@ function Check(_a) {
         });
     }
     const handleChange = (e) => {
-        onchange === null || onchange === void 0 ? void 0 : onchange(e.target.checked);
+        e.preventDefault();
+        e.stopPropagation();
+        setTimeout(() => {
+            onchange === null || onchange === void 0 ? void 0 : onchange(!use(checked));
+        });
     };
     return ({type:'label',props:{class:() => classes([
             styles.root,
             use(checked) && styles.checked,
             use(disabled) && styles.disabled,
-        ])},children:[{type:'input',props:{...props,class:() => styles.input,_checked:checked,_disabled:disabled,onchange:handleChange}},{type:'span',props:{class:() => styles.icon}},{type:'show',props:{state:hasLabel},children:[label]},children]});
+        ])},children:[{type:'input',props:{...props,class:() => styles.input,_checked:checked,_disabled:disabled,onclick:handleChange}},{type:'span',props:{class:() => styles.icon}},{type:'show',props:{state:hasLabel},children:[label]},children]});
 }
 
 export { Check };

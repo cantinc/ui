@@ -2,6 +2,11 @@
 
 ## v0.2
 
+### v0.2.54 [![30.03.2023](https://img.shields.io/date/1680176924)](https://github.com/cantinc/ui/tree/v0.2.54)
+
+- fix `Toggle` styles
+- fix `Check` change bug
+
 ### v0.2.53 [![29.03.2023](https://img.shields.io/date/1680108209)](https://github.com/cantinc/ui/tree/v0.2.53)
 
 - fix `Section` styles

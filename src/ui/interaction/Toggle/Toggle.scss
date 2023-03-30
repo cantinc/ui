@@ -76,19 +76,19 @@
       background: var(--color-primary-90);
     }
 
-    .root:active &,
-    .input:active ~ & {
-      transition: right .3s, left .3s .1s, background .3s;
+    .root:not(.checked):active &,
+    .root:not(.checked) .input:active ~ & {
+      transition: right .3s .1s, left .3s, background .3s;
       right: 10px;
     }
-    .input:checked ~ & {
+    .checked > & {
       transition: right .3s, left .3s .1s, background .3s;
       right: 3px;
       left: 17px;
     }
-    .root:active .input:checked ~ &,
-    .input:checked:active ~ & {
-      transition: right .3s .1s, left .3s, background .3s;
+    .root:active.checked > &,
+    .checked > .input:active ~ & {
+      transition: right .3s, left .3s .1s, background .3s;
       left: 10px;
     }
   }
