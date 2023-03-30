@@ -2,6 +2,10 @@
 
 ## v0.2
 
+### v0.2.55 [![30.03.2023](https://img.shields.io/date/1680183628)](https://github.com/cantinc/ui/tree/v0.2.55)
+
+- fix `Popout` a bug in Safari
+
 ### v0.2.54 [![30.03.2023](https://img.shields.io/date/1680176924)](https://github.com/cantinc/ui/tree/v0.2.54)
 
 - fix `Toggle` styles
