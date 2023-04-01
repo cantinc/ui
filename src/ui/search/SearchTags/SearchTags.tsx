@@ -13,7 +13,6 @@ export function SearchTags ({
   ...props
 }: SearchTagsProps) {
   const handleChange = (val: string | string[]) => {
-    console.log(val)
     const search = stringifySearch({
       ...parsedSearch.value,
       [key]: Array.isArray(val) && val.length === 1 ? val[0] : val || undefined,
