@@ -132,7 +132,7 @@ export function Stories ({
         ;(onclick as any)?.(e)
       },
       style: {
-        '--ui-stories-story-image': () => Math.abs(story.value - index) < 3 ? `url("${slides[currentProgress.value]}")` : '',
+        'background-image': () => Math.abs(story.value - index) < 3 ? `url("${slides[currentProgress.value]}")` : '',
       },
       children: (
         <>
