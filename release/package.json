@@ -1,6 +1,6 @@
 {
   "name": "@cantinc/ui",
-  "version": "0.2.55",
+  "version": "0.2.56",
   "description": "UI components of innetjs",
   "homepage": "https://cantinc.github.io/ui",
   "author": "Mikhail Lysikov <d8corp@mail.ru>",
@@ -11,7 +11,7 @@
   "jsnext:main": "index.es6.js",
   "types": "index.d.ts",
   "scripts": {
-    "start": "innetjs start -i docs -e",
+    "start": "innetjs start -i docs",
     "build": "npm run build:ui && npm run build:docs",
     "build:docs": "innetjs build -i docs",
     "build:ui": "innetjs release",
@@ -37,17 +37,14 @@
   },
   "dependencies": {
     "@cantinc/utils": "^1.4.2",
-    "@innet/dom": "^0.13.5",
+    "@innet/dom": "^0.13.6",
     "@innet/jsx": "^1.2.1",
-    "@textlint/ast-node-types": "^13.1.1",
-    "@textlint/markdown-to-ast": "^13.1.1",
+    "@textlint/ast-node-types": "^13.3.2",
+    "@textlint/markdown-to-ast": "^13.3.2",
     "html-classes": "^2.0.2",
     "innet": "^1.0.1",
-    "inputmask": "^5.0.7",
+    "inputmask": "^5.0.8",
     "prismjs": "^1.29.0",
     "watch-state": "^3.4.5"
-  },
-  "peerDependencies": {
-    "rollup-plugin-styles": "^4.0.0"
   }
 }

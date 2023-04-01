@@ -102,7 +102,7 @@ function Stories(_a) {
                 ;
                 onclick === null || onclick === void 0 ? void 0 : onclick(e);
             }, style: {
-                '--ui-stories-story-image': () => Math.abs(story.value - index) < 3 ? `url("${slides[currentProgress.value]}")` : '',
+                'background-image': () => Math.abs(story.value - index) < 3 ? `url("${slides[currentProgress.value]}")` : '',
             }, children: ([{type:Dots.Dots,props:{size:6,progress:true,value:currentProgress,class:{
                     root: () => styles.dots,
                     dot: () => styles.dot,
