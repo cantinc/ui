@@ -39,8 +39,10 @@
   color: var(--color-50);
   height: var(--ui-calendar-cell-height);
 
-  &:hover {
-    background: var(--color-surface-purple);
+  @media (pointer: fine) {
+    &:hover {
+      background: var(--color-surface-purple);
+    }
   }
 }
 
@@ -51,8 +53,10 @@
 .active {
   background: var(--color-surface-purple);
 
-  &:hover {
-    background: var(--color-primary-100);
+  @media (pointer: fine) {
+    &:hover {
+      background: var(--color-primary-100);
+    }
   }
 }
 
@@ -66,9 +70,11 @@
   background: var(--color-primary-70);
   color: var(--color-100);
 
-  &:hover {
-    background: var(--color-primary-50);
-    color: var(--color-100);
+  @media (pointer: fine) {
+    &:hover {
+      background: var(--color-primary-50);
+      color: var(--color-100);
+    }
   }
 }
 

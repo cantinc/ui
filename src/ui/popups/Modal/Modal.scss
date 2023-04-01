@@ -109,18 +109,20 @@
   transition: all 0.3s;
   align-items: center;
 
-  &[data-button="delete"],
-  &[data-button="remove"],
-  &[data-button="close"], {
+  @media (pointer: fine) {
+    &[data-button="delete"],
+    &[data-button="remove"],
+    &[data-button="close"], {
+      &:hover {
+        background: none;
+        color: var(--color-negative-50);
+      }
+    }
+
     &:hover {
       background: none;
-      color: var(--color-negative-50);
+      color: var(--color-link-dark);
     }
-  }
-
-  &:hover {
-    background: none;
-    color: var(--color-link-dark);
   }
 
   :global(.tab) &:focus {

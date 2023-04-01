@@ -29,9 +29,12 @@
   margin: 2px 0;
   gap: 4px;
 
-  &:hover {
-    color: var(--color-primary-50);
+  @media (pointer: fine) {
+    &:hover {
+      color: var(--color-primary-50);
+    }
   }
+
   &:focus {
     outline: none;
   }
@@ -49,9 +52,7 @@
 }
 
 .active {
-  color: var(--color-100);
-
-  &:hover {
+  &,&:hover {
     color: var(--color-100);
   }
 }

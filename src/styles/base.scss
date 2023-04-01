@@ -25,9 +25,12 @@ a {
   text-decoration: none;
   cursor: pointer;
 
-  &:hover {
-    color: var(--color-secondary-70);
+  @media (pointer: fine) {
+    &:hover {
+      color: var(--color-secondary-70);
+    }
   }
+
   &:focus {
     outline: none;
 
@@ -35,6 +38,7 @@ a {
       color: var(--color-warning-50);
     }
   }
+
   &:active {
     color: var(--color-secondary-40);
   }

@@ -26,8 +26,10 @@
   border: none;
   background: none;
 
-  &:hover {
-    color: var(--color-secondary-70);
+  @media (pointer: fine) {
+    &:hover {
+      color: var(--color-secondary-70);
+    }
   }
 
   &:focus {

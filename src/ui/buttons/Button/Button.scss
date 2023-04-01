@@ -22,10 +22,12 @@
 }
 
 .primary {
-  &:hover {
-    background-color: var(--color-primary-60);
-    border-color: var(--color-primary-60);
-    color: var(--color-100);
+  @media (pointer: fine) {
+    &:hover {
+      background-color: var(--color-primary-60);
+      border-color: var(--color-primary-60);
+      color: var(--color-100);
+    }
   }
 
   &:active {
@@ -39,10 +41,12 @@
   border-color: var(--color-primary-100);
   color: var(--color-primary-70);
 
-  &:hover {
-    background-color: var(--color-primary-100);
-    border-color: var(--color-primary-100);
-    color: var(--color-primary-50);
+  @media (pointer: fine) {
+    &:hover {
+      background-color: var(--color-primary-100);
+      border-color: var(--color-primary-100);
+      color: var(--color-primary-50);
+    }
   }
 
   &:active {
@@ -57,10 +61,12 @@
   border-color: var(--color-negative-50);
   color: var(--color-negative-50);
 
-  &:hover {
-    background-color: var(--color-negative-50);
-    border-color: var(--color-negative-50);
-    color: var(--color-100);
+  @media (pointer: fine) {
+    &:hover {
+      background-color: var(--color-negative-50);
+      border-color: var(--color-negative-50);
+      color: var(--color-100);
+    }
   }
 
   &:active {
@@ -74,10 +80,12 @@
   background-color: var(--color-positive-50);
   border-color: var(--color-positive-50);
 
-  &:hover {
-    background-color: var(--color-positive-60);
-    border-color: var(--color-positive-60);
-    color: var(--color-100);
+  @media (pointer: fine) {
+    &:hover {
+      background-color: var(--color-positive-60);
+      border-color: var(--color-positive-60);
+      color: var(--color-100);
+    }
   }
 
   &:active {
@@ -90,8 +98,10 @@
   background-color: transparent;
   border-color: var(--color-100);
 
-  &:hover {
-    background-color: #fff1;
+  @media (pointer: fine) {
+    &:hover {
+      background-color: #fff1;
+    }
   }
 
   &:active {

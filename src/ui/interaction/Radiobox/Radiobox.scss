@@ -30,8 +30,10 @@
   transition: all .3s;
   pointer-events: none;
 
-  .radio:not(.checked):hover & {
-    border-color: var(--color-primary-100);
+  @media (pointer: fine) {
+    .radio:not(.checked):hover & {
+      border-color: var(--color-primary-100);
+    }
   }
 
   .input:focus + & {
