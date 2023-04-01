@@ -53,7 +53,7 @@ export function Image<E extends HTMLElement = HTMLElement> ({
 
   return (
     <Flex<E>
-      {...(props as FlexProps<E>)}
+      {...(props as unknown as FlexProps<E>)}
       loading={mixLoading}
       style={{
         ...style,

@@ -44,7 +44,7 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
       ]}>
       <Card
         flex
-        {...props as CardProps<E>}
+        {...props as unknown as CardProps<E>}
         onclick={handleClick}
         class={{
           root: () => styles.front,
@@ -55,7 +55,7 @@ export function FlipCard<E extends HTMLElement = HTMLElement> ({
         {children}
       </Card>
       <Card
-        {...props as CardProps<E>}
+        {...props as unknown as CardProps<E>}
         onclick={handleClick}
         class={() => styles.back}>
         {backside}
