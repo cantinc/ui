@@ -41,7 +41,7 @@ function NavigationItem ({
   const styles = useItemStyles()
 
   return (
-    <show state={access}>
+    <show when={access}>
       <a {...props} class={styles}>{children}</a>
       {menu && (
         <NavigationItems>

@@ -68,7 +68,7 @@ export function Dropdown ({
   const hide = new Ref<State<boolean>>()
 
   return (
-    <show state={show}>
+    <show when={show}>
       <portal parent={document.body}>
         <delay ref={hide} hide={300}>
           <DropdownContent {...props}>

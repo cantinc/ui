@@ -21,7 +21,7 @@ export function App () {
   return (
     <Pages title='@cantinc/ui' prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
       <Layout class={styles.root} gap={[0, 20]}>
-        <show state={isDesktop}>
+        <show when={isDesktop}>
           <Aside padding={24} class={styles.aside} vertical>
             <slot name='menu' />
             <Space />
@@ -30,7 +30,7 @@ export function App () {
             </Flex>
           </Aside>
         </show>
-        <show state={isMobile}>
+        <show when={isMobile}>
           <Header class={styles.header}>
             <BurgerButton onclick={showLayoutMenu} />
             <Space />
@@ -44,7 +44,7 @@ export function App () {
       </Layout>
       <Notifications />
       <Drawers>
-        <show state={shownLayoutMenu}>
+        <show when={shownLayoutMenu}>
           <Drawer vertical align='stretch' padding={16} onclose={hideLayoutMenu}>
             <slot name='menu' />
             <Space />

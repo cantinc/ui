@@ -174,7 +174,7 @@ export function DatePicker ({
               />
             </Calendar>
             <Space gap={apply && 24} />
-            <show state={apply}>
+            <show when={apply}>
               <Buttons>
                 <Button
                   onclick={() => {

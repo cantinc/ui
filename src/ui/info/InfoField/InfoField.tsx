@@ -24,7 +24,7 @@ export function InfoField ({
       wrap
       {...props}
       class={() => styles.root}>
-      <show state={label}>
+      <show when={label}>
         <div class={() => styles.label}>
           {label}
         </div>

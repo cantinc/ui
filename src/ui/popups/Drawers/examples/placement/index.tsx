@@ -36,7 +36,7 @@ innet(
   <Flex wrap gap={16}>
     <portal parent={document.body}>
       <Drawers>
-        <show state={left}>
+        <show when={left}>
           <Drawer
             padding={64}
             placement='left'
@@ -44,7 +44,7 @@ innet(
             {content('Left')}
           </Drawer>
         </show>
-        <show state={top}>
+        <show when={top}>
           <Drawer
             padding={64}
             placement='top'
@@ -52,7 +52,7 @@ innet(
             {content('Top')}
           </Drawer>
         </show>
-        <show state={right}>
+        <show when={right}>
           <Drawer
             padding={64}
             placement='right'
@@ -60,7 +60,7 @@ innet(
             {content('Right')}
           </Drawer>
         </show>
-        <show state={bottom}>
+        <show when={bottom}>
           <Drawer
             padding={64}
             placement='bottom'
@@ -89,7 +89,7 @@ innet(
     <Flex wrap gap={16}>
       <portal parent={document.body}>
         <Drawers>
-          <show state={left}>
+          <show when={left}>
             <Drawer
               padding={64}
               placement='left'
@@ -97,7 +97,7 @@ innet(
               {content('Left')}
             </Drawer>
           </show>
-          <show state={top}>
+          <show when={top}>
             <Drawer
               padding={64}
               placement='top'
@@ -105,7 +105,7 @@ innet(
               {content('Top')}
             </Drawer>
           </show>
-          <show state={right}>
+          <show when={right}>
             <Drawer
               padding={64}
               placement='right'
@@ -113,7 +113,7 @@ innet(
               {content('Right')}
             </Drawer>
           </show>
-          <show state={bottom}>
+          <show when={bottom}>
             <Drawer
               padding={64}
               placement='bottom'

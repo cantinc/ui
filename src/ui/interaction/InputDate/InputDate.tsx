@@ -92,7 +92,7 @@ export function InputDate ({
           />
         </slot>
       </InputMask>
-      <show state={showCalendar}>
+      <show when={showCalendar}>
         <ModalsPortal>
           <DatePicker
             min={min}

@@ -26,7 +26,7 @@ innet(
       show
     </Button>
     <Modals>
-      <show state={show}>
+      <show when={show}>
         <Modal onclose={() => { show.value = false }}>
           <slot name='content'>
             Content
@@ -41,7 +41,7 @@ innet(
     <>
       <portal parent={document.body}>
         <Modals>
-          <show state={show}>
+          <show when={show}>
             <Modal onclose={() => { show.value = false }}>
               <slot name='content'>
                 Content

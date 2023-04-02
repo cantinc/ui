@@ -65,7 +65,7 @@ export function Check ({
         onclick={handleChange}
       />
       <span class={() => styles.icon} />
-      <show state={hasLabel}>
+      <show when={hasLabel}>
         {label}
       </show>
       {children}

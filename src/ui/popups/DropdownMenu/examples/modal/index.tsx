@@ -68,7 +68,7 @@ innet(
     </Button>
     <portal parent={document.body}>
       <Modals>
-        <show state={modalState}>
+        <show when={modalState}>
           <Modal headButtons={[]} onclose={hideModal}>
             <Button
               padding={8}
@@ -102,7 +102,7 @@ innet(
       </Button>
       <portal parent={document.body}>
         <Modals>
-          <show state={modalState}>
+          <show when={modalState}>
             <Modal headButtons={[]} onclose={hideModal}>
               <Button
                 padding={8}

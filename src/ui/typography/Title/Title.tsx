@@ -47,7 +47,7 @@ export function Title ({
       ]}>
       {title}
       {children}
-      <show state={showSubtitle}>
+      <show when={showSubtitle}>
         <div class={() => styles.subTitle}>
           {subTitle}
         </div>

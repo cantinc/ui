@@ -38,7 +38,7 @@ innet(
       Show
     </Button>
     <Modals>
-      <show state={state}>
+      <show when={state}>
         <DatePicker
           max={new Date()}
           apply='Apply'
@@ -57,7 +57,7 @@ innet(
       </Button>
       <portal parent={document.body}>
         <Modals>
-          <show state={state}>
+          <show when={state}>
             <DatePicker
               max={new Date()}
               apply='Apply'

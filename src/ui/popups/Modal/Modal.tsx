@@ -99,14 +99,14 @@ export function Modal ({
           hidden.value?.value && styles.hide,
           !title && !subTitle && styles.noTitle,
         ])}>
-        <show state={title || subTitle || headButtonsLength}>
+        <show when={title || subTitle || headButtonsLength}>
           <Flex padding={24} element='header' vertical align='stretch' class={() => styles.header}>
-            <show state={title || headButtonsLength}>
+            <show when={title || headButtonsLength}>
               <Flex flex>
                 <Flex flex>
                   {title || null}
                 </Flex>
-                <show state={headButtonsLength}>
+                <show when={headButtonsLength}>
                   <div class={() => styles.headButtons}>
                     {headButtons.map(id => ({
                       type: id === 'close' ? 'span' : 'button',
@@ -124,7 +124,7 @@ export function Modal ({
                 </show>
               </Flex>
             </show>
-            <show state={subTitle}>
+            <show when={subTitle}>
               <div class={() => styles.subTitle}>
                 {subTitle}
               </div>
@@ -144,7 +144,7 @@ export function Modal ({
           </div>
         )}
         {children}
-        <show state={buttonsLength}>
+        <show when={buttonsLength}>
           <Flex reverse justify='center' wrap padding={16} gap={16}>
             {buttons?.map((id, index) => (
               <Button

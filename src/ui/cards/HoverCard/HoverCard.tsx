@@ -92,7 +92,7 @@ export function HoverCard ({
       }}
       {...actionProps}>
       {title}
-      <show state={open}>
+      <show when={open}>
         <delay ref={hidden} hide={300}>
           <HoverCardContent
             {...props}

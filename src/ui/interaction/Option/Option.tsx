@@ -53,7 +53,7 @@ export function Option ({
         use(preselected) && styles.preselected,
       ])}>
       {label || value}
-      <show state={showValues || hint}>
+      <show when={showValues || hint}>
         <span class={styles.value}>
           {hint || value}
         </span>

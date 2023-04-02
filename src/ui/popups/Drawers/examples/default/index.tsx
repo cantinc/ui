@@ -22,7 +22,7 @@ innet(
   <>
     <BurgerButton onclick={() => { show.value = true }} />
     <Drawers>
-      <show state={show}>
+      <show when={show}>
         <Drawer onclose={() => { show.value = false }}>
           Content
         </Drawer>
@@ -35,7 +35,7 @@ innet(
     <>
       <portal parent={document.body}>
         <Drawers>
-          <show state={show}>
+          <show when={show}>
             <Drawer onclose={() => { show.value = false }}>
               Content
             </Drawer>

@@ -52,7 +52,7 @@ export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, 
       }}
       onmousedown={onchange}
       class={className}>
-      <show state={icon}>
+      <show when={icon}>
         <Icon size={26} icon={icon} />
       </show>
       {label || value}

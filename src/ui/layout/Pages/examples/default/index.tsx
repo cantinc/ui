@@ -144,7 +144,7 @@ innet(
       </Footer>
     </Layout>
     <Drawers>
-      <show state={menuState}>
+      <show when={menuState}>
         <Drawer
           padding={24}
           onclose={hideMenu}>
@@ -179,7 +179,7 @@ innet(
           </Footer>
         </Layout>
         <Drawers>
-          <show state={menuState}>
+          <show when={menuState}>
             <Drawer
               padding={64}
               onclose={hideMenu}>

@@ -125,7 +125,7 @@ function PopoutElement ({
         hide?.value && styles.hide,
         touched.value && styles.touch,
       ])}>
-      <show state={closeButton}>
+      <show when={closeButton}>
         <div class={() => styles.static}>
           <CloseButton
             onclick={onhide}
@@ -155,7 +155,7 @@ export function Popout ({
   const setHide = actionProp(show, onhide)
 
   return (
-    <show state={show}>
+    <show when={show}>
       <portal parent={document.body}>
         <delay ref={hide} hide={600}>
           <PopoutElement

@@ -24,7 +24,7 @@ innet(
       show
     </Button>
     <Modals>
-      <show state={show}>
+      <show when={show}>
         <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
           <slot name='title'>
             Do you like this modal?
@@ -42,7 +42,7 @@ innet(
     <>
       <portal parent={document.body}>
         <Modals>
-          <show state={show}>
+          <show when={show}>
             <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
               <slot name='title'>
                 Do you like this modal?

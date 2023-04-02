@@ -227,7 +227,7 @@ export function Upload ({
       </div>
       {after}
       {hintContent}
-      <show state={clearable}>
+      <show when={clearable}>
         <Icon
           icon='cross'
           class={() => styles.clear}
