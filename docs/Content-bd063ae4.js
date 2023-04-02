@@ -1,1 +1,0 @@
-import{_ as s,F as t,i as a,s as e,G as i,u as n}from"./docs-87b449de.js";const o=e(i);function c(e={}){var{width:i,style:c}=e,r=s(e,["width","style"]);const d=n(),l=o();return{type:t,props:{align:"stretch",...r,style:Object.assign(Object.assign({},c),{"--ui-content-width":a(i,(s=>s?`${s}px`:""))}),class:()=>l.root},children:[d]}}export{c as C};

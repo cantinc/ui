@@ -31,9 +31,78 @@
     html, body, button {
       font-family: 'Commissioner', sans-serif;
     }
+
+    html,body {
+        color: #2B2B2B;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        min-height: 100vh;
+        background: #fff;
+        scroll-behavior: smooth;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 24px;
+        max-width: 480px;
+        margin: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .title {
+        font-size: 24px;
+        line-height: 100%;
+        margin: 0;
+        color: #945ef8;
+        font-style: italic;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    .browser-list {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .browser {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+        color: #2B2B2B;
+        text-decoration: none;
+    }
+    .browser-icon {
+
+    }
+    .browser-title {
+        text-align: center;
+        font-size: 12px;
+    }
+    .text {
+        margin: 0;
+    }
   </style>
   <title>Document</title>
-<script type="module" defer src="/ui/docs.js?v=0.2.51"></script></head>
+  <script type="module" defer>
+    if ('serviceWorker' in navigator) {
+      import('/ui/docs.js?v=0.3.0')
+    } else {
+      document.body.style.setProperty('background', 'url("/ui/bg.webp") center / cover')
+      document.body.style.setProperty('justify-content', 'center')
+      var browsers = [{id: 'chrome', title: 'Google Chrome', link: 'https://www.google.com/chrome'},{id: 'safari', title: 'Safari', link: 'https://www.apple.com/safari'},{id: 'edge', title: 'Microsoft Edge', link: 'https://www.microsoft.com/edge'},{id: 'opera', title: 'Opera', link: 'https://www.opera.com'}].map(function (browser) {
+        return '<a target="_blank" href="' + browser.link + '" class="browser"><img class="browser-icon" src="/ui/browsers/' + browser.id + '.svg" alt="' +  browser.title + '"><div class="browser-title">' +  browser.title + '</div></a>'
+      }).join('')
+      document.body.innerHTML = '<div class="card"><h1 class="title">Ваш браузер устарел :(</h1><p class="text">Возможно, стоит его обновить или даже скачать новый. Браузеры, на которых все работает безупречно:</p><div class="browser-list">' + browsers + '</div></div>'
+    }
+  </script>
+</head>
 <body>
 </body>
 </html>
