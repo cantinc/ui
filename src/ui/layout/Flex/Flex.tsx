@@ -77,9 +77,9 @@ export function Flex <E extends HTMLElement = HTMLElement> ({
         loading && styles.load,
         use(loading) && styles.loading,
       ])}>
-      <show when={inject(loading, loading => !loading)}>
+      <hide when={loading}>
         {children}
-      </show>
+      </hide>
     </Element>
   )
 }
