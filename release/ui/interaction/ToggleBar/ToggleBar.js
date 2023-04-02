@@ -23,7 +23,7 @@ function defaultToggleBarRender({ value, label, icon }, { className, onchange, o
                 e.preventDefault();
                 onchange();
             }
-        },onmousedown:onchange,class:className},children:[{type:'show',props:{state:icon},children:[{type:Icon.Icon,props:{size:26,icon:icon}}]},label || value]});
+        },onmousedown:onchange,class:className},children:[{type:'show',props:{when:icon},children:[{type:Icon.Icon,props:{size:26,icon:icon}}]},label || value]});
 }
 function ToggleBar(_a) {
     var { values, value = new watchState.State(''), onchange, renderValue = defaultToggleBarRender, style, width } = _a, props = tslib.__rest(_a, ["values", "value", "onchange", "renderValue", "style", "width"]);

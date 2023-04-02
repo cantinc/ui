@@ -57,7 +57,7 @@ function InputDate(_a) {
             return;
         oninput === null || oninput === void 0 ? void 0 : oninput(curDate);
     };
-    return ([{type:InputMask,props:{value:convertValue,oninput:handleInput,mask:Object.assign(Object.assign({}, mask), { min: min.toLocaleDateString(), max: max.toLocaleDateString() }),...props},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{icon:'calendar',class:() => styles.icon,onclick:handleCalendarClick}}]}]},{type:'show',props:{state:showCalendar},children:[{type:ModalsPortal,children:[{type:DatePicker,props:{min:min,max:max,defaultValue:value,apply:apply,onApply:handleApply,onclose:handleCalendarClose},children:[props.label]}]}]}]);
+    return ([{type:InputMask,props:{value:convertValue,oninput:handleInput,mask:Object.assign(Object.assign({}, mask), { min: min.toLocaleDateString(), max: max.toLocaleDateString() }),...props},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{icon:'calendar',class:() => styles.icon,onclick:handleCalendarClick}}]}]},{type:'show',props:{when:showCalendar},children:[{type:ModalsPortal,children:[{type:DatePicker,props:{min:min,max:max,defaultValue:value,apply:apply,onApply:handleApply,onclose:handleCalendarClose},children:[props.label]}]}]}]);
 }
 
 export { InputDate, inputDateApply };

@@ -75,14 +75,14 @@ function PopoutElement(_a) {
             shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
-        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex,props:{...props,ref:ref,style:contentStyle,class:() => styles.content},children:[children]}]});
+        ])},children:[{type:'show',props:{when:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex,props:{...props,ref:ref,style:contentStyle,class:() => styles.content},children:[children]}]});
 }
 function Popout(_a) {
     var { show = true, onhide } = _a, props = __rest(_a, ["show", "onhide"]);
     const children = useChildren();
     const hide = new Ref();
     const setHide = actionProp(show, onhide);
-    return ({type:'show',props:{state:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:600},children:[{type:PopoutElement,props:{onhide:() => setHide === null || setHide === void 0 ? void 0 : setHide(false),...props},children:[children]}]}]}]});
+    return ({type:'show',props:{when:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:600},children:[{type:PopoutElement,props:{onhide:() => setHide === null || setHide === void 0 ? void 0 : setHide(false),...props},children:[children]}]}]}]});
 }
 
 export { Popout };

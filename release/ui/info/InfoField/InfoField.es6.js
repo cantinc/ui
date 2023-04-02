@@ -10,7 +10,7 @@ function InfoField(_a) {
     var { label, value } = _a, props = __rest(_a, ["label", "value"]);
     const children = useChildren();
     const styles = useStyle();
-    return ({type:Flex,props:{wrap:true,...props,class:() => styles.root},children:[{type:'show',props:{state:label},children:[{type:'div',props:{class:() => styles.label},children:[label]}]},value,' ',children]});
+    return ({type:Flex,props:{wrap:true,...props,class:() => styles.root},children:[{type:'show',props:{when:label},children:[{type:'div',props:{class:() => styles.label},children:[label]}]},value,' ',children]});
 }
 
 export { InfoField };

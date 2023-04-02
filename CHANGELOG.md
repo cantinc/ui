@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.3
+
+### v0.3.0 [![02.04.2023](https://img.shields.io/date/1680426591)](https://github.com/cantinc/ui/tree/v0.3.0)
+
+- update `@innet/dom` to `0.14`
+- improve `Flex`
+
 ## v0.2
 
 ### v0.2.56 [![01.04.2023](https://img.shields.io/date/1680356493)](https://github.com/cantinc/ui/tree/v0.2.56)

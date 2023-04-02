@@ -33,7 +33,7 @@ function Title(_a = {}) {
             styles.root,
             show.value && styles.show,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
-        ]},children:[title,' ',children,{type:'show',props:{state:showSubtitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]});
+        ]},children:[title,' ',children,{type:'show',props:{when:showSubtitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]});
 }
 
 exports.Title = Title;

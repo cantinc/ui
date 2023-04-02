@@ -44,7 +44,7 @@ function Check(_a) {
             styles.root,
             dom.use(checked) && styles.checked,
             dom.use(disabled) && styles.disabled,
-        ])},children:[{type:'input',props:{...props,class:() => styles.input,_checked:checked,_disabled:disabled,onclick:handleChange}},{type:'span',props:{class:() => styles.icon}},{type:'show',props:{state:hasLabel},children:[label]},children]});
+        ])},children:[{type:'input',props:{...props,class:() => styles.input,_checked:checked,_disabled:disabled,onclick:handleChange}},{type:'span',props:{class:() => styles.icon}},{type:'show',props:{when:hasLabel},children:[label]},children]});
 }
 
 exports.Check = Check;

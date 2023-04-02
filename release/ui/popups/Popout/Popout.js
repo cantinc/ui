@@ -83,14 +83,14 @@ function PopoutElement(_a) {
             shown.value && styles.shown,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
             touched.value && styles.touch,
-        ])},children:[{type:'show',props:{state:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton.CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex.Flex,props:{...props,ref:ref,style:contentStyle,class:() => styles.content},children:[children]}]});
+        ])},children:[{type:'show',props:{when:closeButton},children:[{type:'div',props:{class:() => styles.static},children:[{type:CloseButton.CloseButton,props:{onclick:onhide,...typeof closeButton === 'boolean' ? {} : closeButton}}]}]},{type:Flex.Flex,props:{...props,ref:ref,style:contentStyle,class:() => styles.content},children:[children]}]});
 }
 function Popout(_a) {
     var { show = true, onhide } = _a, props = tslib.__rest(_a, ["show", "onhide"]);
     const children = jsx.useChildren();
     const hide = new dom.Ref();
     const setHide = actionProp.actionProp(show, onhide);
-    return ({type:'show',props:{state:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:600},children:[{type:PopoutElement,props:{onhide:() => setHide === null || setHide === void 0 ? void 0 : setHide(false),...props},children:[children]}]}]}]});
+    return ({type:'show',props:{when:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:600},children:[{type:PopoutElement,props:{onhide:() => setHide === null || setHide === void 0 ? void 0 : setHide(false),...props},children:[children]}]}]}]});
 }
 
 exports.Popout = Popout;

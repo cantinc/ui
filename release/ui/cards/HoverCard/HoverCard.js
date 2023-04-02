@@ -57,7 +57,7 @@ function HoverCard(_a = {}) {
         };
     return ({type:Flex.Flex,props:{...props,padding:padding,class:() => styles.root,tabIndex:0,style:{
             '--ui-hover-card-width': dom.inject(width, width => width === undefined ? '' : `${width}px`),
-        },...actionProps},children:[title,{type:'show',props:{state:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
+        },...actionProps},children:[title,{type:'show',props:{when:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
 }
 
 exports.HoverCard = HoverCard;

@@ -14,7 +14,7 @@ function InfoField(_a) {
     var { label, value } = _a, props = tslib.__rest(_a, ["label", "value"]);
     const children = jsx.useChildren();
     const styles = useStyle();
-    return ({type:Flex.Flex,props:{wrap:true,...props,class:() => styles.root},children:[{type:'show',props:{state:label},children:[{type:'div',props:{class:() => styles.label},children:[label]}]},value,' ',children]});
+    return ({type:Flex.Flex,props:{wrap:true,...props,class:() => styles.root},children:[{type:'show',props:{when:label},children:[{type:'div',props:{class:() => styles.label},children:[label]}]},value,' ',children]});
 }
 
 exports.InfoField = InfoField;

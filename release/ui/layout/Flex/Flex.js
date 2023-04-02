@@ -29,7 +29,7 @@ function Flex(_a = {}) {
             styles.root,
             loading && styles.load,
             dom.use(loading) && styles.loading,
-        ])},children:[{type:'show',props:{state:dom.inject(loading, loading => !loading)},children:[children]}]});
+        ])},children:[{type:'hide',props:{when:loading},children:[children]}]});
 }
 
 exports.Flex = Flex;

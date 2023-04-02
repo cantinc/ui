@@ -19,7 +19,7 @@ function Option(_a) {
             styles.root,
             use(selected) && styles.selected,
             use(preselected) && styles.preselected,
-        ])},children:[label || value,{type:'show',props:{state:showValues || hint},children:[{type:'span',props:{class:styles.value},children:[hint || value]}]}]});
+        ])},children:[label || value,{type:'show',props:{when:showValues || hint},children:[{type:'span',props:{class:styles.value},children:[hint || value]}]}]});
 }
 
 export { Option };

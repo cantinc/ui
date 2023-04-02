@@ -21,7 +21,7 @@ function Flex(_a = {}) {
             styles.root,
             loading && styles.load,
             use(loading) && styles.loading,
-        ])},children:[{type:'show',props:{state:inject(loading, loading => !loading)},children:[children]}]});
+        ])},children:[{type:'hide',props:{when:loading},children:[children]}]});
 }
 
 export { Flex, alignJustifyMap, alignMap, justifyMap };

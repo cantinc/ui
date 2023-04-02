@@ -96,7 +96,7 @@ function Upload(_a = {}) {
             return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[item.value.src !== item.value.name
                     ? ({type:'img',props:{class:getClass,src:item.value.src}})
                     : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_b = (_a = item.value) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[getExtension(item.value)]}]})]});
-        }]}]},after,' ',hintContent,{type:'show',props:{state:clearable},children:[{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
+        }]}]},after,' ',hintContent,{type:'show',props:{when:clearable},children:[{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
 }
 
 export { Upload };

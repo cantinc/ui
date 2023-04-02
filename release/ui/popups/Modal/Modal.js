@@ -68,17 +68,17 @@ function Modal(_a = {}) {
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hide,
                 !title && !subTitle && styles.noTitle,
             ]);
-        }},children:[{type:'show',props:{state:title || subTitle || headButtonsLength},children:[{type:Flex.Flex,props:{padding:24,element:'header',vertical:true,align:'stretch',class:() => styles.header},children:[{type:'show',props:{state:title || headButtonsLength},children:[{type:Flex.Flex,props:{flex:true},children:[{type:Flex.Flex,props:{flex:true},children:[title || null]},{type:'show',props:{state:headButtonsLength},children:[{type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({
+        }},children:[{type:'show',props:{when:title || subTitle || headButtonsLength},children:[{type:Flex.Flex,props:{padding:24,element:'header',vertical:true,align:'stretch',class:() => styles.header},children:[{type:'show',props:{when:title || headButtonsLength},children:[{type:Flex.Flex,props:{flex:true},children:[{type:Flex.Flex,props:{flex:true},children:[title || null]},{type:'show',props:{when:headButtonsLength},children:[{type:'div',props:{class:() => styles.headButtons},children:[headButtons.map(id => ({
             type: id === 'close' ? 'span' : 'button',
             props: Object.assign(Object.assign({}, buttonProps[id]), { 'data-button': id, onclick: () => handleClose(id), class: () => styles.headButton }),
             children: [
                 slots[`button-${id}`] || id,
             ],
-        }))]}]}]}]},{type:'show',props:{state:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{onscroll:(e) => {
+        }))]}]}]}]},{type:'show',props:{when:subTitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]}]},content && ({type:'div',props:{onscroll:(e) => {
                 scroll.value = e.target.scrollTop;
             },style:{
                 '--scroll': () => `${scroll.value}px`,
-            },class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{state:buttonsLength},children:[{type:Flex.Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button.Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
+            },class:() => styles.content},children:[content]}),' ',children,{type:'show',props:{when:buttonsLength},children:[{type:Flex.Flex,props:{reverse:true,justify:'center',wrap:true,padding:16,gap:16},children:[buttons === null || buttons === void 0 ? void 0 : buttons.map((id, index) => ({type:Button.Button,props:{flex:true,view:index ? 'secondary' : 'primary',...buttonProps[id],'data-button':id,onclick:() => handleClose(id)},children:[slots[`button-${id}`] || id]}))]}]}]}]});
 }
 
 exports.Modal = Modal;

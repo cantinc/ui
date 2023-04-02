@@ -33,7 +33,7 @@ function Dropdown(_a) {
     var { show } = _a, props = __rest(_a, ["show"]);
     const children = useChildren();
     const hide = new Ref();
-    return ({type:'show',props:{state:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:300},children:[{type:DropdownContent,props:{...props},children:[children]}]}]}]});
+    return ({type:'show',props:{when:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:300},children:[{type:DropdownContent,props:{...props},children:[children]}]}]}]});
 }
 
 export { Dropdown, DropdownContent };

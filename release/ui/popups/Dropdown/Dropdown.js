@@ -41,7 +41,7 @@ function Dropdown(_a) {
     var { show } = _a, props = tslib.__rest(_a, ["show"]);
     const children = jsx.useChildren();
     const hide = new dom.Ref();
-    return ({type:'show',props:{state:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:300},children:[{type:DropdownContent,props:{...props},children:[children]}]}]}]});
+    return ({type:'show',props:{when:show},children:[{type:'portal',props:{parent:document.body},children:[{type:'delay',props:{ref:hide,hide:300},children:[{type:DropdownContent,props:{...props},children:[children]}]}]}]});
 }
 
 exports.Dropdown = Dropdown;
