@@ -21,12 +21,14 @@ innet(
     align='center'
     src={background}
     radius={70}
+    style={{ color: 'var(--color-100)', 'font-size': '36px' }}
     size={140}>
     <Icon
+      size={28}
       color='var(--color-100)'
-      size={32}>
-      13
-    </Icon>
+      icon='cant'
+    />
+    13
   </Image>,
   dom,
 )`,
@@ -36,12 +38,14 @@ innet(
       align='center'
       src={background}
       radius={70}
+      style={{ color: 'var(--color-100)', 'font-size': '36px' }}
       size={140}>
       <Icon
+        size={28}
         color='var(--color-100)'
-        size={32}>
-        13
-      </Icon>
+        icon='cant'
+      />
+      13
     </Image>
   ),
 })

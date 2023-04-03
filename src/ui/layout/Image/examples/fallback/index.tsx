@@ -40,10 +40,10 @@ innet(
       radius={70}
       size={140}>
       <Icon
+        icon='cant'
         color='var(--color-100)'
-        size={32}>
-        13
-      </Icon>
+        size={48}
+      />
     </Image>
   ),
 })
