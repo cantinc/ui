@@ -13,10 +13,17 @@
   transition: opacity .3s;
   left: -1px;
   right: -1px;
-  top: -1px;
   z-index: 1;
   opacity: 0;
   max-width: none;
+
+  .root:not(.verticalReverse) > & {
+    top: -1px;
+  }
+
+  .verticalReverse > & {
+    bottom: -1px;
+  }
 }
 
 .show {

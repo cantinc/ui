@@ -3,6 +3,7 @@ import def from './default'
 import gap from './gap'
 import inline from './inline'
 import padding from './padding'
+import reverse from './reverse'
 import vertical from './vertical'
 import width from './width'
 
@@ -14,4 +15,5 @@ export default [
   padding,
   gap,
   align,
+  reverse,
 ]

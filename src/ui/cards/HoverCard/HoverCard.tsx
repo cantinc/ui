@@ -1,4 +1,4 @@
-import { inject, Ref, style, useHidden, useShow } from '@innet/dom'
+import { inject, Ref, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren, useSlots } from '@innet/jsx'
 import { State } from 'watch-state'
 
@@ -46,6 +46,8 @@ export function HoverCard ({
   padding = 18,
   width,
   style,
+  vertical,
+  reverse,
   ...props
 }: HoverCardProps = {}) {
   const styles = useStyle()
@@ -85,17 +87,24 @@ export function HoverCard ({
     <Flex
       {...props}
       padding={padding}
-      class={() => styles.root}
+      class={() => [
+        styles.root,
+        use(vertical) && use(reverse) && styles.verticalReverse,
+      ]}
       tabIndex={0}
       style={{
         '--ui-hover-card-width': inject(width, width => width === undefined ? '' : `${width}px`),
       }}
+      vertical={vertical}
+      reverse={reverse}
       {...actionProps}>
       {title}
       <show when={open}>
         <delay ref={hidden} hide={300}>
           <HoverCardContent
             {...props}
+            vertical={vertical}
+            reverse={reverse}
             padding={padding}
             class={styles as any}>
             {title}
