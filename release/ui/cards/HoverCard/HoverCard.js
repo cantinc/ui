@@ -25,7 +25,7 @@ function HoverCardContent(_a) {
         ]},children:[children]});
 }
 function HoverCard(_a = {}) {
-    var { padding = 18, width, style } = _a, props = tslib.__rest(_a, ["padding", "width", "style"]);
+    var { padding = 18, width, style, vertical, reverse } = _a, props = tslib.__rest(_a, ["padding", "width", "style", "vertical", "reverse"]);
     const styles = useStyle();
     const { '': title, content } = jsx.useSlots();
     const open = new watchState.State(false);
@@ -55,9 +55,12 @@ function HoverCard(_a = {}) {
             onclick: toggle,
             onmouseleave: hide,
         };
-    return ({type:Flex.Flex,props:{...props,padding:padding,class:() => styles.root,tabIndex:0,style:{
+    return ({type:Flex.Flex,props:{...props,padding:padding,class:() => [
+            styles.root,
+            dom.use(vertical) && dom.use(reverse) && styles.verticalReverse,
+        ],tabIndex:0,style:{
             '--ui-hover-card-width': dom.inject(width, width => width === undefined ? '' : `${width}px`),
-        },...actionProps},children:[title,{type:'show',props:{when:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
+        },vertical:vertical,reverse:reverse,...actionProps},children:[title,{type:'show',props:{when:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,vertical:vertical,reverse:reverse,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
 }
 
 exports.HoverCard = HoverCard;

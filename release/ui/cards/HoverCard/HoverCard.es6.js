@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { style, useHidden, useShow, Ref, inject } from '@innet/dom';
+import { style, useHidden, useShow, Ref, use, inject } from '@innet/dom';
 import { useChildren, useSlots } from '@innet/jsx';
 import { State } from 'watch-state';
 import '../../layout/index.es6.js';
@@ -21,7 +21,7 @@ function HoverCardContent(_a) {
         ]},children:[children]});
 }
 function HoverCard(_a = {}) {
-    var { padding = 18, width, style } = _a, props = __rest(_a, ["padding", "width", "style"]);
+    var { padding = 18, width, style, vertical, reverse } = _a, props = __rest(_a, ["padding", "width", "style", "vertical", "reverse"]);
     const styles = useStyle();
     const { '': title, content } = useSlots();
     const open = new State(false);
@@ -51,9 +51,12 @@ function HoverCard(_a = {}) {
             onclick: toggle,
             onmouseleave: hide,
         };
-    return ({type:Flex,props:{...props,padding:padding,class:() => styles.root,tabIndex:0,style:{
+    return ({type:Flex,props:{...props,padding:padding,class:() => [
+            styles.root,
+            use(vertical) && use(reverse) && styles.verticalReverse,
+        ],tabIndex:0,style:{
             '--ui-hover-card-width': inject(width, width => width === undefined ? '' : `${width}px`),
-        },...actionProps},children:[title,{type:'show',props:{when:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
+        },vertical:vertical,reverse:reverse,...actionProps},children:[title,{type:'show',props:{when:open},children:[{type:'delay',props:{ref:hidden,hide:300},children:[{type:HoverCardContent,props:{...props,vertical:vertical,reverse:reverse,padding:padding,class:styles},children:[title,' ',content]}]}]}]});
 }
 
 export { HoverCard };

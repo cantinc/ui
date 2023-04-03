@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.2 [![03.04.2023](https://img.shields.io/date/1680516554)](https://github.com/cantinc/ui/tree/v0.3.2)
+
+- fix vertical reverse bug of `HoverCard` 
+
 ### v0.3.1 [![03.04.2023](https://img.shields.io/date/1680513345)](https://github.com/cantinc/ui/tree/v0.3.1)
 
 - add lazy loading of `Image`
