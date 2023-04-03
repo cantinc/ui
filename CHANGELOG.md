@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.1 [![03.04.2023](https://img.shields.io/date/1680513345)](https://github.com/cantinc/ui/tree/v0.3.1)
+
+- add lazy loading of `Image`
+
 ### v0.3.0 [![02.04.2023](https://img.shields.io/date/1680426591)](https://github.com/cantinc/ui/tree/v0.3.0)
 
 - update `@innet/dom` to `0.14`

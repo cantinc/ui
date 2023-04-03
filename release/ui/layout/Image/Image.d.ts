@@ -7,4 +7,4 @@ export type ImageProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = F
     radius?: StateProp<number | string>;
     fallback?: StateProp<string>;
 }, S>;
-export declare function Image<E extends HTMLElement = HTMLElement>({ src, fallback, size, ratio, radius, style, loading, ...props }: ImageProps<E>): any;
+export declare function Image<E extends HTMLElement = HTMLElement>({ src, fallback, size, ratio, radius, style, loading, ref, ...props }: ImageProps<E>): any;
