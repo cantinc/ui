@@ -12,12 +12,14 @@ const useStyle = style(styles)
 const key = Symbol('SetKey') as unknown as string
 
 export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any, props: P) => P
+export type SetPropsAddHandler<P> = (props: P) => P
 
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<Partial<P>[]>
   onchange?: (value: Partial<P>[]) => void
   element: (props: P) => any
   handleItemProps?: SetPropsHandler<P>
+  handleAddItemProps?: SetPropsAddHandler<P>
 }
 
 export const setPropsHandler = new Context<SetPropsHandler<any>>(item => item.value)
@@ -27,6 +29,7 @@ export function Set<P extends object> ({
   onchange,
   element: Element,
   handleItemProps = useContext(setPropsHandler),
+  handleAddItemProps = e => e,
   ...props
 }: SetProps<P>) {
   const styles = useStyle()
@@ -47,7 +50,7 @@ export function Set<P extends object> ({
   })
 
   const handleAdd = () => {
-    onchange?.([...use(value), { ...props } as P])
+    onchange?.([...use(value), handleAddItemProps({ ...props } as P)])
   }
   const handleRemove = (index: number) => {
     const newValue = [...use(value)]

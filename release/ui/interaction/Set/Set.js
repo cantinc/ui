@@ -17,7 +17,7 @@ const useStyle = dom.style(Set$1["default"]);
 const key = Symbol('SetKey');
 const setPropsHandler = new jsx.Context(item => item.value);
 function Set(_a) {
-    var { value = new watchState.State([]), onchange, element: Element, handleItemProps = jsx.useContext(setPropsHandler) } = _a, props = tslib.__rest(_a, ["value", "onchange", "element", "handleItemProps"]);
+    var { value = new watchState.State([]), onchange, element: Element, handleItemProps = jsx.useContext(setPropsHandler), handleAddItemProps = e => e } = _a, props = tslib.__rest(_a, ["value", "onchange", "element", "handleItemProps", "handleAddItemProps"]);
     const styles = useStyle();
     const children = jsx.useChildren();
     onchange = actionProp.actionProp(value, onchange);
@@ -32,7 +32,7 @@ function Set(_a) {
         return values;
     });
     const handleAdd = () => {
-        onchange === null || onchange === void 0 ? void 0 : onchange([...dom.use(value), Object.assign({}, props)]);
+        onchange === null || onchange === void 0 ? void 0 : onchange([...dom.use(value), handleAddItemProps(Object.assign({}, props))]);
     };
     const handleRemove = (index) => {
         const newValue = [...dom.use(value)];

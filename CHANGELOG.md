@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.3 [![09.04.2023](https://img.shields.io/date/1681026609)](https://github.com/cantinc/ui/tree/v0.3.3)
+
+- add `handleAddItemProps` for `Set`
+
 ### v0.3.2 [![03.04.2023](https://img.shields.io/date/1680516554)](https://github.com/cantinc/ui/tree/v0.3.2)
 
 - fix vertical reverse bug of `HoverCard` 

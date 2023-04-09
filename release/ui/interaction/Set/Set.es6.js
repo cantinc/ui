@@ -13,7 +13,7 @@ const useStyle = style(modules_e864a768);
 const key = Symbol('SetKey');
 const setPropsHandler = new Context(item => item.value);
 function Set(_a) {
-    var { value = new State([]), onchange, element: Element, handleItemProps = useContext(setPropsHandler) } = _a, props = __rest(_a, ["value", "onchange", "element", "handleItemProps"]);
+    var { value = new State([]), onchange, element: Element, handleItemProps = useContext(setPropsHandler), handleAddItemProps = e => e } = _a, props = __rest(_a, ["value", "onchange", "element", "handleItemProps", "handleAddItemProps"]);
     const styles = useStyle();
     const children = useChildren();
     onchange = actionProp(value, onchange);
@@ -28,7 +28,7 @@ function Set(_a) {
         return values;
     });
     const handleAdd = () => {
-        onchange === null || onchange === void 0 ? void 0 : onchange([...use(value), Object.assign({}, props)]);
+        onchange === null || onchange === void 0 ? void 0 : onchange([...use(value), handleAddItemProps(Object.assign({}, props))]);
     };
     const handleRemove = (index) => {
         const newValue = [...use(value)];
