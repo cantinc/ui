@@ -10,7 +10,7 @@ export interface CardsProps extends FlexProps {
   timeout?: number
 }
 
-export function * Cards ({
+export function Cards ({
   ref = new Ref<HTMLDivElement>(),
   timeout,
   ...props
@@ -27,7 +27,9 @@ export function * Cards ({
     setTimeout(updateTop, timeout)
   }
 
-  yield (
+  queueMicrotask(updateTop)
+
+  return (
     <Flex
       gap={24}
       wrap
@@ -37,6 +39,4 @@ export function * Cards ({
       {children}
     </Flex>
   )
-
-  updateTop()
 }
