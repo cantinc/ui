@@ -173,7 +173,7 @@ export function * Calendar ({
 
   let timer: any
 
-  new Watch((update) => {
+  new Watch(update => {
     const height = use(cellHeight)
 
     if (update) {
