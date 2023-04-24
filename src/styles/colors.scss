@@ -1,6 +1,4 @@
 :root {
-  // Main colors
-
   --color-0: #1b1b1b;
   --color-10: #2b2b2b;
   --color-20: #5c5c5c;
@@ -73,16 +71,9 @@
   --color-positive-90: #82d1a3;
   --color-positive-100: #abe0c2;
 
-  // Theme colors
   --color-surface-gray: #fefefe;
   --color-surface-blue: #f8f9ff;
   --color-surface-purple: #f9f6ff;
   --color-surface-yellow: #fff9f5;
   --color-surface-green: #f7fffb;
-
-  --color-link-dark: #1565fb;
-  --color-red-light: #f74879;
-  --color-red: var(--color-negative-20);
-  --color-orange: #ec9b1f;
-  --color-green: var(--color-positive-50);
 }

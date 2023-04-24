@@ -97,7 +97,7 @@
   opacity: 0;
   visibility: hidden;
   transform: scale(1.5);
-  color: var(--color-link-dark);
+  color: var(--color-secondary-50);
 }
 
 :global(.drag-over) .drag {
@@ -170,7 +170,7 @@
 .focus {
   position: absolute;
   inset: 4px;
-  border: dashed 1px var(--color-link-dark);
+  border: dashed 1px var(--color-secondary-50);
   border-radius: calc(var(--round-50) - 4px);
   pointer-events: none;
   opacity: 0;
@@ -183,7 +183,7 @@
   }
 
   :global(.drag-over) & {
-    border-color: var(--color-link-dark);
+    border-color: var(--color-secondary-50);
   }
 }
 

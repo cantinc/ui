@@ -28,7 +28,7 @@
   animation: show 0.3s;
   border-radius: var(--round-50);
   color: var(--color-100);
-  background-color: var(--color-orange);
+  background-color: var(--color-warning-50);
   text-align: center;
   overflow: hidden;
 
@@ -55,12 +55,12 @@
 
 .success {
   color: var(--color-100);
-  background-color: var(--color-green);
+  background-color: var(--color-positive-50);
 }
 
 .error {
   color: var(--color-100);
-  background-color: var(--color-red);
+  background-color: var(--color-negative-50);
 }
 
 .progress {
