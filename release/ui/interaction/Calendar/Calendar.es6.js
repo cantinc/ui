@@ -89,7 +89,7 @@ function* Calendar(_a = {}) {
                 ])},children:[() => renderCell(item)]}]});
         }]}]}]}]});
     let timer;
-    new Watch((update) => {
+    new Watch(update => {
         const height = use(cellHeight);
         if (update) {
             stopAnimation.value = true;

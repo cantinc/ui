@@ -97,7 +97,7 @@ function* Calendar(_a = {}) {
                 ])},children:[() => renderCell(item)]}]});
         }]}]}]}]});
     let timer;
-    new watchState.Watch((update) => {
+    new watchState.Watch(update => {
         const height = dom.use(cellHeight);
         if (update) {
             stopAnimation.value = true;

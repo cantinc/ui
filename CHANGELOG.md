@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.4 [![24.04.2023](https://img.shields.io/date/1682350155)](https://github.com/cantinc/ui/tree/v0.3.4)
+
+- fix style colors
+
 ### v0.3.3 [![09.04.2023](https://img.shields.io/date/1681026609)](https://github.com/cantinc/ui/tree/v0.3.3)
 
 - add `handleAddItemProps` for `Set`

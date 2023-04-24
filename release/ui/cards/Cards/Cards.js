@@ -10,7 +10,7 @@ var Cards$1 = require('./Cards.scss.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
 const useStyle = dom.style(Cards$1["default"]);
-function* Cards(_a = {}) {
+function Cards(_a = {}) {
     var { ref = new dom.Ref(), timeout } = _a, props = tslib.__rest(_a, ["ref", "timeout"]);
     const styles = useStyle();
     const children = jsx.useChildren();
@@ -22,8 +22,8 @@ function* Cards(_a = {}) {
     if (timeout) {
         setTimeout(updateTop, timeout);
     }
-    yield ({type:Flex.Flex,props:{gap:24,wrap:true,...props,ref:ref,class:styles.root},children:[children]});
-    updateTop();
+    queueMicrotask(updateTop);
+    return ({type:Flex.Flex,props:{gap:24,wrap:true,...props,ref:ref,class:styles.root},children:[children]});
 }
 
 exports.Cards = Cards;

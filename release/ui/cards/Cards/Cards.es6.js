@@ -6,7 +6,7 @@ import modules_8d3e6600 from './Cards.scss.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_8d3e6600);
-function* Cards(_a = {}) {
+function Cards(_a = {}) {
     var { ref = new Ref(), timeout } = _a, props = __rest(_a, ["ref", "timeout"]);
     const styles = useStyle();
     const children = useChildren();
@@ -18,8 +18,8 @@ function* Cards(_a = {}) {
     if (timeout) {
         setTimeout(updateTop, timeout);
     }
-    yield ({type:Flex,props:{gap:24,wrap:true,...props,ref:ref,class:styles.root},children:[children]});
-    updateTop();
+    queueMicrotask(updateTop);
+    return ({type:Flex,props:{gap:24,wrap:true,...props,ref:ref,class:styles.root},children:[children]});
 }
 
 export { Cards };
