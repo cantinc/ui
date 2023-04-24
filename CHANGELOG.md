@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.5 [![24.04.2023](https://img.shields.io/date/1682350447)](https://github.com/cantinc/ui/tree/v0.3.5)
+
+- small fix
+
 ### v0.3.4 [![24.04.2023](https://img.shields.io/date/1682350155)](https://github.com/cantinc/ui/tree/v0.3.4)
 
 - fix style colors
