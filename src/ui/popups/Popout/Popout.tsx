@@ -1,10 +1,10 @@
 import { type HTMLStyleProp, Ref, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { onDestroy, State, Watch } from 'watch-state'
+import { State, Watch } from 'watch-state'
 
-import { useEscapeListener, useTouchHide } from '../../../hooks'
-import { actionProp, setOverflow } from '../../../utils'
+import { useEscapeListener, usePopup, useTouchHide } from '../../../hooks'
+import { actionProp } from '../../../utils'
 import { CloseButton, type CloseButtonProps } from '../../buttons'
 import { Flex, type FlexProps } from '../../layout'
 import styles from './Popout.scss'
@@ -31,8 +31,6 @@ export interface PopoutElementData {
   rect: DOMRect
   styles: CSSStyleDeclaration
 }
-
-let popoutCount = 0
 
 const createStyles = () => {
   const styles = document.createElement('span').style
@@ -66,6 +64,7 @@ function PopoutElement ({
   })
   const styles = useStyle()
 
+  usePopup()
   useEscapeListener(onhide)
 
   const getData = (): PopoutElementData => element?.value?.isConnected
@@ -87,18 +86,6 @@ function PopoutElement ({
       }
     })
   }
-
-  if (!popoutCount) {
-    setOverflow('hidden')
-  }
-  popoutCount++
-  onDestroy(() => {
-    popoutCount--
-
-    if (!popoutCount) {
-      setOverflow('')
-    }
-  })
 
   return (
     <div

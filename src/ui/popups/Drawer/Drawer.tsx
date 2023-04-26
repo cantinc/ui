@@ -1,10 +1,9 @@
 import { Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { onDestroy, type State } from 'watch-state'
+import { type State } from 'watch-state'
 
-import { type TouchHidePlacement, useTouchHide } from '../../../hooks'
-import { setOverflow } from '../../../utils'
+import { type TouchHidePlacement, usePopup, useTouchHide } from '../../../hooks'
 import { CloseButton, type CloseButtonPlacement } from '../../buttons'
 import { type IconProp } from '../../icons'
 import { Flex, type FlexProps } from '../../layout'
@@ -20,8 +19,6 @@ export interface DrawerProps extends Omit<FlexProps, 'onclose'> {
   onclose?: (result: string) => void
 }
 
-let drawersCount = 0
-
 export function Drawer ({
   onclose,
   size = 388,
@@ -35,23 +32,12 @@ export function Drawer ({
   const children = useChildren()
   const styles = useStyle()
   const show = useShow()
+  usePopup()
   const hide = new Ref<State<boolean>>()
   const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide({
     hide: () => onclose?.('touch'),
     placement,
     element: ref,
-  })
-
-  if (!drawersCount) {
-    setOverflow('hidden')
-  }
-  drawersCount++
-  onDestroy(() => {
-    drawersCount--
-
-    if (!drawersCount) {
-      setOverflow('')
-    }
   })
 
   const overlayHack: any = {
