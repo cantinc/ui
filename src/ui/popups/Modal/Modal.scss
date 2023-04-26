@@ -108,6 +108,7 @@
   font-size: 22px;
   transition: all 0.3s;
   align-items: center;
+  min-width: 24px;
 
   @media (pointer: fine) {
     &[data-button="delete"],
