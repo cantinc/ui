@@ -130,4 +130,5 @@ export { useResizeListener } from './hooks/useResizeListener/useResizeListener.e
 export { useClickListener } from './hooks/useClickListener/useClickListener.es6.js';
 export { useListener } from './hooks/useListener/useListener.es6.js';
 export { useTouchHide } from './hooks/useTouchHide/useTouchHide.es6.js';
+export { usePopup } from './hooks/usePopup/usePopup.es6.js';
 export { scrollPosition, scrollPositionListener } from './store/window/window.es6.js';

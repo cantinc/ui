@@ -134,6 +134,7 @@ var useResizeListener = require('./hooks/useResizeListener/useResizeListener.js'
 var useClickListener = require('./hooks/useClickListener/useClickListener.js');
 var useListener = require('./hooks/useListener/useListener.js');
 var useTouchHide = require('./hooks/useTouchHide/useTouchHide.js');
+var usePopup = require('./hooks/usePopup/usePopup.js');
 var window = require('./store/window/window.js');
 
 
@@ -291,5 +292,6 @@ exports.useResizeListener = useResizeListener.useResizeListener;
 exports.useClickListener = useClickListener.useClickListener;
 exports.useListener = useListener.useListener;
 exports.useTouchHide = useTouchHide.useTouchHide;
+exports.usePopup = usePopup.usePopup;
 exports.scrollPosition = window.scrollPosition;
 exports.scrollPositionListener = window.scrollPositionListener;

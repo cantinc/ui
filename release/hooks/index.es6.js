@@ -5,3 +5,4 @@ import './useResizeListener/index.es6.js';
 import './useClickListener/index.es6.js';
 import './useListener/index.es6.js';
 import './useTouchHide/index.es6.js';
+import './usePopup/index.es6.js';

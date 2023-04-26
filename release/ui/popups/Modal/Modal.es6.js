@@ -2,23 +2,23 @@ import { __rest } from 'tslib';
 import { style, Ref, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import classes from 'html-classes';
-import { State, onDestroy } from 'watch-state';
-import '../../../utils/index.es6.js';
+import { State } from 'watch-state';
+import '../../../hooks/index.es6.js';
 import '../../buttons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_8f0e29bb from './Modal.scss.es6.js';
 import { CloseButton } from '../../buttons/CloseButton/CloseButton.es6.js';
-import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
+import { usePopup } from '../../../hooks/usePopup/usePopup.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Button } from '../../buttons/Button/Button.es6.js';
 
 const useStyles = style(modules_8f0e29bb);
-let modalsCount = 0;
 const defaultCloseButton = {type:CloseButton,props:{offset:8,padding:8,size:16}};
 function Modal(_a = {}) {
     var { buttons, width, height, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = __rest(_a, ["buttons", "width", "height", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
     const _b = useSlots(), { '': children, title, content, subTitle } = _b, slots = __rest(_b, ['', "title", "content", "subTitle"]);
+    usePopup();
     const hidden = new Ref();
     const show = new State(false);
     const scroll = new State(0);
@@ -42,16 +42,6 @@ function Modal(_a = {}) {
         }
         close();
     };
-    if (!modalsCount) {
-        setOverflow('hidden');
-    }
-    modalsCount++;
-    onDestroy(() => {
-        modalsCount--;
-        if (!modalsCount) {
-            setOverflow('');
-        }
-    });
     return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': inject(width, width => typeof width === 'number' ? `${width}px` : width || ''), '--ui-modal-height': inject(height, height => typeof height === 'number' ? `${height}px` : height || '') }),ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes([

@@ -6,14 +6,12 @@ var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var classes = require('html-classes');
-var watchState = require('watch-state');
 require('../../../hooks/index.js');
-require('../../../utils/index.js');
 require('../../buttons/index.js');
 require('../../layout/index.js');
 var Drawer$1 = require('./Drawer.scss.js');
+var usePopup = require('../../../hooks/usePopup/usePopup.js');
 var useTouchHide = require('../../../hooks/useTouchHide/useTouchHide.js');
-var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
 var CloseButton = require('../../buttons/CloseButton/CloseButton.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
@@ -22,27 +20,17 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Drawer$1["default"]);
-let drawersCount = 0;
 function Drawer(_a = {}) {
     var { onclose, size = 388, placement = 'left', closeButtonPlacement, closeIcon, style, ref = new dom.Ref() } = _a, props = tslib.__rest(_a, ["onclose", "size", "placement", "closeButtonPlacement", "closeIcon", "style", "ref"]);
     const children = jsx.useChildren();
     const styles = useStyle();
     const show = dom.useShow();
+    usePopup.usePopup();
     const hide = new dom.Ref();
     const { touched, touchHide, handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchHide.useTouchHide({
         hide: () => onclose === null || onclose === void 0 ? void 0 : onclose('touch'),
         placement,
         element: ref,
-    });
-    if (!drawersCount) {
-        setOverflow.setOverflow('hidden');
-    }
-    drawersCount++;
-    watchState.onDestroy(() => {
-        drawersCount--;
-        if (!drawersCount) {
-            setOverflow.setOverflow('');
-        }
     });
     const overlayHack = {
         _close: () => onclose,

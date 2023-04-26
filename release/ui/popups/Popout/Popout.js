@@ -13,8 +13,8 @@ require('../../buttons/index.js');
 require('../../layout/index.js');
 var Popout$1 = require('./Popout.scss.js');
 var useTouchHide = require('../../../hooks/useTouchHide/useTouchHide.js');
+var usePopup = require('../../../hooks/usePopup/usePopup.js');
 var useEscapeListener = require('../../../hooks/useEscapeListener/useEscapeListener.js');
-var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
 var CloseButton = require('../../buttons/CloseButton/CloseButton.js');
 var Flex = require('../../layout/Flex/Flex.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
@@ -24,7 +24,6 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Popout$1["default"]);
-let popoutCount = 0;
 const createStyles = () => {
     const styles = document.createElement('span').style;
     styles.setProperty('border-radius', '20px');
@@ -45,6 +44,7 @@ function PopoutElement(_a) {
         element: ref,
     });
     const styles = useStyle();
+    usePopup.usePopup();
     useEscapeListener.useEscapeListener(onhide);
     const getData = () => {
         var _a;
@@ -66,16 +66,6 @@ function PopoutElement(_a) {
             }
         });
     }
-    if (!popoutCount) {
-        setOverflow.setOverflow('hidden');
-    }
-    popoutCount++;
-    watchState.onDestroy(() => {
-        popoutCount--;
-        if (!popoutCount) {
-            setOverflow.setOverflow('');
-        }
-    });
     return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}`, background: () => `${dom.use(background) || elementData.value.styles.background}` }),ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,class:() => classes__default["default"]([
             styles.root,
             preshow.value && styles.preshow,

@@ -7,12 +7,12 @@ var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var classes = require('html-classes');
 var watchState = require('watch-state');
-require('../../../utils/index.js');
+require('../../../hooks/index.js');
 require('../../buttons/index.js');
 require('../../layout/index.js');
 var Modal$1 = require('./Modal.scss.js');
 var CloseButton = require('../../buttons/CloseButton/CloseButton.js');
-var setOverflow = require('../../../utils/setOverflow/setOverflow.js');
+var usePopup = require('../../../hooks/usePopup/usePopup.js');
 var Flex = require('../../layout/Flex/Flex.js');
 var Button = require('../../buttons/Button/Button.js');
 
@@ -21,12 +21,12 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyles = dom.style(Modal$1["default"]);
-let modalsCount = 0;
 const defaultCloseButton = {type:CloseButton.CloseButton,props:{offset:8,padding:8,size:16}};
 function Modal(_a = {}) {
     var { buttons, width, height, style, headButtons = ['close'], buttonProps = {}, onclosed, onclose, onshow, onmousedown } = _a, props = tslib.__rest(_a, ["buttons", "width", "height", "style", "headButtons", "buttonProps", "onclosed", "onclose", "onshow", "onmousedown"]);
     const styles = useStyles();
     const _b = jsx.useSlots(), { '': children, title, content, subTitle } = _b, slots = tslib.__rest(_b, ['', "title", "content", "subTitle"]);
+    usePopup.usePopup();
     const hidden = new dom.Ref();
     const show = new watchState.State(false);
     const scroll = new watchState.State(0);
@@ -50,16 +50,6 @@ function Modal(_a = {}) {
         }
         close();
     };
-    if (!modalsCount) {
-        setOverflow.setOverflow('hidden');
-    }
-    modalsCount++;
-    watchState.onDestroy(() => {
-        modalsCount--;
-        if (!modalsCount) {
-            setOverflow.setOverflow('');
-        }
-    });
     return ({type:'delay',props:{ref:hidden,hide:300},children:[{type:'div',props:{...props,style:Object.assign(Object.assign({}, style), { '--ui-modal-width': dom.inject(width, width => typeof width === 'number' ? `${width}px` : width || ''), '--ui-modal-height': dom.inject(height, height => typeof height === 'number' ? `${height}px` : height || '') }),ref:element,_close:() => handleClose,class:() => {
             var _a;
             return classes__default["default"]([

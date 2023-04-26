@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.7 [![26.04.2023](https://img.shields.io/date/1682499251)](https://github.com/cantinc/ui/tree/v0.3.7)
+
+- add `usePopup` hook and use it on `Modal`, `Drawer` and `Popout`
+
 ### v0.3.6 [![24.04.2023](https://img.shields.io/date/1682351178)](https://github.com/cantinc/ui/tree/v0.3.6)
 
 - small fix

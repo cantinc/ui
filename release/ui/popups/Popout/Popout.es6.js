@@ -2,21 +2,20 @@ import { __rest } from 'tslib';
 import { style, Ref, useHidden, useShow, use } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
-import { State, Watch, onDestroy } from 'watch-state';
+import { State, Watch } from 'watch-state';
 import '../../../hooks/index.es6.js';
 import '../../../utils/index.es6.js';
 import '../../buttons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_f03e01a5 from './Popout.scss.es6.js';
 import { useTouchHide } from '../../../hooks/useTouchHide/useTouchHide.es6.js';
+import { usePopup } from '../../../hooks/usePopup/usePopup.es6.js';
 import { useEscapeListener } from '../../../hooks/useEscapeListener/useEscapeListener.es6.js';
-import { setOverflow } from '../../../utils/setOverflow/setOverflow.es6.js';
 import { CloseButton } from '../../buttons/CloseButton/CloseButton.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 
 const useStyle = style(modules_f03e01a5);
-let popoutCount = 0;
 const createStyles = () => {
     const styles = document.createElement('span').style;
     styles.setProperty('border-radius', '20px');
@@ -37,6 +36,7 @@ function PopoutElement(_a) {
         element: ref,
     });
     const styles = useStyle();
+    usePopup();
     useEscapeListener(onhide);
     const getData = () => {
         var _a;
@@ -58,16 +58,6 @@ function PopoutElement(_a) {
             }
         });
     }
-    if (!popoutCount) {
-        setOverflow('hidden');
-    }
-    popoutCount++;
-    onDestroy(() => {
-        popoutCount--;
-        if (!popoutCount) {
-            setOverflow('');
-        }
-    });
     return ({type:'div',props:{ref:rootRef,style:Object.assign(Object.assign({}, style), { '--ui-popout-top': () => `${elementData.value.rect.top}px`, '--ui-popout-left': () => `${elementData.value.rect.left}px`, '--ui-popout-width': () => `${elementData.value.rect.width}px`, '--ui-popout-height': () => `${elementData.value.rect.height}px`, '--ui-popout-radius': () => `${elementData.value.styles.borderRadius}`, '--ui-popout-border': () => `${elementData.value.styles.border}`, '--ui-popout-touch-hide': () => `${touchHide.value}`, background: () => `${use(background) || elementData.value.styles.background}` }),ontouchstart:handleTouchStart,ontouchmove:handleTouchMove,ontouchend:handleTouchEnd,class:() => classes([
             styles.root,
             preshow.value && styles.preshow,
