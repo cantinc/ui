@@ -1,9 +1,9 @@
 import { type HTMLStyleProps, inject, Ref, type StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
-import { onDestroy, State } from 'watch-state'
+import { State } from 'watch-state'
 
-import { setOverflow } from '../../../utils'
+import { usePopup } from '../../../hooks'
 import { Button, type ButtonProps, CloseButton } from '../../buttons'
 import { Flex } from '../../layout'
 import { type HTMLOverlayElement } from '../Overlay'
@@ -22,8 +22,6 @@ export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclos
   onshow?: () => void
 }
 
-let modalsCount = 0
-
 const defaultCloseButton = <CloseButton offset={8} padding={8} size={16} />
 
 export function Modal ({
@@ -41,6 +39,7 @@ export function Modal ({
 }: ModalProps = {}) {
   const styles = useStyles()
   const { '': children, title, content, subTitle, ...slots } = useSlots()
+  usePopup()
 
   const hidden = new Ref<State<boolean>>()
   const show = new State(false)
@@ -69,18 +68,6 @@ export function Modal ({
 
     close()
   }
-
-  if (!modalsCount) {
-    setOverflow('hidden')
-  }
-  modalsCount++
-  onDestroy(() => {
-    modalsCount--
-
-    if (!modalsCount) {
-      setOverflow('')
-    }
-  })
 
   return (
     <delay ref={hidden} hide={300}>
