@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.8 [![03.06.2023](https://img.shields.io/date/1685817380)](https://github.com/cantinc/ui/tree/v0.3.8)
+
+- fix empty `FormSet` validation bug
+
 ### v0.3.7 [![26.04.2023](https://img.shields.io/date/1682499251)](https://github.com/cantinc/ui/tree/v0.3.7)
 
 - add `usePopup` hook and use it on `Modal`, `Drawer` and `Popout`

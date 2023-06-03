@@ -32,7 +32,8 @@ export function FormSet <P extends object> ({
     const setName = form.method === 'PATCH'
       ? (name: string) => {
           form.validation[name] = [(value, key) => {
-            if (!value || (Array.isArray(value) && !value.length)) {
+            const isEmptyArray = Array.isArray(value) && !value.length
+            if (isEmptyArray || !Array.from(form.fields).find(({ name: fieldName }) => fieldName === name)) {
               return {
                 error: ValidationErrors.required,
                 data: {
