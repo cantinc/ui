@@ -12,8 +12,11 @@ export default example({
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
+import { State } from 'watch-state'
 
 import { Flex, SpinBox, Button} from '@cantinc/ui'
+
+const loading = new State(true)
 
 innet(
   <Flex vertical>
