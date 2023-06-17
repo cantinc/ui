@@ -1,4 +1,4 @@
-import { type HTMLProps, inject, type LoopItem, Ref, type StateProp, style, use, useShow } from '@innet/dom'
+import { type HTMLProps, inject, Ref, type StateProp, style, use, useMapValue, useShow } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
@@ -36,6 +36,43 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
     hint?: HTMLProps<HTMLSpanElement>
     input?: HTMLProps<HTMLInputElement>
   }
+}
+
+function UploadItem () {
+  const item = useMapValue<UploadFile>()
+  const show = useShow(400)
+  const hide = new Ref<any>()
+  const src = new Cache(() => use(item).src)
+  const name = new Cache(() => use(item).name)
+  const isImage = new Cache(() => src.value !== name.value)
+  const title = new Cache(() => name.value?.replace(/\.[^.]+$/, ''))
+  const getClass = () => classes([
+    styles.image,
+    show.value && styles.imageShow,
+    hide.value.value && styles.imageHide,
+  ])
+
+  return (
+    <delay show={300} ref={hide} hide={300}>
+      {() => isImage.value
+        ? (
+          <img
+            class={getClass}
+            src={src}
+          />
+          )
+        : (
+          <span class={getClass}>
+            <span class={() => styles.name}>
+              {title}
+            </span>
+            <span class={() => styles.extension}>
+              {() => getExtension(use(item))}
+            </span>
+          </span>
+          )}
+    </delay>
+  )
 }
 
 export function Upload ({
@@ -191,39 +228,9 @@ export function Upload ({
       <span class={() => styles.focus} />
       {before}
       <div class={() => styles.files}>
-        <for of={files} key='src'>
-          {(item: LoopItem<UploadFile>) => {
-            const show = useShow(400)
-            const hide = new Ref<any>()
-            const getClass = () => classes([
-              styles.image,
-              show.value && styles.imageShow,
-              hide.value.value && styles.imageHide,
-            ])
-
-            return (
-              <delay show={300} ref={hide} hide={300}>
-                {item.value.src !== item.value.name
-                  ? (
-                    <img
-                      class={getClass}
-                      src={item.value.src}
-                    />
-                    )
-                  : (
-                    <span class={getClass}>
-                      <span class={() => styles.name}>
-                        {item.value?.name?.replace(/\.[^.]+$/, '')}
-                      </span>
-                      <span class={() => styles.extension}>
-                        {getExtension(item.value)}
-                      </span>
-                    </span>
-                    )}
-              </delay>
-            )
-          }}
-        </for>
+        <map of={files} key='src'>
+          <UploadItem />
+        </map>
       </div>
       {after}
       {hintContent}

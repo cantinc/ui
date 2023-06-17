@@ -1,4 +1,5 @@
-import { history, parsedSearch, stringifySearch } from '@innet/dom'
+import { parsedSearch, stringifySearch } from '@innet/dom'
+import { historyPush, locationPath } from '@watch-state/history-api'
 
 import { useChildrenProvider } from '../../../hooks'
 import { InputNumber, type InputNumberProps } from '../../interaction'
@@ -19,7 +20,7 @@ export function SearchInputNumber ({
       [key]: val ? String(val) : undefined,
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`, -1)
+    historyPush(`${locationPath.value}${search}`, -1)
     oninput?.(Number(val))
   }
 

@@ -1,14 +1,14 @@
+import { type StateProp, use } from '@innet/dom'
 import { type JSXElement } from '@innet/jsx'
 import { type ASTNodeTypes, type TxtNode } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
-import { type WatchProp } from 'src/types'
 
 import { Highlight } from '../../external/Highlight'
 import { Divider } from '../../typography/Divider'
 import { Title } from '../Title'
 
 export interface MarkdownProps {
-  text: WatchProp<string>
+  text: StateProp<string>
 }
 
 const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<JSXElement>>> = {
@@ -115,5 +115,5 @@ export function Markdown ({ text }: MarkdownProps) {
     return ast2jsx(parse(text))
   }
 
-  return (update: boolean) => ast2jsx(parse(text(update)))
+  return (update: boolean) => ast2jsx(parse(use(text, update)))
 }

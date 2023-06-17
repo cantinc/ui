@@ -19,7 +19,7 @@ function createDynamicState <V> (value: StateProp<V>): State<V> {
     return state
   }
 
-  return new State<V>(value)
+  return new State<V>(value as V)
 }
 
 export function FormHidden ({ name, value }: FormHiddenProps) {

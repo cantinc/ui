@@ -41,7 +41,7 @@ export function Dots ({
   let timer: any
   let fix = false
   const transition = new State(0.3)
-  const pseudoValue = new State()
+  const pseudoValue = new State<number>()
   const nextValue = new State(0)
 
   new Watch(() => {

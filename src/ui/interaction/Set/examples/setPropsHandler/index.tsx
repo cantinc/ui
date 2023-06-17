@@ -4,21 +4,18 @@ import { Icon, Input, type InputProps, Set, type SetPropsHandler, setPropsHandle
 
 import description from './README.md'
 
-const handleSetProps: SetPropsHandler<any> = ({
-  index,
-  value,
-}, Component) => {
+const handleSetProps: SetPropsHandler<any> = (value, index, Component) => {
   if (Component === Input) {
-    const { label, ...props } = value
+    const { label, ...props } = use(value)
     return ({
       ...props,
       label: label
-        ? () => `${use(label)} ${index + 1}`
+        ? () => `${use(label)} ${use(index) + 1}`
         : label,
     })
   }
 
-  return value
+  return use(value)
 }
 
 export default example({

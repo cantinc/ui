@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, type LoopItem, Ref, style } from '@innet/dom'
+import { type HTMLStyleProps, inject, Ref, style, use, useMapIndex, useMapValue } from '@innet/dom'
 import classes from 'html-classes'
 import { onDestroy, type State, Watch } from 'watch-state'
 
@@ -10,17 +10,17 @@ import styles from './Notification.scss'
 const useStyle = style(styles)
 
 export interface NotificationProps extends HTMLStyleProps<HTMLDivElement> {
-  notification: LoopItem<NotificationOptions>
   onclose: () => void
 }
 
 export function Notification ({
-  notification,
   onclose,
 }: NotificationProps) {
   const styles = useStyle()
+  const notification = useMapValue<NotificationOptions>()
+  const index = useMapIndex()
   const hidden = new Ref<State<boolean>>()
-  const timer = new Timer(onclose, notification.value.timeout * 1000)
+  const timer = new Timer(onclose, use(notification).timeout * 1000)
 
   const pause = () => timer.pause()
   const play = () => {
@@ -28,7 +28,7 @@ export function Notification ({
   }
 
   new Watch((update) => {
-    if (notification.index === 0) {
+    if (use(index) === 0) {
       if (update) {
         timer.delay += 300
       }
@@ -45,14 +45,14 @@ export function Notification ({
         onmouseleave={play}
         class={() => classes([
           styles.root,
-          notification.value.type && styles[notification.value.type],
+          use(inject(notification, notification => notification.type && styles[notification.type])),
           hidden.value?.value && styles.hidden,
         ])}>
-        <Markdown text={notification.value.content} />
+        <Markdown text={inject(notification, notification => notification.content)} />
         <div
           class={styles.progress}
           style={{
-            'animation-duration': `${notification.value.timeout}s`,
+            'animation-duration': inject(notification, notification => `${notification.timeout}s`),
           }}
         />
       </div>

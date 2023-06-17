@@ -1,4 +1,5 @@
-import { history, parsedSearch, stringifySearch } from '@innet/dom'
+import { parsedSearch, stringifySearch } from '@innet/dom'
+import { historyPush, locationPath } from '@watch-state/history-api'
 
 import { useChildrenProvider } from '../../../hooks'
 import { inputDateFormat } from '../../../utils'
@@ -20,7 +21,7 @@ export function SearchInputDate ({
       [key]: date && inputDateFormat(date),
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`, -1)
+    historyPush(`${locationPath.value}${search}`, -1)
     oninput?.(date)
   }
 

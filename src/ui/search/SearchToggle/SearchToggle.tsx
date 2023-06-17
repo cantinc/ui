@@ -1,4 +1,5 @@
-import { history, parsedSearch, type StateProp, stringifySearch, use } from '@innet/dom'
+import { parsedSearch, type StateProp, stringifySearch, use } from '@innet/dom'
+import { historyPush, locationPath } from '@watch-state/history-api'
 import { Cache } from 'watch-state'
 
 import { Toggle, type ToggleProps } from '../../interaction'
@@ -14,7 +15,7 @@ export function SearchToggle ({
   onchange,
   ...props
 }: SearchToggleProps) {
-  const state = new Cache<boolean>(() => history.getSearch(key) === use(value))
+  const state = new Cache<boolean>(() => parsedSearch.value[key] === use(value))
 
   const handleChange = (val: boolean) => {
     const search = stringifySearch({
@@ -22,7 +23,7 @@ export function SearchToggle ({
       [key]: val ? use(value) : undefined,
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`, -1)
+    historyPush(`${locationPath.value}${search}`, -1)
     onchange?.(val)
   }
 

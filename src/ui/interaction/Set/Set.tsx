@@ -1,5 +1,5 @@
 import { randomHash } from '@cantinc/utils'
-import { type LoopItem, type StateProp, style, use } from '@innet/dom'
+import { type ObservableProp, type StateProp, style, use, useMapIndex, useMapValue } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache, State, unwatch } from 'watch-state'
 
@@ -11,7 +11,7 @@ const useStyle = style(styles)
 
 const key = Symbol('SetKey') as unknown as string
 
-export type SetPropsHandler<P> = (item: LoopItem<P>, Component: (props: P) => any, props: P) => P
+export type SetPropsHandler<P> = (item: ObservableProp<P>, index: ObservableProp<number>, Component: (props: P) => any, props: P) => P
 export type SetPropsAddHandler<P> = (props: P) => P
 
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
@@ -58,25 +58,32 @@ export function Set<P extends object> ({
     onchange?.(newValue)
   }
 
+  const Item = () => {
+    const item = useMapValue<P>()
+    const index = useMapIndex()
+
+    return (
+      <Element {...props} {...unwatch(() => handleItemProps(item, index, Element, props as P))}>
+        <slot name='after'>
+          <Icon
+            class={styles.remove}
+            onclick={(e: MouseEvent) => {
+              e.preventDefault()
+              e.stopPropagation()
+              handleRemove(use(index))
+            }}
+            icon='brick'
+          />
+        </slot>
+      </Element>
+    )
+  }
+
   return (
     <>
-      <for of={customValues} key={key}>
-        {(item: LoopItem<P>) => (
-          <Element {...props} {...unwatch(() => handleItemProps(item, Element, props as P))}>
-            <slot name='after'>
-              <Icon
-                class={styles.remove}
-                onclick={(e: MouseEvent) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  handleRemove(item.index)
-                }}
-                icon='brick'
-              />
-            </slot>
-          </Element>
-        )}
-      </for>
+      <map of={customValues} key={key}>
+        <Item />
+      </map>
       <div class={() => styles.root}>
         <button
           type='button'

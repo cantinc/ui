@@ -34,15 +34,12 @@ export function Notifications ({
     return (
       <delay hide={300}>
         <div {...props} onclick={handleClick} class={styles.root}>
-          <for of={first3notifications} key='key'>
-            {(notification: any) => (
-              <Notification
-                onclose={close}
-                class={{ progress: styles.progress }}
-                notification={notification}
-              />
-            )}
-          </for>
+          <map of={first3notifications} key='key'>
+            <Notification
+              onclose={close}
+              class={{ progress: styles.progress }}
+            />
+          </map>
         </div>
       </delay>
     )

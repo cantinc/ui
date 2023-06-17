@@ -1,5 +1,6 @@
 import { type HTMLStyleProps, inject, Ref, type StateProp, style } from '@innet/dom'
 import { useSlots } from '@innet/jsx'
+import SyncTimer from 'sync-timer'
 import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
@@ -13,7 +14,7 @@ export interface DetailsProps extends HTMLStyleProps<HTMLDetailsElement> {
   open?: StateProp<boolean>
 }
 
-export function * Details ({
+export function Details ({
   ref = new Ref<HTMLDetailsElement>(),
   style,
   open = new State(false),
@@ -27,7 +28,12 @@ export function * Details ({
 
   onToggle = actionProp(open, onToggle)
 
-  yield (
+  new SyncTimer(() => {
+    defaultHeight = ref.value?.scrollHeight || 0
+    height.value = defaultHeight
+  })
+
+  return (
     <details
       {...props}
       style={{
@@ -67,7 +73,4 @@ export function * Details ({
       {children}
     </details>
   )
-
-  defaultHeight = ref.value?.scrollHeight || 0
-  height.value = defaultHeight
 }

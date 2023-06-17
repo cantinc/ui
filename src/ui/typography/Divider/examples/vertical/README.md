@@ -1,1 +1,1 @@
-Use `vertical` prop to make a vertical divider.
+Use `vertical` prop to add a vertical divider.

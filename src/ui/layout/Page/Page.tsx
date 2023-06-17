@@ -1,8 +1,9 @@
-import { history, useHidden, useShow } from '@innet/dom'
+import { useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
-import { scrollTo } from '@watch-state/history-api'
+import { locationHash } from '@watch-state/history-api'
 import classes from 'html-classes'
 import { onDestroy } from 'watch-state'
+import { scrollTo } from 'web-scroll'
 
 import { Flex, type FlexProps } from '../../layout/Flex'
 import styles from './Page.scss'
@@ -37,8 +38,9 @@ export function Page (props: PageProps) {
   const hidden = useHidden()
 
   const timer = setTimeout(() => {
-    if (history.hash) {
-      scrollTo(`#${history.hash}`)
+    const hash = locationHash.value
+    if (hash) {
+      scrollTo(`#${hash}`)
     }
   }, 300)
 

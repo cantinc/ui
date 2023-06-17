@@ -1,9 +1,8 @@
-import { globalEvent } from 'watch-state'
+import { createEvent } from 'watch-state'
 
 import { notifications } from './constants'
 
-export function notify (content: string, type?: 'success' | 'error', timeout?: number) {
-  globalEvent.start()
+export const notify = createEvent((content: string, type?: 'success' | 'error', timeout?: number) => {
   notifications.value.push({
     type,
     content,
@@ -11,5 +10,4 @@ export function notify (content: string, type?: 'success' | 'error', timeout?: n
     key: `${Date.now()}${Math.random()}`,
   })
   notifications.update()
-  globalEvent.end()
-}
+})

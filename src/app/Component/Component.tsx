@@ -1,4 +1,4 @@
-import { history } from '@innet/dom'
+import { locationHash } from '@watch-state/history-api'
 import { Card, Cards, DelayPage, Details, Highlight, Markdown, Typography } from 'src/ui'
 
 import styles from './Component.scss'
@@ -50,7 +50,7 @@ export function Component <C extends UIComponent> ({
           <h2>Examples</h2>
           <Cards>
             {examples.map(({ id, example, title, description, code }) => (
-              <Card preventAnimation class={() => [styles.example, history.hash === id && styles.active]} vertical id={id} align='stretch'>
+              <Card preventAnimation class={() => [styles.example, locationHash.value === id && styles.active]} vertical id={id} align='stretch'>
                 {title || description
                   ? (
                     <Typography>

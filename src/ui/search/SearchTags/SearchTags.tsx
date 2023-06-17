@@ -1,4 +1,5 @@
-import { history, parsedSearch, stringifySearch } from '@innet/dom'
+import { parsedSearch, stringifySearch } from '@innet/dom'
+import { historyPush, locationPath } from '@watch-state/history-api'
 
 import { Tags, type TagsMultipleProps, type TagsSingleProps } from '../../interaction'
 
@@ -18,7 +19,7 @@ export function SearchTags ({
       [key]: Array.isArray(val) && val.length === 1 ? val[0] : val || undefined,
     }, { addQueryPrefix: true })
 
-    history.push(`${history.path}${search}`, -1)
+    historyPush(`${locationPath.value}${search}`, -1)
 
     onchange?.(val as any)
   }

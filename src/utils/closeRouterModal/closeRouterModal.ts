@@ -1,4 +1,5 @@
-import { history, parsedSearch, stringifySearch } from '@innet/dom'
+import { parsedSearch, stringifySearch } from '@innet/dom'
+import { historyPush, locationPath } from '@watch-state/history-api'
 
 function removeModal (search: any) {
   if (!('modal' in search)) return
@@ -7,7 +8,7 @@ function removeModal (search: any) {
 
   if (!Array.isArray(modal)) {
     const result = stringifySearch(rest)
-    history.push(result ? `?${result}` : history.path, -1)
+    historyPush(result ? `?${result}` : locationPath.value, -1)
     return
   }
 
@@ -18,7 +19,7 @@ function removeModal (search: any) {
     modal: newModal.length > 1 ? newModal : newModal[0],
   })
 
-  history.push(result ? `?${result}` : history.path, -1)
+  historyPush(result ? `?${result}` : locationPath.value, -1)
 }
 
 export function closeRouterModal () {

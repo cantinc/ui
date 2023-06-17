@@ -1,6 +1,7 @@
-import { inject, type LoopItem, setTimeoutSync, type StateProp, style, use } from '@innet/dom'
+import { inject, type ObservableProp, type StateProp, style, use, useMapValue } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
+import SyncTimer from 'sync-timer'
 import { Cache, State, unwatch, Watch } from 'watch-state'
 
 import { getDaysInMonth, getWeek, inputDateFormat } from '../../../utils'
@@ -27,13 +28,13 @@ export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
   activeHandler?: (date: CalendarGridCell) => boolean
   selectedHandler?: (date: CalendarGridCell) => boolean
   disableHandler?: (date: CalendarGridCell) => boolean
-  renderCell?: (date: LoopItem<CalendarGridCell>) => any
+  renderCell?: (date: ObservableProp<CalendarGridCell>) => any
   cellHeight?: StateProp<number>
   onselect?: (cell: CalendarGridCell) => void
 }
 
-export const defaultCalendarCellRender = (item: LoopItem<CalendarGridCell>): any => {
-  return new Cache(() => item.value.date.getDate())
+export const defaultCalendarCellRender = (item: ObservableProp<CalendarGridCell>): any => {
+  return new Cache(() => use(item).date.getDate())
 }
 
 const isToday = (date: Date) => {
@@ -114,6 +115,33 @@ export function * Calendar ({
     return grid
   })
 
+  const Item = () => {
+    const item = useMapValue<CalendarGridCell>()
+
+    if (unwatch(() => rotationTop.value)) {
+      position--
+    } else {
+      position++
+    }
+
+    return (
+      <delay hide={300}>
+        <span
+          onclick={() => onselect?.(use(item))}
+          class={() => classes([
+            styles.cell,
+            isToday(use(item).date) && styles.today,
+            use(item).current && styles.cellCurrent,
+            activeHandler?.(use(item)) && styles.active,
+            disableHandler?.(use(item)) && styles.disabled,
+            selectedHandler?.(use(item)) && styles.selected,
+          ])}>
+          {() => renderCell(item)}
+        </span>
+      </delay>
+    )
+  }
+
   yield (
     <Flex
       {...props}
@@ -140,32 +168,9 @@ export function * Calendar ({
             top: () => `${top.value}px`,
           }}
           class={() => styles.grid}>
-          <for of={grid} key='value'>
-            {(item: LoopItem<CalendarGridCell>) => {
-              if (unwatch(() => rotationTop.value)) {
-                position--
-              } else {
-                position++
-              }
-
-              return (
-                <delay hide={300}>
-                  <span
-                    onclick={() => onselect?.(item.value)}
-                    class={() => classes([
-                      styles.cell,
-                      isToday(item.value.date) && styles.today,
-                      item.value.current && styles.cellCurrent,
-                      activeHandler?.(item.value) && styles.active,
-                      disableHandler?.(item.value) && styles.disabled,
-                      selectedHandler?.(item.value) && styles.selected,
-                    ])}>
-                    {() => renderCell(item)}
-                  </span>
-                </delay>
-              )
-            }}
-          </for>
+          <map of={grid} key='value'>
+            <Item />
+          </map>
         </div>
       </div>
     </Flex>
@@ -199,7 +204,7 @@ export function * Calendar ({
       } else {
         const nextValue = position / 7 * height
 
-        setTimeoutSync(() => {
+        new SyncTimer(() => {
           margin.value = nextValue
         }, 300)
       }

@@ -1,4 +1,4 @@
-import { type LoopItem } from '@innet/dom'
+import { use, useMapValue } from '@innet/dom'
 import { Alert, Button, Flex, Input } from 'src'
 import { example } from 'src/app/Component'
 import { createEvent, State } from 'watch-state'
@@ -25,12 +25,32 @@ const removeAlert = (removeId: number) => {
   alerts.value = alerts.value.filter(({ id }) => id !== removeId)
 }
 
+function MapAlert () {
+  const item = useMapValue<AlertData>()
+
+  return (
+    <delay hide={300}>
+      <Alert gap={24} justify='between'>
+        {() => use(item).text}
+        <Button
+          onclick={() => {
+            removeAlert(use(item).id)
+          }}
+          view='ghost'
+          padding={16}>
+          Done
+        </Button>
+      </Alert>
+    </delay>
+  )
+}
+
 export default example({
   id: 'dynamic',
   title: 'Dynamic',
   description,
   code: `import innet from 'innet'
-import dom, { type LoopItem } from '@innet/dom'
+import { use, useMapValue } from '@innet/dom'
 import { createEvent, State } from 'watch-state'
 
 import { Alert, Flex, Button, Input } from '@cantinc/ui'
@@ -60,25 +80,31 @@ const removeAlert = (removeId: number) => {
     .filter(({ id }) => id !== removeId)
 }
 
+function MapAlert () {
+  const item = useMapValue<AlertData>()
+
+  return (
+    <delay hide={300}>
+      <Alert gap={24} justify='between'>
+        {() => use(item).text}
+        <Button
+          onclick={() => {
+            removeAlert(use(item).id)
+          }}
+          view='ghost'
+          padding={16}>
+          Done
+        </Button>
+      </Alert>
+    </delay>
+  )
+}
+
 innet(
   <Flex reverse vertical align='stretch'>
-    <for of={alerts} key='id'>
-      {(item: LoopItem<AlertData>) => (
-        <delay hide={300}>
-          <Alert gap={24} justify='between'>
-            {() => item.value.text}
-            <Button
-              onclick={() => {
-                removeAlert(item.value.id)
-              }}
-              view='ghost'
-              padding={16}>
-              Done
-            </Button>
-          </Alert>
-        </delay>
-      )}
-    </for>
+    <map of={alerts} key='id'>
+      <MapAlert />
+    </map>
     <Flex wrap gap={24}>
       <Input
         flex
@@ -94,23 +120,9 @@ innet(
 )`,
   example: (
     <Flex reverse vertical align='stretch'>
-      <for of={alerts} key='id'>
-        {(item: LoopItem<AlertData>) => (
-          <delay hide={300}>
-            <Alert gap={24} justify='between'>
-              {() => item.value.text}
-              <Button
-                onclick={() => {
-                  removeAlert(item.value.id)
-                }}
-                view='ghost'
-                padding={16}>
-                Done
-              </Button>
-            </Alert>
-          </delay>
-        )}
-      </for>
+      <map of={alerts} key='id'>
+        <MapAlert />
+      </map>
       <Flex wrap gap={24}>
         <Input
           flex

@@ -1,5 +1,6 @@
 import { type HTMLStyleProps, type LinkProps, Ref, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
+import SyncTimer from 'sync-timer'
 import { State } from 'watch-state'
 
 import { Flex, type FlexProps } from '../Flex'
@@ -54,13 +55,17 @@ function NavigationItem ({
   )
 }
 
-function * NavigationItems (props: NavigationItemsProps) {
+function NavigationItems (props: NavigationItemsProps) {
   const children = useChildren()
   const styles = useSubMenuStyles()
   const el = props?.ref || new Ref<any>()
   const height = new State(0)
 
-  yield (
+  new SyncTimer(() => {
+    height.value = el.value.scrollHeight
+  })
+
+  return (
     <section
       {...props}
       ref={el}
@@ -72,10 +77,6 @@ function * NavigationItems (props: NavigationItemsProps) {
       {children}
     </section>
   )
-
-  setTimeout(() => {
-    height.value = el.value.scrollHeight
-  })
 }
 
 export function Navigation ({

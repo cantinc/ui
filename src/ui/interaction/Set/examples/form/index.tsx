@@ -1,3 +1,4 @@
+import { use } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { Button, Form, FormInput, type FormInputProps, Icon, Set } from 'src/ui'
 
@@ -39,7 +40,7 @@ innet(
     <Form onsuccess={form => console.log(form.submitData)}>
       <Set<FormInputProps>
         element={FormInput}
-        handleItemProps={item => ({ ...item.value, label: () => `${item.value.label} ${item.index + 1}` })}
+        handleItemProps={(item, index) => ({ ...use(item), label: () => `${use(item).label} ${use(index) + 1}` })}
         label='Address'
         required
         name='address'>

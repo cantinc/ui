@@ -1,6 +1,6 @@
-import { type LoopItem, type StateProp, style, use } from '@innet/dom'
+import { inject, type StateProp, style, use, useMapValue } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
-import { State } from 'watch-state'
+import { State, unwatch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
 import { Listener } from '../../external'
@@ -109,6 +109,22 @@ export function DropdownMenu ({
     }
   }
 
+  const Item = () => {
+    const item = useMapValue<MenuOption>()
+    const value = inject(item, item => item.value)
+
+    return (
+      <Option
+        {...unwatch(() => use(item))}
+        selected={() => use(select) === use(value)}
+        onSelect={() => onSelect?.(use(value))}
+        preselected={() => use(preselect) === use(value)}
+        onPreselect={() => onPreselect?.(use(value))}
+        showValues={showValues}
+      />
+    )
+  }
+
   return (
     <Dropdown
       vertical
@@ -120,18 +136,9 @@ export function DropdownMenu ({
         listener={listener}
       />
       {children}
-      <for of={values || []} key='value'>
-        {(item: LoopItem<MenuOption>) => (
-          <Option
-            {...item.value}
-            selected={() => use(select) === item.value.value}
-            onSelect={() => onSelect?.(item.value.value)}
-            preselected={() => use(preselect) === item.value.value}
-            onPreselect={() => onPreselect?.(item.value.value)}
-            showValues={showValues}
-          />
-        )}
-      </for>
+      <map of={values || []} key='value'>
+        <Item />
+      </map>
     </Dropdown>
   )
 }
