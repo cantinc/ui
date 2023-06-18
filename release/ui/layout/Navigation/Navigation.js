@@ -5,10 +5,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
+var SyncTimer = require('sync-timer');
 var watchState = require('watch-state');
 require('../Flex/index.js');
 var Navigation$1 = require('./Navigation.scss.js');
 var Flex = require('../Flex/Flex.js');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var SyncTimer__default = /*#__PURE__*/_interopDefaultLegacy(SyncTimer);
 
 const useStyles = dom.style({
     root: Navigation$1["default"].root,
@@ -25,15 +30,15 @@ function NavigationItem(_a = {}) {
     const styles = useItemStyles();
     return ({type:'show',props:{when:access},children:[{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]});
 }
-function* NavigationItems(props) {
+function NavigationItems(props) {
     const children = jsx.useChildren();
     const styles = useSubMenuStyles();
     const el = (props === null || props === void 0 ? void 0 : props.ref) || new dom.Ref();
     const height = new watchState.State(0);
-    yield ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
-    setTimeout(() => {
+    new SyncTimer__default["default"](() => {
         height.value = el.value.scrollHeight;
     });
+    return ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
 }
 function Navigation(_a = {}) {
     var { menu } = _a, props = tslib.__rest(_a, ["menu"]);

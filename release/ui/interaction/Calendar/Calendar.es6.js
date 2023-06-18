@@ -1,7 +1,8 @@
 import { __rest } from 'tslib';
-import { style, use, inject, setTimeoutSync } from '@innet/dom';
+import { style, use, useMapValue, inject } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
+import SyncTimer from 'sync-timer';
 import { Cache, State, unwatch, Watch } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../layout/index.es6.js';
@@ -17,7 +18,7 @@ const todayYear = today.getFullYear();
 const todayMonth = today.getMonth();
 const todayDay = today.getDate();
 const defaultCalendarCellRender = (item) => {
-    return new Cache(() => item.value.date.getDate());
+    return new Cache(() => use(item).date.getDate());
 };
 const isToday = (date) => {
     return date.getDate() === todayDay && date.getFullYear() === todayYear && date.getMonth() === todayMonth;
@@ -66,28 +67,30 @@ function* Calendar(_a = {}) {
         }
         return grid;
     });
+    const Item = () => {
+        const item = useMapValue();
+        if (unwatch(() => rotationTop.value)) {
+            position--;
+        }
+        else {
+            position++;
+        }
+        return ({type:'delay',props:{hide:300},children:[{type:'span',props:{onclick:() => onselect === null || onselect === void 0 ? void 0 : onselect(use(item)),class:() => classes([
+                styles.cell,
+                isToday(use(item).date) && styles.today,
+                use(item).current && styles.cellCurrent,
+                (activeHandler === null || activeHandler === void 0 ? void 0 : activeHandler(use(item))) && styles.active,
+                (disableHandler === null || disableHandler === void 0 ? void 0 : disableHandler(use(item))) && styles.disabled,
+                (selectedHandler === null || selectedHandler === void 0 ? void 0 : selectedHandler(use(item))) && styles.selected,
+            ])},children:[() => renderCell(item)]}]});
+    };
     yield ({type:Flex,props:{...props,vertical:true,align:'stretch',class:() => styles.root},children:[children,{type:'div',props:{class:() => styles.week},children:[[...new Array(7)].map((_, i) => ({type:'span',props:{class:() => styles.weekCell},children:[getWeek(i + 1, 'short')]}))]},{type:'div',props:{style:{
             '--ui-calendar-cell-height': inject(cellHeight, height => `${height}px`),
         },class:() => styles.gridWrapper},children:[{type:'div',props:{style:{
             transition: () => stopAnimation.value ? 'none' : '',
             'margin-top': () => `${margin.value}px`,
             top: () => `${top.value}px`,
-        },class:() => styles.grid},children:[{type:'for',props:{of:grid,key:'value'},children:[(item) => {
-            if (unwatch(() => rotationTop.value)) {
-                position--;
-            }
-            else {
-                position++;
-            }
-            return ({type:'delay',props:{hide:300},children:[{type:'span',props:{onclick:() => onselect === null || onselect === void 0 ? void 0 : onselect(item.value),class:() => classes([
-                    styles.cell,
-                    isToday(item.value.date) && styles.today,
-                    item.value.current && styles.cellCurrent,
-                    (activeHandler === null || activeHandler === void 0 ? void 0 : activeHandler(item.value)) && styles.active,
-                    (disableHandler === null || disableHandler === void 0 ? void 0 : disableHandler(item.value)) && styles.disabled,
-                    (selectedHandler === null || selectedHandler === void 0 ? void 0 : selectedHandler(item.value)) && styles.selected,
-                ])},children:[() => renderCell(item)]}]});
-        }]}]}]}]});
+        },class:() => styles.grid},children:[{type:'map',props:{of:grid,key:'value'},children:[{type:Item}]}]}]}]});
     let timer;
     new Watch(update => {
         const height = use(cellHeight);
@@ -110,7 +113,7 @@ function* Calendar(_a = {}) {
             }
             else {
                 const nextValue = position / 7 * height;
-                setTimeoutSync(() => {
+                new SyncTimer(() => {
                     margin.value = nextValue;
                 }, 300);
             }

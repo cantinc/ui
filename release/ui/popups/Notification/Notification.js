@@ -15,16 +15,18 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(Notification$1["default"]);
-function Notification({ notification, onclose, }) {
+function Notification({ onclose, }) {
     const styles = useStyle();
+    const notification = dom.useMapValue();
+    const index = dom.useMapIndex();
     const hidden = new dom.Ref();
-    const timer = new helpers.Timer(onclose, notification.value.timeout * 1000);
+    const timer = new helpers.Timer(onclose, dom.use(notification).timeout * 1000);
     const pause = () => timer.pause();
     const play = () => {
         timer.play();
     };
     new watchState.Watch((update) => {
-        if (notification.index === 0) {
+        if (dom.use(index) === 0) {
             if (update) {
                 timer.delay += 300;
             }
@@ -36,11 +38,11 @@ function Notification({ notification, onclose, }) {
             var _a;
             return classes__default["default"]([
                 styles.root,
-                notification.value.type && styles[notification.value.type],
+                dom.use(dom.inject(notification, notification => notification.type && styles[notification.type])),
                 ((_a = hidden.value) === null || _a === void 0 ? void 0 : _a.value) && styles.hidden,
             ]);
-        }},children:[{type:Markdown.Markdown,props:{text:notification.value.content}},{type:'div',props:{class:styles.progress,style:{
-            'animation-duration': `${notification.value.timeout}s`,
+        }},children:[{type:Markdown.Markdown,props:{text:dom.inject(notification, notification => notification.content)}},{type:'div',props:{class:styles.progress,style:{
+            'animation-duration': dom.inject(notification, notification => `${notification.timeout}s`),
         }}}]}]});
 }
 

@@ -1,4 +1,4 @@
-import { parsedSearch } from '@innet/dom'
+import { getSearchParam } from '@watch-state/history-api'
 
 import { ToggleBar, type ToggleBarItemOptions, type ToggleBarProps, type ToggleBarValue } from '../../interaction'
 
@@ -30,7 +30,7 @@ export function SearchToggleBar ({
   return (
     <ToggleBar
       {...props}
-      value={() => String(parsedSearch.value[key]) || ''}
+      value={getSearchParam(key)}
       element='nav'
       renderValue={defaultSearchToggleBarRender}
     />

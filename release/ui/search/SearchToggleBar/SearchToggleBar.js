@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
-var dom = require('@innet/dom');
+var historyApi = require('@watch-state/history-api');
 require('../../interaction/index.js');
 var ToggleBar = require('../../interaction/ToggleBar/ToggleBar.js');
 
@@ -14,7 +14,7 @@ function SearchToggleBar(_a) {
                 e.preventDefault();
             },class:className,scrollTo:-1,href:value ? `?${key}=${value}` : '?'},children:[label !== null && label !== void 0 ? label : value]});
     }
-    return ({type:ToggleBar.ToggleBar,props:{...props,value:() => dom.history.getSearch(key) || '',element:'nav',renderValue:defaultSearchToggleBarRender}});
+    return ({type:ToggleBar.ToggleBar,props:{...props,value:historyApi.getSearchParam(key),element:'nav',renderValue:defaultSearchToggleBarRender}});
 }
 
 exports.SearchToggleBar = SearchToggleBar;

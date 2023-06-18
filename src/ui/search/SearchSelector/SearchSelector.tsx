@@ -1,5 +1,5 @@
 import { parsedSearch, stringifySearch } from '@innet/dom'
-import { historyPush, locationPath } from '@watch-state/history-api'
+import { getSearchParam, historyPush, locationPath } from '@watch-state/history-api'
 
 import { Selector, type SelectorProps } from '../../interaction'
 
@@ -25,7 +25,7 @@ export function SearchSelector ({
   return (
     <Selector
       {...props}
-      value={() => String(parsedSearch.value[key])}
+      value={getSearchParam(key)}
       oninput={handleChange}
     />
   )

@@ -1,16 +1,16 @@
 import { __rest } from 'tslib';
-import { style, use } from '@innet/dom';
+import { style, use, useMapValue, inject } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
-import { State } from 'watch-state';
+import { State, unwatch } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../external/index.es6.js';
 import '../../interaction/Option/index.es6.js';
 import '../Dropdown/index.es6.js';
 import modules_1e4fb52d from './DropdownMenu.scss.es6.js';
 import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
+import { Option } from '../../interaction/Option/Option.es6.js';
 import { Dropdown } from '../Dropdown/Dropdown.es6.js';
 import { Listener } from '../../external/Listener/Listener.es6.js';
-import { Option } from '../../interaction/Option/Option.es6.js';
 
 const useStyle = style(modules_1e4fb52d);
 function DropdownMenu(_a) {
@@ -75,7 +75,12 @@ function DropdownMenu(_a) {
             }
         }
     };
-    return ({type:Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener,props:{type:'keydown',listener:listener}},children,{type:'for',props:{of:values || [],key:'value'},children:[(item) => ({type:Option,props:{...item.value,selected:() => use(select) === item.value.value,onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(item.value.value),preselected:() => use(preselect) === item.value.value,onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(item.value.value),showValues:showValues}})]}]});
+    const Item = () => {
+        const item = useMapValue();
+        const value = inject(item, item => item.value);
+        return ({type:Option,props:{...unwatch(() => use(item)),selected:() => use(select) === use(value),onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(use(value)),preselected:() => use(preselect) === use(value),onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(use(value)),showValues:showValues}});
+    };
+    return ({type:Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener,props:{type:'keydown',listener:listener}},children,{type:'map',props:{of:values || [],key:'value'},children:[{type:Item}]}]});
 }
 
 export { DropdownMenu };

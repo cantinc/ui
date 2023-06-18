@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
 var dom = require('@innet/dom');
+var historyApi = require('@watch-state/history-api');
 require('../../interaction/index.js');
 var Tags = require('../../interaction/Tags/Tags.js');
 
@@ -11,7 +12,7 @@ function SearchTags(_a) {
     var { key, onchange, multiple } = _a, props = tslib.__rest(_a, ["key", "onchange", "multiple"]);
     const handleChange = (val) => {
         const search = dom.stringifySearch(Object.assign(Object.assign({}, dom.parsedSearch.value), { [key]: Array.isArray(val) && val.length === 1 ? val[0] : val || undefined }), { addQueryPrefix: true });
-        dom.history.push(`${dom.history.path}${search}`, -1);
+        historyApi.historyPush(`${historyApi.locationPath.value}${search}`, -1);
         onchange === null || onchange === void 0 ? void 0 : onchange(val);
     };
     const value = () => {

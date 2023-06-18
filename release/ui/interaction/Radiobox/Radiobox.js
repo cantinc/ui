@@ -8,8 +8,8 @@ var watchState = require('watch-state');
 require('../../layout/index.js');
 require('../../prototypes/index.js');
 var Radiobox$1 = require('./Radiobox.scss.js');
-var Flex = require('../../layout/Flex/Flex.js');
 var Check = require('../../prototypes/Check/Check.js');
+var Flex = require('../../layout/Flex/Flex.js');
 
 const useStyle = dom.style(Object.assign({ root: '', radio: '' }, Radiobox$1["default"]));
 function Radiobox(_a = {}) {
@@ -28,9 +28,14 @@ function Radiobox(_a = {}) {
             oldOnChange === null || oldOnChange === void 0 ? void 0 : oldOnChange(val);
         };
     }
-    return ({type:Flex.Flex,props:{gap:16,...props,class:() => styles.root},children:[{type:'for',props:{of:values || [],key:'value'},children:[(item) => ({type:Check.Check,props:{disabled:disabled,...item.value,name:name,checked:() => dom.use(value) === dom.use(item.value.value),type:'radio',onchange:() => {
-                onchange === null || onchange === void 0 ? void 0 : onchange(dom.use(item.value.value));
-            },class:checkStyles}})]}]});
+    const Item = () => {
+        const item = dom.useMapValue();
+        const itemValue = dom.inject(item, item => dom.use(item.value));
+        return ({type:Check.Check,props:{disabled:disabled,name:name,checked:() => dom.use(value) === dom.use(itemValue),type:'radio',onchange:() => {
+                onchange === null || onchange === void 0 ? void 0 : onchange(dom.use(itemValue));
+            },class:checkStyles}});
+    };
+    return ({type:Flex.Flex,props:{gap:16,...props,class:() => styles.root},children:[{type:'map',props:{of:values || [],key:'value'},children:[{type:Item}]}]});
 }
 
 exports.Radiobox = Radiobox;

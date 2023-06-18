@@ -1,7 +1,5 @@
-import { type HTMLStyleProps, type LoopItem } from '@innet/dom';
-import { type NotificationOptions } from '../Notifications/types';
+import { type HTMLStyleProps } from '@innet/dom';
 export interface NotificationProps extends HTMLStyleProps<HTMLDivElement> {
-    notification: LoopItem<NotificationOptions>;
     onclose: () => void;
 }
-export declare function Notification({ notification, onclose, }: NotificationProps): any;
+export declare function Notification({ onclose, }: NotificationProps): any;

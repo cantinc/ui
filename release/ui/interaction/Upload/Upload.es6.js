@@ -1,19 +1,36 @@
 import { __rest } from 'tslib';
-import { style, Ref, use, inject, useShow } from '@innet/dom';
+import { style, useMapValue, useShow, Ref, use, inject } from '@innet/dom';
 import { useSlots } from '@innet/jsx';
 import classes from 'html-classes';
-import { State, Cache } from 'watch-state';
+import { Cache, State } from 'watch-state';
 import '../../../utils/index.es6.js';
 import '../../icons/index.es6.js';
 import '../../layout/index.es6.js';
 import modules_ab4cd8f7 from './Upload.scss.es6.js';
-import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 import { getExtension } from '../../../utils/file/getExtension/getExtension.es6.js';
+import { actionProp } from '../../../utils/actionProp/actionProp.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 import { Icon } from '../../icons/Icon/Icon.es6.js';
 
 const useStyle = style(modules_ab4cd8f7);
 const imageExtensions = ['jpg', 'webp', 'png', 'jpeg', 'svg'];
+function UploadItem() {
+    const item = useMapValue();
+    const show = useShow(400);
+    const hide = new Ref();
+    const src = new Cache(() => use(item).src);
+    const name = new Cache(() => use(item).name);
+    const isImage = new Cache(() => src.value !== name.value);
+    const title = new Cache(() => { var _a; return (_a = name.value) === null || _a === void 0 ? void 0 : _a.replace(/\.[^.]+$/, ''); });
+    const getClass = () => classes([
+        modules_ab4cd8f7.image,
+        show.value && modules_ab4cd8f7.imageShow,
+        hide.value.value && modules_ab4cd8f7.imageHide,
+    ]);
+    return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[() => isImage.value
+            ? ({type:'img',props:{class:getClass,src:src}})
+            : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => modules_ab4cd8f7.name},children:[title]},{type:'span',props:{class:() => modules_ab4cd8f7.extension},children:[() => getExtension(use(item))]}]})]});
+}
 function Upload(_a = {}) {
     var { width, height, radius = 8, label, error, hint, style, props, multiple, inputRef = new Ref(), files = new State([]), onchange, accept, name, disabled, clearable } = _a, rest = __rest(_a, ["width", "height", "radius", "label", "error", "hint", "style", "props", "multiple", "inputRef", "files", "onchange", "accept", "name", "disabled", "clearable"]);
     const { after, before } = useSlots();
@@ -84,19 +101,7 @@ function Upload(_a = {}) {
             styles.root,
             over.value && styles.over,
             use(error) && styles.error,
-        ])},children:[{type:'input',props:{...props === null || props === void 0 ? void 0 : props.input,accept:accept,name:name,disabled:disabled,multiple:multiple,type:'file',ref:inputRef,'data-empty':empty,oninput:handleInput,class:() => styles.input}},{type:'div',props:{class:() => styles.labels},children:[{type:'span',props:{class:() => styles.label},children:[label]},{type:'span',props:{class:() => styles.drag},children:[{type:'slot',props:{name:'ui-upload-drag'},children:['Move the file here']}]},{type:'span',props:{class:() => styles.drop},children:[{type:'slot',props:{name:'ui-upload-drop'},children:['Drop the file here']}]}]},{type:'span',props:{class:() => styles.focus}},before,{type:'div',props:{class:() => styles.files},children:[{type:'for',props:{of:files,key:'src'},children:[(item) => {
-            var _a, _b;
-            const show = useShow(400);
-            const hide = new Ref();
-            const getClass = () => classes([
-                styles.image,
-                show.value && styles.imageShow,
-                hide.value.value && styles.imageHide,
-            ]);
-            return ({type:'delay',props:{show:300,ref:hide,hide:300},children:[item.value.src !== item.value.name
-                    ? ({type:'img',props:{class:getClass,src:item.value.src}})
-                    : ({type:'span',props:{class:getClass},children:[{type:'span',props:{class:() => styles.name},children:[(_b = (_a = item.value) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.replace(/\.[^.]+$/, '')]},{type:'span',props:{class:() => styles.extension},children:[getExtension(item.value)]}]})]});
-        }]}]},after,' ',hintContent,{type:'show',props:{when:clearable},children:[{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
+        ])},children:[{type:'input',props:{...props === null || props === void 0 ? void 0 : props.input,accept:accept,name:name,disabled:disabled,multiple:multiple,type:'file',ref:inputRef,'data-empty':empty,oninput:handleInput,class:() => styles.input}},{type:'div',props:{class:() => styles.labels},children:[{type:'span',props:{class:() => styles.label},children:[label]},{type:'span',props:{class:() => styles.drag},children:[{type:'slot',props:{name:'ui-upload-drag'},children:['Move the file here']}]},{type:'span',props:{class:() => styles.drop},children:[{type:'slot',props:{name:'ui-upload-drop'},children:['Drop the file here']}]}]},{type:'span',props:{class:() => styles.focus}},before,{type:'div',props:{class:() => styles.files},children:[{type:'map',props:{of:files,key:'src'},children:[{type:UploadItem}]}]},after,' ',hintContent,{type:'show',props:{when:clearable},children:[{type:Icon,props:{icon:'cross',class:() => styles.clear,onclick:handleClear}}]}]});
 }
 
 export { Upload };

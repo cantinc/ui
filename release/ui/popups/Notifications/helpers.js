@@ -5,8 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var watchState = require('watch-state');
 var constants = require('./constants.js');
 
-function notify(content, type, timeout) {
-    watchState.globalEvent.start();
+const notify = watchState.createEvent((content, type, timeout) => {
     constants.notifications.value.push({
         type,
         content,
@@ -14,7 +13,6 @@ function notify(content, type, timeout) {
         key: `${Date.now()}${Math.random()}`,
     });
     constants.notifications.update();
-    watchState.globalEvent.end();
-}
+});
 
 exports.notify = notify;

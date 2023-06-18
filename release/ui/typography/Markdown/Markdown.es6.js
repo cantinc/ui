@@ -1,3 +1,4 @@
+import { use } from '@innet/dom';
 import { parse } from '@textlint/markdown-to-ast';
 import '../../external/Highlight/index.es6.js';
 import '../Divider/index.es6.js';
@@ -107,7 +108,7 @@ function Markdown({ text }) {
     if (typeof text === 'string') {
         return ast2jsx(parse(text));
     }
-    return (update) => ast2jsx(parse(text(update)));
+    return (update) => ast2jsx(parse(use(text, update)));
 }
 
 export { Markdown };

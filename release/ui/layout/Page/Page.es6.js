@@ -1,9 +1,10 @@
 import { __rest } from 'tslib';
-import { useShow, useHidden, history } from '@innet/dom';
+import { useShow, useHidden } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
-import { scrollTo } from '@watch-state/history-api';
+import { locationHash } from '@watch-state/history-api';
 import classes from 'html-classes';
 import { onDestroy } from 'watch-state';
+import { scrollTo } from 'web-scroll';
 import '../Flex/index.es6.js';
 import modules_1f74907c from './Page.scss.es6.js';
 import { Flex } from '../Flex/Flex.es6.js';
@@ -18,8 +19,9 @@ function Page(props) {
     const show = useShow();
     const hidden = useHidden();
     const timer = setTimeout(() => {
-        if (history.hash) {
-            scrollTo(`#${history.hash}`);
+        const hash = locationHash.value;
+        if (hash) {
+            scrollTo(`#${hash}`);
         }
     }, 300);
     onDestroy(() => clearTimeout(timer));

@@ -1,5 +1,6 @@
 import { __rest } from 'tslib';
-import { stringifySearch, parsedSearch, history } from '@innet/dom';
+import { stringifySearch, parsedSearch } from '@innet/dom';
+import { historyPush, locationPath } from '@watch-state/history-api';
 import '../../interaction/index.es6.js';
 import { Tags } from '../../interaction/Tags/Tags.es6.js';
 
@@ -7,7 +8,7 @@ function SearchTags(_a) {
     var { key, onchange, multiple } = _a, props = __rest(_a, ["key", "onchange", "multiple"]);
     const handleChange = (val) => {
         const search = stringifySearch(Object.assign(Object.assign({}, parsedSearch.value), { [key]: Array.isArray(val) && val.length === 1 ? val[0] : val || undefined }), { addQueryPrefix: true });
-        history.push(`${history.path}${search}`, -1);
+        historyPush(`${locationPath.value}${search}`, -1);
         onchange === null || onchange === void 0 ? void 0 : onchange(val);
     };
     const value = () => {

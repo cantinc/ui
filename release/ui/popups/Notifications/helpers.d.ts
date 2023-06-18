@@ -1,1 +1,1 @@
-export declare function notify(content: string, type?: 'success' | 'error', timeout?: number): void;
+export declare const notify: (content: string, type?: 'success' | 'error', timeout?: number) => void;

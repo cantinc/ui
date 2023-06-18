@@ -39,11 +39,16 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...props,...watchState.unwatch(() => handleItemProps(item, Element, props))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:(e) => {
+    const Item = () => {
+        const item = dom.useMapValue();
+        const index = dom.useMapIndex();
+        return ({type:Element,props:{...props,...watchState.unwatch(() => handleItemProps(item, index, Element, props))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon.Icon,props:{class:styles.remove,onclick:(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                handleRemove(item.index);
-            },icon:'brick'}}]}]})]},{type:'div',props:{class:() => styles.root},children:[{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]}]);
+                handleRemove(dom.use(index));
+            },icon:'brick'}}]}]});
+    };
+    return ([{type:'map',props:{of:customValues,key:key},children:[{type:Item}]},{type:'div',props:{class:() => styles.root},children:[{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]}]);
 }
 
 exports.Set = Set;

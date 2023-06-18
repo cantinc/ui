@@ -12,7 +12,7 @@ export interface NavigationProps extends FlexProps {
     menu?: NavigationMenu;
 }
 declare function NavigationItem({ children, menu, access, ...props }?: NavigationItemProps): any;
-declare function NavigationItems(props: NavigationItemsProps): Generator<any, void, unknown>;
+declare function NavigationItems(props: NavigationItemsProps): any;
 export declare function Navigation({ menu, ...props }?: NavigationProps): any;
 export declare namespace Navigation {
     var Item: typeof NavigationItem;

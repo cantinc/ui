@@ -1,6 +1,7 @@
 import { __rest } from 'tslib';
 import { style, Ref } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
+import SyncTimer from 'sync-timer';
 import { State } from 'watch-state';
 import '../Flex/index.es6.js';
 import modules_a22eb676 from './Navigation.scss.es6.js';
@@ -21,15 +22,15 @@ function NavigationItem(_a = {}) {
     const styles = useItemStyles();
     return ({type:'show',props:{when:access},children:[{type:'a',props:{...props,class:styles},children:[children]},menu && ({type:NavigationItems,children:[menu.map(item => ({type:NavigationItem,props:{...item}}))]})]});
 }
-function* NavigationItems(props) {
+function NavigationItems(props) {
     const children = useChildren();
     const styles = useSubMenuStyles();
     const el = (props === null || props === void 0 ? void 0 : props.ref) || new Ref();
     const height = new State(0);
-    yield ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
-    setTimeout(() => {
+    new SyncTimer(() => {
         height.value = el.value.scrollHeight;
     });
+    return ({type:'section',props:{...props,ref:el,style:Object.assign(Object.assign({}, props === null || props === void 0 ? void 0 : props.style), { '--ui-sub-menu-height': () => `${height.value}px` }),class:() => styles.root},children:[children]});
 }
 function Navigation(_a = {}) {
     var { menu } = _a, props = __rest(_a, ["menu"]);

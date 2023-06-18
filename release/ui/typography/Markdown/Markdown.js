@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var dom = require('@innet/dom');
 var markdownToAst = require('@textlint/markdown-to-ast');
 require('../../external/Highlight/index.js');
 require('../Divider/index.js');
@@ -111,7 +112,7 @@ function Markdown({ text }) {
     if (typeof text === 'string') {
         return ast2jsx(markdownToAst.parse(text));
     }
-    return (update) => ast2jsx(markdownToAst.parse(text(update)));
+    return (update) => ast2jsx(markdownToAst.parse(dom.use(text, update)));
 }
 
 exports.Markdown = Markdown;

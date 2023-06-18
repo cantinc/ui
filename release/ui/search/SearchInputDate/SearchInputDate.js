@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var tslib = require('tslib');
 var dom = require('@innet/dom');
+var historyApi = require('@watch-state/history-api');
 require('../../../hooks/index.js');
 require('../../../utils/index.js');
 require('../../interaction/index.js');
@@ -16,7 +17,7 @@ function SearchInputDate(_a) {
     const provider = useChildrenProvider.useChildrenProvider();
     const handleChange = (date) => {
         const search = dom.stringifySearch(Object.assign(Object.assign({}, dom.parsedSearch.value), { [key]: date && inputDateFormat.inputDateFormat(date) }), { addQueryPrefix: true });
-        dom.history.push(`${dom.history.path}${search}`, -1);
+        historyApi.historyPush(`${historyApi.locationPath.value}${search}`, -1);
         oninput === null || oninput === void 0 ? void 0 : oninput(date);
     };
     return provider({type:InputDate.InputDate,props:{...props,value:() => dom.parsedSearch.value[key] ? new Date(String(dom.parsedSearch.value[key])) : undefined,oninput:handleChange}});

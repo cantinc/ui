@@ -8,6 +8,7 @@ var jsx = require('@innet/jsx');
 var historyApi = require('@watch-state/history-api');
 var classes = require('html-classes');
 var watchState = require('watch-state');
+var webScroll = require('web-scroll');
 require('../Flex/index.js');
 var Page$1 = require('./Page.scss.js');
 var Flex = require('../Flex/Flex.js');
@@ -26,8 +27,9 @@ function Page(props) {
     const show = dom.useShow();
     const hidden = dom.useHidden();
     const timer = setTimeout(() => {
-        if (dom.history.hash) {
-            historyApi.scrollTo(`#${dom.history.hash}`);
+        const hash = historyApi.locationHash.value;
+        if (hash) {
+            webScroll.scrollTo(`#${hash}`);
         }
     }, 300);
     watchState.onDestroy(() => clearTimeout(timer));

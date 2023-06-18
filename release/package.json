@@ -1,6 +1,6 @@
 {
   "name": "@cantinc/ui",
-  "version": "0.3.8",
+  "version": "0.4.0-alpha.0",
   "description": "UI components of innetjs",
   "homepage": "https://cantinc.github.io/ui",
   "author": "Mikhail Lysikov <d8corp@mail.ru>",
@@ -37,14 +37,16 @@
   },
   "dependencies": {
     "@cantinc/utils": "^1.4.2",
-    "@innet/dom": "^0.14.0",
-    "@innet/jsx": "^1.2.1",
+    "@innet/dom": "^0.15.0-alpha.3",
+    "@innet/jsx": "^2.0.0-alpha.7",
+    "@watch-state/history-api": "^2.0.0-alpha.1",
     "@textlint/ast-node-types": "^13.3.2",
     "@textlint/markdown-to-ast": "^13.3.2",
     "html-classes": "^2.0.2",
-    "innet": "^1.0.1",
+    "innet": "^2.0.0-alpha.2",
     "inputmask": "^5.0.8",
     "prismjs": "^1.29.0",
-    "watch-state": "^3.4.5"
+    "sync-timer": "^1.0.1",
+    "watch-state": "^3.5.0-alpha.2"
   }
 }

@@ -6,6 +6,7 @@ var tslib = require('tslib');
 var dom = require('@innet/dom');
 var jsx = require('@innet/jsx');
 var classes = require('html-classes');
+var SyncTimer = require('sync-timer');
 var watchState = require('watch-state');
 require('../../../utils/index.js');
 require('../../layout/index.js');
@@ -18,6 +19,7 @@ var getWeek = require('../../../utils/date/getWeek/getWeek.js');
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
+var SyncTimer__default = /*#__PURE__*/_interopDefaultLegacy(SyncTimer);
 
 const useStyle = dom.style(Calendar$1["default"]);
 const today = new Date();
@@ -25,7 +27,7 @@ const todayYear = today.getFullYear();
 const todayMonth = today.getMonth();
 const todayDay = today.getDate();
 const defaultCalendarCellRender = (item) => {
-    return new watchState.Cache(() => item.value.date.getDate());
+    return new watchState.Cache(() => dom.use(item).date.getDate());
 };
 const isToday = (date) => {
     return date.getDate() === todayDay && date.getFullYear() === todayYear && date.getMonth() === todayMonth;
@@ -74,28 +76,30 @@ function* Calendar(_a = {}) {
         }
         return grid;
     });
+    const Item = () => {
+        const item = dom.useMapValue();
+        if (watchState.unwatch(() => rotationTop.value)) {
+            position--;
+        }
+        else {
+            position++;
+        }
+        return ({type:'delay',props:{hide:300},children:[{type:'span',props:{onclick:() => onselect === null || onselect === void 0 ? void 0 : onselect(dom.use(item)),class:() => classes__default["default"]([
+                styles.cell,
+                isToday(dom.use(item).date) && styles.today,
+                dom.use(item).current && styles.cellCurrent,
+                (activeHandler === null || activeHandler === void 0 ? void 0 : activeHandler(dom.use(item))) && styles.active,
+                (disableHandler === null || disableHandler === void 0 ? void 0 : disableHandler(dom.use(item))) && styles.disabled,
+                (selectedHandler === null || selectedHandler === void 0 ? void 0 : selectedHandler(dom.use(item))) && styles.selected,
+            ])},children:[() => renderCell(item)]}]});
+    };
     yield ({type:Flex.Flex,props:{...props,vertical:true,align:'stretch',class:() => styles.root},children:[children,{type:'div',props:{class:() => styles.week},children:[[...new Array(7)].map((_, i) => ({type:'span',props:{class:() => styles.weekCell},children:[getWeek.getWeek(i + 1, 'short')]}))]},{type:'div',props:{style:{
             '--ui-calendar-cell-height': dom.inject(cellHeight, height => `${height}px`),
         },class:() => styles.gridWrapper},children:[{type:'div',props:{style:{
             transition: () => stopAnimation.value ? 'none' : '',
             'margin-top': () => `${margin.value}px`,
             top: () => `${top.value}px`,
-        },class:() => styles.grid},children:[{type:'for',props:{of:grid,key:'value'},children:[(item) => {
-            if (watchState.unwatch(() => rotationTop.value)) {
-                position--;
-            }
-            else {
-                position++;
-            }
-            return ({type:'delay',props:{hide:300},children:[{type:'span',props:{onclick:() => onselect === null || onselect === void 0 ? void 0 : onselect(item.value),class:() => classes__default["default"]([
-                    styles.cell,
-                    isToday(item.value.date) && styles.today,
-                    item.value.current && styles.cellCurrent,
-                    (activeHandler === null || activeHandler === void 0 ? void 0 : activeHandler(item.value)) && styles.active,
-                    (disableHandler === null || disableHandler === void 0 ? void 0 : disableHandler(item.value)) && styles.disabled,
-                    (selectedHandler === null || selectedHandler === void 0 ? void 0 : selectedHandler(item.value)) && styles.selected,
-                ])},children:[() => renderCell(item)]}]});
-        }]}]}]}]});
+        },class:() => styles.grid},children:[{type:'map',props:{of:grid,key:'value'},children:[{type:Item}]}]}]}]});
     let timer;
     new watchState.Watch(update => {
         const height = dom.use(cellHeight);
@@ -118,7 +122,7 @@ function* Calendar(_a = {}) {
             }
             else {
                 const nextValue = position / 7 * height;
-                dom.setTimeoutSync(() => {
+                new SyncTimer__default["default"](() => {
                     margin.value = nextValue;
                 }, 300);
             }

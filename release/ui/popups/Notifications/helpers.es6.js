@@ -1,8 +1,7 @@
-import { globalEvent } from 'watch-state';
+import { createEvent } from 'watch-state';
 import { notifications } from './constants.es6.js';
 
-function notify(content, type, timeout) {
-    globalEvent.start();
+const notify = createEvent((content, type, timeout) => {
     notifications.value.push({
         type,
         content,
@@ -10,7 +9,6 @@ function notify(content, type, timeout) {
         key: `${Date.now()}${Math.random()}`,
     });
     notifications.update();
-    globalEvent.end();
-}
+});
 
 export { notify };

@@ -12,9 +12,9 @@ require('../../interaction/Option/index.js');
 require('../Dropdown/index.js');
 var DropdownMenu$1 = require('./DropdownMenu.scss.js');
 var actionProp = require('../../../utils/actionProp/actionProp.js');
+var Option = require('../../interaction/Option/Option.js');
 var Dropdown = require('../Dropdown/Dropdown.js');
 var Listener = require('../../external/Listener/Listener.js');
-var Option = require('../../interaction/Option/Option.js');
 
 const useStyle = dom.style(DropdownMenu$1["default"]);
 function DropdownMenu(_a) {
@@ -79,7 +79,12 @@ function DropdownMenu(_a) {
             }
         }
     };
-    return ({type:Dropdown.Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener.Listener,props:{type:'keydown',listener:listener}},children,{type:'for',props:{of:values || [],key:'value'},children:[(item) => ({type:Option.Option,props:{...item.value,selected:() => dom.use(select) === item.value.value,onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(item.value.value),preselected:() => dom.use(preselect) === item.value.value,onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(item.value.value),showValues:showValues}})]}]});
+    const Item = () => {
+        const item = dom.useMapValue();
+        const value = dom.inject(item, item => item.value);
+        return ({type:Option.Option,props:{...watchState.unwatch(() => dom.use(item)),selected:() => dom.use(select) === dom.use(value),onSelect:() => onSelect === null || onSelect === void 0 ? void 0 : onSelect(dom.use(value)),preselected:() => dom.use(preselect) === dom.use(value),onPreselect:() => onPreselect === null || onPreselect === void 0 ? void 0 : onPreselect(dom.use(value)),showValues:showValues}});
+    };
+    return ({type:Dropdown.Dropdown,props:{vertical:true,align:'stretch',...props,class:styles},children:[{type:Listener.Listener,props:{type:'keydown',listener:listener}},children,{type:'map',props:{of:values || [],key:'value'},children:[{type:Item}]}]});
 }
 
 exports.DropdownMenu = DropdownMenu;

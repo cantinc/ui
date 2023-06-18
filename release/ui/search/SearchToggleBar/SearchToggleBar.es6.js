@@ -1,5 +1,5 @@
 import { __rest } from 'tslib';
-import { history } from '@innet/dom';
+import { getSearchParam } from '@watch-state/history-api';
 import '../../interaction/index.es6.js';
 import { ToggleBar } from '../../interaction/ToggleBar/ToggleBar.es6.js';
 
@@ -10,7 +10,7 @@ function SearchToggleBar(_a) {
                 e.preventDefault();
             },class:className,scrollTo:-1,href:value ? `?${key}=${value}` : '?'},children:[label !== null && label !== void 0 ? label : value]});
     }
-    return ({type:ToggleBar,props:{...props,value:() => history.getSearch(key) || '',element:'nav',renderValue:defaultSearchToggleBarRender}});
+    return ({type:ToggleBar,props:{...props,value:getSearchParam(key),element:'nav',renderValue:defaultSearchToggleBarRender}});
 }
 
 export { SearchToggleBar };

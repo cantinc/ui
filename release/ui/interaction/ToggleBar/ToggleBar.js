@@ -17,6 +17,23 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var classes__default = /*#__PURE__*/_interopDefaultLegacy(classes);
 
 const useStyle = dom.style(ToggleBar$1["default"]);
+function ToggleBarItem({ renderValue, onchange, index, onblur, onfocus }) {
+    const item = dom.useMapValue();
+    const itemIndex = dom.useMapIndex();
+    return (update) => renderValue(dom.use(item, update), {
+        onchange: () => {
+            onchange === null || onchange === void 0 ? void 0 : onchange(dom.use(item, update).value);
+        },
+        className: update => classes__default["default"]([
+            ToggleBar$1["default"].link,
+            dom.use(index, update) === dom.use(itemIndex, update) && ToggleBar$1["default"].active,
+        ]),
+        onblur,
+        onfocus: () => {
+            onfocus(dom.use(itemIndex));
+        },
+    });
+}
 function defaultToggleBarRender({ value, label, icon }, { className, onchange, onfocus, onblur, }) {
     return ({type:'span',props:{onfocus:onfocus,onblur:onblur,onmouseenter:onfocus,tabIndex:0,onkeydown:(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -65,18 +82,10 @@ function ToggleBar(_a) {
             styles.root,
             styles[side.value],
             styles[`${focusSide.value}Focus`],
-        ])},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'for',props:{of:values,key:'value'},children:[(item) => renderValue(item.value, {
-            onchange: () => onchange === null || onchange === void 0 ? void 0 : onchange(item.value.value),
-            className: () => classes__default["default"]([
-                styles.link,
-                index.value === item.index && styles.active,
-            ]),
-            onblur: handleBlur,
-            onfocus: () => {
-                clearTimeout(blurTimeout);
-                focusIndex.value = item.index;
-            },
-        })]}]});
+        ])},children:[{type:'div',props:{class:styles.focus}},{type:'div',props:{class:styles.selected}},{type:'map',props:{of:values,key:'value'},children:[{type:ToggleBarItem,props:{index:index,onblur:handleBlur,onchange:onchange,renderValue:renderValue,onfocus:(index) => {
+            clearTimeout(blurTimeout);
+            focusIndex.value = index;
+        }}}]}]});
 }
 
 exports.ToggleBar = ToggleBar;

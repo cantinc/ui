@@ -24,7 +24,7 @@ function Notifications(_a = {}) {
     return () => {
         if (notificationsEmpty.value)
             return;
-        return ({type:'delay',props:{hide:300},children:[{type:'div',props:{...props,onclick:handleClick,class:styles.root},children:[{type:'for',props:{of:first3notifications,key:'key'},children:[(notification) => ({type:Notification,props:{onclose:close,class:{ progress: styles.progress },notification:notification}})]}]}]});
+        return ({type:'delay',props:{hide:300},children:[{type:'div',props:{...props,onclick:handleClick,class:styles.root},children:[{type:'map',props:{of:first3notifications,key:'key'},children:[{type:Notification,props:{onclose:close,class:{ progress: styles.progress }}}]}]}]});
     };
 }
 

@@ -1,4 +1,5 @@
 import { type StateProp, type WatchProp } from '@innet/dom';
+import { State } from 'watch-state';
 import { type IconProp } from '../../icons';
 import { type FlexProps } from '../../layout';
 export interface ToggleBarValue {
@@ -17,7 +18,7 @@ export interface ToggleBarItemOptions {
 export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItemOptions) => any;
 export type ToggleBarProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
     values: StateProp<ToggleBarValue[]>;
-    value?: StateProp<string>;
+    value?: StateProp<string> | State<string>;
     width?: StateProp<string | number>;
     renderValue?: ToggleBarRenderValue;
     onchange?: ToggleBarOnChange;

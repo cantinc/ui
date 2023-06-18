@@ -1,6 +1,6 @@
 import { __rest } from 'tslib';
 import { randomHash } from '@cantinc/utils';
-import { style, use } from '@innet/dom';
+import { style, use, useMapValue, useMapIndex } from '@innet/dom';
 import { Context, useContext, useChildren } from '@innet/jsx';
 import { State, Cache, unwatch } from 'watch-state';
 import '../../../utils/index.es6.js';
@@ -35,11 +35,16 @@ function Set(_a) {
         newValue.splice(index, 1);
         onchange === null || onchange === void 0 ? void 0 : onchange(newValue);
     };
-    return ([{type:'for',props:{of:customValues,key:key},children:[(item) => ({type:Element,props:{...props,...unwatch(() => handleItemProps(item, Element, props))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{class:styles.remove,onclick:(e) => {
+    const Item = () => {
+        const item = useMapValue();
+        const index = useMapIndex();
+        return ({type:Element,props:{...props,...unwatch(() => handleItemProps(item, index, Element, props))},children:[{type:'slot',props:{name:'after'},children:[{type:Icon,props:{class:styles.remove,onclick:(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                handleRemove(item.index);
-            },icon:'brick'}}]}]})]},{type:'div',props:{class:() => styles.root},children:[{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]}]);
+                handleRemove(use(index));
+            },icon:'brick'}}]}]});
+    };
+    return ([{type:'map',props:{of:customValues,key:key},children:[{type:Item}]},{type:'div',props:{class:() => styles.root},children:[{type:'button',props:{type:'button',onclick:handleAdd,class:() => styles.addButton},children:[children]}]}]);
 }
 
 export { Set, setPropsHandler };
