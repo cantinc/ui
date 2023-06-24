@@ -105,6 +105,8 @@ function ast2jsx(ast) {
     return (_a = astMap[ast.type]) === null || _a === void 0 ? void 0 : _a.call(astMap, ast);
 }
 function Markdown({ text }) {
+    if (!text)
+        return;
     if (typeof text === 'string') {
         return ast2jsx(parse(text));
     }

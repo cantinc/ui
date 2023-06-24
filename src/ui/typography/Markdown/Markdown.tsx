@@ -8,7 +8,7 @@ import { Divider } from '../../typography/Divider'
 import { Title } from '../Title'
 
 export interface MarkdownProps {
-  text: StateProp<string>
+  text?: StateProp<string>
 }
 
 const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<JSXElement>>> = {
@@ -111,6 +111,8 @@ function ast2jsx (ast: TxtNode) {
 }
 
 export function Markdown ({ text }: MarkdownProps) {
+  if (!text) return
+
   if (typeof text === 'string') {
     return ast2jsx(parse(text))
   }
