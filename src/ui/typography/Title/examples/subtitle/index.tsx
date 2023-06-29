@@ -4,8 +4,8 @@ import { Button, Title } from 'src/ui'
 import description from './README.md'
 
 export default example({
-  id: 'button',
-  title: 'button',
+  id: 'subtitle',
+  title: 'subtitle',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -17,6 +17,7 @@ innet(
     justify='between'
     align='end'
     h={2}
+    subtitle='Subtitle'
     title='Heading 2'>
     <Button<HTMLAnchorElement>
       element='a'
@@ -33,7 +34,7 @@ innet(
       justify='between'
       align='end'
       h={2}
-      subTitle='Subtitle'
+      subtitle='Subtitle'
       title='Heading 2'>
       <Button<HTMLAnchorElement>
         element='a'

@@ -14,7 +14,7 @@ export interface SectionStyles {
 
 export interface SectionProps extends FlexProps<HTMLDivElement, {}, SectionStyles> {
   title?: string
-  subTitle?: StateProp<string>
+  subtitle?: StateProp<string>
 
   titleProps?: TitleProps
 }
@@ -22,7 +22,7 @@ export interface SectionProps extends FlexProps<HTMLDivElement, {}, SectionStyle
 export function Section ({
   title,
   titleProps,
-  subTitle,
+  subtitle,
   ...props
 }: SectionProps = {}) {
   const { '': children, title: aside } = useSlots()
@@ -42,7 +42,7 @@ export function Section ({
         align='end'
         gap={16}
         {...titleProps}
-        subTitle={subTitle}
+        subtitle={subtitle}
         title={title}
         class={() => styles.title}>
         {aside}

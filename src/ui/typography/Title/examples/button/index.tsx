@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'button',
-  title: 'button',
+  title: 'Button',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

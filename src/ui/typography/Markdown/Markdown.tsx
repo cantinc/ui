@@ -39,7 +39,7 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<J
 
     return ({
       type: Title,
-      props: { h: depth, title: text },
+      props: { h: depth, title: text, accent: depth < 3 },
       children: text ? undefined : jsxChildren,
     })
   },

@@ -10,13 +10,15 @@ const useStyle = style(styles)
 export interface TitleProps extends FlexProps<HTMLHeadingElement> {
   h?: 1 | 2 | 3 | 4 | 5 | 6
   title?: string
-  subTitle?: StateProp<string>
+  accent?: boolean
+  subtitle?: StateProp<string>
 }
 
 export function Title ({
   h = 1,
   title,
-  subTitle,
+  subtitle,
+  accent,
   ...props
 }: TitleProps = {}) {
   const children = useChildren()
@@ -25,7 +27,7 @@ export function Title ({
   const contextTitle = useContext(titleContext)
   const titleSeparator = useContext(titleSeparatorContext)
   const styles = useStyle()
-  const showSubtitle = subTitle ? new Cache(() => Boolean(use(subTitle))) : null
+  const showSubtitle = subtitle ? new Cache(() => Boolean(use(subtitle))) : null
 
   if (h === 1 && (title !== undefined || contextTitle !== undefined)) {
     if (contextTitle) {
@@ -42,6 +44,7 @@ export function Title ({
       {...props}
       class={() => [
         styles.root,
+        accent && styles.accent,
         show.value && styles.show,
         hide?.value && styles.hide,
       ]}>
@@ -49,7 +52,7 @@ export function Title ({
       {children}
       <show when={showSubtitle}>
         <div class={() => styles.subTitle}>
-          {subTitle}
+          {subtitle}
         </div>
       </show>
     </Flex>

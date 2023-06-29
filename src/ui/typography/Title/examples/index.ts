@@ -1,9 +1,13 @@
+import accent from './accent'
 import button from './button'
 import def from './default'
-import subTitle from './subTitle'
+import subtitle from './subtitle'
+import upTitle from './upTitle'
 
 export default [
   def,
+  accent,
   button,
-  subTitle,
+  subtitle,
+  upTitle,
 ]

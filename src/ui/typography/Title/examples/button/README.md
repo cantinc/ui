@@ -1,1 +1,1 @@
-Use `h` property to set heading size.
+You can add some content, placed on right side.

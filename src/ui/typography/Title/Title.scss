@@ -1,10 +1,14 @@
 .root {
-  color: var(--color-primary-50);
   transform: translateX(10px);
   transition: transform .3s;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 600;
+}
+
+.accent {
+  color: var(--color-primary-50);
   font-style: italic;
+  font-weight: 900;
 }
 
 .show {
