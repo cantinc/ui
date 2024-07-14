@@ -73,6 +73,7 @@
   opacity: 1;
   transform: scale(1);
   padding: 16px;
+  box-sizing: border-box;
 }
 
 .label {
@@ -175,7 +176,6 @@
   pointer-events: none;
   opacity: 0;
   transition: all .3s;
-  z-index: 1;
 
   :global(.drag-over) &,
   .input:focus ~ & {

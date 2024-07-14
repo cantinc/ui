@@ -133,16 +133,21 @@ import { State } from 'watch-state'
 
 import { Button } from '@cantinc/ui'
 
-const state = new State('display:none')
+const color = new State('red')
+
+const handleClick = () => {
+  color.value = 'blue'
+}
 
 innet(
   <>
     <Button
-      onclick={() => { state.value = '' }}
-      style='background:red'>
+      style={{
+        background: () => color.value,
+      }}
+      onclick={handleClick}>
       Click me
     </Button>
-    <Button style={() => state.value} />
   </>,
   dom,
 )
