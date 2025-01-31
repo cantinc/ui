@@ -9,10 +9,10 @@ import { Title } from '../Title/Title.es6.js';
 
 const useStyle = style(modules_31bb216d, { root: '' });
 function Section(_a = {}) {
-    var { title, titleProps, subTitle } = _a, props = __rest(_a, ["title", "titleProps", "subTitle"]);
+    var { title, titleProps, subtitle } = _a, props = __rest(_a, ["title", "titleProps", "subtitle"]);
     const { '': children, title: aside } = useSlots();
     const styles = useStyle();
-    return ({type:Flex,props:{element:'section',align:'stretch',vertical:true,gap:24,...props,class:() => styles.root},children:[{type:Title,props:{h:2,justify:'between',align:'end',gap:16,...titleProps,subTitle:subTitle,title:title,class:() => styles.title},children:[aside]},children]});
+    return ({type:Flex,props:{element:'section',align:'stretch',vertical:true,gap:24,...props,class:() => styles.root},children:[{type:Title,props:{h:2,justify:'between',align:'end',gap:16,...titleProps,subtitle:subtitle,title:title,class:() => styles.title},children:[aside]},children]});
 }
 
 export { Section };

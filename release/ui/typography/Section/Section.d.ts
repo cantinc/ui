@@ -7,7 +7,7 @@ export interface SectionStyles {
 }
 export interface SectionProps extends FlexProps<HTMLDivElement, {}, SectionStyles> {
     title?: string;
-    subTitle?: StateProp<string>;
+    subtitle?: StateProp<string>;
     titleProps?: TitleProps;
 }
-export declare function Section({ title, titleProps, subTitle, ...props }?: SectionProps): any;
+export declare function Section({ title, titleProps, subtitle, ...props }?: SectionProps): any;

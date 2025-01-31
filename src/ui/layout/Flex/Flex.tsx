@@ -23,7 +23,7 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
+export type FlexProps <E extends HTMLElement = HTMLDivElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
   vertical?: StateProp<boolean>
   loading?: StateProp<boolean>
   loadingOffset?: StateProp<number>
@@ -38,7 +38,7 @@ export type FlexProps <E extends HTMLElement = HTMLElement, R = {}, S = any> = O
   padding?: number | [number, number] | [number, number, number] | [number, number, number, number]
 } & R
 
-export function Flex <E extends HTMLElement = HTMLElement> ({
+export function Flex <E extends HTMLElement = HTMLDivElement> ({
   vertical,
   align,
   justify,
