@@ -34,7 +34,7 @@ const astMap = {
         const text = (jsxChildren === null || jsxChildren === void 0 ? void 0 : jsxChildren.length) === 1 && typeof jsxChildren[0] === 'string' ? jsxChildren[0] : undefined;
         return ({
             type: Title,
-            props: { h: depth, title: text },
+            props: { h: depth, title: text, accent: depth < 3 },
             children: text ? undefined : jsxChildren,
         });
     },

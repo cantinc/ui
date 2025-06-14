@@ -26,7 +26,7 @@ export interface StoriesProps extends FlexProps {
 
 export function Stories ({
   stories,
-  ref = new Ref<HTMLElement>(),
+  ref = new Ref<HTMLDivElement>(),
   props: { preview: previewProps } = {},
   ...props
 }: StoriesProps) {

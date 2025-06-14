@@ -10,7 +10,7 @@ export interface ModalsProps extends OverlayProps {
   main?: boolean
 }
 
-export const modalsRef = new Ref<HTMLElement>()
+export const modalsRef = new Ref<HTMLDivElement>()
 
 export const ModalsPortal = () => {
   const children = useChildren()

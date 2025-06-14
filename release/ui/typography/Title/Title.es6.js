@@ -9,14 +9,14 @@ import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_f1b30145);
 function Title(_a = {}) {
-    var { h = 1, title, subTitle } = _a, props = __rest(_a, ["h", "title", "subTitle"]);
+    var { h = 1, title, subtitle, accent } = _a, props = __rest(_a, ["h", "title", "subtitle", "accent"]);
     const children = useChildren();
     const show = useShow();
     const hide = useHidden();
     const contextTitle = useContext(titleContext);
     const titleSeparator = useContext(titleSeparatorContext);
     const styles = useStyle();
-    const showSubtitle = subTitle ? new Cache(() => Boolean(use(subTitle))) : null;
+    const showSubtitle = subtitle ? new Cache(() => Boolean(use(subtitle))) : null;
     if (h === 1 && (title !== undefined || contextTitle !== undefined)) {
         if (contextTitle) {
             document.title = !title || contextTitle === title ? contextTitle : `${contextTitle}${titleSeparator}${title}`;
@@ -27,9 +27,10 @@ function Title(_a = {}) {
     }
     return ({type:Flex,props:{element:`h${h}`,wrap:true,...props,class:() => [
             styles.root,
+            accent && styles.accent,
             show.value && styles.show,
             (hide === null || hide === void 0 ? void 0 : hide.value) && styles.hide,
-        ]},children:[title,' ',children,{type:'show',props:{when:showSubtitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subTitle]}]}]});
+        ]},children:[title,' ',children,{type:'show',props:{when:showSubtitle},children:[{type:'div',props:{class:() => styles.subTitle},children:[subtitle]}]}]});
 }
 
 export { Title };

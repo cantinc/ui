@@ -1,0 +1,1 @@
+import{_ as s,u as t,F as a,i as e,s as i,J as n}from"./docs-2558e852.js";const o=i(n);function c(i={}){var{width:n,style:c}=i,r=s(i,["width","style"]);const l=t(),p=o();return{type:a,props:{align:"stretch",...r,style:Object.assign(Object.assign({},c),{"--ui-content-width":e(n,(s=>s?`${s}px`:""))}),class:()=>p.root},children:[l]}}export{c as C};

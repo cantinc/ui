@@ -77,7 +77,7 @@
 }
 
 .label {
-  color: var(--color-60);
+  color: var(--color-secondary);
 
   .input:not([data-empty='true']) ~ .labels > & {
     opacity: 0;
