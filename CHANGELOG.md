@@ -2,6 +2,10 @@
 
 ## v0.3
 
+### v0.3.9 [![14.07.2024](https://img.shields.io/date/1720953339)](https://github.com/cantinc/ui/tree/v0.3.9)
+
+- fix `Upload` styles
+
 ### v0.3.8 [![03.06.2023](https://img.shields.io/date/1685817380)](https://github.com/cantinc/ui/tree/v0.3.8)
 
 - fix empty `FormSet` validation bug
