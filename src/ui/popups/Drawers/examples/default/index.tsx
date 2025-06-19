@@ -1,3 +1,4 @@
+import { Portal, Show } from '@innet/dom'
 import { BurgerButton, Drawer, Drawers } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
@@ -11,7 +12,7 @@ export default example({
   title: 'Default',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Drawers, Drawer, BurgerButton } from '@cantinc/ui'
@@ -22,26 +23,26 @@ innet(
   <>
     <BurgerButton onclick={() => { show.value = true }} />
     <Drawers>
-      <show when={show}>
+      <Show when={show}>
         <Drawer onclose={() => { show.value = false }}>
           Content
         </Drawer>
-      </show>
+      </Show>
     </Drawers>
   </>,
   dom,
 )`,
   example: (
     <>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Drawers>
-          <show when={show}>
+          <Show when={show}>
             <Drawer onclose={() => { show.value = false }}>
               Content
             </Drawer>
-          </show>
+          </Show>
         </Drawers>
-      </portal>
+      </Portal>
       <BurgerButton onclick={() => { show.value = true }} />
     </>
   ),

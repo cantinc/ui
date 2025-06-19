@@ -34,12 +34,10 @@ innet(
       height={180}
       align='center'
       justify='center'
+      backside='Back vertical'
       onclick={() => handleClick(2)}
       flip={() => flip.value === 2}>
       Front vertical
-      <slot name='backside'>
-        Back vertical
-      </slot>
     </FlipCard>
     <FlipCard
       animation='horizontal'
@@ -47,12 +45,10 @@ innet(
       height={180}
       align='center'
       justify='center'
+      backside='Back horizontal'
       onclick={() => handleClick(1)}
       flip={() => flip.value === 1}>
       Front horizontal
-      <slot name='backside'>
-        Back horizontal
-      </slot>
     </FlipCard>
     <FlipCard
       animation='vertical'
@@ -61,12 +57,10 @@ innet(
       height={180}
       align='center'
       justify='center'
+      backside='Back vertical revert'
       onclick={() => handleClick(4)}
       flip={() => flip.value === 4}>
       Front vertical revert
-      <slot name='backside'>
-        Back vertical revert
-      </slot>
     </FlipCard>
     <FlipCard
       animation='horizontal'
@@ -75,12 +69,10 @@ innet(
       height={180}
       align='center'
       justify='center'
+      backside='Back horizontal revert'
       onclick={() => handleClick(3)}
       flip={() => flip.value === 3}>
       Front horizontal revert
-      <slot name='backside'>
-        Back horizontal revert
-      </slot>
     </FlipCard>
   </Cards>,
   dom,
@@ -93,12 +85,10 @@ innet(
         height={180}
         align='center'
         justify='center'
+        backside='Back vertical'
         onclick={() => handleClick(2)}
         flip={() => flip.value === 2}>
         Front vertical
-        <slot name='backside'>
-          Back vertical
-        </slot>
       </FlipCard>
       <FlipCard
         animation='horizontal'
@@ -106,12 +96,10 @@ innet(
         height={180}
         align='center'
         justify='center'
+        backside='Back horizontal'
         onclick={() => handleClick(1)}
         flip={() => flip.value === 1}>
         Front horizontal
-        <slot name='backside'>
-          Back horizontal
-        </slot>
       </FlipCard>
       <FlipCard
         animation='vertical'
@@ -120,12 +108,10 @@ innet(
         height={180}
         align='center'
         justify='center'
+        backside='Back vertical revert'
         onclick={() => handleClick(4)}
         flip={() => flip.value === 4}>
         Front vertical revert
-        <slot name='backside'>
-          Back vertical revert
-        </slot>
       </FlipCard>
       <FlipCard
         animation='horizontal'
@@ -134,12 +120,10 @@ innet(
         height={180}
         align='center'
         justify='center'
+        backside='Back horizontal revert'
         onclick={() => handleClick(3)}
         flip={() => flip.value === 3}>
         Front horizontal revert
-        <slot name='backside'>
-          Back horizontal revert
-        </slot>
       </FlipCard>
     </Cards>
   ),

@@ -1,4 +1,4 @@
-import { type HTMLStyleProp, Ref, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
+import { Delay, type HTMLStyleProp, Portal, Ref, Show, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { State, Watch } from 'watch-state'
@@ -112,14 +112,14 @@ function PopoutElement ({
         hide?.value && styles.hide,
         touched.value && styles.touch,
       ])}>
-      <show when={closeButton}>
+      <Show when={closeButton}>
         <div class={() => styles.static}>
           <CloseButton
             onclick={onhide}
             {...typeof closeButton === 'boolean' ? {} : closeButton}
           />
         </div>
-      </show>
+      </Show>
       <Flex
         {...props}
         ref={ref}
@@ -142,16 +142,16 @@ export function Popout ({
   const setHide = actionProp(show, onhide)
 
   return (
-    <show when={show}>
-      <portal parent={document.body}>
-        <delay ref={hide} hide={600}>
+    <Show when={show}>
+      <Portal parent={document.body}>
+        <Delay ref={hide} hide={600}>
           <PopoutElement
             onhide={() => setHide?.(false)}
             {...props}>
             {children}
           </PopoutElement>
-        </delay>
-      </portal>
-    </show>
+        </Delay>
+      </Portal>
+    </Show>
   )
 }

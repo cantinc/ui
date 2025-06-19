@@ -13,13 +13,13 @@ import dom from '@innet/dom'
 import { Flex } from '@cantinc/ui'
 
 innet(
-  <Flex<HTMLAnchorElement> element='a' href='/'>
+  <Flex element='a' href='/'>
     Home Page
   </Flex>,
   dom,
 )`,
   example: (
-    <Flex<HTMLAnchorElement> element='a' href='/'>
+    <Flex element='a' href='/'>
       Home Page
     </Flex>
   ),

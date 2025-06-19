@@ -19,7 +19,7 @@ innet(
     h={2}
     subtitle='Subtitle'
     title='Heading 2'>
-    <Button<HTMLAnchorElement>
+    <Button
       element='a'
       href='/'
       padding={[8, 24]}
@@ -36,7 +36,7 @@ innet(
       h={2}
       subtitle='Subtitle'
       title='Heading 2'>
-      <Button<HTMLAnchorElement>
+      <Button
         element='a'
         href='/'
         padding={[8, 24]}

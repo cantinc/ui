@@ -1,15 +1,22 @@
 import { inject, type StateProp, style, use } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 import { Cache, onDestroy, State, unwatch, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './Dots.scss'
 
 const useStyle = style(styles)
 
-export interface DotsProps extends Omit<FlexProps<HTMLDivElement>, 'onchange'> {
+export interface DotsStyles extends FlexStyles {
+  dot: string
+  dotProgress: string
+  active: string
+  progress: string
+}
+
+export interface DotsProps extends Merge<FlexProps<'div', DotsStyles>, {
   count: number
   size?: StateProp<number>
   autoscroll?: StateProp<number | boolean>
@@ -18,7 +25,8 @@ export interface DotsProps extends Omit<FlexProps<HTMLDivElement>, 'onchange'> {
   onchange?: (value: number) => void
   onend?: () => void
   circular?: boolean
-}
+  children?: (index: number) => JSX.Element
+}> {}
 
 export function Dots ({
   ref,
@@ -31,10 +39,10 @@ export function Dots ({
   onchange,
   onend,
   circular,
+  children,
   ...props
 }: DotsProps) {
   const styles = useStyle()
-  const children = useChildren()
 
   onchange = actionProp(value, onchange)
 
@@ -124,7 +132,7 @@ export function Dots ({
             use(value) === i && styles.active,
           ])}
           onclick={() => onchange?.(i)}>
-          {children?.[0](i)}
+          {children?.(i)}
         </div>
       ))}
       <Flex
@@ -133,7 +141,7 @@ export function Dots ({
         class={() => styles.progress}>
         {array.map(i => (
           <div class={() => styles.dotProgress}>
-            {children?.[0](i)}
+            {children?.(i)}
           </div>
         ))}
       </Flex>

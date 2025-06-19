@@ -1,40 +1,36 @@
 import { use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { type Merge } from 'src/types'
 
 import { useField, useForm } from '../../../hooks'
 import { TextArea, type TextAreaProps } from '../../interaction'
 import { type FormFieldProps } from '../Form'
 
-export interface FormTextAreaProps extends Omit<TextAreaProps, keyof FormFieldProps>, FormFieldProps {
-
-}
+export interface FormTextAreaProps extends Merge<TextAreaProps, FormFieldProps> {}
 
 export function FormTextArea ({
   inputRef,
   onchange,
   disabled,
   validation,
+  hint,
   ...props
 }: FormTextAreaProps) {
-  const { before, after, hint } = useSlots()
-  const { loading } = useForm()
+  const { loading } = useForm('<FormTextArea> MUST be add in a <Form>')
   const { state, error, element } = useField('', inputRef)
 
   return (
     <TextArea
       {...props}
       inputRef={element}
+      value={state}
       oninput={(value: any) => {
         state.value = value
         error.value = ''
         onchange?.(value)
       }}
+      hint={() => error.value || hint}
       error={() => Boolean(error.value)}
-      value={() => state.value}
-      disabled={(() => use(disabled) ?? loading.value)}>
-      {before && <slot name='before'>{before}</slot>}
-      {after && <slot name='after'>{after}</slot>}
-      <slot name='hint'>{() => error.value || hint}</slot>
-    </TextArea>
+      disabled={(() => use(disabled) ?? loading.value)}
+    />
   )
 }

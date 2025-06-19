@@ -1,9 +1,9 @@
 import { example } from 'src/app/Component'
-import { ToggleBar, type ToggleBarValue } from 'src/ui'
+import { ToggleBar, type ToggleBarOption } from 'src/ui'
 
 import description from './README.md'
 
-const values: ToggleBarValue[] = [
+const values: ToggleBarOption[] = [
   { value: '', label: 'Home', icon: 'default' },
   { value: 'settings', label: 'Settings', icon: 'cross' },
   { value: 'help', label: 'Edit', icon: 'edit' },

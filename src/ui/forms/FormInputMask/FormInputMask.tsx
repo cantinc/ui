@@ -1,12 +1,13 @@
 import { use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
 import { InputMask, type InputMaskProps } from '../../interaction'
 import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputMaskProps extends Omit<InputMaskProps, keyof FormFieldProps>, FormFieldProps {
-
+  before?: JSX.Element
+  after?: JSX.Element
+  hint?: JSX.Element
 }
 
 export function FormInputMask ({
@@ -14,15 +15,16 @@ export function FormInputMask ({
   onchange,
   disabled,
   validation,
+  hint,
   ...props
 }: FormInputMaskProps) {
-  const { before, after, hint } = useSlots()
-  const { loading } = useForm()
+  const { loading } = useForm('<FormInputMask> must be used in a <Form>')
   const { state, error, element } = useField('', inputRef)
 
   return (
     <InputMask
       {...props}
+      hint={() => error.value || hint}
       inputRef={element}
       oninput={(value: any) => {
         state.value = value
@@ -30,11 +32,8 @@ export function FormInputMask ({
         onchange?.(value)
       }}
       error={() => Boolean(error.value)}
-      value={() => state.value}
-      disabled={() => use(disabled) ?? loading.value}>
-      {before && <slot name='before'>{before}</slot>}
-      {after && <slot name='after'>{after}</slot>}
-      <slot name='hint'>{() => error.value || hint}</slot>
-    </InputMask>
+      value={state}
+      disabled={() => use(disabled) ?? loading.value}
+    />
   )
 }

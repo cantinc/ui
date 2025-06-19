@@ -2,16 +2,21 @@ import { Ref, type StateProp, style, use } from '@innet/dom'
 import { onDestroy, State, Watch } from 'watch-state'
 
 import { actionProp } from '../../../utils'
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexElement, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './Slides.scss'
 
 const useStyle = style(styles)
 
-export type Slide<E extends HTMLElement = HTMLElement> = FlexProps<E, {
-  children?: any
-}>
+export interface SlidesStyles extends FlexStyles {
+  ready: string
+  vertical: string
+  slide: string
+  dots: string
+}
 
-export interface SlidesProps extends Omit<FlexProps, 'onchange'> {
+export type Slide<E extends FlexElement = 'div'> = FlexProps<E>
+
+export interface SlidesProps extends Omit<FlexProps<'div', SlidesStyles>, 'onchange'> {
   slides: Slide[]
   value?: StateProp<number>
   slideProps?: Slide
@@ -37,7 +42,7 @@ export function * Slides ({
 
   for (const slide of slides) {
     if (!slide.ref) {
-      slide.ref = new Ref<HTMLElement>()
+      slide.ref = new Ref()
     }
   }
 

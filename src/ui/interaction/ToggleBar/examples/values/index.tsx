@@ -1,5 +1,5 @@
 import { example } from 'src/app/Component'
-import { Button, Flex, Input, ToggleBar, type ToggleBarValue } from 'src/ui'
+import { Button, Flex, Input, ToggleBar, type ToggleBarOption } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
@@ -7,7 +7,7 @@ import description from './README.md'
 const value = new State('')
 const label = new State('')
 
-const values = new State<ToggleBarValue[]>([
+const values = new State<ToggleBarOption[]>([
   { value: '', label: 'Home' },
   { value: 'settings', label: 'Settings' },
   { value: 'help', label: 'Help' },

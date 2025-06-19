@@ -12,7 +12,7 @@ import {
 import description from './README.md'
 
 const handleFormNotification: FormNotificationHandle = (form) => {
-  if (form.notification) {
+  if (form.notification && form.submitData) {
     notify(placeholder(form.notification, form.submitData), 'success')
   }
 }

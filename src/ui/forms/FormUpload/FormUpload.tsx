@@ -2,7 +2,7 @@ import { inject, use } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { UIValidationErrors } from '../../../constants/validation'
-import { useChildrenProvider, useField, useForm } from '../../../hooks'
+import { useField, useFormStrict } from '../../../hooks'
 import { actionProp, getExtension } from '../../../utils'
 import { Upload, type UploadFile, type UploadProps } from '../../interaction'
 import { type FormFieldProps } from '../Form/types'
@@ -12,7 +12,6 @@ export interface FormUploadProps extends Omit<UploadProps, keyof FormFieldProps>
 }
 
 export function FormUpload (props: FormUploadProps) {
-  const provideChildren = useChildrenProvider()
   const {
     inputRef,
     disabled,
@@ -56,7 +55,7 @@ export function FormUpload (props: FormUploadProps) {
     ]
   }
 
-  const { loading } = useForm()
+  const { loading } = useFormStrict()
   const { error, element, state } = useField<UploadFile[]>([], inputRef)
 
   const handleChange = (files: UploadFile[]) => {
@@ -64,7 +63,7 @@ export function FormUpload (props: FormUploadProps) {
     onchange?.(files)
   }
 
-  return provideChildren(
+  return (
     <Upload
       {...rest}
       clearable={clearable || inject(required, required => !required)}
@@ -76,6 +75,6 @@ export function FormUpload (props: FormUploadProps) {
       error={() => Boolean(error.value)}
       disabled={() => use(disabled) ?? loading.value}
       hint={() => error.value || hint}
-    />,
+    />
   )
 }

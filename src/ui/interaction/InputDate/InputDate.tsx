@@ -1,4 +1,4 @@
-import { type StateProp, style, use } from '@innet/dom'
+import { Show, type StateProp, style, use } from '@innet/dom'
 import { Context, useContext } from '@innet/jsx'
 import type Mask from 'inputmask'
 import { State } from 'watch-state'
@@ -92,7 +92,7 @@ export function InputDate ({
           />
         </slot>
       </InputMask>
-      <show when={showCalendar}>
+      <Show when={showCalendar}>
         <ModalsPortal>
           <DatePicker
             min={min}
@@ -104,7 +104,7 @@ export function InputDate ({
             {props.label}
           </DatePicker>
         </ModalsPortal>
-      </show>
+      </Show>
     </>
   )
 }

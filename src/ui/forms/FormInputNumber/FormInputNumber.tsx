@@ -1,28 +1,27 @@
 import { use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { type Merge } from 'src/types'
 
 import { useField, useForm } from '../../../hooks'
 import { InputNumber, type InputNumberProps } from '../../interaction'
 import { type FormFieldProps } from '../Form/types'
 
-export interface FormInputNumberProps extends Omit<InputNumberProps, keyof FormFieldProps<number>>, FormFieldProps<number> {
-
-}
+export interface FormInputNumberProps extends Merge<InputNumberProps, FormFieldProps<number>> {}
 
 export function FormInputNumber ({
   inputRef,
   onchange,
   disabled,
   validation,
+  hint,
   ...props
 }: FormInputNumberProps) {
-  const { before, after, hint } = useSlots()
-  const { loading } = useForm()
+  const { loading } = useForm('<FormInputNumber> MUST be add in a <Form>')
   const { state, error, element } = useField<number>(0, inputRef)
 
   return (
     <InputNumber
       {...props}
+      hint={() => error.value || hint}
       inputRef={element}
       oninput={(value: any) => {
         state.value = value
@@ -30,11 +29,8 @@ export function FormInputNumber ({
         onchange?.(value)
       }}
       error={() => Boolean(error.value)}
-      value={() => state.value}
-      disabled={() => use(disabled) ?? loading.value}>
-      {before && <slot name='before'>{before}</slot>}
-      {after && <slot name='after'>{after}</slot>}
-      <slot name='hint'>{() => error.value || hint}</slot>
-    </InputNumber>
+      value={state}
+      disabled={() => use(disabled) ?? loading.value}
+    />
   )
 }

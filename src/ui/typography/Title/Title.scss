@@ -1,5 +1,5 @@
 .root {
-  transform: translateX(10px);
+  transform: translateX(0);
   transition: transform .3s;
   text-transform: uppercase;
   font-weight: 600;
@@ -8,10 +8,6 @@
 .accent {
   color: var(--color-primary-50);
   font-weight: 900;
-}
-
-.show {
-  transform: translateX(0);
 }
 
 .hide {
@@ -25,4 +21,10 @@
   font-style: normal;
   text-transform: none;
   font-weight: normal;
+}
+
+@starting-style {
+  .root {
+    transform: translateX(10px);
+  }
 }

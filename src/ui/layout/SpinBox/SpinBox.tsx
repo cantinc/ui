@@ -1,4 +1,4 @@
-import { type StateProp, style, use } from '@innet/dom'
+import { Delay, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { Cache } from 'watch-state'
 
@@ -21,9 +21,9 @@ export function SpinBox ({
   const loadingCache = new Cache(() => use(loading))
 
   const spinner = (
-    <delay show={300} hide={300}>
+    <Delay show={300} hide={300}>
       <Spin align='center' justify='center' class={styles.spin} />
-    </delay>
+    </Delay>
   )
 
   return (

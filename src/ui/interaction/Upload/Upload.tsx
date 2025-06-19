@@ -1,5 +1,4 @@
-import { type HTMLProps, inject, Ref, type StateProp, style, use, useMapValue, useShow } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { Delay, For, Hide, type HTMLProps, inject, Ref, Show, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
@@ -17,7 +16,7 @@ export interface UploadFile extends Partial<File> {
   name: string
 }
 
-export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' | 'onchange'> {
+export interface UploadProps extends Omit<FlexProps<'label'>, 'files' | 'onchange'> {
   inputRef?: Ref<HTMLInputElement>
   accept?: StateProp<string>
   name?: StateProp<string>
@@ -31,48 +30,13 @@ export interface UploadProps extends Omit<FlexProps<HTMLLabelElement>, 'files' |
   multiple?: StateProp<boolean>
   clearable?: StateProp<boolean>
   files?: StateProp<UploadFile[]>
+  after?: JSX.Element
+  before?: JSX.Element
   onchange?: (files: UploadFile[]) => void
   props?: {
     hint?: HTMLProps<HTMLSpanElement>
     input?: HTMLProps<HTMLInputElement>
   }
-}
-
-function UploadItem () {
-  const item = useMapValue<UploadFile>()
-  const show = useShow(400)
-  const hide = new Ref<any>()
-  const src = new Cache(() => use(item).src)
-  const name = new Cache(() => use(item).name)
-  const isImage = new Cache(() => src.value !== name.value)
-  const title = new Cache(() => name.value?.replace(/\.[^.]+$/, ''))
-  const getClass = () => classes([
-    styles.image,
-    show.value && styles.imageShow,
-    hide.value.value && styles.imageHide,
-  ])
-
-  return (
-    <delay show={300} ref={hide} hide={300}>
-      {() => isImage.value
-        ? (
-          <img
-            class={getClass}
-            src={src}
-          />
-          )
-        : (
-          <span class={getClass}>
-            <span class={() => styles.name}>
-              {title}
-            </span>
-            <span class={() => styles.extension}>
-              {() => getExtension(use(item))}
-            </span>
-          </span>
-          )}
-    </delay>
-  )
 }
 
 export function Upload ({
@@ -92,9 +56,10 @@ export function Upload ({
   name,
   disabled,
   clearable,
+  after,
+  before,
   ...rest
 }: UploadProps = {}) {
-  const { after, before } = useSlots()
   const styles = useStyle()
   const over = new State(false)
 
@@ -176,7 +141,7 @@ export function Upload ({
   ))
 
   return (
-    <Flex<HTMLLabelElement>
+    <Flex
       element='label'
       align='center'
       justify='center'
@@ -228,19 +193,45 @@ export function Upload ({
       <span class={() => styles.focus} />
       {before}
       <div class={() => styles.files}>
-        <map of={files} key='src'>
-          <UploadItem />
-        </map>
+        <For of={files} key='src'>
+          {(item) => {
+            const hide = new Ref<any>()
+            const src = new Cache(() => use(item).src)
+            const name = new Cache(() => use(item).name)
+            const isImage = new Cache(() => src.value !== name.value)
+            const title = new Cache(() => name.value?.replace(/\.[^.]+$/, ''))
+
+            const getClass = () => classes([
+              styles.image,
+              hide.value.value && styles.imageHide,
+            ])
+
+            return (
+              <Delay show={300} ref={hide} hide={300}>
+                <Hide when={isImage} fallback={<img class={getClass} src={src} />}>
+                  <span class={getClass}>
+                    <span class={() => styles.name}>
+                      {title}
+                    </span>
+                    <span class={() => styles.extension}>
+                      {() => getExtension(use(item))}
+                    </span>
+                  </span>
+                </Hide>
+              </Delay>
+            )
+          }}
+        </For>
       </div>
       {after}
       {hintContent}
-      <show when={clearable}>
+      <Show when={clearable}>
         <Icon
           icon='cross'
           class={() => styles.clear}
           onclick={handleClear}
         />
-      </show>
+      </Show>
     </Flex>
   )
 }

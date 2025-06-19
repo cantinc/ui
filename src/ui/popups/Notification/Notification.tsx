@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, inject, Ref, style, use, useMapIndex, useMapValue } from '@innet/dom'
+import { Delay, type HTMLStyleProps, inject, Ref, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { onDestroy, type State, Watch } from 'watch-state'
 
@@ -10,17 +10,19 @@ import styles from './Notification.scss'
 const useStyle = style(styles)
 
 export interface NotificationProps extends HTMLStyleProps<HTMLDivElement> {
+  option: StateProp<NotificationOptions>
+  index: StateProp<number>
   onclose: () => void
 }
 
 export function Notification ({
+  option,
+  index,
   onclose,
 }: NotificationProps) {
   const styles = useStyle()
-  const notification = useMapValue<NotificationOptions>()
-  const index = useMapIndex()
   const hidden = new Ref<State<boolean>>()
-  const timer = new Timer(onclose, use(notification).timeout * 1000)
+  const timer = new Timer(onclose, use(option).timeout * 1000)
 
   const pause = () => timer.pause()
   const play = () => {
@@ -39,23 +41,23 @@ export function Notification ({
   onDestroy(() => timer.destroy())
 
   return (
-    <delay ref={hidden} hide={300}>
+    <Delay ref={hidden} hide={300}>
       <div
         onmouseenter={pause}
         onmouseleave={play}
         class={() => classes([
           styles.root,
-          use(inject(notification, notification => notification.type && styles[notification.type])),
-          hidden.value?.value && styles.hidden,
+          use(inject(option, notification => notification.type && styles[notification.type])),
+          () => hidden.value?.value && styles.hidden,
         ])}>
-        <Markdown text={inject(notification, notification => notification.content)} />
+        <Markdown text={inject(option, notification => notification.content)} />
         <div
           class={styles.progress}
           style={{
-            'animation-duration': inject(notification, notification => `${notification.timeout}s`),
+            'animation-duration': inject(option, notification => `${notification.timeout}s`),
           }}
         />
       </div>
-    </delay>
+    </Delay>
   )
 }

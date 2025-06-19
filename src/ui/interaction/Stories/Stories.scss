@@ -1,10 +1,10 @@
-@import "src/styles/utils";
+@use "src/styles/utils";
 
 .root {
   overflow: auto;
   user-select: none;
 
-  @include hide-scroll;
+  @include utils.hide-scroll;
 }
 
 .preview {

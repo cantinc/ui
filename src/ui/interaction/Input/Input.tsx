@@ -1,6 +1,6 @@
 import { type HTMLProps, inject, Ref, type StateProp, style, use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 import { onDestroy, State } from 'watch-state'
 
 import { debounceCall } from '../../../utils'
@@ -13,7 +13,7 @@ const useStyle = style(styles)
 export type InputType = 'text' | 'password' | 'date' | 'email' | 'tel' | 'number' | 'color'
 export type RequiredType = 'star'
 
-export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' | 'autofocus'> {
+export interface InputProps extends Merge<FlexProps<'label'>, {
   label?: StateProp<string>
   value?: StateProp<string>
   oninput?: (value: string) => void
@@ -28,6 +28,9 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
   debounce?: boolean | number
   inputRef?: Ref<HTMLInputElement>
   renderInput?: (props: HTMLProps<HTMLInputElement>) => any
+  before?: JSX.Element
+  after?: JSX.Element
+  hint?: JSX.Element
   props?: {
     input?: HTMLProps<HTMLInputElement>
     before?: HTMLProps<HTMLSpanElement>
@@ -37,7 +40,7 @@ export interface InputProps extends Omit<FlexProps<HTMLLabelElement>, 'oninput' 
     hint?: HTMLProps<HTMLSpanElement>
     clear?: Partial<IconProps>
   }
-}
+}> {}
 
 export const defaultRenderInput = (props: HTMLProps<HTMLInputElement>) => (<input {...props} />)
 
@@ -57,10 +60,12 @@ export function Input ({
   type,
   clearable,
   debounce,
+  before,
+  after,
+  hint,
   ...rest
 }: InputProps = {}) {
   const styles = useStyle()
-  const { before, after, hint } = useSlots()
 
   if (value instanceof State) {
     const oldOnChange = oninput
@@ -91,7 +96,7 @@ export function Input ({
     disabled,
     required: inject(required, required => required ? true : undefined),
     placeholder,
-    ...(props?.input as HTMLProps<HTMLInputElement>),
+    ...props?.input,
     oninput: handleInput,
     onchange: handleChange,
     'data-value': value,

@@ -30,7 +30,7 @@ export function useTouchHide ({
   return {
     touched,
     touchHide,
-    handleTouchStart (e: TouchEvent) {
+    handleTouchStart: (e: TouchEvent) => {
       const currentElement = element?.value
       if (placement === 'bottom' && currentElement?.scrollTop) return
       if (placement === 'top' && currentElement && (currentElement.scrollHeight - currentElement.scrollTop !== currentElement.clientHeight)) return
@@ -41,7 +41,7 @@ export function useTouchHide ({
       startY = e.touches[0].clientY
       touched.value = true
     },
-    handleTouchMove (e: TouchEvent) {
+    handleTouchMove: (e: TouchEvent) => {
       if (!touched.value) return
 
       const y = e.touches[0].clientY - startY
@@ -61,7 +61,7 @@ export function useTouchHide ({
 
       touchHide.value = vertical ? touchY : touchX
     },
-    handleTouchEnd () {
+    handleTouchEnd: () => {
       if (touched.value) {
         touchEnd?.()
       }

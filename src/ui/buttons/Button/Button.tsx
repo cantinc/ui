@@ -1,27 +1,28 @@
 import { inject, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexElement, type FlexProps } from '../../layout'
 import styles from './Button.scss'
 
 const useStyle = style(styles)
 
 export type ButtonViews = 'primary' | 'secondary' | 'negative' | 'positive' | 'ghost'
 
-export type ButtonProps <E extends HTMLElement = HTMLButtonElement> = FlexProps<E, {
+export type ButtonProps <E extends FlexElement = 'button'> = Merge<FlexProps<E>, {
   view?: ButtonViews
   width?: StateProp<number>
   disabled?: StateProp<boolean>
 }>
 
-export function Button<E extends HTMLElement = HTMLButtonElement> ({
+export function Button<E extends FlexElement = 'button'> ({
   view = 'primary',
   loading,
   disabled,
   width,
   ...props
-}: ButtonProps<E> = {} as ButtonProps<E>) {
+}: ButtonProps<E>) {
   const children = useChildren()
   const styles = useStyle()
 

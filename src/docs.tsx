@@ -8,9 +8,9 @@ import 'prismjs/components/prism-tsx'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-json'
 
-import dom from '@innet/dom'
+import dom, { Router } from '@innet/dom'
 import innet from 'innet'
-import { App } from 'src/app/App'
+import { routing } from 'src/routing'
 
 import { bindDragOver, bindScrollPosition, bindTab, bindWindowHeight } from './utils'
 
@@ -19,4 +19,4 @@ bindWindowHeight()
 bindDragOver()
 bindTab()
 
-innet(<App />, dom)
+innet(<Router routing={routing} />, dom)

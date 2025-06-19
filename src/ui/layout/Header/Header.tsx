@@ -2,7 +2,7 @@ import { useChildren } from '@innet/jsx'
 
 import { Flex, type FlexProps } from '../Flex'
 
-export interface HeaderProps extends FlexProps<HTMLHeadingElement> {
+export interface HeaderProps extends FlexProps<'header'> {
 
 }
 

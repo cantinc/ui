@@ -1,5 +1,4 @@
 import { Ref, type StateProp, style, use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
@@ -24,6 +23,8 @@ export interface SelectorProps extends Omit<InputProps, 'clearable'> {
   arrow?: boolean
   displayState?: State<string>
   onsearch?: (search: string) => void
+  hint?: JSX.Element
+  after?: JSX.Element
 }
 
 export function Selector ({
@@ -40,9 +41,11 @@ export function Selector ({
   exact,
   arrow = exact,
   onsearch,
+  children,
+  hint,
+  after,
   ...props
 }: SelectorProps = {}) {
-  const { '': children, hint, after } = useSlots()
   const styles = useStyle()
   const show = new State(false)
   const preselect = new State<string>('')

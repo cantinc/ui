@@ -4,8 +4,8 @@ import { Button, Card, Section } from 'src/ui'
 import description from './README.md'
 
 export default example({
-  id: 'title',
-  title: 'title',
+  id: 'aside',
+  title: 'aside',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -17,31 +17,33 @@ import {
 } from '@cantinc/ui'
 
 innet(
-  <Section title='Favourites'>
-    <slot name='title'>
-      <Button<HTMLAnchorElement>
+  <Section
+    title='Favourites'
+    aside={(
+      <Button
         element='a'
         href='/'
         padding={[8, 24]}
         view='secondary'>
         Home
       </Button>
-    </slot>
+  )}>
     <Card height={158} />
   </Section>,
   dom,
 )`,
   example: (
-    <Section title='Favourites'>
-      <slot name='title'>
-        <Button<HTMLAnchorElement>
+    <Section
+      title='Favourites'
+      aside={(
+        <Button
           element='a'
           href='/'
           padding={[8, 24]}
           view='secondary'>
           Home
         </Button>
-      </slot>
+    )}>
       <Card height={158} />
     </Section>
   ),

@@ -1,4 +1,4 @@
-import { Ref, type StateProp, style, useHidden, useShow } from '@innet/dom'
+import { Delay, Portal, Ref, Show, type StateProp, style, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { type State } from 'watch-state'
@@ -68,14 +68,14 @@ export function Dropdown ({
   const hide = new Ref<State<boolean>>()
 
   return (
-    <show when={show}>
-      <portal parent={document.body}>
-        <delay ref={hide} hide={300}>
+    <Show when={show}>
+      <Portal parent={document.body}>
+        <Delay ref={hide} hide={300}>
           <DropdownContent {...props}>
             {children}
           </DropdownContent>
-        </delay>
-      </portal>
-    </show>
+        </Delay>
+      </Portal>
+    </Show>
   )
 }

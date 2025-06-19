@@ -14,13 +14,13 @@ import { Dots } from '@cantinc/ui'
 
 innet(
   <Dots inline size={38} progress count={5}>
-    {(i: number) => i}
+    {(i) => i}
   </Dots>,
   dom,
 )`,
   example: (
     <Dots inline size={38} count={5}>
-      {(i: number) => i}
+      {(i) => i}
     </Dots>
   ),
 })

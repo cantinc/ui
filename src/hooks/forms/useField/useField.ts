@@ -10,7 +10,8 @@ export function useField <
   V = string,
   E extends HTMLElement = HTMLInputElement
 > (defValue: V, ref = new Ref<E>()): FormField<V, E> {
-  const form = useForm()
+  const form = useForm('`useField` MUST be used inside a <Form>')
+
   const {
     name,
     defaultValue = defValue,
@@ -36,21 +37,19 @@ export function useField <
     }
   })
 
-  if (form) {
-    form.fields.add(field)
+  form.fields.add(field)
 
-    onDestroy(() => {
-      if (form.destroyed) return
+  onDestroy(() => {
+    if (form.destroyed) return
 
-      if (removeValue !== undefined) {
-        field.removed = true
-        form.touched[field.name] = true
-        field.state.value = removeValue
-      } else {
-        form.fields.delete(field)
-      }
-    })
-  }
+    if (removeValue !== undefined) {
+      field.removed = true
+      form.touched[field.name] = true
+      field.state.value = removeValue
+    } else {
+      form.fields.delete(field)
+    }
+  })
 
   return field
 }

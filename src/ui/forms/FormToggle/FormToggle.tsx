@@ -12,7 +12,7 @@ export function FormToggle ({
   onchange,
   ...props
 }: FormToggleProps) {
-  const { loading } = useForm()
+  const { loading } = useForm('<FormToggle> MUST be add in a <Form>')
   const { state, element } = useField('false', ref)
 
   return (

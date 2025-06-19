@@ -1,3 +1,4 @@
+import { Portal, Show } from '@innet/dom'
 import { Button, Icon, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
@@ -11,7 +12,7 @@ export default example({
   title: 'Title Only',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Modals, Modal, Button, Icon } from '@cantinc/ui'
@@ -24,36 +25,36 @@ innet(
       show
     </Button>
     <Modals>
-      <show when={show}>
-        <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
-          <slot name='title'>
-            Do you like this modal?
-          </slot>
-          <slot name='button-accept'>
-            <Icon icon='check' />
-          </slot>
-        </Modal>
-      </show>
+      <Show when={show}>
+        <Modal
+          title='Do you like this modal?'
+          headButtons={['accept', 'close']}
+          buttonChildren={{
+            accept: <Icon icon='check' />,
+          }}
+          onclose={() => { show.value = false }}
+        />
+      </Show>
     </Modals>
   </>,
   dom,
 )`,
   example: (
     <>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Modals>
-          <show when={show}>
-            <Modal headButtons={['accept', 'close']} onclose={() => { show.value = false }}>
-              <slot name='title'>
-                Do you like this modal?
-              </slot>
-              <slot name='button-accept'>
-                <Icon icon='check' />
-              </slot>
-            </Modal>
-          </show>
+          <Show when={show}>
+            <Modal
+              title='Do you like this modal?'
+              headButtons={['accept', 'close']}
+              buttonChildren={{
+                accept: <Icon icon='check' />,
+              }}
+              onclose={() => { show.value = false }}
+            />
+          </Show>
         </Modals>
-      </portal>
+      </Portal>
       <Button onclick={() => { show.value = true }}>
         show
       </Button>

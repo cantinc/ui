@@ -1,6 +1,4 @@
-import { type HTMLStyleProps, type LinkProps, Ref, type StateProp, style } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
-import SyncTimer from 'sync-timer'
+import { type HTMLStyleProps, Link, type LinkProps, onMounted, Ref, Show, type StateProp, style } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Flex, type FlexProps } from '../Flex'
@@ -20,7 +18,6 @@ const useSubMenuStyles = style({
 export type NavigationMenu = NavigationItemProps[]
 
 export interface NavigationItemProps extends LinkProps {
-  children?: any
   menu?: NavigationMenu
   access?: StateProp<boolean>
 }
@@ -34,7 +31,7 @@ export interface NavigationProps extends FlexProps {
 }
 
 function NavigationItem ({
-  children = useChildren(),
+  children,
   menu,
   access = true,
   ...props
@@ -42,8 +39,8 @@ function NavigationItem ({
   const styles = useItemStyles()
 
   return (
-    <show when={access}>
-      <a {...props} class={styles}>{children}</a>
+    <Show when={access}>
+      <Link {...props} class={styles}>{children}</Link>
       {menu && (
         <NavigationItems>
           {menu.map(item => (
@@ -51,17 +48,16 @@ function NavigationItem ({
           ))}
         </NavigationItems>
       )}
-    </show>
+    </Show>
   )
 }
 
 function NavigationItems (props: NavigationItemsProps) {
-  const children = useChildren()
   const styles = useSubMenuStyles()
   const el = props?.ref || new Ref<any>()
   const height = new State(0)
 
-  new SyncTimer(() => {
+  onMounted(() => {
     height.value = el.value.scrollHeight
   })
 
@@ -73,17 +69,12 @@ function NavigationItems (props: NavigationItemsProps) {
         ...props?.style,
         '--ui-sub-menu-height': () => `${height.value}px`,
       }}
-      class={() => styles.root}>
-      {children}
-    </section>
+      class={() => styles.root}
+    />
   )
 }
 
-export function Navigation ({
-  menu,
-  ...props
-}: NavigationProps = {}) {
-  const children = useChildren()
+export function Navigation ({ menu, children, ...props }: NavigationProps) {
   const styles = useStyles()
 
   return (

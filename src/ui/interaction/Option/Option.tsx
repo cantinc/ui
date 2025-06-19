@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, Ref, type StateProp, style, use } from '@innet/dom'
+import { type HTMLStyleProps, Ref, Show, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
 import styles from './Option.scss'
@@ -53,11 +53,11 @@ export function Option ({
         use(preselected) && styles.preselected,
       ])}>
       {label || value}
-      <show when={showValues || hint}>
+      <Show when={showValues || hint}>
         <span class={styles.value}>
           {hint || value}
         </span>
-      </show>
+      </Show>
     </div>
   )
 }

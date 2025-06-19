@@ -1,3 +1,4 @@
+import { Link, Portal } from '@innet/dom'
 import { Button, closeRouterModal, Flex, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 
@@ -49,7 +50,7 @@ innet(
 )`,
   example: (
     <>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Modals>
           <router ish search='modal'>
             <slot name='test1'>
@@ -78,9 +79,9 @@ innet(
             </slot>
           </router>
         </Modals>
-      </portal>
-      <a href='?modal=test1'>Test 1</a>
-      <a href='?modal=test2'>Test 2</a>
+      </Portal>
+      <Link href='?modal=test1'>Test 1</Link>
+      <Link href='?modal=test2'>Test 2</Link>
     </>
   ),
 })

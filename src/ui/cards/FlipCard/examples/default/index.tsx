@@ -38,12 +38,10 @@ innet(
         height={90}
         align='center'
         justify='center'
+        backside={\`Back \${id}\`}
         onclick={() => handleClick(id)}
         flip={() => flip.value === id}>
         Front {id}
-        <slot name='backside'>
-          Back {id}
-        </slot>
       </FlipCard>
     ))}
   </Cards>,
@@ -57,12 +55,10 @@ innet(
           height={90}
           align='center'
           justify='center'
+          backside={`Back ${id}`}
           onclick={() => handleClick(id)}
           flip={() => flip.value === id}>
           Front {id}
-          <slot name='backside'>
-            Back {id}
-          </slot>
         </FlipCard>
       ))}
     </Cards>

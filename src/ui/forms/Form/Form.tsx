@@ -29,7 +29,7 @@ export function Form ({
   oninvalid,
   ref = new Ref(),
   ...props
-}: FormProps = {}) {
+}: FormProps) {
   const children = useChildren()
   const errorHandler = useContext(formErrorHandler)
   const invalidHandler = useContext(formInvalidHandler)
@@ -56,14 +56,16 @@ export function Form ({
   const handleSuccess = (responseData?: any) => {
     form.responseData = responseData
 
-    if (notification) {
+    if (notification && notificationHandler) {
       notificationHandler(form)
     }
     onsuccess?.(form)
   }
 
   const setValidationError = async (error: ValidationError<any>, field: FormField<any, any>) => {
-    field.error.value = await errorHandler(error, form)
+    if (errorHandler) {
+      field.error.value = await errorHandler(error, form)
+    }
   }
 
   const validate = () => {
@@ -102,7 +104,7 @@ export function Form ({
     const error = validation(form.validation, form.submitData)
 
     if (error) {
-      invalidHandler(error, form)
+      invalidHandler?.(error, form)
       oninvalid?.(error, form)
       return error
     }
@@ -118,7 +120,7 @@ export function Form ({
 
     if (error) return
 
-    if (action) {
+    if (action && actionHandler) {
       const result = actionHandler(form)
 
       if (result) {
@@ -161,7 +163,7 @@ export function Form ({
 
   return (
     <context for={formContext} set={form}>
-      <Flex<HTMLFormElement>
+      <Flex
         vertical
         align='stretch'
         novalidate

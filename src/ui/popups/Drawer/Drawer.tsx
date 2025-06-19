@@ -1,4 +1,4 @@
-import { Ref, style, useShow } from '@innet/dom'
+import { Delay, Ref, style, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { type State } from 'watch-state'
@@ -45,7 +45,7 @@ export function Drawer ({
   }
 
   return (
-    <delay ref={hide} hide={300}>
+    <Delay ref={hide} hide={300}>
       <div
         {...overlayHack}
         ontouchstart={handleTouchStart}
@@ -75,6 +75,6 @@ export function Drawer ({
           {children}
         </Flex>
       </div>
-    </delay>
+    </Delay>
   )
 }

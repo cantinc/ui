@@ -1,3 +1,4 @@
+import { Show } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { Browser, BurgerButton, Content, Drawer, Drawers, Footer, Header, Layout, Main, Space } from 'src/ui'
 import { State } from 'watch-state'
@@ -17,7 +18,7 @@ export default example({
   title: 'Drawer',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import {
@@ -63,13 +64,13 @@ innet(
       </Footer>
     </Layout>
     <Drawers>
-      <show when={menuState}>
+      <Show when={menuState}>
         <Drawer
           padding={24}
           onclose={hideMenu}>
           Aside
         </Drawer>
-      </show>
+      </Show>
     </Drawers>
   </>,
   dom,
@@ -97,13 +98,13 @@ innet(
         </Footer>
       </Layout>
       <Drawers>
-        <show when={menuState}>
+        <Show when={menuState}>
           <Drawer
             padding={24}
             onclose={hideMenu}>
             Aside
           </Drawer>
-        </show>
+        </Show>
       </Drawers>
     </Browser>
   ),

@@ -1,5 +1,6 @@
 import { type StateProp, style, use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { type Merge } from 'src/types'
+import { type FlexElement, type FlexStyles } from 'src/ui'
 
 import { Card, type CardProps } from '../Card'
 import { CardsFlex } from '../CardsFlex'
@@ -9,22 +10,24 @@ const useStyle = style(styles)
 
 export type FlipCardAnimation = 'vertical' | 'horizontal'
 
-export type FlipCardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = CardProps<E, R & {
+export type FlipCardProps<E extends FlexElement = FlexElement, S extends FlexStyles = FlexStyles> = Merge<CardProps<E, S>, {
   flip: StateProp<boolean>
   animation?: FlipCardAnimation
   revertAnimation?: boolean
-}, S>
+  backside?: JSX.Element
+}>
 
-export function FlipCard<E extends HTMLElement = HTMLElement> ({
+export function FlipCard<E extends FlexElement = FlexElement> ({
   flip,
   flex,
   inline,
   onclick,
   animation = 'vertical',
   revertAnimation,
+  children,
+  backside,
   ...props
 }: FlipCardProps<E> = {} as any) {
-  const { '': children, backside } = useSlots()
   const styles = useStyle()
 
   function handleClick (this: HTMLElement, e: MouseEvent) {

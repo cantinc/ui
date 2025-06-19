@@ -1,11 +1,11 @@
 import { parsedSearch, stringifySearch } from '@innet/dom'
-import { type IStringifyOptions } from 'qs'
+import { type IStringifyOptions, type ParsedQs } from 'qs'
 
 const options: IStringifyOptions = {
   indices: false,
 }
 
-export function withoutModal (modal: string, rest?: any) {
+export function withoutModal (modal: string, rest?: ParsedQs) {
   const search = parsedSearch.value
   const oldModal = search.modal
 
@@ -13,7 +13,6 @@ export function withoutModal (modal: string, rest?: any) {
     return stringifySearch({
       ...search,
       ...rest,
-      // @ts-expect-error TODO
       modal: oldModal.filter((val: any) => val !== modal),
     }, options)
   }

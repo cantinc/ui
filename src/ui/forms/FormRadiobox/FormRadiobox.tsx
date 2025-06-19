@@ -15,7 +15,7 @@ export function FormRadiobox ({
   validation,
   ...props
 }: FormRadioboxProps) {
-  const { loading } = useForm()
+  const { loading } = useForm('<FormRadiobox> MUST be add in a <Form>')
   const { state } = useField('')
 
   return (

@@ -1,4 +1,4 @@
-@import "src/styles/breakpoints";
+@use "src/styles/breakpoints";
 
 .root {
   display: flex;
@@ -29,11 +29,11 @@
     }
   }
 
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     border-radius: var(--round-60);
   }
 
-  @media (max-width: $tablet) {
+  @media (max-width: breakpoints.$tablet) {
     height: var(--window-height);
     max-height: 100vh;
     min-width: 100vw;

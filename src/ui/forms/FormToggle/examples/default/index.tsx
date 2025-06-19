@@ -22,7 +22,7 @@ innet(
   <>
     <Form
       onsuccess={form => notify(
-        Array.from(form.fields)[0].state.value,
+        String(Array.from(form.fields)[0].state.value),
       )}
       vertical>
       <FormToggle name='test' />
@@ -39,7 +39,7 @@ innet(
   example: (
     <Form
       onsuccess={form => notify(
-        Array.from(form.fields)[0].state.value,
+        String(Array.from(form.fields)[0].state.value),
       )}
       vertical>
       <FormToggle name='test' />

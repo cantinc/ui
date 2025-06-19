@@ -1,4 +1,4 @@
-import { Ref, style } from '@innet/dom'
+import { Portal, Ref, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 
 import { Overlay, type OverlayProps } from '../Overlay'
@@ -16,9 +16,9 @@ export const ModalsPortal = () => {
   const children = useChildren()
 
   return modalsRef.value && (
-    <portal parent={modalsRef.value}>
+    <Portal parent={modalsRef.value}>
       {children}
-    </portal>
+    </Portal>
   )
 }
 

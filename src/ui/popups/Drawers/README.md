@@ -25,17 +25,17 @@ function App () {
 
 *Note: put it inside an element without parents that have css property of `transform`.*
 
-You can use `portal` to add modals anywhere.
+You can use `Portal` to add drawers anywhere.
 
 ```tsx
-function Global () {
+function Global() {
   return (
-    <portal parent={document.body}>
+    <Portal parent={document.body}>
       <!-- Other stuff -->
       <Drawers>
         ...
       </Drawers>
-    </portal>
+    </Portal>
   )
 }
 ```

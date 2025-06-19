@@ -1,4 +1,4 @@
-@import "src/styles/breakpoints";
+@use "src/styles/breakpoints";
 
 .root {
   font-size: 16px;
@@ -14,7 +14,7 @@
   transform-origin: top center;
   pointer-events: none;
 
-  @media (max-width: $laptop) {
+  @media (max-width: breakpoints.$laptop) {
     top: 4px;
     right: 14px;
     width: calc(100% - 28px);

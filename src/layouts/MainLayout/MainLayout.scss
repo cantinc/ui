@@ -1,7 +1,7 @@
-@import "src/styles/breakpoints";
+@use "src/styles/breakpoints";
 
 .root {
-  @media (min-width: $laptop) {
+  @media (min-width: breakpoints.$laptop) {
     padding: 20px 20px 0;
   }
 }

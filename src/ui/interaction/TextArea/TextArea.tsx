@@ -1,7 +1,6 @@
 import { Ref, style } from '@innet/dom'
 import { onDestroy, State } from 'watch-state'
 
-import { useChildrenProvider } from '../../../hooks'
 import { Input, type InputProps } from '../Input'
 import styles from './TextArea.scss'
 
@@ -21,8 +20,8 @@ export function TextArea ({
   ...props
 }: TextAreaProps = {}) {
   const styles = useStyles()
-  const withChildren = useChildrenProvider()
   const size = new State(0)
+
   const updateSize = () => {
     const scrollHeight = Number(inputRef.value?.scrollHeight)
     const clientHeight = Number(inputRef.value?.clientHeight)
@@ -55,7 +54,7 @@ export function TextArea ({
     onDestroy(() => clearTimeout(timer))
   }
 
-  return withChildren(
+  return (
     <Input
       inputRef={inputRef as any}
       {...props}
@@ -86,6 +85,6 @@ export function TextArea ({
           {props.value}
         </textarea>
       )}
-    />,
+    />
   )
 }

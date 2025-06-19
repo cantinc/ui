@@ -1,13 +1,16 @@
-import { type StateProp, style, use, useHidden, useShow } from '@innet/dom'
-import { useChildren, useContext } from '@innet/jsx'
+import { Show, type StateProp, style, use, useHidden } from '@innet/dom'
+import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache } from 'watch-state'
 
-import { Flex, type FlexProps, titleContext, titleSeparatorContext } from '../../layout'
+import { Flex, type FlexProps } from '../../layout'
 import styles from './Title.scss'
 
 const useStyle = style(styles)
 
-export interface TitleProps extends FlexProps<HTMLHeadingElement> {
+export const titleContext = new Context<string>()
+export const titleSeparatorContext = new Context<string>()
+
+export interface TitleProps extends FlexProps<'h1'> {
   h?: 1 | 2 | 3 | 4 | 5 | 6
   title?: string
   accent?: boolean
@@ -22,7 +25,6 @@ export function Title ({
   ...props
 }: TitleProps = {}) {
   const children = useChildren()
-  const show = useShow()
   const hide = useHidden()
   const contextTitle = useContext(titleContext)
   const titleSeparator = useContext(titleSeparatorContext)
@@ -38,23 +40,22 @@ export function Title ({
   }
 
   return (
-    <Flex<HTMLHeadingElement>
+    <Flex
       element={`h${h}`}
       wrap
       {...props}
       class={() => [
         styles.root,
         accent && styles.accent,
-        show.value && styles.show,
         hide?.value && styles.hide,
       ]}>
       {title}
       {children}
-      <show when={showSubtitle}>
+      <Show when={showSubtitle}>
         <div class={() => styles.subTitle}>
           {subtitle}
         </div>
-      </show>
+      </Show>
     </Flex>
   )
 }

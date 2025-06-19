@@ -1,6 +1,24 @@
-import { type StateProp, use } from '@innet/dom'
-import { type JSXElement } from '@innet/jsx'
-import { type ASTNodeTypes, type TxtNode } from '@textlint/ast-node-types'
+import { Link, type StateProp, use } from '@innet/dom'
+import {
+  type AnyTxtNode,
+  type TxtBlockQuoteNode,
+  type TxtCodeBlockNode,
+  type TxtCodeNode,
+  type TxtDeleteNode,
+  type TxtDocumentNode,
+  type TxtEmphasisNode,
+  type TxtHeaderNode,
+  type TxtImageNode,
+  type TxtLinkNode,
+  type TxtListNode,
+  type TxtNodeType,
+  type TxtParagraphNode,
+  type TxtStrNode,
+  type TxtStrongNode,
+  type TxtTableCellNode,
+  type TxtTableNode,
+  type TxtTableRowNode,
+} from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 
 import { Highlight } from '../../external/Highlight'
@@ -11,62 +29,62 @@ export interface MarkdownProps {
   text?: StateProp<string>
 }
 
-const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<JSXElement>>> = {
-  Document: ({ children }) => children.map(ast2jsx),
-  Paragraph: ({ children }) => ({
+// TODO: change "TxtNodeType | string" to "TxtNodeType"
+const astMap: Record<TxtNodeType | string, (node: any) => JSX.Element> = {
+  Document: ({ children }: TxtDocumentNode) => children.map(ast2jsx),
+  Paragraph: ({ children }: TxtParagraphNode) => ({
     type: 'p',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  Str: ({ value }) => value,
-  Link: ({ url, children }) => ({
-    type: 'a',
+  Str: ({ value }: TxtStrNode) => value,
+  Link: ({ url, children }: TxtLinkNode) => ({
+    type: Link,
     props: {
       href: url,
+      children: children?.map(ast2jsx),
     },
-    children: children?.map(ast2jsx),
   }),
-  List: ({ children, ordered }) => ({
+  List: ({ children, ordered }: TxtListNode) => ({
     type: ordered ? 'ol' : 'ul',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  ListItem: ({ children }) => ({
+  ListItem: ({ children }: TxtListNode) => ({
     type: 'li',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  Header: ({ children, depth }) => {
+  Header: ({ children, depth }: TxtHeaderNode) => {
     const jsxChildren = children?.map(ast2jsx)
     const text = jsxChildren?.length === 1 && typeof jsxChildren[0] === 'string' ? jsxChildren[0] : undefined
 
     return ({
       type: Title,
-      props: { h: depth, title: text, accent: depth < 3 },
-      children: text ? undefined : jsxChildren,
+      props: { h: depth, title: text, accent: depth < 3, children: text ? undefined : jsxChildren },
     })
   },
   HorizontalRule: () => ({
     type: Divider,
   }),
-  Strong: ({ children }) => ({
+  Strong: ({ children }: TxtStrongNode) => ({
     type: 'strong',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  Emphasis: ({ children }) => ({
+  Emphasis: ({ children }: TxtEmphasisNode) => ({
     type: 'em',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  Delete: ({ children }) => ({
+  Delete: ({ children }: TxtDeleteNode) => ({
     type: 's',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  BlockQuote: ({ children }) => ({
+  BlockQuote: ({ children }: TxtBlockQuoteNode) => ({
     type: 'blockquote',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  Code: ({ value }) => ({
+  Code: ({ value }: TxtCodeNode) => ({
     type: 'code',
-    children: value,
+    props: { children: value },
   }),
-  CodeBlock: ({ value, lang }) => lang
+  CodeBlock: ({ value, lang }: TxtCodeBlockNode) => lang
     ? ({
         type: Highlight,
         props: {
@@ -78,36 +96,36 @@ const astMap: Partial<Record<ASTNodeTypes | string, (node: TxtNode) => Partial<J
         type: 'pre',
         props: {
           class: 'language-',
+          children: value,
         },
-        children: [value],
       }),
-  Image: ({ alt, url }) => ({
+  Image: ({ alt, url }: TxtImageNode) => ({
     type: 'img',
     props: {
       alt,
       src: url,
     },
   }),
-  Table: ({ children }) => ({
+  Table: ({ children }: TxtTableNode) => ({
     type: 'table',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
   TableHeader: ({ children }) => ({
     type: 'th',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  TableRow: ({ children }) => ({
+  TableRow: ({ children }: TxtTableRowNode) => ({
     type: 'tr',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
-  TableCell: ({ children }) => ({
+  TableCell: ({ children }: TxtTableCellNode) => ({
     type: 'td',
-    children: children?.map(ast2jsx),
+    props: { children: children?.map(ast2jsx) },
   }),
 }
 
-function ast2jsx (ast: TxtNode) {
-  return astMap[ast.type as ASTNodeTypes]?.(ast)
+function ast2jsx (ast: AnyTxtNode) {
+  return astMap[ast.type]?.(ast)
 }
 
 export function Markdown ({ text }: MarkdownProps) {

@@ -1,5 +1,4 @@
-import { inject, Ref, style, use, useHidden, useShow } from '@innet/dom'
-import { useChildren, useSlots } from '@innet/jsx'
+import { Delay, inject, Ref, Show, style, use, useHidden, useShow } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Flex, type FlexProps } from '../../layout'
@@ -9,10 +8,10 @@ import styles from './HoverCard.scss'
 const useStyle = style(styles)
 
 export interface HoverCardProps extends CardProps {
-
+  content?: JSX.Element
 }
 
-interface HoverCardContentProps extends CardProps {
+interface HoverCardContentProps extends Omit<CardProps, 'class'> {
   class: {
     card: any
     show: any
@@ -22,9 +21,9 @@ interface HoverCardContentProps extends CardProps {
 
 function HoverCardContent ({
   class: styles,
+  children,
   ...props
 }: HoverCardContentProps) {
-  const children = useChildren()
   const hide = useHidden()
   const show = useShow()
 
@@ -48,10 +47,11 @@ export function HoverCard ({
   style,
   vertical,
   reverse,
+  children: title,
+  content,
   ...props
 }: HoverCardProps = {}) {
   const styles = useStyle()
-  const { '': title, content } = useSlots()
   const open = new State(false)
   const hidden = new Ref<State<boolean>>()
   const isFine = matchMedia('(pointer:fine)').matches
@@ -66,7 +66,7 @@ export function HoverCard ({
     open.value = !open.value
   }
 
-  const actionProps: FlexProps<HTMLButtonElement> = isFine
+  const actionProps: FlexProps<'button'> = isFine
     ? {
         onmouseenter: show,
         onmouseleave: hide,
@@ -99,8 +99,8 @@ export function HoverCard ({
       reverse={reverse}
       {...actionProps}>
       {title}
-      <show when={open}>
-        <delay ref={hidden} hide={300}>
+      <Show when={open}>
+        <Delay ref={hidden} hide={300}>
           <HoverCardContent
             {...props}
             vertical={vertical}
@@ -110,8 +110,8 @@ export function HoverCard ({
             {title}
             {content}
           </HoverCardContent>
-        </delay>
-      </show>
+        </Delay>
+      </Show>
     </Flex>
   )
 }

@@ -1,3 +1,4 @@
+import { Portal, Show } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
 
@@ -13,7 +14,7 @@ export default example({
   title: 'headButtons',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Modals, Modal, Button } from '@cantinc/ui'
@@ -26,36 +27,30 @@ innet(
       show
     </Button>
     <Modals>
-      <show when={show}>
-        <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
-          <slot name='title'>
-            Sign-in
-          </slot>
-          <slot name='content'>
-            Sign-in form should be here...
-          </slot>
-        </Modal>
-      </show>
+      <Show when={show}>
+        <Modal
+          title='Sign-in'
+          content='Sign-in form should be here...'
+          headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}
+        />
+      </Show>
     </Modals>
   </>,
   dom,
 )`,
   example: (
     <>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Modals>
-          <show when={show}>
-            <Modal headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}>
-              <slot name='title'>
-                Sign-in
-              </slot>
-              <slot name='content'>
-                Sign-in form should be here...
-              </slot>
-            </Modal>
-          </show>
+          <Show when={show}>
+            <Modal
+              title='Sign-in'
+              content='Sign-in form should be here...'
+              headButtons={['Log-in', 'close']} onclose={() => { show.value = false }}
+            />
+          </Show>
         </Modals>
-      </portal>
+      </Portal>
       <Button onclick={() => { show.value = true }}>
         show
       </Button>

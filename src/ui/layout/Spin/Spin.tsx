@@ -5,7 +5,7 @@ import styles from './Spin.scss'
 
 const useStyle = style(styles)
 
-export interface SpinProps extends FlexProps {
+export interface SpinProps extends Omit<FlexProps, 'children'> {
 
 }
 

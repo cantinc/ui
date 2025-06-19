@@ -1,60 +1,48 @@
-import {
-  Aside,
-  BurgerButton,
-  Drawer,
-  Drawers,
-  Flex,
-  Header,
-  Layout,
-  Main,
-  Modals,
-  Notifications,
-  Pages,
-  Space,
-} from 'src'
-import { navigation } from 'src/constants'
+import { type ChildrenProps, Link, Show } from '@innet/dom'
+import { Menu } from 'src/app/Menu'
 import { hideLayoutMenu, isDesktop, isMobile, showLayoutMenu, shownLayoutMenu } from 'src/core'
+import { Aside, BurgerButton, Drawer, Drawers, Flex, Header, Layout, Main, Modals, Notifications, Space } from 'src/ui'
 
-import styles from './App.scss'
+import styles from './MainLayout.scss'
 
-export function App () {
+export default function MainLayout ({ children }: ChildrenProps) {
   return (
-    <Pages title='@cantinc/ui' prefix={process.env.CANTINC_UI_BASE_URL} navigation={navigation}>
+    <>
       <Layout class={styles.root} gap={[0, 20]}>
-        <show when={isDesktop}>
+        <Show when={isDesktop}>
           <Aside padding={24} class={styles.aside} vertical>
-            <slot name='menu' />
+            <Menu />
             <Space />
             <Flex padding={24} class={styles.version} justify='center'>
               v{process.env.CANTINC_UI_VERSION}
             </Flex>
           </Aside>
-        </show>
-        <show when={isMobile}>
+        </Show>
+        <Show when={isMobile}>
           <Header class={styles.header}>
             <BurgerButton onclick={showLayoutMenu} />
             <Space />
-            <a href='/'>CANT inc. UI</a>
+            <Link href='/'>CANT inc. UI</Link>
             <Space />
           </Header>
-        </show>
+        </Show>
         <Main padding={32} class={styles.content}>
-          <slot name='pages' />
+          {children}
         </Main>
       </Layout>
       <Notifications />
       <Drawers>
-        <show when={shownLayoutMenu}>
+        <Show when={shownLayoutMenu}>
           <Drawer vertical align='stretch' padding={16} onclose={hideLayoutMenu}>
-            <slot name='menu' />
+            <Menu />
             <Space />
             <Flex justify='center'>
               v{process.env.CANTINC_UI_VERSION}
             </Flex>
           </Drawer>
-        </show>
+        </Show>
       </Drawers>
       <Modals main />
-    </Pages>
+    </>
   )
 }

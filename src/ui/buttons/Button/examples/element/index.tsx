@@ -13,7 +13,7 @@ import dom from '@innet/dom'
 import { Button } from '@cantinc/ui'
 
 innet(
-  <Button<HTMLAnchorElement>
+  <Button
     element='a'
     href='/'>
     Go to home page
@@ -21,7 +21,7 @@ innet(
   dom,
 )`,
   example: (
-    <Button<HTMLAnchorElement>
+    <Button
       element='a'
       href='/'>
       Go to home page

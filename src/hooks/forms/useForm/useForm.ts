@@ -21,13 +21,31 @@ export interface FormContext extends FormProps {
   loading: State<boolean>
   ref: Ref<HTMLFormElement>
   responseData?: any
-  submitData?: any
+  submitData?: Record<string, any>
   validation: ValidationMap<any>
   touched: Record<string, boolean>
 }
 
 export const formContext = new Context<FormContext>()
 
-export function useForm () {
-  return useContext(formContext)
+export function useForm (): FormContext | undefined
+export function useForm (errorMessage: string): FormContext
+export function useForm (errorMessage?: string) {
+  const form = useContext(formContext)
+
+  if (errorMessage && !form) {
+    throw new Error(errorMessage)
+  }
+
+  return form
+}
+
+export function useFormStrict () {
+  const form = useForm()
+
+  if (!form) {
+    throw new Error('useForm must be used in <Form>')
+  }
+
+  return form
 }

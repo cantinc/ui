@@ -12,7 +12,7 @@ export function FormCheckbox ({
   onchange,
   ...props
 }: FormCheckboxProps) {
-  const { loading } = useForm()
+  const { loading } = useForm('<FormCheckbox> MUST be add in a <Form>')
   const { state, element } = useField('false', ref)
 
   return (

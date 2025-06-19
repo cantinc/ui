@@ -1,5 +1,4 @@
 import { use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
 import { inputDateFormat } from '../../../utils'
@@ -7,7 +6,7 @@ import { InputDate, type InputDateProps } from '../../interaction'
 import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputDateProps extends Omit<InputDateProps, keyof FormFieldProps>, FormFieldProps {
-
+  hint?: JSX.Element
 }
 
 export function FormInputDate ({
@@ -15,10 +14,10 @@ export function FormInputDate ({
   onchange,
   disabled,
   validation,
+  hint,
   ...props
 }: FormInputDateProps) {
-  const { hint } = useSlots()
-  const { loading } = useForm()
+  const { loading } = useForm('<FormInputDate> MUST be add in a <Form>')
   const { state, error, element } = useField('', inputRef)
 
   return (

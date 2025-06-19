@@ -1,10 +1,16 @@
-import { type HTMLStyleProps, inject, type StateProp, style, use } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Hide, type HTMLStyleProps, inject, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 
+import { type Merge } from '../../../types'
 import styles from './Flex.scss'
 
 const useStyle = style(styles)
+
+export interface FlexStyles {
+  root: string
+  load: string
+  loading: string
+}
 
 export const alignJustifyMap = {
   start: 'flex-start',
@@ -12,6 +18,7 @@ export const alignJustifyMap = {
   center: 'center',
   stretch: 'stretch',
 } as const
+
 export const alignMap = {
   ...alignJustifyMap,
   baseline: 'baseline',
@@ -23,7 +30,10 @@ export const justifyMap = {
   around: 'space-around',
 } as const
 
-export type FlexProps <E extends HTMLElement = HTMLDivElement, R = {}, S = any> = Omit<HTMLStyleProps<E, S>, keyof R | 'children'> & {
+export type FlexElement = keyof HTMLElementTagNameMap
+
+export type FlexProps <T extends FlexElement = 'div', S extends FlexStyles = FlexStyles> = Merge<HTMLStyleProps<HTMLElementTagNameMap[T], S>, {
+  element?: T
   vertical?: StateProp<boolean>
   loading?: StateProp<boolean>
   loadingOffset?: StateProp<number>
@@ -34,11 +44,11 @@ export type FlexProps <E extends HTMLElement = HTMLDivElement, R = {}, S = any> 
   wrap?: boolean
   inline?: boolean
   reverse?: boolean
-  element?: string
   padding?: number | [number, number] | [number, number, number] | [number, number, number, number]
-} & R
+  children?: JSX.Element
+}>
 
-export function Flex <E extends HTMLElement = HTMLDivElement> ({
+export function Flex <T extends FlexElement = 'div'> ({
   vertical,
   align,
   justify,
@@ -49,12 +59,12 @@ export function Flex <E extends HTMLElement = HTMLDivElement> ({
   reverse,
   style,
   padding,
-  element: Element = 'div',
+  element: Element = 'div' as T,
   loading,
   loadingOffset = 0,
+  children,
   ...props
-}: FlexProps<E> = {} as any) {
-  const children = useChildren()
+}: FlexProps<T>) {
   const styles = useStyle()
 
   return (
@@ -77,9 +87,9 @@ export function Flex <E extends HTMLElement = HTMLDivElement> ({
         loading && styles.load,
         use(loading) && styles.loading,
       ])}>
-      <hide when={loading}>
+      <Hide when={loading}>
         {children}
-      </hide>
+      </Hide>
     </Element>
   )
 }

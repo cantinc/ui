@@ -1,21 +1,21 @@
 import { inject, Ref, type StateProp, style, use } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { type Merge } from 'src/types'
 import { Cache, onDestroy, State, Watch } from 'watch-state'
 
-import { Flex, type FlexProps } from '../Flex'
+import { Flex, type FlexElement, type FlexProps, type FlexStyles } from '../Flex'
 import styles from './Image.scss'
 
 const useStyle = style(styles)
 
-export type ImageProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = FlexProps<E, R & {
+export type ImageProps<E extends FlexElement = FlexElement, S extends FlexStyles = FlexStyles> = Merge<FlexProps<E, S>, {
   src: StateProp<string>
   size: StateProp<number>
   ratio?: StateProp<number | [number, number]>
   radius?: StateProp<number | string>
   fallback?: StateProp<string>
-}, S>
+}>
 
-export function Image<E extends HTMLElement = HTMLElement> ({
+export function Image<E extends FlexElement = FlexElement> ({
   src,
   fallback,
   size,
@@ -23,18 +23,19 @@ export function Image<E extends HTMLElement = HTMLElement> ({
   radius = 8,
   style,
   loading,
-  ref = new Ref<E>(),
+  ref = new Ref(),
+  children,
   ...props
 }: ImageProps<E>) {
-  const children = useChildren()
   const styles = useStyle()
   const loadingSrc = new State(false)
   const error = new State(false)
   const visible = new State(false)
+  const mixLoading = new Cache(() => use(loading) || loadingSrc.value)
+
   const safeSrc = fallback
     ? new Cache(() => error.value ? use(fallback) : use(src))
     : src
-  const mixLoading = new Cache(() => use(loading) || loadingSrc.value)
 
   new Watch(() => {
     if (!visible.value) return
@@ -56,6 +57,7 @@ export function Image<E extends HTMLElement = HTMLElement> ({
   })
 
   let unobserved = false
+
   const unobserve = () => {
     if (ref.value && !unobserved) {
       unobserved = true
@@ -81,7 +83,7 @@ export function Image<E extends HTMLElement = HTMLElement> ({
   onDestroy(unobserve)
 
   return (
-    <Flex<E>
+    <Flex
       {...(props as unknown as FlexProps<E>)}
       ref={ref}
       loading={mixLoading}

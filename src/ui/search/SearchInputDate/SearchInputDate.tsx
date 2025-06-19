@@ -1,7 +1,6 @@
 import { parsedSearch, stringifySearch } from '@innet/dom'
 import { historyPush, locationPath } from '@watch-state/history-api'
 
-import { useChildrenProvider } from '../../../hooks'
 import { inputDateFormat } from '../../../utils'
 import { InputDate, type InputDateProps } from '../../interaction'
 
@@ -14,7 +13,6 @@ export function SearchInputDate ({
   oninput,
   ...props
 }: SearchInputDateProps) {
-  const provider = useChildrenProvider()
   const handleChange = (date?: Date) => {
     const search = stringifySearch({
       ...parsedSearch.value,
@@ -25,11 +23,11 @@ export function SearchInputDate ({
     oninput?.(date)
   }
 
-  return provider(
+  return (
     <InputDate
       {...props}
       value={() => parsedSearch.value[key] ? new Date(String(parsedSearch.value[key])) : undefined}
       oninput={handleChange}
-    />,
+    />
   )
 }

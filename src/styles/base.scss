@@ -1,7 +1,7 @@
-@import "colors";
-@import "theme";
-@import "typography";
-@import "round";
+@use "colors";
+@use "theme";
+@use "typography";
+@use "round";
 
 html,body {
   display: flex;

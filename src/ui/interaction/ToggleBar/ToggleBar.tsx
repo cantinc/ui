@@ -1,14 +1,16 @@
-import { inject, type StateProp, style, use, useMapIndex, useMapValue, type WatchProp } from '@innet/dom'
+import { For, inject, Show, type StateProp, style, use, type WatchProp } from '@innet/dom'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
+import SyncTimer from 'sync-timer'
 import { Cache, State, Watch } from 'watch-state'
 
 import { Icon, type IconProp } from '../../icons'
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexElement, type FlexProps } from '../../layout'
 import styles from './ToggleBar.scss'
 
 const useStyle = style(styles)
 
-export interface ToggleBarValue {
+export interface ToggleBarOption {
   value: string
   label?: any
   icon?: IconProp
@@ -22,43 +24,17 @@ export interface ToggleBarItemOptions {
   onfocus: ToggleBarItemAction
   onblur: ToggleBarItemAction
 }
-export type ToggleBarRenderValue = (item: ToggleBarValue, options: ToggleBarItemOptions) => any
+export type ToggleBarRenderValue = (item: ToggleBarOption, options: ToggleBarItemOptions) => any
 
-export type ToggleBarProps <E extends HTMLElement = HTMLElement> = FlexProps<E, {
-  values: StateProp<ToggleBarValue[]>
+export type ToggleBarProps <E extends FlexElement = FlexElement> = Merge<Omit<FlexProps<E>, 'children'>, {
+  values: StateProp<ToggleBarOption[]>
   value?: StateProp<string> | State<string>
   width?: StateProp<string | number>
   renderValue?: ToggleBarRenderValue
   onchange?: ToggleBarOnChange
 }>
 
-interface ToggleBarItemProps {
-  renderValue: ToggleBarRenderValue
-  index: Cache<number>
-  onchange?: ToggleBarOnChange
-  onblur: ToggleBarItemAction
-  onfocus: (index: number) => void
-}
-
-function ToggleBarItem ({ renderValue, onchange, index, onblur, onfocus }: ToggleBarItemProps) {
-  const item = useMapValue<ToggleBarValue>()
-  const itemIndex = useMapIndex()
-  return (update: boolean) => renderValue(use(item, update), {
-    onchange: () => {
-      onchange?.(use(item, update).value)
-    },
-    className: update => classes([
-      styles.link,
-      use(index, update) === use(itemIndex, update) && styles.active,
-    ]),
-    onblur,
-    onfocus: () => {
-      onfocus(use(itemIndex))
-    },
-  })
-}
-
-export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, {
+export function defaultToggleBarRender ({ value, label, icon }: ToggleBarOption, {
   className,
   onchange,
   onfocus,
@@ -78,9 +54,9 @@ export function defaultToggleBarRender ({ value, label, icon }: ToggleBarValue, 
       }}
       onmousedown={onchange}
       class={className}>
-      <show when={icon}>
+      <Show when={icon}>
         <Icon size={26} icon={icon} />
-      </show>
+      </Show>
       {label || value}
     </span>
   )
@@ -129,10 +105,10 @@ export function ToggleBar ({
     return result ? 'back' : 'forward'
   })
 
-  let blurTimeout: any
+  let blurTimeout: SyncTimer
 
   const handleBlur = () => {
-    blurTimeout = setTimeout(() => {
+    blurTimeout = new SyncTimer(() => {
       focusIndex.value = index.value
     })
   }
@@ -157,18 +133,28 @@ export function ToggleBar ({
       ])}>
       <div class={styles.focus} />
       <div class={styles.selected} />
-      <map of={values} key='value'>
-        <ToggleBarItem
-          index={index}
-          onblur={handleBlur}
-          onchange={onchange}
-          renderValue={renderValue}
-          onfocus={(index) => {
-            clearTimeout(blurTimeout)
-            focusIndex.value = index
-          }}
-        />
-      </map>
+      <For of={values} key='value'>
+        {(item, itemIndex) => {
+          return (update: boolean) => {
+            const option = use<ToggleBarOption>(item, update)
+
+            return renderValue(option, {
+              onchange: () => {
+                onchange?.(option.value)
+              },
+              className: update => classes([
+                styles.link,
+                use(index, update) === use(itemIndex, update) && styles.active,
+              ]),
+              onblur: handleBlur,
+              onfocus: () => {
+                blurTimeout?.cancel()
+                focusIndex.value = use(itemIndex)
+              },
+            })
+          }
+        }}
+      </For>
     </Flex>
   )
 }

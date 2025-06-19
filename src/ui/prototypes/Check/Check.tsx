@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, type StateProp, style, use } from '@innet/dom'
+import { type HTMLStyleProps, Show, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
@@ -65,9 +65,9 @@ export function Check ({
         onclick={handleChange}
       />
       <span class={() => styles.icon} />
-      <show when={hasLabel}>
+      <Show when={hasLabel}>
         {label}
-      </show>
+      </Show>
       {children}
     </label>
   )

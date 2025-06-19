@@ -1,6 +1,6 @@
-import { type HTMLStyleProps, inject, Ref, type StateProp, style } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { Delay, type HTMLStyleProps, inject, Ref, Show, type StateProp, style } from '@innet/dom'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 import { State } from 'watch-state'
 
 import { usePopup } from '../../../hooks'
@@ -11,7 +11,7 @@ import styles from './Modal.scss'
 
 const useStyles = style(styles)
 
-export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclose'> {
+export interface ModalProps extends Merge<HTMLStyleProps<HTMLDivElement>, {
   height?: StateProp<number | string>
   width?: StateProp<number | string>
   buttons?: string[]
@@ -20,7 +20,11 @@ export interface ModalProps extends Omit<HTMLStyleProps<HTMLDivElement>, 'onclos
   onclose?: (result: string, close: () => void) => void
   onclosed?: (result: string) => void
   onshow?: () => void
-}
+  title?: JSX.Element
+  content?: JSX.Element
+  subTitle?: JSX.Element
+  buttonChildren?: Record<string, JSX.Element>
+}> {}
 
 const defaultCloseButton = <CloseButton offset={8} padding={8} size={16} />
 
@@ -35,10 +39,15 @@ export function Modal ({
   onclose,
   onshow,
   onmousedown,
+  children,
+  title,
+  content,
+  subTitle,
+  buttonChildren = {},
   ...props
 }: ModalProps = {}) {
   const styles = useStyles()
-  const { '': children, title, content, subTitle, ...slots } = useSlots()
+
   usePopup()
 
   const hidden = new Ref<State<boolean>>()
@@ -48,8 +57,8 @@ export function Modal ({
   const headButtonsLength = headButtons?.length
   const buttonsLength = buttons?.length
 
-  if (!('button-close' in slots)) {
-    slots['button-close'] = defaultCloseButton
+  if (!('close' in buttonChildren)) {
+    buttonChildren.close = defaultCloseButton
   }
 
   setTimeout(() => {
@@ -70,7 +79,7 @@ export function Modal ({
   }
 
   return (
-    <delay ref={hidden} hide={300}>
+    <Delay ref={hidden} hide={300}>
       <div
         {...props}
         style={{
@@ -79,6 +88,7 @@ export function Modal ({
           '--ui-modal-height': inject(height, height => typeof height === 'number' ? `${height}px` : height || ''),
         }}
         ref={element}
+        // @ts-expect-error TODO: fix types
         _close={() => handleClose}
         class={() => classes([
           styles.root,
@@ -86,14 +96,14 @@ export function Modal ({
           hidden.value?.value && styles.hide,
           !title && !subTitle && styles.noTitle,
         ])}>
-        <show when={title || subTitle || headButtonsLength}>
+        <Show when={title || subTitle || headButtonsLength}>
           <Flex padding={24} element='header' vertical align='stretch' class={() => styles.header}>
-            <show when={title || headButtonsLength}>
+            <Show when={title || headButtonsLength}>
               <Flex flex>
                 <Flex flex>
                   {title || null}
                 </Flex>
-                <show when={headButtonsLength}>
+                <Show when={headButtonsLength}>
                   <div class={() => styles.headButtons}>
                     {headButtons.map(id => ({
                       type: id === 'close' ? 'span' : 'button',
@@ -104,20 +114,20 @@ export function Modal ({
                         class: () => styles.headButton,
                       },
                       children: [
-                        slots[`button-${id}`] || id,
+                        buttonChildren[id] || id,
                       ],
                     }))}
                   </div>
-                </show>
+                </Show>
               </Flex>
-            </show>
-            <show when={subTitle}>
+            </Show>
+            <Show when={subTitle}>
               <div class={() => styles.subTitle}>
                 {subTitle}
               </div>
-            </show>
+            </Show>
           </Flex>
-        </show>
+        </Show>
         {content && (
           <div
             onscroll={(e: any) => {
@@ -131,7 +141,7 @@ export function Modal ({
           </div>
         )}
         {children}
-        <show when={buttonsLength}>
+        <Show when={buttonsLength}>
           <Flex reverse justify='center' wrap padding={16} gap={16}>
             {buttons?.map((id, index) => (
               <Button
@@ -140,12 +150,12 @@ export function Modal ({
                 {...buttonProps[id]}
                 data-button={id}
                 onclick={() => handleClose(id)}>
-                {slots[`button-${id}`] || id}
+                {buttonChildren[id] || id}
               </Button>
             ))}
           </Flex>
-        </show>
+        </Show>
       </div>
-    </delay>
+    </Delay>
   )
 }

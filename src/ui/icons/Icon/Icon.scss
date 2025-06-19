@@ -1,8 +1,8 @@
-@import "src/styles/skeleton";
+@use "src/styles/skeleton";
 
 .loading {
-  @include skeletonAfter;
-  @include skeletonAfterShow;
+  @include skeleton.skeletonAfter;
+  @include skeleton.skeletonAfterShow;
 
   display: inline-flex;
   width: var(--ui-icon-size, 16px);

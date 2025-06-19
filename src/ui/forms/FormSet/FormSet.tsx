@@ -23,7 +23,7 @@ export function FormSet <P extends object> ({
   ...props
 }: FormSetProps<P>) {
   const children = useChildren()
-  const form = useForm()
+  const form = useForm('<FormSet> MUST be add in a <Form>')
   const formElement = form.ref.value
 
   onchange = actionProp(value, onchange)

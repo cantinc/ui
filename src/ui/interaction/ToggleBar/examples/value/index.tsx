@@ -1,12 +1,12 @@
 import { example } from 'src/app/Component'
-import { Input, ToggleBar, type ToggleBarValue } from 'src/ui'
+import { Input, ToggleBar, type ToggleBarOption } from 'src/ui'
 import { State } from 'watch-state'
 
 import description from './README.md'
 
 const value = new State('')
 
-const values: ToggleBarValue[] = [
+const values: ToggleBarOption[] = [
   { value: '', label: 'Home' },
   { value: 'settings', label: 'Settings' },
   { value: 'help', label: 'Help' },

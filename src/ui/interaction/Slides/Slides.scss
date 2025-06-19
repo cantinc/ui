@@ -1,4 +1,4 @@
-@import "src/styles/utils";
+@use "src/styles/utils";
 
 .root {
   overflow: auto;
@@ -6,7 +6,7 @@
   position: relative;
   scroll-snap-type: x mandatory;
 
-  @include hide-scroll;
+  @include utils.hide-scroll;
 }
 
 .ready {

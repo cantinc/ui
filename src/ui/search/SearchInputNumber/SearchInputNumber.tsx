@@ -1,7 +1,6 @@
 import { parsedSearch, stringifySearch } from '@innet/dom'
 import { historyPush, locationPath } from '@watch-state/history-api'
 
-import { useChildrenProvider } from '../../../hooks'
 import { InputNumber, type InputNumberProps } from '../../interaction'
 
 export interface SearchInputNumberProps extends Omit<InputNumberProps, 'value'> {
@@ -13,7 +12,6 @@ export function SearchInputNumber ({
   oninput,
   ...props
 }: SearchInputNumberProps) {
-  const withChildren = useChildrenProvider()
   const handleChange = (val: number) => {
     const search = stringifySearch({
       ...parsedSearch.value,
@@ -24,11 +22,11 @@ export function SearchInputNumber ({
     oninput?.(Number(val))
   }
 
-  return withChildren(
+  return (
     <InputNumber
       {...props}
       value={() => Number(parsedSearch.value[key] || 0)}
       oninput={handleChange}
-    />,
+    />
   )
 }

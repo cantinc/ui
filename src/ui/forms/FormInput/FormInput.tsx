@@ -1,12 +1,13 @@
 import { use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 
 import { useField, useForm } from '../../../hooks'
 import { Input, type InputProps } from '../../interaction'
 import { type FormFieldProps } from '../Form/types'
 
 export interface FormInputProps extends Omit<InputProps, keyof FormFieldProps>, FormFieldProps {
-
+  before?: JSX.Element
+  after?: JSX.Element
+  hint?: JSX.Element
 }
 
 export function FormInput ({
@@ -14,15 +15,16 @@ export function FormInput ({
   onchange,
   disabled,
   validation,
+  hint,
   ...props
 }: FormInputProps) {
-  const { before, after, hint } = useSlots()
-  const { loading } = useForm()
+  const { loading } = useForm('<FormInput> MUST be add in a <Form>')
   const { state, error, element } = useField('', inputRef)
 
   return (
     <Input
       {...props}
+      hint={() => error.value || hint}
       inputRef={element}
       oninput={(value: any) => {
         state.value = value
@@ -30,11 +32,8 @@ export function FormInput ({
         onchange?.(value)
       }}
       error={() => Boolean(error.value)}
-      value={() => state.value}
-      disabled={() => use(disabled) ?? loading.value}>
-      {before && <slot name='before'>{before}</slot>}
-      {after && <slot name='after'>{after}</slot>}
-      <slot name='hint'>{() => error.value || hint}</slot>
-    </Input>
+      value={state}
+      disabled={() => use(disabled) ?? loading.value}
+    />
   )
 }

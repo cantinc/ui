@@ -1,63 +1,41 @@
-import { useHidden, useShow } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Delay, onMounted, Ref, style } from '@innet/dom'
 import { locationHash } from '@watch-state/history-api'
-import classes from 'html-classes'
-import { onDestroy } from 'watch-state'
+import { type FlexElement } from 'src/ui'
+import { type State } from 'watch-state'
 import { scrollTo } from 'web-scroll'
 
-import { Flex, type FlexProps } from '../../layout/Flex'
+import { Flex, type FlexProps, type FlexStyles } from '../Flex'
 import styles from './Page.scss'
 
-export interface PageProps extends FlexProps {
+const useStyle = style(styles)
 
-}
-export interface DelayPageProps extends PageProps {
-  show?: number
-  hide?: number
+export interface PageStyles extends FlexStyles {
+  hide: string
 }
 
-export function DelayPage ({
-  show = 300,
-  hide = 300,
-  ...props
-}: DelayPageProps = {}) {
-  const children = useChildren()
+export type PageProps <T extends FlexElement = 'div'> = FlexProps<T, PageStyles>
 
-  return (
-    <delay hide={hide} show={show}>
-      <Page {...props}>
-        {children}
-      </Page>
-    </delay>
-  )
-}
+export function Page<T extends FlexElement = 'div'> (props: PageProps<T>) {
+  const hidden = new Ref<State<boolean>>()
+  const styles = useStyle()
 
-export function Page (props: PageProps) {
-  const children = useChildren()
-  const show = useShow()
-  const hidden = useHidden()
-
-  const timer = setTimeout(() => {
+  onMounted(() => {
     const hash = locationHash.value
+
     if (hash) {
       scrollTo(`#${hash}`)
     }
   }, 300)
 
-  onDestroy(() => clearTimeout(timer))
-
   return (
-    <Flex
-      vertical
-      align='stretch'
-      flex
-      {...props}
-      class={() => classes([
-        styles.root,
-        show.value && styles.show,
-        hidden?.value && styles.hide,
-      ])}>
-      {children}
-    </Flex>
+    <Delay show={300} hide={300} ref={hidden}>
+      <Flex
+        vertical
+        align='stretch'
+        flex
+        {...props}
+        class={[styles.root, () => hidden.value?.value && styles.hide]}
+      />
+    </Delay>
   )
 }

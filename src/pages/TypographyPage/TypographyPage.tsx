@@ -1,4 +1,4 @@
-import { Flex, Markdown, Typography } from 'src/ui'
+import { Flex, Markdown, Page, Typography } from 'src/ui'
 
 import description from './README.md'
 
@@ -10,49 +10,51 @@ export default function TypographyPage () {
   const props = getComputedStyle(document.documentElement)
 
   return (
-    <Typography>
-      <Markdown text={description} />
-      <h2>Color theme</h2>
-      <h3>Gray</h3>
-      {sizes.map(size => (
-        <Flex
-          flex
-          padding={16}
-          style={{
-            background: `var(--color-${size})`,
-            color: `var(--color-${size > 50 ? 0 : 100})`,
-          }}>
-          {`--color-${size}`}: {props.getPropertyValue(`--color-${size}`)}
-        </Flex>
-      ))}
-      {colors.map(color => (
-        <>
-          <h3>{color}</h3>
-          {sizes.map(size => (
-            <Flex
-              flex
-              padding={16}
-              style={{
-                background: `var(--color-${color}-${size})`,
-                color: `var(--color-${size > 50 ? 0 : 100})`,
-              }}>
-              {`--color-${color}-${size}`}: {props.getPropertyValue(`--color-${color}-${size}`)}
-            </Flex>
-          ))}
-        </>
-      ))}
-      <h3>Surface</h3>
-      {surface.map(color => (
-        <Flex
-          flex
-          padding={16}
-          style={{
-            background: `var(--color-surface-${color})`,
-            color: 'var(--color-0)',
-          }}>
-          {`--color-surface-${color}`}: {props.getPropertyValue(`--color-surface-${color}`)}
-        </Flex>
-      ))}
-    </Typography>
+    <Page>
+      <Typography>
+        <Markdown text={description} />
+        <h2>Color theme</h2>
+        <h3>Gray</h3>
+        {sizes.map(size => (
+          <Flex
+            flex
+            padding={16}
+            style={{
+              background: `var(--color-${size})`,
+              color: `var(--color-${size > 50 ? 0 : 100})`,
+            }}>
+            {`--color-${size}`}: {props.getPropertyValue(`--color-${size}`)}
+          </Flex>
+        ))}
+        {colors.map(color => (
+          <>
+            <h3>{color}</h3>
+            {sizes.map(size => (
+              <Flex
+                flex
+                padding={16}
+                style={{
+                  background: `var(--color-${color}-${size})`,
+                  color: `var(--color-${size > 50 ? 0 : 100})`,
+                }}>
+                {`--color-${color}-${size}`}: {props.getPropertyValue(`--color-${color}-${size}`)}
+              </Flex>
+            ))}
+          </>
+        ))}
+        <h3>Surface</h3>
+        {surface.map(color => (
+          <Flex
+            flex
+            padding={16}
+            style={{
+              background: `var(--color-surface-${color})`,
+              color: 'var(--color-0)',
+            }}>
+            {`--color-surface-${color}`}: {props.getPropertyValue(`--color-surface-${color}`)}
+          </Flex>
+        ))}
+      </Typography>
+    </Page>
   )
 }

@@ -1,4 +1,4 @@
-import { type StateProp, use, useMapValue } from '@innet/dom'
+import { For, type StateProp, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import { State, unwatch } from 'watch-state'
 
@@ -41,51 +41,48 @@ export function Tags ({
 
   onchange = actionProp<any>(value, onchange)
 
-  const Item = () => {
-    const item = useMapValue<TagsItem>()
-    const tag = unwatch(() => use(item))
-
-    return (
-      <Tag
-        {...tag}
-        checked={() => {
-          const currentValue: any = use(value)
-
-          return !multiple
-            ? currentValue === tag.value
-            : tag.value
-              ? currentValue.includes(tag.value)
-              : currentValue.length === 0
-        }}
-        onchange={val => {
-          if (onchange) {
-            if (multiple) {
-              if (val) {
-                if (tag.value) {
-                  onchange([...use(value as StateProp<string[]>), tag.value] as any)
-                } else {
-                  onchange([] as any)
-                }
-              } else {
-                onchange(use(value as StateProp<string[]>).filter(v => v !== tag.value) as any)
-              }
-            } else {
-              onchange(tag.value as any)
-            }
-          }
-
-          tag.onchange?.(val)
-        }}
-        type={multiple ? 'checkbox' : 'radio'}
-      />
-    )
-  }
-
   return (
     <Flex gap={8} {...props}>
-      <map of={values} key='value'>
-        <Item />
-      </map>
+      <For of={values || [] as ITags} key='value'>
+        {(item) => {
+          const tag = unwatch(() => use<TagsItem>(item))
+
+          return (
+            <Tag
+              {...tag}
+              checked={() => {
+                const currentValue: any = use(value)
+
+                return !multiple
+                  ? currentValue === tag.value
+                  : tag.value
+                    ? currentValue.includes(tag.value)
+                    : currentValue.length === 0
+              }}
+              onchange={val => {
+                if (onchange) {
+                  if (multiple) {
+                    if (val) {
+                      if (tag.value) {
+                        onchange([...use(value as StateProp<string[]>), tag.value] as any)
+                      } else {
+                        onchange([] as any)
+                      }
+                    } else {
+                      onchange(use(value as StateProp<string[]>).filter(v => v !== tag.value) as any)
+                    }
+                  } else {
+                    onchange(tag.value as any)
+                  }
+                }
+
+                tag.onchange?.(val)
+              }}
+              type={multiple ? 'checkbox' : 'radio'}
+            />
+          )
+        }}
+      </For>
       {children}
     </Flex>
   )

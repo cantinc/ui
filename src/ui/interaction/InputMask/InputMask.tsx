@@ -2,7 +2,6 @@ import { Ref } from '@innet/dom'
 import Mask from 'inputmask'
 import { onDestroy } from 'watch-state'
 
-import { useChildrenProvider } from '../../../hooks'
 import { Input, type InputProps } from '../Input'
 
 export interface InputMaskProps extends InputProps {
@@ -17,8 +16,7 @@ export function * InputMask ({
   inputRef = new Ref(),
   ...props
 }: InputMaskProps) {
-  const withChildren = useChildrenProvider()
-  yield withChildren(<Input inputRef={inputRef} {...props} />)
+  yield <Input inputRef={inputRef} {...props} />
 
   if (typeof mask === 'string' || Array.isArray(mask)) {
     mask = {

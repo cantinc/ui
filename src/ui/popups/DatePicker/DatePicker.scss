@@ -1,4 +1,4 @@
-@import "src/styles/breakpoints";
+@use "src/styles/breakpoints";
 
 .root {
 
@@ -133,7 +133,7 @@
   max-height: var(--ui-data-picker-content-height);
   min-height: var(--ui-data-picker-content-height);
 
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     height: 430px;
     max-height: 430px;
     min-height: 430px;

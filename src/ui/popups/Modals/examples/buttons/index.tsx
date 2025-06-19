@@ -1,3 +1,4 @@
+import { Portal, Show } from '@innet/dom'
 import { Button, Modal, Modals, notify } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
@@ -11,7 +12,7 @@ export default example({
   title: 'buttons',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Modals, Modal, Notifications, Button, notify } from '@cantinc/ui'
@@ -24,18 +25,16 @@ innet(
       show
     </Button>
     <Modals>
-      <show when={show}>
+      <Show when={show}>
         <Modal
           buttons={['Ok', 'Cancel']}
+          content='Content'
           onclose={result => {
             show.value = false
             notify(result)
-          }}>
-          <slot name='content'>
-            Content
-          </slot>
-        </Modal>
-      </show>
+          }}
+        />
+      </Show>
     </Modals>
     <Notifications />
   </>,
@@ -43,22 +42,20 @@ innet(
 )`,
   example: (
     <>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Modals>
-          <show when={show}>
+          <Show when={show}>
             <Modal
               buttons={['Ok', 'Cancel']}
+              content='Content'
               onclose={result => {
                 show.value = false
                 notify(result)
-              }}>
-              <slot name='content'>
-                Content
-              </slot>
-            </Modal>
-          </show>
+              }}
+            />
+          </Show>
         </Modals>
-      </portal>
+      </Portal>
       <Button onclick={() => { show.value = true }}>
         show
       </Button>

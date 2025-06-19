@@ -1,4 +1,4 @@
-import { type HTMLStyleProps, Ref, type StateProp, style, use, useShow } from '@innet/dom'
+import { Delay, type HTMLStyleProps, Ref, type StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, State } from 'watch-state'
 
@@ -116,7 +116,7 @@ export function CalendarTitle ({
           const curMonth = month.value
 
           return (
-            <delay ref={hide} hide={300}>
+            <Delay ref={hide} hide={300}>
               <button
                 onclick={onClick}
                 tabIndex={0}
@@ -129,7 +129,7 @@ export function CalendarTitle ({
                 {getMonth(curMonth)}
                 {curYear}
               </button>
-            </delay>
+            </Delay>
           )
         }}
       </div>

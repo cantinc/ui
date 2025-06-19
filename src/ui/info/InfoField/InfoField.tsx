@@ -1,12 +1,13 @@
-import { type StateProp, style } from '@innet/dom'
+import { Show, type StateProp, style } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
+import { type Merge } from 'src/types'
 
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexElement, type FlexProps } from '../../layout'
 import styles from './InfoField.scss'
 
 const useStyle = style(styles)
 
-export type InfoFieldProps<E extends HTMLElement = HTMLElement> = FlexProps<E, {
+export type InfoFieldProps<E extends FlexElement = FlexElement> = Merge<FlexProps<E>, {
   label?: StateProp<string>
   value?: StateProp<string>
 }>
@@ -24,11 +25,11 @@ export function InfoField ({
       wrap
       {...props}
       class={() => styles.root}>
-      <show when={label}>
+      <Show when={label}>
         <div class={() => styles.label}>
           {label}
         </div>
-      </show>
+      </Show>
       {value}
       {children}
     </Flex>

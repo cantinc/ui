@@ -1,7 +1,7 @@
-@import "src/styles/breakpoints";
+@use "src/styles/breakpoints";
 
 .root {
-  @media (min-width: $laptop) {
+  @media (min-width: breakpoints.$laptop) {
     --ui-aside-width: 320px;
 
     width: var(--ui-aside-width);

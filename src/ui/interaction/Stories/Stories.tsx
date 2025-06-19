@@ -86,7 +86,7 @@ export function Stories ({
     style = '',
     onclick,
     unread,
-    ref = new Ref<HTMLElement>(),
+    ref = new Ref(),
     ...rest
   }, index): Slide => {
     const currentProgress = new State(0)

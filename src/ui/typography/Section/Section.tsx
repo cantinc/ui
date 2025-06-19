@@ -1,31 +1,30 @@
 import { type StateProp, style } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
 
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexProps, type FlexStyles } from '../../layout'
 import { Title, type TitleProps } from '../Title'
 import styles from './Section.scss'
 
 const useStyle = style(styles, { root: '' })
 
-export interface SectionStyles {
-  root: any
+export interface SectionStyles extends FlexStyles {
   title: any
 }
 
-export interface SectionProps extends FlexProps<HTMLDivElement, {}, SectionStyles> {
+export interface SectionProps extends FlexProps<'section', SectionStyles> {
   title?: string
   subtitle?: StateProp<string>
-
   titleProps?: TitleProps
+  aside?: JSX.Element
 }
 
 export function Section ({
   title,
   titleProps,
   subtitle,
+  children,
+  aside,
   ...props
 }: SectionProps = {}) {
-  const { '': children, title: aside } = useSlots()
   const styles = useStyle()
 
   return (

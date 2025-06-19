@@ -23,15 +23,15 @@ function App () {
 
 *Note: put it inside an element without parents that have css property of `transform`.*
 
-You can use `portal` to add notifications anywhere.
+You can use `Portal` to add notifications anywhere.
 
 ```tsx
 function Global () {
   return (
-    <portal parent={document.body}>
+    <Portal parent={document.body}>
       <!-- Other stuff -->
       <Notifications />
-    </portal>
+    </Portal>
   )
 }
 ```

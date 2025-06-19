@@ -1,6 +1,6 @@
 import { strip } from '@cantinc/utils'
 import { inject, Ref, type StateProp, style, use } from '@innet/dom'
-import { useSlots } from '@innet/jsx'
+import { type Merge } from 'src/types'
 import { State } from 'watch-state'
 
 import { actionProp } from '../../../utils'
@@ -11,13 +11,13 @@ import styles from './InputNumber.scss'
 
 const useStyles = style(styles)
 
-export interface InputNumberProps extends Omit<InputProps, 'value' | 'oninput'> {
+export interface InputNumberProps extends Merge<InputProps, {
   value?: StateProp<number>
   step?: StateProp<number>
   oninput?: (value: number) => void
   min?: StateProp<number>
   max?: StateProp<number>
-}
+}> {}
 
 export function InputNumber ({
   value = new State(0),
@@ -27,9 +27,9 @@ export function InputNumber ({
   max,
   inputRef = new Ref(),
   onkeydown,
+  hint,
   ...props
 }: InputNumberProps = {}) {
-  const { hint } = useSlots()
   const styles = useStyles()
 
   oninput = actionProp(value, oninput)

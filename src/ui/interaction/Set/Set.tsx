@@ -1,5 +1,5 @@
 import { randomHash } from '@cantinc/utils'
-import { type ObservableProp, type StateProp, style, use, useMapIndex, useMapValue } from '@innet/dom'
+import { For, type ObservableProp, type StateProp, style, use } from '@innet/dom'
 import { Context, useChildren, useContext } from '@innet/jsx'
 import { Cache, State, unwatch } from 'watch-state'
 
@@ -17,7 +17,7 @@ export type SetPropsAddHandler<P> = (props: P) => P
 export type SetProps<P> = Omit<P, 'value' | 'onchange' | 'element'> & {
   value?: StateProp<Partial<P>[]>
   onchange?: (value: Partial<P>[]) => void
-  element: (props: P) => any
+  element: (props: P) => JSX.Element
   handleItemProps?: SetPropsHandler<P>
   handleAddItemProps?: SetPropsAddHandler<P>
 }
@@ -58,32 +58,28 @@ export function Set<P extends object> ({
     onchange?.(newValue)
   }
 
-  const Item = () => {
-    const item = useMapValue<P>()
-    const index = useMapIndex()
-
-    return (
-      <Element {...props} {...unwatch(() => handleItemProps(item, index, Element, props as P))}>
-        <slot name='after'>
-          <Icon
-            class={styles.remove}
-            onclick={(e: MouseEvent) => {
-              e.preventDefault()
-              e.stopPropagation()
-              handleRemove(use(index))
-            }}
-            icon='brick'
-          />
-        </slot>
-      </Element>
-    )
-  }
-
   return (
     <>
-      <map of={customValues} key={key}>
-        <Item />
-      </map>
+      <For of={customValues} key={key as keyof P}>
+        {(item, index) => (
+          // @ts-expect-error TODO: fix types
+          <Element
+            {...props}
+            {...unwatch(() => handleItemProps?.(item as any, index, Element, props as P))}
+            after={(
+              <Icon
+                class={styles.remove}
+                onclick={(e: MouseEvent) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  handleRemove(use(index))
+                }}
+                icon='brick'
+              />
+            )}
+          />
+        )}
+      </For>
       <div class={() => styles.root}>
         <button
           type='button'

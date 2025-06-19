@@ -1,14 +1,28 @@
-import { inject, type ObservableProp, type StateProp, style, use, useMapValue } from '@innet/dom'
+import { Delay, For, inject, type ObservableProp, type StateProp, style, use } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 import SyncTimer from 'sync-timer'
 import { Cache, State, unwatch, Watch } from 'watch-state'
 
 import { getDaysInMonth, getWeek, inputDateFormat } from '../../../utils'
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './Calendar.scss'
 
 const useStyle = style(styles)
+
+export interface CalendarStyles extends FlexStyles {
+  week: string
+  weekCell: string
+  gridWrapper: string
+  grid: string
+  cell: string
+  cellCurrent: string
+  active: string
+  disabled: string
+  selected: string
+  today: string
+}
 
 const today = new Date()
 
@@ -22,7 +36,7 @@ export interface CalendarGridCell {
   current: boolean
 }
 
-export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
+export interface CalendarProps extends Merge<FlexProps<'div', CalendarStyles>, {
   value?: StateProp<Date>
   rotationTop?: State<boolean>
   activeHandler?: (date: CalendarGridCell) => boolean
@@ -31,7 +45,7 @@ export interface CalendarProps extends Omit<FlexProps, 'onselect'> {
   renderCell?: (date: ObservableProp<CalendarGridCell>) => any
   cellHeight?: StateProp<number>
   onselect?: (cell: CalendarGridCell) => void
-}
+}> {}
 
 export const defaultCalendarCellRender = (item: ObservableProp<CalendarGridCell>): any => {
   return new Cache(() => use(item).date.getDate())
@@ -115,33 +129,6 @@ export function * Calendar ({
     return grid
   })
 
-  const Item = () => {
-    const item = useMapValue<CalendarGridCell>()
-
-    if (unwatch(() => rotationTop.value)) {
-      position--
-    } else {
-      position++
-    }
-
-    return (
-      <delay hide={300}>
-        <span
-          onclick={() => onselect?.(use(item))}
-          class={() => classes([
-            styles.cell,
-            isToday(use(item).date) && styles.today,
-            use(item).current && styles.cellCurrent,
-            activeHandler?.(use(item)) && styles.active,
-            disableHandler?.(use(item)) && styles.disabled,
-            selectedHandler?.(use(item)) && styles.selected,
-          ])}>
-          {() => renderCell(item)}
-        </span>
-      </delay>
-    )
-  }
-
   yield (
     <Flex
       {...props}
@@ -168,9 +155,32 @@ export function * Calendar ({
             top: () => `${top.value}px`,
           }}
           class={() => styles.grid}>
-          <map of={grid} key='value'>
-            <Item />
-          </map>
+          <For of={grid} key='value'>
+            {(item) => {
+              if (unwatch(() => rotationTop.value)) {
+                position--
+              } else {
+                position++
+              }
+
+              return (
+                <Delay hide={300}>
+                  <span
+                    onclick={() => onselect?.(use(item))}
+                    class={() => classes([
+                      styles.cell,
+                      isToday(use(item).date) && styles.today,
+                      use(item).current && styles.cellCurrent,
+                      activeHandler?.(use(item)) && styles.active,
+                      disableHandler?.(use(item)) && styles.disabled,
+                      selectedHandler?.(use(item)) && styles.selected,
+                    ])}>
+                    {() => renderCell(item)}
+                  </span>
+                </Delay>
+              )
+            }}
+          </For>
         </div>
       </div>
     </Flex>

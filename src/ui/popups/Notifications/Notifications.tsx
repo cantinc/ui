@@ -1,4 +1,4 @@
-import { style } from '@innet/dom'
+import { Delay, For, style } from '@innet/dom'
 import { onDestroy } from 'watch-state'
 
 import { Notification } from '../Notification'
@@ -32,16 +32,20 @@ export function Notifications ({
     if (notificationsEmpty.value) return
 
     return (
-      <delay hide={300}>
+      <Delay hide={300}>
         <div {...props} onclick={handleClick} class={styles.root}>
-          <map of={first3notifications} key='key'>
-            <Notification
-              onclose={close}
-              class={{ progress: styles.progress }}
-            />
-          </map>
+          <For of={first3notifications} key='key'>
+            {(option, index) => (
+              <Notification
+                index={index}
+                option={option}
+                onclose={close}
+                class={{ progress: styles.progress }}
+              />
+            )}
+          </For>
         </div>
-      </delay>
+      </Delay>
     )
   }
 }

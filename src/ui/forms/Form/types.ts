@@ -7,7 +7,7 @@ import { type FlexProps } from '../../layout'
 
 export type FormMethod = 'GET' | 'HEAD' | 'POST' | 'DELETE' | 'PUT' | 'CONNECT' | 'OPTIONS' | 'TRACE' | 'PATCH'
 
-export interface FormProps extends FlexProps<HTMLFormElement> {
+export interface FormProps extends FlexProps<'form'> {
   action?: StateProp<string>
   loading?: State<boolean>
   notification?: string

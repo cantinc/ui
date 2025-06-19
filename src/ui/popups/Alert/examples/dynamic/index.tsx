@@ -1,4 +1,4 @@
-import { use, useMapValue } from '@innet/dom'
+import { Delay, For, use } from '@innet/dom'
 import { Alert, Button, Flex, Input } from 'src'
 import { example } from 'src/app/Component'
 import { createEvent, State } from 'watch-state'
@@ -21,28 +21,9 @@ const addAlert = createEvent(() => {
   alerts.update()
   text.value = ''
 })
+
 const removeAlert = (removeId: number) => {
   alerts.value = alerts.value.filter(({ id }) => id !== removeId)
-}
-
-function MapAlert () {
-  const item = useMapValue<AlertData>()
-
-  return (
-    <delay hide={300}>
-      <Alert gap={24} justify='between'>
-        {() => use(item).text}
-        <Button
-          onclick={() => {
-            removeAlert(use(item).id)
-          }}
-          view='ghost'
-          padding={16}>
-          Done
-        </Button>
-      </Alert>
-    </delay>
-  )
 }
 
 export default example({
@@ -80,31 +61,25 @@ const removeAlert = (removeId: number) => {
     .filter(({ id }) => id !== removeId)
 }
 
-function MapAlert () {
-  const item = useMapValue<AlertData>()
-
-  return (
-    <delay hide={300}>
-      <Alert gap={24} justify='between'>
-        {() => use(item).text}
-        <Button
-          onclick={() => {
-            removeAlert(use(item).id)
-          }}
-          view='ghost'
-          padding={16}>
-          Done
-        </Button>
-      </Alert>
-    </delay>
-  )
-}
-
 innet(
   <Flex reverse vertical align='stretch'>
-    <map of={alerts} key='id'>
-      <MapAlert />
-    </map>
+    <For of={alerts} key='id'>
+      {(item) => (
+        <Delay hide={300}>
+          <Alert gap={24} justify='between'>
+            {() => use(item).text}
+            <Button
+              onclick={() => {
+                removeAlert(use(item).id)
+              }}
+              view='ghost'
+              padding={16}>
+              Done
+            </Button>
+          </Alert>
+        </Delay>
+      )}
+    </For>
     <Flex wrap gap={24}>
       <Input
         flex
@@ -120,9 +95,23 @@ innet(
 )`,
   example: (
     <Flex reverse vertical align='stretch'>
-      <map of={alerts} key='id'>
-        <MapAlert />
-      </map>
+      <For of={alerts} key='id'>
+        {(item) => (
+          <Delay hide={300}>
+            <Alert gap={24} justify='between'>
+              {() => use(item).text}
+              <Button
+                onclick={() => {
+                  removeAlert(use(item).id)
+                }}
+                view='ghost'
+                padding={16}>
+                Done
+              </Button>
+            </Alert>
+          </Delay>
+        )}
+      </For>
       <Flex wrap gap={24}>
         <Input
           flex

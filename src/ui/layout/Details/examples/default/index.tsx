@@ -13,19 +13,13 @@ import dom from '@innet/dom'
 import { Details } from '@cantinc/ui'
 
 innet(
-  <Details>
-    <slot name='summary'>
-      Click Me
-    </slot>
+  <Details summary='Click Me'>
     Details content here!
   </Details>,
   dom,
 )`,
   example: (
-    <Details>
-      <slot name='summary'>
-        Click Me
-      </slot>
+    <Details summary='Click Me'>
       Details content here!
     </Details>
   ),

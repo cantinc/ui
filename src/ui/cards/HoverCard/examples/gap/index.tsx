@@ -13,21 +13,16 @@ import dom from '@innet/dom'
 import { HoverCard } from '@cantinc/ui'
 
 innet(
-  <HoverCard gap={16} vertical width={180}>
+  <HoverCard gap={16} vertical width={180} content={<span>Content</span>}>
     <span>Title</span>
-    <slot name='content'>
-      <span>Content</span>
-    </slot>
+    <span style={{ 'font-size': '12px' }}>Subtitle</span>
   </HoverCard>,
   dom,
 )`,
   example: (
-    <HoverCard gap={16} vertical width={180}>
+    <HoverCard gap={16} vertical width={180} content={<span>Content</span>}>
       <span>Title</span>
       <span style={{ 'font-size': '12px' }}>Subtitle</span>
-      <slot name='content'>
-        <span>Content</span>
-      </slot>
     </HoverCard>
   ),
 })

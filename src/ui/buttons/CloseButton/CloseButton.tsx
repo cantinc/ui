@@ -1,19 +1,20 @@
 import { inject, type StateProp, style, useHidden, useShow } from '@innet/dom'
+import { type Merge } from 'src/types'
 
 import { Icon, type IconProp } from '../../icons'
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './CloseButton.scss'
 
 const useStyle = style(styles)
 
 export type CloseButtonPlacement = 'topLeft' | 'top' | 'topRight' | 'right' | 'bottomRight' | 'bottom' | 'bottomLeft' | 'left'
 
-export type CloseButtonProps<R = {}, S = any> = FlexProps<HTMLButtonElement, R & {
+export type CloseButtonProps<S extends FlexStyles = FlexStyles> = Merge<FlexProps<'button', S>, {
   placement?: CloseButtonPlacement
   icon?: IconProp
   size?: StateProp<number>
   offset?: StateProp<number>
-}, S>
+}>
 
 export function CloseButton ({
   placement = 'topRight',
@@ -28,7 +29,7 @@ export function CloseButton ({
   const hide = useHidden()
 
   return (
-    <Flex<HTMLButtonElement>
+    <Flex
       type='button'
       element='button'
       padding={14}

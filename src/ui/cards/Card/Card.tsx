@@ -1,23 +1,24 @@
 import { inject, type StateProp, style, use, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
+import { type Merge } from 'src/types'
 import { onDestroy, State } from 'watch-state'
 
-import { Flex, type FlexProps } from '../../layout'
+import { Flex, type FlexElement, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './Card.scss'
 
 const useStyle = style(styles)
 
-export type CardProps<E extends HTMLElement = HTMLElement, R = {}, S = any> = FlexProps<E, R & {
+export type CardProps<E extends FlexElement = FlexElement, S extends FlexStyles = FlexStyles> = Merge<FlexProps<E, S>, {
   clickable?: StateProp<boolean>
   border?: StateProp<number>
   preventAnimation?: boolean
   width?: StateProp<number>
   height?: StateProp<number>
   radius?: StateProp<number | string>
-}, S>
+}>
 
-export function Card<E extends HTMLElement = HTMLElement> ({
+export function Card<E extends FlexElement = FlexElement> ({
   onclick,
   clickable = !!onclick,
   border = 1,

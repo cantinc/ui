@@ -1,4 +1,4 @@
-import { inject, type StateProp, style, use, useMapValue } from '@innet/dom'
+import { For, inject, type StateProp, style, use } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Flex, type FlexProps } from '../../layout'
@@ -43,29 +43,26 @@ export function Radiobox ({
     }
   }
 
-  const Item = () => {
-    const item = useMapValue<RadioItem>()
-    const itemValue = inject(item, item => use(item.value))
-
-    return (
-      <Check
-        disabled={disabled}
-        name={name}
-        checked={() => use(value) === use(itemValue)}
-        type='radio'
-        onchange={() => {
-          onchange?.(use(itemValue))
-        }}
-        class={checkStyles}
-      />
-    )
-  }
-
   return (
     <Flex gap={16} {...props} class={() => styles.root}>
-      <map of={values || []} key='value'>
-        <Item />
-      </map>
+      <For of={values || []} key='value'>
+        {(item) => {
+          const itemValue = inject<RadioItem, string>(item, item => use(item.value))
+
+          return (
+            <Check
+              disabled={disabled}
+              name={name}
+              checked={() => use(value) === use(itemValue)}
+              type='radio'
+              onchange={() => {
+                onchange?.(use(itemValue))
+              }}
+              class={checkStyles}
+            />
+          )
+        }}
+      </For>
     </Flex>
   )
 }

@@ -1,4 +1,4 @@
-@import "src/styles/skeleton";
+@use "src/styles/skeleton";
 
 .root {
   --ui-flex: flex;
@@ -23,9 +23,9 @@
 }
 
 .load {
-  @include skeletonAfter(calc(var(--ui-flex-loading-offset) * -1));
+  @include skeleton.skeletonAfter(calc(var(--ui-flex-loading-offset) * -1));
 }
 
 .loading {
-  @include skeletonAfterShow;
+  @include skeleton.skeletonAfterShow;
 }

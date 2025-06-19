@@ -66,10 +66,5 @@ export async function * Icon ({
 
   const { default: Icon } = await iconsImports[icon]()
 
-  yield (
-    <Icon
-      {...props}
-      size={size}
-    />
-  )
+  yield <Icon {...props} size={size} />
 }

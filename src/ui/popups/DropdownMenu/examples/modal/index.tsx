@@ -1,4 +1,4 @@
-import { Ref, use } from '@innet/dom'
+import { Portal, Ref, Show, use } from '@innet/dom'
 import { Arrow, Button, DropdownMenu, type MenuOption, Modal, Modals } from 'src'
 import { example } from 'src/app/Component'
 import { State } from 'watch-state'
@@ -33,7 +33,7 @@ export default example({
   title: 'Default',
   description,
   code: `import innet from 'innet'
-import dom, { Ref, use } from '@innet/dom'
+import dom, { Ref, use, Portal, Show } from '@innet/dom'
 import { State } from 'watch-state'
 
 import { Arrow, Button, DropdownMenu, MenuOption, Modals, Modal } from '@cantinc/ui'
@@ -66,9 +66,9 @@ innet(
     <Button onclick={showModal}>
       Click Me
     </Button>
-    <portal parent={document.body}>
+    <Portal parent={document.body}>
       <Modals>
-        <show when={modalState}>
+        <Show when={modalState}>
           <Modal headButtons={[]} onclose={hideModal}>
             <Button
               padding={8}
@@ -89,9 +89,9 @@ innet(
               element={button}
             />
           </Modal>
-        </show>
+        </Show>
       </Modals>
-    </portal>
+    </Portal>
   </>,
   dom,
 )`,
@@ -100,9 +100,9 @@ innet(
       <Button onclick={showModal}>
         Click Me
       </Button>
-      <portal parent={document.body}>
+      <Portal parent={document.body}>
         <Modals>
-          <show when={modalState}>
+          <Show when={modalState}>
             <Modal headButtons={[]} onclose={hideModal}>
               <Button
                 padding={8}
@@ -123,9 +123,9 @@ innet(
                 element={button}
               />
             </Modal>
-          </show>
+          </Show>
         </Modals>
-      </portal>
+      </Portal>
     </>
   ),
 })

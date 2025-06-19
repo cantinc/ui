@@ -1,5 +1,4 @@
-import { Ref, type StateProp, style, use, useShow } from '@innet/dom'
-import { useChildren } from '@innet/jsx'
+import { Delay, Ref, Show, type StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
 
@@ -24,7 +23,7 @@ export const dataPickerCellHeight = new Cache<number>(() => {
   return windowWidth.value < 768 ? (windowHeight.value - 290) / 6 : 57
 })
 
-export interface DatePickerProps extends ModalProps {
+export interface DatePickerProps extends Omit<ModalProps, 'content' | 'title'> {
   selector?: State<DataPickerSelector>
   value?: StateProp<Date>
   defaultValue?: StateProp<Date | undefined>
@@ -46,6 +45,7 @@ export function DatePicker ({
   onChange,
   rotationTop = new State(true),
   onApply,
+  children,
   ...props
 }: DatePickerProps = {}) {
   onChange = actionProp(value, onChange)
@@ -53,7 +53,6 @@ export function DatePicker ({
   min = min && new Date(min.getFullYear(), min.getMonth(), min.getDate())
   max = max && new Date(max.getFullYear(), max.getMonth(), max.getDate())
 
-  const children = useChildren()
   const styles = useStyle()
   const isYearSelectable = !(min && max && min.getFullYear() === max.getFullYear())
   const showCustomGrid = new Cache(() => selector.value !== 'date')
@@ -148,7 +147,7 @@ export function DatePicker ({
 
     if (!isCustom) {
       return (
-        <delay ref={hide} hide={300}>
+        <Delay ref={hide} hide={300}>
           <div class={classNames}>
             <Space />
             <Calendar
@@ -174,7 +173,7 @@ export function DatePicker ({
               />
             </Calendar>
             <Space gap={apply && 24} />
-            <show when={apply}>
+            <Show when={apply}>
               <Buttons>
                 <Button
                   onclick={() => {
@@ -184,9 +183,9 @@ export function DatePicker ({
                   {apply}
                 </Button>
               </Buttons>
-            </show>
+            </Show>
           </div>
-        </delay>
+        </Delay>
       )
     }
 
@@ -195,7 +194,7 @@ export function DatePicker ({
       const hide = new Ref<State<boolean>>()
 
       return (
-        <delay ref={hide} hide={300}>
+        <Delay ref={hide} hide={300}>
           <div class={() => classes([
             styles.monthGrid,
             show.value && styles.monthGridShow,
@@ -227,7 +226,7 @@ export function DatePicker ({
               </div>
             ))}
           </div>
-        </delay>
+        </Delay>
       )
     }
 
@@ -252,7 +251,7 @@ export function DatePicker ({
       }
 
       return (
-        <delay ref={hide} hide={300}>
+        <Delay ref={hide} hide={300}>
           <div class={() => classes([
             styles.yearGrid,
             show.value && styles.yearGridShow,
@@ -323,12 +322,12 @@ export function DatePicker ({
               )
             })}
           </div>
-        </delay>
+        </Delay>
       )
     }
 
     return (
-      <delay ref={hide} hide={300}>
+      <Delay ref={hide} hide={300}>
         <div class={classNames}>
           <Flex
             padding={[28, 8]}
@@ -359,7 +358,7 @@ export function DatePicker ({
             {() => selector.value === 'date' ? null : selector.value === 'month' ? renderMonth() : renderYear()}
           </div>
         </div>
-      </delay>
+      </Delay>
     )
   }
 
@@ -367,14 +366,12 @@ export function DatePicker ({
     <Modal
       width={480}
       {...props}
+      title={children}
+      content={renderContent}
       class={{
         root: () => styles.root,
         content: () => styles.content,
-      }}>
-      {children && <slot name='title'>{children}</slot>}
-      <slot name='content'>
-        {renderContent}
-      </slot>
-    </Modal>
+      }}
+    />
   )
 }

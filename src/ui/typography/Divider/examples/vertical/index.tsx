@@ -1,3 +1,4 @@
+import { Link } from '@innet/dom'
 import { example } from 'src/app/Component'
 import { Divider, Flex } from 'src/ui'
 
@@ -10,33 +11,33 @@ export default example({
   code: `import innet from 'innet'
 import dom from '@innet/dom'
 
-import { Divider, Flex } from '@cantinc/ui'
+import { Divider, Flex, Link } from '@cantinc/ui'
 
 innet(
   <Flex align='stretch'>
-    <a href='/'>Home</a>
+    <Link href='/'>Home</Link>
     <Divider vertical />
-    <a href='/typography'>
+    <Link href='/typography'>
       Typography
-    </a>
+    </Link>
     <Divider vertical />
-    <a href='/typography/divider'>
+    <Link href='/typography/divider'>
       Settings
-    </a>
+    </Link>
   </Flex>,
   dom,
 )`,
   example: (
     <Flex align='stretch'>
-      <a href='/'>Home</a>
+      <Link href='/'>Home</Link>
       <Divider vertical />
-      <a href='/typography'>
+      <Link href='/typography'>
         Typography
-      </a>
+      </Link>
       <Divider vertical />
-      <a href='/typography/divider'>
+      <Link href='/typography/divider'>
         Settings
-      </a>
+      </Link>
     </Flex>
   ),
 })
