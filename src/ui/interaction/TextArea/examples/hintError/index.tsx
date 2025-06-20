@@ -20,11 +20,10 @@ const error = new State('')
 
 innet(
   <Flex vertical>
-    <TextArea error={() => Boolean(error.value)}>
-      <slot name='hint'>
-        {() => error.value || 'Hint message...'}
-      </slot>
-    </TextArea>
+    <TextArea
+      hint={() => error.value || 'Hint message...'}
+      error={() => Boolean(error.value)}
+    />
     <Button onclick={() => {
       error.value = error.value ? '' : 'Error message...'
     }}>
@@ -35,11 +34,10 @@ innet(
 )`,
   example: (
     <Flex vertical>
-      <TextArea error={() => Boolean(error.value)}>
-        <slot name='hint'>
-          {() => error.value || 'Hint message...'}
-        </slot>
-      </TextArea>
+      <TextArea
+        hint={() => error.value || 'Hint message...'}
+        error={() => Boolean(error.value)}
+      />
       <Button onclick={() => {
         error.value = error.value ? '' : 'Error message...'
       }}>

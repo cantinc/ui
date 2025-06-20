@@ -1,5 +1,6 @@
 import { Delay, Ref, Show, type StateProp, style, use, useShow } from '@innet/dom'
 import classes from 'html-classes'
+import { useUITranslations } from 'src/hooks'
 import { Cache, createEvent, onDestroy, State, unwatch } from 'watch-state'
 
 import { actionProp, dateMinMax, getDaysInMonth, getMonth, windowHeight, windowWidth } from '../../../utils'
@@ -48,6 +49,7 @@ export function DatePicker ({
   children,
   ...props
 }: DatePickerProps = {}) {
+  const [goBackTranslation, todayTranslation] = useUITranslations('date-picker_go-back', 'date-picker_today')
   onChange = actionProp(value, onChange)
 
   min = min && new Date(min.getFullYear(), min.getMonth(), min.getDate())
@@ -338,9 +340,7 @@ export function DatePicker ({
                 selector.value = 'date'
               }}>
               <Icon icon='arrowLeft' />
-              <slot name='ui-date-picker-go-back'>
-                Go back
-              </slot>
+              {goBackTranslation}
             </button>
             <Space />
             <button
@@ -349,9 +349,7 @@ export function DatePicker ({
                 onChange?.(dateMinMax(today, min, max))
                 selector.value = 'date'
               })}>
-              <slot name='ui-date-picker-today'>
-                Today
-              </slot>
+              {todayTranslation}
             </button>
           </Flex>
           <div class={() => styles.contentGridWrapper}>

@@ -16,27 +16,19 @@ innet(
   <Input
     placeholder='Enter count'
     gap={8}
-    inline>
-    <slot name='before'>
-      <Icon />
-    </slot>
-    <slot name='after'>
-      <Icon />
-    </slot>
-  </Input>,
+    before={<Icon icon='loupe' />}
+    after={<Icon />}
+    inline
+  />,
   dom,
 )`,
   example: (
     <Input
       placeholder='Enter count'
       gap={8}
-      inline>
-      <slot name='before'>
-        <Icon icon='loupe' />
-      </slot>
-      <slot name='after'>
-        <Icon />
-      </slot>
-    </Input>
+      before={<Icon icon='loupe' />}
+      after={<Icon />}
+      inline
+    />
   ),
 })

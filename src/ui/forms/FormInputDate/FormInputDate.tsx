@@ -30,10 +30,10 @@ export function FormInputDate ({
         error.value = ''
         onchange?.(newValue)
       }}
+      hint={() => error.value || hint}
       error={() => Boolean(error.value)}
       value={() => state.value ? new Date(state.value) : undefined}
-      disabled={() => use(disabled) ?? loading.value}>
-      <slot name='hint'>{() => error.value || hint}</slot>
-    </InputDate>
+      disabled={() => use(disabled) ?? loading.value}
+    />
   )
 }

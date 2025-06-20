@@ -1,4 +1,4 @@
-import { Ref, type StateProp, style, use } from '@innet/dom'
+import { Ref, Show, type StateProp, style, use } from '@innet/dom'
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
@@ -168,10 +168,10 @@ export function Selector ({
         class={() => [
           styles.root,
           exact && styles.exact,
-        ]}>
-        {arrow
-          ? (
-            <slot name='after'>
+        ]}
+        after={(
+          <>
+            <Show when={arrow} fallback={after}>
               <Arrow
                 class={() => styles.arrow}
                 direction={() => use(show) ? 'top' : 'down'}
@@ -181,13 +181,11 @@ export function Selector ({
                   show.value = !show.value
                 }}
               />
-            </slot>
-            )
-          : after && (<slot name='after'>{after}</slot>)}
-        {hint && (
-          <slot name='hint'>{hint}</slot>
+            </Show>
+            {hint}
+          </>
         )}
-      </Input>
+      />
       <DropdownMenu
         ref={popupRef}
         placement={placement}

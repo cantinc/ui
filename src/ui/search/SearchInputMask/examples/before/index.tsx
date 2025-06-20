@@ -13,18 +13,18 @@ import dom from '@innet/dom'
 import { SearchInputMask, Icon } from '@cantinc/ui'
 
 innet(
-  <SearchInputMask mask='+7 (999) 999-99-99' key='before'>
-    <slot name='before'>
-      <Icon />
-    </slot>
-  </SearchInputMask>,
+  <SearchInputMask
+    before={<Icon />}
+    mask='+7 (999) 999-99-99'
+    key='before'
+  />,
   dom,
 )`,
   example: (
-    <SearchInputMask mask='+7 (999) 999-99-99' key='before'>
-      <slot name='before'>
-        <Icon />
-      </slot>
-    </SearchInputMask>
+    <SearchInputMask
+      before={<Icon />}
+      mask='+7 (999) 999-99-99'
+      key='before'
+    />
   ),
 })

@@ -27,7 +27,6 @@ export function InputNumber ({
   max,
   inputRef = new Ref(),
   onkeydown,
-  hint,
   ...props
 }: InputNumberProps = {}) {
   const styles = useStyles()
@@ -49,6 +48,7 @@ export function InputNumber ({
 
     oninput?.(newValue)
   }
+
   const decrease = () => {
     const newValue = strip(use(value) - use(step))
     const currentMin = use(min)
@@ -96,21 +96,22 @@ export function InputNumber ({
         lastKey = e.key
         ;(onkeydown as any)?.(e)
       }}
-      class={styles}>
-      <slot name='after'>
-        <Icon
-          icon='minus'
-          onclick={decrease}
-          class={() => styles.minus}
-        />
-        <Divider vertical />
-        <Icon
-          icon='plus'
-          onclick={increase}
-          class={() => styles.minus}
-        />
-      </slot>
-      {hint && <slot>{hint}</slot>}
-    </Input>
+      after={(
+        <>
+          <Icon
+            icon='minus'
+            onclick={decrease}
+            class={() => styles.minus}
+          />
+          <Divider vertical />
+          <Icon
+            icon='plus'
+            onclick={increase}
+            class={() => styles.minus}
+          />
+        </>
+      )}
+      class={styles}
+    />
   )
 }

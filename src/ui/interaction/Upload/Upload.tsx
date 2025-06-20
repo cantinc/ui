@@ -2,6 +2,7 @@ import { Delay, For, Hide, type HTMLProps, inject, Ref, Show, type StateProp, st
 import classes from 'html-classes'
 import { Cache, State } from 'watch-state'
 
+import { useUITranslations } from '../../../hooks'
 import { actionProp, getExtension } from '../../../utils'
 import { Icon } from '../../icons'
 import { Flex, type FlexProps } from '../../layout'
@@ -60,6 +61,7 @@ export function Upload ({
   before,
   ...rest
 }: UploadProps = {}) {
+  const [dragTranslation, dropTranslation] = useUITranslations('upload_drag', 'upload_drop')
   const styles = useStyle()
   const over = new State(false)
 
@@ -180,14 +182,10 @@ export function Upload ({
           {label}
         </span>
         <span class={() => styles.drag}>
-          <slot name='ui-upload-drag'>
-            Move the file here
-          </slot>
+          {dragTranslation}
         </span>
         <span class={() => styles.drop}>
-          <slot name='ui-upload-drop'>
-            Drop the file here
-          </slot>
+          {dropTranslation}
         </span>
       </div>
       <span class={() => styles.focus} />

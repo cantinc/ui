@@ -25,18 +25,10 @@ const data: SelectorItemProps[] = [
 ]
 
 innet(
-  <Selector values={data}>
-    <slot name='after'>
-      <Icon />
-    </slot>
-  </Selector>,
+  <Selector values={data} after={<Icon />} />,
   dom,
 )`,
   example: (
-    <Selector values={data}>
-      <slot name='after'>
-        <Icon />
-      </slot>
-    </Selector>
+    <Selector values={data} after={<Icon />} />
   ),
 })

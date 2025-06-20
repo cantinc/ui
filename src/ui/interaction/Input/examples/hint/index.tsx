@@ -19,16 +19,8 @@ const hint = new State('')
 
 innet(
   <Flex vertical>
-    <Input>
-      <slot name='hint'>
-        Static hint
-      </slot>
-    </Input>
-    <Input>
-      <slot name='hint'>
-        {() => hint.value}
-      </slot>
-    </Input>
+    <Input hint='Static hint' />
+    <Input hint={hint} />
     <Button onclick={() => {
       hint.value = hint.value ? '' : 'Hint message...'
     }}>
@@ -39,16 +31,8 @@ innet(
 )`,
   example: (
     <Flex vertical>
-      <Input>
-        <slot name='hint'>
-          Static hint
-        </slot>
-      </Input>
-      <Input>
-        <slot name='hint'>
-          {() => hint.value}
-        </slot>
-      </Input>
+      <Input hint='Static hint' />
+      <Input hint={hint} />
       <Button onclick={() => {
         hint.value = hint.value ? '' : 'Hint message...'
       }}>

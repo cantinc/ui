@@ -23,16 +23,11 @@ innet(
     <TextArea error />
     <TextArea placeholder='Placeholder' error />
     <TextArea label='Label' error />
-    <TextArea error>
-      <slot name='hint'>
-        Static error
-      </slot>
-    </TextArea>
-    <TextArea error={() => Boolean(error.value)}>
-      <slot name='hint'>
-        {() => error.value}
-      </slot>
-    </TextArea>
+    <TextArea error hint='Static error' />
+    <TextArea
+      hint={error}
+      error={() => Boolean(error.value)}
+    />
     <Button onclick={() => {
       error.value = error.value ? '' : 'Error message...'
     }}>
@@ -46,16 +41,11 @@ innet(
       <TextArea error />
       <TextArea placeholder='Placeholder' error />
       <TextArea label='Label' error />
-      <TextArea error>
-        <slot name='hint'>
-          Static error
-        </slot>
-      </TextArea>
-      <TextArea error={() => Boolean(error.value)}>
-        <slot name='hint'>
-          {() => error.value}
-        </slot>
-      </TextArea>
+      <TextArea error hint='Static error' />
+      <TextArea
+        hint={error}
+        error={() => Boolean(error.value)}
+      />
       <Button onclick={() => {
         error.value = error.value ? '' : 'Error message...'
       }}>

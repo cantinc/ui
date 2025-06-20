@@ -38,6 +38,7 @@ export function InputDate ({
   oninput,
   min = minDate,
   max = maxDate,
+  after,
   ...props
 }: InputDateProps) {
   oninput = actionProp(value, oninput)
@@ -83,15 +84,18 @@ export function InputDate ({
           min: min.toLocaleDateString(),
           max: max.toLocaleDateString(),
         }}
-        {...props}>
-        <slot name='after'>
-          <Icon
-            icon='calendar'
-            class={() => styles.icon}
-            onclick={handleCalendarClick}
-          />
-        </slot>
-      </InputMask>
+        after={(
+          <>
+            <Icon
+              icon='calendar'
+              class={() => styles.icon}
+              onclick={handleCalendarClick}
+            />
+            {after}
+          </>
+        )}
+        {...props}
+      />
       <Show when={showCalendar}>
         <ModalsPortal>
           <DatePicker

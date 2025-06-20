@@ -16,27 +16,19 @@ innet(
   <TextArea
     placeholder='Enter count'
     gap={8}
-    inline>
-    <slot name='before'>
-      <Icon />
-    </slot>
-    <slot name='after'>
-      <Icon />
-    </slot>
-  </TextArea>,
+    before={<Icon />}
+    after={<Icon />}
+    inline
+  />,
   dom,
 )`,
   example: (
     <TextArea
       placeholder='Enter count'
       gap={8}
-      inline>
-      <slot name='before'>
-        <Icon />
-      </slot>
-      <slot name='after'>
-        <Icon />
-      </slot>
-    </TextArea>
+      before={<Icon />}
+      after={<Icon />}
+      inline
+    />
   ),
 })

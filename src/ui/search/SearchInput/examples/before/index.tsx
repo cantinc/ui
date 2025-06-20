@@ -13,18 +13,10 @@ import dom from '@innet/dom'
 import { SearchInput, Icon } from '@cantinc/ui'
 
 innet(
-  <SearchInput key='test'>
-    <slot name='before'>
-      <Icon />
-    </slot>
-  </SearchInput>,
+  <SearchInput key='test' before={<Icon />} />,
   dom,
 )`,
   example: (
-    <SearchInput key='test'>
-      <slot name='before'>
-        <Icon />
-      </slot>
-    </SearchInput>
+    <SearchInput key='test' before={<Icon />} />
   ),
 })
