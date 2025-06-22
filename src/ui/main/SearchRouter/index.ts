@@ -1,2 +1,1 @@
-export * from './UISettings'
 export * from './SearchRouter'

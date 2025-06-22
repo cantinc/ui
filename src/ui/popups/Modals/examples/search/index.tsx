@@ -1,50 +1,97 @@
 import { Link, Portal } from '@innet/dom'
-import { Button, closeRouterModal, Flex, Modal, Modals } from 'src'
+import { Button, closeRouterModal, Flex, Modal, Modals, SearchRouter, type SearchRouting } from 'src'
 import { example } from 'src/app/Component'
 
 import description from './README.md'
 
+const routing: SearchRouting = [
+  {
+    value: 'test1',
+    component: () => (
+      <Modal headButtons={[]}>
+        <Button onclick={closeRouterModal}>
+          Close
+        </Button>
+      </Modal>
+    ),
+  },
+  {
+    value: 'test2',
+    component: () => (
+      <Modal
+        onclose={closeRouterModal}
+        title='Test 2'
+        content={(
+          <Flex gap={16}>
+            <Link href='?modal=test2&modal=test1'>
+              Keep current modal
+            </Link>
+            <Link href='?modal=test1'>
+              Hide current modal
+            </Link>
+          </Flex>
+        )}
+      />
+    ),
+  },
+]
+
 export default example({
-  id: 'search',
-  title: 'search',
+  id: 'search-router',
+  title: 'SearchRouter',
   description,
   code: `import innet from 'innet'
-import dom from '@innet/dom'
+import dom, { Link } from '@innet/dom'
 
-import { Modals, Modal, Button, Flex, closeRouterModal } from '@cantinc/ui'
+import { 
+  Modals,
+  Modal,
+  Button,
+  Flex,
+  closeRouterModal,
+  SearchRouting,
+  SearchRouter
+} from '@cantinc/ui'
+
+const routing: SearchRouting = [
+  {
+    value: 'test1',
+    component: () => (
+      <Modal headButtons={[]}>
+        <Button onclick={closeRouterModal}>
+          Close
+        </Button>
+      </Modal>
+    ),
+  },
+  {
+    value: 'test2',
+    component: () => (
+      <Modal
+        onclose={closeRouterModal}
+        title='Test 2'
+        content={(
+          <Flex gap={16}>
+            <Link href='?modal=test2&modal=test1'>
+              Keep current modal
+            </Link>
+            <Link href='?modal=test1'>
+              Hide current modal
+            </Link>
+          </Flex>
+        )}
+      />
+    ),
+  },
+]
 
 innet(
   <>
-    <a href='?modal=test1'>Test 1</a>
-    <a href='?modal=test2'>Test 2</a>
     <Modals>
-      <router ish search='modal'>
-        <slot name='test1'>
-          <Modal headButtons={[]}>
-            <Button onclick={closeRouterModal}>
-              Close
-            </Button>
-          </Modal>
-        </slot>
-        <slot name='test2'>
-          <Modal onclose={closeRouterModal}>
-            <slot name='title'>
-              Test 2
-            </slot>
-            <slot name='content'>
-              <Flex gap={16}>
-                <a href='?modal=test2&modal=test1'>
-                  Keep current modal
-                </a>
-                <a href='?modal=test1'>
-                  Hide current modal
-                </a>
-              </Flex>
-            </slot>
-          </Modal>
-        </slot>
-      </router>
+      <SearchRouter key='modal' routing={routing} />
     </Modals>
+    <Link href='?modal=test1'>Test 1</Link>
+    <Link href='?modal=test2'>Test 2</Link>
   </>,
   dom,
 )`,
@@ -52,32 +99,7 @@ innet(
     <>
       <Portal parent={document.body}>
         <Modals>
-          <router ish search='modal'>
-            <slot name='test1'>
-              <Modal headButtons={[]}>
-                <Button onclick={closeRouterModal}>
-                  Close
-                </Button>
-              </Modal>
-            </slot>
-            <slot name='test2'>
-              <Modal onclose={closeRouterModal}>
-                <slot name='title'>
-                  Test 2
-                </slot>
-                <slot name='content'>
-                  <Flex gap={16}>
-                    <a href='?modal=test2&modal=test1'>
-                      Keep current modal
-                    </a>
-                    <a href='?modal=test1'>
-                      Hide current modal
-                    </a>
-                  </Flex>
-                </slot>
-              </Modal>
-            </slot>
-          </router>
+          <SearchRouter key='modal' routing={routing} />
         </Modals>
       </Portal>
       <Link href='?modal=test1'>Test 1</Link>

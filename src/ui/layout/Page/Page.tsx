@@ -23,9 +23,9 @@ export function Page<T extends FlexElement = 'div'> (props: PageProps<T>) {
     const hash = locationHash.value
 
     if (hash) {
-      scrollTo(`#${hash}`)
+      scrollTo(hash)
     }
-  }, 300)
+  }, 600)
 
   return (
     <Delay show={300} hide={300} ref={hidden}>

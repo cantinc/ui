@@ -31,7 +31,6 @@ export function Details ({
 
   onMounted(() => {
     defaultHeight = ref.value?.scrollHeight || 10
-    console.log(defaultHeight)
     height.value = defaultHeight
   })
 
