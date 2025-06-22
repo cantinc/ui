@@ -29,7 +29,7 @@ export function SearchRouter ({ key, routing }: SearchRouterProps) {
 
     const values = Array.from(new Set(searchModals))
 
-    return values.map((value) => routingMap.value.get(value) as SearchBaseRote)
+    return values.map((value) => routingMap.value.get(value) as SearchBaseRote).filter(Boolean)
   })
 
   return (
