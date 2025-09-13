@@ -1,7 +1,7 @@
 import { Ref, type StateProp, style, useHidden, useShow } from '@innet/dom'
 import { useChildren } from '@innet/jsx'
 import classes from 'html-classes'
-import { type State } from 'watch-state'
+import { onDestroy, State, unwatch } from 'watch-state'
 
 import { Flex, type FlexProps } from '../../layout'
 import styles from './Dropdown.scss'
@@ -28,14 +28,34 @@ export function DropdownContent ({
   const show = useShow()
   const styles = useStyle()
 
-  const rect: any = element.value?.getBoundingClientRect()
+  const top = new State('')
+  const rect = new State<DOMRect>()
+  const verticalKey = placement === 'bottom' ? 'top' : 'bottom'
 
   const { documentElement } = document
 
-  const verticalKey = placement === 'bottom' ? 'top' : 'bottom'
-  const verticalValue = placement === 'bottom'
-    ? `${rect.top + rect.height + documentElement.scrollTop + 8}px`
-    : `${documentElement.clientHeight - rect.top - documentElement.scrollTop + 8}px`
+  const updateTop = () => {
+    const currentRect = element.value?.getBoundingClientRect()
+
+    if (currentRect) {
+      rect.value = currentRect
+      top.value = placement === 'bottom'
+        ? `${currentRect.top + currentRect.height + documentElement.scrollTop + 8}px`
+        : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`
+    }
+  }
+
+  const listener = () => {
+    requestAnimationFrame(updateTop)
+  }
+
+  window.addEventListener('resize', listener)
+
+  unwatch(updateTop)
+
+  onDestroy(() => {
+    window.removeEventListener('resize', listener)
+  })
 
   return (
     <Flex
@@ -46,9 +66,9 @@ export function DropdownContent ({
       }}
       style={{
         ...style,
-        left: `${rect.left}px`,
-        right: `calc(100% - ${rect.right}px)`,
-        [verticalKey]: verticalValue,
+        left: () => `${rect.value.left}px`,
+        right: () => `calc(100% - ${rect.value.right}px)`,
+        [verticalKey]: top,
       }}
       class={() => classes([
         styles.root,
