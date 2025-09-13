@@ -21,10 +21,11 @@ function DropdownContent(_a) {
     const updateTop = () => {
         var _a;
         const currentRect = (_a = element.value) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
+        const offset = document.body.style.overflow ? document.documentElement.scrollTop : 0;
         if (currentRect) {
             rect.value = currentRect;
             top.value = placement === 'bottom'
-                ? `${currentRect.top + currentRect.height + 8}px`
+                ? `${currentRect.top + currentRect.height + 8 + offset}px`
                 : `${currentRect.top + 8}px`;
         }
     };

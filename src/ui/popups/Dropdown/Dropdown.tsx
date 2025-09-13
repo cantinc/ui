@@ -35,11 +35,12 @@ export function DropdownContent ({
 
   const updateTop = () => {
     const currentRect = element.value?.getBoundingClientRect()
+    const offset = document.body.style.overflow ? document.documentElement.scrollTop : 0
 
     if (currentRect) {
       rect.value = currentRect
       top.value = placement === 'bottom'
-        ? `${currentRect.top + currentRect.height + 8}px`
+        ? `${currentRect.top + currentRect.height + 8 + offset}px`
         : `${currentRect.top + 8}px`
     }
   }
