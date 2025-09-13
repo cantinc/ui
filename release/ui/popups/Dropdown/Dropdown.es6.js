@@ -28,10 +28,13 @@ function DropdownContent(_a) {
                 : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`;
         }
     };
-    window.addEventListener('resize', updateTop);
+    const listener = () => {
+        requestAnimationFrame(updateTop);
+    };
+    window.addEventListener('resize', listener);
     unwatch(updateTop);
     onDestroy(() => {
-        window.removeEventListener('resize', updateTop);
+        window.removeEventListener('resize', listener);
     });
     return ({type:Flex,props:{...props,onclick:(e) => {
             e.stopPropagation();

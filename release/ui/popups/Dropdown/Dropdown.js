@@ -36,10 +36,13 @@ function DropdownContent(_a) {
                 : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`;
         }
     };
-    window.addEventListener('resize', updateTop);
+    const listener = () => {
+        requestAnimationFrame(updateTop);
+    };
+    window.addEventListener('resize', listener);
     watchState.unwatch(updateTop);
     watchState.onDestroy(() => {
-        window.removeEventListener('resize', updateTop);
+        window.removeEventListener('resize', listener);
     });
     return ({type:Flex.Flex,props:{...props,onclick:(e) => {
             e.stopPropagation();
