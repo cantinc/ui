@@ -55,9 +55,11 @@ export function DropdownContent ({
   if (currentElement) {
     const parent = getOverflowParent(currentElement)
 
+    document.addEventListener('scroll', listener)
     parent.addEventListener('scroll', listener)
 
     onDestroy(() => {
+      document.removeEventListener('scroll', listener)
       parent.removeEventListener('scroll', listener)
     })
   }

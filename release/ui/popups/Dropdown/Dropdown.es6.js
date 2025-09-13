@@ -35,8 +35,10 @@ function DropdownContent(_a) {
     const currentElement = element.value;
     if (currentElement) {
         const parent = getOverflowParent(currentElement);
+        document.addEventListener('scroll', listener);
         parent.addEventListener('scroll', listener);
         onDestroy(() => {
+            document.removeEventListener('scroll', listener);
             parent.removeEventListener('scroll', listener);
         });
     }
