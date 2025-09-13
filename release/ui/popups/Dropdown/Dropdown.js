@@ -9,6 +9,7 @@ var classes = require('html-classes');
 var watchState = require('watch-state');
 require('../../layout/index.js');
 var Dropdown$1 = require('./Dropdown.scss.js');
+var helpers = require('./helpers.js');
 var Flex = require('../../layout/Flex/Flex.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -25,21 +26,28 @@ function DropdownContent(_a) {
     const top = new watchState.State('');
     const rect = new watchState.State();
     const verticalKey = placement === 'bottom' ? 'top' : 'bottom';
-    const { documentElement } = document;
     const updateTop = () => {
         var _a;
         const currentRect = (_a = element.value) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
         if (currentRect) {
             rect.value = currentRect;
             top.value = placement === 'bottom'
-                ? `${currentRect.top + currentRect.height + documentElement.scrollTop + 8}px`
-                : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`;
+                ? `${currentRect.top + currentRect.height + 8}px`
+                : `${currentRect.top + 8}px`;
         }
     };
     const listener = () => {
         requestAnimationFrame(updateTop);
     };
     window.addEventListener('resize', listener);
+    const currentElement = element.value;
+    if (currentElement) {
+        const parent = helpers.getOverflowParent(currentElement);
+        parent.addEventListener('scroll', listener);
+        watchState.onDestroy(() => {
+            parent.removeEventListener('scroll', listener);
+        });
+    }
     watchState.unwatch(updateTop);
     watchState.onDestroy(() => {
         window.removeEventListener('resize', listener);

@@ -5,6 +5,7 @@ import { onDestroy, State, unwatch } from 'watch-state'
 
 import { Flex, type FlexProps } from '../../layout'
 import styles from './Dropdown.scss'
+import { getOverflowParent } from './helpers'
 
 const useStyle = style(styles)
 
@@ -32,16 +33,14 @@ export function DropdownContent ({
   const rect = new State<DOMRect>()
   const verticalKey = placement === 'bottom' ? 'top' : 'bottom'
 
-  const { documentElement } = document
-
   const updateTop = () => {
     const currentRect = element.value?.getBoundingClientRect()
 
     if (currentRect) {
       rect.value = currentRect
       top.value = placement === 'bottom'
-        ? `${currentRect.top + currentRect.height + documentElement.scrollTop + 8}px`
-        : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`
+        ? `${currentRect.top + currentRect.height + 8}px`
+        : `${currentRect.top + 8}px`
     }
   }
 
@@ -50,6 +49,18 @@ export function DropdownContent ({
   }
 
   window.addEventListener('resize', listener)
+
+  const currentElement = element.value
+
+  if (currentElement) {
+    const parent = getOverflowParent(currentElement)
+
+    parent.addEventListener('scroll', listener)
+
+    onDestroy(() => {
+      parent.removeEventListener('scroll', listener)
+    })
+  }
 
   unwatch(updateTop)
 

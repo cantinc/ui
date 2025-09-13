@@ -1,5 +1,5 @@
 .root {
-  position: absolute;
+  position: fixed;
   opacity: 0;
   transition: opacity .3s, transform .3s;
   background: var(--color-100);

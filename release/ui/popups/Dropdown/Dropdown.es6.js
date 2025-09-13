@@ -2,9 +2,10 @@ import { __rest } from 'tslib';
 import { style, useHidden, useShow, Ref } from '@innet/dom';
 import { useChildren } from '@innet/jsx';
 import classes from 'html-classes';
-import { State, unwatch, onDestroy } from 'watch-state';
+import { State, onDestroy, unwatch } from 'watch-state';
 import '../../layout/index.es6.js';
 import modules_aa06803e from './Dropdown.scss.es6.js';
+import { getOverflowParent } from './helpers.es6.js';
 import { Flex } from '../../layout/Flex/Flex.es6.js';
 
 const useStyle = style(modules_aa06803e);
@@ -17,21 +18,28 @@ function DropdownContent(_a) {
     const top = new State('');
     const rect = new State();
     const verticalKey = placement === 'bottom' ? 'top' : 'bottom';
-    const { documentElement } = document;
     const updateTop = () => {
         var _a;
         const currentRect = (_a = element.value) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
         if (currentRect) {
             rect.value = currentRect;
             top.value = placement === 'bottom'
-                ? `${currentRect.top + currentRect.height + documentElement.scrollTop + 8}px`
-                : `${documentElement.clientHeight - currentRect.top - documentElement.scrollTop + 8}px`;
+                ? `${currentRect.top + currentRect.height + 8}px`
+                : `${currentRect.top + 8}px`;
         }
     };
     const listener = () => {
         requestAnimationFrame(updateTop);
     };
     window.addEventListener('resize', listener);
+    const currentElement = element.value;
+    if (currentElement) {
+        const parent = getOverflowParent(currentElement);
+        parent.addEventListener('scroll', listener);
+        onDestroy(() => {
+            parent.removeEventListener('scroll', listener);
+        });
+    }
     unwatch(updateTop);
     onDestroy(() => {
         window.removeEventListener('resize', listener);
