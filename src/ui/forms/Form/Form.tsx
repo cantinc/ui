@@ -110,6 +110,8 @@ export function Form ({
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault()
+
+    if (loading.value) return
     form.submitData = parseForm(form)
 
     onsubmit?.(e)
