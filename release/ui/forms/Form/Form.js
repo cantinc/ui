@@ -83,6 +83,8 @@ function Form(_a = {}) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (loading.value)
+            return;
         form.submitData = parseForm.parseForm(form);
         onsubmit === null || onsubmit === void 0 ? void 0 : onsubmit(e);
         const error = validate();

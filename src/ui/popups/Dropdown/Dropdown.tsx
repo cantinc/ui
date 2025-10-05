@@ -41,7 +41,7 @@ export function DropdownContent ({
       rect.value = currentRect
       top.value = placement === 'bottom'
         ? `${currentRect.top + currentRect.height + 8 + offset}px`
-        : `${currentRect.top + 8}px`
+        : `${window.innerHeight - currentRect.top + 8}px`
     }
   }
 
