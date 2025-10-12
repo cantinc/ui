@@ -52,7 +52,7 @@ export function Component <C extends UIComponent> ({
         <h2>Examples</h2>
         <Cards>
           {examples?.map(({ id, example, title, description, code }) => (
-            <Card preventAnimation class={() => [styles.example, locationHash.value === id && styles.active]} vertical id={id} align='stretch'>
+            <Card gap={8} preventAnimation class={() => [styles.example, locationHash.value === id && styles.active]} vertical id={id} align='stretch'>
               <Show when={title || description}>
                 <Typography>
                   {title && <h3><a href={`#${id}`}>{title}</a></h3>}

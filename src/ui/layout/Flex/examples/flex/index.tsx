@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'flex',
-  title: 'Flex',
+  title: 'Stretching Elements with Flex',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

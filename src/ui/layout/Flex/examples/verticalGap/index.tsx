@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'verticalGap',
-  title: 'vertical & gap',
+  title: 'Gap with Vertical Layout',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

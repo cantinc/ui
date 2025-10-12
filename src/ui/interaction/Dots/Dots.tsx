@@ -3,7 +3,7 @@ import classes from 'html-classes'
 import { type Merge } from 'src/types'
 import { Cache, onDestroy, State, unwatch, Watch } from 'watch-state'
 
-import { actionProp } from '../../../utils'
+import { type ActionProp, actionProp } from '../../../utils'
 import { Flex, type FlexProps, type FlexStyles } from '../../layout'
 import styles from './Dots.scss'
 
@@ -22,7 +22,7 @@ export interface DotsProps extends Merge<FlexProps<'div', DotsStyles>, {
   autoscroll?: StateProp<number | boolean>
   progress?: boolean
   value?: StateProp<number>
-  onchange?: (value: number) => void
+  onchange?: ActionProp<number>
   onend?: () => void
   circular?: boolean
   children?: (index: number) => JSX.Element

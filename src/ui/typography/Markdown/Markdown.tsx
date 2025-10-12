@@ -15,9 +15,7 @@ import {
   type TxtParagraphNode,
   type TxtStrNode,
   type TxtStrongNode,
-  type TxtTableCellNode,
   type TxtTableNode,
-  type TxtTableRowNode,
 } from '@textlint/ast-node-types'
 import { parse } from '@textlint/markdown-to-ast'
 
@@ -106,21 +104,22 @@ const astMap: Record<TxtNodeType | string, (node: any) => JSX.Element> = {
       src: url,
     },
   }),
-  Table: ({ children }: TxtTableNode) => ({
+  Table: ({ children, align }: TxtTableNode) => ({
     type: 'table',
-    props: { children: children?.map(ast2jsx) },
-  }),
-  TableHeader: ({ children }) => ({
-    type: 'th',
-    props: { children: children?.map(ast2jsx) },
-  }),
-  TableRow: ({ children }: TxtTableRowNode) => ({
-    type: 'tr',
-    props: { children: children?.map(ast2jsx) },
-  }),
-  TableCell: ({ children }: TxtTableCellNode) => ({
-    type: 'td',
-    props: { children: children?.map(ast2jsx) },
+    props: {
+      children: children?.map(({ children }, i) => ({
+        type: 'tr',
+        props: {
+          children: children?.map(({ children }, j) => ({
+            type: i ? 'td' : 'th',
+            props: {
+              align: !i ? undefined : align?.[j] ?? undefined,
+              children: children?.map(ast2jsx),
+            },
+          })),
+        },
+      })),
+    },
   }),
 }
 

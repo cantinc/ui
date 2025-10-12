@@ -5,4 +5,33 @@
   :last-child {
     margin-bottom: 0;
   }
+
+  table {
+    border-spacing: 0;
+  }
+
+  tr {
+    height: 64px;
+  }
+
+  td, th {
+    padding: 8px 12px;
+  }
+
+  th {
+    text-align: left;
+    background: var(--color-90);
+    position: relative;
+
+    &:not(:last-child):after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      background: var(--color-80);
+    }
+  }
 }

@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'element',
-  title: 'element',
+  title: 'Changing the HTML Element',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

@@ -98,7 +98,7 @@ innet(
       <For of={alerts} key='id'>
         {(item) => (
           <Delay hide={300}>
-            <Alert gap={24} justify='between'>
+            <Alert gap={24} justify='space-between'>
               {() => use(item).text}
               <Button
                 onclick={() => {

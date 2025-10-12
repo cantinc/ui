@@ -37,8 +37,8 @@ export function Section ({
       class={() => styles.root}>
       <Title
         h={2}
-        justify='between'
-        align='end'
+        justify='space-between'
+        align='flex-end'
         gap={16}
         {...titleProps}
         subtitle={subtitle}

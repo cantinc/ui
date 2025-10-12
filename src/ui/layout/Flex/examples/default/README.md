@@ -1,1 +1,1 @@
-Elements which inside `Flex` are placed horizontal by default.
+By default, elements inside the `Flex` component are arranged horizontally in a row.

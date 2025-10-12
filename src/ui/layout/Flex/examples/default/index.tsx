@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'default',
-  title: 'Default',
+  title: 'Basic Horizontal Layout',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

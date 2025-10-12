@@ -13,13 +13,13 @@ import dom from '@innet/dom'
 import { HoverCard } from '@cantinc/ui'
 
 innet(
-  <HoverCard content={<span>Content</span>} align='end' vertical width={180}>
+  <HoverCard content={<span>Content</span>} align='flex-end' vertical width={180}>
     <span>Title</span>
   </HoverCard>,
   dom,
 )`,
   example: (
-    <HoverCard content={<span>Content</span>} align='end' vertical width={180}>
+    <HoverCard content={<span>Content</span>} align='flex-end' vertical width={180}>
       <span>Title</span>
     </HoverCard>
   ),

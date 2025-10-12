@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'differentGap',
-  title: 'Different gap',
+  title: 'Different Gaps for Main and Cross Axes',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

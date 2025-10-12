@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@cantinc/utils": "^1.4.2",
-    "@innet/dom": "^1.0.0-alpha.1",
+    "@innet/dom": "^1.0.0-alpha.2",
     "@innet/jsx": "^2.0.0-rc.1",
     "@watch-state/history-api": "^2.0.0-alpha.1",
     "@textlint/ast-node-types": "^14.8.1",

@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'verticalAlign',
-  title: 'vertical & align',
+  title: 'Aligning in Vertical Layouts',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -18,13 +18,13 @@ innet(
       <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
       <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
     </Flex>
-    <Flex vertical align='start'>
+    <Flex vertical align='flex-start'>
       <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
-      <div style={{ background: 'var(--color-60)', padding: '6px' }}>start</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>flex-start</div>
     </Flex>
-    <Flex vertical align='end'>
+    <Flex vertical align='flex-end'>
       <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
-      <div style={{ background: 'var(--color-60)', padding: '6px' }}>end</div>
+      <div style={{ background: 'var(--color-60)', padding: '6px' }}>flex-end</div>
     </Flex>
     <Flex vertical align='stretch'>
       <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
@@ -39,13 +39,13 @@ innet(
         <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
         <div style={{ background: 'var(--color-60)', padding: '6px' }}>center</div>
       </Flex>
-      <Flex vertical align='start'>
+      <Flex vertical align='flex-start'>
         <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
-        <div style={{ background: 'var(--color-60)', padding: '6px' }}>start</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>flex-start</div>
       </Flex>
-      <Flex vertical align='end'>
+      <Flex vertical align='flex-end'>
         <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>
-        <div style={{ background: 'var(--color-60)', padding: '6px' }}>end</div>
+        <div style={{ background: 'var(--color-60)', padding: '6px' }}>flex-end</div>
       </Flex>
       <Flex vertical align='stretch'>
         <div style={{ background: 'var(--color-40)', padding: '24px' }}>align</div>

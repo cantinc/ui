@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'padding',
-  title: 'padding',
+  title: 'Adding Padding Inside the Container',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

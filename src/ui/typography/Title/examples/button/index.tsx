@@ -30,8 +30,8 @@ innet(
 )`,
   example: (
     <Title
-      justify='between'
-      align='end'
+      justify='space-between'
+      align='flex-end'
       h={2}
       vertical={false}
       title='Heading 2'>

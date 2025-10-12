@@ -23,7 +23,7 @@ const content = (position: string) => (
 
 export default example({
   id: 'align',
-  title: 'align',
+  title: 'Aligning Child Elements',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
@@ -52,17 +52,15 @@ innet(
   <Flex
     wrap
     gap={16}
-    style={{
-      background: 'var(--color-80)',
-    }}>
+    style={{ background: 'var(--color-80)' }}>
     <Flex align='center'>
       {content('center')}
     </Flex>
-    <Flex align='start'>
-      {content('start')}
+    <Flex align='flex-start'>
+      {content('flex-start')}
     </Flex>
-    <Flex align='end'>
-      {content('end')}
+    <Flex align='flex-end'>
+      {content('flex-end')}
     </Flex>
     <Flex align='stretch'>
       {content('stretch')}
@@ -83,11 +81,11 @@ innet(
       <Flex align='center'>
         {content('center')}
       </Flex>
-      <Flex align='start'>
-        {content('start')}
+      <Flex align='flex-start'>
+        {content('flex-start')}
       </Flex>
-      <Flex align='end'>
-        {content('end')}
+      <Flex align='flex-end'>
+        {content('flex-end')}
       </Flex>
       <Flex align='stretch'>
         {content('stretch')}

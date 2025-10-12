@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'reverse',
-  title: 'reverse',
+  title: 'Reversing Element Order',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'inline',
-  title: 'inline',
+  title: 'Making Flex Inline',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'

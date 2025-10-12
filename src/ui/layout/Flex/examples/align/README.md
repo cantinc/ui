@@ -1,1 +1,2 @@
-`align` controls position of children elements against direction, available: `center`, `start`, `end`, `stretch`, `baseline`
+The `align` prop controls the positioning of child elements along the cross axis. 
+Available values include `center`, `flex-start`, `flex-end`, `stretch`, and `baseline`.

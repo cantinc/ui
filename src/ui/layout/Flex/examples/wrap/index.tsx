@@ -5,7 +5,7 @@ import description from './README.md'
 
 export default example({
   id: 'wrap',
-  title: 'wrap',
+  title: 'Wrapping Flex Items',
   description,
   code: `import innet from 'innet'
 import dom from '@innet/dom'
